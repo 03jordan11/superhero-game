@@ -1,0 +1,22 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# Godot export credentials - may contain secrets
+export_credentials.cfg
+
+# Windows junk
+Thumbs.db
+Desktop.ini
+
+# macOS junk
+.DS_Store
+
+# IDE/editor folders
+.vscode/
+.idea/
+.vs/
+
+# Temporary files
+*.tmp
+*.log

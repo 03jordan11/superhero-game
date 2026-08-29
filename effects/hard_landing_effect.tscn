@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://effects/hard_landing_effect.gd" id="1_hard_landing"]
+[ext_resource type="Texture2D" path="res://assets/textures/decals/T_Large_Road_Cracks_02_2K_TGA_BaseOpacity.tga" id="2_crack_decal"]
+
+[node name="HardLandingEffect" type="Node3D"]
+script = ExtResource("1_hard_landing")
+
+[node name="DustParticles" type="GPUParticles3D" parent="."]
+emitting = false
+one_shot = true
+explosiveness = 1.0
+visibility_aabb = AABB(-6, -2, -6, 12, 10, 12)
+
+[node name="DebrisParticles" type="GPUParticles3D" parent="."]
+emitting = false
+one_shot = true
+explosiveness = 1.0
+visibility_aabb = AABB(-6, -2, -6, 12, 10, 12)
+
+[node name="ImpactDecal" type="Decal" parent="."]
+texture_albedo = ExtResource("2_crack_decal")
+modulate = Color(0, 0, 0, 1)
+size = Vector3(3, 0.25, 3)
+upper_fade = 0.0
+lower_fade = 0.0

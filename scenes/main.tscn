@@ -1,0 +1,494 @@
+[gd_scene format=3 uid="uid://g5dt47yi8mls"]
+
+[ext_resource type="Texture2D" uid="uid://blwcphxlffk64" path="res://assets/textures/GptConcrete.png" id="1_h2yge"]
+[ext_resource type="Script" uid="uid://bnmajefmf8bh4" path="res://player.gd" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://djuiolvewh3lx" path="res://assets/characters/Superhero_Male_FullBody.gltf" id="2_superhero"]
+[ext_resource type="Texture2D" uid="uid://2trq3vqi1g1a" path="res://assets/textures/buildings/facade_13/Facade013_4K_Color.jpg" id="4_272bh"]
+[ext_resource type="Texture2D" uid="uid://d3b643sq2rewt" path="res://assets/textures/buildings/facade_13/Facade013_4K_Emission.jpg" id="5_5vw27"]
+[ext_resource type="Texture2D" uid="uid://cus2tpnxi2hl5" path="res://assets/textures/buildings/facade_13/Facade013_4K_NormalGL.jpg" id="6_kek77"]
+[ext_resource type="Texture2D" uid="uid://sfhh7xhg7ew8" path="res://assets/textures/buildings/facade_13/Facade013_4K_Roughness.jpg" id="7_4c57u"]
+[ext_resource type="Texture2D" uid="uid://cfsmi03i4guyw" path="res://assets/textures/buildings/apartments/apartments2.png" id="8_kek77"]
+[ext_resource type="Texture2D" uid="uid://cyt3vftgytstc" path="res://assets/textures/buildings/apartments/apartments5.png" id="9_4c57u"]
+[ext_resource type="Texture2D" uid="uid://cqc5e01noic0t" path="res://assets/textures/buildings/apartments/apartments9.png" id="10_4c57u"]
+[ext_resource type="Texture2D" uid="uid://dfgdyt3phmklr" path="res://assets/textures/skybox/kloppenheim_03_puresky_4k.exr" id="11_efxa6"]
+[ext_resource type="Script" uid="uid://ckp7prv4iwgsn" path="res://scripts/developer_menu.gd" id="12_developer_menu"]
+[ext_resource type="Script" uid="uid://r0emup6ufvxv" path="res://scripts/player_hud.gd" id="13_player_hud"]
+[ext_resource type="Script" uid="uid://bi8s7hwdcoono" path="res://scripts/player_animation_controller.gd" id="14_player_animation_controller"]
+[ext_resource type="Script" uid="uid://ciys3ckvpawm8" path="res://scripts/landing_target_indicator.gd" id="15_landing_target"]
+[ext_resource type="Script" uid="uid://bvglu4x7p24cx" path="res://scripts/player_camera_effects.gd" id="16_camera_effects"]
+[ext_resource type="Script" uid="uid://c27f3x3jqksy7" path="res://scripts/player_combat_controller.gd" id="17_combat_controller"]
+[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="18_pause_menu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t87ul"]
+albedo_texture = ExtResource("1_h2yge")
+uv1_scale = Vector3(100, 100, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bhunq"]
+size = Vector3(2000, 1, 2000)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_riqys"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_bhunq"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_riqys"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_facade_albedo"]
+albedo_texture = ExtResource("4_272bh")
+uv1_scale = Vector3(2, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_riqys"]
+size = Vector3(1, 1.8311768, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_building"]
+size = Vector3(4, 7.324707, 4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5vw27"]
+albedo_texture = ExtResource("8_kek77")
+uv1_scale = Vector3(3, 3, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_272bh"]
+albedo_texture = ExtResource("9_4c57u")
+uv1_scale = Vector3(2, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_efxa6"]
+albedo_texture = ExtResource("10_4c57u")
+uv1_scale = Vector3(2, 3, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tall_building"]
+size = Vector3(1.0048676, 10.073425, 1.0163269)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h2yge"]
+albedo_texture = ExtResource("4_272bh")
+roughness_texture = ExtResource("7_4c57u")
+emission_enabled = true
+emission_texture = ExtResource("5_5vw27")
+normal_enabled = true
+normal_texture = ExtResource("6_kek77")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wide_building"]
+size = Vector3(6, 9.155884, 4)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_sn0t7"]
+panorama = ExtResource("11_efxa6")
+
+[sub_resource type="Sky" id="Sky_riqys"]
+sky_material = SubResource("PanoramaSkyMaterial_sn0t7")
+
+[sub_resource type="Environment" id="Environment_bhunq"]
+background_mode = 2
+sky = SubResource("Sky_riqys")
+fog_enabled = true
+fog_density = 0.004
+fog_aerial_perspective = 0.3
+fog_sky_affect = 0.25
+
+[node name="Main" type="Node3D" unique_id=52622882]
+
+[node name="DeveloperMenu" type="CanvasLayer" parent="." unique_id=132988547]
+layer = 10
+script = ExtResource("12_developer_menu")
+
+[node name="Panel" type="PanelContainer" parent="DeveloperMenu" unique_id=377188207]
+offset_left = 24.0
+offset_top = 128.0
+offset_right = 304.0
+offset_bottom = 292.0
+
+[node name="MarginContainer" type="MarginContainer" parent="DeveloperMenu/Panel" unique_id=1912889954]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Options" type="VBoxContainer" parent="DeveloperMenu/Panel/MarginContainer" unique_id=689463482]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="DeveloperMenu/Panel/MarginContainer/Options" unique_id=1028651671]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Developer"
+
+[node name="FlyingCheckBox" type="CheckBox" parent="DeveloperMenu/Panel/MarginContainer/Options" unique_id=590892841]
+layout_mode = 2
+text = "Enable Flying"
+
+[node name="ShowLandingCheckBox" type="CheckBox" parent="DeveloperMenu/Panel/MarginContainer/Options" unique_id=121199002]
+layout_mode = 2
+text = "Show Landing"
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=1071022126]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=142368875]
+material_override = SubResource("StandardMaterial3D_t87ul")
+mesh = SubResource("BoxMesh_bhunq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=71001875]
+shape = SubResource("BoxShape3D_riqys")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1412316627]
+transform = Transform3D(0.8660254, 0.43301272, -0.24999999, 0, 0.49999997, 0.86602545, 0.5, -0.75, 0.43301266, 0, 0, 0)
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=66151359]
+script = ExtResource("1_ig7tw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player" unique_id=1006941297]
+visible = false
+mesh = SubResource("CapsuleMesh_bhunq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=274446604]
+shape = SubResource("CapsuleShape3D_riqys")
+
+[node name="SuperheroCharacter" parent="Player" unique_id=133919717 instance=ExtResource("2_superhero")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0, -1, 0)
+
+[node name="CharacterAnimationPlayer" type="AnimationPlayer" parent="Player/SuperheroCharacter" unique_id=1903058457]
+
+[node name="PlayerAnimationController" type="Node" parent="Player" unique_id=2098631504]
+script = ExtResource("14_player_animation_controller")
+
+[node name="LandingTarget" type="Node3D" parent="Player" unique_id=1079207785]
+script = ExtResource("15_landing_target")
+
+[node name="PlayerCameraEffects" type="Node" parent="Player" unique_id=1255007352]
+script = ExtResource("16_camera_effects")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="Player" unique_id=2040445618]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+spring_length = 5.0
+
+[node name="Camera3D" type="Camera3D" parent="Player/SpringArm3D" unique_id=951035819]
+
+[node name="ChargeUI" type="CanvasLayer" parent="Player" unique_id=391240146]
+script = ExtResource("13_player_hud")
+
+[node name="ChargeLabel" type="Label" parent="Player/ChargeUI" unique_id=860611815]
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 324.0
+offset_bottom = 50.0
+theme_override_font_sizes/font_size = 20
+text = "Power Jump: 0%"
+
+[node name="ChargeBar" type="ProgressBar" parent="Player/ChargeUI" unique_id=1711327414]
+offset_left = 24.0
+offset_top = 54.0
+offset_right = 324.0
+offset_bottom = 78.0
+show_percentage = false
+
+[node name="LandingLabel" type="Label" parent="Player/ChargeUI" unique_id=1070817737]
+offset_left = 24.0
+offset_top = 86.0
+offset_right = 324.0
+offset_bottom = 112.0
+theme_override_font_sizes/font_size = 20
+text = "Landing: --"
+
+[node name="FlightSpeedLabel" type="Label" parent="Player/ChargeUI" unique_id=1518796875]
+offset_left = 24.0
+offset_top = 120.0
+offset_right = 324.0
+offset_bottom = 146.0
+theme_override_font_sizes/font_size = 20
+text = "Flight Speed: 0%"
+
+[node name="FlightSpeedBar" type="ProgressBar" parent="Player/ChargeUI" unique_id=798439176]
+offset_left = 24.0
+offset_top = 150.0
+offset_right = 324.0
+offset_bottom = 174.0
+show_percentage = false
+
+[node name="PlayerCombatController" type="Node" parent="Player" unique_id=1816028300]
+script = ExtResource("17_combat_controller")
+
+[node name="RefereanceObject" type="StaticBody3D" parent="." unique_id=751101672]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 2, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RefereanceObject" unique_id=404311186]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_facade_albedo")
+mesh = SubResource("BoxMesh_riqys")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RefereanceObject" unique_id=1093696516]
+shape = SubResource("BoxShape3D_building")
+
+[node name="RefereanceObject2" type="StaticBody3D" parent="." unique_id=1164971283]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.804034, 2, 16.780756)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RefereanceObject2" unique_id=1646449792]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_5vw27")
+mesh = SubResource("BoxMesh_riqys")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RefereanceObject2" unique_id=357944042]
+shape = SubResource("BoxShape3D_building")
+
+[node name="RefereanceObject3" type="StaticBody3D" parent="." unique_id=590068928]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.043839, 2, -17.617598)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RefereanceObject3" unique_id=1644229140]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_272bh")
+mesh = SubResource("BoxMesh_riqys")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RefereanceObject3" unique_id=1754085669]
+shape = SubResource("BoxShape3D_building")
+
+[node name="RefereanceObject4" type="StaticBody3D" parent="." unique_id=925176983]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.292667, 2, 21.874777)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RefereanceObject4" unique_id=782170468]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_efxa6")
+mesh = SubResource("BoxMesh_riqys")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RefereanceObject4" unique_id=78174056]
+shape = SubResource("BoxShape3D_building")
+
+[node name="RefObjTall" type="StaticBody3D" parent="." unique_id=1728731193]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.441555, 8.995373, 26.487055)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RefObjTall" unique_id=936320630]
+transform = Transform3D(15, 0, 0, 0, 30, 0, 0, 0, 10, 0, 18.444763, 9.049345)
+material_override = SubResource("StandardMaterial3D_facade_albedo")
+mesh = SubResource("BoxMesh_riqys")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RefObjTall" unique_id=2124020379]
+transform = Transform3D(15, 0, 0, 0, 30, 0, 0, 0, 10, -0.111579895, -105.13037, 9.105955)
+shape = SubResource("BoxShape3D_tall_building")
+
+[node name="RefObjTall2" type="StaticBody3D" parent="." unique_id=229574420]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.221012, 8.995373, -14.064478)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RefObjTall2" unique_id=205351537]
+transform = Transform3D(5, 0, 0, 0, 10, 0, 0, 0, 4, 0, 0, -5.0331497)
+material_override = SubResource("StandardMaterial3D_h2yge")
+mesh = SubResource("BoxMesh_riqys")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RefObjTall2" unique_id=2051211561]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.033)
+shape = SubResource("BoxShape3D_tall_building")
+
+[node name="RefObjTall3" type="StaticBody3D" parent="." unique_id=2122354797]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.40109, 8.995373, -4.248663)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RefObjTall3" unique_id=683252761]
+transform = Transform3D(4, 0, 0, 0, 10, 0, 0, 0, 4, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_5vw27")
+mesh = SubResource("BoxMesh_riqys")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RefObjTall3" unique_id=1421965464]
+shape = SubResource("BoxShape3D_tall_building")
+
+[node name="RefObjTall4" type="StaticBody3D" parent="." unique_id=669142329]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.533703, 8.995373, 19.77703)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RefObjTall4" unique_id=1245239673]
+transform = Transform3D(4, 0, 0, 0, 10, 0, 0, 0, 4, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_272bh")
+mesh = SubResource("BoxMesh_riqys")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RefObjTall4" unique_id=419409097]
+shape = SubResource("BoxShape3D_tall_building")
+
+[node name="RefObjTall5" type="StaticBody3D" parent="." unique_id=182120843]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.043816, 8.995373, 23.217262)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RefObjTall5" unique_id=231461103]
+transform = Transform3D(4, 0, 0, 0, 10, 0, 0, 0, 4, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_5vw27")
+mesh = SubResource("BoxMesh_riqys")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RefObjTall5" unique_id=88159318]
+shape = SubResource("BoxShape3D_tall_building")
+
+[node name="RefObjTall6" type="StaticBody3D" parent="." unique_id=96763416]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.669502, 8.995373, -28.995468)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RefObjTall6" unique_id=1114063201]
+transform = Transform3D(4, 0, 0, 0, 10, 0, 0, 0, 4, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_efxa6")
+mesh = SubResource("BoxMesh_riqys")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RefObjTall6" unique_id=344161198]
+shape = SubResource("BoxShape3D_tall_building")
+
+[node name="RefObjWide" type="StaticBody3D" parent="." unique_id=558856144]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.425175, 4.535555, -8.508593)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RefObjWide" unique_id=416947681]
+transform = Transform3D(6, 0, 0, 0, 5, 0, 0, 0, 4, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_272bh")
+mesh = SubResource("BoxMesh_riqys")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RefObjWide" unique_id=1082675648]
+shape = SubResource("BoxShape3D_wide_building")
+
+[node name="RefObjWide2" type="StaticBody3D" parent="." unique_id=346638911]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.0649, 4.535555, -23.984083)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RefObjWide2" unique_id=1161858864]
+transform = Transform3D(6, 0, 0, 0, 5, 0, 0, 0, 4, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_facade_albedo")
+mesh = SubResource("BoxMesh_riqys")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RefObjWide2" unique_id=565421727]
+shape = SubResource("BoxShape3D_wide_building")
+
+[node name="RefObjWide3" type="StaticBody3D" parent="." unique_id=2107346051]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.341423, 4.535555, 13.7600155)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RefObjWide3" unique_id=1207979976]
+transform = Transform3D(6, 0, 0, 0, 5, 0, 0, 0, 4, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_5vw27")
+mesh = SubResource("BoxMesh_riqys")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RefObjWide3" unique_id=1049128100]
+shape = SubResource("BoxShape3D_wide_building")
+
+[node name="RefObjWide4" type="StaticBody3D" parent="." unique_id=1255579841]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.286346, 4.535555, 21.858696)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RefObjWide4" unique_id=1730875033]
+transform = Transform3D(6, 0, 0, 0, 5, 0, 0, 0, 4, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_efxa6")
+mesh = SubResource("BoxMesh_riqys")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RefObjWide4" unique_id=1982950043]
+shape = SubResource("BoxShape3D_wide_building")
+
+[node name="RefObjWide5" type="StaticBody3D" parent="." unique_id=737270293]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.472827, 4.535555, 24.731716)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RefObjWide5" unique_id=1610146598]
+transform = Transform3D(6, 0, 0, 0, 5, 0, 0, 0, 4, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_272bh")
+mesh = SubResource("BoxMesh_riqys")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RefObjWide5" unique_id=1275727429]
+shape = SubResource("BoxShape3D_wide_building")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=747374090]
+environment = SubResource("Environment_bhunq")
+
+[node name="PauseMenu" type="CanvasLayer" parent="."]
+process_mode = 3
+layer = 10
+script = ExtResource("18_pause_menu")
+
+[node name="Dimmer" type="ColorRect" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.65)
+mouse_filter = 0
+
+[node name="Center" type="CenterContainer" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Menu" type="VBoxContainer" parent="PauseMenu/Center"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="Title" type="Label" parent="PauseMenu/Center/Menu"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3, 0.75, 1, 1)
+theme_override_font_sizes/font_size = 52
+text = "PAUSED"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="PauseMenu/Center/Menu"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="ResumeButton" type="Button" parent="PauseMenu/Center/Menu"]
+custom_minimum_size = Vector2(300, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Resume"
+
+[node name="SettingsButton" type="Button" parent="PauseMenu/Center/Menu"]
+custom_minimum_size = Vector2(300, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Settings"
+
+[node name="QuitButton" type="Button" parent="PauseMenu/Center/Menu"]
+custom_minimum_size = Vector2(300, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Quit"
+
+[node name="SettingsMenu" type="VBoxContainer" parent="PauseMenu/Center"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="Title" type="Label" parent="PauseMenu/Center/SettingsMenu"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3, 0.75, 1, 1)
+theme_override_font_sizes/font_size = 42
+text = "SETTINGS"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="PauseMenu/Center/SettingsMenu"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="DisplayModeRow" type="HBoxContainer" parent="PauseMenu/Center/SettingsMenu"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="DisplayModeLabel" type="Label" parent="PauseMenu/Center/SettingsMenu/DisplayModeRow"]
+custom_minimum_size = Vector2(140, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Display Mode"
+vertical_alignment = 1
+
+[node name="DisplayModeDropdown" type="OptionButton" parent="PauseMenu/Center/SettingsMenu/DisplayModeRow"]
+custom_minimum_size = Vector2(180, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+
+[node name="ResolutionRow" type="HBoxContainer" parent="PauseMenu/Center/SettingsMenu"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="ResolutionLabel" type="Label" parent="PauseMenu/Center/SettingsMenu/ResolutionRow"]
+custom_minimum_size = Vector2(140, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Resolution"
+vertical_alignment = 1
+
+[node name="ResolutionDropdown" type="OptionButton" parent="PauseMenu/Center/SettingsMenu/ResolutionRow"]
+custom_minimum_size = Vector2(180, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+
+[node name="BackButton" type="Button" parent="PauseMenu/Center/SettingsMenu"]
+custom_minimum_size = Vector2(336, 56)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Back"
+
+[connection signal="pressed" from="PauseMenu/Center/Menu/ResumeButton" to="PauseMenu" method="_on_resume_pressed"]
+[connection signal="pressed" from="PauseMenu/Center/Menu/SettingsButton" to="PauseMenu" method="_on_settings_pressed"]
+[connection signal="pressed" from="PauseMenu/Center/Menu/QuitButton" to="PauseMenu" method="_on_quit_pressed"]
+[connection signal="item_selected" from="PauseMenu/Center/SettingsMenu/DisplayModeRow/DisplayModeDropdown" to="PauseMenu" method="_on_display_mode_dropdown_item_selected"]
+[connection signal="item_selected" from="PauseMenu/Center/SettingsMenu/ResolutionRow/ResolutionDropdown" to="PauseMenu" method="_on_resolution_dropdown_item_selected"]
+[connection signal="pressed" from="PauseMenu/Center/SettingsMenu/BackButton" to="PauseMenu" method="_on_back_pressed"]

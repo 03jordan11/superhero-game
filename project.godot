@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="superhero-demo"
-run/main_scene="uid://g5dt47yi8mls"
+run/main_scene="uid://ce38ahkbxcke7"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -21,6 +21,8 @@ DebugManager="*uid://dvrevw5sttcbg"
 
 [display]
 
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 

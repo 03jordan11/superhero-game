@@ -20,3 +20,6 @@ Desktop.ini
 # Temporary files
 *.tmp
 *.log
+
+# Local exported game builds
+builds/

@@ -73,6 +73,7 @@ var wall_run_has_left_ground: bool = false
 @onready var superhero_character: Node3D = $SuperheroCharacter
 @onready var character_animation_player: AnimationPlayer = $SuperheroCharacter/CharacterAnimationPlayer
 @onready var animation_controller: PlayerAnimationController = $PlayerAnimationController
+@onready var combat_controller: PlayerCombatController = $PlayerCombatController
 @onready var landing_target: Node = $LandingTarget
 @onready var camera_effects: Node = $PlayerCameraEffects
 
@@ -84,6 +85,7 @@ func _ready() -> void:
 	superhero_character_default_rotation = superhero_character.rotation
 	_update_jump_charge_ui()
 	animation_controller.setup(character_animation_player, is_on_floor())
+	combat_controller.setup(animation_controller)
 	camera_effects.call("setup", spring_arm)
 	was_on_floor_for_camera_effects = is_on_floor()
 
@@ -111,7 +113,10 @@ func _input(event: InputEvent) -> void:
 
 	if event is InputEventMouseButton and event.pressed:
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			_try_start_ground_slam()
+			if is_flying or is_jump_active:
+				_try_start_ground_slam()
+			elif not is_knocked_out and not is_ground_slamming and not is_wall_running and is_on_floor():
+				combat_controller.request_punch()
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
@@ -140,6 +145,8 @@ func _physics_process(delta: float) -> void:
 		# before using the existing grounded movement and camera-facing behavior.
 		superhero_character.rotation = superhero_character_default_rotation
 		_handle_normal_movement(delta)
+		
+	combat_controller.update_punch_momentum(self, delta)
 
 	_update_jump_charge_ui()
 
@@ -349,6 +356,11 @@ func _handle_normal_movement(delta: float) -> void:
 		max_downward_speed = max(max_downward_speed, -velocity.y)
 	elif was_airborne:
 		_handle_landing()
+		
+	if animation_controller.is_fighting:
+		velocity.x = 0.0
+		velocity.z = 0.0
+		return
 
 	# Charge power jump
 	if is_on_floor():

@@ -1,8 +1,13 @@
 class_name PlayerAnimationController
 extends Node
 
-const UAL_ANIMATION_SCENE: PackedScene = preload("res://assets/animations/UAL1_Standard.glb")
-const FLYING_ANIMATION_SCENE: PackedScene = preload("res://assets/animations/Flying.fbx")
+const UAL_ANIMATION_LIBRARY: AnimationLibrary = preload("res://assets/animations/UAL1_Standard.glb")
+const FLYING_ANIMATION_LIBRARY: AnimationLibrary = preload("res://assets/animations/Flying.fbx")
+const FIGHTING_ANIMATION_LIBRARY: AnimationLibrary = preload("res://assets/animations/fight-animations/Fighting.glb")
+
+const FIGHT_ANIMATION_SOURCES := {
+	"Punch_01": "Punch_01"
+}
 
 const ANIMATION_SOURCES := {
 	"Idle": "Idle",
@@ -90,6 +95,7 @@ const MIXAMO_TO_SUPERHERO_BONES := {
 var animation_player: AnimationPlayer
 var was_on_floor: bool = false
 var is_playing_landing_animation: bool = false
+var is_fighting: bool = false
 
 
 func setup(target_animation_player: AnimationPlayer, initially_on_floor: bool) -> void:
@@ -108,6 +114,11 @@ func update_animation(
 ) -> void:
 	if animation_player == null or not animation_player.has_animation("Idle"):
 		return
+		
+	if is_fighting:
+		if animation_player.is_playing():
+			return
+		is_fighting = false
 
 	if is_flying:
 		is_playing_landing_animation = false
@@ -142,26 +153,40 @@ func update_animation(
 
 	was_on_floor = is_on_floor
 
+func play_fighting_animation(animation_name: String) -> bool:
+	if is_fighting:
+		return false
+		
+	if animation_player == null or not animation_player.has_animation(animation_name):
+		return false
+	
+	is_fighting = true
+	animation_player.play(animation_name, animation_blend_time)
+	return true
 
 func _setup_animation_library() -> void:
-	var animation_source := UAL_ANIMATION_SCENE.instantiate()
-	var source_player := animation_source.get_node_or_null("AnimationPlayer") as AnimationPlayer
-	if source_player == null:
-		push_error("UAL animation source has no AnimationPlayer.")
-		return
-
 	var animation_library := AnimationLibrary.new()
-	for target_name in ANIMATION_SOURCES:
-		var source_name: String = ANIMATION_SOURCES[target_name]
-		var animation := source_player.get_animation(source_name)
-		if animation == null:
-			push_error("Missing UAL animation: %s" % source_name)
-			continue
-		animation_library.add_animation(target_name, animation.duplicate())
+	_add_animations_from_library(animation_library, UAL_ANIMATION_LIBRARY, ANIMATION_SOURCES, "UAL1")
+	_add_animations_from_library(animation_library, FIGHTING_ANIMATION_LIBRARY, FIGHT_ANIMATION_SOURCES, "Punch_01")
 
 	_add_flying_animation(animation_library)
 	animation_player.add_animation_library("", animation_library)
 	animation_player.play("Idle")
+
+
+func _add_animations_from_library(
+	animation_library: AnimationLibrary,
+	source_library: AnimationLibrary,
+	animation_sources: Dictionary,
+	source_label: String
+) -> void:
+	for target_name in animation_sources:
+		var source_name: String = animation_sources[target_name]
+		var animation := source_library.get_animation(source_name)
+		if animation == null:
+			push_error("Missing %s animation: %s" % [source_label, source_name])
+			continue
+		animation_library.add_animation(target_name, animation.duplicate())
 
 
 func _play_animation(animation_name: String) -> void:
@@ -174,15 +199,9 @@ func _play_animation(animation_name: String) -> void:
 
 
 func _add_flying_animation(animation_library: AnimationLibrary) -> void:
-	var flying_source := FLYING_ANIMATION_SCENE.instantiate()
-	var source_player := flying_source.get_node_or_null("AnimationPlayer") as AnimationPlayer
-	if source_player == null:
-		push_error("Flying animation source has no AnimationPlayer.")
-		return
-
-	var flying_animation := source_player.get_animation("mixamo_com")
+	var flying_animation := FLYING_ANIMATION_LIBRARY.get_animation("mixamo_com")
 	if flying_animation == null:
-		push_error("Flying animation source has no mixamo_com animation.")
+		push_error("Flying animation library has no mixamo_com animation.")
 		return
 
 	var retargeted_animation := flying_animation.duplicate() as Animation

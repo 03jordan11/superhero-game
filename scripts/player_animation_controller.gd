@@ -3,10 +3,12 @@ extends Node
 
 const UAL_ANIMATION_LIBRARY: AnimationLibrary = preload("res://assets/animations/UAL1_Standard.glb")
 const FLYING_ANIMATION_LIBRARY: AnimationLibrary = preload("res://assets/animations/Flying.fbx")
-const FIGHTING_ANIMATION_LIBRARY: AnimationLibrary = preload("res://assets/animations/fight-animations/Fighting.glb")
+const FIGHTING_ANIMATION_LIBRARY: AnimationLibrary = preload("res://assets/animations/fight-animations/fighting_animations.glb")
 
 const FIGHT_ANIMATION_SOURCES := {
-	"Punch_01": "Punch_01"
+	"Punch_01": "Punch_01",
+	"Punch_02": "Punch_02",
+	"Punch_03": "Punch_03",
 }
 
 const ANIMATION_SOURCES := {
@@ -156,10 +158,36 @@ func update_animation(
 func play_fighting_animation(animation_name: String) -> bool:
 	if is_fighting:
 		return false
-		
+
+	return _play_fighting_animation(animation_name)
+
+
+func continue_fighting_animation(animation_name: String) -> bool:
+	if not is_fighting:
+		return false
+
+	return _play_fighting_animation(animation_name)
+
+
+func is_fighting_animation_in_combo_window(window_duration: float) -> bool:
+	if not is_fighting or animation_player == null or not animation_player.is_playing():
+		return false
+
+	var current_animation := animation_player.get_animation(animation_player.current_animation)
+	if current_animation == null:
+		return false
+
+	return animation_player.current_animation_position >= current_animation.length - window_duration
+
+
+func has_fighting_animation_finished() -> bool:
+	return is_fighting and (animation_player == null or not animation_player.is_playing())
+
+
+func _play_fighting_animation(animation_name: String) -> bool:
 	if animation_player == null or not animation_player.has_animation(animation_name):
 		return false
-	
+
 	is_fighting = true
 	animation_player.play(animation_name, animation_blend_time)
 	return true
@@ -167,7 +195,7 @@ func play_fighting_animation(animation_name: String) -> bool:
 func _setup_animation_library() -> void:
 	var animation_library := AnimationLibrary.new()
 	_add_animations_from_library(animation_library, UAL_ANIMATION_LIBRARY, ANIMATION_SOURCES, "UAL1")
-	_add_animations_from_library(animation_library, FIGHTING_ANIMATION_LIBRARY, FIGHT_ANIMATION_SOURCES, "Punch_01")
+	_add_animations_from_library(animation_library, FIGHTING_ANIMATION_LIBRARY, FIGHT_ANIMATION_SOURCES, "fighting_animations")
 
 	_add_flying_animation(animation_library)
 	animation_player.add_animation_library("", animation_library)

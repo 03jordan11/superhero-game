@@ -1,17 +1,13 @@
 class_name PlayerAnimationController
 extends Node
 
-const UAL_ANIMATION_LIBRARY: AnimationLibrary = preload("res://assets/animations/UAL1_Standard.glb")
-const FLYING_ANIMATION_LIBRARY: AnimationLibrary = preload("res://assets/animations/Flying.fbx")
-const FIGHTING_ANIMATION_LIBRARY: AnimationLibrary = preload("res://assets/animations/fight-animations/fighting_animations.glb")
-
-const FIGHT_ANIMATION_SOURCES := {
+const PLAYER_FIGHT_STATE_ANIMATION_SOURCES := {
 	"Punch_01": "Punch_01",
 	"Punch_02": "Punch_02",
 	"Punch_03": "Punch_03",
 }
 
-const ANIMATION_SOURCES := {
+const PLAYER_STATE_ANIMATION_SOURCES := {
 	"Idle": "Idle",
 	"Run": "Jog_Fwd",
 	"Sprint": "Sprint",
@@ -95,6 +91,7 @@ const MIXAMO_TO_SUPERHERO_BONES := {
 @export var flight_animation_blend_time: float = 0.3
 
 var animation_player: AnimationPlayer
+var animation_library_loader := CharacterAnimationLibraryLoader.new()
 var was_on_floor: bool = false
 var is_playing_landing_animation: bool = false
 var is_fighting: bool = false
@@ -194,27 +191,19 @@ func _play_fighting_animation(animation_name: String) -> bool:
 
 func _setup_animation_library() -> void:
 	var animation_library := AnimationLibrary.new()
-	_add_animations_from_library(animation_library, UAL_ANIMATION_LIBRARY, ANIMATION_SOURCES, "UAL1")
-	_add_animations_from_library(animation_library, FIGHTING_ANIMATION_LIBRARY, FIGHT_ANIMATION_SOURCES, "fighting_animations")
-
+	animation_library_loader.add_animations(
+		animation_library,
+		CharacterAnimationLibraryLoader.UAL1_GROUP,
+		PLAYER_STATE_ANIMATION_SOURCES,
+	)
+	animation_library_loader.add_animations(
+		animation_library,
+		CharacterAnimationLibraryLoader.FIGHTING_GROUP,
+		PLAYER_FIGHT_STATE_ANIMATION_SOURCES,
+	)
 	_add_flying_animation(animation_library)
 	animation_player.add_animation_library("", animation_library)
 	animation_player.play("Idle")
-
-
-func _add_animations_from_library(
-	animation_library: AnimationLibrary,
-	source_library: AnimationLibrary,
-	animation_sources: Dictionary,
-	source_label: String
-) -> void:
-	for target_name in animation_sources:
-		var source_name: String = animation_sources[target_name]
-		var animation := source_library.get_animation(source_name)
-		if animation == null:
-			push_error("Missing %s animation: %s" % [source_label, source_name])
-			continue
-		animation_library.add_animation(target_name, animation.duplicate())
 
 
 func _play_animation(animation_name: String) -> void:
@@ -227,7 +216,10 @@ func _play_animation(animation_name: String) -> void:
 
 
 func _add_flying_animation(animation_library: AnimationLibrary) -> void:
-	var flying_animation := FLYING_ANIMATION_LIBRARY.get_animation("mixamo_com")
+	var flying_animation := animation_library_loader.get_animation(
+		CharacterAnimationLibraryLoader.FLYING_GROUP,
+		&"mixamo_com"
+	)
 	if flying_animation == null:
 		push_error("Flying animation library has no mixamo_com animation.")
 		return

@@ -18,6 +18,11 @@ var is_jump_active: bool = false
 @export_category("Landing Impact")
 @export var heavy_landing_speed: float = 20.0
 @export var super_landing_speed: float = 35.0
+@export var landing_impact_radius: float = 5.0
+@export var heavy_landing_damage: float = 10.0
+@export var super_landing_damage: float = 50.0
+@export var heavy_landing_vehicle_damage: float = 50.0
+@export var super_landing_vehicle_damage: float = 100.0
 
 var max_downward_speed: float = 0.0
 var was_airborne: bool = false
@@ -54,10 +59,16 @@ var was_on_floor_for_camera_effects: bool = false
 @export var wall_jump_velocity: float = 10.0
 @export var wall_jump_push: float = 12.0
 
+@export_category("Attributes")
+@export_range(1, 999, 1) var strength: int = 1
+@export_range(1, 999, 1) var speed: int = 1
+@export_range(1, 999, 1) var resilience: int = 1
+
 var is_flying: bool = false
 var current_flight_speed: float = 0.0
 var is_ground_slamming: bool = false
 var ground_slam_target: Vector3
+var ground_slam_impact_pending: bool = false
 var is_knocked_out: bool = false
 var is_wall_running: bool = false
 var wall_run_normal: Vector3
@@ -78,6 +89,10 @@ var wall_run_has_left_ground: bool = false
 @export var vehicle_throw_spin_speed: float = 10.0
 @export var vehicle_throw_release_distance: float = 5.0
 @export var vehicle_explosion_min_impact_speed: float = 18.0
+@export var vehicle_explosion_radius: float = 5.0
+@export var vehicle_npc_min_damage: float = 50.0
+@export var vehicle_npc_max_damage: float = 100.0
+@export var vehicle_explosion_vehicle_damage: float = 100.0
 
 @onready var spring_arm: SpringArm3D = $SpringArm3D
 @onready var camera: Camera3D = $SpringArm3D/Camera3D
@@ -106,6 +121,7 @@ func _ready() -> void:
 	_update_vehicle_throw_ui()
 	animation_controller.setup(character_animation_player, is_on_floor())
 	combat_controller.setup(animation_controller)
+	_connect_vehicle_destruction_signals()
 	camera_effects.call("setup", spring_arm)
 	was_on_floor_for_camera_effects = is_on_floor()
 
@@ -173,7 +189,7 @@ func _physics_process(delta: float) -> void:
 		superhero_character.rotation = superhero_character_default_rotation
 		_handle_normal_movement(delta)
 		
-	combat_controller.update_punch_momentum(self, delta)
+	combat_controller.update_punch_momentum(self, delta, strength)
 
 	_update_jump_charge_ui()
 	_update_vehicle_throw_ui()
@@ -186,6 +202,12 @@ func _physics_process(delta: float) -> void:
 
 	# Actually move the character with the same collision system in both modes.
 	move_and_slide()
+	if is_ground_slamming and (
+		is_on_floor()
+		or get_slide_collision_count() > 0
+		or global_position.distance_to(ground_slam_target) <= 0.1
+	):
+		_finish_ground_slam()
 	_update_landing_camera_effects()
 	if is_flying and (
 		current_flight_speed >= flight_max_speed * flight_knockout_speed_percent
@@ -204,12 +226,6 @@ func _physics_process(delta: float) -> void:
 			_finish_wall_run()
 	elif _can_start_wall_run():
 		_start_wall_run(_get_wall_collision_normal())
-	if is_ground_slamming and (
-		is_on_floor()
-		or get_slide_collision_count() > 0
-		or global_position.distance_to(ground_slam_target) <= 0.1
-	):
-		_finish_ground_slam()
 	if is_knocked_out and is_on_floor():
 		_finish_knockout()
 	_update_flight_speed_ui()
@@ -329,19 +345,118 @@ func _release_held_vehicle(
 func _check_thrown_vehicle_impacts() -> void:
 	for vehicle_index in range(armed_thrown_vehicles.size() - 1, -1, -1):
 		var vehicle_state := armed_thrown_vehicles[vehicle_index]
-		var vehicle := vehicle_state["body"] as RigidBody3D
+		var vehicle: Vehicle = vehicle_state["body"] as Vehicle
 		if not is_instance_valid(vehicle):
 			armed_thrown_vehicles.remove_at(vehicle_index)
 			continue
 
 		var impact_speed: float = float(vehicle_state["last_speed"])
 		if vehicle.get_contact_count() > 0 and impact_speed >= vehicle_explosion_min_impact_speed:
-			_spawn_vehicle_explosion(vehicle.global_position, impact_speed)
-			vehicle.queue_free()
+			vehicle.take_damage(vehicle.health, impact_speed)
 			armed_thrown_vehicles.remove_at(vehicle_index)
 			continue
 
 		vehicle_state["last_speed"] = vehicle.linear_velocity.length()
+
+
+func _connect_vehicle_destruction_signals() -> void:
+	var vehicle_container: Node = get_node_or_null("../Vehicles")
+	if vehicle_container == null:
+		return
+
+	for child in vehicle_container.get_children():
+		if child is Vehicle:
+			var vehicle: Vehicle = child as Vehicle
+			vehicle.destroyed.connect(_on_vehicle_destroyed.bind(vehicle))
+
+
+func _on_vehicle_destroyed(vehicle: Vehicle) -> void:
+	if not is_instance_valid(vehicle):
+		return
+
+	var impact_speed: float = maxf(
+		maxf(vehicle.destruction_impact_speed, vehicle.linear_velocity.length()),
+		vehicle_explosion_min_impact_speed
+	)
+	var explosion_position := vehicle.global_position
+	_apply_vehicle_explosion_damage(explosion_position, vehicle, impact_speed)
+	_damage_vehicles_in_explosion(explosion_position, vehicle, impact_speed)
+	_spawn_vehicle_explosion(explosion_position, impact_speed)
+	vehicle.queue_free()
+
+
+func _apply_vehicle_explosion_damage(
+	explosion_position: Vector3,
+	vehicle: Vehicle,
+	impact_speed: float
+) -> void:
+	var explosion_shape := SphereShape3D.new()
+	explosion_shape.radius = vehicle_explosion_radius
+	var query := PhysicsShapeQueryParameters3D.new()
+	query.shape = explosion_shape
+	query.transform = Transform3D(Basis.IDENTITY, explosion_position)
+	query.exclude = [get_rid(), vehicle.get_rid()]
+	query.collide_with_areas = false
+	query.collide_with_bodies = true
+	var hit_results: Array[Dictionary] = (
+		get_world_3d().direct_space_state.intersect_shape(query)
+	)
+	var hit_instance_ids: Dictionary = {}
+	for hit in hit_results:
+		var collider: Object = hit.get("collider")
+		if collider == null or not collider.has_method("take_hit"):
+			continue
+		var collider_id := collider.get_instance_id()
+		if hit_instance_ids.has(collider_id):
+			continue
+		hit_instance_ids[collider_id] = true
+
+		var damage_percent := inverse_lerp(
+			vehicle_explosion_min_impact_speed,
+			vehicle_throw_max_speed,
+			impact_speed
+		)
+		var damage := lerpf(
+			vehicle_npc_min_damage,
+			vehicle_npc_max_damage,
+			clampf(damage_percent, 0.0, 1.0)
+		)
+		collider.call(
+			"take_hit",
+			damage,
+			&"knockback",
+			explosion_position,
+			Vector3.ZERO
+		)
+
+
+func _damage_vehicles_in_explosion(
+	explosion_position: Vector3,
+	source_vehicle: Vehicle,
+	impact_speed: float
+) -> void:
+	var explosion_shape := SphereShape3D.new()
+	explosion_shape.radius = vehicle_explosion_radius
+	var query := PhysicsShapeQueryParameters3D.new()
+	query.shape = explosion_shape
+	query.transform = Transform3D(Basis.IDENTITY, explosion_position)
+	query.exclude = [source_vehicle.get_rid()]
+	query.collide_with_areas = false
+	query.collide_with_bodies = true
+	var hit_results: Array[Dictionary] = (
+		get_world_3d().direct_space_state.intersect_shape(query)
+	)
+	var hit_instance_ids: Dictionary = {}
+	for hit in hit_results:
+		var collider: Object = hit.get("collider")
+		if not collider is Vehicle:
+			continue
+		var nearby_vehicle := collider as Vehicle
+		var vehicle_id := nearby_vehicle.get_instance_id()
+		if hit_instance_ids.has(vehicle_id):
+			continue
+		hit_instance_ids[vehicle_id] = true
+		nearby_vehicle.take_damage(vehicle_explosion_vehicle_damage, impact_speed)
 
 
 func _spawn_vehicle_explosion(explosion_position: Vector3, impact_speed: float) -> void:
@@ -433,6 +548,7 @@ func _handle_ground_slam() -> void:
 
 func _finish_ground_slam() -> void:
 	is_ground_slamming = false
+	ground_slam_impact_pending = true
 	velocity = Vector3.ZERO
 
 
@@ -711,7 +827,7 @@ func _update_landing_camera_effects() -> void:
 		var landing_speed := max_downward_speed_for_camera_effects
 		# Flight slams are intentional high-impact dives, even if the camera ray
 		# reaches the target at a shallow angle.
-		if is_ground_slamming:
+		if ground_slam_impact_pending:
 			landing_speed = maxf(landing_speed, ground_slam_speed)
 
 		camera_effects.call("trigger_landing", landing_speed)
@@ -720,8 +836,10 @@ func _update_landing_camera_effects() -> void:
 			_spawn_hard_landing_effect(
 				landing_speed,
 				ground_contact.position,
-				ground_contact.normal
+				ground_contact.normal,
+				&"ground_slam" if ground_slam_impact_pending else &"knockback"
 			)
+		ground_slam_impact_pending = false
 		max_downward_speed_for_camera_effects = 0.0
 	elif is_grounded:
 		max_downward_speed_for_camera_effects = 0.0
@@ -747,8 +865,10 @@ func _handle_landing() -> void:
 func _spawn_hard_landing_effect(
 	impact_speed: float,
 	spawn_position: Vector3,
-	surface_normal: Vector3
+	surface_normal: Vector3,
+	hit_reaction: StringName = &"knockback"
 ) -> void:
+	_apply_landing_impact_damage(spawn_position, impact_speed, hit_reaction)
 	var effect := HARD_LANDING_EFFECT_SCENE.instantiate()
 	effect.call(
 		"configure_impact",
@@ -759,6 +879,49 @@ func _spawn_hard_landing_effect(
 	)
 	get_tree().current_scene.add_child(effect)
 	effect.global_position = spawn_position
+
+
+func _apply_landing_impact_damage(
+	impact_position: Vector3,
+	impact_speed: float,
+	hit_reaction: StringName
+) -> void:
+	var impact_shape := SphereShape3D.new()
+	impact_shape.radius = landing_impact_radius
+	var query := PhysicsShapeQueryParameters3D.new()
+	query.shape = impact_shape
+	query.transform = Transform3D(Basis.IDENTITY, impact_position)
+	query.exclude = [get_rid()]
+	query.collide_with_areas = false
+	query.collide_with_bodies = true
+	var hit_results: Array[Dictionary] = (
+		get_world_3d().direct_space_state.intersect_shape(query)
+	)
+	var hit_instance_ids: Dictionary = {}
+	var damage_percent := clampf(
+		inverse_lerp(heavy_landing_speed, super_landing_speed, impact_speed),
+		0.0,
+		1.0
+	)
+	var damage := lerpf(heavy_landing_damage, super_landing_damage, damage_percent)
+	var vehicle_damage: float = (
+		super_landing_vehicle_damage
+		if impact_speed >= super_landing_speed or hit_reaction == &"ground_slam"
+		else heavy_landing_vehicle_damage
+	)
+	for hit in hit_results:
+		var collider: Object = hit.get("collider")
+		if collider is Vehicle:
+			var vehicle: Vehicle = collider as Vehicle
+			vehicle.take_damage(vehicle_damage, impact_speed)
+			continue
+		if collider == null or not collider.has_method("take_hit"):
+			continue
+		var collider_id := collider.get_instance_id()
+		if hit_instance_ids.has(collider_id):
+			continue
+		hit_instance_ids[collider_id] = true
+		collider.call("take_hit", damage, hit_reaction, impact_position)
 
 
 func _get_ground_contact() -> Dictionary:

@@ -9,6 +9,12 @@ var animation_controller: PlayerAnimationController
 @export var punch_forward_speed: float = 8.0
 @export var punch_forward_delay: float = 0.25
 @export var punch_forward_duration: float = 0.08
+@export var punch_hit_delay: float = 0.2
+@export var punch_hit_distance: float = 1.6
+@export var punch_hit_radius: float = 0.75
+@export var regular_hit_damage_multiplier: int = 2
+@export var ground_slam_damage_multiplier: int = 50
+@export var ground_slam_hit_radius: float = 5.0
 @export_range(0.0, 1.0, 0.01) var combo_input_window: float = 0.6
 @export var uppercut_launch_velocity: float = 12.0
 @export var uppercut_launch_delay: float = 0.25
@@ -20,6 +26,7 @@ var is_punch_active: bool = false
 var combo_punch_index: int = 0
 var is_next_punch_queued: bool = false
 var has_uppercut_launched: bool = false
+var has_punch_hit: bool = false
 
 func setup(target_animation_controller: PlayerAnimationController) -> void:
 	animation_controller = target_animation_controller
@@ -35,7 +42,7 @@ func request_punch() -> void:
 		is_next_punch_queued = true
 
 
-func update_punch_momentum(body: CharacterBody3D, delta: float) -> void:
+func update_punch_momentum(body: CharacterBody3D, delta: float, strength: int) -> void:
 	if not is_punch_active:
 		return
 
@@ -51,6 +58,8 @@ func update_punch_momentum(body: CharacterBody3D, delta: float) -> void:
 		return
 
 	punch_time += delta
+	if not has_punch_hit and punch_time >= punch_hit_delay:
+		has_punch_hit = _try_hit_civilian(body, strength)
 
 	var push_end_time := punch_forward_delay + punch_forward_duration
 	if punch_time >= punch_forward_delay and punch_time <= push_end_time:
@@ -92,5 +101,60 @@ func _start_punch(punch_index: int, is_combo_continuation: bool = false) -> void
 	combo_punch_index = punch_index
 	is_next_punch_queued = false
 	has_uppercut_launched = false
+	has_punch_hit = false
 	punch_time = 0.0
 	is_punch_active = true
+
+
+func _try_hit_civilian(body: CharacterBody3D, strength: int) -> bool:
+	var hit_shape := SphereShape3D.new()
+	hit_shape.radius = punch_hit_radius
+	var forward := -body.global_transform.basis.z.normalized()
+	var impact_origin := body.global_position + Vector3.UP + forward * punch_hit_distance
+	var query := PhysicsShapeQueryParameters3D.new()
+	query.shape = hit_shape
+	query.transform = Transform3D(
+		Basis.IDENTITY,
+		impact_origin
+	)
+	query.exclude = [body.get_rid()]
+	var hit_results: Array[Dictionary] = body.get_world_3d().direct_space_state.intersect_shape(query)
+
+	for hit in hit_results:
+		var collider: Object = hit.get("collider")
+		if collider is Vehicle:
+			var vehicle: Vehicle = collider as Vehicle
+			var vehicle_damage := 2 * strength
+			vehicle.take_damage(vehicle_damage)
+			return true
+		if collider != null and collider.has_method("take_hit"):
+			var hit_reaction: StringName = (
+				&"knockback" if combo_punch_index == UPPERCUT_PUNCH_INDEX else &"chest"
+			)
+			var damage := regular_hit_damage_multiplier * strength
+			if combo_punch_index == UPPERCUT_PUNCH_INDEX:
+				damage *= 2
+			collider.call("take_hit", damage, hit_reaction, impact_origin, forward)
+			if collider.has_method("start_flee"):
+				collider.call("start_flee", body)
+			return true
+
+	return false
+
+
+func apply_ground_slam_hit(body: CharacterBody3D, strength: int) -> void:
+	var hit_shape := SphereShape3D.new()
+	hit_shape.radius = ground_slam_hit_radius
+	var query := PhysicsShapeQueryParameters3D.new()
+	query.shape = hit_shape
+	query.transform = Transform3D(Basis.IDENTITY, body.global_position + Vector3.UP)
+	query.exclude = [body.get_rid()]
+	var hit_results: Array[Dictionary] = body.get_world_3d().direct_space_state.intersect_shape(query)
+
+	for hit in hit_results:
+		var collider: Object = hit.get("collider")
+		if collider != null and collider.has_method("take_hit"):
+			var damage := ground_slam_damage_multiplier * strength
+			collider.call("take_hit", damage, &"ground_slam", body.global_position)
+			if collider.has_method("start_flee"):
+				collider.call("start_flee", body)

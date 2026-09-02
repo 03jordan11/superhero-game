@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://cyt3vftgytstc" path="res://assets/textures/buildings/apartments/apartments5.png" id="9_4c57u"]
 [ext_resource type="Texture2D" uid="uid://cqc5e01noic0t" path="res://assets/textures/buildings/apartments/apartments9.png" id="10_4c57u"]
 [ext_resource type="Texture2D" uid="uid://dfgdyt3phmklr" path="res://assets/textures/skybox/kloppenheim_03_puresky_4k.exr" id="11_efxa6"]
+[ext_resource type="Script" uid="uid://dpbj4c6jc3hao" path="res://scenes/civilian.gd" id="11_j2jfr"]
+[ext_resource type="PackedScene" uid="uid://804s6wflbiti" path="res://assets/characters/Superhero_Female_FullBody.gltf" id="11_nvyfr"]
 [ext_resource type="Script" uid="uid://ckp7prv4iwgsn" path="res://scripts/developer_menu.gd" id="12_developer_menu"]
 [ext_resource type="Script" uid="uid://r0emup6ufvxv" path="res://scripts/player_hud.gd" id="13_player_hud"]
 [ext_resource type="Script" uid="uid://bi8s7hwdcoono" path="res://scripts/player_animation_controller.gd" id="14_player_animation_controller"]
@@ -19,6 +21,7 @@
 [ext_resource type="Script" uid="uid://c27f3x3jqksy7" path="res://scripts/player_combat_controller.gd" id="17_combat_controller"]
 [ext_resource type="Script" uid="uid://blmlybmyr4hv1" path="res://scripts/pause_menu.gd" id="18_pause_menu"]
 [ext_resource type="ArrayMesh" uid="uid://dxdtx7166jucr" path="res://assets/skyscraper_pack/models/building_01.1.fbx" id="19_building_01_mesh"]
+[ext_resource type="Script" uid="uid://cycqnjthd7pvm" path="res://scripts/civilian_animation_controller.gd" id="19_civilian_animation_controller"]
 [ext_resource type="Texture2D" uid="uid://dqr5vc0e4ybyk" path="res://assets/skyscraper_pack/textures/building_01.png" id="20_building_01_texture"]
 [ext_resource type="ArrayMesh" uid="uid://5j5m61grumgr" path="res://assets/skyscraper_pack/models/building_02.1.fbx" id="21_building_02_mesh"]
 [ext_resource type="ArrayMesh" uid="uid://cvw3aekp1fc0o" path="res://assets/skyscraper_pack/models/building_03.1.fbx" id="22_building_03_mesh"]
@@ -47,6 +50,7 @@
 [ext_resource type="ArrayMesh" uid="uid://btnj7f5vw47n8" path="res://assets/Mesh/Vehcile/Realistic Car Pack - Nov 2018/FBX/SportsCar.fbx" id="45_bjg73"]
 [ext_resource type="ArrayMesh" uid="uid://dd7nseakqo6pg" path="res://assets/Mesh/Vehcile/Realistic Car Pack - Nov 2018/FBX/SUV.fbx" id="46_bu4jf"]
 [ext_resource type="ArrayMesh" uid="uid://c52yhmxhvtcqn" path="res://assets/Mesh/Vehcile/Realistic Car Pack - Nov 2018/FBX/Taxi.fbx" id="47_o7ddy"]
+[ext_resource type="Script" uid="uid://5c25ifc27ibm" path="res://scripts/vehicle.gd" id="48_vehicle"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t87ul"]
 albedo_texture = ExtResource("1_h2yge")
@@ -61,6 +65,17 @@ size = Vector3(1000, 1, 1000)
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_bhunq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_riqys"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bhunq"]
+height = 1.7543945
+
+[sub_resource type="BoxMesh" id="BoxMesh_sn0t7"]
+size = Vector3(20, 0.2, 400)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qr0ht"]
+albedo_color = Color(0.5409905, 0.5409905, 0.5409905, 1)
+albedo_texture = ExtResource("1_h2yge")
+uv1_scale = Vector3(1, 20, 0)
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_sn0t7"]
 panorama = ExtResource("11_efxa6")
@@ -111,14 +126,6 @@ normal_texture = ExtResource("6_kek77")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wide_building"]
 size = Vector3(6, 9.155884, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_sn0t7"]
-size = Vector3(20, 0.2, 400)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qr0ht"]
-albedo_color = Color(0.5409905, 0.5409905, 0.5409905, 1)
-albedo_texture = ExtResource("1_h2yge")
-uv1_scale = Vector3(1, 20, 0)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bhunq"]
 size = Vector3(20, 0.2, 400)
@@ -261,6 +268,7 @@ transform = Transform3D(0.8660254, 0.43301272, -0.24999999, 0, 0.49999997, 0.866
 
 [node name="Player" type="CharacterBody3D" parent="." unique_id=66151359]
 script = ExtResource("1_ig7tw")
+strength = 10
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player" unique_id=1006941297]
 visible = false
@@ -349,6 +357,42 @@ show_percentage = false
 
 [node name="PlayerCombatController" type="Node" parent="Player" unique_id=1816028300]
 script = ExtResource("17_combat_controller")
+
+[node name="Civilian" type="CharacterBody3D" parent="." unique_id=1025449541]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.943697)
+script = ExtResource("11_j2jfr")
+chest_hit_stun_duration = 0.6
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Civilian" unique_id=1499830395]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.87719727, 0)
+shape = SubResource("CapsuleShape3D_bhunq")
+
+[node name="HealthLabel" type="Label3D" parent="Civilian" unique_id=1173333011]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4, 0)
+billboard = 1
+text = "100"
+font_size = 64
+outline_size = 8
+
+[node name="Superhero_Female_FullBody" parent="Civilian" unique_id=543536520 instance=ExtResource("11_nvyfr")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0)
+
+[node name="CharacterAnimationPlayer" type="AnimationPlayer" parent="Civilian/Superhero_Female_FullBody" unique_id=1732421648]
+
+[node name="CivilianAnimationController" type="Node" parent="Civilian" unique_id=1569207596]
+script = ExtResource("19_civilian_animation_controller")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Civilian" unique_id=553048418]
+avoidance_enabled = true
+neighbor_distance = 10.0
+max_speed = 5.5
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Civilian" unique_id=139135985]
+
+[node name="Road_Mesh_01" type="MeshInstance3D" parent="." unique_id=2106570095]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0)
+mesh = SubResource("BoxMesh_sn0t7")
+surface_material_override/0 = SubResource("StandardMaterial3D_qr0ht")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=747374090]
 environment = SubResource("Environment_bhunq")
@@ -633,11 +677,6 @@ shape = SubResource("BoxShape3D_wide_building")
 
 [node name="Road_01" type="StaticBody3D" parent="Roads" unique_id=349626608]
 
-[node name="Road_Mesh_01" type="MeshInstance3D" parent="Roads/Road_01" unique_id=2106570095]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0)
-mesh = SubResource("BoxMesh_sn0t7")
-surface_material_override/0 = SubResource("StandardMaterial3D_qr0ht")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Roads/Road_01" unique_id=745282140]
 shape = SubResource("BoxShape3D_bhunq")
 
@@ -786,6 +825,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_01")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36, 0)
 shape = SubResource("BoxShape3D_building_01")
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Building_01" unique_id=1085903519]
+
 [node name="Building_02" type="StaticBody3D" parent="Buildings" unique_id=474804477]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81, 0.625, -160.19817)
 
@@ -796,6 +837,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_02")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Building_02" unique_id=1105808159]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 48, 0)
 shape = SubResource("BoxShape3D_building_02")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Building_02" unique_id=1671943380]
 
 [node name="Building_03" type="StaticBody3D" parent="Buildings" unique_id=1533425503]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -135, 0.625, -39.240402)
@@ -819,6 +862,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_04")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 62, 0)
 shape = SubResource("BoxShape3D_building_04")
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Building_04" unique_id=1411604603]
+
 [node name="Building_05" type="StaticBody3D" parent="Buildings" unique_id=768412446]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81, 0.625, 30.484314)
 
@@ -841,6 +886,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_06")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 60, 0)
 shape = SubResource("BoxShape3D_building_06")
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Building_06" unique_id=587954336]
+
 [node name="Building_07" type="StaticBody3D" parent="Buildings" unique_id=1466640151]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 0.625, 120)
 
@@ -851,6 +898,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_07")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Building_07" unique_id=1625260250]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 60, 0)
 shape = SubResource("BoxShape3D_building_07")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Building_07" unique_id=1494428970]
 
 [node name="Building_08" type="StaticBody3D" parent="Buildings" unique_id=1332962398]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -81, 0.375, 78.53847)
@@ -863,6 +912,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_08")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36, 0)
 shape = SubResource("BoxShape3D_building_08")
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Building_08" unique_id=1039077996]
+
 [node name="Building_02_Copy_A" type="StaticBody3D" parent="Buildings" unique_id=353585870]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 0.625, -180)
 
@@ -873,6 +924,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_02")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Building_02_Copy_A" unique_id=932773886]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 48, 0)
 shape = SubResource("BoxShape3D_building_02")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Building_02_Copy_A" unique_id=1695885220]
 
 [node name="Building_05_Copy_A" type="StaticBody3D" parent="Buildings" unique_id=186232400]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 0.625, -100)
@@ -885,6 +938,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_05")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 60, 0)
 shape = SubResource("BoxShape3D_building_05")
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Building_05_Copy_A" unique_id=1856214433]
+
 [node name="Building_06_Copy_A" type="StaticBody3D" parent="Buildings" unique_id=625970153]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 0.625, 50)
 
@@ -895,6 +950,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_06")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Building_06_Copy_A" unique_id=1024438369]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 60, 0)
 shape = SubResource("BoxShape3D_building_06")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Building_06_Copy_A" unique_id=223734501]
 
 [node name="Building_08_Copy_A" type="StaticBody3D" parent="Buildings" unique_id=1700662334]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -27, 0.375, 160)
@@ -918,6 +975,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_03")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 48, 0)
 shape = SubResource("BoxShape3D_building_03")
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Building_03_Copy_B" unique_id=835011483]
+
 [node name="Building_06_Copy_B" type="StaticBody3D" parent="Buildings" unique_id=683135988]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81, 0.625, -30)
 
@@ -928,6 +987,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_06")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Building_06_Copy_B" unique_id=396271725]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 60, 0)
 shape = SubResource("BoxShape3D_building_06")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Building_06_Copy_B" unique_id=1148316083]
 
 [node name="Building_01_Copy_B" type="StaticBody3D" parent="Buildings" unique_id=1758745543]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81, 0.625, 47)
@@ -940,6 +1001,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_01")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36, 0)
 shape = SubResource("BoxShape3D_building_01")
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Building_01_Copy_B" unique_id=1975163567]
+
 [node name="Building_07_Copy_B" type="StaticBody3D" parent="Buildings" unique_id=766667312]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81, 0.625, 125)
 
@@ -950,6 +1013,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_07")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Building_07_Copy_B" unique_id=1670690704]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 60, 0)
 shape = SubResource("BoxShape3D_building_07")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Building_07_Copy_B" unique_id=269789746]
 
 [node name="Building_02_Copy_B" type="StaticBody3D" parent="Buildings" unique_id=1053046240]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81, 0.625, 165)
@@ -962,6 +1027,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_02")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 48, 0)
 shape = SubResource("BoxShape3D_building_02")
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Building_02_Copy_B" unique_id=1488097834]
+
 [node name="Building_04_Copy_C" type="StaticBody3D" parent="Buildings" unique_id=709707068]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -135, 0.625, -180)
 
@@ -972,6 +1039,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_04")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Building_04_Copy_C" unique_id=1620220734]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 62, 0)
 shape = SubResource("BoxShape3D_building_04")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Building_04_Copy_C" unique_id=1347586070]
 
 [node name="Building_05_Copy_C" type="StaticBody3D" parent="Buildings" unique_id=1918511720]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -135, 0.625, -140)
@@ -984,6 +1053,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_05")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 60, 0)
 shape = SubResource("BoxShape3D_building_05")
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Building_05_Copy_C" unique_id=559642239]
+
 [node name="Building_07_Copy_C" type="StaticBody3D" parent="Buildings" unique_id=204760431]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -135, 0.625, -100)
 
@@ -994,6 +1065,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_07")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Building_07_Copy_C" unique_id=1849648339]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 60, 0)
 shape = SubResource("BoxShape3D_building_07")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Building_07_Copy_C" unique_id=1144897195]
 
 [node name="Building_08_Copy_C" type="StaticBody3D" parent="Buildings" unique_id=810235276]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -135, 0.375, 50)
@@ -1006,6 +1079,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_08")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36, 0)
 shape = SubResource("BoxShape3D_building_08")
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Building_08_Copy_C" unique_id=469596345]
+
 [node name="Building_02_Copy_C" type="StaticBody3D" parent="Buildings" unique_id=840783546]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -135, 0.625, 90)
 
@@ -1016,6 +1091,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_02")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Building_02_Copy_C" unique_id=1120955617]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 48, 0)
 shape = SubResource("BoxShape3D_building_02")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Building_02_Copy_C" unique_id=1489552968]
 
 [node name="Building_03_Copy_C" type="StaticBody3D" parent="Buildings" unique_id=1778012872]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -135, 0.625, 130)
@@ -1028,6 +1105,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_03")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 48, 0)
 shape = SubResource("BoxShape3D_building_03")
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Building_03_Copy_C" unique_id=411023495]
+
 [node name="Building_06_Copy_C" type="StaticBody3D" parent="Buildings" unique_id=35386301]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -135, 0.625, 170)
 
@@ -1038,6 +1117,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_06")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Building_06_Copy_C" unique_id=256110679]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 60, 0)
 shape = SubResource("BoxShape3D_building_06")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Building_06_Copy_C" unique_id=879334920]
 
 [node name="Building_04_West_A" type="StaticBody3D" parent="Buildings" unique_id=2044363293]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -351, 0.625, -160)
@@ -1050,6 +1131,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_04")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 62, 0)
 shape = SubResource("BoxShape3D_building_04")
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Building_04_West_A" unique_id=897290476]
+
 [node name="Building_05_West_A" type="StaticBody3D" parent="Buildings" unique_id=6652654]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -351, 0.625, -100)
 
@@ -1060,6 +1143,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_05")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Building_05_West_A" unique_id=835471647]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 60, 0)
 shape = SubResource("BoxShape3D_building_05")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Building_05_West_A" unique_id=1182230680]
 
 [node name="Building_01_West_A" type="StaticBody3D" parent="Buildings" unique_id=169984157]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -351, 0.625, -45)
@@ -1072,6 +1157,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_01")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36, 0)
 shape = SubResource("BoxShape3D_building_01")
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Building_01_West_A" unique_id=104232413]
+
 [node name="Building_07_West_A" type="StaticBody3D" parent="Buildings" unique_id=2055202508]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -351, 0.625, 10)
 
@@ -1082,6 +1169,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_07")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Building_07_West_A" unique_id=344500135]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 60, 0)
 shape = SubResource("BoxShape3D_building_07")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Building_07_West_A" unique_id=326160254]
 
 [node name="Building_08_West_A" type="StaticBody3D" parent="Buildings" unique_id=67723693]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -351, 0.375, 70)
@@ -1094,6 +1183,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_08")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36, 0)
 shape = SubResource("BoxShape3D_building_08")
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Building_08_West_A" unique_id=549983512]
+
 [node name="Building_02_West_A" type="StaticBody3D" parent="Buildings" unique_id=987136932]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -351, 0.625, 130)
 
@@ -1104,6 +1195,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_02")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Building_02_West_A" unique_id=243032773]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 48, 0)
 shape = SubResource("BoxShape3D_building_02")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Building_02_West_A" unique_id=448054008]
 
 [node name="Building_02_West_B" type="StaticBody3D" parent="Buildings" unique_id=1449623209]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -405, 0.625, -170)
@@ -1116,6 +1209,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_02")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 48, 0)
 shape = SubResource("BoxShape3D_building_02")
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Building_02_West_B" unique_id=1527038285]
+
 [node name="Building_01_West_B" type="StaticBody3D" parent="Buildings" unique_id=1734929127]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -405, 0.625, -110)
 
@@ -1126,6 +1221,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_01")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Building_01_West_B" unique_id=1622435170]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36, 0)
 shape = SubResource("BoxShape3D_building_01")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Building_01_West_B" unique_id=1921419971]
 
 [node name="Building_06_West_B" type="StaticBody3D" parent="Buildings" unique_id=1951434498]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -405, 0.625, -55)
@@ -1138,6 +1235,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_06")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 60, 0)
 shape = SubResource("BoxShape3D_building_06")
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Building_06_West_B" unique_id=2053513581]
+
 [node name="Building_03_West_B" type="StaticBody3D" parent="Buildings" unique_id=1450659790]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -405, 0.625, 0)
 
@@ -1148,6 +1247,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_03")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Building_03_West_B" unique_id=966668933]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 48, 0)
 shape = SubResource("BoxShape3D_building_03")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Building_03_West_B" unique_id=1733617986]
 
 [node name="Building_08_West_B" type="StaticBody3D" parent="Buildings" unique_id=713047586]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -405, 0.375, 55)
@@ -1160,6 +1261,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_08")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36, 0)
 shape = SubResource("BoxShape3D_building_08")
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Building_08_West_B" unique_id=2057189846]
+
 [node name="Building_04_West_B" type="StaticBody3D" parent="Buildings" unique_id=1313515314]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -405, 0.625, 115)
 
@@ -1170,6 +1273,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_04")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Building_04_West_B" unique_id=1293745668]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 62, 0)
 shape = SubResource("BoxShape3D_building_04")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Building_04_West_B" unique_id=401948874]
 
 [node name="Building_04_North_Outer" type="StaticBody3D" parent="Buildings" unique_id=2080518713]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -351, 0.625, -250)
@@ -1182,6 +1287,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_04")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 62, 0)
 shape = SubResource("BoxShape3D_building_04")
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Building_04_North_Outer" unique_id=349245835]
+
 [node name="Building_02_North_Outer" type="StaticBody3D" parent="Buildings" unique_id=1092057824]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -405, 0.625, -250)
 
@@ -1192,6 +1299,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_02")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Building_02_North_Outer" unique_id=265233299]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 48, 0)
 shape = SubResource("BoxShape3D_building_02")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Building_02_North_Outer" unique_id=1339885698]
 
 [node name="Building_05_South_Outer" type="StaticBody3D" parent="Buildings" unique_id=944856445]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -351, 0.625, 250)
@@ -1204,6 +1313,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_05")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 60, 0)
 shape = SubResource("BoxShape3D_building_05")
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Building_05_South_Outer" unique_id=1540310813]
+
 [node name="Building_07_South_Outer" type="StaticBody3D" parent="Buildings" unique_id=1357056903]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -405, 0.625, 250)
 
@@ -1214,6 +1325,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_07")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Building_07_South_Outer" unique_id=343268664]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 60, 0)
 shape = SubResource("BoxShape3D_building_07")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Building_07_South_Outer" unique_id=1555534667]
 
 [node name="Perimeter_Building_01" type="StaticBody3D" parent="Buildings" unique_id=1529231904]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0.625, -160)
@@ -1226,6 +1339,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_02")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 48, 0)
 shape = SubResource("BoxShape3D_building_02")
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Perimeter_Building_01" unique_id=41014409]
+
 [node name="Perimeter_Building_02" type="StaticBody3D" parent="Buildings" unique_id=2063890917]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0.625, -100)
 
@@ -1236,6 +1351,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_05")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Perimeter_Building_02" unique_id=172782827]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 60, 0)
 shape = SubResource("BoxShape3D_building_05")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Perimeter_Building_02" unique_id=15895418]
 
 [node name="Perimeter_Building_03" type="StaticBody3D" parent="Buildings" unique_id=1229967616]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0.625, -45)
@@ -1248,6 +1365,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_01")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36, 0)
 shape = SubResource("BoxShape3D_building_01")
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Perimeter_Building_03" unique_id=464465775]
+
 [node name="Perimeter_Building_04" type="StaticBody3D" parent="Buildings" unique_id=775746342]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0.625, 10)
 
@@ -1258,6 +1377,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_07")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Perimeter_Building_04" unique_id=392630892]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 60, 0)
 shape = SubResource("BoxShape3D_building_07")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Perimeter_Building_04" unique_id=1708204301]
 
 [node name="Perimeter_Building_05" type="StaticBody3D" parent="Buildings" unique_id=619183633]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 27, 0.375, 70)
@@ -1270,6 +1391,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_08")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36, 0)
 shape = SubResource("BoxShape3D_building_08")
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Perimeter_Building_05" unique_id=588415971]
+
 [node name="Perimeter_Building_06" type="StaticBody3D" parent="Buildings" unique_id=1314802112]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0.625, 130)
 
@@ -1280,6 +1403,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_02")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Perimeter_Building_06" unique_id=1584468165]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 48, 0)
 shape = SubResource("BoxShape3D_building_02")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Perimeter_Building_06" unique_id=1502638090]
 
 [node name="Perimeter_Building_07" type="StaticBody3D" parent="Buildings" unique_id=1020225728]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -459, 0.625, -160)
@@ -1292,6 +1417,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_04")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 62, 0)
 shape = SubResource("BoxShape3D_building_04")
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Perimeter_Building_07" unique_id=2054450230]
+
 [node name="Perimeter_Building_08" type="StaticBody3D" parent="Buildings" unique_id=390914875]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -459, 0.625, -105)
 
@@ -1302,6 +1429,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_01")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Perimeter_Building_08" unique_id=824807533]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36, 0)
 shape = SubResource("BoxShape3D_building_01")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Perimeter_Building_08" unique_id=541530057]
 
 [node name="Perimeter_Building_09" type="StaticBody3D" parent="Buildings" unique_id=195241622]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -459, 0.625, -50)
@@ -1314,6 +1443,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_06")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 60, 0)
 shape = SubResource("BoxShape3D_building_06")
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Perimeter_Building_09" unique_id=1810962235]
+
 [node name="Perimeter_Building_10" type="StaticBody3D" parent="Buildings" unique_id=2142125387]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -459, 0.625, 5)
 
@@ -1324,6 +1455,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_03")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Perimeter_Building_10" unique_id=1922790553]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 48, 0)
 shape = SubResource("BoxShape3D_building_03")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Perimeter_Building_10" unique_id=1088109466]
 
 [node name="Perimeter_Building_11" type="StaticBody3D" parent="Buildings" unique_id=573946292]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -459, 0.375, 65)
@@ -1336,6 +1469,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_08")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36, 0)
 shape = SubResource("BoxShape3D_building_08")
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Perimeter_Building_11" unique_id=321833233]
+
 [node name="Perimeter_Building_12" type="StaticBody3D" parent="Buildings" unique_id=1732755764]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -459, 0.625, 125)
 
@@ -1346,6 +1481,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_04")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Perimeter_Building_12" unique_id=1805126523]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 62, 0)
 shape = SubResource("BoxShape3D_building_04")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Perimeter_Building_12" unique_id=457619782]
 
 [node name="Perimeter_Building_13" type="StaticBody3D" parent="Buildings" unique_id=1814608003]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0.625, -250)
@@ -1358,6 +1495,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_04")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 62, 0)
 shape = SubResource("BoxShape3D_building_04")
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Perimeter_Building_13" unique_id=1007911139]
+
 [node name="Perimeter_Building_14" type="StaticBody3D" parent="Buildings" unique_id=1692078225]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 0.625, -250)
 
@@ -1368,6 +1507,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_02")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Perimeter_Building_14" unique_id=35842802]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 48, 0)
 shape = SubResource("BoxShape3D_building_02")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Perimeter_Building_14" unique_id=94752345]
 
 [node name="Perimeter_Building_15" type="StaticBody3D" parent="Buildings" unique_id=724841970]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81, 0.625, -250)
@@ -1380,6 +1521,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_01")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36, 0)
 shape = SubResource("BoxShape3D_building_01")
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Perimeter_Building_15" unique_id=1144556977]
+
 [node name="Perimeter_Building_16" type="StaticBody3D" parent="Buildings" unique_id=334955026]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -135, 0.625, -250)
 
@@ -1390,6 +1533,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_06")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Perimeter_Building_16" unique_id=1357264502]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 60, 0)
 shape = SubResource("BoxShape3D_building_06")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Perimeter_Building_16" unique_id=939746750]
 
 [node name="Perimeter_Building_17" type="StaticBody3D" parent="Buildings" unique_id=1681969901]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -243, 0.375, -250)
@@ -1402,6 +1547,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_08")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36, 0)
 shape = SubResource("BoxShape3D_building_08")
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Perimeter_Building_17" unique_id=1398834528]
+
 [node name="Perimeter_Building_18" type="StaticBody3D" parent="Buildings" unique_id=1824010630]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -459, 0.625, -250)
 
@@ -1412,6 +1559,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_03")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Perimeter_Building_18" unique_id=1454907506]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 48, 0)
 shape = SubResource("BoxShape3D_building_03")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Perimeter_Building_18" unique_id=1499972992]
 
 [node name="Perimeter_Building_19" type="StaticBody3D" parent="Buildings" unique_id=876940684]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0.625, 250)
@@ -1424,6 +1573,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_05")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 60, 0)
 shape = SubResource("BoxShape3D_building_05")
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Perimeter_Building_19" unique_id=1809792637]
+
 [node name="Perimeter_Building_20" type="StaticBody3D" parent="Buildings" unique_id=636410371]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 0.625, 250)
 
@@ -1434,6 +1585,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_07")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Perimeter_Building_20" unique_id=923245632]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 60, 0)
 shape = SubResource("BoxShape3D_building_07")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Perimeter_Building_20" unique_id=1778139184]
 
 [node name="Perimeter_Building_21" type="StaticBody3D" parent="Buildings" unique_id=1273373432]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81, 0.625, 250)
@@ -1446,6 +1599,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_03")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 48, 0)
 shape = SubResource("BoxShape3D_building_03")
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Perimeter_Building_21" unique_id=1896137386]
+
 [node name="Perimeter_Building_22" type="StaticBody3D" parent="Buildings" unique_id=520618964]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -135, 0.625, 250)
 
@@ -1456,6 +1611,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_04")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Perimeter_Building_22" unique_id=1652190661]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 62, 0)
 shape = SubResource("BoxShape3D_building_04")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Perimeter_Building_22" unique_id=876901994]
 
 [node name="Perimeter_Building_23" type="StaticBody3D" parent="Buildings" unique_id=1749681118]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -243, 0.625, 250)
@@ -1468,6 +1625,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_02")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 48, 0)
 shape = SubResource("BoxShape3D_building_02")
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Perimeter_Building_23" unique_id=1753137323]
+
 [node name="Perimeter_Building_24" type="StaticBody3D" parent="Buildings" unique_id=1501041071]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -459, 0.625, 250)
 
@@ -1478,6 +1637,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_06")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Perimeter_Building_24" unique_id=951741760]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 60, 0)
 shape = SubResource("BoxShape3D_building_06")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Buildings/Perimeter_Building_24" unique_id=1593809842]
 
 [node name="Grass" type="StaticBody3D" parent="." unique_id=117769979]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -240, 0.025, -21.217312)
@@ -1510,6 +1671,8 @@ mesh = ExtResource("40_5he1u")
 [node name="Suv" type="RigidBody3D" parent="Vehicles" unique_id=1684529196]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.961111, 0, -17.675571)
 mass = 1200.0
+freeze = true
+script = ExtResource("48_vehicle")
 
 [node name="Suv" type="MeshInstance3D" parent="Vehicles/Suv" unique_id=771891463]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
@@ -1519,9 +1682,15 @@ mesh = ExtResource("46_bu4jf")
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.026000977, 1.1527729, 0.04469323)
 shape = SubResource("BoxShape3D_qr0ht")
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Vehicles/Suv" unique_id=2089087823]
+radius = 2.0
+height = 2.0
+
 [node name="Cop" type="RigidBody3D" parent="Vehicles" unique_id=685694874]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.942066, 0, -5.0392113)
 mass = 1200.0
+freeze = true
+script = ExtResource("48_vehicle")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Vehicles/Cop" unique_id=1842310218]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.7944354, -0.0019267201)
@@ -1531,9 +1700,15 @@ shape = SubResource("BoxShape3D_6f8o3")
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 mesh = ExtResource("41_vc5cj")
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Vehicles/Cop" unique_id=168241086]
+radius = 2.0
+height = 2.0
+
 [node name="NormalCar" type="RigidBody3D" parent="Vehicles" unique_id=1967919737]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.236015, 0, 15.767196)
 mass = 1200.0
+freeze = true
+script = ExtResource("48_vehicle")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Vehicles/NormalCar" unique_id=1146168072]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.8688003, 0.046857834)
@@ -1543,9 +1718,15 @@ shape = SubResource("BoxShape3D_1esiv")
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 mesh = ExtResource("42_nvyfr")
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Vehicles/NormalCar" unique_id=1736537850]
+radius = 2.0
+height = 2.0
+
 [node name="SportsCar" type="RigidBody3D" parent="Vehicles" unique_id=404782698]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.7126746, 0, 9.973175)
 mass = 1200.0
+freeze = true
+script = ExtResource("48_vehicle")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Vehicles/SportsCar" unique_id=201038129]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.84151375, 0)
@@ -1555,9 +1736,15 @@ shape = SubResource("BoxShape3D_2r0jt")
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 mesh = ExtResource("45_bjg73")
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Vehicles/SportsCar" unique_id=904967026]
+radius = 2.0
+height = 2.0
+
 [node name="SportsCar2" type="RigidBody3D" parent="Vehicles" unique_id=441938244]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.3099966, 0, -5.112914)
 mass = 1200.0
+freeze = true
+script = ExtResource("48_vehicle")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Vehicles/SportsCar2" unique_id=1323801605]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.054473877, 0.83638, -0.12755871)
@@ -1568,9 +1755,15 @@ debug_color = Color(0.9882353, 0, 0, 0.81960785)
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 mesh = ExtResource("44_j2jfr")
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Vehicles/SportsCar2" unique_id=1289288485]
+radius = 2.0
+height = 2.0
+
 [node name="NormalCar2" type="RigidBody3D" parent="Vehicles" unique_id=1407041611]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.673362, 0, 5.1436033)
 mass = 1200.0
+freeze = true
+script = ExtResource("48_vehicle")
 
 [node name="NormalCar2" type="MeshInstance3D" parent="Vehicles/NormalCar2" unique_id=2051732415]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
@@ -1580,9 +1773,15 @@ mesh = ExtResource("43_ty1g6")
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.8291031, -0.022891998)
 shape = SubResource("BoxShape3D_jyycw")
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Vehicles/NormalCar2" unique_id=1626531345]
+radius = 2.0
+height = 2.0
+
 [node name="Taxi" type="RigidBody3D" parent="Vehicles" unique_id=1073240256]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.345222, 0, 21.945795)
 mass = 1200.0
+freeze = true
+script = ExtResource("48_vehicle")
 
 [node name="Taxi" type="MeshInstance3D" parent="Vehicles/Taxi" unique_id=845682323]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
@@ -1591,6 +1790,10 @@ mesh = ExtResource("47_o7ddy")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Vehicles/Taxi" unique_id=942913305]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.90561146, 0.20008469)
 shape = SubResource("BoxShape3D_sn0t7")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Vehicles/Taxi" unique_id=1029707868]
+radius = 2.0
+height = 2.0
 
 [connection signal="pressed" from="PauseMenu/Center/Menu/ResumeButton" to="PauseMenu" method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/Center/Menu/SettingsButton" to="PauseMenu" method="_on_settings_pressed"]

@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 const HARD_LANDING_EFFECT_SCENE: PackedScene = preload("res://effects/hard_landing_effect.tscn")
+const VEHICLE_EXPLOSION_EFFECT_SCENE: PackedScene = preload("res://effects/vehicle_explosion_effect.tscn")
 
 @export_category("Power Jump")
 @export var min_jump_velocity: float = 8.0
@@ -32,7 +33,7 @@ var was_on_floor_for_camera_effects: bool = false
 
 @export_category("Flight")
 @export var flight_speed: float = 10.0
-@export var flight_max_speed: float = 30.0
+@export var flight_max_speed: float = 60.0
 @export var flight_acceleration: float = 15.0
 @export var flight_deceleration: float = 20.0
 @export var flight_stop_deceleration: float = 25.0
@@ -67,6 +68,17 @@ var wall_run_has_left_ground: bool = false
 @export var min_camera_angle: float = -70.0
 @export var max_camera_angle: float = 50.0
 
+@export_category("Vehicle Pickup")
+@export var vehicle_pickup_range: float = 12.0
+@export var held_vehicle_offset: Vector3 = Vector3(0.0, 1.5, -2.0)
+@export var vehicle_throw_charge_time: float = 1.2
+@export var vehicle_throw_min_hold_time: float = 0.2
+@export var vehicle_throw_min_speed: float = 20.0
+@export var vehicle_throw_max_speed: float = 75.0
+@export var vehicle_throw_spin_speed: float = 10.0
+@export var vehicle_throw_release_distance: float = 5.0
+@export var vehicle_explosion_min_impact_speed: float = 18.0
+
 @onready var spring_arm: SpringArm3D = $SpringArm3D
 @onready var camera: Camera3D = $SpringArm3D/Camera3D
 @onready var player_hud: PlayerHud = $ChargeUI
@@ -78,12 +90,20 @@ var wall_run_has_left_ground: bool = false
 @onready var camera_effects: Node = $PlayerCameraEffects
 
 var superhero_character_default_rotation: Vector3
+var held_vehicle: RigidBody3D
+var held_vehicle_parent: Node
+var held_vehicle_collision_layer: int
+var held_vehicle_collision_mask: int
+var vehicle_throw_hold_time: float = 0.0
+var is_charging_vehicle_throw: bool = false
+var armed_thrown_vehicles: Array[Dictionary] = []
 
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	superhero_character_default_rotation = superhero_character.rotation
 	_update_jump_charge_ui()
+	_update_vehicle_throw_ui()
 	animation_controller.setup(character_animation_player, is_on_floor())
 	combat_controller.setup(animation_controller)
 	camera_effects.call("setup", spring_arm)
@@ -121,6 +141,13 @@ func _input(event: InputEvent) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	_check_thrown_vehicle_impacts()
+
+	if held_vehicle == null and Input.is_action_just_pressed("pick_up_vehicle"):
+		_try_pick_up_vehicle()
+	elif held_vehicle != null:
+		_handle_vehicle_throw(delta)
+
 	if Input.is_action_just_pressed("toggle_flight") and not is_ground_slamming and not is_knocked_out:
 		is_flying = not is_flying
 		if is_flying:
@@ -149,6 +176,7 @@ func _physics_process(delta: float) -> void:
 	combat_controller.update_punch_momentum(self, delta)
 
 	_update_jump_charge_ui()
+	_update_vehicle_throw_ui()
 
 	if not is_on_floor():
 		max_downward_speed_for_camera_effects = max(
@@ -193,6 +221,134 @@ func _physics_process(delta: float) -> void:
 		Input.is_action_pressed("sprint"),
 		Input.is_action_pressed("move_forward")
 	)
+
+
+func _try_pick_up_vehicle() -> void:
+	if held_vehicle != null:
+		return
+
+	var ray_start := camera.global_position
+	var ray_end := ray_start + -camera.global_transform.basis.z * vehicle_pickup_range
+	var query := PhysicsRayQueryParameters3D.create(ray_start, ray_end)
+	query.exclude = [get_rid()]
+	var hit := get_world_3d().direct_space_state.intersect_ray(query)
+	var collider: Object = hit.get("collider")
+
+	if not collider is RigidBody3D:
+		return
+
+	var vehicle := collider as RigidBody3D
+	if vehicle.get_parent() == null or vehicle.get_parent().name != &"Vehicles":
+		return
+
+	vehicle.freeze = true
+	vehicle.linear_velocity = Vector3.ZERO
+	vehicle.angular_velocity = Vector3.ZERO
+	held_vehicle_parent = vehicle.get_parent()
+	held_vehicle_collision_layer = vehicle.collision_layer
+	held_vehicle_collision_mask = vehicle.collision_mask
+	vehicle.collision_layer = 0
+	vehicle.collision_mask = 0
+	vehicle.reparent(self)
+	vehicle.position = held_vehicle_offset
+	held_vehicle = vehicle
+
+
+func _handle_vehicle_throw(delta: float) -> void:
+	if Input.is_action_just_pressed("pick_up_vehicle"):
+		is_charging_vehicle_throw = true
+		vehicle_throw_hold_time = 0.0
+
+	if is_charging_vehicle_throw and Input.is_action_pressed("pick_up_vehicle"):
+		var max_charge_time := maxf(vehicle_throw_charge_time, 0.001)
+		vehicle_throw_hold_time = minf(
+			vehicle_throw_hold_time + delta,
+			max_charge_time
+		)
+
+	if is_charging_vehicle_throw and Input.is_action_just_released("pick_up_vehicle"):
+		if vehicle_throw_hold_time >= vehicle_throw_min_hold_time:
+			_throw_held_vehicle()
+		else:
+			_drop_held_vehicle()
+
+
+func _drop_held_vehicle() -> void:
+	_release_held_vehicle(Vector3.ZERO)
+
+
+func _throw_held_vehicle() -> void:
+	var throw_percent := vehicle_throw_hold_time / maxf(vehicle_throw_charge_time, 0.001)
+	var throw_speed := lerpf(vehicle_throw_min_speed, vehicle_throw_max_speed, throw_percent)
+	var throw_direction := -camera.global_transform.basis.z.normalized()
+	var spin_axis := (
+		camera.global_transform.basis.x + camera.global_transform.basis.y * 0.25
+	).normalized()
+	var spin_speed := vehicle_throw_spin_speed * lerpf(0.4, 1.0, throw_percent)
+	var release_direction := Vector3(throw_direction.x, 0.0, throw_direction.z).normalized()
+	if held_vehicle != null and release_direction.length_squared() > 0.0:
+		held_vehicle.global_position = (
+			global_position
+			+ release_direction * vehicle_throw_release_distance
+			+ Vector3.UP * held_vehicle_offset.y
+		)
+	_release_held_vehicle(
+		throw_direction * throw_speed + velocity,
+		spin_axis * spin_speed
+	)
+
+
+func _release_held_vehicle(
+	release_velocity: Vector3,
+	release_angular_velocity: Vector3 = Vector3.ZERO
+) -> void:
+	if held_vehicle == null:
+		return
+
+	var vehicle := held_vehicle
+	vehicle.reparent(held_vehicle_parent)
+	vehicle.collision_layer = held_vehicle_collision_layer
+	vehicle.collision_mask = held_vehicle_collision_mask
+	vehicle.freeze = false
+	vehicle.sleeping = false
+	vehicle.linear_velocity = release_velocity
+	vehicle.angular_velocity = release_angular_velocity
+	if release_velocity.length() >= vehicle_explosion_min_impact_speed:
+		vehicle.contact_monitor = true
+		vehicle.max_contacts_reported = 8
+		armed_thrown_vehicles.append({
+			"body": vehicle,
+			"last_speed": release_velocity.length()
+		})
+	held_vehicle = null
+	held_vehicle_parent = null
+	vehicle_throw_hold_time = 0.0
+	is_charging_vehicle_throw = false
+
+
+func _check_thrown_vehicle_impacts() -> void:
+	for vehicle_index in range(armed_thrown_vehicles.size() - 1, -1, -1):
+		var vehicle_state := armed_thrown_vehicles[vehicle_index]
+		var vehicle := vehicle_state["body"] as RigidBody3D
+		if not is_instance_valid(vehicle):
+			armed_thrown_vehicles.remove_at(vehicle_index)
+			continue
+
+		var impact_speed: float = float(vehicle_state["last_speed"])
+		if vehicle.get_contact_count() > 0 and impact_speed >= vehicle_explosion_min_impact_speed:
+			_spawn_vehicle_explosion(vehicle.global_position, impact_speed)
+			vehicle.queue_free()
+			armed_thrown_vehicles.remove_at(vehicle_index)
+			continue
+
+		vehicle_state["last_speed"] = vehicle.linear_velocity.length()
+
+
+func _spawn_vehicle_explosion(explosion_position: Vector3, impact_speed: float) -> void:
+	var effect := VEHICLE_EXPLOSION_EFFECT_SCENE.instantiate()
+	effect.call("configure_impact", impact_speed, vehicle_explosion_min_impact_speed)
+	get_tree().current_scene.add_child(effect)
+	effect.global_position = explosion_position
 
 
 func _handle_flight(delta: float) -> void:
@@ -533,6 +689,13 @@ func _finish_wall_run() -> void:
 
 func _update_jump_charge_ui() -> void:
 	player_hud.set_jump_charge(jump_charge / max_jump_charge_time)
+
+
+func _update_vehicle_throw_ui() -> void:
+	var charge_percent := 0.0
+	if is_charging_vehicle_throw:
+		charge_percent = vehicle_throw_hold_time / maxf(vehicle_throw_charge_time, 0.001)
+	player_hud.set_vehicle_throw_charge(is_charging_vehicle_throw, charge_percent)
 
 
 func _update_flight_speed_ui() -> void:

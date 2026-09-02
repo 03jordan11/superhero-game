@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://effects/vehicle_explosion_effect.gd" id="1_vehicle_explosion"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_explosion_pulse"]
+radius = 0.8
+height = 1.6
+radial_segments = 32
+rings = 16
+
+[node name="VehicleExplosionEffect" type="Node3D"]
+script = ExtResource("1_vehicle_explosion")
+
+[node name="ExplosionPulse" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_explosion_pulse")
+
+[node name="ExplosionLight" type="OmniLight3D" parent="."]
+light_color = Color(1, 0.28, 0.04, 1)
+light_energy = 14.0
+omni_range = 12.0
+
+[node name="FireParticles" type="GPUParticles3D" parent="."]
+emitting = false
+one_shot = true
+explosiveness = 1.0
+visibility_aabb = AABB(-10, -10, -10, 20, 20, 20)
+
+[node name="SparkParticles" type="GPUParticles3D" parent="."]
+emitting = false
+one_shot = true
+explosiveness = 1.0
+visibility_aabb = AABB(-12, -12, -12, 24, 24, 24)

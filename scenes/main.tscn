@@ -34,8 +34,19 @@
 [ext_resource type="Texture2D" uid="uid://2oea10b04jqs" path="res://assets/skyscraper_pack/textures/building_06.png" id="32_building_06_texture"]
 [ext_resource type="Texture2D" uid="uid://b3mnl2i8reyoh" path="res://assets/skyscraper_pack/textures/building_07.png" id="33_building_07_texture"]
 [ext_resource type="Texture2D" uid="uid://b3x3e7dvcrhei" path="res://assets/skyscraper_pack/textures/building_08.png" id="34_building_08_texture"]
-[ext_resource type="Script" uid="uid://ct8uljybsavkb" path="res://scripts/perimeter_building_layout.gd" id="35_perimeter_building_layout"]
+[ext_resource type="ArrayMesh" uid="uid://do8cgoimdlabr" path="res://assets/crayon_city/flat/harborlight-hospital.glb" id="36_c6pm6"]
 [ext_resource type="Texture2D" uid="uid://bpabhrvvvppkv" path="res://assets/textures/grass_seamless_texture_1418.jpg" id="36_kmb1v"]
+[ext_resource type="ArrayMesh" uid="uid://bxpgflxsqnsah" path="res://assets/crayon_city/flat/meadow-apartments.glb" id="37_5he1u"]
+[ext_resource type="ArrayMesh" uid="uid://kqo8jkain27p" path="res://assets/crayon_city/flat/sageworks-offices.glb" id="38_5poiv"]
+[ext_resource type="ArrayMesh" uid="uid://15iakmlg1134" path="res://assets/crayon_city/flat/willowbrook-school.glb" id="39_2cjbq"]
+[ext_resource type="ArrayMesh" uid="uid://bd728tep084d8" path="res://assets/crayon_city/flat/cloudline-tower.glb" id="40_5he1u"]
+[ext_resource type="ArrayMesh" uid="uid://d0csciydfs7aq" path="res://assets/Mesh/Vehcile/Realistic Car Pack - Nov 2018/FBX/Cop.fbx" id="41_vc5cj"]
+[ext_resource type="ArrayMesh" uid="uid://ndtr8o2hd2k4" path="res://assets/Mesh/Vehcile/Realistic Car Pack - Nov 2018/FBX/NormalCar1.fbx" id="42_nvyfr"]
+[ext_resource type="ArrayMesh" uid="uid://c5ek81f66vt1t" path="res://assets/Mesh/Vehcile/Realistic Car Pack - Nov 2018/FBX/NormalCar2.fbx" id="43_ty1g6"]
+[ext_resource type="ArrayMesh" uid="uid://c57ae4jvo8s2y" path="res://assets/Mesh/Vehcile/Realistic Car Pack - Nov 2018/FBX/SportsCar2.fbx" id="44_j2jfr"]
+[ext_resource type="ArrayMesh" uid="uid://btnj7f5vw47n8" path="res://assets/Mesh/Vehcile/Realistic Car Pack - Nov 2018/FBX/SportsCar.fbx" id="45_bjg73"]
+[ext_resource type="ArrayMesh" uid="uid://dd7nseakqo6pg" path="res://assets/Mesh/Vehcile/Realistic Car Pack - Nov 2018/FBX/SUV.fbx" id="46_bu4jf"]
+[ext_resource type="ArrayMesh" uid="uid://c52yhmxhvtcqn" path="res://assets/Mesh/Vehcile/Realistic Car Pack - Nov 2018/FBX/Taxi.fbx" id="47_o7ddy"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t87ul"]
 albedo_texture = ExtResource("1_h2yge")
@@ -166,18 +177,33 @@ albedo_texture = ExtResource("34_building_08_texture")
 [sub_resource type="BoxShape3D" id="BoxShape3D_building_08"]
 size = Vector3(65, 73, 65)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fuf3a"]
-load_path = "res://.godot/imported/grass_seamless_texture_6688.jpg-8326157827afabe3a97129422f27fa7f.s3tc.ctex"
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pibwh"]
-albedo_texture = SubResource("CompressedTexture2D_fuf3a")
-
 [sub_resource type="BoxMesh" id="BoxMesh_qr0ht"]
 size = Vector3(142, 0.25, 260.90793)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1esiv"]
 albedo_texture = ExtResource("36_kmb1v")
 uv1_scale = Vector3(50, 50, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qr0ht"]
+size = Vector3(1.8149414, 1.3828125, 4.061554)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6f8o3"]
+size = Vector3(1.7423096, 1.0978851, 3.644892)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1esiv"]
+size = Vector3(1.7423096, 1.1703796, 4.0722437)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2r0jt"]
+size = Vector3(1.7423096, 1.1151733, 3.865635)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xvofd"]
+size = Vector3(1.7423096, 1.1151733, 3.865635)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jyycw"]
+size = Vector3(1.7423096, 1.1052094, 3.2009223)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sn0t7"]
+size = Vector3(1.7423096, 1.0737152, 4.122914)
 
 [node name="Main" type="Node3D" unique_id=52622882]
 
@@ -221,6 +247,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=142368875]
 material_override = SubResource("StandardMaterial3D_t87ul")
 mesh = SubResource("BoxMesh_bhunq")
+
+[node name="WillowbrookSchool" type="MeshInstance3D" parent="Floor/MeshInstance3D" unique_id=30884357]
+transform = Transform3D(-1.3113416e-07, 0, -3, 0, 3, 0, 3, 0, -1.3113416e-07, -297.3489, 0, 104.03825)
+mesh = ExtResource("39_2cjbq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=71001875]
 transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
@@ -298,6 +328,23 @@ offset_left = 24.0
 offset_top = 150.0
 offset_right = 324.0
 offset_bottom = 174.0
+show_percentage = false
+
+[node name="VehicleThrowChargeLabel" type="Label" parent="Player/ChargeUI" unique_id=600758147]
+visible = false
+offset_left = 24.0
+offset_top = 182.0
+offset_right = 324.0
+offset_bottom = 208.0
+theme_override_font_sizes/font_size = 20
+text = "Vehicle Throw: 0%"
+
+[node name="VehicleThrowChargeBar" type="ProgressBar" parent="Player/ChargeUI" unique_id=1631959840]
+visible = false
+offset_left = 24.0
+offset_top = 212.0
+offset_right = 324.0
+offset_bottom = 236.0
 show_percentage = false
 
 [node name="PlayerCombatController" type="Node" parent="Player" unique_id=1816028300]
@@ -727,7 +774,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_qr0ht")
 shape = SubResource("BoxShape3D_road_endcap")
 
 [node name="Buildings" type="Node" parent="." unique_id=1405206823]
-script = ExtResource("35_perimeter_building_layout")
 
 [node name="Building_01" type="StaticBody3D" parent="Buildings" unique_id=2016854001]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 0.625, 0)
@@ -986,7 +1032,6 @@ shape = SubResource("BoxShape3D_building_03")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -135, 0.625, 170)
 
 [node name="Mesh" type="MeshInstance3D" parent="Buildings/Building_06_Copy_C" unique_id=1699182958]
-material_override = SubResource("StandardMaterial3D_pibwh")
 mesh = ExtResource("25_building_06_mesh")
 surface_material_override/0 = SubResource("StandardMaterial3D_building_06")
 
@@ -1170,6 +1215,270 @@ surface_material_override/0 = SubResource("StandardMaterial3D_building_07")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 60, 0)
 shape = SubResource("BoxShape3D_building_07")
 
+[node name="Perimeter_Building_01" type="StaticBody3D" parent="Buildings" unique_id=1529231904]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0.625, -160)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/Perimeter_Building_01" unique_id=1044359649]
+mesh = ExtResource("21_building_02_mesh")
+surface_material_override/0 = SubResource("StandardMaterial3D_building_02")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Perimeter_Building_01" unique_id=2129320142]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 48, 0)
+shape = SubResource("BoxShape3D_building_02")
+
+[node name="Perimeter_Building_02" type="StaticBody3D" parent="Buildings" unique_id=2063890917]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0.625, -100)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/Perimeter_Building_02" unique_id=22212315]
+mesh = ExtResource("24_building_05_mesh")
+surface_material_override/0 = SubResource("StandardMaterial3D_building_05")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Perimeter_Building_02" unique_id=172782827]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 60, 0)
+shape = SubResource("BoxShape3D_building_05")
+
+[node name="Perimeter_Building_03" type="StaticBody3D" parent="Buildings" unique_id=1229967616]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0.625, -45)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/Perimeter_Building_03" unique_id=704941568]
+mesh = ExtResource("19_building_01_mesh")
+surface_material_override/0 = SubResource("StandardMaterial3D_building_01")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Perimeter_Building_03" unique_id=149730886]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36, 0)
+shape = SubResource("BoxShape3D_building_01")
+
+[node name="Perimeter_Building_04" type="StaticBody3D" parent="Buildings" unique_id=775746342]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0.625, 10)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/Perimeter_Building_04" unique_id=1176339852]
+mesh = ExtResource("26_building_07_mesh")
+surface_material_override/0 = SubResource("StandardMaterial3D_building_07")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Perimeter_Building_04" unique_id=392630892]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 60, 0)
+shape = SubResource("BoxShape3D_building_07")
+
+[node name="Perimeter_Building_05" type="StaticBody3D" parent="Buildings" unique_id=619183633]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 27, 0.375, 70)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/Perimeter_Building_05" unique_id=268563414]
+mesh = ExtResource("27_building_08_mesh")
+surface_material_override/0 = SubResource("StandardMaterial3D_building_08")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Perimeter_Building_05" unique_id=736457310]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36, 0)
+shape = SubResource("BoxShape3D_building_08")
+
+[node name="Perimeter_Building_06" type="StaticBody3D" parent="Buildings" unique_id=1314802112]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0.625, 130)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/Perimeter_Building_06" unique_id=7343562]
+mesh = ExtResource("21_building_02_mesh")
+surface_material_override/0 = SubResource("StandardMaterial3D_building_02")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Perimeter_Building_06" unique_id=1584468165]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 48, 0)
+shape = SubResource("BoxShape3D_building_02")
+
+[node name="Perimeter_Building_07" type="StaticBody3D" parent="Buildings" unique_id=1020225728]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -459, 0.625, -160)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/Perimeter_Building_07" unique_id=1519649047]
+mesh = ExtResource("23_building_04_mesh")
+surface_material_override/0 = SubResource("StandardMaterial3D_building_04")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Perimeter_Building_07" unique_id=982458862]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 62, 0)
+shape = SubResource("BoxShape3D_building_04")
+
+[node name="Perimeter_Building_08" type="StaticBody3D" parent="Buildings" unique_id=390914875]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -459, 0.625, -105)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/Perimeter_Building_08" unique_id=1908204520]
+mesh = ExtResource("19_building_01_mesh")
+surface_material_override/0 = SubResource("StandardMaterial3D_building_01")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Perimeter_Building_08" unique_id=824807533]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36, 0)
+shape = SubResource("BoxShape3D_building_01")
+
+[node name="Perimeter_Building_09" type="StaticBody3D" parent="Buildings" unique_id=195241622]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -459, 0.625, -50)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/Perimeter_Building_09" unique_id=1233466604]
+mesh = ExtResource("25_building_06_mesh")
+surface_material_override/0 = SubResource("StandardMaterial3D_building_06")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Perimeter_Building_09" unique_id=2089568175]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 60, 0)
+shape = SubResource("BoxShape3D_building_06")
+
+[node name="Perimeter_Building_10" type="StaticBody3D" parent="Buildings" unique_id=2142125387]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -459, 0.625, 5)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/Perimeter_Building_10" unique_id=688663007]
+mesh = ExtResource("22_building_03_mesh")
+surface_material_override/0 = SubResource("StandardMaterial3D_building_03")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Perimeter_Building_10" unique_id=1922790553]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 48, 0)
+shape = SubResource("BoxShape3D_building_03")
+
+[node name="Perimeter_Building_11" type="StaticBody3D" parent="Buildings" unique_id=573946292]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -459, 0.375, 65)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/Perimeter_Building_11" unique_id=1372497060]
+mesh = ExtResource("27_building_08_mesh")
+surface_material_override/0 = SubResource("StandardMaterial3D_building_08")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Perimeter_Building_11" unique_id=1933720332]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36, 0)
+shape = SubResource("BoxShape3D_building_08")
+
+[node name="Perimeter_Building_12" type="StaticBody3D" parent="Buildings" unique_id=1732755764]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -459, 0.625, 125)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/Perimeter_Building_12" unique_id=131424732]
+mesh = ExtResource("23_building_04_mesh")
+surface_material_override/0 = SubResource("StandardMaterial3D_building_04")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Perimeter_Building_12" unique_id=1805126523]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 62, 0)
+shape = SubResource("BoxShape3D_building_04")
+
+[node name="Perimeter_Building_13" type="StaticBody3D" parent="Buildings" unique_id=1814608003]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0.625, -250)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/Perimeter_Building_13" unique_id=763275742]
+mesh = ExtResource("23_building_04_mesh")
+surface_material_override/0 = SubResource("StandardMaterial3D_building_04")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Perimeter_Building_13" unique_id=931980317]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 62, 0)
+shape = SubResource("BoxShape3D_building_04")
+
+[node name="Perimeter_Building_14" type="StaticBody3D" parent="Buildings" unique_id=1692078225]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 0.625, -250)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/Perimeter_Building_14" unique_id=2071276250]
+mesh = ExtResource("21_building_02_mesh")
+surface_material_override/0 = SubResource("StandardMaterial3D_building_02")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Perimeter_Building_14" unique_id=35842802]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 48, 0)
+shape = SubResource("BoxShape3D_building_02")
+
+[node name="Perimeter_Building_15" type="StaticBody3D" parent="Buildings" unique_id=724841970]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81, 0.625, -250)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/Perimeter_Building_15" unique_id=604093419]
+mesh = ExtResource("19_building_01_mesh")
+surface_material_override/0 = SubResource("StandardMaterial3D_building_01")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Perimeter_Building_15" unique_id=774652146]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36, 0)
+shape = SubResource("BoxShape3D_building_01")
+
+[node name="Perimeter_Building_16" type="StaticBody3D" parent="Buildings" unique_id=334955026]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -135, 0.625, -250)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/Perimeter_Building_16" unique_id=665453215]
+mesh = ExtResource("25_building_06_mesh")
+surface_material_override/0 = SubResource("StandardMaterial3D_building_06")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Perimeter_Building_16" unique_id=1357264502]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 60, 0)
+shape = SubResource("BoxShape3D_building_06")
+
+[node name="Perimeter_Building_17" type="StaticBody3D" parent="Buildings" unique_id=1681969901]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -243, 0.375, -250)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/Perimeter_Building_17" unique_id=211415307]
+mesh = ExtResource("27_building_08_mesh")
+surface_material_override/0 = SubResource("StandardMaterial3D_building_08")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Perimeter_Building_17" unique_id=1059152539]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36, 0)
+shape = SubResource("BoxShape3D_building_08")
+
+[node name="Perimeter_Building_18" type="StaticBody3D" parent="Buildings" unique_id=1824010630]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -459, 0.625, -250)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/Perimeter_Building_18" unique_id=753332405]
+mesh = ExtResource("22_building_03_mesh")
+surface_material_override/0 = SubResource("StandardMaterial3D_building_03")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Perimeter_Building_18" unique_id=1454907506]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 48, 0)
+shape = SubResource("BoxShape3D_building_03")
+
+[node name="Perimeter_Building_19" type="StaticBody3D" parent="Buildings" unique_id=876940684]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0.625, 250)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/Perimeter_Building_19" unique_id=368887325]
+mesh = ExtResource("24_building_05_mesh")
+surface_material_override/0 = SubResource("StandardMaterial3D_building_05")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Perimeter_Building_19" unique_id=1092110725]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 60, 0)
+shape = SubResource("BoxShape3D_building_05")
+
+[node name="Perimeter_Building_20" type="StaticBody3D" parent="Buildings" unique_id=636410371]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 0.625, 250)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/Perimeter_Building_20" unique_id=119488206]
+mesh = ExtResource("26_building_07_mesh")
+surface_material_override/0 = SubResource("StandardMaterial3D_building_07")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Perimeter_Building_20" unique_id=923245632]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 60, 0)
+shape = SubResource("BoxShape3D_building_07")
+
+[node name="Perimeter_Building_21" type="StaticBody3D" parent="Buildings" unique_id=1273373432]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81, 0.625, 250)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/Perimeter_Building_21" unique_id=1265833735]
+mesh = ExtResource("22_building_03_mesh")
+surface_material_override/0 = SubResource("StandardMaterial3D_building_03")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Perimeter_Building_21" unique_id=1485228676]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 48, 0)
+shape = SubResource("BoxShape3D_building_03")
+
+[node name="Perimeter_Building_22" type="StaticBody3D" parent="Buildings" unique_id=520618964]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -135, 0.625, 250)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/Perimeter_Building_22" unique_id=490038035]
+mesh = ExtResource("23_building_04_mesh")
+surface_material_override/0 = SubResource("StandardMaterial3D_building_04")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Perimeter_Building_22" unique_id=1652190661]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 62, 0)
+shape = SubResource("BoxShape3D_building_04")
+
+[node name="Perimeter_Building_23" type="StaticBody3D" parent="Buildings" unique_id=1749681118]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -243, 0.625, 250)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/Perimeter_Building_23" unique_id=1597666330]
+mesh = ExtResource("21_building_02_mesh")
+surface_material_override/0 = SubResource("StandardMaterial3D_building_02")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Perimeter_Building_23" unique_id=179403199]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 48, 0)
+shape = SubResource("BoxShape3D_building_02")
+
+[node name="Perimeter_Building_24" type="StaticBody3D" parent="Buildings" unique_id=1501041071]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -459, 0.625, 250)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/Perimeter_Building_24" unique_id=1256090724]
+mesh = ExtResource("25_building_06_mesh")
+surface_material_override/0 = SubResource("StandardMaterial3D_building_06")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Perimeter_Building_24" unique_id=951741760]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 60, 0)
+shape = SubResource("BoxShape3D_building_06")
+
 [node name="Grass" type="StaticBody3D" parent="." unique_id=117769979]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -240, 0.025, -21.217312)
 
@@ -1179,6 +1488,109 @@ mesh = SubResource("BoxMesh_qr0ht")
 surface_material_override/0 = SubResource("StandardMaterial3D_1esiv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Grass" unique_id=870378548]
+
+[node name="HarborlightHospital" type="MeshInstance3D" parent="." unique_id=1344612946]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -267.85947, 1.8626451e-09, -2.0178146)
+mesh = ExtResource("36_c6pm6")
+
+[node name="MeadowApartments" type="MeshInstance3D" parent="." unique_id=1458830147]
+transform = Transform3D(-3, 0, 2.6226832e-07, 0, 3, 0, -2.6226832e-07, 0, -3, -187.95807, 4.7794833e-07, 238.56061)
+mesh = ExtResource("37_5he1u")
+
+[node name="SageworksOffices" type="MeshInstance3D" parent="." unique_id=115285060]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -201.85231, 0.104436, -245.90979)
+mesh = ExtResource("38_5poiv")
+
+[node name="CloudlineTower" type="MeshInstance3D" parent="." unique_id=595324519]
+transform = Transform3D(6.6539154, 0, 0, 0, 8.464204, 0, 0, 0, 3, -298.02875, 4.3213366e-10, -237.09433)
+mesh = ExtResource("40_5he1u")
+
+[node name="Vehicles" type="Node" parent="." unique_id=924743106]
+
+[node name="Suv" type="RigidBody3D" parent="Vehicles" unique_id=1684529196]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.961111, 0, -17.675571)
+mass = 1200.0
+
+[node name="Suv" type="MeshInstance3D" parent="Vehicles/Suv" unique_id=771891463]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = ExtResource("46_bu4jf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Vehicles/Suv" unique_id=1309040125]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.026000977, 1.1527729, 0.04469323)
+shape = SubResource("BoxShape3D_qr0ht")
+
+[node name="Cop" type="RigidBody3D" parent="Vehicles" unique_id=685694874]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.942066, 0, -5.0392113)
+mass = 1200.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Vehicles/Cop" unique_id=1842310218]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.7944354, -0.0019267201)
+shape = SubResource("BoxShape3D_6f8o3")
+
+[node name="Cop" type="MeshInstance3D" parent="Vehicles/Cop" unique_id=1769852717]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = ExtResource("41_vc5cj")
+
+[node name="NormalCar" type="RigidBody3D" parent="Vehicles" unique_id=1967919737]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.236015, 0, 15.767196)
+mass = 1200.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Vehicles/NormalCar" unique_id=1146168072]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.8688003, 0.046857834)
+shape = SubResource("BoxShape3D_1esiv")
+
+[node name="NormalCar1" type="MeshInstance3D" parent="Vehicles/NormalCar" unique_id=2039309570]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = ExtResource("42_nvyfr")
+
+[node name="SportsCar" type="RigidBody3D" parent="Vehicles" unique_id=404782698]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.7126746, 0, 9.973175)
+mass = 1200.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Vehicles/SportsCar" unique_id=201038129]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.84151375, 0)
+shape = SubResource("BoxShape3D_2r0jt")
+
+[node name="SportsCar" type="MeshInstance3D" parent="Vehicles/SportsCar" unique_id=428033481]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = ExtResource("45_bjg73")
+
+[node name="SportsCar2" type="RigidBody3D" parent="Vehicles" unique_id=441938244]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.3099966, 0, -5.112914)
+mass = 1200.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Vehicles/SportsCar2" unique_id=1323801605]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.054473877, 0.83638, -0.12755871)
+shape = SubResource("BoxShape3D_xvofd")
+debug_color = Color(0.9882353, 0, 0, 0.81960785)
+
+[node name="SportsCar2" type="MeshInstance3D" parent="Vehicles/SportsCar2" unique_id=119323836]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = ExtResource("44_j2jfr")
+
+[node name="NormalCar2" type="RigidBody3D" parent="Vehicles" unique_id=1407041611]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.673362, 0, 5.1436033)
+mass = 1200.0
+
+[node name="NormalCar2" type="MeshInstance3D" parent="Vehicles/NormalCar2" unique_id=2051732415]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = ExtResource("43_ty1g6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Vehicles/NormalCar2" unique_id=53208116]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.8291031, -0.022891998)
+shape = SubResource("BoxShape3D_jyycw")
+
+[node name="Taxi" type="RigidBody3D" parent="Vehicles" unique_id=1073240256]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.345222, 0, 21.945795)
+mass = 1200.0
+
+[node name="Taxi" type="MeshInstance3D" parent="Vehicles/Taxi" unique_id=845682323]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = ExtResource("47_o7ddy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Vehicles/Taxi" unique_id=942913305]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.90561146, 0.20008469)
+shape = SubResource("BoxShape3D_sn0t7")
 
 [connection signal="pressed" from="PauseMenu/Center/Menu/ResumeButton" to="PauseMenu" method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/Center/Menu/SettingsButton" to="PauseMenu" method="_on_settings_pressed"]

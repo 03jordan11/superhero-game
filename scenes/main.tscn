@@ -11,8 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://cyt3vftgytstc" path="res://assets/textures/buildings/apartments/apartments5.png" id="9_4c57u"]
 [ext_resource type="Texture2D" uid="uid://cqc5e01noic0t" path="res://assets/textures/buildings/apartments/apartments9.png" id="10_4c57u"]
 [ext_resource type="Texture2D" uid="uid://dfgdyt3phmklr" path="res://assets/textures/skybox/kloppenheim_03_puresky_4k.exr" id="11_efxa6"]
-[ext_resource type="Script" uid="uid://dpbj4c6jc3hao" path="res://scenes/civilian.gd" id="11_j2jfr"]
-[ext_resource type="PackedScene" uid="uid://804s6wflbiti" path="res://assets/characters/Superhero_Female_FullBody.gltf" id="11_nvyfr"]
 [ext_resource type="Script" uid="uid://ckp7prv4iwgsn" path="res://scripts/developer_menu.gd" id="12_developer_menu"]
 [ext_resource type="Script" uid="uid://r0emup6ufvxv" path="res://scripts/player_hud.gd" id="13_player_hud"]
 [ext_resource type="Script" uid="uid://bi8s7hwdcoono" path="res://scripts/player_animation_controller.gd" id="14_player_animation_controller"]
@@ -21,7 +19,7 @@
 [ext_resource type="Script" uid="uid://c27f3x3jqksy7" path="res://scripts/player_combat_controller.gd" id="17_combat_controller"]
 [ext_resource type="Script" uid="uid://blmlybmyr4hv1" path="res://scripts/pause_menu.gd" id="18_pause_menu"]
 [ext_resource type="ArrayMesh" uid="uid://dxdtx7166jucr" path="res://assets/skyscraper_pack/models/building_01.1.fbx" id="19_building_01_mesh"]
-[ext_resource type="Script" uid="uid://cycqnjthd7pvm" path="res://scripts/civilian_animation_controller.gd" id="19_civilian_animation_controller"]
+[ext_resource type="PackedScene" path="res://scenes/civilian.tscn" id="19_civilian_scene"]
 [ext_resource type="Texture2D" uid="uid://dqr5vc0e4ybyk" path="res://assets/skyscraper_pack/textures/building_01.png" id="20_building_01_texture"]
 [ext_resource type="ArrayMesh" uid="uid://5j5m61grumgr" path="res://assets/skyscraper_pack/models/building_02.1.fbx" id="21_building_02_mesh"]
 [ext_resource type="ArrayMesh" uid="uid://cvw3aekp1fc0o" path="res://assets/skyscraper_pack/models/building_03.1.fbx" id="22_building_03_mesh"]
@@ -51,6 +49,7 @@
 [ext_resource type="ArrayMesh" uid="uid://dd7nseakqo6pg" path="res://assets/Mesh/Vehcile/Realistic Car Pack - Nov 2018/FBX/SUV.fbx" id="46_bu4jf"]
 [ext_resource type="ArrayMesh" uid="uid://c52yhmxhvtcqn" path="res://assets/Mesh/Vehcile/Realistic Car Pack - Nov 2018/FBX/Taxi.fbx" id="47_o7ddy"]
 [ext_resource type="Script" uid="uid://5c25ifc27ibm" path="res://scripts/vehicle.gd" id="48_vehicle"]
+[ext_resource type="Script" path="res://scripts/explosion_controller.gd" id="49_explosion_controller"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t87ul"]
 albedo_texture = ExtResource("1_h2yge")
@@ -65,9 +64,6 @@ size = Vector3(1000, 1, 1000)
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_bhunq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_riqys"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bhunq"]
-height = 1.7543945
 
 [sub_resource type="BoxMesh" id="BoxMesh_sn0t7"]
 size = Vector3(20, 0.2, 400)
@@ -222,7 +218,7 @@ script = ExtResource("12_developer_menu")
 offset_left = 24.0
 offset_top = 128.0
 offset_right = 304.0
-offset_bottom = 292.0
+offset_bottom = 560.0
 
 [node name="MarginContainer" type="MarginContainer" parent="DeveloperMenu/Panel" unique_id=1912889954]
 layout_mode = 2
@@ -247,6 +243,89 @@ text = "Enable Flying"
 [node name="ShowLandingCheckBox" type="CheckBox" parent="DeveloperMenu/Panel/MarginContainer/Options" unique_id=121199002]
 layout_mode = 2
 text = "Show Landing"
+
+[node name="ShowPerformanceHudCheckBox" type="CheckBox" parent="DeveloperMenu/Panel/MarginContainer/Options"]
+layout_mode = 2
+text = "Show Performance HUD"
+
+[node name="SpawnCivilianButton" type="Button" parent="DeveloperMenu/Panel/MarginContainer/Options"]
+layout_mode = 2
+text = "Spawn Civilian"
+
+[node name="AttributesSeparator" type="HSeparator" parent="DeveloperMenu/Panel/MarginContainer/Options"]
+layout_mode = 2
+
+[node name="AttributesTitle" type="Label" parent="DeveloperMenu/Panel/MarginContainer/Options"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Player Attributes"
+
+[node name="AttributesGrid" type="GridContainer" parent="DeveloperMenu/Panel/MarginContainer/Options"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 8
+columns = 2
+
+[node name="StrengthLabel" type="Label" parent="DeveloperMenu/Panel/MarginContainer/Options/AttributesGrid"]
+layout_mode = 2
+text = "Strength"
+
+[node name="StrengthSpinBox" type="SpinBox" parent="DeveloperMenu/Panel/MarginContainer/Options/AttributesGrid"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 1.0
+max_value = 999.0
+value = 1.0
+
+[node name="SpeedLabel" type="Label" parent="DeveloperMenu/Panel/MarginContainer/Options/AttributesGrid"]
+layout_mode = 2
+text = "Speed"
+
+[node name="SpeedSpinBox" type="SpinBox" parent="DeveloperMenu/Panel/MarginContainer/Options/AttributesGrid"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 1.0
+max_value = 999.0
+value = 1.0
+
+[node name="ResilienceLabel" type="Label" parent="DeveloperMenu/Panel/MarginContainer/Options/AttributesGrid"]
+layout_mode = 2
+text = "Resilience"
+
+[node name="ResilienceSpinBox" type="SpinBox" parent="DeveloperMenu/Panel/MarginContainer/Options/AttributesGrid"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 1.0
+max_value = 999.0
+value = 1.0
+
+[node name="PerformanceHUD" type="CanvasLayer" parent="."]
+layer = 9
+
+[node name="Panel" type="PanelContainer" parent="PerformanceHUD"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -416.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = 150.0
+grow_horizontal = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="PerformanceHUD/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="PerformanceLabel" type="Label" parent="PerformanceHUD/Panel/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Performance"
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=1071022126]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
@@ -358,36 +437,8 @@ show_percentage = false
 [node name="PlayerCombatController" type="Node" parent="Player" unique_id=1816028300]
 script = ExtResource("17_combat_controller")
 
-[node name="Civilian" type="CharacterBody3D" parent="." unique_id=1025449541]
+[node name="Civilian" parent="." unique_id=1025449541 instance=ExtResource("19_civilian_scene")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.943697)
-script = ExtResource("11_j2jfr")
-chest_hit_stun_duration = 0.6
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Civilian" unique_id=1499830395]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.87719727, 0)
-shape = SubResource("CapsuleShape3D_bhunq")
-
-[node name="HealthLabel" type="Label3D" parent="Civilian" unique_id=1173333011]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4, 0)
-billboard = 1
-text = "100"
-font_size = 64
-outline_size = 8
-
-[node name="Superhero_Female_FullBody" parent="Civilian" unique_id=543536520 instance=ExtResource("11_nvyfr")]
-transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0)
-
-[node name="CharacterAnimationPlayer" type="AnimationPlayer" parent="Civilian/Superhero_Female_FullBody" unique_id=1732421648]
-
-[node name="CivilianAnimationController" type="Node" parent="Civilian" unique_id=1569207596]
-script = ExtResource("19_civilian_animation_controller")
-
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Civilian" unique_id=553048418]
-avoidance_enabled = true
-neighbor_distance = 10.0
-max_speed = 5.5
-
-[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Civilian" unique_id=139135985]
 
 [node name="Road_Mesh_01" type="MeshInstance3D" parent="." unique_id=2106570095]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0)
@@ -1667,6 +1718,9 @@ transform = Transform3D(6.6539154, 0, 0, 0, 8.464204, 0, 0, 0, 3, -298.02875, 4.
 mesh = ExtResource("40_5he1u")
 
 [node name="Vehicles" type="Node" parent="." unique_id=924743106]
+
+[node name="ExplosionController" type="Node3D" parent="." unique_id=1421420735]
+script = ExtResource("49_explosion_controller")
 
 [node name="Suv" type="RigidBody3D" parent="Vehicles" unique_id=1684529196]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.961111, 0, -17.675571)

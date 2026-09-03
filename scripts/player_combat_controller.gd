@@ -3,6 +3,7 @@ extends Node
 
 const PUNCH_ANIMATIONS := ["Punch_01", "Punch_02", "Punch_03"]
 const UPPERCUT_PUNCH_INDEX := 2
+const DAMAGE_INFO_SCRIPT = preload("res://scripts/damage_info.gd")
 
 var animation_controller: PlayerAnimationController
 
@@ -13,8 +14,6 @@ var animation_controller: PlayerAnimationController
 @export var punch_hit_distance: float = 1.6
 @export var punch_hit_radius: float = 0.75
 @export var regular_hit_damage_multiplier: int = 2
-@export var ground_slam_damage_multiplier: int = 50
-@export var ground_slam_hit_radius: float = 5.0
 @export_range(0.0, 1.0, 0.01) var combo_input_window: float = 0.6
 @export var uppercut_launch_velocity: float = 12.0
 @export var uppercut_launch_delay: float = 0.25
@@ -59,7 +58,7 @@ func update_punch_momentum(body: CharacterBody3D, delta: float, strength: int) -
 
 	punch_time += delta
 	if not has_punch_hit and punch_time >= punch_hit_delay:
-		has_punch_hit = _try_hit_civilian(body, strength)
+		has_punch_hit = _try_hit_target(body, strength)
 
 	var push_end_time := punch_forward_delay + punch_forward_duration
 	if punch_time >= punch_forward_delay and punch_time <= push_end_time:
@@ -106,7 +105,7 @@ func _start_punch(punch_index: int, is_combo_continuation: bool = false) -> void
 	is_punch_active = true
 
 
-func _try_hit_civilian(body: CharacterBody3D, strength: int) -> bool:
+func _try_hit_target(body: CharacterBody3D, strength: int) -> bool:
 	var hit_shape := SphereShape3D.new()
 	hit_shape.radius = punch_hit_radius
 	var forward := -body.global_transform.basis.z.normalized()
@@ -122,39 +121,26 @@ func _try_hit_civilian(body: CharacterBody3D, strength: int) -> bool:
 
 	for hit in hit_results:
 		var collider: Object = hit.get("collider")
-		if collider is Vehicle:
-			var vehicle: Vehicle = collider as Vehicle
-			var vehicle_damage := 2 * strength
-			vehicle.take_damage(vehicle_damage)
-			return true
-		if collider != null and collider.has_method("take_hit"):
-			var hit_reaction: StringName = (
-				&"knockback" if combo_punch_index == UPPERCUT_PUNCH_INDEX else &"chest"
-			)
-			var damage := regular_hit_damage_multiplier * strength
-			if combo_punch_index == UPPERCUT_PUNCH_INDEX:
-				damage *= 2
-			collider.call("take_hit", damage, hit_reaction, impact_origin, forward)
-			if collider.has_method("start_flee"):
-				collider.call("start_flee", body)
-			return true
+		if collider == null or not collider.has_method("apply_damage"):
+			continue
+
+		var hit_reaction: StringName = (
+			&"knockback" if combo_punch_index == UPPERCUT_PUNCH_INDEX else &"chest"
+		)
+		var damage: float = regular_hit_damage_multiplier * strength
+		var is_explodable: bool = (
+			collider is Node and (collider as Node).is_in_group(&"explodable")
+		)
+		if combo_punch_index == UPPERCUT_PUNCH_INDEX and not is_explodable:
+			damage *= 2.0
+		var damage_info = DAMAGE_INFO_SCRIPT.new(
+			damage,
+			impact_origin,
+			forward,
+			hit_reaction,
+			body
+		)
+		collider.call("apply_damage", damage_info)
+		return true
 
 	return false
-
-
-func apply_ground_slam_hit(body: CharacterBody3D, strength: int) -> void:
-	var hit_shape := SphereShape3D.new()
-	hit_shape.radius = ground_slam_hit_radius
-	var query := PhysicsShapeQueryParameters3D.new()
-	query.shape = hit_shape
-	query.transform = Transform3D(Basis.IDENTITY, body.global_position + Vector3.UP)
-	query.exclude = [body.get_rid()]
-	var hit_results: Array[Dictionary] = body.get_world_3d().direct_space_state.intersect_shape(query)
-
-	for hit in hit_results:
-		var collider: Object = hit.get("collider")
-		if collider != null and collider.has_method("take_hit"):
-			var damage := ground_slam_damage_multiplier * strength
-			collider.call("take_hit", damage, &"ground_slam", body.global_position)
-			if collider.has_method("start_flee"):
-				collider.call("start_flee", body)

@@ -1,9 +1,10 @@
 class_name CivilianAnimationController
 extends Node
 
-@onready var animation_player: AnimationPlayer = $"../Superhero_Female_FullBody/CharacterAnimationPlayer"
+static var cached_animation_library: AnimationLibrary
+static var has_built_cached_animation_library: bool = false
 
-var animation_library_loader := CharacterAnimationLibraryLoader.new()
+@onready var animation_player: AnimationPlayer = $"../Superhero_Female_FullBody/CharacterAnimationPlayer"
 
 
 func _ready() -> void:
@@ -11,6 +12,20 @@ func _ready() -> void:
 	# from the imported model root, which is the AnimationPlayer's parent.
 	animation_player.root_node = NodePath("..")
 
+	var civilian_animation_library := _get_cached_animation_library()
+	if civilian_animation_library == null:
+		return
+
+	animation_player.add_animation_library("", civilian_animation_library)
+	animation_player.play("Idle")
+
+
+static func _get_cached_animation_library() -> AnimationLibrary:
+	if has_built_cached_animation_library:
+		return cached_animation_library
+
+	has_built_cached_animation_library = true
+	var animation_library_loader := CharacterAnimationLibraryLoader.new()
 	var civilian_animation_library := AnimationLibrary.new()
 	if not animation_library_loader.add_animation(
 		civilian_animation_library,
@@ -18,52 +33,54 @@ func _ready() -> void:
 		&"Idle",
 		&"Idle"
 	):
-		return
+		return null
 	if not animation_library_loader.add_animation(
 		civilian_animation_library,
 		CharacterAnimationLibraryLoader.UAL1_GROUP,
 		&"Walk",
 		&"Walk"
 	):
-		return
+		return null
 	if not animation_library_loader.add_animation(
 		civilian_animation_library,
 		CharacterAnimationLibraryLoader.UAL1_GROUP,
 		&"Sprint",
 		&"Run"
 	):
-		return
+		return null
 	if not animation_library_loader.add_animation(
 		civilian_animation_library,
 		CharacterAnimationLibraryLoader.UAL1_GROUP,
 		&"Hit_Chest",
 		&"Hit_Chest"
 	):
-		return
+		return null
 	if not animation_library_loader.add_animation(
 		civilian_animation_library,
 		CharacterAnimationLibraryLoader.UAL1_GROUP,
 		&"Death01",
 		&"Death01"
 	):
-		return
+		return null
 	if not animation_library_loader.add_animation(
 		civilian_animation_library,
 		CharacterAnimationLibraryLoader.UAL2_GROUP,
 		&"Hit_Knockback",
 		&"Hit_Knockback"
 	):
-		return
+		return null
 	# This project does not currently include Hit_Knockback_RM, so ground slams
 	# use the available UAL2 knockback clip until that asset is added.
-	animation_library_loader.add_animation(
+	if not animation_library_loader.add_animation(
 		civilian_animation_library,
 		CharacterAnimationLibraryLoader.UAL2_GROUP,
 		&"Hit_Knockback",
 		&"Hit_Knockback_RM"
-	)
-	animation_player.add_animation_library("", civilian_animation_library)
-	animation_player.play("Idle")
+	):
+		return null
+
+	cached_animation_library = civilian_animation_library
+	return cached_animation_library
 
 
 func set_is_walking(should_walk: bool) -> void:

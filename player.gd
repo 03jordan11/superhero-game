@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 const HARD_LANDING_EFFECT_SCENE: PackedScene = preload("res://effects/hard_landing_effect.tscn")
-const VEHICLE_EXPLOSION_EFFECT_SCENE: PackedScene = preload("res://effects/vehicle_explosion_effect.tscn")
+const DAMAGE_INFO_SCRIPT = preload("res://scripts/damage_info.gd")
 
 @export_category("Power Jump")
 @export var min_jump_velocity: float = 8.0
@@ -88,11 +88,6 @@ var wall_run_has_left_ground: bool = false
 @export var vehicle_throw_max_speed: float = 75.0
 @export var vehicle_throw_spin_speed: float = 10.0
 @export var vehicle_throw_release_distance: float = 5.0
-@export var vehicle_explosion_min_impact_speed: float = 18.0
-@export var vehicle_explosion_radius: float = 5.0
-@export var vehicle_npc_min_damage: float = 50.0
-@export var vehicle_npc_max_damage: float = 100.0
-@export var vehicle_explosion_vehicle_damage: float = 100.0
 
 @onready var spring_arm: SpringArm3D = $SpringArm3D
 @onready var camera: Camera3D = $SpringArm3D/Camera3D
@@ -103,6 +98,7 @@ var wall_run_has_left_ground: bool = false
 @onready var combat_controller: PlayerCombatController = $PlayerCombatController
 @onready var landing_target: Node = $LandingTarget
 @onready var camera_effects: Node = $PlayerCameraEffects
+@onready var explosion_controller: Node = $"../ExplosionController"
 
 var superhero_character_default_rotation: Vector3
 var held_vehicle: RigidBody3D
@@ -121,7 +117,6 @@ func _ready() -> void:
 	_update_vehicle_throw_ui()
 	animation_controller.setup(character_animation_player, is_on_floor())
 	combat_controller.setup(animation_controller)
-	_connect_vehicle_destruction_signals()
 	camera_effects.call("setup", spring_arm)
 	was_on_floor_for_camera_effects = is_on_floor()
 
@@ -329,7 +324,7 @@ func _release_held_vehicle(
 	vehicle.sleeping = false
 	vehicle.linear_velocity = release_velocity
 	vehicle.angular_velocity = release_angular_velocity
-	if release_velocity.length() >= vehicle_explosion_min_impact_speed:
+	if release_velocity.length() >= _get_explosion_minimum_impact_speed():
 		vehicle.contact_monitor = true
 		vehicle.max_contacts_reported = 8
 		armed_thrown_vehicles.append({
@@ -351,119 +346,24 @@ func _check_thrown_vehicle_impacts() -> void:
 			continue
 
 		var impact_speed: float = float(vehicle_state["last_speed"])
-		if vehicle.get_contact_count() > 0 and impact_speed >= vehicle_explosion_min_impact_speed:
-			vehicle.take_damage(vehicle.health, impact_speed)
+		if vehicle.get_contact_count() > 0 and impact_speed >= _get_explosion_minimum_impact_speed():
+			var damage_info = DAMAGE_INFO_SCRIPT.new(
+				vehicle.get_current_health(),
+				vehicle.global_position,
+				Vector3.ZERO,
+				&"none",
+				self,
+				impact_speed
+			)
+			vehicle.apply_damage(damage_info)
 			armed_thrown_vehicles.remove_at(vehicle_index)
 			continue
 
 		vehicle_state["last_speed"] = vehicle.linear_velocity.length()
 
 
-func _connect_vehicle_destruction_signals() -> void:
-	var vehicle_container: Node = get_node_or_null("../Vehicles")
-	if vehicle_container == null:
-		return
-
-	for child in vehicle_container.get_children():
-		if child is Vehicle:
-			var vehicle: Vehicle = child as Vehicle
-			vehicle.destroyed.connect(_on_vehicle_destroyed.bind(vehicle))
-
-
-func _on_vehicle_destroyed(vehicle: Vehicle) -> void:
-	if not is_instance_valid(vehicle):
-		return
-
-	var impact_speed: float = maxf(
-		maxf(vehicle.destruction_impact_speed, vehicle.linear_velocity.length()),
-		vehicle_explosion_min_impact_speed
-	)
-	var explosion_position := vehicle.global_position
-	_apply_vehicle_explosion_damage(explosion_position, vehicle, impact_speed)
-	_damage_vehicles_in_explosion(explosion_position, vehicle, impact_speed)
-	_spawn_vehicle_explosion(explosion_position, impact_speed)
-	vehicle.queue_free()
-
-
-func _apply_vehicle_explosion_damage(
-	explosion_position: Vector3,
-	vehicle: Vehicle,
-	impact_speed: float
-) -> void:
-	var explosion_shape := SphereShape3D.new()
-	explosion_shape.radius = vehicle_explosion_radius
-	var query := PhysicsShapeQueryParameters3D.new()
-	query.shape = explosion_shape
-	query.transform = Transform3D(Basis.IDENTITY, explosion_position)
-	query.exclude = [get_rid(), vehicle.get_rid()]
-	query.collide_with_areas = false
-	query.collide_with_bodies = true
-	var hit_results: Array[Dictionary] = (
-		get_world_3d().direct_space_state.intersect_shape(query)
-	)
-	var hit_instance_ids: Dictionary = {}
-	for hit in hit_results:
-		var collider: Object = hit.get("collider")
-		if collider == null or not collider.has_method("take_hit"):
-			continue
-		var collider_id := collider.get_instance_id()
-		if hit_instance_ids.has(collider_id):
-			continue
-		hit_instance_ids[collider_id] = true
-
-		var damage_percent := inverse_lerp(
-			vehicle_explosion_min_impact_speed,
-			vehicle_throw_max_speed,
-			impact_speed
-		)
-		var damage := lerpf(
-			vehicle_npc_min_damage,
-			vehicle_npc_max_damage,
-			clampf(damage_percent, 0.0, 1.0)
-		)
-		collider.call(
-			"take_hit",
-			damage,
-			&"knockback",
-			explosion_position,
-			Vector3.ZERO
-		)
-
-
-func _damage_vehicles_in_explosion(
-	explosion_position: Vector3,
-	source_vehicle: Vehicle,
-	impact_speed: float
-) -> void:
-	var explosion_shape := SphereShape3D.new()
-	explosion_shape.radius = vehicle_explosion_radius
-	var query := PhysicsShapeQueryParameters3D.new()
-	query.shape = explosion_shape
-	query.transform = Transform3D(Basis.IDENTITY, explosion_position)
-	query.exclude = [source_vehicle.get_rid()]
-	query.collide_with_areas = false
-	query.collide_with_bodies = true
-	var hit_results: Array[Dictionary] = (
-		get_world_3d().direct_space_state.intersect_shape(query)
-	)
-	var hit_instance_ids: Dictionary = {}
-	for hit in hit_results:
-		var collider: Object = hit.get("collider")
-		if not collider is Vehicle:
-			continue
-		var nearby_vehicle := collider as Vehicle
-		var vehicle_id := nearby_vehicle.get_instance_id()
-		if hit_instance_ids.has(vehicle_id):
-			continue
-		hit_instance_ids[vehicle_id] = true
-		nearby_vehicle.take_damage(vehicle_explosion_vehicle_damage, impact_speed)
-
-
-func _spawn_vehicle_explosion(explosion_position: Vector3, impact_speed: float) -> void:
-	var effect := VEHICLE_EXPLOSION_EFFECT_SCENE.instantiate()
-	effect.call("configure_impact", impact_speed, vehicle_explosion_min_impact_speed)
-	get_tree().current_scene.add_child(effect)
-	effect.global_position = explosion_position
+func _get_explosion_minimum_impact_speed() -> float:
+	return float(explosion_controller.get("minimum_impact_speed"))
 
 
 func _handle_flight(delta: float) -> void:
@@ -911,17 +811,25 @@ func _apply_landing_impact_damage(
 	)
 	for hit in hit_results:
 		var collider: Object = hit.get("collider")
-		if collider is Vehicle:
-			var vehicle: Vehicle = collider as Vehicle
-			vehicle.take_damage(vehicle_damage, impact_speed)
-			continue
-		if collider == null or not collider.has_method("take_hit"):
+		if collider == null or not collider.has_method("apply_damage"):
 			continue
 		var collider_id := collider.get_instance_id()
 		if hit_instance_ids.has(collider_id):
 			continue
 		hit_instance_ids[collider_id] = true
-		collider.call("take_hit", damage, hit_reaction, impact_position)
+		var is_explodable: bool = (
+			collider is Node and (collider as Node).is_in_group(&"explodable")
+		)
+		var damage_amount: float = vehicle_damage if is_explodable else damage
+		var damage_info = DAMAGE_INFO_SCRIPT.new(
+			damage_amount,
+			impact_position,
+			Vector3.ZERO,
+			hit_reaction,
+			self,
+			impact_speed
+		)
+		collider.call("apply_damage", damage_info)
 
 
 func _get_ground_contact() -> Dictionary:

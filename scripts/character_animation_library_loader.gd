@@ -1,6 +1,8 @@
 class_name CharacterAnimationLibraryLoader
 extends RefCounted
 
+static var has_validated_animation_catalogs: bool = false
+
 const UAL1_ANIMATION_LIBRARY: AnimationLibrary = preload("res://assets/animations/UAL1_Standard.glb")
 const UAL2_ANIMATION_LIBRARY: AnimationLibrary = preload("res://assets/animations/UAL2_Standard.glb")
 const FLYING_ANIMATION_LIBRARY: AnimationLibrary = preload("res://assets/animations/Flying.fbx")
@@ -122,7 +124,11 @@ const ANIMATION_CATALOGS := {
 
 
 func _init() -> void:
+	if has_validated_animation_catalogs:
+		return
+
 	_validate_animation_catalogs()
+	has_validated_animation_catalogs = true
 
 
 func load_all_animations(

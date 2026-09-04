@@ -1,6 +1,4 @@
-extends CharacterBody3D
-
-const HEALTH_COMPONENT_SCRIPT = preload("res://scripts/health_component.gd")
+extends "res://scripts/npc_base.gd"
 
 enum State {
 	IDLE,
@@ -15,10 +13,6 @@ enum State {
 @export var walk_speed: float = 2.5
 @export var min_wander_time: float = 2.0
 @export var max_wander_time: float = 5.0
-@export var max_health: float = 100.0
-@export var knockback_speed: float = 8.0
-@export var knockback_deceleration: float = 8.0
-@export var chest_hit_stun_duration: float = 0.75
 @export var flee_speed: float = 5.5
 @export_range(1.0, 180.0, 1.0) var flee_vision_angle_degrees: float = 110.0
 @export var flee_direction_change_cooldown: float = 1.0
@@ -31,30 +25,16 @@ enum State {
 @export var obstacle_collision_mask: int = 1
 
 var current_state: State = State.WANDER
-var is_dead: bool = false
-var health_component
 
 var wander_direction: Vector3 = Vector3.ZERO
 var wander_timer: float = 0.0
-var is_hit_reacting: bool = false
-var knockback_velocity: Vector3 = Vector3.ZERO
-var chest_hit_stun_remaining: float = 0.0
-var is_waiting_for_chest_hit_stun: bool = false
-var knockback_stun_remaining: float = 0.0
-var is_waiting_for_knockback_stun: bool = false
 var flee_target: Node3D
 var flee_direction: Vector3 = Vector3.ZERO
 var flee_direction_change_cooldown_remaining: float = 0.0
 var obstacle_avoidance := CharacterObstacleAvoidance.new()
 
-@onready var animation_controller: CivilianAnimationController = $CivilianAnimationController
-@onready var health_label: Label3D = $HealthLabel
-
-
 func _ready() -> void:
-	health_component = HEALTH_COMPONENT_SCRIPT.new(max_health)
-	health_component.health_changed.connect(_on_health_changed)
-	health_component.depleted.connect(_on_health_depleted)
+	super()
 	add_to_group(&"civilian")
 	obstacle_avoidance.configure(
 		obstacle_look_ahead_distance,
@@ -65,55 +45,9 @@ func _ready() -> void:
 		obstacle_turn_commit_duration,
 		obstacle_collision_mask
 	)
-	_update_health_label()
 
-func _physics_process(delta: float) -> void:
-	# Keep the civilian grounded regardless of their current behavior state.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
 
-	if is_dead:
-		velocity.x = 0.0
-		velocity.z = 0.0
-		move_and_slide()
-		return
-
-	if is_hit_reacting:
-		velocity.x = knockback_velocity.x
-		velocity.z = knockback_velocity.z
-		knockback_velocity = knockback_velocity.move_toward(
-			Vector3.ZERO,
-			knockback_deceleration * delta
-		)
-		move_and_slide()
-		if is_waiting_for_chest_hit_stun:
-			if animation_controller.is_chest_hit_animation_playing():
-				return
-
-			chest_hit_stun_remaining = maxf(chest_hit_stun_remaining - delta, 0.0)
-			if chest_hit_stun_remaining > 0.0:
-				return
-
-			is_waiting_for_chest_hit_stun = false
-			is_hit_reacting = false
-			return
-
-		if is_waiting_for_knockback_stun:
-			if animation_controller.call("is_hit_playing"):
-				return
-
-			knockback_stun_remaining = maxf(knockback_stun_remaining - delta, 0.0)
-			if knockback_stun_remaining > 0.0:
-				return
-
-			is_waiting_for_knockback_stun = false
-			is_hit_reacting = false
-			return
-
-		if not animation_controller.call("is_hit_playing"):
-			is_hit_reacting = false
-		return
-
+func _process_behavior(delta: float) -> void:
 	match current_state:
 		State.IDLE:
 			handle_idle()
@@ -134,19 +68,6 @@ func _physics_process(delta: float) -> void:
 			pass
 
 	_apply_obstacle_avoidance(delta)
-	move_and_slide()
-
-
-func _update_health_label() -> void:
-	health_label.text = str(roundi(health_component.current_health))
-
-
-func _on_health_changed(_current_health: float, _max_health: float) -> void:
-	_update_health_label()
-
-
-func _on_health_depleted(_damage_info) -> void:
-	_die()
 
 
 func _apply_obstacle_avoidance(delta: float) -> void:
@@ -165,59 +86,16 @@ func _apply_obstacle_avoidance(delta: float) -> void:
 	look_at(global_position + steered_direction, Vector3.UP)
 
 
-func apply_damage(damage_info) -> bool:
-	if is_dead or not health_component.apply_damage(damage_info):
-		return false
-	if is_dead:
-		return true
-
+func _on_damage_received(damage_info) -> void:
 	var damage_source: Node3D = damage_info.source as Node3D
 	if is_instance_valid(damage_source):
 		start_flee(damage_source)
 	else:
 		_start_flee_from_impact(damage_info.impact_origin)
 
-	is_hit_reacting = true
-	is_waiting_for_chest_hit_stun = false
-	is_waiting_for_knockback_stun = false
-	knockback_velocity = Vector3.ZERO
-	match damage_info.reaction:
-		&"knockback":
-			is_waiting_for_knockback_stun = true
-			knockback_stun_remaining = chest_hit_stun_duration * 2.0
-			_apply_knockback_from(damage_info.impact_origin, damage_info.impact_direction)
-			animation_controller.call("play_knockback")
-		&"ground_slam":
-			is_waiting_for_knockback_stun = true
-			knockback_stun_remaining = chest_hit_stun_duration * 2.0
-			_apply_knockback_from(damage_info.impact_origin)
-			animation_controller.call("play_ground_slam_knockback")
-		_:
-			is_waiting_for_chest_hit_stun = true
-			chest_hit_stun_remaining = chest_hit_stun_duration
-			animation_controller.call("play_hit")
-	return true
 
-
-func get_current_health() -> float:
-	return health_component.current_health
-
-
-func get_max_health() -> float:
-	return health_component.max_health
-
-
-func _die() -> void:
-	is_dead = true
+func _on_died() -> void:
 	current_state = State.DEAD
-	is_hit_reacting = false
-	is_waiting_for_chest_hit_stun = false
-	is_waiting_for_knockback_stun = false
-	knockback_velocity = Vector3.ZERO
-	velocity.x = 0.0
-	velocity.z = 0.0
-	animation_controller.play_death()
-	_update_health_label()
 
 
 func start_flee(target: Node3D) -> void:
@@ -284,29 +162,6 @@ func _is_flee_target_in_vision_cone() -> bool:
 	var forward := -global_transform.basis.z.normalized()
 	var vision_threshold := cos(deg_to_rad(flee_vision_angle_degrees * 0.5))
 	return forward.dot(direction_to_target.normalized()) >= vision_threshold
-
-
-func _apply_knockback_from(
-	impact_origin: Vector3,
-	impact_direction: Vector3 = Vector3.ZERO
-) -> void:
-	var face_impact_direction := impact_origin - global_position
-	face_impact_direction.y = 0.0
-	if impact_direction.length_squared() > 0.01:
-		# A directed hit (the combo finisher) always throws exactly along the
-		# player's punch direction, so the civilian's back is aligned to it.
-		face_impact_direction = -impact_direction
-		face_impact_direction.y = 0.0
-	elif face_impact_direction.length_squared() < 0.01:
-		face_impact_direction = -global_transform.basis.z
-		face_impact_direction.y = 0.0
-
-	# First face the attacker, then throw the civilian through the direction
-	# their back is facing. This keeps the visual reaction and movement aligned.
-	face_impact_direction = face_impact_direction.normalized()
-	look_at(global_position + face_impact_direction, Vector3.UP)
-	var back_direction := global_transform.basis.z.normalized()
-	knockback_velocity = back_direction * knockback_speed
 
 
 func handle_idle() -> void:

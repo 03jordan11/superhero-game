@@ -27,5 +27,19 @@ func apply_damage(damage_info) -> bool:
 	return true
 
 
+func set_max_health(new_max_health: float, preserve_current_ratio: bool = true) -> void:
+	var previous_max_health := max_health
+	var previous_health_ratio := 1.0
+	if previous_max_health > 0.0:
+		previous_health_ratio = current_health / previous_max_health
+
+	max_health = maxf(new_max_health, 1.0)
+	if preserve_current_ratio:
+		current_health = max_health * clampf(previous_health_ratio, 0.0, 1.0)
+	else:
+		current_health = minf(current_health, max_health)
+	health_changed.emit(current_health, max_health)
+
+
 func is_depleted() -> bool:
 	return current_health <= 0.0

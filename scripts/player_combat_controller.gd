@@ -41,7 +41,12 @@ func request_punch() -> void:
 		is_next_punch_queued = true
 
 
-func update_punch_momentum(body: CharacterBody3D, delta: float, strength: int) -> void:
+func update_punch_momentum(
+	body: CharacterBody3D,
+	delta: float,
+	strength: int,
+	movement_speed_multiplier: float = 1.0
+) -> void:
 	if not is_punch_active:
 		return
 
@@ -63,13 +68,13 @@ func update_punch_momentum(body: CharacterBody3D, delta: float, strength: int) -
 	var push_end_time := punch_forward_delay + punch_forward_duration
 	if punch_time >= punch_forward_delay and punch_time <= push_end_time:
 		var forward := -body.transform.basis.z.normalized()
-		body.velocity.x = forward.x * punch_forward_speed
-		body.velocity.z = forward.z * punch_forward_speed
+		body.velocity.x = forward.x * punch_forward_speed * movement_speed_multiplier
+		body.velocity.z = forward.z * punch_forward_speed * movement_speed_multiplier
 
-	_apply_uppercut_motion(body)
+	_apply_uppercut_motion(body, movement_speed_multiplier)
 
 
-func _apply_uppercut_motion(body: CharacterBody3D) -> void:
+func _apply_uppercut_motion(body: CharacterBody3D, movement_speed_multiplier: float) -> void:
 	if combo_punch_index != UPPERCUT_PUNCH_INDEX:
 		return
 	if punch_time < uppercut_launch_delay:
@@ -83,8 +88,8 @@ func _apply_uppercut_motion(body: CharacterBody3D) -> void:
 		return
 
 	var forward := -body.transform.basis.z.normalized()
-	body.velocity.x = forward.x * uppercut_forward_speed
-	body.velocity.z = forward.z * uppercut_forward_speed
+	body.velocity.x = forward.x * uppercut_forward_speed * movement_speed_multiplier
+	body.velocity.z = forward.z * uppercut_forward_speed * movement_speed_multiplier
 
 
 func _start_punch(punch_index: int, is_combo_continuation: bool = false) -> void:

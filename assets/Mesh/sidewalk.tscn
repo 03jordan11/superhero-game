@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cu67wn4p3w4be"]
+
+[ext_resource type="Texture2D" uid="uid://blwcphxlffk64" path="res://assets/textures/GptConcrete.png" id="1_6qkby"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_bhunq"]
+size = Vector3(3, 0.15, 30)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6qkby"]
+albedo_texture = ExtResource("1_6qkby")
+uv1_scale = Vector3(1, 3, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_riqys"]
+size = Vector3(3, 0.15, 30)
+
+[node name="Node3D" type="StaticBody3D" unique_id=1198390925]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=341987717]
+mesh = SubResource("BoxMesh_bhunq")
+surface_material_override/0 = SubResource("StandardMaterial3D_6qkby")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=59857255]
+shape = SubResource("BoxShape3D_riqys")

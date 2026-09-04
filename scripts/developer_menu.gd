@@ -3,16 +3,17 @@ extends CanvasLayer
 const PERFORMANCE_SAMPLE_WINDOW_SECONDS: float = 1.0
 const PERFORMANCE_REFRESH_INTERVAL_SECONDS: float = 0.25
 const CIVILIAN_SCENE: PackedScene = preload("res://scenes/civilian.tscn")
-const CIVILIAN_SPAWN_START_RADIUS: float = 6.0
-const CIVILIAN_SPAWN_SPACING: float = 2.5
+const HOSTILE_SCENE: PackedScene = preload("res://scenes/hostile.tscn")
+const NPC_SPAWN_START_RADIUS: float = 6.0
+const NPC_SPAWN_SPACING: float = 2.5
 const GOLDEN_ANGLE_RADIANS: float = 2.399963
 
-@onready var flying_check_box: CheckBox = $Panel/MarginContainer/Options/FlyingCheckBox
 @onready var show_landing_check_box: CheckBox = $Panel/MarginContainer/Options/ShowLandingCheckBox
 @onready var show_performance_hud_check_box: CheckBox = (
 	$Panel/MarginContainer/Options/ShowPerformanceHudCheckBox
 )
 @onready var spawn_civilian_button: Button = $Panel/MarginContainer/Options/SpawnCivilianButton
+@onready var spawn_hostile_button: Button = $Panel/MarginContainer/Options/SpawnHostileButton
 @onready var strength_spin_box: SpinBox = (
 	$Panel/MarginContainer/Options/AttributesGrid/StrengthSpinBox
 )
@@ -30,7 +31,7 @@ var previous_mouse_mode: Input.MouseMode = Input.MOUSE_MODE_CAPTURED
 var frame_time_samples: Array[float] = []
 var sampled_frame_time: float = 0.0
 var performance_refresh_elapsed: float = 0.0
-var spawned_civilian_count: int = 0
+var spawned_npc_count: int = 0
 
 
 func _ready() -> void:
@@ -41,10 +42,10 @@ func _ready() -> void:
 
 	visible = false
 	performance_hud.visible = DebugManager.show_performance_hud
-	flying_check_box.toggled.connect(_on_flying_check_box_toggled)
 	show_landing_check_box.toggled.connect(_on_show_landing_check_box_toggled)
 	show_performance_hud_check_box.toggled.connect(_on_show_performance_hud_check_box_toggled)
 	spawn_civilian_button.pressed.connect(_on_spawn_civilian_button_pressed)
+	spawn_hostile_button.pressed.connect(_on_spawn_hostile_button_pressed)
 	strength_spin_box.value_changed.connect(_on_strength_spin_box_value_changed)
 	speed_spin_box.value_changed.connect(_on_speed_spin_box_value_changed)
 	resilience_spin_box.value_changed.connect(_on_resilience_spin_box_value_changed)
@@ -76,16 +77,11 @@ func _set_menu_open(is_open: bool) -> void:
 	if is_open:
 		previous_mouse_mode = Input.mouse_mode
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		flying_check_box.set_pressed_no_signal(DebugManager.flying_enabled)
 		show_landing_check_box.set_pressed_no_signal(DebugManager.show_landing_target)
 		show_performance_hud_check_box.set_pressed_no_signal(DebugManager.show_performance_hud)
 		_refresh_attribute_controls()
 	else:
 		Input.mouse_mode = previous_mouse_mode
-
-
-func _on_flying_check_box_toggled(is_enabled: bool) -> void:
-	DebugManager.flying_enabled = is_enabled
 
 
 func _on_show_landing_check_box_toggled(is_enabled: bool) -> void:
@@ -101,15 +97,23 @@ func _on_show_performance_hud_check_box_toggled(is_enabled: bool) -> void:
 
 
 func _on_spawn_civilian_button_pressed() -> void:
-	var civilian: CharacterBody3D = CIVILIAN_SCENE.instantiate() as CharacterBody3D
-	if civilian == null:
-		push_error("Failed to instantiate the civilian scene.")
+	_spawn_npc(CIVILIAN_SCENE, &"DevCivilian")
+
+
+func _on_spawn_hostile_button_pressed() -> void:
+	_spawn_npc(HOSTILE_SCENE, &"DevHostile")
+
+
+func _spawn_npc(npc_scene: PackedScene, npc_name: StringName) -> void:
+	var npc: CharacterBody3D = npc_scene.instantiate() as CharacterBody3D
+	if npc == null:
+		push_error("Failed to instantiate the %s scene." % npc_name)
 		return
 
-	var spawn_angle: float = spawned_civilian_count * GOLDEN_ANGLE_RADIANS
+	var spawn_angle: float = spawned_npc_count * GOLDEN_ANGLE_RADIANS
 	var spawn_radius: float = (
-		CIVILIAN_SPAWN_START_RADIUS
-		+ sqrt(float(spawned_civilian_count)) * CIVILIAN_SPAWN_SPACING
+		NPC_SPAWN_START_RADIUS
+		+ sqrt(float(spawned_npc_count)) * NPC_SPAWN_SPACING
 	)
 	var spawn_position: Vector3 = player.global_position + Vector3(
 		cos(spawn_angle) * spawn_radius,
@@ -118,10 +122,10 @@ func _on_spawn_civilian_button_pressed() -> void:
 	)
 	spawn_position = _get_grounded_spawn_position(spawn_position)
 
-	civilian.name = "DevCivilian"
-	get_parent().add_child(civilian, true)
-	civilian.global_position = spawn_position
-	spawned_civilian_count += 1
+	npc.name = npc_name
+	get_parent().add_child(npc, true)
+	npc.global_position = spawn_position
+	spawned_npc_count += 1
 
 
 func _refresh_attribute_controls() -> void:

@@ -7,6 +7,10 @@ const PLAYER_FIGHT_STATE_ANIMATION_SOURCES := {
 	"Punch_03": "Punch_03",
 }
 
+const PLAYER_KNOCKDOWN_ANIMATION_SOURCES := {
+	"Knocked_Down": "Hit_Knockback",
+}
+
 const PLAYER_STATE_ANIMATION_SOURCES := {
 	"Idle": "Idle",
 	"Run": "Jog_Fwd",
@@ -16,9 +20,13 @@ const PLAYER_STATE_ANIMATION_SOURCES := {
 	"Jump_Fall": "Jump",
 	"Landing": "Jump_Land",
 	"Flight_Hover": "Swim_Idle",
+	"Hit_Chest": "Hit_Chest",
+	"Hit_Head": "Hit_Head",
+	"Death": "Death01",
 }
 
 const FLIGHT_ANIMATIONS := ["Flying", "Flight_Hover"]
+const HIT_REACTION_ANIMATIONS := ["Hit_Chest", "Hit_Head"]
 
 const MIXAMO_TO_SUPERHERO_BONES := {
 	"mixamorig1_Hips": "Hips",
@@ -95,6 +103,9 @@ var animation_library_loader := CharacterAnimationLibraryLoader.new()
 var was_on_floor: bool = false
 var is_playing_landing_animation: bool = false
 var is_fighting: bool = false
+var is_hit_reacting: bool = false
+var is_knocked_down: bool = false
+var is_playing_death: bool = false
 
 
 func setup(target_animation_player: AnimationPlayer, initially_on_floor: bool) -> void:
@@ -105,6 +116,8 @@ func setup(target_animation_player: AnimationPlayer, initially_on_floor: bool) -
 
 func update_animation(
 	is_flying: bool,
+	is_knocked_out: bool,
+	is_dead: bool,
 	velocity: Vector3,
 	is_charging_jump: bool,
 	is_on_floor: bool,
@@ -113,7 +126,24 @@ func update_animation(
 ) -> void:
 	if animation_player == null or not animation_player.has_animation("Idle"):
 		return
-		
+
+	if is_dead:
+		if not is_playing_death:
+			play_death()
+		return
+
+	if is_knocked_out:
+		if not is_knocked_down:
+			play_knockdown()
+		return
+	if is_knocked_down:
+		is_knocked_down = false
+
+	if is_hit_reacting:
+		if animation_player.is_playing():
+			return
+		is_hit_reacting = false
+
 	if is_fighting:
 		if animation_player.is_playing():
 			return
@@ -151,6 +181,46 @@ func update_animation(
 			_play_animation("Idle")
 
 	was_on_floor = is_on_floor
+
+
+func play_hit_reaction() -> bool:
+	if animation_player == null or is_fighting:
+		return false
+
+	var animation_name: String = HIT_REACTION_ANIMATIONS.pick_random()
+	if not animation_player.has_animation(animation_name):
+		return false
+
+	is_hit_reacting = true
+	animation_player.play(animation_name, animation_blend_time)
+	animation_player.seek(0.0, true)
+	return true
+
+
+func play_knockdown() -> bool:
+	if animation_player == null or not animation_player.has_animation("Knocked_Down"):
+		return false
+
+	is_fighting = false
+	is_hit_reacting = false
+	is_knocked_down = true
+	animation_player.play("Knocked_Down", animation_blend_time)
+	animation_player.seek(0.0, true)
+	return true
+
+
+func play_death() -> bool:
+	if animation_player == null or not animation_player.has_animation("Death"):
+		return false
+
+	is_fighting = false
+	is_hit_reacting = false
+	is_knocked_down = false
+	is_playing_death = true
+	animation_player.play("Death", animation_blend_time)
+	animation_player.seek(0.0, true)
+	return true
+
 
 func play_fighting_animation(animation_name: String) -> bool:
 	if is_fighting:
@@ -200,6 +270,11 @@ func _setup_animation_library() -> void:
 		animation_library,
 		CharacterAnimationLibraryLoader.FIGHTING_GROUP,
 		PLAYER_FIGHT_STATE_ANIMATION_SOURCES,
+	)
+	animation_library_loader.add_animations(
+		animation_library,
+		CharacterAnimationLibraryLoader.UAL2_GROUP,
+		PLAYER_KNOCKDOWN_ANIMATION_SOURCES,
 	)
 	_add_flying_animation(animation_library)
 	animation_player.add_animation_library("", animation_library)

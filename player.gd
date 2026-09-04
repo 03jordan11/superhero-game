@@ -1,9 +1,8 @@
-extends CharacterBody3D
+extends PlayerCharacter
 
 const HARD_LANDING_EFFECT_SCENE: PackedScene = preload("res://effects/hard_landing_effect.tscn")
 const DAMAGE_INFO_SCRIPT = preload("res://scripts/damage_info.gd")
 const HEALTH_COMPONENT_SCRIPT = preload("res://scripts/health_component.gd")
-const MIN_ATTRIBUTE_VALUE: int = 1
 
 signal health_depleted(damage_info)
 
@@ -65,18 +64,26 @@ var was_on_floor_for_camera_effects: bool = false
 @export var wall_jump_push: float = 12.0
 
 @export_category("Attributes")
+@export var stats: PlayerStats = PlayerStats.new()
 @export var strength: int = 1:
+	get:
+		return stats.strength
 	set(value):
-		strength = maxi(value, MIN_ATTRIBUTE_VALUE)
+		stats.strength = value
 @export var speed: int = 1:
+	get:
+		return stats.speed
 	set(value):
-		speed = maxi(value, MIN_ATTRIBUTE_VALUE)
+		stats.speed = value
 @export var resilience: int = 1:
+	get:
+		return stats.resilience
 	set(value):
-		resilience = maxi(value, MIN_ATTRIBUTE_VALUE)
-		if health_component != null:
-			health_component.set_max_health(_calculate_max_health())
+		stats.resilience = value
 @export var health_per_resilience: float = 100.0
+
+@export_category("Abilities")
+@export var abilities: PlayerAbilities = PlayerAbilities.new()
 
 @export_category("Damage Reaction")
 @export var hit_slowdown_duration: float = 0.5
@@ -120,6 +127,9 @@ var knockout_stun_remaining: float = 0.0
 @onready var player_hud: PlayerHud = $ChargeUI
 @onready var superhero_character: Node3D = $SuperheroCharacter
 @onready var character_animation_player: AnimationPlayer = $SuperheroCharacter/CharacterAnimationPlayer
+@onready var state_machine: PlayerStateMachine = $PlayerStateMachine
+@onready var grounded_state: PlayerGroundedState = $PlayerStateMachine/GroundedState
+@onready var movement_motor: PlayerMovementMotor = $PlayerMovementMotor
 @onready var animation_controller: PlayerAnimationController = $PlayerAnimationController
 @onready var combat_controller: PlayerCombatController = $PlayerCombatController
 @onready var landing_target: Node = $LandingTarget
@@ -139,6 +149,9 @@ var health_component
 
 func _ready() -> void:
 	add_to_group(&"player")
+	if not state_machine.initialize(self, grounded_state):
+		push_error("Player state machine failed to initialize.")
+	stats.stat_changed.connect(_on_stat_changed)
 	health_component = HEALTH_COMPONENT_SCRIPT.new(_calculate_max_health())
 	health_component.health_changed.connect(_on_health_changed)
 	health_component.depleted.connect(_on_health_depleted)
@@ -179,8 +192,12 @@ func get_max_health() -> float:
 	return health_component.max_health
 
 
+func get_stats() -> PlayerStats:
+	return stats
+
+
 func _calculate_max_health() -> float:
-	return maxf(health_per_resilience, 1.0) * float(resilience)
+	return stats.get_max_health(health_per_resilience)
 
 
 func _update_health_hud() -> void:
@@ -194,12 +211,24 @@ func _on_health_changed(_current_health: float, _max_health: float) -> void:
 	_update_health_hud()
 
 
+func _on_stat_changed(stat_id: StringName, _value: int) -> void:
+	if stat_id == PlayerStats.RESILIENCE and health_component != null:
+		health_component.set_max_health(_calculate_max_health())
+
+
 func _on_health_depleted(damage_info) -> void:
 	_die()
 	health_depleted.emit(damage_info)
 
 
 func _die() -> void:
+	if is_dead:
+		return
+	if not state_machine.transition_to(&"DeadState"):
+		push_error("Player could not enter DeadState.")
+
+
+func _enter_dead_state() -> void:
 	if is_dead:
 		return
 
@@ -242,27 +271,35 @@ func _get_movement_speed_multiplier() -> float:
 
 
 func _get_flight_hit_knockdown_chance() -> float:
-	var immunity_resilience := maxi(knockdown_immunity_resilience, 2)
-	var resilience_weight := inverse_lerp(
-		1.0,
-		float(immunity_resilience),
-		float(resilience)
-	)
-	return lerpf(
-		clampf(resilience_one_knockdown_chance, 0.0, 1.0),
-		0.0,
-		clampf(resilience_weight, 0.0, 1.0)
+	return stats.get_flight_knockdown_chance(
+		resilience_one_knockdown_chance,
+		knockdown_immunity_resilience
 	)
 
 
 func _start_damage_flight_knockout() -> void:
+	if not state_machine.transition_to(&"KnockedDownState", {"cause": &"damage"}):
+		push_error("Player could not enter KnockedDownState from damage.")
+
+
+func _enter_knocked_down_state(context: Dictionary) -> void:
 	is_flying = false
 	is_ground_slamming = false
 	is_knocked_out = true
 	has_knockout_landed = false
 	knockout_stun_remaining = 0.0
 	current_flight_speed = 0.0
-	velocity.y = minf(velocity.y, 0.0)
+
+	if context.get("cause") == &"flight_collision":
+		var collision_normal: Vector3 = context.get("collision_normal", Vector3.ZERO)
+		var collision_position: Vector3 = context.get("collision_position", global_position)
+		var impact_speed: float = context.get("impact_speed", 0.0)
+		velocity = collision_normal * flight_knockout_rebound_speed
+		velocity.y += flight_knockout_rebound_upward_speed
+		camera_effects.call("trigger_knockout")
+		_spawn_hard_landing_effect(impact_speed, collision_position, collision_normal)
+	else:
+		velocity.y = minf(velocity.y, 0.0)
 	animation_controller.play_knockdown()
 
 
@@ -298,43 +335,32 @@ func _input(event: InputEvent) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	var input_snapshot := PlayerInputSnapshot.capture()
+	state_machine.handle_input(input_snapshot)
+
 	_update_hit_slowdown(delta)
 	_check_thrown_vehicle_impacts()
 
 	if not is_dead:
-		if held_vehicle == null and Input.is_action_just_pressed("pick_up_vehicle"):
+		if held_vehicle == null and input_snapshot.vehicle_interact_just_pressed:
 			_try_pick_up_vehicle()
 		elif held_vehicle != null:
-			_handle_vehicle_throw(delta)
+			_handle_vehicle_throw(delta, input_snapshot)
 
-	if Input.is_action_just_pressed("toggle_flight") and not is_ground_slamming and not is_knocked_out:
-		is_flying = not is_flying
-		if is_flying:
-			# Start flight from a neutral vertical state instead of carrying a fall.
-			velocity.y = 0.0
-			current_flight_speed = _get_walk_speed()
-			jump_charge = 0.0
-			jump_hold_time = 0.0
-			is_charging_jump = false
-			is_jump_active = false
-			max_downward_speed = 0.0
-			was_airborne = false
-		else:
-			current_ground_speed = _get_walk_speed()
+	if input_snapshot.toggle_flight_just_pressed:
+		_toggle_flight_state()
 
-	if is_dead:
-		_handle_death(delta)
-	elif is_ground_slamming:
-		_handle_ground_slam()
-	elif is_knocked_out:
-		_handle_knockout(delta)
-	elif is_flying:
-		_handle_flight(delta)
-	else:
+	var active_state := state_machine.active_state
+	if (
+		active_state is PlayerGroundedState
+		or active_state is PlayerJumpChargingState
+		or active_state is PlayerAirborneState
+		or active_state is PlayerWallRunState
+	):
 		# Flight rotates only the visible character. Restore its normal orientation
-		# before using the existing grounded movement and camera-facing behavior.
+		# before using ordinary locomotion behavior.
 		superhero_character.rotation = superhero_character_default_rotation
-		_handle_normal_movement(delta)
+	state_machine.physics_update(delta, input_snapshot)
 		
 	if not is_dead:
 		combat_controller.update_punch_momentum(
@@ -356,6 +382,7 @@ func _physics_process(delta: float) -> void:
 
 	# Actually move the character with the same collision system in both modes.
 	move_and_slide()
+	_sync_grounded_airborne_state(is_on_floor())
 	if is_ground_slamming and (
 		is_on_floor()
 		or get_slide_collision_count() > 0
@@ -378,8 +405,10 @@ func _physics_process(delta: float) -> void:
 			wall_run_has_left_ground = true
 		elif wall_run_has_left_ground:
 			_finish_wall_run()
-	elif _can_start_wall_run():
-		_start_wall_run(_get_wall_collision_normal())
+	else:
+		var wall_collision_normal := _get_wall_collision_normal()
+		if _can_start_wall_run(wall_collision_normal, input_snapshot):
+			_start_wall_run(wall_collision_normal, input_snapshot)
 	if is_knocked_out and not is_dead and is_on_floor():
 		_begin_knockout_stun()
 	_update_flight_speed_ui()
@@ -390,9 +419,21 @@ func _physics_process(delta: float) -> void:
 		velocity,
 		is_charging_jump,
 		is_on_floor(),
-		Input.is_action_pressed("sprint"),
-		Input.is_action_pressed("move_forward")
+		input_snapshot.sprint_pressed,
+		input_snapshot.move_forward_pressed
 	)
+
+
+func _sync_grounded_airborne_state(is_grounded: bool) -> void:
+	if not (
+		state_machine.active_state is PlayerGroundedState
+		or state_machine.active_state is PlayerAirborneState
+	):
+		return
+
+	var destination := &"GroundedState" if is_grounded else &"AirborneState"
+	if state_machine.get_active_state_id() != destination:
+		state_machine.transition_to(destination)
 
 
 func _try_pick_up_vehicle() -> void:
@@ -426,19 +467,22 @@ func _try_pick_up_vehicle() -> void:
 	held_vehicle = vehicle
 
 
-func _handle_vehicle_throw(delta: float) -> void:
-	if Input.is_action_just_pressed("pick_up_vehicle"):
+func _handle_vehicle_throw(
+	delta: float,
+	input_snapshot: PlayerInputSnapshot
+) -> void:
+	if input_snapshot.vehicle_interact_just_pressed:
 		is_charging_vehicle_throw = true
 		vehicle_throw_hold_time = 0.0
 
-	if is_charging_vehicle_throw and Input.is_action_pressed("pick_up_vehicle"):
+	if is_charging_vehicle_throw and input_snapshot.vehicle_interact_pressed:
 		var max_charge_time := maxf(vehicle_throw_charge_time, 0.001)
 		vehicle_throw_hold_time = minf(
 			vehicle_throw_hold_time + delta,
 			max_charge_time
 		)
 
-	if is_charging_vehicle_throw and Input.is_action_just_released("pick_up_vehicle"):
+	if is_charging_vehicle_throw and input_snapshot.vehicle_interact_just_released:
 		if vehicle_throw_hold_time >= vehicle_throw_min_hold_time:
 			_throw_held_vehicle()
 		else:
@@ -527,55 +571,86 @@ func _get_explosion_minimum_impact_speed() -> float:
 	return float(explosion_controller.get("minimum_impact_speed"))
 
 
-func _handle_flight(delta: float) -> void:
-	var input := Input.get_vector(
-		"move_left",
-		"move_right",
-		"move_forward",
-		"move_backward"
-	)
-	var camera_right := camera.global_transform.basis.x
-	var camera_forward := -camera.global_transform.basis.z
-	var direction := camera_right * input.x - camera_forward * input.y
+func _toggle_flight_state() -> void:
+	if is_ground_slamming or is_knocked_out or is_dead:
+		return
 
+	if is_flying:
+		var destination := &"GroundedState" if is_on_floor() else &"AirborneState"
+		state_machine.transition_to(destination)
+	else:
+		state_machine.transition_to(&"FlyingState")
+
+
+func _can_enter_flying_state() -> bool:
+	return (
+		abilities != null
+		and abilities.is_unlocked(PlayerAbilities.FLIGHT)
+		and not is_ground_slamming
+		and not is_knocked_out
+		and not is_dead
+	)
+
+
+func _enter_flying_state() -> void:
+	is_flying = true
+	# Start flight from a neutral vertical state instead of carrying a fall.
+	velocity.y = 0.0
+	current_flight_speed = _get_walk_speed()
+	jump_charge = 0.0
+	jump_hold_time = 0.0
+	is_charging_jump = false
+	is_jump_active = false
+	max_downward_speed = 0.0
+	was_airborne = false
+
+
+func _exit_flying_state() -> void:
+	is_flying = false
+	current_ground_speed = _get_walk_speed()
+
+
+func _handle_flight(
+	delta: float,
+	input_snapshot: PlayerInputSnapshot
+) -> void:
 	var vertical_input := 0.0
-	if Input.is_action_pressed("jump"):
+	if input_snapshot.jump_pressed:
 		vertical_input += 1.0
-	if Input.is_key_pressed(KEY_CTRL):
+	if input_snapshot.descend_pressed:
 		vertical_input -= 1.0
 
-	var flight_direction := direction + Vector3.UP * vertical_input
+	var flight_direction := movement_motor.get_flight_direction(
+		input_snapshot.movement,
+		vertical_input,
+		camera.global_transform.basis
+	)
 	var has_flight_input := flight_direction.length_squared() > 0.0
 	var speed_multiplier := _get_movement_speed_multiplier()
 	var attribute_speed_multiplier := _get_speed_attribute_multiplier()
 	var current_base_flight_speed := _get_walk_speed() * speed_multiplier
 	var current_max_flight_speed := _get_run_speed() * speed_multiplier
-	if has_flight_input:
-		flight_direction = flight_direction.normalized()
 
 	if has_flight_input:
-		if Input.is_action_pressed("sprint"):
-			current_flight_speed = move_toward(
-				current_flight_speed,
-				current_max_flight_speed,
-				flight_acceleration * attribute_speed_multiplier * delta
-			)
-		else:
-			current_flight_speed = maxf(
-				current_base_flight_speed,
-				move_toward(
-					current_flight_speed,
-					current_base_flight_speed,
-					flight_deceleration * attribute_speed_multiplier * delta
-				)
-			)
+		current_flight_speed = movement_motor.approach_flight_speed(
+			current_flight_speed,
+			current_base_flight_speed,
+			current_max_flight_speed,
+			input_snapshot.sprint_pressed,
+			flight_acceleration,
+			flight_deceleration,
+			attribute_speed_multiplier,
+			delta
+		)
 		velocity = flight_direction * current_flight_speed
 	else:
 		# Releasing all flight controls preserves momentum, then slows the
 		# character into a true hover instead of stopping instantly.
-		velocity = velocity.move_toward(
-			Vector3.ZERO,
-			flight_stop_deceleration * attribute_speed_multiplier * delta
+		velocity = movement_motor.approach_hover_velocity(
+			velocity,
+			flight_stop_deceleration,
+			attribute_speed_multiplier,
+			delta
 		)
 		if velocity.length() <= flight_hover_speed_threshold:
 			velocity = Vector3.ZERO
@@ -598,30 +673,58 @@ func _try_start_ground_slam() -> void:
 		return
 	if height_above_target < ground_slam_minimum_height:
 		return
+	if not state_machine.transition_to(
+		&"GroundSlamState",
+		{"target_position": target_position}
+	):
+		return
 
-	is_flying = false
+
+func _can_enter_ground_slam_state(context: Dictionary) -> bool:
+	if (
+		abilities == null
+		or not abilities.is_unlocked(PlayerAbilities.GROUND_SLAM)
+		or is_ground_slamming
+		or is_knocked_out
+		or is_dead
+		or (not is_flying and not is_jump_active)
+		or not context.has("target_position")
+	):
+		return false
+
+	var target_position: Vector3 = context["target_position"]
+	return global_position.y - target_position.y >= ground_slam_minimum_height
+
+
+func _enter_ground_slam_state(context: Dictionary) -> void:
 	is_jump_active = false
 	is_ground_slamming = true
-	ground_slam_target = target_position
+	ground_slam_target = context["target_position"]
 	current_flight_speed = 0.0
 	jump_charge = 0.0
 	jump_hold_time = 0.0
 	is_charging_jump = false
 
 
+func _exit_ground_slam_state() -> void:
+	is_ground_slamming = false
+
+
 func _handle_ground_slam() -> void:
-	var slam_direction := global_position.direction_to(ground_slam_target)
-	velocity = (
-		slam_direction
-		* ground_slam_speed
-		* _get_speed_attribute_multiplier()
+	velocity = movement_motor.get_ground_slam_velocity(
+		global_position,
+		ground_slam_target,
+		ground_slam_speed,
+		_get_speed_attribute_multiplier()
 	)
 
 
 func _finish_ground_slam() -> void:
-	is_ground_slamming = false
 	ground_slam_impact_pending = true
 	velocity = Vector3.ZERO
+	var destination := &"GroundedState" if is_on_floor() else &"AirborneState"
+	if not state_machine.transition_to(destination):
+		push_error("Player could not leave GroundSlamState.")
 
 
 func _start_flight_knockout(
@@ -629,16 +732,14 @@ func _start_flight_knockout(
 	collision_position: Vector3,
 	impact_speed: float
 ) -> void:
-	is_flying = false
-	is_ground_slamming = false
-	is_knocked_out = true
-	has_knockout_landed = false
-	knockout_stun_remaining = 0.0
-	current_flight_speed = 0.0
-	velocity = collision_normal * flight_knockout_rebound_speed
-	velocity.y += flight_knockout_rebound_upward_speed
-	camera_effects.call("trigger_knockout")
-	_spawn_hard_landing_effect(impact_speed, collision_position, collision_normal)
+	var context := {
+		"cause": &"flight_collision",
+		"collision_normal": collision_normal,
+		"collision_position": collision_position,
+		"impact_speed": impact_speed,
+	}
+	if not state_machine.transition_to(&"KnockedDownState", context):
+		push_error("Player could not enter KnockedDownState from a flight collision.")
 
 
 func _handle_knockout(delta: float) -> void:
@@ -660,7 +761,7 @@ func _handle_knockout(delta: float) -> void:
 		0.0,
 		flight_knockout_rebound_deceleration * delta
 	)
-	velocity.y -= gravity * delta
+	velocity = movement_motor.apply_gravity(velocity, gravity, delta)
 
 
 func _handle_death(delta: float) -> void:
@@ -675,7 +776,7 @@ func _handle_death(delta: float) -> void:
 		flight_knockout_rebound_deceleration * delta
 	)
 	if not is_on_floor():
-		velocity.y -= gravity * delta
+		velocity = movement_motor.apply_gravity(velocity, gravity, delta)
 	else:
 		velocity = Vector3.ZERO
 
@@ -691,6 +792,11 @@ func _begin_knockout_stun() -> void:
 
 
 func _finish_knockout() -> void:
+	if not state_machine.transition_to(&"GroundedState"):
+		push_error("Player could not leave KnockedDownState.")
+
+
+func _exit_knocked_down_state() -> void:
 	is_knocked_out = false
 	has_knockout_landed = false
 	knockout_stun_remaining = 0.0
@@ -724,142 +830,173 @@ func _update_flight_visual_rotation(delta: float) -> void:
 	superhero_character.global_transform = character_transform
 
 
-func _handle_normal_movement(delta: float) -> void:
-	if is_wall_running:
-		_handle_wall_run(delta)
-		return
-
-	var is_grounded := is_on_floor()
-
-	# Gravity
-	if not is_grounded:
+func _update_normal_vertical_movement(delta: float) -> void:
+	if not is_on_floor():
 		was_airborne = true
-		velocity.y -= gravity * delta
+		velocity = movement_motor.apply_gravity(velocity, gravity, delta)
 		max_downward_speed = max(max_downward_speed, -velocity.y)
 	elif was_airborne:
 		_handle_landing()
-		
+
+
+func _stop_horizontal_movement_if_fighting() -> bool:
 	if animation_controller.is_fighting:
 		velocity.x = 0.0
 		velocity.z = 0.0
-		return
+		return true
+	return false
 
-	# Charge power jump
+
+func _update_normal_jump_input(
+	delta: float,
+	input_snapshot: PlayerInputSnapshot
+) -> void:
 	if is_on_floor():
-		if Input.is_action_pressed("jump"):
+		if input_snapshot.jump_pressed:
 			jump_hold_time += delta
-			if jump_hold_time >= power_jump_charge_threshold:
-				is_charging_jump = true
+			if is_charging_jump:
 				jump_charge += delta
 				jump_charge = min(jump_charge, max_jump_charge_time)
-
-		if Input.is_action_just_released("jump"):
-			if is_charging_jump:
-				var charge_percent := jump_charge / max_jump_charge_time
-
-				# Vertical launch
-				velocity.y = lerp(
-					min_jump_velocity,
-					max_jump_velocity,
-					charge_percent
+			elif jump_hold_time >= power_jump_charge_threshold:
+				state_machine.transition_to(
+					&"JumpChargingState",
+					{"initial_charge_delta": delta}
 				)
 
-				# Forward launch
-				var forward := -transform.basis.z.normalized()
-				var forward_boost := (
-					max_forward_jump_boost
-					* charge_percent
-					* _get_movement_speed_multiplier()
-				)
-
-				velocity.x += forward.x * forward_boost
-				velocity.z += forward.z * forward_boost
-			else:
-				# A quick tap performs a regular jump without interrupting movement.
-				velocity.y = min_jump_velocity
-
-			is_jump_active = true
-
-			jump_hold_time = 0.0
-			jump_charge = 0.0
-			is_charging_jump = false
+		if input_snapshot.jump_just_released:
+			_release_jump()
 	else:
-		if Input.is_action_just_released("jump"):
-			jump_hold_time = 0.0
-			jump_charge = 0.0
-			is_charging_jump = false
+		if input_snapshot.jump_just_released:
+			_reset_jump_charge()
 
-	# WASD input
-	var input := Input.get_vector(
-		"move_left",
-		"move_right",
-		"move_forward",
-		"move_backward"
+
+func _apply_normal_horizontal_movement(
+	delta: float,
+	input_snapshot: PlayerInputSnapshot
+) -> void:
+	var direction := movement_motor.get_horizontal_direction(
+		input_snapshot.movement,
+		transform.basis
 	)
 
-	var direction := (
-		transform.basis * Vector3(input.x, 0.0, input.y)
-	).normalized()
-
-	# Walk / sprint
 	var walk_speed := _get_walk_speed()
 	var run_speed := _get_run_speed()
-	current_ground_speed = maxf(current_ground_speed, walk_speed)
-	var is_sprinting := Input.is_action_pressed("sprint") and direction.length_squared() > 0.0
-	var target_ground_speed := run_speed if is_sprinting else walk_speed
-	var ground_speed_change_rate := (
-		sprint_acceleration if is_sprinting else sprint_deceleration
-	)
-	current_ground_speed = move_toward(
+	var is_sprinting := input_snapshot.sprint_pressed and direction.length_squared() > 0.0
+	current_ground_speed = movement_motor.approach_ground_speed(
 		current_ground_speed,
-		target_ground_speed,
-		ground_speed_change_rate * _get_speed_attribute_multiplier() * delta
+		walk_speed,
+		run_speed,
+		is_sprinting,
+		sprint_acceleration,
+		sprint_deceleration,
+		_get_speed_attribute_multiplier(),
+		delta
 	)
 	var target_speed := current_ground_speed
 	target_speed *= _get_movement_speed_multiplier()
 
-	# Horizontal movement
 	if is_charging_jump:
 		# Stay planted while building power for a jump.
 		velocity.x = 0.0
 		velocity.z = 0.0
 	else:
-		var horizontal_acceleration := acceleration * _get_speed_attribute_multiplier()
-		if not is_on_floor():
-			horizontal_acceleration *= air_control_strength
-
-		if direction:
-			velocity.x = move_toward(
-				velocity.x,
-				direction.x * target_speed,
-				horizontal_acceleration * delta
-			)
-			velocity.z = move_toward(
-				velocity.z,
-				direction.z * target_speed,
-				horizontal_acceleration * delta
-			)
-		else:
-			velocity.x = move_toward(
-				velocity.x,
-				0.0,
-				horizontal_acceleration * delta
-			)
-			velocity.z = move_toward(
-				velocity.z,
-				0.0,
-				horizontal_acceleration * delta
-			)
+		var horizontal_acceleration := movement_motor.get_horizontal_acceleration(
+			acceleration,
+			_get_speed_attribute_multiplier(),
+			air_control_strength,
+			is_on_floor()
+		)
+		velocity = movement_motor.approach_horizontal_velocity(
+			velocity,
+			direction,
+			target_speed,
+			horizontal_acceleration,
+			delta
+		)
 
 
-func _can_start_wall_run() -> bool:
-	if is_flying or is_ground_slamming or is_knocked_out:
+func _can_enter_jump_charging_state() -> bool:
+	return (
+		abilities != null
+		and abilities.is_unlocked(PlayerAbilities.POWER_JUMP)
+		and not animation_controller.is_fighting
+		and not is_flying
+		and not is_ground_slamming
+		and not is_wall_running
+		and not is_knocked_out
+		and not is_dead
+	)
+
+
+func _enter_jump_charging_state(context: Dictionary) -> void:
+	is_charging_jump = true
+	jump_charge = minf(
+		jump_charge + float(context.get("initial_charge_delta", 0.0)),
+		max_jump_charge_time
+	)
+
+
+func _release_jump() -> void:
+	var was_charging := is_charging_jump
+	if was_charging:
+		var charge_percent := jump_charge / max_jump_charge_time
+		velocity = movement_motor.get_charged_jump_velocity(
+			velocity,
+			-transform.basis.z,
+			charge_percent,
+			min_jump_velocity,
+			max_jump_velocity,
+			max_forward_jump_boost,
+			_get_movement_speed_multiplier()
+		)
+	else:
+		# A quick tap performs a regular jump without interrupting movement.
+		velocity = movement_motor.get_quick_jump_velocity(
+			velocity,
+			min_jump_velocity
+		)
+
+	is_jump_active = true
+	_reset_jump_charge()
+	if was_charging and not state_machine.transition_to(&"AirborneState"):
+		push_error("Player could not leave JumpChargingState.")
+
+
+func _reset_jump_charge() -> void:
+	jump_hold_time = 0.0
+	jump_charge = 0.0
+	is_charging_jump = false
+
+
+func _can_start_wall_run(
+	collision_normal: Vector3,
+	input_snapshot: PlayerInputSnapshot
+) -> bool:
+	return _can_enter_wall_run_state({
+		"collision_normal": collision_normal,
+		"input_snapshot": input_snapshot,
+	})
+
+
+func _can_enter_wall_run_state(context: Dictionary) -> bool:
+	var input_snapshot := context.get("input_snapshot") as PlayerInputSnapshot
+	if (
+		abilities == null
+		or not abilities.is_unlocked(PlayerAbilities.WALL_RUN)
+		or is_flying
+		or is_ground_slamming
+		or is_knocked_out
+		or is_dead
+		or is_wall_running
+		or input_snapshot == null
+		or not input_snapshot.sprint_pressed
+		or input_snapshot.movement.length_squared() == 0.0
+		or not context.has("collision_normal")
+	):
 		return false
-	if not Input.is_action_pressed("sprint"):
-		return false
-	if Input.get_vector("move_left", "move_right", "move_forward", "move_backward").length_squared() == 0.0:
-		return false
-	return _get_wall_collision_normal() != Vector3.ZERO
+
+	var collision_normal: Vector3 = context["collision_normal"]
+	return collision_normal != Vector3.ZERO and abs(collision_normal.y) < 0.7
 
 
 func _get_wall_collision_normal() -> Vector3:
@@ -871,26 +1008,37 @@ func _get_wall_collision_normal() -> Vector3:
 	return Vector3.ZERO
 
 
-func _start_wall_run(collision_normal: Vector3) -> void:
-	is_wall_running = true
-	wall_run_normal = collision_normal
-	wall_run_has_left_ground = false
-	velocity = _get_wall_run_velocity()
-
-
-func _handle_wall_run(delta: float) -> void:
-	var movement_input := Input.get_vector(
-		"move_left",
-		"move_right",
-		"move_forward",
-		"move_backward"
-	)
-	if movement_input.length_squared() == 0.0:
-		_finish_wall_run()
-		velocity.y -= gravity * delta
+func _start_wall_run(
+	collision_normal: Vector3,
+	input_snapshot: PlayerInputSnapshot
+) -> void:
+	if not state_machine.transition_to(
+		&"WallRunState",
+		{
+			"collision_normal": collision_normal,
+			"input_snapshot": input_snapshot,
+		}
+	):
 		return
 
-	if Input.is_action_just_pressed("jump"):
+
+func _enter_wall_run_state(context: Dictionary) -> void:
+	is_wall_running = true
+	wall_run_normal = context["collision_normal"]
+	wall_run_has_left_ground = false
+	velocity = _get_wall_run_velocity(context["input_snapshot"])
+
+
+func _handle_wall_run(
+	delta: float,
+	input_snapshot: PlayerInputSnapshot
+) -> void:
+	if input_snapshot.movement.length_squared() == 0.0:
+		_finish_wall_run()
+		velocity = movement_motor.apply_gravity(velocity, gravity, delta)
+		return
+
+	if input_snapshot.jump_just_pressed:
 		velocity = wall_run_normal * wall_jump_push + Vector3.UP * wall_jump_velocity
 		is_jump_active = true
 		_finish_wall_run()
@@ -902,58 +1050,61 @@ func _handle_wall_run(delta: float) -> void:
 		or current_wall_normal.dot(wall_run_normal) < wall_run_corner_normal_threshold
 	):
 		_finish_wall_run()
-		velocity.y -= gravity * delta
+		velocity = movement_motor.apply_gravity(velocity, gravity, delta)
 		return
 
 	wall_run_normal = current_wall_normal
-	velocity = _get_wall_run_velocity()
+	velocity = _get_wall_run_velocity(input_snapshot)
 
 
-func _get_wall_run_velocity() -> Vector3:
-	var lateral_velocity := Vector3.ZERO
-	var side_input := Input.get_axis("move_left", "move_right")
-	if Input.is_action_pressed("sprint") and abs(side_input) > 0.0:
-		# Project the player's left/right input onto the current wall plane.
-		var desired_side_direction := transform.basis.x * side_input
-		var wall_tangent := desired_side_direction - (
-			wall_run_normal * desired_side_direction.dot(wall_run_normal)
-		)
-		if wall_tangent.length_squared() > 0.0:
-			lateral_velocity = (
-				wall_tangent.normalized()
-				* wall_run_side_speed
-				* _get_speed_attribute_multiplier()
-			)
+func _get_wall_run_velocity(input_snapshot: PlayerInputSnapshot) -> Vector3:
+	var lateral_input := input_snapshot.lateral_movement
+	if not input_snapshot.sprint_pressed:
+		lateral_input = 0.0
 
-	var speed_multiplier := _get_movement_speed_multiplier()
-	return (
-		Vector3.UP
-		* wall_run_speed
-		* _get_speed_attribute_multiplier()
-		* speed_multiplier
-		- wall_run_normal * wall_run_stick_speed
-		+ lateral_velocity * speed_multiplier
+	return movement_motor.get_wall_run_velocity(
+		wall_run_normal,
+		transform.basis.x,
+		lateral_input,
+		wall_run_speed,
+		wall_run_stick_speed,
+		wall_run_side_speed,
+		_get_speed_attribute_multiplier(),
+		_get_movement_speed_multiplier()
 	)
 
 
 func _finish_wall_run() -> void:
+	var destination := &"GroundedState" if is_on_floor() else &"AirborneState"
+	if not state_machine.transition_to(destination):
+		push_error("Player could not leave WallRunState.")
+
+
+func _exit_wall_run_state() -> void:
 	is_wall_running = false
 	wall_run_has_left_ground = false
 
 
 func _get_run_speed() -> float:
-	return (
-		minimum_run_speed +
-		float(speed - MIN_ATTRIBUTE_VALUE) * run_speed_per_attribute_point
+	return stats.get_run_speed(
+		minimum_run_speed,
+		run_speed_per_attribute_point
 	)
 
 
 func _get_walk_speed() -> float:
-	return _get_run_speed() * clampf(walk_speed_ratio, 0.1, 1.0)
+	return stats.get_walk_speed(
+		minimum_run_speed,
+		run_speed_per_attribute_point,
+		walk_speed_ratio
+	)
 
 
 func _get_speed_attribute_multiplier() -> float:
-	return _get_run_speed() / maxf(minimum_run_speed, 0.001)
+	return stats.get_speed_multiplier(
+		minimum_run_speed,
+		run_speed_per_attribute_point
+	)
 
 func _update_jump_charge_ui() -> void:
 	player_hud.set_jump_charge(jump_charge / max_jump_charge_time)

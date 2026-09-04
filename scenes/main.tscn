@@ -50,6 +50,16 @@
 [ext_resource type="Script" uid="uid://dx8se6n6vx0vw" path="res://scripts/explosion_controller.gd" id="49_explosion_controller"]
 [ext_resource type="PackedScene" path="res://scenes/hostile.tscn" id="50_bjg73"]
 [ext_resource type="PackedScene" uid="uid://cu67wn4p3w4be" path="res://assets/Mesh/sidewalk.tscn" id="50_j2jfr"]
+[ext_resource type="Script" uid="uid://cw4vg18vfvgcl" path="res://scripts/player_state_machine.gd" id="51_player_state_machine"]
+[ext_resource type="Script" uid="uid://dqesh4v54jh5c" path="res://scripts/player_grounded_state.gd" id="52_grounded_state"]
+[ext_resource type="Script" uid="uid://de32482xrrk3b" path="res://scripts/player_jump_charging_state.gd" id="53_jump_charging_state"]
+[ext_resource type="Script" uid="uid://cukpebf203q6b" path="res://scripts/player_airborne_state.gd" id="54_airborne_state"]
+[ext_resource type="Script" uid="uid://du6l6cg02yyys" path="res://scripts/player_flying_state.gd" id="55_flying_state"]
+[ext_resource type="Script" uid="uid://dx72mvhxypopj" path="res://scripts/player_ground_slam_state.gd" id="56_ground_slam_state"]
+[ext_resource type="Script" uid="uid://bvhlneqy8l2o4" path="res://scripts/player_wall_run_state.gd" id="57_wall_run_state"]
+[ext_resource type="Script" uid="uid://ricknx8ig5l7" path="res://scripts/player_knocked_down_state.gd" id="58_knocked_down_state"]
+[ext_resource type="Script" uid="uid://cvyjwvowb17vt" path="res://scripts/player_dead_state.gd" id="59_dead_state"]
+[ext_resource type="Script" uid="uid://j20ibfr40y26" path="res://scripts/player_movement_motor.gd" id="60_movement_motor"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t87ul"]
 albedo_color = Color(0, 0, 0, 1)
@@ -361,6 +371,36 @@ shape = SubResource("CapsuleShape3D_riqys")
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0, -1, 0)
 
 [node name="CharacterAnimationPlayer" type="AnimationPlayer" parent="Player/SuperheroCharacter" unique_id=1903058457]
+
+[node name="PlayerStateMachine" type="Node" parent="Player"]
+script = ExtResource("51_player_state_machine")
+
+[node name="GroundedState" type="Node" parent="Player/PlayerStateMachine"]
+script = ExtResource("52_grounded_state")
+
+[node name="JumpChargingState" type="Node" parent="Player/PlayerStateMachine"]
+script = ExtResource("53_jump_charging_state")
+
+[node name="AirborneState" type="Node" parent="Player/PlayerStateMachine"]
+script = ExtResource("54_airborne_state")
+
+[node name="FlyingState" type="Node" parent="Player/PlayerStateMachine"]
+script = ExtResource("55_flying_state")
+
+[node name="GroundSlamState" type="Node" parent="Player/PlayerStateMachine"]
+script = ExtResource("56_ground_slam_state")
+
+[node name="WallRunState" type="Node" parent="Player/PlayerStateMachine"]
+script = ExtResource("57_wall_run_state")
+
+[node name="KnockedDownState" type="Node" parent="Player/PlayerStateMachine"]
+script = ExtResource("58_knocked_down_state")
+
+[node name="DeadState" type="Node" parent="Player/PlayerStateMachine"]
+script = ExtResource("59_dead_state")
+
+[node name="PlayerMovementMotor" type="Node" parent="Player"]
+script = ExtResource("60_movement_motor")
 
 [node name="PlayerAnimationController" type="Node" parent="Player" unique_id=2098631504]
 script = ExtResource("14_player_animation_controller")

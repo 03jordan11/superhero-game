@@ -18,6 +18,42 @@ Files inspected:
 - The Player subtree in `scenes/main.tscn`
 - Relevant input and autoload configuration in `project.godot`
 
+## Refactor progress — September 3, 2026
+
+This document began as a snapshot of the pre-refactor Player. Struck items are complete. Items marked **partially complete** have working scaffolding or delegated calculations, but still rely on compatibility methods or fields in `player.gd`.
+
+Completed:
+
+- ~~Remove stale Player properties and the disconnected developer flight toggle.~~
+- ~~Add an explicit `PlayerStateMachine` with enter/exit hooks and guarded transitions.~~
+- ~~Add `Grounded`, `JumpCharging`, `Airborne`, `Flying`, `GroundSlam`, `WallRun`, `KnockedDown`, and `Dead` state objects.~~
+- ~~Add unlockable ability guards for Flight, Wall Run, Ground Slam, and Power Jump.~~
+- ~~Move Strength, Speed, Resilience, maximum health, movement scaling, and knockdown-chance formulas into `PlayerStats`.~~
+- ~~Move shared walking, sprinting, air control, gravity, flight, hover, ground-slam, wall-run, and jump-launch calculations into `PlayerMovementMotor`.~~
+- ~~Implement `PlayerInputSnapshot`, capture one snapshot per physics frame, and pass it through the state machine.~~
+- ~~Migrate flight-toggle, vehicle-interaction, and animation-input consumers to `PlayerInputSnapshot`.~~
+- ~~Migrate Flying-state input to `PlayerInputSnapshot` and replace hard-coded Ctrl descent with the `flight_descend` Input Map action.~~
+- ~~Migrate ground movement, sprint, air-control, and jump charging/release input to `PlayerInputSnapshot`.~~
+- ~~Migrate wall-run eligibility, entry, lateral movement, exit, and wall-jump input to `PlayerInputSnapshot`.~~
+- ~~Remove the broad `_handle_normal_movement()` compatibility path and give Grounded, Airborne, and JumpCharging explicit update sequences.~~
+- ~~Remove boolean-based physics dispatch and update the active state exactly once per physics frame.~~
+- ~~Activate `PlayerCharacter` as the typed coordinator contract and replace state-side string method dispatch with direct calls.~~
+- ~~Finish the movement migration by giving states a typed `PlayerCharacter` body-mutation API backed by `PlayerMovementMotor`.~~
+- ~~Add retained headless tests for the state machine, every current Player state, stats, and movement-motor calculations.~~
+
+Remaining, in recommended order:
+
+1. Extract the Player subtree into a reusable `scenes/player.tscn` and make `player_character.gd` the final concrete implementation.
+2. Make `PlayerCombatController` authoritative for action locks instead of querying animation state.
+3. Implement `PlayerStatusEffects` and move hit-slowdown timing and movement modifiers into it.
+4. Implement `PlayerDamageReceiver` and move health consequences, hit reactions, knockdown requests, and death requests into it.
+5. Implement `PlayerVehicleInteractor`; move released-vehicle impact ownership to the vehicle or a thrown-object component.
+6. Implement `PlayerLandingImpactController` for landing tracking, damage, effects, and camera requests.
+7. Make animation and HUD updates event-driven and type the remaining concrete dependencies.
+8. Remove compatibility booleans, wrapper methods, and superseded code from `player.gd` after every caller has migrated.
+
+`PlayerDamageReceiver`, `PlayerStatusEffects`, `PlayerVehicleInteractor`, and `PlayerLandingImpactController` currently exist only as scaffolds. `PlayerCharacter` is now the typed coordinator contract implemented by `player.gd`, and `PlayerInputSnapshot` is functional.
+
 ## Executive summary
 
 The Player works, but `player.gd` has become the game's central gameplay object. It currently owns locomotion, flight, jumping, wall-running, ground slams, damage reactions, knockdown recovery, death, attributes, health presentation, vehicle pickup/throwing, thrown-vehicle impact monitoring, landing damage, input, camera rotation, and coordination of animation and combat.
@@ -27,7 +63,7 @@ At the time of this review, `player.gd` contains approximately 1,113 physical li
 The recommended direction is:
 
 1. Make the Player a reusable scene rather than defining its full subtree inside `main.tscn`.
-2. Introduce one explicit state machine for mutually exclusive locomotion/life states.
+2. ~~Introduce one explicit state machine for mutually exclusive locomotion/life states.~~
 3. Keep combat as an orthogonal action layer instead of adding every combat combination to the locomotion state machine.
 4. Extract stats, damage/status effects, vehicle interaction, and landing impacts into focused objects.
 5. Make animation and HUD consumers of gameplay state rather than sources of gameplay truth.
@@ -39,13 +75,13 @@ This should be an incremental migration. Rewriting every mechanic at once would 
 - `HealthComponent` and `DamageInfo` already establish a useful composition-based damage model shared by multiple actor types.
 - Combat, animation, HUD, camera effects, and landing targeting have already begun moving into focused scripts.
 - Gameplay values are generally exported for rapid Inspector tuning.
-- The top-level branch in `_physics_process()` establishes a recognizable precedence order: dead, ground slam, knocked down, flying, then normal movement.
+- The state machine now establishes locomotion/life precedence and receives exactly one physics update per frame.
 - Damage, knockdown, and death behavior have automated runtime checks from recent development, even though those checks are not yet retained in the repository.
 - The uncapped Speed formula is centralized in `_get_run_speed()` and `_get_speed_attribute_multiplier()`, which gives future states a common source of movement scaling.
 
 ## Prioritized findings
 
-### P0 — Remove stale serialized Player data before restructuring
+### ~~P0 — Remove stale serialized Player data before restructuring~~ — Completed
 
 `scenes/main.tscn:356` still contains:
 
@@ -55,7 +91,7 @@ flight_hit_knockdown_chance = 0.5
 
 That exported property no longer exists. Knockdown chance is now derived from Resilience. This is scene-data drift and should be removed before moving the Player into its own scene, otherwise the stale override may be carried into the new scene or produce misleading editor behavior.
 
-### P1 — Boolean flags are acting as an implicit state machine
+### P1 — Explicit state machine added; compatibility flags remain
 
 The Player currently combines flags such as:
 
@@ -143,7 +179,7 @@ The exact number of nodes is less important than ownership. The Player root shou
 
 ### P1 — Gameplay logic currently depends on animation state
 
-`_handle_normal_movement()` checks `animation_controller.is_fighting` (`player.gd:742`), and `apply_damage()` also reads it (`player.gd:169`). This makes the animation controller a source of gameplay truth. Animation should present the gameplay state, not decide whether the Player is allowed to move or react.
+The normal locomotion state update paths call `_stop_horizontal_movement_if_fighting()`, which still checks `animation_controller.is_fighting`, and `apply_damage()` also reads it. This makes the animation controller a source of gameplay truth. Animation should present the gameplay state, not decide whether the Player is allowed to move or react.
 
 The same combat concept is tracked in two places:
 
@@ -207,20 +243,20 @@ movement blend: 0.0–1.0
 
 The animation controller should resolve and play that intent, but not own gameplay permissions.
 
-### P2 — Several input rules are scattered or hard-coded
+### P2 — Movement input centralized; mouse action routing remains
 
-Input is sampled in `_input()`, `_physics_process()`, `_handle_flight()`, `_handle_normal_movement()`, `_can_start_wall_run()`, `_handle_wall_run()`, and `_get_wall_run_velocity()`.
+Movement and physics-action input is now captured once per frame by `PlayerInputSnapshot` and passed through the state machine. Mouse-button attack and ground-slam routing remains in `_input()` and will move with the action-layer cleanup.
 
 Specific issues:
 
-- `KEY_CTRL` is read directly for descending flight (`player.gd:544`) instead of using an Input Map action.
-- Movement input is recalculated several times during the same physics frame.
+- ~~`KEY_CTRL` is read directly for descending flight instead of using an Input Map action.~~
+- ~~Movement input is recalculated several times during the same physics frame.~~
 - Flight toggle eligibility relies indirectly on `is_knocked_out` also being true when dead (`player.gd:310`).
 - A dead player can still execute some generic mouse-mode behavior because input permissions are not centralized.
 
-Recommendation: build one `PlayerInputSnapshot` per physics frame and pass it to the active state/action controller. Use Input Map actions for all controls. This improves readability, remapping, controller support, replay/debug tooling, and automated testing.
+~~Build one `PlayerInputSnapshot` per physics frame and pass it to the active state controller. Use Input Map actions for movement controls.~~ Mouse action permissions still need to move to the authoritative combat/action layer.
 
-### P2 — The developer “Enable Flying” setting appears disconnected
+### ~~P2 — The developer “Enable Flying” setting appears disconnected~~ — Completed
 
 `DeveloperMenu` writes `DebugManager.flying_enabled`, but the Player never reads that value. A project-wide search found no gameplay use of `DebugManager.flying_enabled`.
 
@@ -331,7 +367,7 @@ func physics_update(delta: float, input: PlayerInputSnapshot) -> void:
 
 The eventual implementation does not need to use this exact signature, but it should provide explicit entry/exit hooks and a single transition owner.
 
-### `PlayerMovementMotor`
+### ~~`PlayerMovementMotor`~~ — Implemented
 
 Contains reusable movement calculations without deciding the active state:
 
@@ -344,7 +380,7 @@ Contains reusable movement calculations without deciding the active state:
 
 States choose which motor operations to use. This prevents formulas such as Speed scaling from being reimplemented separately in grounded, flight, wall-run, and ground-slam states.
 
-### `PlayerStats`
+### ~~`PlayerStats`~~ — Implemented
 
 A resource or component should own Strength, Speed, Resilience, and their derived values. It should emit `stat_changed` and provide methods such as:
 
@@ -409,12 +445,12 @@ These rules should be tested at the state-machine boundary rather than inferred 
 
 ## Incremental migration plan
 
-### Phase 0 — Characterization and cleanup
+### Phase 0 — Characterization and cleanup — Partially complete
 
-1. Remove the stale `flight_hit_knockdown_chance` scene override.
-2. Add retained headless tests for current movement formulas and recent damage behavior.
-3. Record baseline values for run acceleration, flight acceleration, jump height, wall-run velocity, ground-slam speed, knockdown chance, and stun duration.
-4. Confirm the intended meaning of the developer “Enable Flying” control.
+1. ~~Remove the stale `flight_hit_knockdown_chance` scene override.~~
+2. **Partially complete:** retained tests now cover state transitions, stats, and movement formulas; damage/status characterization remains.
+3. **Partially complete:** movement values are characterized in tests; landing, damage, and stun coverage remains incomplete.
+4. ~~Resolve the developer “Enable Flying” control by removing the disconnected option.~~
 
 No architecture should move until these tests protect the current feel.
 
@@ -422,24 +458,24 @@ No architecture should move until these tests protect the current feel.
 
 Move the existing Player subtree from `main.tscn` into `scenes/player.tscn` with no behavior change. Instantiate that scene from `main.tscn`. This immediately improves reuse and isolates future node restructuring.
 
-### Phase 2 — Introduce a state machine as a thin wrapper
+### ~~Phase 2 — Introduce a state machine as a thin wrapper~~ — Completed
 
-Create `PlayerStateMachine` and initial state objects, but initially let those states call the existing Player methods. This changes transition ownership before changing movement math.
+~~Create `PlayerStateMachine` and initial state objects, but initially let those states call the existing Player methods. This changes transition ownership before changing movement math.~~
 
 Suggested first migration order:
 
-1. `Dead`
-2. `KnockedDown`
-3. `Flying`
-4. `GroundSlam`
-5. `WallRun`
-6. `Grounded`/`JumpCharging`/`Airborne`
+1. ~~`Dead`~~
+2. ~~`KnockedDown`~~
+3. ~~`Flying`~~
+4. ~~`GroundSlam`~~
+5. ~~`WallRun`~~
+6. ~~`Grounded`/`JumpCharging`/`Airborne`~~
 
 Dead and KnockedDown are good first candidates because their permissions and exit behavior are sharply defined.
 
-### Phase 3 — Extract movement and stats
+### ~~Phase 3 — Extract movement and stats~~ — Completed
 
-Move the shared speed formulas and velocity helpers into `PlayerStats` and `PlayerMovementMotor`. State objects should call those helpers rather than duplicate formulas.
+~~Move the shared speed formulas and velocity helpers into `PlayerStats` and `PlayerMovementMotor`. Remove the broad `_handle_normal_movement()` routing method. Give states a typed `PlayerCharacter` API for the remaining body mutations.~~
 
 ### Phase 4 — Separate action and status layers
 
@@ -484,7 +520,7 @@ Manual feel tests remain necessary for animation blending, camera behavior, acce
 For the next coding pass, stop after these three outcomes:
 
 1. A reusable `player.tscn` exists.
-2. A state machine owns the current locomotion/life state.
-3. `Dead` and `KnockedDown` are real state objects using the existing behavior.
+2. ~~A state machine owns the current locomotion/life state.~~
+3. ~~`Dead` and `KnockedDown` are real state objects using the existing behavior.~~
 
 Do not extract every remaining component in that same pass. Once these states are tested, migrate one behavior at a time while preserving the prototype's existing traversal feel.

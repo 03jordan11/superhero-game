@@ -5,11 +5,11 @@ extends Node
 
 @export var state_id: StringName
 
-var player: CharacterBody3D
+var player: PlayerCharacter
 var state_machine: PlayerStateMachine
 
 
-func setup(target_player: CharacterBody3D, target_state_machine: PlayerStateMachine) -> void:
+func setup(target_player: PlayerCharacter, target_state_machine: PlayerStateMachine) -> void:
 	player = target_player
 	state_machine = target_state_machine
 

@@ -2,14 +2,14 @@ class_name PlayerStateMachine
 extends Node
 
 ## Single owner of the Player's locomotion and life-state transitions.
-## The machine is driven explicitly by its future Player coordinator; it does
-## not process input or physics automatically.
+## The machine is driven explicitly by the Player coordinator; it does not
+## process input or physics automatically.
 
 signal state_changed(previous_state: PlayerState, next_state: PlayerState)
 
 @export var initial_state: PlayerState
 
-var player: CharacterBody3D
+var player: PlayerCharacter
 var active_state: PlayerState
 var states: Dictionary[StringName, PlayerState] = {}
 var is_initialized: bool = false
@@ -18,7 +18,7 @@ var _transition_in_progress: bool = false
 
 
 func initialize(
-	target_player: CharacterBody3D,
+	target_player: PlayerCharacter,
 	starting_state: PlayerState = null
 ) -> bool:
 	if target_player == null:

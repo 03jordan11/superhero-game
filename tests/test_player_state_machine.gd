@@ -7,6 +7,7 @@ class TrackingState:
 	var event_log: Array[String]
 	var input_call_count: int = 0
 	var physics_call_count: int = 0
+	var last_input: PlayerInputSnapshot
 	var last_context: Dictionary = {}
 
 
@@ -23,18 +24,20 @@ class TrackingState:
 		event_log.append("exit:%s->%s" % [name, next_state.name])
 
 
-	func handle_input(_input: PlayerInputSnapshot) -> void:
+	func handle_input(input: PlayerInputSnapshot) -> void:
 		input_call_count += 1
+		last_input = input
 
 
-	func physics_update(_delta: float, _input: PlayerInputSnapshot) -> void:
+	func physics_update(_delta: float, input: PlayerInputSnapshot) -> void:
 		physics_call_count += 1
+		last_input = input
 
 
 func _initialize() -> void:
 	var event_log: Array[String] = []
 	var transition_log: Array[String] = []
-	var player := CharacterBody3D.new()
+	var player := PlayerCharacter.new()
 	var machine := PlayerStateMachine.new()
 	var grounded := TrackingState.new(event_log)
 	var flying := TrackingState.new(event_log)
@@ -68,6 +71,7 @@ func _initialize() -> void:
 	machine.physics_update(0.25, input)
 	assert(grounded.input_call_count == 1)
 	assert(grounded.physics_call_count == 1)
+	assert(grounded.last_input == input)
 	assert(flying.input_call_count == 0)
 	assert(flying.physics_call_count == 0)
 

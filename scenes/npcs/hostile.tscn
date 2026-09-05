@@ -1,0 +1,32 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/npcs/npc_base.tscn" id="1_npc_base"]
+[ext_resource type="Script" uid="uid://c65j3ynbfdwl0" path="res://scripts/npc-scripts/hostile.gd" id="2_hostile"]
+[ext_resource type="PackedScene" uid="uid://djuiolvewh3lx" path="res://assets/characters/Superhero_Male_FullBody.gltf" id="3_model"]
+[ext_resource type="Script" uid="uid://cflffjqxc6bpy" path="res://scripts/npc-scripts/hostile_animation_controller.gd" id="4_animation_controller"]
+
+[node name="Hostile" instance=ExtResource("1_npc_base")]
+script = ExtResource("2_hostile")
+experience_gain = 10
+animation_controller_path = NodePath("HostileAnimationController")
+
+[node name="Superhero_Male_FullBody" parent="." instance=ExtResource("3_model")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0)
+
+[node name="CharacterAnimationPlayer" type="AnimationPlayer" parent="Superhero_Male_FullBody"]
+
+[node name="HostileAnimationController" type="Node" parent="."]
+script = ExtResource("4_animation_controller")
+
+[node name="AlertIndicator" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.15, 0)
+visible = false
+billboard = 1
+modulate = Color(1, 0.75, 0.1, 1)
+text = "!"
+font_size = 128
+outline_size = 20
+
+[node name="AlertIndicatorTimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true

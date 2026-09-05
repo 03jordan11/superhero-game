@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ce38ahkbxcke7"]
 
-[ext_resource type="Script" uid="uid://dkqg4b6tjqe0e" path="res://scripts/main_menu.gd" id="1_main_menu"]
+[ext_resource type="Script" uid="uid://dkqg4b6tjqe0e" path="res://scripts/ui-scripts/main_menu.gd" id="1_main_menu"]
 
 [node name="MainMenu" type="Control" unique_id=1887152426]
 layout_mode = 3
@@ -49,6 +49,14 @@ custom_minimum_size = Vector2(300, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "Play"
+
+[node name="LoadButton" type="Button" parent="Center/Menu"]
+custom_minimum_size = Vector2(300, 64)
+layout_mode = 2
+tooltip_text = "Loading is not implemented yet."
+theme_override_font_sizes/font_size = 28
+disabled = true
+text = "Load Game"
 
 [node name="SettingsButton" type="Button" parent="Center/Menu" unique_id=154925617]
 custom_minimum_size = Vector2(300, 64)

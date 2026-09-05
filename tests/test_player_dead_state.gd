@@ -1,6 +1,6 @@
 extends SceneTree
 
-const DAMAGE_INFO_SCRIPT = preload("res://scripts/damage_info.gd")
+const DAMAGE_INFO_SCRIPT = preload("res://scripts/combat-scripts/damage_info.gd")
 
 
 func _initialize() -> void:

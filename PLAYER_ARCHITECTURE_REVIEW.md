@@ -20,7 +20,7 @@ Files inspected:
 
 ## Refactor progress — September 3, 2026
 
-This document began as a snapshot of the pre-refactor Player. Struck items are complete. Items marked **partially complete** have working scaffolding or delegated calculations, but still rely on compatibility methods or fields in `player.gd`.
+This document began as a snapshot of the pre-refactor Player. Struck items are complete. Items marked **partially complete** have working scaffolding or delegated calculations, but still rely on compatibility methods or fields in `PlayerCharacter`.
 
 Completed:
 
@@ -39,20 +39,27 @@ Completed:
 - ~~Remove boolean-based physics dispatch and update the active state exactly once per physics frame.~~
 - ~~Activate `PlayerCharacter` as the typed coordinator contract and replace state-side string method dispatch with direct calls.~~
 - ~~Finish the movement migration by giving states a typed `PlayerCharacter` body-mutation API backed by `PlayerMovementMotor`.~~
+- ~~Extract the Player subtree into the reusable `scenes/player.tscn` scene and instance it from `main.tscn`.~~
+- ~~Move the concrete Player implementation into `scripts/player_character.gd`, attach it directly to `player.tscn`, and remove the obsolete root `player.gd`.~~
+- ~~Make `PlayerCombatController` authoritative for punch action locks instead of querying animation state.~~
+- ~~Implement `PlayerStatusEffects` and move hit-slowdown timing and movement modifiers into it.~~
+- ~~Implement `PlayerDamageReceiver` and move health consequences, hit reactions, knockdown requests, and death requests into it.~~
+- ~~Move vehicle pickup, carry, drop, throw charge, and release into `PlayerVehicleInteractor`.~~
+- ~~Move released-vehicle impact tracking from Player into `Vehicle`.~~
+- ~~Move the complete flight lifecycle, movement, orientation, and collision response into `PlayerFlyingState`; remove the Player flight wrappers.~~
 - ~~Add retained headless tests for the state machine, every current Player state, stats, and movement-motor calculations.~~
+
+- ~~Implement `PlayerLandingImpactController` for landing tracking, damage, effects, and camera requests.~~
+- ~~Move Grounded, Airborne, JumpCharging, GroundSlam, WallRun, KnockedDown, and Dead behavior out of `PlayerCharacter` and into their state scripts.~~
+- ~~Remove the state compatibility wrappers and superseded landing code from `PlayerCharacter`.~~
+- ~~Make Player HUD updates event-driven and move percentage/label formatting into `PlayerHud`.~~
 
 Remaining, in recommended order:
 
-1. Extract the Player subtree into a reusable `scenes/player.tscn` and make `player_character.gd` the final concrete implementation.
-2. Make `PlayerCombatController` authoritative for action locks instead of querying animation state.
-3. Implement `PlayerStatusEffects` and move hit-slowdown timing and movement modifiers into it.
-4. Implement `PlayerDamageReceiver` and move health consequences, hit reactions, knockdown requests, and death requests into it.
-5. Implement `PlayerVehicleInteractor`; move released-vehicle impact ownership to the vehicle or a thrown-object component.
-6. Implement `PlayerLandingImpactController` for landing tracking, damage, effects, and camera requests.
-7. Make animation and HUD updates event-driven and type the remaining concrete dependencies.
-8. Remove compatibility booleans, wrapper methods, and superseded code from `player.gd` after every caller has migrated.
+1. Make animation updates event-driven and type the remaining concrete dependencies.
+2. Replace the remaining compatibility state booleans with state queries or state-owned data where practical.
 
-`PlayerDamageReceiver`, `PlayerStatusEffects`, `PlayerVehicleInteractor`, and `PlayerLandingImpactController` currently exist only as scaffolds. `PlayerCharacter` is now the typed coordinator contract implemented by `player.gd`, and `PlayerInputSnapshot` is functional.
+`PlayerLandingImpactController` now owns landing tracking, classification, damage, effects, and camera requests. `PlayerVehicleInteractor` owns pickup, carry, drop, throw charge, and release; each `Vehicle` owns its post-release impact tracking. All locomotion/life behavior is implemented by the Player states, with `PlayerCharacter` reduced to the physics-body coordinator, public damage/health surface, camera input, and cross-component orchestration.
 
 ## Executive summary
 
@@ -91,7 +98,7 @@ flight_hit_knockdown_chance = 0.5
 
 That exported property no longer exists. Knockdown chance is now derived from Resilience. This is scene-data drift and should be removed before moving the Player into its own scene, otherwise the stale override may be carried into the new scene or produce misleading editor behavior.
 
-### P1 — Explicit state machine added; compatibility flags remain
+### P1 — Explicit state machine added; compatibility flags remain — State ownership complete
 
 The Player currently combines flags such as:
 
@@ -198,11 +205,13 @@ Status effects: Slowed
 
 This avoids states such as `GroundedPunchingSlowed`, `AirbornePunchingSlowed`, and similar combinations.
 
-### P1 — Player scene ownership is too brittle
+### ~~P1 — Player scene ownership is too brittle~~ — Scene extraction completed
 
 The entire Player subtree exists directly inside `scenes/main.tscn`; there is no reusable `player.tscn`. The root script also assumes a sibling `../ExplosionController` and exact child names such as `$ChargeUI`, `$PlayerAnimationController`, and `$LandingTarget` (`player.gd:118-127`).
 
 This contributed to the earlier null HUD-node error: script and scene structure can drift independently. It also makes isolated tests and future level scenes harder to create.
+
+The Player subtree is now a reusable `scenes/player.tscn` whose root is the scripted `PlayerCharacter` type. The external `../ExplosionController` dependency remains for a later, focused migration.
 
 Recommendation:
 
@@ -270,13 +279,13 @@ Ground animation switches to `Sprint` immediately when the sprint key is held (`
 
 Recommendation: provide actual flight-input magnitude and sprint percentage as animation parameters. Eventually, an AnimationTree blend value would express the walk-to-sprint ramp better than an immediate clip switch.
 
-### P2 — HUD updates do unnecessary work every physics frame
+### ~~P2 — HUD updates do unnecessary work every physics frame~~ — Completed
 
 Jump charge, vehicle throw charge, sprint percentage, and flight percentage are pushed to the HUD every physics frame (`player.gd:347-349`, `player.gd:385`). The HUD then rebuilds strings and writes control values even when they have not changed.
 
-This is not currently a major bottleneck, but it is avoidable and will matter more as the HUD grows.
+The HUD now subscribes to health, landing, vehicle throw, jump charge, ground speed, and flight speed signals. Gameplay objects publish raw values only when they change, while `PlayerHud` owns percentages, clamping, visibility, and label formatting.
 
-Recommendation: use signals for discrete changes and dirty checking for continuously changing values. For example, only emit sprint percentage when it changes beyond a small threshold. The Player HUD should subscribe to Player/component signals rather than be called directly by the physics body.
+~~Recommendation: use signals for discrete changes and dirty checking for continuously changing values. For example, only emit sprint percentage when it changes beyond a small threshold. The Player HUD should subscribe to Player/component signals rather than be called directly by the physics body.~~
 
 ### P2 — Untyped and dynamic calls hide dependency errors
 
@@ -454,9 +463,9 @@ These rules should be tested at the state-machine boundary rather than inferred 
 
 No architecture should move until these tests protect the current feel.
 
-### Phase 1 — Extract the Player scene
+### ~~Phase 1 — Extract the Player scene~~ — Completed
 
-Move the existing Player subtree from `main.tscn` into `scenes/player.tscn` with no behavior change. Instantiate that scene from `main.tscn`. This immediately improves reuse and isolates future node restructuring.
+~~Move the existing Player subtree from `main.tscn` into `scenes/player.tscn` with no behavior change. Instantiate that scene from `main.tscn`.~~ This improves reuse and isolates future node restructuring.
 
 ### ~~Phase 2 — Introduce a state machine as a thin wrapper~~ — Completed
 
@@ -477,13 +486,13 @@ Dead and KnockedDown are good first candidates because their permissions and exi
 
 ~~Move the shared speed formulas and velocity helpers into `PlayerStats` and `PlayerMovementMotor`. Remove the broad `_handle_normal_movement()` routing method. Give states a typed `PlayerCharacter` API for the remaining body mutations.~~
 
-### Phase 4 — Separate action and status layers
+### ~~Phase 4 — Separate action and status layers~~ — Completed
 
-Make `PlayerCombatController` authoritative for fighting state. Move hit slowdown into `PlayerStatusEffects`. Stop querying the animation controller for gameplay permission.
+~~Make `PlayerCombatController` authoritative for fighting state. Move hit slowdown into `PlayerStatusEffects`. Stop querying the animation controller for gameplay permission.~~
 
-### Phase 5 — Extract vehicle and landing systems
+### ~~Phase 5 — Extract vehicle and landing systems~~ — Completed
 
-Move carry/throw logic to `PlayerVehicleInteractor`, post-release tracking to vehicles, and impact logic to `PlayerLandingImpactController`.
+~~Move carry/throw logic to `PlayerVehicleInteractor`, post-release tracking to vehicles, and impact logic to `PlayerLandingImpactController`.~~
 
 ### Phase 6 — Make presentation event-driven
 
@@ -519,7 +528,7 @@ Manual feel tests remain necessary for animation blending, camera behavior, acce
 
 For the next coding pass, stop after these three outcomes:
 
-1. A reusable `player.tscn` exists.
+1. ~~A reusable `player.tscn` exists.~~
 2. ~~A state machine owns the current locomotion/life state.~~
 3. ~~`Dead` and `KnockedDown` are real state objects using the existing behavior.~~
 

@@ -16,14 +16,17 @@ func _run_test() -> void:
 	var machine := player.get_node("PlayerStateMachine") as PlayerStateMachine
 	assert(machine.active_state is PlayerGroundedState)
 
-	player.call("_sync_grounded_airborne_state", false)
+	var normal_state := machine.active_state as PlayerNormalMovementState
+	normal_state._sync_grounded_airborne(false)
 	assert(machine.active_state is PlayerAirborneState)
 
-	player.call("_sync_grounded_airborne_state", true)
+	normal_state = machine.active_state as PlayerNormalMovementState
+	normal_state._sync_grounded_airborne(true)
 	assert(machine.active_state is PlayerGroundedState)
 
 	assert(machine.transition_to(&"FlyingState"))
-	player.call("_sync_grounded_airborne_state", false)
+	# Only normal movement states synchronize ground contact.
+	machine.active_state.post_physics_update(0.0, PlayerInputSnapshot.new())
 	assert(machine.active_state is PlayerFlyingState)
 	assert(player.get("is_flying"))
 

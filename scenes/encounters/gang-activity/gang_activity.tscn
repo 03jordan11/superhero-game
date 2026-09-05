@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/encounter-scripts/gang-activity/gang_activity.gd" id="1_gang_activity"]
+
+[node name="GangActivity" type="Node3D"]
+script = ExtResource("1_gang_activity")
+encounter_id = &"gang_activity"
+display_name = "Gang Activity"
+description = "Defeat the gang threatening this part of the city."
+xp_reward = 100
+money_reward = 0
+reputation_reward = 0
+encounter_radius = 30.0
+time_limit = 0.0
+cleanup_delay = 5.0
+hostile_count = 3

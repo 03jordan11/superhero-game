@@ -12,9 +12,11 @@ func _run_test() -> void:
 	var main := main_scene.instantiate()
 	root.add_child(main)
 
-	var player := main.get_node("Player") as CharacterBody3D
+	var player := main.get_node("Player") as PlayerCharacter
 	var machine := player.get_node("PlayerStateMachine") as PlayerStateMachine
 	var abilities := player.get("abilities") as PlayerAbilities
+	var status_effects := player.get_node("PlayerStatusEffects") as PlayerStatusEffects
+	var hud := player.get_node("ChargeUI") as PlayerHud
 	var initial_charge_delta := 0.5
 	assert(machine.active_state is PlayerGroundedState)
 	assert(machine.transition_to(
@@ -24,6 +26,7 @@ func _run_test() -> void:
 	assert(machine.active_state is PlayerJumpChargingState)
 	assert(player.get("is_charging_jump"))
 	assert(is_equal_approx(player.get("jump_charge"), initial_charge_delta))
+	assert(hud.charge_bar.value > 0.0)
 
 	player.velocity = Vector3(5.0, 0.0, 5.0)
 	machine.physics_update(0.1, PlayerInputSnapshot.new())
@@ -40,14 +43,16 @@ func _run_test() -> void:
 	var expected_forward_boost := (
 		float(player.get("max_forward_jump_boost"))
 		* expected_charge_percent
-		* float(player.call("_get_movement_speed_multiplier"))
+		* status_effects.get_movement_speed_multiplier()
 	)
-	player.call("_release_jump")
+	var jump_state := machine.active_state as PlayerJumpChargingState
+	jump_state._release_jump()
 	assert(machine.active_state is PlayerAirborneState)
 	assert(player.get("is_jump_active"))
 	assert(not player.get("is_charging_jump"))
 	assert(player.get("jump_charge") == 0.0)
 	assert(player.get("jump_hold_time") == 0.0)
+	assert(hud.charge_bar.value == 0.0)
 	assert(is_equal_approx(player.velocity.y, expected_vertical_velocity))
 	assert(is_equal_approx(player.velocity.z, -expected_forward_boost))
 
@@ -61,7 +66,8 @@ func _run_test() -> void:
 	assert(not player.get("is_charging_jump"))
 
 	player.velocity = Vector3.ZERO
-	player.call("_release_jump")
+	var grounded_state := machine.active_state as PlayerGroundedState
+	grounded_state._release_jump()
 	assert(is_equal_approx(player.velocity.y, float(player.get("min_jump_velocity"))))
 	assert(player.get("is_jump_active"))
 

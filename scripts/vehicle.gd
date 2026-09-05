@@ -2,6 +2,7 @@ class_name Vehicle
 extends RigidBody3D
 
 const HEALTH_COMPONENT_SCRIPT = preload("res://scripts/health_component.gd")
+const DAMAGE_INFO_SCRIPT = preload("res://scripts/combat-scripts/damage_info.gd")
 
 signal destroyed(impact_speed: float)
 
@@ -12,6 +13,9 @@ var is_destroyed: bool = false
 var destruction_impact_speed: float = 0.0
 var health_label: Label3D
 var health_component
+var is_thrown_impact_armed: bool = false
+var last_thrown_impact_speed: float = 0.0
+var thrown_impact_source: Node3D
 
 
 func _ready() -> void:
@@ -32,6 +36,62 @@ func apply_damage(damage_info) -> bool:
 	if is_destroyed or not health_component.apply_damage(damage_info):
 		return false
 	return true
+
+
+func arm_thrown_impact(launch_speed: float, source: Node3D) -> void:
+	var minimum_impact_speed := _get_explosion_minimum_impact_speed()
+	if launch_speed < minimum_impact_speed:
+		return
+
+	contact_monitor = true
+	max_contacts_reported = 8
+	is_thrown_impact_armed = true
+	last_thrown_impact_speed = launch_speed
+	thrown_impact_source = source
+
+
+func _physics_process(_delta: float) -> void:
+	if not is_thrown_impact_armed:
+		return
+	if is_destroyed:
+		_clear_thrown_impact()
+		return
+
+	var minimum_impact_speed := _get_explosion_minimum_impact_speed()
+	if last_thrown_impact_speed < minimum_impact_speed:
+		_clear_thrown_impact()
+		return
+
+	if get_contact_count() > 0:
+		var impact_source: Node3D = (
+			thrown_impact_source if is_instance_valid(thrown_impact_source) else null
+		)
+		var damage_info = DAMAGE_INFO_SCRIPT.new(
+			get_current_health(),
+			global_position,
+			Vector3.ZERO,
+			&"none",
+			impact_source,
+			last_thrown_impact_speed
+		)
+		apply_damage(damage_info)
+		_clear_thrown_impact()
+		return
+
+	last_thrown_impact_speed = linear_velocity.length()
+
+
+func _clear_thrown_impact() -> void:
+	is_thrown_impact_armed = false
+	last_thrown_impact_speed = 0.0
+	thrown_impact_source = null
+
+
+func _get_explosion_minimum_impact_speed() -> float:
+	var explosion_controller := get_tree().get_first_node_in_group(&"explosion_controller")
+	if explosion_controller == null:
+		return INF
+	return float(explosion_controller.get("minimum_impact_speed"))
 
 
 func get_current_health() -> float:

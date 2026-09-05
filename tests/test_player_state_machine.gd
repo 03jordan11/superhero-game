@@ -7,6 +7,7 @@ class TrackingState:
 	var event_log: Array[String]
 	var input_call_count: int = 0
 	var physics_call_count: int = 0
+	var post_physics_call_count: int = 0
 	var last_input: PlayerInputSnapshot
 	var last_context: Dictionary = {}
 
@@ -34,6 +35,11 @@ class TrackingState:
 		last_input = input
 
 
+	func post_physics_update(_delta: float, input: PlayerInputSnapshot) -> void:
+		post_physics_call_count += 1
+		last_input = input
+
+
 func _initialize() -> void:
 	var event_log: Array[String] = []
 	var transition_log: Array[String] = []
@@ -46,7 +52,6 @@ func _initialize() -> void:
 	machine.name = "StateMachine"
 	grounded.name = "Grounded"
 	flying.name = "Flying"
-	root.add_child(player)
 	player.add_child(machine)
 	machine.add_child(grounded)
 	machine.add_child(flying)
@@ -69,11 +74,14 @@ func _initialize() -> void:
 	var input := PlayerInputSnapshot.new()
 	machine.handle_input(input)
 	machine.physics_update(0.25, input)
+	machine.post_physics_update(0.25, input)
 	assert(grounded.input_call_count == 1)
 	assert(grounded.physics_call_count == 1)
+	assert(grounded.post_physics_call_count == 1)
 	assert(grounded.last_input == input)
 	assert(flying.input_call_count == 0)
 	assert(flying.physics_call_count == 0)
+	assert(flying.post_physics_call_count == 0)
 
 	assert(machine.transition_to(&"Flying", {"reason": &"test"}))
 	assert(machine.active_state == flying)
@@ -89,5 +97,6 @@ func _initialize() -> void:
 	assert(not machine.transition_to(&"Flying"))
 	assert(event_log.size() == 3)
 
+	player.free()
 	print("PASS: PlayerStateMachine transition core")
 	quit()

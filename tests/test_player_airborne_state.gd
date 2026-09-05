@@ -16,17 +16,22 @@ func _run_test() -> void:
 	var machine := player.get_node("PlayerStateMachine") as PlayerStateMachine
 	player.global_position = Vector3(0.0, 20.0, 0.0)
 	player.velocity = Vector3.ZERO
-	player.set("was_airborne", false)
-	player.set("max_downward_speed", 0.0)
-	player.call("_sync_grounded_airborne_state", false)
+	var landing_controller := (
+		player.get_node("PlayerLandingImpactController")
+		as PlayerLandingImpactController
+	)
+	landing_controller.reset_normal_landing_tracking()
+	var grounded_state := machine.active_state as PlayerNormalMovementState
+	grounded_state._sync_grounded_airborne(false)
 
 	assert(machine.active_state is PlayerAirborneState)
 	machine.physics_update(0.25, PlayerInputSnapshot.new())
-	assert(player.get("was_airborne"))
+	assert(landing_controller.was_airborne)
 	assert(is_equal_approx(player.velocity.y, -float(player.get("gravity")) * 0.25))
-	assert(is_equal_approx(player.get("max_downward_speed"), -player.velocity.y))
+	assert(is_equal_approx(landing_controller.max_downward_speed, -player.velocity.y))
 
-	player.call("_sync_grounded_airborne_state", true)
+	var airborne_state := machine.active_state as PlayerNormalMovementState
+	airborne_state._sync_grounded_airborne(true)
 	assert(machine.active_state is PlayerGroundedState)
 
 	print("PASS: PlayerAirborneState migration")

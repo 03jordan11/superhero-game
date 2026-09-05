@@ -20,7 +20,7 @@ func _run_test() -> void:
 	player.set("knockdown_stun_duration", 0.5)
 	player.velocity = Vector3(8.0, 6.0, 4.0)
 
-	player.call("_start_damage_flight_knockout")
+	assert(machine.transition_to(&"KnockedDownState", {"cause": &"damage"}))
 	assert(machine.active_state is PlayerKnockedDownState)
 	assert(machine.get_active_state_id() == &"KnockedDownState")
 	assert(player.get("is_knocked_out"))
@@ -35,7 +35,8 @@ func _run_test() -> void:
 	assert(horizontal_speed_after < horizontal_speed_before)
 	assert(player.velocity.y < 0.0)
 
-	player.call("_begin_knockout_stun")
+	var knocked_down_state := machine.active_state as PlayerKnockedDownState
+	knocked_down_state._begin_knockout_stun()
 	assert(player.get("has_knockout_landed"))
 	machine.physics_update(0.25, null)
 	assert(machine.active_state is PlayerKnockedDownState)

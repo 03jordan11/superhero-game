@@ -1,0 +1,247 @@
+[gd_scene format=3 uid="uid://ci1surt3ll4n5"]
+
+[ext_resource type="Script" uid="uid://ckmvx8w0ymkt6" path="res://scripts/player-scripts/player_character.gd" id="1_player"]
+[ext_resource type="PackedScene" uid="uid://djuiolvewh3lx" path="res://assets/characters/Superhero_Male_FullBody.gltf" id="2_superhero"]
+[ext_resource type="Script" uid="uid://r0emup6ufvxv" path="res://scripts/ui-scripts/player_hud.gd" id="3_player_hud"]
+[ext_resource type="Script" uid="uid://bi8s7hwdcoono" path="res://scripts/player-scripts/player_animation_controller.gd" id="4_animation_controller"]
+[ext_resource type="Script" uid="uid://ciys3ckvpawm8" path="res://scripts/player-scripts/landing_target_indicator.gd" id="5_landing_target"]
+[ext_resource type="Script" uid="uid://bvglu4x7p24cx" path="res://scripts/player-scripts/player_camera_effects.gd" id="6_camera_effects"]
+[ext_resource type="Script" uid="uid://c27f3x3jqksy7" path="res://scripts/player-scripts/player_combat_controller.gd" id="7_combat_controller"]
+[ext_resource type="Script" uid="uid://cw4vg18vfvgcl" path="res://scripts/player-scripts/player_state_machine.gd" id="8_state_machine"]
+[ext_resource type="Script" uid="uid://dqesh4v54jh5c" path="res://scripts/player-scripts/player_grounded_state.gd" id="9_grounded_state"]
+[ext_resource type="Script" uid="uid://de32482xrrk3b" path="res://scripts/player-scripts/player_jump_charging_state.gd" id="10_jump_charging_state"]
+[ext_resource type="Script" uid="uid://cukpebf203q6b" path="res://scripts/player-scripts/player_airborne_state.gd" id="11_airborne_state"]
+[ext_resource type="Script" uid="uid://du6l6cg02yyys" path="res://scripts/player-scripts/player_flying_state.gd" id="12_flying_state"]
+[ext_resource type="Script" uid="uid://dx72mvhxypopj" path="res://scripts/player-scripts/player_ground_slam_state.gd" id="13_ground_slam_state"]
+[ext_resource type="Script" uid="uid://bvhlneqy8l2o4" path="res://scripts/player-scripts/player_wall_run_state.gd" id="14_wall_run_state"]
+[ext_resource type="Script" uid="uid://ricknx8ig5l7" path="res://scripts/player-scripts/player_knocked_down_state.gd" id="15_knocked_down_state"]
+[ext_resource type="Script" uid="uid://cvyjwvowb17vt" path="res://scripts/player-scripts/player_dead_state.gd" id="16_dead_state"]
+[ext_resource type="Script" uid="uid://j20ibfr40y26" path="res://scripts/player-scripts/player_movement_motor.gd" id="17_movement_motor"]
+[ext_resource type="Script" uid="uid://c8pvj5jm06a6v" path="res://scripts/player-scripts/player_status_effects.gd" id="18_status_effects"]
+[ext_resource type="Script" uid="uid://d2a6v0x3k7d5b" path="res://scripts/player-scripts/player_damage_receiver.gd" id="19_damage_receiver"]
+[ext_resource type="Script" uid="uid://q888jqqp5led" path="res://scripts/player-scripts/player_vehicle_interactor.gd" id="20_vehicle_interactor"]
+[ext_resource type="Script" uid="uid://c1kxl8yq48of5" path="res://scripts/player-scripts/player_landing_impact_controller.gd" id="21_landing_impact"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_encounter_indicator.gd" id="22_encounter_indicator"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_player"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_player"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_encounter_indicator"]
+albedo_color = Color(1, 0.85, 0.15, 1)
+emission_enabled = true
+emission = Color(1, 0.6, 0.05, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_encounter_indicator"]
+material = SubResource("StandardMaterial3D_encounter_indicator")
+top_radius = 0.0
+bottom_radius = 0.28
+height = 0.8
+
+[node name="Player" type="CharacterBody3D" unique_id=1272581381]
+script = ExtResource("1_player")
+strength = 10
+resilience = 10
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=209341954]
+visible = false
+mesh = SubResource("CapsuleMesh_player")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1699340848]
+shape = SubResource("CapsuleShape3D_player")
+
+[node name="EncounterIndicator" type="Node3D" parent="."]
+script = ExtResource("22_encounter_indicator")
+
+[node name="Arrow" type="MeshInstance3D" parent="EncounterIndicator"]
+rotation_degrees = Vector3(-90, 0, 0)
+mesh = SubResource("CylinderMesh_encounter_indicator")
+
+[node name="DistanceLabel" type="Label3D" parent="EncounterIndicator"]
+position = Vector3(0, 0.6, 0)
+billboard = 1
+modulate = Color(1, 0.9, 0.35, 1)
+font_size = 48
+outline_size = 6
+
+[node name="SuperheroCharacter" parent="." unique_id=674603265 instance=ExtResource("2_superhero")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0, -1, 0)
+
+[node name="CharacterAnimationPlayer" type="AnimationPlayer" parent="SuperheroCharacter" unique_id=573504705]
+
+[node name="PlayerStateMachine" type="Node" parent="." unique_id=1856800475]
+script = ExtResource("8_state_machine")
+
+[node name="GroundedState" type="Node" parent="PlayerStateMachine" unique_id=585032173]
+script = ExtResource("9_grounded_state")
+
+[node name="JumpChargingState" type="Node" parent="PlayerStateMachine" unique_id=512900076]
+script = ExtResource("10_jump_charging_state")
+
+[node name="AirborneState" type="Node" parent="PlayerStateMachine" unique_id=763372750]
+script = ExtResource("11_airborne_state")
+
+[node name="FlyingState" type="Node" parent="PlayerStateMachine" unique_id=364243515]
+script = ExtResource("12_flying_state")
+
+[node name="GroundSlamState" type="Node" parent="PlayerStateMachine" unique_id=929265217]
+script = ExtResource("13_ground_slam_state")
+
+[node name="WallRunState" type="Node" parent="PlayerStateMachine" unique_id=1330540168]
+script = ExtResource("14_wall_run_state")
+
+[node name="KnockedDownState" type="Node" parent="PlayerStateMachine" unique_id=1717262771]
+script = ExtResource("15_knocked_down_state")
+
+[node name="DeadState" type="Node" parent="PlayerStateMachine" unique_id=424849072]
+script = ExtResource("16_dead_state")
+
+[node name="PlayerMovementMotor" type="Node" parent="." unique_id=764393939]
+script = ExtResource("17_movement_motor")
+
+[node name="PlayerAnimationController" type="Node" parent="." unique_id=519522135]
+script = ExtResource("4_animation_controller")
+
+[node name="LandingTarget" type="Node3D" parent="." unique_id=50859486]
+script = ExtResource("5_landing_target")
+
+[node name="PlayerCameraEffects" type="Node" parent="." unique_id=1571283697]
+script = ExtResource("6_camera_effects")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="." unique_id=1356520718]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+spring_length = 5.0
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D" unique_id=99221370]
+
+[node name="ChargeUI" type="CanvasLayer" parent="." unique_id=1352459268]
+script = ExtResource("3_player_hud")
+
+[node name="ChargeLabel" type="Label" parent="ChargeUI" unique_id=484328950]
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 324.0
+offset_bottom = 50.0
+theme_override_font_sizes/font_size = 20
+text = "Power Jump: 0%"
+
+[node name="ChargeBar" type="ProgressBar" parent="ChargeUI" unique_id=1008159963]
+offset_left = 24.0
+offset_top = 54.0
+offset_right = 324.0
+offset_bottom = 78.0
+show_percentage = false
+
+[node name="LandingLabel" type="Label" parent="ChargeUI" unique_id=2059343948]
+offset_left = 24.0
+offset_top = 86.0
+offset_right = 324.0
+offset_bottom = 112.0
+theme_override_font_sizes/font_size = 20
+text = "Landing: --"
+
+[node name="FlightSpeedLabel" type="Label" parent="ChargeUI" unique_id=1348809076]
+offset_left = 24.0
+offset_top = 120.0
+offset_right = 324.0
+offset_bottom = 146.0
+theme_override_font_sizes/font_size = 20
+text = "Flight Speed: 0%"
+
+[node name="FlightSpeedBar" type="ProgressBar" parent="ChargeUI" unique_id=2008420]
+offset_left = 24.0
+offset_top = 150.0
+offset_right = 324.0
+offset_bottom = 174.0
+show_percentage = false
+
+[node name="SprintSpeedLabel" type="Label" parent="ChargeUI" unique_id=409986397]
+offset_left = 24.0
+offset_top = 182.0
+offset_right = 324.0
+offset_bottom = 208.0
+theme_override_font_sizes/font_size = 20
+text = "Sprint Speed: 0%"
+
+[node name="SprintSpeedBar" type="ProgressBar" parent="ChargeUI" unique_id=1889929132]
+offset_left = 24.0
+offset_top = 212.0
+offset_right = 324.0
+offset_bottom = 236.0
+show_percentage = false
+
+[node name="VehicleThrowChargeLabel" type="Label" parent="ChargeUI" unique_id=219188000]
+visible = false
+offset_left = 24.0
+offset_top = 244.0
+offset_right = 324.0
+offset_bottom = 270.0
+theme_override_font_sizes/font_size = 20
+text = "Vehicle Throw: 0%"
+
+[node name="VehicleThrowChargeBar" type="ProgressBar" parent="ChargeUI" unique_id=1872003292]
+visible = false
+offset_left = 24.0
+offset_top = 274.0
+offset_right = 324.0
+offset_bottom = 298.0
+show_percentage = false
+
+[node name="HealthLabel" type="Label" parent="ChargeUI" unique_id=344261157]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -72.0
+offset_right = 324.0
+offset_bottom = -46.0
+theme_override_font_sizes/font_size = 20
+text = "Health: 100 / 100"
+
+[node name="ExperienceLabel" type="Label" parent="ChargeUI"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -132.0
+offset_right = 324.0
+offset_bottom = -106.0
+theme_override_font_sizes/font_size = 20
+text = "Level 1: 0 / 100 XP"
+
+[node name="ExperienceBar" type="ProgressBar" parent="ChargeUI"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -102.0
+offset_right = 324.0
+offset_bottom = -78.0
+max_value = 100.0
+show_percentage = false
+
+[node name="HealthBar" type="ProgressBar" parent="ChargeUI" unique_id=1879967820]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -42.0
+offset_right = 324.0
+offset_bottom = -18.0
+value = 100.0
+show_percentage = false
+
+[node name="PlayerCombatController" type="Node" parent="." unique_id=1144521910]
+script = ExtResource("7_combat_controller")
+
+[node name="PlayerStatusEffects" type="Node" parent="." unique_id=1099164344]
+script = ExtResource("18_status_effects")
+
+[node name="PlayerDamageReceiver" type="Node" parent="." unique_id=203328943]
+script = ExtResource("19_damage_receiver")
+
+[node name="PlayerVehicleInteractor" type="Node" parent="." unique_id=1234231188]
+script = ExtResource("20_vehicle_interactor")
+
+[node name="PlayerLandingImpactController" type="Node" parent="." unique_id=137563013]
+script = ExtResource("21_landing_impact")

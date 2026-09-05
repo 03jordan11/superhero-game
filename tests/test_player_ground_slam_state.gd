@@ -12,7 +12,7 @@ func _run_test() -> void:
 	var main := main_scene.instantiate()
 	root.add_child(main)
 
-	var player := main.get_node("Player") as CharacterBody3D
+	var player := main.get_node("Player") as PlayerCharacter
 	var machine := player.get_node("PlayerStateMachine") as PlayerStateMachine
 	var abilities := player.get("abilities") as PlayerAbilities
 	player.global_position = Vector3(0.0, 10.0, 0.0)
@@ -35,10 +35,14 @@ func _run_test() -> void:
 	assert(is_equal_approx(
 		player.velocity.length(),
 		float(player.get("ground_slam_speed"))
-			* float(player.call("_get_speed_attribute_multiplier"))
+			* player.stats.get_speed_multiplier(
+				player.minimum_run_speed,
+				player.run_speed_per_attribute_point
+			)
 	))
 
-	player.call("_finish_ground_slam")
+	var ground_slam_state := machine.active_state as PlayerGroundSlamState
+	ground_slam_state._finish_ground_slam()
 	assert(machine.active_state is PlayerAirborneState)
 	assert(not player.get("is_ground_slamming"))
 	assert(player.get("ground_slam_impact_pending"))

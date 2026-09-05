@@ -19,6 +19,17 @@ func _test_resource_calculations() -> void:
 	assert(stats.get_walk_speed(20.0, 5.0, 0.5) == 10.0)
 	assert(stats.get_speed_multiplier(20.0, 5.0) == 1.0)
 	assert(is_equal_approx(stats.get_flight_knockdown_chance(0.9, 10), 0.9))
+	assert(stats.level == 1)
+	assert(stats.experience == 0)
+	assert(stats.get_experience_to_next_level() == 100)
+	stats.add_experience(100)
+	assert(stats.level == 2)
+	assert(stats.experience == 0)
+	assert(stats.get_experience_to_next_level() == 200)
+	stats.add_experience(250)
+	assert(stats.level == 3)
+	assert(stats.experience == 50)
+	assert(stats.get_experience_to_next_level() == 400)
 
 	stats.speed = 10
 	assert(stats.get_run_speed(20.0, 5.0) == 65.0)

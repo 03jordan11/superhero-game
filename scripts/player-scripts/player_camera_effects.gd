@@ -1,5 +1,7 @@
 extends Node
 
+const PLAYER_PERF = preload("res://scripts/ui-scripts/player_performance_monitor.gd")
+
 @export_category("Landing Camera Effects")
 @export var landing_shake_threshold: float = 12.0
 @export var landing_shake_max_speed: float = 30.0
@@ -44,6 +46,12 @@ func trigger_knockout() -> void:
 
 
 func _process(delta: float) -> void:
+	var perf_started := PLAYER_PERF.begin(self)
+	_profiled_process(delta)
+	PLAYER_PERF.finish(&"camera_effects", perf_started)
+
+
+func _profiled_process(delta: float) -> void:
 	if spring_arm == null:
 		return
 

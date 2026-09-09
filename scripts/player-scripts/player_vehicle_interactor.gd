@@ -57,13 +57,14 @@ func try_pick_up_vehicle() -> bool:
 	query.exclude = [player_body.get_rid()]
 	var hit := player_body.get_world_3d().direct_space_state.intersect_ray(query)
 	var collider: Object = hit.get("collider")
-	if not collider is RigidBody3D:
+	if not collider is Vehicle:
 		return false
 
-	var vehicle := collider as RigidBody3D
-	if vehicle.get_parent() == null or vehicle.get_parent().name != &"Vehicles":
+	var vehicle := collider as Vehicle
+	if vehicle.get_parent() == null:
 		return false
 
+	vehicle.leave_traffic()
 	vehicle.freeze = true
 	vehicle.linear_velocity = Vector3.ZERO
 	vehicle.angular_velocity = Vector3.ZERO

@@ -1,6 +1,8 @@
 class_name PlayerEncounterIndicator
 extends Node3D
 
+const PLAYER_PERF = preload("res://scripts/ui-scripts/player_performance_monitor.gd")
+
 ## Keeps a world-space marker in front of the player aimed at the nearest
 ## active encounter.
 
@@ -21,6 +23,12 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
+	var perf_started := PLAYER_PERF.begin(self)
+	_profiled_process(_delta)
+	PLAYER_PERF.finish(&"encounter_indicator", perf_started)
+
+
+func _profiled_process(_delta: float) -> void:
 	if player == null:
 		return
 

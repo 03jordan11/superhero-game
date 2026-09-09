@@ -1,0 +1,48 @@
+{
+	"coverage_samples": 4180,
+	"failures": [],
+	"passed": true,
+	"probes": [
+		{
+			"body": "roads_1_2",
+			"height_m": 0.0300006866455078,
+			"surface": "20m street"
+		},
+		{
+			"body": "sidewalks_1_2",
+			"height_m": 0.0300006866455078,
+			"surface": "4m sidewalk"
+		},
+		{
+			"body": "CentralPark_GreenPlaceholder",
+			"height_m": 0.024998664855957,
+			"surface": "central park"
+		},
+		{
+			"body": "RiverAndBay_BluePlaceholder",
+			"height_m": -1.39999961853027,
+			"surface": "river placeholder"
+		},
+		{
+			"body": "roads_3_2",
+			"height_m": 0.029998779296875,
+			"surface": "flat crossing"
+		},
+		{
+			"body": "sidewalks_5_3",
+			"height_m": 0.0299997329711914,
+			"surface": "pier apron"
+		},
+		{
+			"body": "RiverAndBay_BluePlaceholder",
+			"height_m": -1.40000057220459,
+			"surface": "bay placeholder"
+		},
+		{
+			"body": "GroundMesh",
+			"height_m": 0.0,
+			"surface": "ground at city edge"
+		}
+	],
+	"shared_edges_verified_with_four_adjacent_rays": 96
+}

@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/super-city/textures/approach_20_96p0_3.res" id="1_l3b2p"]
+
+[resource]
+albedo_texture = ExtResource("1_l3b2p")
+roughness = 0.98

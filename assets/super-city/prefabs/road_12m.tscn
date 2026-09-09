@@ -1,0 +1,15 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="res://assets/super-city/meshes/road_12m.res" id="1_sugwx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dmm5i"]
+size = Vector3(12, 0.18, 40)
+
+[node name="road_12m" type="StaticBody3D" unique_id=1949934874]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1116127934]
+mesh = ExtResource("1_sugwx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2046349183]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.060000002, 0)
+shape = SubResource("BoxShape3D_dmm5i")

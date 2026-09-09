@@ -1,0 +1,228 @@
+{
+	"buildings": [
+		{
+			"nodes": 3,
+			"scene": "residential_building_01.tscn",
+			"size_m": [
+				8.80000019073486,
+				13.8999996185303,
+				15.375
+			],
+			"surfaces": 3,
+			"triangles": 94
+		},
+		{
+			"nodes": 3,
+			"scene": "residential_building_02.tscn",
+			"size_m": [
+				12.5999994277954,
+				9.0,
+				13.1999998092651
+			],
+			"surfaces": 3,
+			"triangles": 102
+		},
+		{
+			"nodes": 3,
+			"scene": "residential_building_03.tscn",
+			"size_m": [
+				18.1499996185303,
+				12.6999998092651,
+				14.3000001907349
+			],
+			"surfaces": 5,
+			"triangles": 214
+		},
+		{
+			"nodes": 3,
+			"scene": "residential_building_04.tscn",
+			"size_m": [
+				12.3999996185303,
+				23.6000003814697,
+				16.2000007629395
+			],
+			"surfaces": 3,
+			"triangles": 110
+		},
+		{
+			"nodes": 3,
+			"scene": "residential_building_05.tscn",
+			"size_m": [
+				20.1499996185303,
+				20.7000007629395,
+				18.1499996185303
+			],
+			"surfaces": 3,
+			"triangles": 86
+		},
+		{
+			"nodes": 3,
+			"scene": "residential_building_06.tscn",
+			"size_m": [
+				18.3999996185303,
+				26.3999996185303,
+				16.2000007629395
+			],
+			"surfaces": 4,
+			"triangles": 72
+		},
+		{
+			"nodes": 3,
+			"scene": "residential_building_07.tscn",
+			"size_m": [
+				18.1499996185303,
+				17.2999992370605,
+				15.1750001907349
+			],
+			"surfaces": 3,
+			"triangles": 62
+		},
+		{
+			"nodes": 3,
+			"scene": "residential_building_08.tscn",
+			"size_m": [
+				20.1499996185303,
+				34.2000007629395,
+				18.1499996185303
+			],
+			"surfaces": 4,
+			"triangles": 82
+		},
+		{
+			"nodes": 3,
+			"scene": "residential_building_09.tscn",
+			"size_m": [
+				21.1499996185303,
+				29.3999996185303,
+				16.1949996948242
+			],
+			"surfaces": 3,
+			"triangles": 148
+		},
+		{
+			"nodes": 3,
+			"scene": "residential_building_10.tscn",
+			"size_m": [
+				24.1499996185303,
+				33.2999992370605,
+				19.1299991607666
+			],
+			"surfaces": 3,
+			"triangles": 332
+		},
+		{
+			"nodes": 3,
+			"scene": "residential_building_11.tscn",
+			"size_m": [
+				23.1499996185303,
+				22.0,
+				20.1499996185303
+			],
+			"surfaces": 4,
+			"triangles": 114
+		},
+		{
+			"nodes": 3,
+			"scene": "residential_building_12.tscn",
+			"size_m": [
+				28.1499996185303,
+				43.0,
+				17.1299991607666
+			],
+			"surfaces": 3,
+			"triangles": 652
+		},
+		{
+			"nodes": 3,
+			"scene": "residential_building_13.tscn",
+			"size_m": [
+				26.1499996185303,
+				41.0,
+				20.1499996185303
+			],
+			"surfaces": 5,
+			"triangles": 82
+		},
+		{
+			"nodes": 3,
+			"scene": "residential_building_14.tscn",
+			"size_m": [
+				22.1499996185303,
+				47.2000007629395,
+				19.1299991607666
+			],
+			"surfaces": 4,
+			"triangles": 382
+		},
+		{
+			"nodes": 3,
+			"scene": "residential_building_15.tscn",
+			"size_m": [
+				24.1499996185303,
+				56.0,
+				20.1499996185303
+			],
+			"surfaces": 4,
+			"triangles": 82
+		},
+		{
+			"nodes": 3,
+			"scene": "residential_building_16.tscn",
+			"size_m": [
+				20.2000007629395,
+				68.0,
+				20.2000007629395
+			],
+			"surfaces": 3,
+			"triangles": 62
+		},
+		{
+			"nodes": 3,
+			"scene": "residential_building_17.tscn",
+			"size_m": [
+				26.1499996185303,
+				90.0,
+				22.1499996185303
+			],
+			"surfaces": 4,
+			"triangles": 72
+		},
+		{
+			"nodes": 3,
+			"scene": "residential_building_18.tscn",
+			"size_m": [
+				18.1499996185303,
+				112.199996948242,
+				18.1499996185303
+			],
+			"surfaces": 4,
+			"triangles": 62
+		},
+		{
+			"nodes": 3,
+			"scene": "residential_building_19.tscn",
+			"size_m": [
+				24.1499996185303,
+				77.5,
+				22.1499996185303
+			],
+			"surfaces": 5,
+			"triangles": 102
+		},
+		{
+			"nodes": 3,
+			"scene": "residential_building_20.tscn",
+			"size_m": [
+				26.1499996185303,
+				128.0,
+				24.1499996185303
+			],
+			"surfaces": 5,
+			"triangles": 82
+		}
+	],
+	"engine": "4.7.2-stable (steam)",
+	"failures": [],
+	"passed": true,
+	"typed_array_entries": 20
+}

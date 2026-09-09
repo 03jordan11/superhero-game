@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/super-city/textures/road_20m.res" id="1_gi7pt"]
+
+[resource]
+albedo_texture = ExtResource("1_gi7pt")
+roughness = 0.98

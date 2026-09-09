@@ -28,8 +28,12 @@ enum EncounterState {
 
 var state: EncounterState = EncounterState.INACTIVE
 
+# Emitted by concrete encounter subclasses.
+@warning_ignore("unused_signal")
 signal encounter_started
+@warning_ignore("unused_signal")
 signal encounter_completed
+@warning_ignore("unused_signal")
 signal encounter_failed
 
 

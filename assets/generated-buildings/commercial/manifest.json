@@ -1,0 +1,202 @@
+[
+	{
+		"depth_m": 20.0400009155273,
+		"future_inspired": false,
+		"height_m": 139.199996948242,
+		"name": "MERCER WORKS",
+		"scene": "commercial_skyscraper_01.tscn",
+		"surfaces": 5,
+		"triangles": 108,
+		"width_m": 22.0
+	},
+	{
+		"depth_m": 23.0400009155273,
+		"future_inspired": false,
+		"height_m": 113.199996948242,
+		"name": "PORTMAN GROUP",
+		"scene": "commercial_skyscraper_02.tscn",
+		"surfaces": 6,
+		"triangles": 108,
+		"width_m": 32.0
+	},
+	{
+		"depth_m": 26.0400009155273,
+		"future_inspired": false,
+		"height_m": 163.199996948242,
+		"name": "ALDER CAPITAL",
+		"scene": "commercial_skyscraper_03.tscn",
+		"surfaces": 6,
+		"triangles": 108,
+		"width_m": 26.0
+	},
+	{
+		"depth_m": 24.0400009155273,
+		"future_inspired": false,
+		"height_m": 161.199996948242,
+		"name": "CIVIC EXCHANGE",
+		"scene": "commercial_skyscraper_04.tscn",
+		"surfaces": 5,
+		"triangles": 132,
+		"width_m": 30.0
+	},
+	{
+		"depth_m": 24.0400009155273,
+		"future_inspired": false,
+		"height_m": 81.1999969482422,
+		"name": "ASHFORD HOUSE",
+		"scene": "commercial_skyscraper_05.tscn",
+		"surfaces": 5,
+		"triangles": 108,
+		"width_m": 28.0
+	},
+	{
+		"depth_m": 24.0400009155273,
+		"future_inspired": false,
+		"height_m": 133.199996948242,
+		"name": "NORTH QUAY",
+		"scene": "commercial_skyscraper_06.tscn",
+		"surfaces": 6,
+		"triangles": 108,
+		"width_m": 32.0
+	},
+	{
+		"depth_m": 24.0400009155273,
+		"future_inspired": false,
+		"height_m": 181.199996948242,
+		"name": "BRYDEN MEDIA",
+		"scene": "commercial_skyscraper_07.tscn",
+		"surfaces": 6,
+		"triangles": 108,
+		"width_m": 20.0
+	},
+	{
+		"depth_m": 25.0400009155273,
+		"future_inspired": false,
+		"height_m": 143.199996948242,
+		"name": "FULTON TRUST",
+		"scene": "commercial_skyscraper_08.tscn",
+		"surfaces": 5,
+		"triangles": 156,
+		"width_m": 30.0
+	},
+	{
+		"depth_m": 20.0400009155273,
+		"future_inspired": false,
+		"height_m": 91.1999969482422,
+		"name": "MASON PARTNERS",
+		"scene": "commercial_skyscraper_09.tscn",
+		"surfaces": 5,
+		"triangles": 108,
+		"width_m": 32.0
+	},
+	{
+		"depth_m": 26.0400009155273,
+		"future_inspired": false,
+		"height_m": 159.199996948242,
+		"name": "WESTBRIDGE",
+		"scene": "commercial_skyscraper_10.tscn",
+		"surfaces": 5,
+		"triangles": 156,
+		"width_m": 28.0
+	},
+	{
+		"depth_m": 22.0400009155273,
+		"future_inspired": false,
+		"height_m": 141.199996948242,
+		"name": "LARCH & CO",
+		"scene": "commercial_skyscraper_11.tscn",
+		"surfaces": 5,
+		"triangles": 132,
+		"width_m": 22.0
+	},
+	{
+		"depth_m": 24.0400009155273,
+		"future_inspired": false,
+		"height_m": 151.199996948242,
+		"name": "UNION LEDGER",
+		"scene": "commercial_skyscraper_12.tscn",
+		"surfaces": 6,
+		"triangles": 132,
+		"width_m": 32.0
+	},
+	{
+		"depth_m": 24.0400009155273,
+		"future_inspired": false,
+		"height_m": 75.1999969482422,
+		"name": "RIVET STUDIOS",
+		"scene": "commercial_skyscraper_13.tscn",
+		"surfaces": 5,
+		"triangles": 108,
+		"width_m": 26.0
+	},
+	{
+		"depth_m": 26.0400009155273,
+		"future_inspired": false,
+		"height_m": 205.199996948242,
+		"name": "HARBORLINE",
+		"scene": "commercial_skyscraper_14.tscn",
+		"surfaces": 6,
+		"triangles": 156,
+		"width_m": 28.0
+	},
+	{
+		"depth_m": 24.0400009155273,
+		"future_inspired": false,
+		"height_m": 99.1999969482422,
+		"name": "GRAYSON TRADE",
+		"scene": "commercial_skyscraper_15.tscn",
+		"surfaces": 5,
+		"triangles": 108,
+		"width_m": 32.0
+	},
+	{
+		"depth_m": 22.0400009155273,
+		"future_inspired": false,
+		"height_m": 125.199996948242,
+		"name": "STERLING ANNEX",
+		"scene": "commercial_skyscraper_16.tscn",
+		"surfaces": 6,
+		"triangles": 108,
+		"width_m": 18.0
+	},
+	{
+		"depth_m": 24.0400009155273,
+		"future_inspired": true,
+		"height_m": 193.199996948242,
+		"name": "VECTOR SYSTEMS",
+		"scene": "commercial_skyscraper_17.tscn",
+		"surfaces": 6,
+		"triangles": 156,
+		"width_m": 30.0
+	},
+	{
+		"depth_m": 26.0400009155273,
+		"future_inspired": true,
+		"height_m": 169.199996948242,
+		"name": "HEXA NETWORK",
+		"scene": "commercial_skyscraper_18.tscn",
+		"surfaces": 6,
+		"triangles": 156,
+		"width_m": 28.0
+	},
+	{
+		"depth_m": 24.0400009155273,
+		"future_inspired": true,
+		"height_m": 213.199996948242,
+		"name": "AXIOM LABS",
+		"scene": "commercial_skyscraper_19.tscn",
+		"surfaces": 6,
+		"triangles": 132,
+		"width_m": 30.0
+	},
+	{
+		"depth_m": 24.0400009155273,
+		"future_inspired": true,
+		"height_m": 241.199996948242,
+		"name": "NOVA EXCHANGE",
+		"scene": "commercial_skyscraper_20.tscn",
+		"surfaces": 7,
+		"triangles": 132,
+		"width_m": 28.0
+	}
+]

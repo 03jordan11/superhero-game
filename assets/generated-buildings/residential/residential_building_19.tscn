@@ -1,0 +1,15 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="res://assets/generated-buildings/residential/meshes/residential_building_19.res" id="1_sdbdb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_if5ov"]
+size = Vector3(24.15, 77.5, 22.15)
+
+[node name="residential_building_19" type="StaticBody3D" unique_id=1400540810]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=327585879]
+mesh = ExtResource("1_sdbdb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=298819892]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 38.75, 0)
+shape = SubResource("BoxShape3D_if5ov")

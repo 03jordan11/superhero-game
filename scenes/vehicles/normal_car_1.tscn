@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dkkaekf7dtl72"]
+
+[ext_resource type="ArrayMesh" uid="uid://ndtr8o2hd2k4" path="res://assets/Mesh/Vehcile/Realistic Car Pack - Nov 2018/FBX/NormalCar1.fbx" id="1_mesh"]
+[ext_resource type="Script" uid="uid://5c25ifc27ibm" path="res://scripts/vehicle.gd" id="2_vehicle"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vm5ll"]
+size = Vector3(2.340166, 1.63364, 5.7861824)
+
+[node name="NormalCar1" type="RigidBody3D" unique_id=590424851]
+mass = 1200.0
+freeze = true
+script = ExtResource("2_vehicle")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=962564275]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 0, 0)
+mesh = ExtResource("1_mesh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1955442490]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0039794445, 0.82257164, 0.023778915)
+shape = SubResource("BoxShape3D_vm5ll")

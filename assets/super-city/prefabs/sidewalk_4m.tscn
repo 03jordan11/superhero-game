@@ -1,0 +1,15 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="res://assets/super-city/meshes/sidewalk_4m.res" id="1_j78t7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g8tge"]
+size = Vector3(4, 0.03, 40)
+
+[node name="sidewalk_4m" type="StaticBody3D" unique_id=612796672]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1485403967]
+mesh = ExtResource("1_j78t7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1011045510]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.015, 0)
+shape = SubResource("BoxShape3D_g8tge")

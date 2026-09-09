@@ -77,6 +77,11 @@ var has_search_destination: bool = false
 var obstacle_avoidance := CharacterObstacleAvoidance.new()
 var pistol_weapon
 
+# Read and reset by the debug performance monitor; no history accumulates here.
+var debug_physics_usec: int = 0
+var debug_physics_peak_usec: int = 0
+var debug_ground_query_usec: int = 0
+
 @onready var alert_indicator: Label3D = $AlertIndicator
 @onready var alert_indicator_timer: Timer = $AlertIndicatorTimer
 
@@ -99,6 +104,17 @@ func _ready() -> void:
 	alert_indicator.hide()
 	alert_indicator_timer.timeout.connect(_on_alert_indicator_timer_timeout)
 	animation_controller.connect(&"pistol_reload_finished", _on_pistol_reload_finished)
+
+
+func _physics_process(delta: float) -> void:
+	if not OS.is_debug_build():
+		super(delta)
+		return
+	var started := Time.get_ticks_usec()
+	super(delta)
+	var elapsed := Time.get_ticks_usec() - started
+	debug_physics_usec += elapsed
+	debug_physics_peak_usec = maxi(debug_physics_peak_usec, elapsed)
 
 
 func _process_behavior(delta: float) -> void:
@@ -456,6 +472,7 @@ func _get_horizontal_distance_to_target() -> float:
 func _remember_target_position() -> void:
 	if not is_instance_valid(combat_target):
 		return
+	var started := Time.get_ticks_usec() if OS.is_debug_build() else 0
 
 	var target_position := combat_target.global_position
 	var ray_start := target_position + Vector3.UP * 5.0
@@ -474,6 +491,8 @@ func _remember_target_position() -> void:
 	else:
 		last_known_target_position = result["position"]
 	has_last_known_target_position = true
+	if OS.is_debug_build():
+		debug_ground_query_usec += Time.get_ticks_usec() - started
 
 
 func _enter_search() -> void:

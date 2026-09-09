@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/super-city/textures/sidewalk.res" id="1_pjcfl"]
+
+[resource]
+albedo_texture = ExtResource("1_pjcfl")
+roughness = 0.98

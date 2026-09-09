@@ -1,6 +1,8 @@
 class_name PlayerCharacter
 extends CharacterBody3D
 
+const PLAYER_PERF = preload("res://scripts/ui-scripts/player_performance_monitor.gd")
+
 signal health_depleted(damage_info)
 signal jump_charge_changed(current_charge: float, max_charge: float)
 signal ground_speed_changed(current_speed: float, walk_speed: float, run_speed: float)
@@ -149,6 +151,13 @@ func _ready() -> void:
 
 
 func apply_damage(damage_info) -> bool:
+	var perf_started := PLAYER_PERF.begin(self)
+	var result: bool = _profiled_apply_damage(damage_info)
+	PLAYER_PERF.finish(&"player_damage", perf_started)
+	return result
+
+
+func _profiled_apply_damage(damage_info) -> bool:
 	return damage_receiver.apply_damage(
 		damage_info,
 		is_flying,
@@ -211,6 +220,12 @@ func _get_flight_hit_knockdown_chance() -> float:
 
 
 func _input(event: InputEvent) -> void:
+	var perf_started := PLAYER_PERF.begin(self)
+	_profiled_input(event)
+	PLAYER_PERF.finish(&"player_input", perf_started)
+
+
+func _profiled_input(event: InputEvent) -> void:
 	var debug_manager := get_node_or_null("/root/DebugManager")
 	if debug_manager != null and debug_manager.developer_menu_open and (
 		event is InputEventMouseMotion or event is InputEventMouseButton
@@ -243,6 +258,12 @@ func _input(event: InputEvent) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	var perf_started := PLAYER_PERF.begin(self)
+	_profiled_physics_process(delta)
+	PLAYER_PERF.finish(&"player_physics", perf_started)
+
+
+func _profiled_physics_process(delta: float) -> void:
 	var input_snapshot := PlayerInputSnapshot.capture()
 	state_machine.handle_input(input_snapshot)
 
@@ -280,7 +301,9 @@ func _physics_process(delta: float) -> void:
 	landing_impact_controller.observe_before_move(is_on_floor(), velocity.y)
 
 	# Actually move the character with the same collision system in both modes.
+	var move_started := PLAYER_PERF.begin(self)
 	move_and_slide()
+	PLAYER_PERF.finish(&"player_move_and_slide", move_started)
 	state_machine.post_physics_update(delta, input_snapshot)
 	ground_slam_impact_pending = landing_impact_controller.update_after_move(
 		is_on_floor(),
@@ -288,6 +311,7 @@ func _physics_process(delta: float) -> void:
 		ground_slam_speed,
 		_get_speed_attribute_multiplier()
 	)
+	var animation_started := PLAYER_PERF.begin(self)
 	animation_controller.update_animation(
 		is_flying,
 		is_knocked_out,
@@ -299,6 +323,7 @@ func _physics_process(delta: float) -> void:
 		input_snapshot.sprint_pressed,
 		input_snapshot.move_forward_pressed
 	)
+	PLAYER_PERF.finish(&"player_animation_logic", animation_started)
 
 
 func _on_vehicle_released(vehicle: RigidBody3D, release_speed: float) -> void:

@@ -1,0 +1,152 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/traffic/traffic_manager.gd" id="1_manager"]
+[ext_resource type="Script" path="res://scripts/traffic/traffic_vehicle_entry.gd" id="2_entry"]
+[ext_resource type="Script" path="res://scripts/traffic/traffic_box_lod.gd" id="3_lod"]
+[ext_resource type="PackedScene" path="res://scenes/vehicles/variants/normal_car_1_navy.tscn" id="car0"]
+[ext_resource type="PackedScene" path="res://scenes/vehicles/variants/normal_car_1_silver.tscn" id="car1"]
+[ext_resource type="PackedScene" path="res://scenes/vehicles/variants/normal_car_1_burgundy.tscn" id="car2"]
+[ext_resource type="PackedScene" path="res://scenes/vehicles/variants/normal_car_2_white.tscn" id="car3"]
+[ext_resource type="PackedScene" path="res://scenes/vehicles/variants/normal_car_2_charcoal.tscn" id="car4"]
+[ext_resource type="PackedScene" path="res://scenes/vehicles/variants/normal_car_2_beige.tscn" id="car5"]
+[ext_resource type="PackedScene" path="res://scenes/vehicles/variants/sports_car_red.tscn" id="car6"]
+[ext_resource type="PackedScene" path="res://scenes/vehicles/variants/sports_car_yellow.tscn" id="car7"]
+[ext_resource type="PackedScene" path="res://scenes/vehicles/variants/sports_car_blue.tscn" id="car8"]
+[ext_resource type="PackedScene" path="res://scenes/vehicles/variants/sports_car_2_orange.tscn" id="car9"]
+[ext_resource type="PackedScene" path="res://scenes/vehicles/variants/sports_car_2_green.tscn" id="car10"]
+[ext_resource type="PackedScene" path="res://scenes/vehicles/variants/sports_car_2_graphite.tscn" id="car11"]
+[ext_resource type="PackedScene" path="res://scenes/vehicles/variants/suv_black.tscn" id="car12"]
+[ext_resource type="PackedScene" path="res://scenes/vehicles/variants/suv_dark_blue.tscn" id="car13"]
+[ext_resource type="PackedScene" path="res://scenes/vehicles/variants/suv_dark_gray.tscn" id="car14"]
+[ext_resource type="PackedScene" path="res://scenes/vehicles/cop.tscn" id="car15"]
+[ext_resource type="PackedScene" path="res://scenes/vehicles/taxi.tscn" id="car16"]
+
+[sub_resource type="Resource" id="entry0"]
+resource_name = "normal_car_1_navy"
+script = ExtResource("2_entry")
+scene = ExtResource("car0")
+weight = 10.0
+distant_color = Color(0.1568627450980392, 0.27450980392156865, 0.396078431372549, 1)
+
+[sub_resource type="Resource" id="entry1"]
+resource_name = "normal_car_1_silver"
+script = ExtResource("2_entry")
+scene = ExtResource("car1")
+weight = 10.0
+distant_color = Color(0.5647058823529412, 0.592156862745098, 0.6196078431372549, 1)
+
+[sub_resource type="Resource" id="entry2"]
+resource_name = "normal_car_1_burgundy"
+script = ExtResource("2_entry")
+scene = ExtResource("car2")
+weight = 10.0
+distant_color = Color(0.4117647058823529, 0.1803921568627451, 0.23529411764705882, 1)
+
+[sub_resource type="Resource" id="entry3"]
+resource_name = "normal_car_2_white"
+script = ExtResource("2_entry")
+scene = ExtResource("car3")
+weight = 8.0
+distant_color = Color(0.9098039215686274, 0.9098039215686274, 0.8941176470588236, 1)
+
+[sub_resource type="Resource" id="entry4"]
+resource_name = "normal_car_2_charcoal"
+script = ExtResource("2_entry")
+scene = ExtResource("car4")
+weight = 8.0
+distant_color = Color(0.27058823529411763, 0.28627450980392155, 0.3058823529411765, 1)
+
+[sub_resource type="Resource" id="entry5"]
+resource_name = "normal_car_2_beige"
+script = ExtResource("2_entry")
+scene = ExtResource("car5")
+weight = 9.0
+distant_color = Color(0.7019607843137254, 0.6470588235294118, 0.5490196078431373, 1)
+
+[sub_resource type="Resource" id="entry6"]
+resource_name = "sports_car_red"
+script = ExtResource("2_entry")
+scene = ExtResource("car6")
+weight = 3.0
+distant_color = Color(0.7725490196078432, 0.17647058823529413, 0.19607843137254902, 1)
+
+[sub_resource type="Resource" id="entry7"]
+resource_name = "sports_car_yellow"
+script = ExtResource("2_entry")
+scene = ExtResource("car7")
+weight = 2.0
+distant_color = Color(0.9294117647058824, 0.7764705882352941, 0.2196078431372549, 1)
+
+[sub_resource type="Resource" id="entry8"]
+resource_name = "sports_car_blue"
+script = ExtResource("2_entry")
+scene = ExtResource("car8")
+weight = 2.0
+distant_color = Color(0.1568627450980392, 0.4117647058823529, 0.7411764705882353, 1)
+
+[sub_resource type="Resource" id="entry9"]
+resource_name = "sports_car_2_orange"
+script = ExtResource("2_entry")
+scene = ExtResource("car9")
+weight = 2.0
+distant_color = Color(0.8745098039215686, 0.4196078431372549, 0.1568627450980392, 1)
+
+[sub_resource type="Resource" id="entry10"]
+resource_name = "sports_car_2_green"
+script = ExtResource("2_entry")
+scene = ExtResource("car10")
+weight = 2.0
+distant_color = Color(0.2823529411764706, 0.5215686274509804, 0.3176470588235294, 1)
+
+[sub_resource type="Resource" id="entry11"]
+resource_name = "sports_car_2_graphite"
+script = ExtResource("2_entry")
+scene = ExtResource("car11")
+weight = 1.0
+distant_color = Color(0.3333333333333333, 0.3607843137254902, 0.396078431372549, 1)
+
+[sub_resource type="Resource" id="entry12"]
+resource_name = "suv_black"
+script = ExtResource("2_entry")
+scene = ExtResource("car12")
+weight = 7.0
+distant_color = Color(0.1411764705882353, 0.15294117647058825, 0.16862745098039217, 1)
+
+[sub_resource type="Resource" id="entry13"]
+resource_name = "suv_dark_blue"
+script = ExtResource("2_entry")
+scene = ExtResource("car13")
+weight = 7.0
+distant_color = Color(0.18823529411764706, 0.2823529411764706, 0.3607843137254902, 1)
+
+[sub_resource type="Resource" id="entry14"]
+resource_name = "suv_dark_gray"
+script = ExtResource("2_entry")
+scene = ExtResource("car14")
+weight = 6.0
+distant_color = Color(0.40784313725490196, 0.43137254901960786, 0.4470588235294118, 1)
+
+[sub_resource type="Resource" id="entry15"]
+resource_name = "cop"
+script = ExtResource("2_entry")
+scene = ExtResource("car15")
+weight = 3.0
+distant_color = Color(0.9333333333333333, 0.9333333333333333, 0.9333333333333333, 1)
+
+[sub_resource type="Resource" id="entry16"]
+resource_name = "taxi"
+script = ExtResource("2_entry")
+scene = ExtResource("car16")
+weight = 10.0
+distant_color = Color(0.9019607843137255, 0.7098039215686275, 0.16862745098039217, 1)
+
+[node name="TrafficManager" type="Node3D"]
+script = ExtResource("1_manager")
+vehicle_entries = Array[ExtResource("2_entry")]([SubResource("entry0"), SubResource("entry1"), SubResource("entry2"), SubResource("entry3"), SubResource("entry4"), SubResource("entry5"), SubResource("entry6"), SubResource("entry7"), SubResource("entry8"), SubResource("entry9"), SubResource("entry10"), SubResource("entry11"), SubResource("entry12"), SubResource("entry13"), SubResource("entry14"), SubResource("entry15"), SubResource("entry16")])
+
+[node name="ActiveVehicles" type="Node3D" parent="."]
+
+[node name="ReleasedVehicles" type="Node3D" parent="."]
+
+[node name="DistantTraffic" type="Node3D" parent="."]
+script = ExtResource("3_lod")

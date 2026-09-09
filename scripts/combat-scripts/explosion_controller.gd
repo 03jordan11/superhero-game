@@ -105,6 +105,9 @@ func _apply_radius_damage(
 			impact_speed
 		)
 		collider.call("apply_damage", damage_info)
+	# Distant visual civilians have no physics body to appear in the query.
+	get_tree().call_group(&"civilian_capsule_lod",&"apply_radius_damage",explosion_position,radius,
+		DAMAGE_INFO_SCRIPT.new(actor_damage,explosion_position,Vector3.ZERO,&"knockback",source,impact_speed))
 
 
 func _spawn_effect(explosion_position: Vector3, impact_speed: float) -> void:

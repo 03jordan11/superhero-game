@@ -1,0 +1,31 @@
+{
+	"alleys": 100,
+	"buildings": 2060,
+	"city_size_m": [
+		3000,
+		2000
+	],
+	"connected_road_patches": 645,
+	"crossings": 5,
+	"detached_roads": [],
+	"districts": {
+		"CivicCenter": 232,
+		"Docklands": 46,
+		"Eastbank": 372,
+		"FinancialQuarter": 138,
+		"FoundryWard": 67,
+		"NorthHeights": 528,
+		"Parkside": 147,
+		"WestVillage": 530
+	},
+	"engine": "4.7.2-stable (steam)",
+	"failures": [],
+	"park_size_m": [
+		508.0,
+		604.0
+	],
+	"passed": true,
+	"road_patches": 645,
+	"sidewalk_patches": 1257,
+	"unique_building_assets": 50
+}

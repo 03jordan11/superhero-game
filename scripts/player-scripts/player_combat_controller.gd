@@ -151,4 +151,9 @@ func _try_hit_target(body: CharacterBody3D, strength: int) -> bool:
 		collider.call("apply_damage", damage_info)
 		return true
 
+	# A just-approached capsule may still be waiting for a safe full-body handoff.
+	for lod in body.get_tree().get_nodes_in_group(&"civilian_capsule_lod"):
+		var uppercut := combo_punch_index == UPPERCUT_PUNCH_INDEX
+		var info = DAMAGE_INFO_SCRIPT.new(regular_hit_damage_multiplier*strength*(2.0 if uppercut else 1.0),impact_origin,forward,&"knockback" if uppercut else &"chest",body)
+		if lod.apply_melee_damage(impact_origin,punch_hit_radius,info): return true
 	return false

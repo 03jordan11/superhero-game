@@ -1,6 +1,8 @@
 class_name LandingTargetIndicator
 extends Node3D
 
+const PLAYER_PERF = preload("res://scripts/ui-scripts/player_performance_monitor.gd")
+
 @export var marker_size: float = 2.0
 @export var marker_thickness: float = 0.12
 @export var ray_length: float = 1000.0
@@ -18,6 +20,12 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	var perf_started := PLAYER_PERF.begin(self)
+	_profiled_physics_process(_delta)
+	PLAYER_PERF.finish(&"landing_indicator", perf_started)
+
+
+func _profiled_physics_process(_delta: float) -> void:
 	if not OS.is_debug_build() or not DebugManager.show_landing_target:
 		visible = false
 		return
@@ -49,11 +57,11 @@ func _create_marker_meshes() -> void:
 	material.emission = Color.RED
 	material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
 
-	for rotation_degrees in [-45.0, 45.0]:
+	for arm_angle_degrees in [-45.0, 45.0]:
 		var marker_arm := MeshInstance3D.new()
 		var mesh := BoxMesh.new()
 		mesh.size = Vector3(marker_size, 0.03, marker_thickness)
 		marker_arm.mesh = mesh
 		marker_arm.material_override = material
-		marker_arm.rotation_degrees.y = rotation_degrees
+		marker_arm.rotation_degrees.y = arm_angle_degrees
 		add_child(marker_arm)

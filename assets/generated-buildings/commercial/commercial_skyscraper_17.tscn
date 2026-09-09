@@ -1,0 +1,15 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="res://assets/generated-buildings/commercial/meshes/commercial_skyscraper_17.res" id="1_eeu2i"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qav48"]
+size = Vector3(30, 193.2, 24.04)
+
+[node name="commercial_skyscraper_17" type="StaticBody3D" unique_id=335040996]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=654770846]
+mesh = ExtResource("1_eeu2i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1812015348]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 96.6, 0)
+shape = SubResource("BoxShape3D_qav48")

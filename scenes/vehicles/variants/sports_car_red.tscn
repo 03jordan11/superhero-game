@@ -1,0 +1,8 @@
+[gd_scene format=3]
+[ext_resource type="PackedScene" path="res://scenes/vehicles/sports_car.tscn" id="1"]
+[ext_resource type="Material" path="res://scenes/vehicles/variants/sports_car_red_0.tres" id="paint0"]
+[ext_resource type="Material" path="res://scenes/vehicles/variants/sports_car_red_1.tres" id="paint1"]
+[node name="sports_car_red" instance=ExtResource("1")]
+[node name="MeshInstance3D" parent="." index="0"]
+surface_material_override/0 = ExtResource("paint0")
+surface_material_override/1 = ExtResource("paint1")

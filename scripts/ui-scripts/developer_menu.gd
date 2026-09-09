@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+const PLAYER_PERF = preload("res://scripts/ui-scripts/player_performance_monitor.gd")
+
 const PERFORMANCE_SAMPLE_WINDOW_SECONDS: float = 1.0
 const PERFORMANCE_REFRESH_INTERVAL_SECONDS: float = 0.25
 const CIVILIAN_SCENE: PackedScene = preload("res://scenes/npcs/civilian.tscn")
@@ -80,6 +82,12 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	var perf_started := PLAYER_PERF.begin(self)
+	_profiled_process(delta)
+	PLAYER_PERF.finish(&"developer_menu_process", perf_started)
+
+
+func _profiled_process(delta: float) -> void:
 	if not DebugManager.show_performance_hud:
 		return
 
@@ -260,6 +268,12 @@ func _reset_performance_samples() -> void:
 
 
 func _update_performance_label() -> void:
+	var perf_started := PLAYER_PERF.begin(self)
+	_profiled_update_performance_label()
+	PLAYER_PERF.finish(&"performance_hud", perf_started)
+
+
+func _profiled_update_performance_label() -> void:
 	var average_frame_time_ms: float = 0.0
 	var worst_frame_time_ms: float = 0.0
 	if not frame_time_samples.is_empty():

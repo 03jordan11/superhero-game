@@ -49,6 +49,7 @@ func configure_impact(
 
 
 func _ready() -> void:
+	add_to_group(&"debug_landing_effects")
 	call_deferred("_start_effect")
 
 

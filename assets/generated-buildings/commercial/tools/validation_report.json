@@ -1,0 +1,228 @@
+{
+	"buildings": [
+		{
+			"nodes": 3,
+			"scene": "commercial_skyscraper_01.tscn",
+			"size_m": [
+				22.0,
+				139.199996948242,
+				20.0400009155273
+			],
+			"surfaces": 5,
+			"triangles": 108
+		},
+		{
+			"nodes": 3,
+			"scene": "commercial_skyscraper_02.tscn",
+			"size_m": [
+				32.0,
+				113.199996948242,
+				23.0400009155273
+			],
+			"surfaces": 6,
+			"triangles": 108
+		},
+		{
+			"nodes": 3,
+			"scene": "commercial_skyscraper_03.tscn",
+			"size_m": [
+				26.0,
+				163.199996948242,
+				26.0400009155273
+			],
+			"surfaces": 6,
+			"triangles": 108
+		},
+		{
+			"nodes": 3,
+			"scene": "commercial_skyscraper_04.tscn",
+			"size_m": [
+				30.0,
+				161.199996948242,
+				24.0400009155273
+			],
+			"surfaces": 5,
+			"triangles": 132
+		},
+		{
+			"nodes": 3,
+			"scene": "commercial_skyscraper_05.tscn",
+			"size_m": [
+				28.0,
+				81.1999969482422,
+				24.0400009155273
+			],
+			"surfaces": 5,
+			"triangles": 108
+		},
+		{
+			"nodes": 3,
+			"scene": "commercial_skyscraper_06.tscn",
+			"size_m": [
+				32.0,
+				133.199996948242,
+				24.0400009155273
+			],
+			"surfaces": 6,
+			"triangles": 108
+		},
+		{
+			"nodes": 3,
+			"scene": "commercial_skyscraper_07.tscn",
+			"size_m": [
+				20.0,
+				181.199996948242,
+				24.0400009155273
+			],
+			"surfaces": 6,
+			"triangles": 108
+		},
+		{
+			"nodes": 3,
+			"scene": "commercial_skyscraper_08.tscn",
+			"size_m": [
+				30.0,
+				143.199996948242,
+				25.0400009155273
+			],
+			"surfaces": 5,
+			"triangles": 156
+		},
+		{
+			"nodes": 3,
+			"scene": "commercial_skyscraper_09.tscn",
+			"size_m": [
+				32.0,
+				91.1999969482422,
+				20.0400009155273
+			],
+			"surfaces": 5,
+			"triangles": 108
+		},
+		{
+			"nodes": 3,
+			"scene": "commercial_skyscraper_10.tscn",
+			"size_m": [
+				28.0,
+				159.199996948242,
+				26.0400009155273
+			],
+			"surfaces": 5,
+			"triangles": 156
+		},
+		{
+			"nodes": 3,
+			"scene": "commercial_skyscraper_11.tscn",
+			"size_m": [
+				22.0,
+				141.199996948242,
+				22.0400009155273
+			],
+			"surfaces": 5,
+			"triangles": 132
+		},
+		{
+			"nodes": 3,
+			"scene": "commercial_skyscraper_12.tscn",
+			"size_m": [
+				32.0,
+				151.199996948242,
+				24.0400009155273
+			],
+			"surfaces": 6,
+			"triangles": 132
+		},
+		{
+			"nodes": 3,
+			"scene": "commercial_skyscraper_13.tscn",
+			"size_m": [
+				26.0,
+				75.1999969482422,
+				24.0400009155273
+			],
+			"surfaces": 5,
+			"triangles": 108
+		},
+		{
+			"nodes": 3,
+			"scene": "commercial_skyscraper_14.tscn",
+			"size_m": [
+				28.0,
+				205.199996948242,
+				26.0400009155273
+			],
+			"surfaces": 6,
+			"triangles": 156
+		},
+		{
+			"nodes": 3,
+			"scene": "commercial_skyscraper_15.tscn",
+			"size_m": [
+				32.0,
+				99.1999969482422,
+				24.0400009155273
+			],
+			"surfaces": 5,
+			"triangles": 108
+		},
+		{
+			"nodes": 3,
+			"scene": "commercial_skyscraper_16.tscn",
+			"size_m": [
+				18.0,
+				125.199996948242,
+				22.0400009155273
+			],
+			"surfaces": 6,
+			"triangles": 108
+		},
+		{
+			"nodes": 3,
+			"scene": "commercial_skyscraper_17.tscn",
+			"size_m": [
+				30.0,
+				193.199996948242,
+				24.0400009155273
+			],
+			"surfaces": 6,
+			"triangles": 156
+		},
+		{
+			"nodes": 3,
+			"scene": "commercial_skyscraper_18.tscn",
+			"size_m": [
+				28.0,
+				169.199996948242,
+				26.0400009155273
+			],
+			"surfaces": 6,
+			"triangles": 156
+		},
+		{
+			"nodes": 3,
+			"scene": "commercial_skyscraper_19.tscn",
+			"size_m": [
+				30.0,
+				213.199996948242,
+				24.0400009155273
+			],
+			"surfaces": 6,
+			"triangles": 132
+		},
+		{
+			"nodes": 3,
+			"scene": "commercial_skyscraper_20.tscn",
+			"size_m": [
+				28.0,
+				241.199996948242,
+				24.0400009155273
+			],
+			"surfaces": 7,
+			"triangles": 132
+		}
+	],
+	"engine": "4.7.2-stable (steam)",
+	"failures": [],
+	"passed": true,
+	"typed_array_entries": 20
+}

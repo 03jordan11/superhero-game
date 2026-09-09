@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/generated-buildings/residential/textures/red_brick.res" id="1_gbmbo"]
+
+[resource]
+albedo_texture = ExtResource("1_gbmbo")
+roughness = 0.9
+texture_filter = 2

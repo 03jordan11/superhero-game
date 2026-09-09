@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://ddw2jjx3xpc0e"]
+
+[ext_resource type="ArrayMesh" uid="uid://dd7nseakqo6pg" path="res://assets/Mesh/Vehcile/Realistic Car Pack - Nov 2018/FBX/SUV.fbx" id="1_mesh"]
+[ext_resource type="Script" uid="uid://5c25ifc27ibm" path="res://scripts/vehicle.gd" id="2_vehicle"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jfg1h"]
+size = Vector3(2.71574, 2.0824544, 5.6422243)
+
+[node name="SUV" type="RigidBody3D" unique_id=1161391200]
+mass = 1200.0
+freeze = true
+script = ExtResource("2_vehicle")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1809064415]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 0, 0)
+mesh = ExtResource("1_mesh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=841618655]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0033067465, 1.0199546, 0.007954121)
+shape = SubResource("BoxShape3D_jfg1h")

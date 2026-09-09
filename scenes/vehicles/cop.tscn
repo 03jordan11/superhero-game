@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://rotwxv00wwvk"]
+
+[ext_resource type="ArrayMesh" uid="uid://d0csciydfs7aq" path="res://assets/Mesh/Vehcile/Realistic Car Pack - Nov 2018/FBX/Cop.fbx" id="1_mesh"]
+[ext_resource type="Script" uid="uid://5c25ifc27ibm" path="res://scripts/vehicle.gd" id="2_vehicle"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dsn2g"]
+size = Vector3(2.306312, 1.568862, 5.1170664)
+
+[node name="Cop" type="RigidBody3D" unique_id=82607610]
+mass = 1200.0
+freeze = true
+script = ExtResource("2_vehicle")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=451023241]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 0, 0)
+mesh = ExtResource("1_mesh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1532363981]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0031120777, 0.7585807, 0.0026845932)
+shape = SubResource("BoxShape3D_dsn2g")

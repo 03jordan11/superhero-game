@@ -1,0 +1,19 @@
+{
+  "description": "Two blocks west of the park. IDs and connections are authored, not nearest-neighbor links.",
+  "points": [
+    [-572, 0.03, 80], [-572, 0.03, 12], [-650, 0.03, 12],
+    [-724, 0.03, 12], [-724, 0.03, 148], [-650, 0.03, 148],
+    [-572, 0.03, 148], [-573.5, 0.03, 148], [-573.5, 0.03, 172],
+    [-572, 0.03, 172], [-650, 0.03, 172], [-724, 0.03, 172],
+    [-724, 0.03, 304], [-650, 0.03, 304], [-572, 0.03, 304]
+  ],
+  "edges": [
+    [0, 1, "sidewalk"], [1, 2, "sidewalk"], [2, 3, "sidewalk"],
+    [3, 4, "sidewalk"], [4, 5, "sidewalk"], [5, 6, "sidewalk"], [6, 0, "sidewalk"],
+    [2, 5, "alley"],
+    [6, 7, "sidewalk"], [7, 8, "crossing"], [8, 9, "sidewalk"],
+    [9, 10, "sidewalk"], [10, 11, "sidewalk"], [11, 12, "sidewalk"],
+    [12, 13, "sidewalk"], [13, 14, "sidewalk"], [14, 9, "sidewalk"],
+    [10, 13, "alley"]
+  ]
+}

@@ -166,6 +166,9 @@ func _apply_landing_impact_damage(
 			impact_speed
 		)
 		collider.call("apply_damage", damage_info)
+	# Include distant visual civilians when a fast landing reaches them.
+	player.get_tree().call_group(&"civilian_capsule_lod",&"apply_radius_damage",impact_position,landing_impact_radius,
+		DAMAGE_INFO_SCRIPT.new(damage,impact_position,Vector3.ZERO,hit_reaction,player,impact_speed))
 
 
 func _get_ground_contact() -> Dictionary:

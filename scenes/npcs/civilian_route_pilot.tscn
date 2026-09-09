@@ -1,0 +1,19 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/npc-scripts/pedestrian_route_graph.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/npcs/routed_civilian.tscn" id="2"]
+
+[node name="CivilianRoutePilot" type="Node3D"]
+
+[node name="RouteGraph" type="Node3D" parent="."]
+script = ExtResource("1")
+
+[node name="Civilian" parent="." instance=ExtResource("2")]
+position = Vector3(-572, 0.04, 80)
+route_graph_path = NodePath("../RouteGraph")
+
+[node name="StartHere" type="Marker3D" parent="."]
+position = Vector3(-572, 0.04, 80)
+gizmo_extents = 5.0
+
+[editable path="Civilian"]

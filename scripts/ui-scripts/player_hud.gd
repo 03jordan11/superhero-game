@@ -1,6 +1,8 @@
 class_name PlayerHud
 extends CanvasLayer
 
+const PLAYER_PERF = preload("res://scripts/ui-scripts/player_performance_monitor.gd")
+
 ## Presentation-only subscriber for Player gameplay events. Gameplay objects
 ## publish raw values; the HUD owns percentages, clamping, and label formatting.
 
@@ -73,6 +75,7 @@ func setup(
 
 
 func _on_health_changed(current_health: float, max_health: float) -> void:
+	var perf_started := PLAYER_PERF.begin(self)
 	var safe_max_health := maxf(max_health, 1.0)
 	health_bar.max_value = safe_max_health
 	health_bar.value = clampf(current_health, 0.0, safe_max_health)
@@ -80,6 +83,7 @@ func _on_health_changed(current_health: float, max_health: float) -> void:
 		roundi(current_health),
 		roundi(safe_max_health)
 	]
+	PLAYER_PERF.finish(&"hud_on_health_changed", perf_started)
 
 
 func _on_experience_changed(
@@ -94,6 +98,7 @@ func _on_level_changed(_current_level: int) -> void:
 
 
 func _refresh_experience_display() -> void:
+	var perf_started := PLAYER_PERF.begin(self)
 	var experience_to_next_level := player.stats.get_experience_to_next_level()
 	experience_bar.max_value = experience_to_next_level
 	experience_bar.value = clampi(player.stats.experience, 0, experience_to_next_level)
@@ -102,9 +107,11 @@ func _refresh_experience_display() -> void:
 		player.stats.experience,
 		experience_to_next_level,
 	]
+	PLAYER_PERF.finish(&"hud_refresh_experience_display", perf_started)
 
 
 func _on_jump_charge_changed(current_charge: float, max_charge: float) -> void:
+	var perf_started := PLAYER_PERF.begin(self)
 	var clamped_percent := clampf(
 		current_charge / maxf(max_charge, 0.001),
 		0.0,
@@ -112,10 +119,13 @@ func _on_jump_charge_changed(current_charge: float, max_charge: float) -> void:
 	)
 	charge_bar.value = clamped_percent * 100.0
 	charge_label.text = "Power Jump: %d%%" % roundi(clamped_percent * 100.0)
+	PLAYER_PERF.finish(&"hud_on_jump_charge_changed", perf_started)
 
 
 func _on_landing_classified(category: String) -> void:
+	var perf_started := PLAYER_PERF.begin(self)
 	landing_label.text = "Landing: %s" % category
+	PLAYER_PERF.finish(&"hud_on_landing_classified", perf_started)
 
 
 func _on_flight_speed_changed(
@@ -123,10 +133,12 @@ func _on_flight_speed_changed(
 	max_speed: float,
 	is_active: bool
 ) -> void:
+	var perf_started := PLAYER_PERF.begin(self)
 	var speed_percent := current_speed / maxf(max_speed, 0.001) if is_active else 0.0
 	var clamped_percent := clampf(speed_percent, 0.0, 1.0)
 	flight_speed_bar.value = clamped_percent * 100.0
 	flight_speed_label.text = "Flight Speed: %d%%" % roundi(clamped_percent * 100.0)
+	PLAYER_PERF.finish(&"hud_on_flight_speed_changed", perf_started)
 
 
 func _on_ground_speed_changed(
@@ -134,12 +146,14 @@ func _on_ground_speed_changed(
 	walk_speed: float,
 	run_speed: float
 ) -> void:
+	var perf_started := PLAYER_PERF.begin(self)
 	var speed_percent := 0.0
 	if run_speed > walk_speed:
 		speed_percent = inverse_lerp(walk_speed, run_speed, current_speed)
 	var clamped_percent := clampf(speed_percent, 0.0, 1.0)
 	sprint_speed_bar.value = clamped_percent * 100.0
 	sprint_speed_label.text = "Sprint Speed: %d%%" % roundi(clamped_percent * 100.0)
+	PLAYER_PERF.finish(&"hud_on_ground_speed_changed", perf_started)
 
 
 func _on_throw_charge_changed(
@@ -147,9 +161,11 @@ func _on_throw_charge_changed(
 	hold_time: float,
 	max_charge_time: float
 ) -> void:
+	var perf_started := PLAYER_PERF.begin(self)
 	var charge_percent := hold_time / maxf(max_charge_time, 0.001)
 	var clamped_percent := clampf(charge_percent, 0.0, 1.0)
 	vehicle_throw_charge_label.visible = is_visible
 	vehicle_throw_charge_bar.visible = is_visible
 	vehicle_throw_charge_bar.value = clamped_percent * 100.0
 	vehicle_throw_charge_label.text = "Vehicle Throw: %d%%" % roundi(clamped_percent * 100.0)
+	PLAYER_PERF.finish(&"hud_on_throw_charge_changed", perf_started)

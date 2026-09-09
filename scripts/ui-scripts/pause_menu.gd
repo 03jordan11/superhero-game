@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+const PLAYER_PERF = preload("res://scripts/ui-scripts/player_performance_monitor.gd")
+
 const RESOLUTIONS: Array[Vector2i] = [
 	Vector2i(1280, 720),
 	Vector2i(1600, 900),
@@ -26,6 +28,12 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	var perf_started := PLAYER_PERF.begin(self)
+	_profiled_unhandled_input(event)
+	PLAYER_PERF.finish(&"pause_menu_input", perf_started)
+
+
+func _profiled_unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		if get_tree().paused:
 			if settings_menu.visible:

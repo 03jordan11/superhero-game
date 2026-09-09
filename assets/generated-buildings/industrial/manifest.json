@@ -1,0 +1,102 @@
+[
+	{
+		"depth_m": 27.7000007629395,
+		"design": "Brick freight warehouse with three loading bays, canopy, and office penthouse",
+		"height_m": 12.6000003814697,
+		"name": "QUAY FREIGHT",
+		"scene": "industrial_building_01.tscn",
+		"surfaces": 4,
+		"triangles": 58,
+		"width_m": 34.2000007629395
+	},
+	{
+		"depth_m": 24.0499992370605,
+		"design": "Four-bay sawtooth machine workshop with opaque clerestory glazing",
+		"height_m": 9.80000019073486,
+		"name": "RIVET TOOLWORKS",
+		"scene": "industrial_building_02.tscn",
+		"surfaces": 3,
+		"triangles": 48,
+		"width_m": 30.0
+	},
+	{
+		"depth_m": 26.2999992370605,
+		"design": "Pitched-roof foundry with an eight-sided tapered chimney",
+		"height_m": 25.6000003814697,
+		"name": "IRONVALE FOUNDRY",
+		"scene": "industrial_building_03.tscn",
+		"surfaces": 3,
+		"triangles": 78,
+		"width_m": 30.2999992370605
+	},
+	{
+		"depth_m": 26.2000007629395,
+		"design": "Insulated cold-storage warehouse with three rooftop chiller blocks",
+		"height_m": 14.1000003814697,
+		"name": "NORTH COLD STORE",
+		"scene": "industrial_building_04.tscn",
+		"surfaces": 3,
+		"triangles": 68,
+		"width_m": 32.2000007629395
+	},
+	{
+		"depth_m": 24.0499992370605,
+		"design": "Twin-gable distribution depot with four roller shutters",
+		"height_m": 8.80000019073486,
+		"name": "CROSSLINE DEPOT",
+		"scene": "industrial_building_05.tscn",
+		"surfaces": 3,
+		"triangles": 56,
+		"width_m": 32.0
+	},
+	{
+		"depth_m": 22.2999992370605,
+		"design": "Six-story textile mill with stone floor bands and rooftop stair tower",
+		"height_m": 29.0,
+		"name": "MILLSTONE TEXTILE",
+		"scene": "industrial_building_06.tscn",
+		"surfaces": 4,
+		"triangles": 64,
+		"width_m": 28.2999992370605
+	},
+	{
+		"depth_m": 24.2000007629395,
+		"design": "Masonry boiler house with paired narrow smokestacks",
+		"height_m": 28.6000003814697,
+		"name": "CANAL BOILERWORKS",
+		"scene": "industrial_building_07.tscn",
+		"surfaces": 3,
+		"triangles": 130,
+		"width_m": 30.2000007629395
+	},
+	{
+		"depth_m": 24.0499992370605,
+		"design": "Compact bulk mill with four octagonal storage silos on a solid base",
+		"height_m": 24.0,
+		"name": "BULKLINE MILL",
+		"scene": "industrial_building_08.tscn",
+		"surfaces": 4,
+		"triangles": 226,
+		"width_m": 32.0
+	},
+	{
+		"depth_m": 24.0499992370605,
+		"design": "Urban utility plant with raised turbine hall and square exhaust tower",
+		"height_m": 30.3999996185303,
+		"name": "WARD POWER",
+		"scene": "industrial_building_09.tscn",
+		"surfaces": 5,
+		"triangles": 60,
+		"width_m": 28.0
+	},
+	{
+		"depth_m": 24.0499992370605,
+		"design": "Repair works with tall office wing and lower pitched service hall",
+		"height_m": 12.0,
+		"name": "DOCKSIDE REPAIR",
+		"scene": "industrial_building_10.tscn",
+		"surfaces": 4,
+		"triangles": 44,
+		"width_m": 30.0
+	}
+]

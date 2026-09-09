@@ -1,0 +1,15 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="res://assets/generated-buildings/industrial/meshes/industrial_building_04.res" id="1_djjq8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_js852"]
+size = Vector3(32.2, 14.1, 26.2)
+
+[node name="industrial_building_04" type="StaticBody3D" unique_id=1385566930]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2139167685]
+mesh = ExtResource("1_djjq8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=810876001]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.05, 0)
+shape = SubResource("BoxShape3D_js852")

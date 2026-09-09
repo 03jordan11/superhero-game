@@ -1,0 +1,1902 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/npc-scripts/city_pedestrian_network.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/npc-scripts/pedestrian_district.gd" id="2"]
+
+[node name="CityPedestrianRoutes" type="Node3D"]
+script = ExtResource("1")
+network_enabled = true
+show_disabled_routes = false
+crossing_passing_margin = 0.5
+
+[node name="WestVillage" type="Node3D" parent="."]
+script = ExtResource("2")
+district_id = "WestVillage"
+enabled_routes = {
+"WestVillage_Block_01_01": true
+}
+district_enabled = true
+show_debug = true
+
+[node name="Block_01_01" type="Node3D" parent="WestVillage"]
+metadata/module_id = "WestVillage_Block_01_01"
+
+[node name="StartHere" type="Marker3D" parent="WestVillage/Block_01_01"]
+position = Vector3(-1368.0, 0.03, -972.0)
+gizmo_extents = 3.0
+
+[node name="Block_01_02" type="Node3D" parent="WestVillage"]
+metadata/module_id = "WestVillage_Block_01_02"
+
+[node name="StartHere" type="Marker3D" parent="WestVillage/Block_01_02"]
+position = Vector3(-1286.0, 0.03, -972.0)
+gizmo_extents = 3.0
+
+[node name="Block_01_03" type="Node3D" parent="WestVillage"]
+metadata/module_id = "WestVillage_Block_01_03"
+
+[node name="StartHere" type="Marker3D" parent="WestVillage/Block_01_03"]
+position = Vector3(-1110.0, 0.03, -972.0)
+gizmo_extents = 3.0
+
+[node name="Block_01_04" type="Node3D" parent="WestVillage"]
+metadata/module_id = "WestVillage_Block_01_04"
+
+[node name="StartHere" type="Marker3D" parent="WestVillage/Block_01_04"]
+position = Vector3(-930.0, 0.03, -972.0)
+gizmo_extents = 3.0
+
+[node name="Block_02_01" type="Node3D" parent="WestVillage"]
+metadata/module_id = "WestVillage_Block_02_01"
+
+[node name="StartHere" type="Marker3D" parent="WestVillage/Block_02_01"]
+position = Vector3(-1368.0, 0.03, -808.0)
+gizmo_extents = 3.0
+
+[node name="Block_02_02" type="Node3D" parent="WestVillage"]
+metadata/module_id = "WestVillage_Block_02_02"
+
+[node name="StartHere" type="Marker3D" parent="WestVillage/Block_02_02"]
+position = Vector3(-1288.0, 0.03, -808.0)
+gizmo_extents = 3.0
+
+[node name="Block_02_03" type="Node3D" parent="WestVillage"]
+metadata/module_id = "WestVillage_Block_02_03"
+
+[node name="StartHere" type="Marker3D" parent="WestVillage/Block_02_03"]
+position = Vector3(-1148.5, 0.03, -808.0)
+gizmo_extents = 3.0
+
+[node name="Block_02_04" type="Node3D" parent="WestVillage"]
+metadata/module_id = "WestVillage_Block_02_04"
+
+[node name="StartHere" type="Marker3D" parent="WestVillage/Block_02_04"]
+position = Vector3(-968.5, 0.03, -808.0)
+gizmo_extents = 3.0
+
+[node name="Block_03_01" type="Node3D" parent="WestVillage"]
+metadata/module_id = "WestVillage_Block_03_01"
+
+[node name="StartHere" type="Marker3D" parent="WestVillage/Block_03_01"]
+position = Vector3(-1411.5, 0.03, -652.0)
+gizmo_extents = 3.0
+
+[node name="Block_03_02" type="Node3D" parent="WestVillage"]
+metadata/module_id = "WestVillage_Block_03_02"
+
+[node name="StartHere" type="Marker3D" parent="WestVillage/Block_03_02"]
+position = Vector3(-1326.5, 0.03, -652.0)
+gizmo_extents = 3.0
+
+[node name="Block_03_03" type="Node3D" parent="WestVillage"]
+metadata/module_id = "WestVillage_Block_03_03"
+
+[node name="StartHere" type="Marker3D" parent="WestVillage/Block_03_03"]
+position = Vector3(-1148.5, 0.03, -652.0)
+gizmo_extents = 3.0
+
+[node name="Block_03_04" type="Node3D" parent="WestVillage"]
+metadata/module_id = "WestVillage_Block_03_04"
+
+[node name="StartHere" type="Marker3D" parent="WestVillage/Block_03_04"]
+position = Vector3(-932.0, 0.03, -652.0)
+gizmo_extents = 3.0
+
+[node name="Block_04_01" type="Node3D" parent="WestVillage"]
+metadata/module_id = "WestVillage_Block_04_01"
+
+[node name="StartHere" type="Marker3D" parent="WestVillage/Block_04_01"]
+position = Vector3(-1411.5, 0.03, -492.0)
+gizmo_extents = 3.0
+
+[node name="Block_04_02" type="Node3D" parent="WestVillage"]
+metadata/module_id = "WestVillage_Block_04_02"
+
+[node name="StartHere" type="Marker3D" parent="WestVillage/Block_04_02"]
+position = Vector3(-1326.5, 0.03, -492.0)
+gizmo_extents = 3.0
+
+[node name="Block_04_03" type="Node3D" parent="WestVillage"]
+metadata/module_id = "WestVillage_Block_04_03"
+
+[node name="StartHere" type="Marker3D" parent="WestVillage/Block_04_03"]
+position = Vector3(-1112.0, 0.03, -492.0)
+gizmo_extents = 3.0
+
+[node name="Block_04_04" type="Node3D" parent="WestVillage"]
+metadata/module_id = "WestVillage_Block_04_04"
+
+[node name="StartHere" type="Marker3D" parent="WestVillage/Block_04_04"]
+position = Vector3(-968.5, 0.03, -492.0)
+gizmo_extents = 3.0
+
+[node name="Block_05_01" type="Node3D" parent="WestVillage"]
+metadata/module_id = "WestVillage_Block_05_01"
+
+[node name="StartHere" type="Marker3D" parent="WestVillage/Block_05_01"]
+position = Vector3(-1368.0, 0.03, -336.0)
+gizmo_extents = 3.0
+
+[node name="Block_05_02" type="Node3D" parent="WestVillage"]
+metadata/module_id = "WestVillage_Block_05_02"
+
+[node name="StartHere" type="Marker3D" parent="WestVillage/Block_05_02"]
+position = Vector3(-1288.0, 0.03, -336.0)
+gizmo_extents = 3.0
+
+[node name="Block_05_03" type="Node3D" parent="WestVillage"]
+metadata/module_id = "WestVillage_Block_05_03"
+
+[node name="StartHere" type="Marker3D" parent="WestVillage/Block_05_03"]
+position = Vector3(-1148.5, 0.03, -336.0)
+gizmo_extents = 3.0
+
+[node name="Block_05_04" type="Node3D" parent="WestVillage"]
+metadata/module_id = "WestVillage_Block_05_04"
+
+[node name="StartHere" type="Marker3D" parent="WestVillage/Block_05_04"]
+position = Vector3(-968.5, 0.03, -336.0)
+gizmo_extents = 3.0
+
+[node name="Block_06_01" type="Node3D" parent="WestVillage"]
+metadata/module_id = "WestVillage_Block_06_01"
+
+[node name="StartHere" type="Marker3D" parent="WestVillage/Block_06_01"]
+position = Vector3(-1411.5, 0.03, -168.0)
+gizmo_extents = 3.0
+
+[node name="Block_06_02" type="Node3D" parent="WestVillage"]
+metadata/module_id = "WestVillage_Block_06_02"
+
+[node name="StartHere" type="Marker3D" parent="WestVillage/Block_06_02"]
+position = Vector3(-1326.5, 0.03, -168.0)
+gizmo_extents = 3.0
+
+[node name="Block_06_03" type="Node3D" parent="WestVillage"]
+metadata/module_id = "WestVillage_Block_06_03"
+
+[node name="StartHere" type="Marker3D" parent="WestVillage/Block_06_03"]
+position = Vector3(-1148.5, 0.03, -168.0)
+gizmo_extents = 3.0
+
+[node name="Block_06_04" type="Node3D" parent="WestVillage"]
+metadata/module_id = "WestVillage_Block_06_04"
+
+[node name="StartHere" type="Marker3D" parent="WestVillage/Block_06_04"]
+position = Vector3(-932.0, 0.03, -168.0)
+gizmo_extents = 3.0
+
+[node name="Block_07_01" type="Node3D" parent="WestVillage"]
+metadata/module_id = "WestVillage_Block_07_01"
+
+[node name="StartHere" type="Marker3D" parent="WestVillage/Block_07_01"]
+position = Vector3(-1411.5, 0.03, -12.0)
+gizmo_extents = 3.0
+
+[node name="Block_07_02" type="Node3D" parent="WestVillage"]
+metadata/module_id = "WestVillage_Block_07_02"
+
+[node name="StartHere" type="Marker3D" parent="WestVillage/Block_07_02"]
+position = Vector3(-1326.5, 0.03, -12.0)
+gizmo_extents = 3.0
+
+[node name="Block_07_03" type="Node3D" parent="WestVillage"]
+metadata/module_id = "WestVillage_Block_07_03"
+
+[node name="StartHere" type="Marker3D" parent="WestVillage/Block_07_03"]
+position = Vector3(-1112.0, 0.03, -12.0)
+gizmo_extents = 3.0
+
+[node name="Block_07_04" type="Node3D" parent="WestVillage"]
+metadata/module_id = "WestVillage_Block_07_04"
+
+[node name="StartHere" type="Marker3D" parent="WestVillage/Block_07_04"]
+position = Vector3(-968.5, 0.03, -12.0)
+gizmo_extents = 3.0
+
+[node name="Block_08_01" type="Node3D" parent="WestVillage"]
+metadata/module_id = "WestVillage_Block_08_01"
+
+[node name="StartHere" type="Marker3D" parent="WestVillage/Block_08_01"]
+position = Vector3(-1368.0, 0.03, 148.0)
+gizmo_extents = 3.0
+
+[node name="Block_08_02" type="Node3D" parent="WestVillage"]
+metadata/module_id = "WestVillage_Block_08_02"
+
+[node name="StartHere" type="Marker3D" parent="WestVillage/Block_08_02"]
+position = Vector3(-1288.0, 0.03, 148.0)
+gizmo_extents = 3.0
+
+[node name="Block_08_03" type="Node3D" parent="WestVillage"]
+metadata/module_id = "WestVillage_Block_08_03"
+
+[node name="StartHere" type="Marker3D" parent="WestVillage/Block_08_03"]
+position = Vector3(-1148.5, 0.03, 148.0)
+gizmo_extents = 3.0
+
+[node name="Block_08_04" type="Node3D" parent="WestVillage"]
+metadata/module_id = "WestVillage_Block_08_04"
+
+[node name="StartHere" type="Marker3D" parent="WestVillage/Block_08_04"]
+position = Vector3(-968.5, 0.03, 148.0)
+gizmo_extents = 3.0
+
+[node name="Block_09_01" type="Node3D" parent="WestVillage"]
+metadata/module_id = "WestVillage_Block_09_01"
+
+[node name="StartHere" type="Marker3D" parent="WestVillage/Block_09_01"]
+position = Vector3(-1411.5, 0.03, 304.0)
+gizmo_extents = 3.0
+
+[node name="Block_09_02" type="Node3D" parent="WestVillage"]
+metadata/module_id = "WestVillage_Block_09_02"
+
+[node name="StartHere" type="Marker3D" parent="WestVillage/Block_09_02"]
+position = Vector3(-1326.5, 0.03, 304.0)
+gizmo_extents = 3.0
+
+[node name="Block_09_03" type="Node3D" parent="WestVillage"]
+metadata/module_id = "WestVillage_Block_09_03"
+
+[node name="StartHere" type="Marker3D" parent="WestVillage/Block_09_03"]
+position = Vector3(-1148.5, 0.03, 304.0)
+gizmo_extents = 3.0
+
+[node name="Block_09_04" type="Node3D" parent="WestVillage"]
+metadata/module_id = "WestVillage_Block_09_04"
+
+[node name="StartHere" type="Marker3D" parent="WestVillage/Block_09_04"]
+position = Vector3(-932.0, 0.03, 304.0)
+gizmo_extents = 3.0
+
+[node name="NorthHeights" type="Node3D" parent="."]
+script = ExtResource("2")
+district_id = "NorthHeights"
+enabled_routes = {
+"NorthHeights_Block_01_04": true
+}
+district_enabled = true
+show_debug = true
+
+[node name="Block_01_04" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_01_04"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_01_04"]
+position = Vector3(-832.0, 0.03, -972.0)
+gizmo_extents = 3.0
+
+[node name="Block_01_05" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_01_05"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_01_05"]
+position = Vector3(-754.0, 0.03, -972.0)
+gizmo_extents = 3.0
+
+[node name="Block_01_06" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_01_06"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_01_06"]
+position = Vector3(-570.0, 0.03, -972.0)
+gizmo_extents = 3.0
+
+[node name="Block_01_07" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_01_07"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_01_07"]
+position = Vector3(-390.0, 0.03, -972.0)
+gizmo_extents = 3.0
+
+[node name="Block_01_08" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_01_08"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_01_08"]
+position = Vector3(-210.0, 0.03, -972.0)
+gizmo_extents = 3.0
+
+[node name="Block_01_09" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_01_09"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_01_09"]
+position = Vector3(-34.0, 0.03, -972.0)
+gizmo_extents = 3.0
+
+[node name="Block_01_10" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_01_10"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_01_10"]
+position = Vector3(302.0, 0.03, -948.0)
+gizmo_extents = 3.0
+
+[node name="Block_01_11" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_01_11"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_01_11"]
+position = Vector3(302.0, 0.03, -972.0)
+gizmo_extents = 3.0
+
+[node name="Block_01_12" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_01_12"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_01_12"]
+position = Vector3(510.0, 0.03, -972.0)
+gizmo_extents = 3.0
+
+[node name="Block_01_13" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_01_13"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_01_13"]
+position = Vector3(686.0, 0.03, -972.0)
+gizmo_extents = 3.0
+
+[node name="Block_01_14" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_01_14"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_01_14"]
+position = Vector3(870.0, 0.03, -972.0)
+gizmo_extents = 3.0
+
+[node name="Block_01_15" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_01_15"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_01_15"]
+position = Vector3(1050.0, 0.03, -972.0)
+gizmo_extents = 3.0
+
+[node name="Block_01_16" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_01_16"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_01_16"]
+position = Vector3(1234.0, 0.03, -972.0)
+gizmo_extents = 3.0
+
+[node name="Block_01_17" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_01_17"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_01_17"]
+position = Vector3(1410.0, 0.03, -972.0)
+gizmo_extents = 3.0
+
+[node name="Block_02_04" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_02_04"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_02_04"]
+position = Vector3(-832.0, 0.03, -808.0)
+gizmo_extents = 3.0
+
+[node name="Block_02_05" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_02_05"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_02_05"]
+position = Vector3(-756.0, 0.03, -808.0)
+gizmo_extents = 3.0
+
+[node name="Block_02_06" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_02_06"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_02_06"]
+position = Vector3(-608.5, 0.03, -808.0)
+gizmo_extents = 3.0
+
+[node name="Block_02_07" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_02_07"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_02_07"]
+position = Vector3(-428.5, 0.03, -808.0)
+gizmo_extents = 3.0
+
+[node name="Block_02_08" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_02_08"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_02_08"]
+position = Vector3(-212.0, 0.03, -808.0)
+gizmo_extents = 3.0
+
+[node name="Block_02_09" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_02_09"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_02_09"]
+position = Vector3(-70.5, 0.03, -808.0)
+gizmo_extents = 3.0
+
+[node name="Block_02_10" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_02_10"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_02_10"]
+position = Vector3(111.5, 0.03, -808.0)
+gizmo_extents = 3.0
+
+[node name="Block_02_11" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_02_11"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_02_11"]
+position = Vector3(315.0, 0.03, -808.0)
+gizmo_extents = 3.0
+
+[node name="Block_02_12" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_02_12"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_02_12"]
+position = Vector3(471.5, 0.03, -808.0)
+gizmo_extents = 3.0
+
+[node name="Block_02_13" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_02_13"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_02_13"]
+position = Vector3(649.5, 0.03, -808.0)
+gizmo_extents = 3.0
+
+[node name="Block_02_14" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_02_14"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_02_14"]
+position = Vector3(868.0, 0.03, -808.0)
+gizmo_extents = 3.0
+
+[node name="Block_02_15" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_02_15"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_02_15"]
+position = Vector3(1011.5, 0.03, -808.0)
+gizmo_extents = 3.0
+
+[node name="Block_02_16" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_02_16"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_02_16"]
+position = Vector3(1193.5, 0.03, -808.0)
+gizmo_extents = 3.0
+
+[node name="Block_02_17" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_02_17"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_02_17"]
+position = Vector3(1408.0, 0.03, -808.0)
+gizmo_extents = 3.0
+
+[node name="Block_03_04" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_03_04"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_03_04"]
+position = Vector3(-871.5, 0.03, -652.0)
+gizmo_extents = 3.0
+
+[node name="Block_03_05" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_03_05"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_03_05"]
+position = Vector3(-790.5, 0.03, -652.0)
+gizmo_extents = 3.0
+
+[node name="Block_03_06" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_03_06"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_03_06"]
+position = Vector3(-608.5, 0.03, -652.0)
+gizmo_extents = 3.0
+
+[node name="Block_03_07" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_03_07"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_03_07"]
+position = Vector3(-392.0, 0.03, -652.0)
+gizmo_extents = 3.0
+
+[node name="Block_03_08" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_03_08"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_03_08"]
+position = Vector3(-248.5, 0.03, -652.0)
+gizmo_extents = 3.0
+
+[node name="Block_03_09" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_03_09"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_03_09"]
+position = Vector3(-70.5, 0.03, -652.0)
+gizmo_extents = 3.0
+
+[node name="Block_03_10" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_03_10"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_03_10"]
+position = Vector3(165.0, 0.03, -660.0)
+gizmo_extents = 3.0
+
+[node name="Block_03_11" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_03_11"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_03_11"]
+position = Vector3(322.0, 0.03, -652.0)
+gizmo_extents = 3.0
+
+[node name="Block_03_12" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_03_12"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_03_12"]
+position = Vector3(471.5, 0.03, -652.0)
+gizmo_extents = 3.0
+
+[node name="Block_03_13" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_03_13"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_03_13"]
+position = Vector3(684.0, 0.03, -652.0)
+gizmo_extents = 3.0
+
+[node name="Block_03_14" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_03_14"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_03_14"]
+position = Vector3(831.5, 0.03, -652.0)
+gizmo_extents = 3.0
+
+[node name="Block_03_15" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_03_15"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_03_15"]
+position = Vector3(1011.5, 0.03, -652.0)
+gizmo_extents = 3.0
+
+[node name="Block_03_16" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_03_16"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_03_16"]
+position = Vector3(1232.0, 0.03, -652.0)
+gizmo_extents = 3.0
+
+[node name="Block_03_17" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_03_17"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_03_17"]
+position = Vector3(1371.5, 0.03, -652.0)
+gizmo_extents = 3.0
+
+[node name="Block_04_04" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_04_04"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_04_04"]
+position = Vector3(-871.5, 0.03, -492.0)
+gizmo_extents = 3.0
+
+[node name="Block_04_05" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_04_05"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_04_05"]
+position = Vector3(-790.5, 0.03, -492.0)
+gizmo_extents = 3.0
+
+[node name="Block_04_06" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_04_06"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_04_06"]
+position = Vector3(-572.0, 0.03, -492.0)
+gizmo_extents = 3.0
+
+[node name="Block_04_07" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_04_07"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_04_07"]
+position = Vector3(-428.5, 0.03, -492.0)
+gizmo_extents = 3.0
+
+[node name="Block_04_08" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_04_08"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_04_08"]
+position = Vector3(-248.5, 0.03, -492.0)
+gizmo_extents = 3.0
+
+[node name="Block_04_09" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_04_09"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_04_09"]
+position = Vector3(-36.0, 0.03, -492.0)
+gizmo_extents = 3.0
+
+[node name="Block_04_10" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_04_10"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_04_10"]
+position = Vector3(302.0, 0.03, -492.0)
+gizmo_extents = 3.0
+
+[node name="Block_04_11" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_04_11"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_04_11"]
+position = Vector3(302.0, 0.03, -492.0)
+gizmo_extents = 3.0
+
+[node name="Block_04_12" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_04_12"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_04_12"]
+position = Vector3(508.0, 0.03, -492.0)
+gizmo_extents = 3.0
+
+[node name="Block_04_13" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_04_13"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_04_13"]
+position = Vector3(649.5, 0.03, -492.0)
+gizmo_extents = 3.0
+
+[node name="Block_04_14" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_04_14"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_04_14"]
+position = Vector3(831.5, 0.03, -492.0)
+gizmo_extents = 3.0
+
+[node name="Block_04_15" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_04_15"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_04_15"]
+position = Vector3(1048.0, 0.03, -492.0)
+gizmo_extents = 3.0
+
+[node name="Block_04_16" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_04_16"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_04_16"]
+position = Vector3(1193.5, 0.03, -492.0)
+gizmo_extents = 3.0
+
+[node name="Block_04_17" type="Node3D" parent="NorthHeights"]
+metadata/module_id = "NorthHeights_Block_04_17"
+
+[node name="StartHere" type="Marker3D" parent="NorthHeights/Block_04_17"]
+position = Vector3(1371.5, 0.03, -492.0)
+gizmo_extents = 3.0
+
+[node name="Parkside" type="Node3D" parent="."]
+script = ExtResource("2")
+district_id = "Parkside"
+enabled_routes = {
+"Parkside_Block_05_05": true
+}
+district_enabled = true
+show_debug = true
+
+[node name="Block_04_05" type="Node3D" parent="Parkside"]
+metadata/module_id = "Parkside_Block_04_05"
+
+[node name="StartHere" type="Marker3D" parent="Parkside/Block_04_05"]
+position = Vector3(-756.0, 0.03, -338.0)
+gizmo_extents = 3.0
+
+[node name="Block_04_06" type="Node3D" parent="Parkside"]
+metadata/module_id = "Parkside_Block_04_06"
+
+[node name="StartHere" type="Marker3D" parent="Parkside/Block_04_06"]
+position = Vector3(-572.0, 0.03, -338.0)
+gizmo_extents = 3.0
+
+[node name="Block_04_07" type="Node3D" parent="Parkside"]
+metadata/module_id = "Parkside_Block_04_07"
+
+[node name="StartHere" type="Marker3D" parent="Parkside/Block_04_07"]
+position = Vector3(-392.0, 0.03, -338.0)
+gizmo_extents = 3.0
+
+[node name="Block_04_08" type="Node3D" parent="Parkside"]
+metadata/module_id = "Parkside_Block_04_08"
+
+[node name="StartHere" type="Marker3D" parent="Parkside/Block_04_08"]
+position = Vector3(-212.0, 0.03, -338.0)
+gizmo_extents = 3.0
+
+[node name="Block_04_09" type="Node3D" parent="Parkside"]
+metadata/module_id = "Parkside_Block_04_09"
+
+[node name="StartHere" type="Marker3D" parent="Parkside/Block_04_09"]
+position = Vector3(-36.0, 0.03, -338.0)
+gizmo_extents = 3.0
+
+[node name="Block_05_05" type="Node3D" parent="Parkside"]
+metadata/module_id = "Parkside_Block_05_05"
+
+[node name="StartHere" type="Marker3D" parent="Parkside/Block_05_05"]
+position = Vector3(-756.0, 0.03, -336.0)
+gizmo_extents = 3.0
+
+[node name="Block_05_06" type="Node3D" parent="Parkside"]
+metadata/module_id = "Parkside_Block_05_06"
+
+[node name="StartHere" type="Marker3D" parent="Parkside/Block_05_06"]
+position = Vector3(-608.5, 0.03, -336.0)
+gizmo_extents = 3.0
+
+[node name="Block_05_07" type="Node3D" parent="Parkside"]
+metadata/module_id = "Parkside_Block_05_07"
+
+[node name="StartHere" type="Marker3D" parent="Parkside/Block_05_07"]
+position = Vector3(-428.5, 0.03, -336.0)
+gizmo_extents = 3.0
+
+[node name="Block_05_08" type="Node3D" parent="Parkside"]
+metadata/module_id = "Parkside_Block_05_08"
+
+[node name="StartHere" type="Marker3D" parent="Parkside/Block_05_08"]
+position = Vector3(-212.0, 0.03, -336.0)
+gizmo_extents = 3.0
+
+[node name="Block_05_09" type="Node3D" parent="Parkside"]
+metadata/module_id = "Parkside_Block_05_09"
+
+[node name="StartHere" type="Marker3D" parent="Parkside/Block_05_09"]
+position = Vector3(-70.5, 0.03, -336.0)
+gizmo_extents = 3.0
+
+[node name="Block_06_05" type="Node3D" parent="Parkside"]
+metadata/module_id = "Parkside_Block_06_05"
+
+[node name="StartHere" type="Marker3D" parent="Parkside/Block_06_05"]
+position = Vector3(-790.5, 0.03, -168.0)
+gizmo_extents = 3.0
+
+[node name="Block_06_06" type="Node3D" parent="Parkside"]
+metadata/module_id = "Parkside_Block_06_06"
+
+[node name="StartHere" type="Marker3D" parent="Parkside/Block_06_06"]
+position = Vector3(-608.5, 0.03, -168.0)
+gizmo_extents = 3.0
+
+[node name="Block_06_09" type="Node3D" parent="Parkside"]
+metadata/module_id = "Parkside_Block_06_09"
+
+[node name="StartHere" type="Marker3D" parent="Parkside/Block_06_09"]
+position = Vector3(30.0, 0.03, -168.0)
+gizmo_extents = 3.0
+
+[node name="Block_07_05" type="Node3D" parent="Parkside"]
+metadata/module_id = "Parkside_Block_07_05"
+
+[node name="StartHere" type="Marker3D" parent="Parkside/Block_07_05"]
+position = Vector3(-790.5, 0.03, -12.0)
+gizmo_extents = 3.0
+
+[node name="Block_07_06" type="Node3D" parent="Parkside"]
+metadata/module_id = "Parkside_Block_07_06"
+
+[node name="StartHere" type="Marker3D" parent="Parkside/Block_07_06"]
+position = Vector3(-572.0, 0.03, -12.0)
+gizmo_extents = 3.0
+
+[node name="Block_07_09" type="Node3D" parent="Parkside"]
+metadata/module_id = "Parkside_Block_07_09"
+
+[node name="StartHere" type="Marker3D" parent="Parkside/Block_07_09"]
+position = Vector3(60.0, 0.03, -12.0)
+gizmo_extents = 3.0
+
+[node name="Block_07_10" type="Node3D" parent="Parkside"]
+metadata/module_id = "Parkside_Block_07_10"
+
+[node name="StartHere" type="Marker3D" parent="Parkside/Block_07_10"]
+position = Vector3(124.0, 0.03, -12.0)
+gizmo_extents = 3.0
+
+[node name="Block_08_05" type="Node3D" parent="Parkside"]
+metadata/module_id = "Parkside_Block_08_05"
+
+[node name="StartHere" type="Marker3D" parent="Parkside/Block_08_05"]
+position = Vector3(-756.0, 0.03, 148.0)
+gizmo_extents = 3.0
+
+[node name="Block_08_06" type="Node3D" parent="Parkside"]
+metadata/module_id = "Parkside_Block_08_06"
+
+[node name="StartHere" type="Marker3D" parent="Parkside/Block_08_06"]
+position = Vector3(-608.5, 0.03, 148.0)
+gizmo_extents = 3.0
+
+[node name="Block_08_09" type="Node3D" parent="Parkside"]
+metadata/module_id = "Parkside_Block_08_09"
+
+[node name="StartHere" type="Marker3D" parent="Parkside/Block_08_09"]
+position = Vector3(30.5, 0.03, 148.0)
+gizmo_extents = 3.0
+
+[node name="Block_08_10" type="Node3D" parent="Parkside"]
+metadata/module_id = "Parkside_Block_08_10"
+
+[node name="StartHere" type="Marker3D" parent="Parkside/Block_08_10"]
+position = Vector3(111.5, 0.03, 148.0)
+gizmo_extents = 3.0
+
+[node name="Block_09_05" type="Node3D" parent="Parkside"]
+metadata/module_id = "Parkside_Block_09_05"
+
+[node name="StartHere" type="Marker3D" parent="Parkside/Block_09_05"]
+position = Vector3(-790.5, 0.03, 304.0)
+gizmo_extents = 3.0
+
+[node name="Block_09_06" type="Node3D" parent="Parkside"]
+metadata/module_id = "Parkside_Block_09_06"
+
+[node name="StartHere" type="Marker3D" parent="Parkside/Block_09_06"]
+position = Vector3(-608.5, 0.03, 304.0)
+gizmo_extents = 3.0
+
+[node name="Block_09_07" type="Node3D" parent="Parkside"]
+metadata/module_id = "Parkside_Block_09_07"
+
+[node name="StartHere" type="Marker3D" parent="Parkside/Block_09_07"]
+position = Vector3(-390.0, 0.03, 304.0)
+gizmo_extents = 3.0
+
+[node name="Block_09_08" type="Node3D" parent="Parkside"]
+metadata/module_id = "Parkside_Block_09_08"
+
+[node name="StartHere" type="Marker3D" parent="Parkside/Block_09_08"]
+position = Vector3(-210.0, 0.03, 304.0)
+gizmo_extents = 3.0
+
+[node name="Block_09_09" type="Node3D" parent="Parkside"]
+metadata/module_id = "Parkside_Block_09_09"
+
+[node name="StartHere" type="Marker3D" parent="Parkside/Block_09_09"]
+position = Vector3(-36.0, 0.03, 304.0)
+gizmo_extents = 3.0
+
+[node name="Block_09_10" type="Node3D" parent="Parkside"]
+metadata/module_id = "Parkside_Block_09_10"
+
+[node name="StartHere" type="Marker3D" parent="Parkside/Block_09_10"]
+position = Vector3(148.0, 0.03, 304.0)
+gizmo_extents = 3.0
+
+[node name="CivicCenter" type="Node3D" parent="."]
+script = ExtResource("2")
+district_id = "CivicCenter"
+enabled_routes = {
+"CivicCenter_Block_05_04": true
+}
+district_enabled = true
+show_debug = true
+
+[node name="Block_05_04" type="Node3D" parent="CivicCenter"]
+metadata/module_id = "CivicCenter_Block_05_04"
+
+[node name="StartHere" type="Marker3D" parent="CivicCenter/Block_05_04"]
+position = Vector3(-832.0, 0.03, -336.0)
+gizmo_extents = 3.0
+
+[node name="Block_06_04" type="Node3D" parent="CivicCenter"]
+metadata/module_id = "CivicCenter_Block_06_04"
+
+[node name="StartHere" type="Marker3D" parent="CivicCenter/Block_06_04"]
+position = Vector3(-871.5, 0.03, -168.0)
+gizmo_extents = 3.0
+
+[node name="Block_07_04" type="Node3D" parent="CivicCenter"]
+metadata/module_id = "CivicCenter_Block_07_04"
+
+[node name="StartHere" type="Marker3D" parent="CivicCenter/Block_07_04"]
+position = Vector3(-871.5, 0.03, -12.0)
+gizmo_extents = 3.0
+
+[node name="Block_08_04" type="Node3D" parent="CivicCenter"]
+metadata/module_id = "CivicCenter_Block_08_04"
+
+[node name="StartHere" type="Marker3D" parent="CivicCenter/Block_08_04"]
+position = Vector3(-832.0, 0.03, 148.0)
+gizmo_extents = 3.0
+
+[node name="Block_09_01" type="Node3D" parent="CivicCenter"]
+metadata/module_id = "CivicCenter_Block_09_01"
+
+[node name="StartHere" type="Marker3D" parent="CivicCenter/Block_09_01"]
+position = Vector3(-1448.0, 0.03, 338.0)
+gizmo_extents = 3.0
+
+[node name="Block_09_02" type="Node3D" parent="CivicCenter"]
+metadata/module_id = "CivicCenter_Block_09_02"
+
+[node name="StartHere" type="Marker3D" parent="CivicCenter/Block_09_02"]
+position = Vector3(-1288.0, 0.03, 338.0)
+gizmo_extents = 3.0
+
+[node name="Block_09_03" type="Node3D" parent="CivicCenter"]
+metadata/module_id = "CivicCenter_Block_09_03"
+
+[node name="StartHere" type="Marker3D" parent="CivicCenter/Block_09_03"]
+position = Vector3(-1112.0, 0.03, 338.0)
+gizmo_extents = 3.0
+
+[node name="Block_09_04" type="Node3D" parent="CivicCenter"]
+metadata/module_id = "CivicCenter_Block_09_04"
+
+[node name="StartHere" type="Marker3D" parent="CivicCenter/Block_09_04"]
+position = Vector3(-932.0, 0.03, 338.0)
+gizmo_extents = 3.0
+
+[node name="Block_09_05" type="Node3D" parent="CivicCenter"]
+metadata/module_id = "CivicCenter_Block_09_05"
+
+[node name="StartHere" type="Marker3D" parent="CivicCenter/Block_09_05"]
+position = Vector3(-790.5, 0.03, 336.0)
+gizmo_extents = 3.0
+
+[node name="Block_09_06" type="Node3D" parent="CivicCenter"]
+metadata/module_id = "CivicCenter_Block_09_06"
+
+[node name="StartHere" type="Marker3D" parent="CivicCenter/Block_09_06"]
+position = Vector3(-572.0, 0.03, 336.0)
+gizmo_extents = 3.0
+
+[node name="Block_09_07" type="Node3D" parent="CivicCenter"]
+metadata/module_id = "CivicCenter_Block_09_07"
+
+[node name="StartHere" type="Marker3D" parent="CivicCenter/Block_09_07"]
+position = Vector3(-428.5, 0.03, 336.0)
+gizmo_extents = 3.0
+
+[node name="Block_09_08" type="Node3D" parent="CivicCenter"]
+metadata/module_id = "CivicCenter_Block_09_08"
+
+[node name="StartHere" type="Marker3D" parent="CivicCenter/Block_09_08"]
+position = Vector3(-248.5, 0.03, 336.0)
+gizmo_extents = 3.0
+
+[node name="Block_09_09" type="Node3D" parent="CivicCenter"]
+metadata/module_id = "CivicCenter_Block_09_09"
+
+[node name="StartHere" type="Marker3D" parent="CivicCenter/Block_09_09"]
+position = Vector3(-36.0, 0.03, 336.0)
+gizmo_extents = 3.0
+
+[node name="Block_09_10" type="Node3D" parent="CivicCenter"]
+metadata/module_id = "CivicCenter_Block_09_10"
+
+[node name="StartHere" type="Marker3D" parent="CivicCenter/Block_09_10"]
+position = Vector3(111.5, 0.03, 336.0)
+gizmo_extents = 3.0
+
+[node name="Block_10_01" type="Node3D" parent="CivicCenter"]
+metadata/module_id = "CivicCenter_Block_10_01"
+
+[node name="StartHere" type="Marker3D" parent="CivicCenter/Block_10_01"]
+position = Vector3(-1411.5, 0.03, 468.0)
+gizmo_extents = 3.0
+
+[node name="Block_10_02" type="Node3D" parent="CivicCenter"]
+metadata/module_id = "CivicCenter_Block_10_02"
+
+[node name="StartHere" type="Marker3D" parent="CivicCenter/Block_10_02"]
+position = Vector3(-1326.5, 0.03, 468.0)
+gizmo_extents = 3.0
+
+[node name="Block_10_03" type="Node3D" parent="CivicCenter"]
+metadata/module_id = "CivicCenter_Block_10_03"
+
+[node name="StartHere" type="Marker3D" parent="CivicCenter/Block_10_03"]
+position = Vector3(-1112.0, 0.03, 468.0)
+gizmo_extents = 3.0
+
+[node name="Block_10_04" type="Node3D" parent="CivicCenter"]
+metadata/module_id = "CivicCenter_Block_10_04"
+
+[node name="StartHere" type="Marker3D" parent="CivicCenter/Block_10_04"]
+position = Vector3(-968.5, 0.03, 468.0)
+gizmo_extents = 3.0
+
+[node name="Block_10_05" type="Node3D" parent="CivicCenter"]
+metadata/module_id = "CivicCenter_Block_10_05"
+
+[node name="StartHere" type="Marker3D" parent="CivicCenter/Block_10_05"]
+position = Vector3(-790.5, 0.03, 468.0)
+gizmo_extents = 3.0
+
+[node name="Block_10_06" type="Node3D" parent="CivicCenter"]
+metadata/module_id = "CivicCenter_Block_10_06"
+
+[node name="StartHere" type="Marker3D" parent="CivicCenter/Block_10_06"]
+position = Vector3(-572.0, 0.03, 468.0)
+gizmo_extents = 3.0
+
+[node name="Block_11_01" type="Node3D" parent="CivicCenter"]
+metadata/module_id = "CivicCenter_Block_11_01"
+
+[node name="StartHere" type="Marker3D" parent="CivicCenter/Block_11_01"]
+position = Vector3(-1368.0, 0.03, 624.0)
+gizmo_extents = 3.0
+
+[node name="Block_11_02" type="Node3D" parent="CivicCenter"]
+metadata/module_id = "CivicCenter_Block_11_02"
+
+[node name="StartHere" type="Marker3D" parent="CivicCenter/Block_11_02"]
+position = Vector3(-1288.0, 0.03, 624.0)
+gizmo_extents = 3.0
+
+[node name="Block_11_03" type="Node3D" parent="CivicCenter"]
+metadata/module_id = "CivicCenter_Block_11_03"
+
+[node name="StartHere" type="Marker3D" parent="CivicCenter/Block_11_03"]
+position = Vector3(-1148.5, 0.03, 624.0)
+gizmo_extents = 3.0
+
+[node name="Block_11_04" type="Node3D" parent="CivicCenter"]
+metadata/module_id = "CivicCenter_Block_11_04"
+
+[node name="StartHere" type="Marker3D" parent="CivicCenter/Block_11_04"]
+position = Vector3(-968.5, 0.03, 624.0)
+gizmo_extents = 3.0
+
+[node name="Block_11_05" type="Node3D" parent="CivicCenter"]
+metadata/module_id = "CivicCenter_Block_11_05"
+
+[node name="StartHere" type="Marker3D" parent="CivicCenter/Block_11_05"]
+position = Vector3(-756.0, 0.03, 624.0)
+gizmo_extents = 3.0
+
+[node name="Block_11_06" type="Node3D" parent="CivicCenter"]
+metadata/module_id = "CivicCenter_Block_11_06"
+
+[node name="StartHere" type="Marker3D" parent="CivicCenter/Block_11_06"]
+position = Vector3(-608.5, 0.03, 624.0)
+gizmo_extents = 3.0
+
+[node name="Block_12_01" type="Node3D" parent="CivicCenter"]
+metadata/module_id = "CivicCenter_Block_12_01"
+
+[node name="StartHere" type="Marker3D" parent="CivicCenter/Block_12_01"]
+position = Vector3(-1368.0, 0.03, 772.0)
+gizmo_extents = 3.0
+
+[node name="Block_12_02" type="Node3D" parent="CivicCenter"]
+metadata/module_id = "CivicCenter_Block_12_02"
+
+[node name="StartHere" type="Marker3D" parent="CivicCenter/Block_12_02"]
+position = Vector3(-1286.0, 0.03, 772.0)
+gizmo_extents = 3.0
+
+[node name="Block_12_03" type="Node3D" parent="CivicCenter"]
+metadata/module_id = "CivicCenter_Block_12_03"
+
+[node name="StartHere" type="Marker3D" parent="CivicCenter/Block_12_03"]
+position = Vector3(-1110.0, 0.03, 772.0)
+gizmo_extents = 3.0
+
+[node name="Block_12_04" type="Node3D" parent="CivicCenter"]
+metadata/module_id = "CivicCenter_Block_12_04"
+
+[node name="StartHere" type="Marker3D" parent="CivicCenter/Block_12_04"]
+position = Vector3(-930.0, 0.03, 772.0)
+gizmo_extents = 3.0
+
+[node name="Block_12_05" type="Node3D" parent="CivicCenter"]
+metadata/module_id = "CivicCenter_Block_12_05"
+
+[node name="StartHere" type="Marker3D" parent="CivicCenter/Block_12_05"]
+position = Vector3(-754.0, 0.03, 772.0)
+gizmo_extents = 3.0
+
+[node name="Block_12_06" type="Node3D" parent="CivicCenter"]
+metadata/module_id = "CivicCenter_Block_12_06"
+
+[node name="StartHere" type="Marker3D" parent="CivicCenter/Block_12_06"]
+position = Vector3(-570.0, 0.03, 772.0)
+gizmo_extents = 3.0
+
+[node name="FinancialQuarter" type="Node3D" parent="."]
+script = ExtResource("2")
+district_id = "FinancialQuarter"
+enabled_routes = {
+"FinancialQuarter_Block_10_06": true
+}
+district_enabled = true
+show_debug = true
+
+[node name="Block_09_07" type="Node3D" parent="FinancialQuarter"]
+metadata/module_id = "FinancialQuarter_Block_09_07"
+
+[node name="StartHere" type="Marker3D" parent="FinancialQuarter/Block_09_07"]
+position = Vector3(-392.0, 0.03, 466.0)
+gizmo_extents = 3.0
+
+[node name="Block_09_08" type="Node3D" parent="FinancialQuarter"]
+metadata/module_id = "FinancialQuarter_Block_09_08"
+
+[node name="StartHere" type="Marker3D" parent="FinancialQuarter/Block_09_08"]
+position = Vector3(-212.0, 0.03, 466.0)
+gizmo_extents = 3.0
+
+[node name="Block_09_09" type="Node3D" parent="FinancialQuarter"]
+metadata/module_id = "FinancialQuarter_Block_09_09"
+
+[node name="StartHere" type="Marker3D" parent="FinancialQuarter/Block_09_09"]
+position = Vector3(-36.0, 0.03, 466.0)
+gizmo_extents = 3.0
+
+[node name="Block_09_10" type="Node3D" parent="FinancialQuarter"]
+metadata/module_id = "FinancialQuarter_Block_09_10"
+
+[node name="StartHere" type="Marker3D" parent="FinancialQuarter/Block_09_10"]
+position = Vector3(148.0, 0.03, 466.0)
+gizmo_extents = 3.0
+
+[node name="Block_09_11" type="Node3D" parent="FinancialQuarter"]
+metadata/module_id = "FinancialQuarter_Block_09_11"
+
+[node name="StartHere" type="Marker3D" parent="FinancialQuarter/Block_09_11"]
+position = Vector3(425.0, 0.03, 380.0)
+gizmo_extents = 3.0
+
+[node name="Block_09_12" type="Node3D" parent="FinancialQuarter"]
+metadata/module_id = "FinancialQuarter_Block_09_12"
+
+[node name="StartHere" type="Marker3D" parent="FinancialQuarter/Block_09_12"]
+position = Vector3(508.0, 0.03, 466.0)
+gizmo_extents = 3.0
+
+[node name="Block_09_13" type="Node3D" parent="FinancialQuarter"]
+metadata/module_id = "FinancialQuarter_Block_09_13"
+
+[node name="StartHere" type="Marker3D" parent="FinancialQuarter/Block_09_13"]
+position = Vector3(684.0, 0.03, 466.0)
+gizmo_extents = 3.0
+
+[node name="Block_10_06" type="Node3D" parent="FinancialQuarter"]
+metadata/module_id = "FinancialQuarter_Block_10_06"
+
+[node name="StartHere" type="Marker3D" parent="FinancialQuarter/Block_10_06"]
+position = Vector3(-428.5, 0.03, 468.0)
+gizmo_extents = 3.0
+
+[node name="Block_10_07" type="Node3D" parent="FinancialQuarter"]
+metadata/module_id = "FinancialQuarter_Block_10_07"
+
+[node name="StartHere" type="Marker3D" parent="FinancialQuarter/Block_10_07"]
+position = Vector3(-428.5, 0.03, 468.0)
+gizmo_extents = 3.0
+
+[node name="Block_10_08" type="Node3D" parent="FinancialQuarter"]
+metadata/module_id = "FinancialQuarter_Block_10_08"
+
+[node name="StartHere" type="Marker3D" parent="FinancialQuarter/Block_10_08"]
+position = Vector3(-248.5, 0.03, 468.0)
+gizmo_extents = 3.0
+
+[node name="Block_10_09" type="Node3D" parent="FinancialQuarter"]
+metadata/module_id = "FinancialQuarter_Block_10_09"
+
+[node name="StartHere" type="Marker3D" parent="FinancialQuarter/Block_10_09"]
+position = Vector3(-36.0, 0.03, 468.0)
+gizmo_extents = 3.0
+
+[node name="Block_10_10" type="Node3D" parent="FinancialQuarter"]
+metadata/module_id = "FinancialQuarter_Block_10_10"
+
+[node name="StartHere" type="Marker3D" parent="FinancialQuarter/Block_10_10"]
+position = Vector3(111.5, 0.03, 468.0)
+gizmo_extents = 3.0
+
+[node name="Block_10_11" type="Node3D" parent="FinancialQuarter"]
+metadata/module_id = "FinancialQuarter_Block_10_11"
+
+[node name="StartHere" type="Marker3D" parent="FinancialQuarter/Block_10_11"]
+position = Vector3(462.0, 0.03, 468.0)
+gizmo_extents = 3.0
+
+[node name="Block_10_12" type="Node3D" parent="FinancialQuarter"]
+metadata/module_id = "FinancialQuarter_Block_10_12"
+
+[node name="StartHere" type="Marker3D" parent="FinancialQuarter/Block_10_12"]
+position = Vector3(462.0, 0.03, 468.0)
+gizmo_extents = 3.0
+
+[node name="Block_10_13" type="Node3D" parent="FinancialQuarter"]
+metadata/module_id = "FinancialQuarter_Block_10_13"
+
+[node name="StartHere" type="Marker3D" parent="FinancialQuarter/Block_10_13"]
+position = Vector3(649.5, 0.03, 468.0)
+gizmo_extents = 3.0
+
+[node name="Block_11_06" type="Node3D" parent="FinancialQuarter"]
+metadata/module_id = "FinancialQuarter_Block_11_06"
+
+[node name="StartHere" type="Marker3D" parent="FinancialQuarter/Block_11_06"]
+position = Vector3(-428.5, 0.03, 624.0)
+gizmo_extents = 3.0
+
+[node name="Block_11_07" type="Node3D" parent="FinancialQuarter"]
+metadata/module_id = "FinancialQuarter_Block_11_07"
+
+[node name="StartHere" type="Marker3D" parent="FinancialQuarter/Block_11_07"]
+position = Vector3(-428.5, 0.03, 624.0)
+gizmo_extents = 3.0
+
+[node name="Block_11_08" type="Node3D" parent="FinancialQuarter"]
+metadata/module_id = "FinancialQuarter_Block_11_08"
+
+[node name="StartHere" type="Marker3D" parent="FinancialQuarter/Block_11_08"]
+position = Vector3(-212.0, 0.03, 624.0)
+gizmo_extents = 3.0
+
+[node name="Block_11_09" type="Node3D" parent="FinancialQuarter"]
+metadata/module_id = "FinancialQuarter_Block_11_09"
+
+[node name="StartHere" type="Marker3D" parent="FinancialQuarter/Block_11_09"]
+position = Vector3(-70.5, 0.03, 624.0)
+gizmo_extents = 3.0
+
+[node name="Block_11_10" type="Node3D" parent="FinancialQuarter"]
+metadata/module_id = "FinancialQuarter_Block_11_10"
+
+[node name="StartHere" type="Marker3D" parent="FinancialQuarter/Block_11_10"]
+position = Vector3(111.5, 0.03, 624.0)
+gizmo_extents = 3.0
+
+[node name="Block_11_11" type="Node3D" parent="FinancialQuarter"]
+metadata/module_id = "FinancialQuarter_Block_11_11"
+
+[node name="StartHere" type="Marker3D" parent="FinancialQuarter/Block_11_11"]
+position = Vector3(393.5, 0.03, 624.0)
+gizmo_extents = 3.0
+
+[node name="Block_11_12" type="Node3D" parent="FinancialQuarter"]
+metadata/module_id = "FinancialQuarter_Block_11_12"
+
+[node name="StartHere" type="Marker3D" parent="FinancialQuarter/Block_11_12"]
+position = Vector3(471.5, 0.03, 624.0)
+gizmo_extents = 3.0
+
+[node name="Block_11_13" type="Node3D" parent="FinancialQuarter"]
+metadata/module_id = "FinancialQuarter_Block_11_13"
+
+[node name="StartHere" type="Marker3D" parent="FinancialQuarter/Block_11_13"]
+position = Vector3(649.5, 0.03, 624.0)
+gizmo_extents = 3.0
+
+[node name="Block_12_06" type="Node3D" parent="FinancialQuarter"]
+metadata/module_id = "FinancialQuarter_Block_12_06"
+
+[node name="StartHere" type="Marker3D" parent="FinancialQuarter/Block_12_06"]
+position = Vector3(-470.0, 0.03, 772.0)
+gizmo_extents = 3.0
+
+[node name="Block_12_07" type="Node3D" parent="FinancialQuarter"]
+metadata/module_id = "FinancialQuarter_Block_12_07"
+
+[node name="StartHere" type="Marker3D" parent="FinancialQuarter/Block_12_07"]
+position = Vector3(-390.0, 0.03, 772.0)
+gizmo_extents = 3.0
+
+[node name="Block_12_08" type="Node3D" parent="FinancialQuarter"]
+metadata/module_id = "FinancialQuarter_Block_12_08"
+
+[node name="StartHere" type="Marker3D" parent="FinancialQuarter/Block_12_08"]
+position = Vector3(-210.0, 0.03, 772.0)
+gizmo_extents = 3.0
+
+[node name="Block_12_09" type="Node3D" parent="FinancialQuarter"]
+metadata/module_id = "FinancialQuarter_Block_12_09"
+
+[node name="StartHere" type="Marker3D" parent="FinancialQuarter/Block_12_09"]
+position = Vector3(-34.0, 0.03, 772.0)
+gizmo_extents = 3.0
+
+[node name="Block_12_10" type="Node3D" parent="FinancialQuarter"]
+metadata/module_id = "FinancialQuarter_Block_12_10"
+
+[node name="StartHere" type="Marker3D" parent="FinancialQuarter/Block_12_10"]
+position = Vector3(295.0, 0.03, 772.0)
+gizmo_extents = 3.0
+
+[node name="Block_12_11" type="Node3D" parent="FinancialQuarter"]
+metadata/module_id = "FinancialQuarter_Block_12_11"
+
+[node name="StartHere" type="Marker3D" parent="FinancialQuarter/Block_12_11"]
+position = Vector3(295.0, 0.03, 772.0)
+gizmo_extents = 3.0
+
+[node name="Block_12_12" type="Node3D" parent="FinancialQuarter"]
+metadata/module_id = "FinancialQuarter_Block_12_12"
+
+[node name="StartHere" type="Marker3D" parent="FinancialQuarter/Block_12_12"]
+position = Vector3(510.0, 0.03, 772.0)
+gizmo_extents = 3.0
+
+[node name="Block_12_13" type="Node3D" parent="FinancialQuarter"]
+metadata/module_id = "FinancialQuarter_Block_12_13"
+
+[node name="StartHere" type="Marker3D" parent="FinancialQuarter/Block_12_13"]
+position = Vector3(686.0, 0.03, 772.0)
+gizmo_extents = 3.0
+
+[node name="Waterfront" type="Node3D" parent="FinancialQuarter"]
+metadata/module_id = "FinancialQuarter_Waterfront"
+
+[node name="StartHere" type="Marker3D" parent="FinancialQuarter/Waterfront"]
+position = Vector3(-690.0, 0.03, 785.0)
+gizmo_extents = 3.0
+
+[node name="Eastbank" type="Node3D" parent="."]
+script = ExtResource("2")
+district_id = "Eastbank"
+enabled_routes = {
+"Eastbank_Block_05_10": true
+}
+district_enabled = true
+show_debug = true
+
+[node name="Block_04_10" type="Node3D" parent="Eastbank"]
+metadata/module_id = "Eastbank_Block_04_10"
+
+[node name="StartHere" type="Marker3D" parent="Eastbank/Block_04_10"]
+position = Vector3(265.0, 0.03, -440.0)
+gizmo_extents = 3.0
+
+[node name="Block_04_11" type="Node3D" parent="Eastbank"]
+metadata/module_id = "Eastbank_Block_04_11"
+
+[node name="StartHere" type="Marker3D" parent="Eastbank/Block_04_11"]
+position = Vector3(328.0, 0.03, -338.0)
+gizmo_extents = 3.0
+
+[node name="Block_04_12" type="Node3D" parent="Eastbank"]
+metadata/module_id = "Eastbank_Block_04_12"
+
+[node name="StartHere" type="Marker3D" parent="Eastbank/Block_04_12"]
+position = Vector3(508.0, 0.03, -338.0)
+gizmo_extents = 3.0
+
+[node name="Block_04_13" type="Node3D" parent="Eastbank"]
+metadata/module_id = "Eastbank_Block_04_13"
+
+[node name="StartHere" type="Marker3D" parent="Eastbank/Block_04_13"]
+position = Vector3(684.0, 0.03, -338.0)
+gizmo_extents = 3.0
+
+[node name="Block_04_14" type="Node3D" parent="Eastbank"]
+metadata/module_id = "Eastbank_Block_04_14"
+
+[node name="StartHere" type="Marker3D" parent="Eastbank/Block_04_14"]
+position = Vector3(868.0, 0.03, -338.0)
+gizmo_extents = 3.0
+
+[node name="Block_04_15" type="Node3D" parent="Eastbank"]
+metadata/module_id = "Eastbank_Block_04_15"
+
+[node name="StartHere" type="Marker3D" parent="Eastbank/Block_04_15"]
+position = Vector3(1048.0, 0.03, -338.0)
+gizmo_extents = 3.0
+
+[node name="Block_04_16" type="Node3D" parent="Eastbank"]
+metadata/module_id = "Eastbank_Block_04_16"
+
+[node name="StartHere" type="Marker3D" parent="Eastbank/Block_04_16"]
+position = Vector3(1232.0, 0.03, -338.0)
+gizmo_extents = 3.0
+
+[node name="Block_04_17" type="Node3D" parent="Eastbank"]
+metadata/module_id = "Eastbank_Block_04_17"
+
+[node name="StartHere" type="Marker3D" parent="Eastbank/Block_04_17"]
+position = Vector3(1408.0, 0.03, -338.0)
+gizmo_extents = 3.0
+
+[node name="Block_05_10" type="Node3D" parent="Eastbank"]
+metadata/module_id = "Eastbank_Block_05_10"
+
+[node name="StartHere" type="Marker3D" parent="Eastbank/Block_05_10"]
+position = Vector3(285.0, 0.03, -336.0)
+gizmo_extents = 3.0
+
+[node name="Block_05_11" type="Node3D" parent="Eastbank"]
+metadata/module_id = "Eastbank_Block_05_11"
+
+[node name="StartHere" type="Marker3D" parent="Eastbank/Block_05_11"]
+position = Vector3(285.0, 0.03, -336.0)
+gizmo_extents = 3.0
+
+[node name="Block_05_12" type="Node3D" parent="Eastbank"]
+metadata/module_id = "Eastbank_Block_05_12"
+
+[node name="StartHere" type="Marker3D" parent="Eastbank/Block_05_12"]
+position = Vector3(471.5, 0.03, -336.0)
+gizmo_extents = 3.0
+
+[node name="Block_05_13" type="Node3D" parent="Eastbank"]
+metadata/module_id = "Eastbank_Block_05_13"
+
+[node name="StartHere" type="Marker3D" parent="Eastbank/Block_05_13"]
+position = Vector3(649.5, 0.03, -336.0)
+gizmo_extents = 3.0
+
+[node name="Block_05_14" type="Node3D" parent="Eastbank"]
+metadata/module_id = "Eastbank_Block_05_14"
+
+[node name="StartHere" type="Marker3D" parent="Eastbank/Block_05_14"]
+position = Vector3(868.0, 0.03, -336.0)
+gizmo_extents = 3.0
+
+[node name="Block_05_15" type="Node3D" parent="Eastbank"]
+metadata/module_id = "Eastbank_Block_05_15"
+
+[node name="StartHere" type="Marker3D" parent="Eastbank/Block_05_15"]
+position = Vector3(1011.5, 0.03, -336.0)
+gizmo_extents = 3.0
+
+[node name="Block_05_16" type="Node3D" parent="Eastbank"]
+metadata/module_id = "Eastbank_Block_05_16"
+
+[node name="StartHere" type="Marker3D" parent="Eastbank/Block_05_16"]
+position = Vector3(1193.5, 0.03, -336.0)
+gizmo_extents = 3.0
+
+[node name="Block_05_17" type="Node3D" parent="Eastbank"]
+metadata/module_id = "Eastbank_Block_05_17"
+
+[node name="StartHere" type="Marker3D" parent="Eastbank/Block_05_17"]
+position = Vector3(1408.0, 0.03, -336.0)
+gizmo_extents = 3.0
+
+[node name="Block_06_10" type="Node3D" parent="Eastbank"]
+metadata/module_id = "Eastbank_Block_06_10"
+
+[node name="StartHere" type="Marker3D" parent="Eastbank/Block_06_10"]
+position = Vector3(277.0, 0.03, -152.0)
+gizmo_extents = 3.0
+
+[node name="Block_06_11" type="Node3D" parent="Eastbank"]
+metadata/module_id = "Eastbank_Block_06_11"
+
+[node name="StartHere" type="Marker3D" parent="Eastbank/Block_06_11"]
+position = Vector3(277.0, 0.03, -168.0)
+gizmo_extents = 3.0
+
+[node name="Block_06_12" type="Node3D" parent="Eastbank"]
+metadata/module_id = "Eastbank_Block_06_12"
+
+[node name="StartHere" type="Marker3D" parent="Eastbank/Block_06_12"]
+position = Vector3(471.5, 0.03, -168.0)
+gizmo_extents = 3.0
+
+[node name="Block_06_13" type="Node3D" parent="Eastbank"]
+metadata/module_id = "Eastbank_Block_06_13"
+
+[node name="StartHere" type="Marker3D" parent="Eastbank/Block_06_13"]
+position = Vector3(684.0, 0.03, -168.0)
+gizmo_extents = 3.0
+
+[node name="Block_06_14" type="Node3D" parent="Eastbank"]
+metadata/module_id = "Eastbank_Block_06_14"
+
+[node name="StartHere" type="Marker3D" parent="Eastbank/Block_06_14"]
+position = Vector3(831.5, 0.03, -168.0)
+gizmo_extents = 3.0
+
+[node name="Block_07_10" type="Node3D" parent="Eastbank"]
+metadata/module_id = "Eastbank_Block_07_10"
+
+[node name="StartHere" type="Marker3D" parent="Eastbank/Block_07_10"]
+position = Vector3(296.0, 0.03, 12.0)
+gizmo_extents = 3.0
+
+[node name="Block_07_11" type="Node3D" parent="Eastbank"]
+metadata/module_id = "Eastbank_Block_07_11"
+
+[node name="StartHere" type="Marker3D" parent="Eastbank/Block_07_11"]
+position = Vector3(312.0, 0.03, -12.0)
+gizmo_extents = 3.0
+
+[node name="Block_07_12" type="Node3D" parent="Eastbank"]
+metadata/module_id = "Eastbank_Block_07_12"
+
+[node name="StartHere" type="Marker3D" parent="Eastbank/Block_07_12"]
+position = Vector3(508.0, 0.03, -12.0)
+gizmo_extents = 3.0
+
+[node name="Block_07_13" type="Node3D" parent="Eastbank"]
+metadata/module_id = "Eastbank_Block_07_13"
+
+[node name="StartHere" type="Marker3D" parent="Eastbank/Block_07_13"]
+position = Vector3(649.5, 0.03, -12.0)
+gizmo_extents = 3.0
+
+[node name="Block_07_14" type="Node3D" parent="Eastbank"]
+metadata/module_id = "Eastbank_Block_07_14"
+
+[node name="StartHere" type="Marker3D" parent="Eastbank/Block_07_14"]
+position = Vector3(831.5, 0.03, -12.0)
+gizmo_extents = 3.0
+
+[node name="Block_08_11" type="Node3D" parent="Eastbank"]
+metadata/module_id = "Eastbank_Block_08_11"
+
+[node name="StartHere" type="Marker3D" parent="Eastbank/Block_08_11"]
+position = Vector3(388.5, 0.03, 148.0)
+gizmo_extents = 3.0
+
+[node name="Block_08_12" type="Node3D" parent="Eastbank"]
+metadata/module_id = "Eastbank_Block_08_12"
+
+[node name="StartHere" type="Marker3D" parent="Eastbank/Block_08_12"]
+position = Vector3(471.5, 0.03, 148.0)
+gizmo_extents = 3.0
+
+[node name="Block_08_13" type="Node3D" parent="Eastbank"]
+metadata/module_id = "Eastbank_Block_08_13"
+
+[node name="StartHere" type="Marker3D" parent="Eastbank/Block_08_13"]
+position = Vector3(649.5, 0.03, 148.0)
+gizmo_extents = 3.0
+
+[node name="Block_08_14" type="Node3D" parent="Eastbank"]
+metadata/module_id = "Eastbank_Block_08_14"
+
+[node name="StartHere" type="Marker3D" parent="Eastbank/Block_08_14"]
+position = Vector3(868.0, 0.03, 148.0)
+gizmo_extents = 3.0
+
+[node name="Block_09_11" type="Node3D" parent="Eastbank"]
+metadata/module_id = "Eastbank_Block_09_11"
+
+[node name="StartHere" type="Marker3D" parent="Eastbank/Block_09_11"]
+position = Vector3(472.0, 0.03, 336.0)
+gizmo_extents = 3.0
+
+[node name="Block_09_12" type="Node3D" parent="Eastbank"]
+metadata/module_id = "Eastbank_Block_09_12"
+
+[node name="StartHere" type="Marker3D" parent="Eastbank/Block_09_12"]
+position = Vector3(472.0, 0.03, 304.0)
+gizmo_extents = 3.0
+
+[node name="Block_09_13" type="Node3D" parent="Eastbank"]
+metadata/module_id = "Eastbank_Block_09_13"
+
+[node name="StartHere" type="Marker3D" parent="Eastbank/Block_09_13"]
+position = Vector3(684.0, 0.03, 304.0)
+gizmo_extents = 3.0
+
+[node name="Block_09_14" type="Node3D" parent="Eastbank"]
+metadata/module_id = "Eastbank_Block_09_14"
+
+[node name="StartHere" type="Marker3D" parent="Eastbank/Block_09_14"]
+position = Vector3(831.5, 0.03, 304.0)
+gizmo_extents = 3.0
+
+[node name="Block_10_13" type="Node3D" parent="Eastbank"]
+metadata/module_id = "Eastbank_Block_10_13"
+
+[node name="StartHere" type="Marker3D" parent="Eastbank/Block_10_13"]
+position = Vector3(750.5, 0.03, 468.0)
+gizmo_extents = 3.0
+
+[node name="Block_10_14" type="Node3D" parent="Eastbank"]
+metadata/module_id = "Eastbank_Block_10_14"
+
+[node name="StartHere" type="Marker3D" parent="Eastbank/Block_10_14"]
+position = Vector3(831.5, 0.03, 468.0)
+gizmo_extents = 3.0
+
+[node name="Block_11_13" type="Node3D" parent="Eastbank"]
+metadata/module_id = "Eastbank_Block_11_13"
+
+[node name="StartHere" type="Marker3D" parent="Eastbank/Block_11_13"]
+position = Vector3(792.0, 0.03, 624.0)
+gizmo_extents = 3.0
+
+[node name="Block_11_14" type="Node3D" parent="Eastbank"]
+metadata/module_id = "Eastbank_Block_11_14"
+
+[node name="StartHere" type="Marker3D" parent="Eastbank/Block_11_14"]
+position = Vector3(868.0, 0.03, 624.0)
+gizmo_extents = 3.0
+
+[node name="Block_12_13" type="Node3D" parent="Eastbank"]
+metadata/module_id = "Eastbank_Block_12_13"
+
+[node name="StartHere" type="Marker3D" parent="Eastbank/Block_12_13"]
+position = Vector3(792.0, 0.03, 772.0)
+gizmo_extents = 3.0
+
+[node name="Block_12_14" type="Node3D" parent="Eastbank"]
+metadata/module_id = "Eastbank_Block_12_14"
+
+[node name="StartHere" type="Marker3D" parent="Eastbank/Block_12_14"]
+position = Vector3(870.0, 0.03, 772.0)
+gizmo_extents = 3.0
+
+[node name="Waterfront" type="Node3D" parent="Eastbank"]
+metadata/module_id = "Eastbank_Waterfront"
+
+[node name="StartHere" type="Marker3D" parent="Eastbank/Waterfront"]
+position = Vector3(1046.0, 0.03, 785.0)
+gizmo_extents = 3.0
+
+[node name="FoundryWard" type="Node3D" parent="."]
+script = ExtResource("2")
+district_id = "FoundryWard"
+enabled_routes = {
+"FoundryWard_Block_06_14": true
+}
+district_enabled = true
+show_debug = true
+
+[node name="Block_05_15" type="Node3D" parent="FoundryWard"]
+metadata/module_id = "FoundryWard_Block_05_15"
+
+[node name="StartHere" type="Marker3D" parent="FoundryWard/Block_05_15"]
+position = Vector3(1048.0, 0.03, -170.0)
+gizmo_extents = 3.0
+
+[node name="Block_05_16" type="Node3D" parent="FoundryWard"]
+metadata/module_id = "FoundryWard_Block_05_16"
+
+[node name="StartHere" type="Marker3D" parent="FoundryWard/Block_05_16"]
+position = Vector3(1232.0, 0.03, -170.0)
+gizmo_extents = 3.0
+
+[node name="Block_05_17" type="Node3D" parent="FoundryWard"]
+metadata/module_id = "FoundryWard_Block_05_17"
+
+[node name="StartHere" type="Marker3D" parent="FoundryWard/Block_05_17"]
+position = Vector3(1408.0, 0.03, -170.0)
+gizmo_extents = 3.0
+
+[node name="Block_06_14" type="Node3D" parent="FoundryWard"]
+metadata/module_id = "FoundryWard_Block_06_14"
+
+[node name="StartHere" type="Marker3D" parent="FoundryWard/Block_06_14"]
+position = Vector3(1011.5, 0.03, -168.0)
+gizmo_extents = 3.0
+
+[node name="Block_06_15" type="Node3D" parent="FoundryWard"]
+metadata/module_id = "FoundryWard_Block_06_15"
+
+[node name="StartHere" type="Marker3D" parent="FoundryWard/Block_06_15"]
+position = Vector3(1011.5, 0.03, -168.0)
+gizmo_extents = 3.0
+
+[node name="Block_06_16" type="Node3D" parent="FoundryWard"]
+metadata/module_id = "FoundryWard_Block_06_16"
+
+[node name="StartHere" type="Marker3D" parent="FoundryWard/Block_06_16"]
+position = Vector3(1232.0, 0.03, -168.0)
+gizmo_extents = 3.0
+
+[node name="Block_06_17" type="Node3D" parent="FoundryWard"]
+metadata/module_id = "FoundryWard_Block_06_17"
+
+[node name="StartHere" type="Marker3D" parent="FoundryWard/Block_06_17"]
+position = Vector3(1371.5, 0.03, -168.0)
+gizmo_extents = 3.0
+
+[node name="Block_07_14" type="Node3D" parent="FoundryWard"]
+metadata/module_id = "FoundryWard_Block_07_14"
+
+[node name="StartHere" type="Marker3D" parent="FoundryWard/Block_07_14"]
+position = Vector3(970.0, 0.03, -12.0)
+gizmo_extents = 3.0
+
+[node name="Block_07_15" type="Node3D" parent="FoundryWard"]
+metadata/module_id = "FoundryWard_Block_07_15"
+
+[node name="StartHere" type="Marker3D" parent="FoundryWard/Block_07_15"]
+position = Vector3(1048.0, 0.03, -12.0)
+gizmo_extents = 3.0
+
+[node name="Block_07_16" type="Node3D" parent="FoundryWard"]
+metadata/module_id = "FoundryWard_Block_07_16"
+
+[node name="StartHere" type="Marker3D" parent="FoundryWard/Block_07_16"]
+position = Vector3(1193.5, 0.03, -12.0)
+gizmo_extents = 3.0
+
+[node name="Block_07_17" type="Node3D" parent="FoundryWard"]
+metadata/module_id = "FoundryWard_Block_07_17"
+
+[node name="StartHere" type="Marker3D" parent="FoundryWard/Block_07_17"]
+position = Vector3(1371.5, 0.03, -12.0)
+gizmo_extents = 3.0
+
+[node name="Block_08_14" type="Node3D" parent="FoundryWard"]
+metadata/module_id = "FoundryWard_Block_08_14"
+
+[node name="StartHere" type="Marker3D" parent="FoundryWard/Block_08_14"]
+position = Vector3(1011.5, 0.03, 148.0)
+gizmo_extents = 3.0
+
+[node name="Block_08_15" type="Node3D" parent="FoundryWard"]
+metadata/module_id = "FoundryWard_Block_08_15"
+
+[node name="StartHere" type="Marker3D" parent="FoundryWard/Block_08_15"]
+position = Vector3(1011.5, 0.03, 148.0)
+gizmo_extents = 3.0
+
+[node name="Block_08_16" type="Node3D" parent="FoundryWard"]
+metadata/module_id = "FoundryWard_Block_08_16"
+
+[node name="StartHere" type="Marker3D" parent="FoundryWard/Block_08_16"]
+position = Vector3(1193.5, 0.03, 148.0)
+gizmo_extents = 3.0
+
+[node name="Block_08_17" type="Node3D" parent="FoundryWard"]
+metadata/module_id = "FoundryWard_Block_08_17"
+
+[node name="StartHere" type="Marker3D" parent="FoundryWard/Block_08_17"]
+position = Vector3(1408.0, 0.03, 148.0)
+gizmo_extents = 3.0
+
+[node name="Block_09_14" type="Node3D" parent="FoundryWard"]
+metadata/module_id = "FoundryWard_Block_09_14"
+
+[node name="StartHere" type="Marker3D" parent="FoundryWard/Block_09_14"]
+position = Vector3(1011.5, 0.03, 304.0)
+gizmo_extents = 3.0
+
+[node name="Block_09_15" type="Node3D" parent="FoundryWard"]
+metadata/module_id = "FoundryWard_Block_09_15"
+
+[node name="StartHere" type="Marker3D" parent="FoundryWard/Block_09_15"]
+position = Vector3(1011.5, 0.03, 304.0)
+gizmo_extents = 3.0
+
+[node name="Block_09_16" type="Node3D" parent="FoundryWard"]
+metadata/module_id = "FoundryWard_Block_09_16"
+
+[node name="StartHere" type="Marker3D" parent="FoundryWard/Block_09_16"]
+position = Vector3(1232.0, 0.03, 304.0)
+gizmo_extents = 3.0
+
+[node name="Block_09_17" type="Node3D" parent="FoundryWard"]
+metadata/module_id = "FoundryWard_Block_09_17"
+
+[node name="StartHere" type="Marker3D" parent="FoundryWard/Block_09_17"]
+position = Vector3(1371.5, 0.03, 304.0)
+gizmo_extents = 3.0
+
+[node name="Docklands" type="Node3D" parent="."]
+script = ExtResource("2")
+district_id = "Docklands"
+enabled_routes = {
+"Docklands_Block_10_14": true
+}
+district_enabled = true
+show_debug = true
+
+[node name="Block_09_14" type="Node3D" parent="Docklands"]
+metadata/module_id = "Docklands_Block_09_14"
+
+[node name="StartHere" type="Marker3D" parent="Docklands/Block_09_14"]
+position = Vector3(892.0, 0.03, 466.0)
+gizmo_extents = 3.0
+
+[node name="Block_09_15" type="Node3D" parent="Docklands"]
+metadata/module_id = "Docklands_Block_09_15"
+
+[node name="StartHere" type="Marker3D" parent="Docklands/Block_09_15"]
+position = Vector3(1048.0, 0.03, 466.0)
+gizmo_extents = 3.0
+
+[node name="Block_09_16" type="Node3D" parent="Docklands"]
+metadata/module_id = "Docklands_Block_09_16"
+
+[node name="StartHere" type="Marker3D" parent="Docklands/Block_09_16"]
+position = Vector3(1232.0, 0.03, 466.0)
+gizmo_extents = 3.0
+
+[node name="Block_09_17" type="Node3D" parent="Docklands"]
+metadata/module_id = "Docklands_Block_09_17"
+
+[node name="StartHere" type="Marker3D" parent="Docklands/Block_09_17"]
+position = Vector3(1408.0, 0.03, 466.0)
+gizmo_extents = 3.0
+
+[node name="Block_10_14" type="Node3D" parent="Docklands"]
+metadata/module_id = "Docklands_Block_10_14"
+
+[node name="StartHere" type="Marker3D" parent="Docklands/Block_10_14"]
+position = Vector3(970.0, 0.03, 468.0)
+gizmo_extents = 3.0
+
+[node name="Block_10_15" type="Node3D" parent="Docklands"]
+metadata/module_id = "Docklands_Block_10_15"
+
+[node name="StartHere" type="Marker3D" parent="Docklands/Block_10_15"]
+position = Vector3(1048.0, 0.03, 468.0)
+gizmo_extents = 3.0
+
+[node name="Block_10_16" type="Node3D" parent="Docklands"]
+metadata/module_id = "Docklands_Block_10_16"
+
+[node name="StartHere" type="Marker3D" parent="Docklands/Block_10_16"]
+position = Vector3(1193.5, 0.03, 468.0)
+gizmo_extents = 3.0
+
+[node name="Block_10_17" type="Node3D" parent="Docklands"]
+metadata/module_id = "Docklands_Block_10_17"
+
+[node name="StartHere" type="Marker3D" parent="Docklands/Block_10_17"]
+position = Vector3(1371.5, 0.03, 468.0)
+gizmo_extents = 3.0
+
+[node name="Block_11_14" type="Node3D" parent="Docklands"]
+metadata/module_id = "Docklands_Block_11_14"
+
+[node name="StartHere" type="Marker3D" parent="Docklands/Block_11_14"]
+position = Vector3(928.5, 0.03, 624.0)
+gizmo_extents = 3.0
+
+[node name="Block_11_15" type="Node3D" parent="Docklands"]
+metadata/module_id = "Docklands_Block_11_15"
+
+[node name="StartHere" type="Marker3D" parent="Docklands/Block_11_15"]
+position = Vector3(1011.5, 0.03, 624.0)
+gizmo_extents = 3.0
+
+[node name="Block_11_16" type="Node3D" parent="Docklands"]
+metadata/module_id = "Docklands_Block_11_16"
+
+[node name="StartHere" type="Marker3D" parent="Docklands/Block_11_16"]
+position = Vector3(1193.5, 0.03, 624.0)
+gizmo_extents = 3.0
+
+[node name="Block_11_17" type="Node3D" parent="Docklands"]
+metadata/module_id = "Docklands_Block_11_17"
+
+[node name="StartHere" type="Marker3D" parent="Docklands/Block_11_17"]
+position = Vector3(1408.0, 0.03, 624.0)
+gizmo_extents = 3.0
+
+[node name="Block_12_14" type="Node3D" parent="Docklands"]
+metadata/module_id = "Docklands_Block_12_14"
+
+[node name="StartHere" type="Marker3D" parent="Docklands/Block_12_14"]
+position = Vector3(970.0, 0.03, 772.0)
+gizmo_extents = 3.0
+
+[node name="Block_12_15" type="Node3D" parent="Docklands"]
+metadata/module_id = "Docklands_Block_12_15"
+
+[node name="StartHere" type="Marker3D" parent="Docklands/Block_12_15"]
+position = Vector3(1048.0, 0.03, 772.0)
+gizmo_extents = 3.0
+
+[node name="Block_12_16" type="Node3D" parent="Docklands"]
+metadata/module_id = "Docklands_Block_12_16"
+
+[node name="StartHere" type="Marker3D" parent="Docklands/Block_12_16"]
+position = Vector3(1234.0, 0.03, 772.0)
+gizmo_extents = 3.0
+
+[node name="Block_12_17" type="Node3D" parent="Docklands"]
+metadata/module_id = "Docklands_Block_12_17"
+
+[node name="StartHere" type="Marker3D" parent="Docklands/Block_12_17"]
+position = Vector3(1410.0, 0.03, 772.0)
+gizmo_extents = 3.0
+
+[node name="Pier" type="Node3D" parent="Docklands"]
+metadata/module_id = "Docklands_Pier"
+
+[node name="StartHere" type="Marker3D" parent="Docklands/Pier"]
+position = Vector3(1048.0, 0.03, 774.0)
+gizmo_extents = 3.0

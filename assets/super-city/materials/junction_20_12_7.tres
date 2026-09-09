@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cdd1wmmgp6bqm"]
+
+[ext_resource type="Texture2D" uid="uid://74vhly0l4uf2" path="res://assets/super-city/textures/junction_20_12_7.res" id="1_mvbkf"]
+
+[resource]
+albedo_texture = ExtResource("1_mvbkf")
+roughness = 0.98

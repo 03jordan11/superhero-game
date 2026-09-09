@@ -24,6 +24,7 @@ func configure_impact(impact_speed: float, minimum_impact_speed: float) -> void:
 
 
 func _ready() -> void:
+	add_to_group(&"debug_explosion_effects")
 	call_deferred("_start_effect")
 
 

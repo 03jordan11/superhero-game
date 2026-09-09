@@ -1,10 +1,22 @@
 class_name Vehicle
 extends RigidBody3D
 
+const VEHICLE_PERF = preload("res://scripts/ui-scripts/vehicle_performance_monitor.gd")
+
 const HEALTH_COMPONENT_SCRIPT = preload("res://scripts/health_component.gd")
 const DAMAGE_INFO_SCRIPT = preload("res://scripts/combat-scripts/damage_info.gd")
 
 signal destroyed(impact_speed: float)
+signal traffic_released(vehicle: Vehicle)
+
+var traffic_controlled := false
+var traffic_speed := 0.0
+
+func leave_traffic() -> void:
+	if not traffic_controlled: return
+	traffic_controlled = false
+	traffic_speed = 0.0
+	traffic_released.emit(self)
 
 @export var max_health: float = 100.0
 @export var health_label_height: float = 3.0
@@ -33,6 +45,13 @@ func _ready() -> void:
 
 
 func apply_damage(damage_info) -> bool:
+	var perf_started := VEHICLE_PERF.begin(self)
+	var result := _apply_vehicle_damage(damage_info)
+	VEHICLE_PERF.finish(&"vehicle_damage", perf_started)
+	return result
+
+
+func _apply_vehicle_damage(damage_info) -> bool:
 	if is_destroyed or not health_component.apply_damage(damage_info):
 		return false
 	return true
@@ -51,6 +70,12 @@ func arm_thrown_impact(launch_speed: float, source: Node3D) -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	var perf_started := VEHICLE_PERF.begin(self)
+	_update_thrown_impact()
+	VEHICLE_PERF.finish(&"vehicle_physics", perf_started)
+
+
+func _update_thrown_impact() -> void:
 	if not is_thrown_impact_armed:
 		return
 	if is_destroyed:
@@ -123,5 +148,7 @@ func _create_health_label() -> void:
 
 
 func _update_health_label() -> void:
+	var perf_started := VEHICLE_PERF.begin(self)
 	if health_label != null:
 		health_label.text = str(roundi(health_component.current_health))
+	VEHICLE_PERF.finish(&"vehicle_health_label", perf_started)

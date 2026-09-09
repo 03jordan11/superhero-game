@@ -1,0 +1,143 @@
+[gd_scene format=3]
+[ext_resource type="PackedScene" path="res://scenes/vehicles/variants/normal_car_1_navy.tscn" id="v0"]
+[ext_resource type="PackedScene" path="res://scenes/vehicles/variants/normal_car_1_silver.tscn" id="v1"]
+[ext_resource type="PackedScene" path="res://scenes/vehicles/variants/normal_car_1_burgundy.tscn" id="v2"]
+[ext_resource type="PackedScene" path="res://scenes/vehicles/variants/normal_car_2_white.tscn" id="v3"]
+[ext_resource type="PackedScene" path="res://scenes/vehicles/variants/normal_car_2_charcoal.tscn" id="v4"]
+[ext_resource type="PackedScene" path="res://scenes/vehicles/variants/normal_car_2_beige.tscn" id="v5"]
+[ext_resource type="PackedScene" path="res://scenes/vehicles/variants/sports_car_red.tscn" id="v6"]
+[ext_resource type="PackedScene" path="res://scenes/vehicles/variants/sports_car_yellow.tscn" id="v7"]
+[ext_resource type="PackedScene" path="res://scenes/vehicles/variants/sports_car_blue.tscn" id="v8"]
+[ext_resource type="PackedScene" path="res://scenes/vehicles/variants/sports_car_2_orange.tscn" id="v9"]
+[ext_resource type="PackedScene" path="res://scenes/vehicles/variants/sports_car_2_green.tscn" id="v10"]
+[ext_resource type="PackedScene" path="res://scenes/vehicles/variants/sports_car_2_graphite.tscn" id="v11"]
+[ext_resource type="PackedScene" path="res://scenes/vehicles/variants/suv_black.tscn" id="v12"]
+[ext_resource type="PackedScene" path="res://scenes/vehicles/variants/suv_dark_blue.tscn" id="v13"]
+[ext_resource type="PackedScene" path="res://scenes/vehicles/variants/suv_dark_gray.tscn" id="v14"]
+[ext_resource type="PackedScene" path="res://scenes/vehicles/cop.tscn" id="v15"]
+[ext_resource type="PackedScene" path="res://scenes/vehicles/taxi.tscn" id="v16"]
+[node name="Vehicles" type="Node3D"]
+[node name="normal_car_1_navy" parent="." instance=ExtResource("v0")]
+position = Vector3(0, 0, 0)
+[node name="Label0" type="Label3D" parent="."]
+position = Vector3(0, 0.25, 3.5)
+billboard = 1
+font_size = 32
+outline_size = 8
+text = "normal car 1 / navy"
+[node name="normal_car_1_silver" parent="." instance=ExtResource("v1")]
+position = Vector3(6, 0, 0)
+[node name="Label1" type="Label3D" parent="."]
+position = Vector3(6, 0.25, 3.5)
+billboard = 1
+font_size = 32
+outline_size = 8
+text = "normal car 1 / burgundy"
+[node name="normal_car_1_burgundy" parent="." instance=ExtResource("v2")]
+position = Vector3(12, 0, 0)
+[node name="Label2" type="Label3D" parent="."]
+position = Vector3(12, 0.25, 3.5)
+billboard = 1
+font_size = 32
+outline_size = 8
+text = "normal car 1 / burgundy"
+[node name="normal_car_2_white" parent="." instance=ExtResource("v3")]
+position = Vector3(0, 0, 9)
+[node name="Label3" type="Label3D" parent="."]
+position = Vector3(0, 0.25, 12.5)
+billboard = 1
+font_size = 32
+outline_size = 8
+text = "normal car 2 / white"
+[node name="normal_car_2_charcoal" parent="." instance=ExtResource("v4")]
+position = Vector3(6, 0, 9)
+[node name="Label4" type="Label3D" parent="."]
+position = Vector3(6, 0.25, 12.5)
+billboard = 1
+font_size = 32
+outline_size = 8
+text = "normal car 2 / charcoal"
+[node name="normal_car_2_beige" parent="." instance=ExtResource("v5")]
+position = Vector3(12, 0, 9)
+[node name="Label5" type="Label3D" parent="."]
+position = Vector3(12, 0.25, 12.5)
+billboard = 1
+font_size = 32
+outline_size = 8
+text = "normal car 2 / beige"
+[node name="sports_car_red" parent="." instance=ExtResource("v6")]
+position = Vector3(0, 0, 18)
+[node name="Label6" type="Label3D" parent="."]
+position = Vector3(0, 0.25, 21.5)
+billboard = 1
+font_size = 32
+outline_size = 8
+text = "sports car / red"
+[node name="sports_car_yellow" parent="." instance=ExtResource("v7")]
+position = Vector3(6, 0, 18)
+[node name="Label7" type="Label3D" parent="."]
+position = Vector3(6, 0.25, 21.5)
+billboard = 1
+font_size = 32
+outline_size = 8
+text = "sports car / yellow"
+[node name="sports_car_blue" parent="." instance=ExtResource("v8")]
+position = Vector3(12, 0, 18)
+[node name="Label8" type="Label3D" parent="."]
+position = Vector3(12, 0.25, 21.5)
+billboard = 1
+font_size = 32
+outline_size = 8
+text = "sports car / blue"
+[node name="sports_car_2_orange" parent="." instance=ExtResource("v9")]
+position = Vector3(0, 0, 27)
+[node name="Label9" type="Label3D" parent="."]
+position = Vector3(0, 0.25, 30.5)
+billboard = 1
+font_size = 32
+outline_size = 8
+text = "sports car 2 / orange"
+[node name="sports_car_2_green" parent="." instance=ExtResource("v10")]
+position = Vector3(6, 0, 27)
+[node name="Label10" type="Label3D" parent="."]
+position = Vector3(6, 0.25, 30.5)
+billboard = 1
+font_size = 32
+outline_size = 8
+text = "sports car 2 / green"
+[node name="sports_car_2_graphite" parent="." instance=ExtResource("v11")]
+position = Vector3(12, 0, 27)
+[node name="Label11" type="Label3D" parent="."]
+position = Vector3(12, 0.25, 30.5)
+billboard = 1
+font_size = 32
+outline_size = 8
+text = "sports car 2 / graphite"
+[node name="suv_black" parent="." instance=ExtResource("v12")]
+position = Vector3(0, 0, 36)
+[node name="Label12" type="Label3D" parent="."]
+position = Vector3(0, 0.25, 39.5)
+billboard = 1
+font_size = 32
+outline_size = 8
+text = "suv / dark blue"
+[node name="suv_dark_blue" parent="." instance=ExtResource("v13")]
+position = Vector3(6, 0, 36)
+[node name="Label13" type="Label3D" parent="."]
+position = Vector3(6, 0.25, 39.5)
+billboard = 1
+font_size = 32
+outline_size = 8
+text = "suv / dark blue"
+[node name="suv_dark_gray" parent="." instance=ExtResource("v14")]
+position = Vector3(12, 0, 36)
+[node name="Label14" type="Label3D" parent="."]
+position = Vector3(12, 0.25, 39.5)
+billboard = 1
+font_size = 32
+outline_size = 8
+text = "suv / dark gray"
+[node name="cop" parent="." instance=ExtResource("v15")]
+position = Vector3(0, 0, 45)
+[node name="taxi" parent="." instance=ExtResource("v16")]
+position = Vector3(6, 0, 45)

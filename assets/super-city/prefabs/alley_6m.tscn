@@ -1,0 +1,15 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="res://assets/super-city/meshes/alley_6m.res" id="1_r7joa"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_31udk"]
+size = Vector3(6, 0.18, 40)
+
+[node name="alley_6m" type="StaticBody3D" unique_id=1463925238]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1520290768]
+mesh = ExtResource("1_r7joa")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=402353820]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.060000002, 0)
+shape = SubResource("BoxShape3D_31udk")

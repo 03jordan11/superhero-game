@@ -4,6 +4,7 @@ const CROWD_PERF = preload("res://scripts/ui-scripts/civilian_crowd_performance_
 ## Settings and representation handoff only. The parent owns one population.
 const CAPSULE := preload("res://scripts/npc-scripts/capsule_civilian.gd")
 const JOURNEY := preload("res://scripts/npc-scripts/pedestrian_journey.gd")
+const DAMAGE_CELL_SIZE := 8.0
 
 @export var enabled := true
 @export_category("Distant Coverage")
@@ -35,6 +36,19 @@ var _mesh := CapsuleMesh.new()
 var _materials: Dictionary = {}
 var _far_time: Dictionary = {}
 var _timer := 0.0
+var _population_baseline: Dictionary = {}
+var _damage_cells: Dictionary[Vector2i, Dictionary] = {}
+var _damage_cell_by_walker: Dictionary[Node3D, Vector2i] = {}
+
+func apply_population_settings(density: float, distance: float) -> void:
+	if _population_baseline.is_empty():
+		_population_baseline = {"view_distance": view_distance, "max_capsules": max_capsules}
+	var baseline: float = _population_baseline.view_distance
+	var near_floor := maxf(maxf(_crowd.ground_radius,_crowd.high_altitude_radius), maxf(demote_distance,interaction_distance)+40.0)
+	view_distance = minf(baseline, maxf(near_floor,baseline*clampf(distance,0.0,1.0)))
+	var area_scale := pow(view_distance/maxf(baseline,1.0),2.0)
+	max_capsules = roundi(_population_baseline.max_capsules*density*area_scale)
+	_timer = 0.0
 
 func _ready() -> void:
 	_crowd = get_parent()
@@ -62,6 +76,9 @@ func in_distant_area(point: Vector3, retaining: bool) -> bool:
 
 func create_capsule(tone: int) -> Node3D:
 	var walker := CAPSULE.new()
+	walker.tree_entered.connect(_update_damage_cell.bind(walker))
+	walker.damage_position_changed.connect(_update_damage_cell.bind(walker))
+	walker.tree_exiting.connect(_remove_damage_cell.bind(walker))
 	walker.skin_tone_index = tone
 	_mesh.radius = capsule_radius
 	_mesh.height = maxf(capsule_height,capsule_radius*2.0)
@@ -207,19 +224,72 @@ func forget(walker: Node3D) -> void:
 
 func apply_radius_damage(origin: Vector3, radius: float, info) -> void:
 	# Called after the normal body query, so newly promoted bodies cannot be hit twice.
-	for walker in _crowd._active.get_children():
-		if not walker.is_lightweight: continue
+	for walker in _get_damage_candidates(origin, radius):
 		var closest := Geometry3D.get_closest_point_to_segment(origin,walker.global_position+Vector3.UP*0.5,walker.global_position+Vector3.UP*1.25)
-		if closest.distance_to(origin) <= radius+0.5:
+		if closest.distance_squared_to(origin) <= (radius+0.5)*(radius+0.5):
 			walker.apply_damage(info)
 			_timer = 0.0 # Handoff in the next physics update, outside query callbacks.
 
 func apply_melee_damage(origin: Vector3, radius: float, info) -> bool:
-	for walker in _crowd._active.get_children():
-		if not walker.is_lightweight: continue
+	for walker in _get_damage_candidates(origin, radius):
 		var closest := Geometry3D.get_closest_point_to_segment(origin,walker.global_position+Vector3.UP*0.5,walker.global_position+Vector3.UP*1.25)
-		if closest.distance_to(origin) <= radius+0.5:
+		if closest.distance_squared_to(origin) <= (radius+0.5)*(radius+0.5):
 			walker.apply_damage(info)
 			_timer = 0.0
 			return true
 	return false
+
+
+func _damage_cell(point: Vector3) -> Vector2i:
+	return Vector2i(floori(point.x / DAMAGE_CELL_SIZE), floori(point.z / DAMAGE_CELL_SIZE))
+
+
+func _update_damage_cell(walker: Node3D) -> void:
+	if not walker.is_inside_tree() or walker.get_parent() != _crowd._active:
+		return
+	var cell := _damage_cell(walker.global_position)
+	if _damage_cell_by_walker.has(walker) and _damage_cell_by_walker[walker] == cell:
+		return
+	_remove_damage_cell(walker)
+	if not _damage_cells.has(cell):
+		_damage_cells[cell] = {}
+	_damage_cells[cell][walker] = true
+	_damage_cell_by_walker[walker] = cell
+
+
+func _remove_damage_cell(walker: Node3D) -> void:
+	if not _damage_cell_by_walker.has(walker):
+		return
+	var cell: Vector2i = _damage_cell_by_walker[walker]
+	_damage_cell_by_walker.erase(walker)
+	_damage_cells[cell].erase(walker)
+	if _damage_cells[cell].is_empty():
+		_damage_cells.erase(cell)
+
+
+func _get_damage_candidates(origin: Vector3, radius: float) -> Array[Node3D]:
+	var reach := maxf(radius + 0.5, 0.0)
+	var minimum := _damage_cell(origin - Vector3(reach, 0.0, reach))
+	var maximum := _damage_cell(origin + Vector3(reach, 0.0, reach))
+	var candidates: Array[Node3D] = []
+	var cell_count := (maximum.x - minimum.x + 1) * (maximum.y - minimum.y + 1)
+	# Huge explosions should not iterate millions of empty grid cells.
+	if cell_count > _damage_cells.size():
+		for cell: Vector2i in _damage_cells:
+			if cell.x >= minimum.x and cell.x <= maximum.x and cell.y >= minimum.y and cell.y <= maximum.y:
+				_append_damage_cell(cell, candidates)
+	else:
+		for x in range(minimum.x, maximum.x + 1):
+			for z in range(minimum.y, maximum.y + 1):
+				_append_damage_cell(Vector2i(x, z), candidates)
+	# Preserve the previous scene-order choice when a punch overlaps two people.
+	candidates.sort_custom(func(a: Node3D, b: Node3D): return a.get_index() < b.get_index())
+	return candidates
+
+
+func _append_damage_cell(cell: Vector2i, candidates: Array[Node3D]) -> void:
+	if not _damage_cells.has(cell):
+		return
+	for walker: Node3D in _damage_cells[cell]:
+		if is_instance_valid(walker) and not walker.is_queued_for_deletion():
+			candidates.append(walker)

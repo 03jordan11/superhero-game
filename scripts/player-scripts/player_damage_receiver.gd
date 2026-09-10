@@ -9,6 +9,7 @@ signal health_changed(current_health: float, max_health: float)
 signal death_requested(damage_info)
 signal hit_slowdown_requested(speed_multiplier: float)
 signal flight_knockdown_requested
+signal damage_received(damage_info)
 
 var health_component
 var status_effects: PlayerStatusEffects
@@ -38,6 +39,7 @@ func apply_damage(
 ) -> bool:
 	if health_component == null or not health_component.apply_damage(damage_info):
 		return false
+	damage_received.emit(damage_info)
 	if health_component.is_depleted():
 		return true
 

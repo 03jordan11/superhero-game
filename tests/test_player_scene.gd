@@ -13,8 +13,9 @@ func _test_reusable_scene_structure() -> void:
 	var player := player_scene.instantiate() as PlayerCharacter
 	assert(player != null)
 	root.add_child(player)
+	preload("res://tests/player_test_support.gd").unlock_current_powers(player)
 	assert(player.scene_file_path == "res://scenes/player.tscn")
-assert(player.get_script().resource_path == "res://scripts/player-scripts/player_character.gd")
+	assert(player.get_script().resource_path == "res://scripts/player-scripts/player_character.gd")
 	assert(player.get("strength") == 10)
 	assert(player.get("resilience") == 10)
 	assert(player.get_node("CollisionShape3D") is CollisionShape3D)
@@ -49,6 +50,7 @@ func _test_main_scene_instance() -> void:
 
 	var main := main_scene.instantiate()
 	root.add_child(main)
+	preload("res://tests/player_test_support.gd").unlock_current_powers(main.get_node("Player"))
 
 	var player := main.get_node("Player") as PlayerCharacter
 	assert(player != null)

@@ -6,6 +6,7 @@ const UPPERCUT_PUNCH_INDEX := 2
 const DAMAGE_INFO_SCRIPT = preload("res://scripts/combat-scripts/damage_info.gd")
 
 var animation_controller: PlayerAnimationController
+signal combo_punch_started(punch_index: int)
 
 @export var punch_forward_speed: float = 8.0
 @export var punch_forward_delay: float = 0.25
@@ -33,6 +34,9 @@ func setup(target_animation_controller: PlayerAnimationController) -> void:
 
 func request_punch() -> void:
 	if animation_controller == null:
+		return
+	var player := get_parent() as PlayerCharacter
+	if player != null and player.is_charging_jump:
 		return
 
 	if not is_punch_active:
@@ -111,6 +115,7 @@ func _start_punch(punch_index: int) -> void:
 	has_punch_hit = false
 	punch_time = 0.0
 	is_punch_active = true
+	combo_punch_started.emit(punch_index)
 
 
 func _try_hit_target(body: CharacterBody3D, strength: int) -> bool:

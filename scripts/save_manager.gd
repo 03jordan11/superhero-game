@@ -5,7 +5,9 @@ extends Node
 
 const SAVE_PATH := "user://savegame.json"
 const SAVE_FILE_NAME := "savegame.json"
-const SAVE_VERSION := 1
+const SAVE_VERSION := 2
+# Tests override this path to keep the real save untouched.
+var _save_path := SAVE_PATH
 
 
 func save_game() -> bool:
@@ -18,15 +20,22 @@ func save_game() -> bool:
 		"save_version": SAVE_VERSION,
 		"save_name": _get_default_save_name(),
 		"player": _get_player_save_data(player),
+		"power_menu": _get_power_menu_save_data(),
 		"progress": {},
 		"world": {},
 	}
-	var file := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
+	var file := FileAccess.open(_save_path, FileAccess.WRITE)
 	if file == null:
-		push_error("SaveManager could not open %s for writing." % SAVE_PATH)
+		push_error("SaveManager could not open %s for writing." % _save_path)
 		return false
 
 	file.store_string(JSON.stringify(save_data, "\t"))
+	file.flush()
+	var write_error := file.get_error()
+	file.close()
+	if write_error != OK:
+		push_error("SaveManager could not finish writing %s." % _save_path)
+		return false
 	return true
 
 
@@ -35,14 +44,14 @@ func load_game() -> bool:
 		push_warning("SaveManager could not load because no save file exists.")
 		return false
 
-	var file := FileAccess.open(SAVE_PATH, FileAccess.READ)
+	var file := FileAccess.open(_save_path, FileAccess.READ)
 	if file == null:
-		push_error("SaveManager could not open %s for reading." % SAVE_PATH)
+		push_error("SaveManager could not open %s for reading." % _save_path)
 		return false
 
 	var json := JSON.new()
 	if json.parse(file.get_as_text()) != OK or not json.data is Dictionary:
-		push_warning("SaveManager could not parse %s as a save file." % SAVE_PATH)
+		push_warning("SaveManager could not parse %s as a save file." % _save_path)
 		return false
 
 	var player := _get_player()
@@ -52,27 +61,34 @@ func load_game() -> bool:
 
 	var save_data: Dictionary = json.data
 	_apply_player_save_data(player, _get_dictionary(save_data, "player"))
+	player.get_node("PlayerPowerController").progression.apply_save_data(_get_dictionary(save_data, "power_menu"))
 	return true
 
 
 func has_save() -> bool:
-	return FileAccess.file_exists(SAVE_PATH)
+	return FileAccess.file_exists(_save_path)
 
 
 func delete_save() -> bool:
 	if not has_save():
 		return true
 
-	var save_directory := DirAccess.open("user://")
+	var save_directory := DirAccess.open(_save_path.get_base_dir())
 	if save_directory == null:
 		push_error("SaveManager could not open user:// for save deletion.")
 		return false
 
-	var error := save_directory.remove(SAVE_FILE_NAME)
+	var error := save_directory.remove(_save_path.get_file())
 	if error != OK:
-		push_error("SaveManager could not delete %s (error %d)." % [SAVE_PATH, error])
+		push_error("SaveManager could not delete %s (error %d)." % [_save_path, error])
 		return false
 	return true
+
+
+func _get_power_menu_save_data() -> Dictionary:
+	var player := _get_player()
+	if player == null: return {}
+	return player.get_node("PlayerPowerController").progression.to_save_data()
 
 
 func _get_player() -> PlayerCharacter:
@@ -92,6 +108,7 @@ func _get_player_save_data(player: PlayerCharacter) -> Dictionary:
 			"resilience": player.stats.resilience,
 			"experience": player.stats.experience,
 			"money": player.stats.money,
+			"attribute_points": player.stats.attribute_points,
 		},
 		"powers": _get_power_save_data(player),
 		"gear": {},
@@ -118,12 +135,14 @@ func _apply_player_save_data(player: PlayerCharacter, player_data: Dictionary) -
 	player.stats.resilience = _get_int(stats_data, "resilience", player.stats.resilience)
 	player.stats.experience = _get_int(stats_data, "experience", player.stats.experience)
 	player.stats.money = _get_int(stats_data, "money", player.stats.money)
+	# Old test saves start with zero points, regardless of their saved level.
+	player.stats.attribute_points = _get_int(stats_data, "attribute_points", 0)
 
 	var powers_data := _get_dictionary(player_data, "powers")
 	for ability_id_variant in player.abilities.unlocked_abilities:
 		var ability_id := StringName(ability_id_variant)
 		var power_key := String(ability_id)
-		if powers_data.get(power_key) is bool:
+		if not player.get_node("PlayerPowerController").REQUIREMENTS.has(ability_id) and powers_data.get(power_key) is bool:
 			player.abilities.set_unlocked(ability_id, powers_data[power_key])
 
 
@@ -136,6 +155,13 @@ func _get_dictionary(data: Dictionary, key: String) -> Dictionary:
 
 func _get_int(data: Dictionary, key: String, default_value: int) -> int:
 	var value = data.get(key, default_value)
-	if value is int or value is float:
+	if value is int:
+		return value
+	if value is float and is_finite(value):
+		# JSON numbers may be doubles rounded beyond the signed integer boundary.
+		if value >= float(PlayerStats.MAX_PROGRESSION_VALUE):
+			return PlayerStats.MAX_PROGRESSION_VALUE
+		if value <= float(-PlayerStats.MAX_PROGRESSION_VALUE - 1):
+			return -PlayerStats.MAX_PROGRESSION_VALUE - 1
 		return int(value)
 	return default_value

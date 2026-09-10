@@ -75,6 +75,7 @@ var _spawn_forward := Vector3.FORWARD
 var _junction_owners: Dictionary = {}
 var _next_arrival := 0
 var _next_traffic_id := 0
+var _population_baseline: Dictionary = {}
 @onready var _active: Node3D = $ActiveVehicles
 @onready var _released: Node3D = $ReleasedVehicles
 @onready var _lod = get_node_or_null("DistantTraffic")
@@ -88,8 +89,28 @@ func _ready() -> void:
 		return
 	lanes = LANES.build(layout,lane_center_offset,road_height,keep_right)
 	if _lod != null: _lod.setup(self)
+	var settings := get_node_or_null("/root/GameSettings")
+	if settings != null:
+		settings.population_settings_changed.connect(_on_population_settings_changed)
+		_on_population_settings_changed()
 	if show_lane_debug: _draw_lanes()
 	status = "Waiting for player or camera"
+
+func _on_population_settings_changed() -> void:
+	var settings := get_node("/root/GameSettings")
+	apply_population_settings(settings.vehicle_scale(), settings.distance_scale())
+
+func apply_population_settings(density: float, distance: float) -> void:
+	# Capture scene overrides once, never multiply the last applied preset.
+	if _population_baseline.is_empty():
+		for key in ["population_target", "max_vehicles", "max_vehicles_per_lane"]:
+			_population_baseline[key] = get(key)
+	density = clampf(density, 0.0, 1.0)
+	population_target = roundi(_population_baseline.population_target*density)
+	max_vehicles = roundi(_population_baseline.max_vehicles*density)
+	max_vehicles_per_lane = maxi(1, roundi(_population_baseline.max_vehicles_per_lane*density))
+	if _lod != null: _lod.apply_population_settings(density, distance)
+	_timer = 0.0
 
 func _physics_process(delta: float) -> void:
 	var started := PERF.begin(self)
@@ -139,7 +160,10 @@ func _step(delta: float) -> void:
 		var recycle: bool = unseen and distance > minimum_spawn_distance and record.stopped_time > offscreen_stopped_recycle_delay
 		# LOD distance/delay takes precedence over ordinary distance retirement.
 		if _lod != null and _lod.keeps_for_lod(record): retire_far = false
-		var excess: bool = _cars.size() > mini(population_target,max_vehicles) and (_lod == null or not _lod.enabled)
+		# A lowered preset can leave existing cars above the new cap. Retire only
+		# ambient, offscreen cars, one per tick; held/released cars never enter here.
+		var over_budget: bool = _owned.size() > max_vehicles or (_cars.size() > mini(population_target,max_vehicles) and (_lod == null or not _lod.enabled))
+		var excess: bool = over_budget and distance > minimum_spawn_distance and record.connection.is_empty() and not _car_visible(car)
 		if not retiring and (not traffic_enabled or retire_far or recycle or excess):
 			_release_junction(record)
 			car.queue_free()

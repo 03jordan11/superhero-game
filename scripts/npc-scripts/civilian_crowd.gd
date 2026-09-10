@@ -88,10 +88,15 @@ var _spawn_shape := CapsuleShape3D.new()
 var _area_debug: MeshInstance3D
 var _route_height := 0.03
 var _lod: Node
+var _population_baseline: Dictionary = {}
 
 func _ready() -> void:
 	_active = $ActiveCivilians
 	_lod = $CapsuleLOD
+	var settings := get_node_or_null("/root/GameSettings")
+	if settings != null:
+		settings.population_settings_changed.connect(_on_population_settings_changed)
+		_on_population_settings_changed()
 	_spawn_shape.height = 1.7544
 	_graph = get_node_or_null(route_graph_path)
 	if _graph == null:
@@ -100,6 +105,22 @@ func _ready() -> void:
 		return
 	_graph.rebuilt.connect(_index_routes)
 	if _graph.valid: _index_routes()
+
+func _on_population_settings_changed() -> void:
+	var settings := get_node("/root/GameSettings")
+	apply_population_settings(settings.crowd_scale(), settings.distance_scale())
+
+func apply_population_settings(density: float, distance: float) -> void:
+	if _population_baseline.is_empty():
+		for key in ["population_target", "max_civilians", "civilians_per_100m", "max_civilians_per_cell"]:
+			_population_baseline[key] = get(key)
+	density = clampf(density,0.0,1.0)
+	population_target = roundi(_population_baseline.population_target*density)
+	max_civilians = roundi(_population_baseline.max_civilians*density)
+	civilians_per_100m = _population_baseline.civilians_per_100m*density
+	max_civilians_per_cell = roundi(_population_baseline.max_civilians_per_cell*density)
+	_lod.apply_population_settings(density, distance)
+	_timer = 0.0
 
 func _index_routes() -> void:
 	_cells.clear()

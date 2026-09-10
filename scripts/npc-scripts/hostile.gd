@@ -84,6 +84,7 @@ var debug_ground_query_usec: int = 0
 
 @onready var alert_indicator: Label3D = $AlertIndicator
 @onready var alert_indicator_timer: Timer = $AlertIndicatorTimer
+@onready var pistol_shot_audio: AudioStreamPlayer3D = get_node_or_null("PistolShot")
 
 
 func _ready() -> void:
@@ -259,6 +260,7 @@ func _handle_pistol_combat(delta: float) -> void:
 	ammo_count -= 1
 	shots_since_relocation += 1
 	shot_in_progress = true
+	if pistol_shot_audio != null: pistol_shot_audio.play()
 	_resolve_pistol_shot()
 	animation_controller.call("play_pistol_shot")
 
@@ -289,6 +291,7 @@ func _resolve_pistol_shot() -> void:
 		&"none",
 		self
 	)
+	damage_info.damage_type = &"bullet"
 	combat_target.call("apply_damage", damage_info)
 
 

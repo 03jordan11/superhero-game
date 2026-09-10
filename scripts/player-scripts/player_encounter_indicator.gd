@@ -31,6 +31,9 @@ func _process(_delta: float) -> void:
 func _profiled_process(_delta: float) -> void:
 	if player == null:
 		return
+	if not player.abilities.is_unlocked(PlayerAbilities.TROUBLE_SENSE):
+		visible = false
+		return
 
 	var encounter := _get_nearest_active_encounter()
 	if encounter == null:

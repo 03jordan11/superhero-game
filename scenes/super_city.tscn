@@ -81,6 +81,7 @@
 [ext_resource type="PackedScene" path="res://scenes/npcs/city_pedestrian_routes.tscn" id="103_route_pilot"]
 [ext_resource type="PackedScene" path="res://scenes/npcs/civilian_crowd.tscn" id="104_crowd"]
 [ext_resource type="PackedScene" path="res://assets/generated-buildings/residential/residential_building_15.tscn" id="105_us4a1"]
+[ext_resource type="AudioStream" uid="uid://0341h1e5vfql" path="res://assets/audio/ambiance/city_ambiance.mp3" id="106_8m327"]
 [ext_resource type="PackedScene" path="res://assets/generated-buildings/residential/residential_building_08.tscn" id="107_6tv7m"]
 [ext_resource type="PackedScene" path="res://assets/generated-buildings/residential/residential_building_13.tscn" id="109_wuqqh"]
 [ext_resource type="PackedScene" path="res://assets/generated-buildings/residential/residential_building_16.tscn" id="111_vsukp"]
@@ -104,6 +105,10 @@
 [ext_resource type="PackedScene" path="res://assets/generated-buildings/industrial/industrial_building_05.tscn" id="147_623hu"]
 [ext_resource type="PackedScene" path="res://assets/generated-buildings/industrial/industrial_building_07.tscn" id="149_po64i"]
 [ext_resource type="ArrayMesh" path="res://assets/super-city/meshes/central_park.res" id="151_5b2c4"]
+[ext_resource type="Script" uid="uid://csv3u3pre04ad" path="res://scripts/sound_manager.gd" id="152_sound_manager"]
+[ext_resource type="Script" uid="uid://g1cppwvreouh" path="res://scripts/city_horn_ambience.gd" id="153_city_horns"]
+[ext_resource type="Script" uid="uid://cti2cb5wvco07" path="res://scripts/city_sky_wind.gd" id="154_sky_wind"]
+[ext_resource type="AudioStream" uid="uid://bnrbpjej7w6i8" path="res://assets/audio/ambiance/ambient_wind.wav" id="155_sky_wind_audio"]
 [ext_resource type="PackedScene" path="res://scenes/vehicles/traffic_manager.tscn" id="traffic_manager"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_5k0sn"]
@@ -21576,7 +21581,7 @@ forward_spawn_bias = 0.7
 surrounding_radius = 60.0
 max_vehicles_per_lane = 3
 minimum_speed = 7.0
-maximum_speed = 11.0
+maximum_speed = 20.0
 intersection_pause = 0.5
 minimum_intersection_speed = 4.0
 maximum_intersection_speed = 6.0
@@ -21590,9 +21595,9 @@ minimum_player_distance = 25.0
 forward_cone_angle = 50.0
 forward_spawn_share = 0.9
 forward_distance_fraction = 0.85
-show_population_area = true
 
 [node name="CityPedestrianRoutes" parent="." unique_id=1840518281 instance=ExtResource("103_route_pilot")]
+show_debug_routes = false
 
 [node name="WestVillage" parent="CityPedestrianRoutes" index="0"]
 enabled_routes = {
@@ -22665,6 +22670,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1410, 0.03, 772)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Docklands/Pier" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1048, 0.03, 774)
+
+[node name="Sound" type="Node3D" parent="." unique_id=1802404108]
+
+[node name="CityAmbiances" type="AudioStreamPlayer" parent="Sound" unique_id=433276540]
+bus = &"SFX"
+stream = ExtResource("106_8m327")
+pitch_scale = 0.8
+parameters/looping = true
+script = ExtResource("152_sound_manager")
+
+[node name="CityHorns" type="AudioStreamPlayer3D" parent="Sound" unique_id=1915717826]
+bus = &"SFX"
+unit_size = 60.0
+attenuation_filter_cutoff_hz = 2500.0
+attenuation_filter_db = -12.0
+script = ExtResource("153_city_horns")
+
+[node name="SkyWind" type="AudioStreamPlayer" parent="Sound" unique_id=1951985205]
+bus = &"SFX"
+stream = ExtResource("155_sky_wind_audio")
+script = ExtResource("154_sky_wind")
 
 [editable path="Districts/WestVillage/WestVillage_0001"]
 [editable path="Districts/WestVillage/WestVillage_0002"]

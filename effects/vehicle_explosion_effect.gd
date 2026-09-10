@@ -6,10 +6,18 @@ extends Node3D
 @export var fire_particle_lifetime: float = 0.8
 @export var spark_particle_lifetime: float = 1.1
 
+@export_category("Explosion Audio")
+@export var sound_enabled := true
+@export_range(-60.0, 12.0, 0.5, "suffix:dB") var sound_volume_db := 3.0
+## Pitch also changes duration; lower pitch produces a slightly longer explosion.
+@export_range(0.5, 2.0, 0.01) var minimum_sound_pitch := 0.92
+@export_range(0.5, 2.0, 0.01) var maximum_sound_pitch := 1.08
+
 @onready var explosion_pulse: MeshInstance3D = $ExplosionPulse
 @onready var explosion_light: OmniLight3D = $ExplosionLight
 @onready var fire_particles: GPUParticles3D = $FireParticles
 @onready var spark_particles: GPUParticles3D = $SparkParticles
+@onready var explosion_sound: AudioStreamPlayer3D = $ExplosionSound
 
 var impact_percent: float = 0.0
 var pulse_material: ShaderMaterial
@@ -29,6 +37,7 @@ func _ready() -> void:
 
 
 func _start_effect() -> void:
+	_play_explosion_sound()
 	_configure_explosion_shader()
 	_configure_particles()
 	explosion_light.light_energy *= lerpf(0.7, 1.4, impact_percent)
@@ -41,8 +50,32 @@ func _start_effect() -> void:
 	explosion_tween.tween_method(_set_pulse_progress, 0.0, 1.0, pulse_duration)
 	explosion_tween.parallel().tween_property(explosion_light, "light_energy", 0.0, pulse_duration)
 
-	await get_tree().create_timer(explosion_lifetime).timeout
+	await get_tree().create_timer(explosion_lifetime, false).timeout
+	# End the visuals on schedule, but do not cut off the sound's tail when the
+	# vehicle or visual effect disappears. The effect owns this stationary source.
+	explosion_pulse.hide()
+	explosion_light.hide()
+	fire_particles.emitting = false
+	spark_particles.emitting = false
+	fire_particles.hide()
+	spark_particles.hide()
+	if explosion_sound.playing:
+		await explosion_sound.finished
 	queue_free()
+
+func _play_explosion_sound() -> void:
+	if not sound_enabled or explosion_sound.stream == null: return
+	if explosion_sound.stream is AudioStreamMP3:
+		explosion_sound.stream = explosion_sound.stream.duplicate()
+		explosion_sound.stream.loop = false
+	var random := RandomNumberGenerator.new()
+	random.randomize() # Leave combat and traffic randomness unchanged.
+	var low := maxf(0.1, minf(minimum_sound_pitch, maximum_sound_pitch))
+	explosion_sound.pitch_scale = random.randf_range(low, maxf(low, maxf(minimum_sound_pitch, maximum_sound_pitch)))
+	explosion_sound.volume_db = sound_volume_db
+	if AudioServer.get_bus_index(&"VehicleExplosions") >= 0:
+		explosion_sound.bus = &"VehicleExplosions"
+	explosion_sound.play()
 
 
 func _configure_explosion_shader() -> void:

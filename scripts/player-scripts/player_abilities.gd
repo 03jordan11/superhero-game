@@ -10,6 +10,12 @@ const FLIGHT: StringName = &"flight"
 const WALL_RUN: StringName = &"wall_run"
 const GROUND_SLAM: StringName = &"ground_slam"
 const POWER_JUMP: StringName = &"power_jump"
+const AIR_JUMP: StringName = &"air_jump"
+const BOUNDING: StringName = &"bounding"
+const SUPER_SPEED: StringName = &"super_speed"
+const FLIGHT_BOOST: StringName = &"flight_boost"
+const VEHICLE_LIFT: StringName = &"vehicle_lift"
+const TROUBLE_SENSE: StringName = &"trouble_sense"
 const ICE: StringName = &"ice"
 const LASER_EYES: StringName = &"laser_eyes"
 const TELEKINESIS: StringName = &"telekinesis"
@@ -19,15 +25,21 @@ const FIRE: StringName = &"fire"
 ## The single source of truth for powers available to this player.
 ## Add entries in the form &"ability_id": true or false.
 @export var unlocked_abilities: Dictionary[StringName, bool] = {
-	FLIGHT: true,
-	WALL_RUN: true,
-	GROUND_SLAM: true,
-	POWER_JUMP: true,
-	ICE: true,
-	LASER_EYES: true,
-	TELEKINESIS: true,
-	ELECTRICITY: true,
-	FIRE: true,
+	FLIGHT: false,
+	WALL_RUN: false,
+	GROUND_SLAM: false,
+	POWER_JUMP: false,
+	AIR_JUMP: false,
+	BOUNDING: false,
+	SUPER_SPEED: false,
+	FLIGHT_BOOST: false,
+	VEHICLE_LIFT: false,
+	TROUBLE_SENSE: false,
+	ICE: false,
+	LASER_EYES: false,
+	TELEKINESIS: false,
+	ELECTRICITY: false,
+	FIRE: false,
 }
 
 

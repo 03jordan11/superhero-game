@@ -11,11 +11,13 @@ func _run_test() -> void:
 
 	var main := main_scene.instantiate()
 	root.add_child(main)
+	preload("res://tests/player_test_support.gd").unlock_current_powers(main.get_node("Player"))
 
 	var player := main.get_node("Player") as PlayerCharacter
 	var machine := player.get_node("PlayerStateMachine") as PlayerStateMachine
 	var abilities := player.get("abilities") as PlayerAbilities
 	var hud := player.get_node("ChargeUI") as PlayerHud
+	hud.show()
 	player.set("is_charging_jump", true)
 	player.set("is_jump_active", true)
 	player.set("jump_charge", 1.0)

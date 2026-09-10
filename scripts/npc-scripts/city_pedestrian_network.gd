@@ -5,6 +5,12 @@ const CITY_PERF = preload("res://scripts/ui-scripts/city_performance_monitor.gd"
 ## Shared topology and debug overlays. CivilianCrowd owns population.
 signal rebuilt
 @export_category("City Routes")
+## Master visibility switch for route lines in the editor and game.
+## Each district's Show Debug setting still applies when enabled.
+@export var show_debug_routes := true:
+	set(value):
+		show_debug_routes = value
+		_update_debug_visibility()
 @export var network_enabled := true:
 	set(value):
 		network_enabled = value
@@ -84,7 +90,7 @@ func _profiled_rebuild() -> void:
 		if district == null: continue
 		var module = district.get_node_or_null(NodePath(inventory.modules[key].label))
 		if module == null: continue
-		_draw_module(module,batches[key],district.show_debug,key in enabled_module_ids)
+		_draw_module(module,batches[key],show_debug_routes and district.show_debug,key in enabled_module_ids)
 	notify_property_list_changed()
 	update_configuration_warnings()
 	rebuilt.emit()
@@ -108,6 +114,14 @@ func _profiled_contains_body(world_point: Vector3, radius: float, a: int, b: int
 	var result := super.contains_body(world_point,radius,a,b)
 	walkable_surfaces = saved
 	return result
+
+func _update_debug_visibility() -> void:
+	for district in get_children():
+		if not district.get_script(): continue
+		for module in district.get_children():
+			var lines := module.get_node_or_null("RouteLines") as MeshInstance3D
+			if lines != null:
+				lines.visible = show_debug_routes and district.show_debug
 
 func _draw_module(parent: Node3D, rows: Array, shown: bool, enabled: bool) -> void:
 	var mesh := ImmediateMesh.new()

@@ -5,10 +5,6 @@ extends Node
 ## The machine is driven explicitly by the Player coordinator; it does not
 ## process input or physics automatically.
 
-signal state_changed(previous_state: PlayerState, next_state: PlayerState)
-
-@export var initial_state: PlayerState
-
 var player: PlayerCharacter
 var active_state: PlayerState
 var states: Dictionary[StringName, PlayerState] = {}
@@ -46,8 +42,6 @@ func initialize(
 
 	var resolved_starting_state := starting_state
 	if resolved_starting_state == null:
-		resolved_starting_state = initial_state
-	if resolved_starting_state == null:
 		resolved_starting_state = first_registered_state
 	if not _is_registered_state(resolved_starting_state):
 		push_error("PlayerStateMachine's initial state is not registered.")
@@ -56,7 +50,6 @@ func initialize(
 	active_state = resolved_starting_state
 	is_initialized = true
 	active_state.enter(null)
-	state_changed.emit(null, active_state)
 	return true
 
 
@@ -100,13 +93,7 @@ func transition_to_state(next_state: PlayerState, context: Dictionary = {}) -> b
 	active_state = next_state
 	active_state.enter(previous_state, context)
 	_transition_in_progress = false
-	state_changed.emit(previous_state, active_state)
 	return true
-
-
-func handle_input(input: PlayerInputSnapshot) -> void:
-	if is_initialized:
-		active_state.handle_input(input)
 
 
 func physics_update(delta: float, input: PlayerInputSnapshot) -> void:

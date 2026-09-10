@@ -49,17 +49,19 @@ func physics_update(delta: float, input: PlayerInputSnapshot) -> void:
 		player.camera.global_transform.basis
 	)
 	var has_flight_input := flight_direction.length_squared() > 0.0
+	var is_boosting := has_flight_input and input.sprint_pressed and player.abilities.is_unlocked(PlayerAbilities.FLIGHT_BOOST) and player.stamina.request_boost(true)
 	var speed_multiplier := player.status_effects.get_movement_speed_multiplier()
-	var attribute_speed_multiplier := _get_speed_attribute_multiplier()
-	var current_base_flight_speed := _get_walk_speed() * speed_multiplier
-	var current_max_flight_speed := _get_run_speed() * speed_multiplier
+	var attribute_speed_multiplier := _get_speed_attribute_multiplier() if is_boosting else 1.0
+	var input_strength := minf(maxf(input.movement.length(), absf(vertical_input)), 1.0)
+	var current_base_flight_speed := _get_walk_speed() * speed_multiplier * input_strength
+	var current_max_flight_speed := _get_run_speed() * speed_multiplier * input_strength
 
 	if has_flight_input:
 		player.current_flight_speed = player.movement_motor.approach_flight_speed(
 			player.current_flight_speed,
 			current_base_flight_speed,
 			current_max_flight_speed,
-			input.sprint_pressed,
+			is_boosting,
 			player.flight_acceleration,
 			player.flight_deceleration,
 			attribute_speed_multiplier,

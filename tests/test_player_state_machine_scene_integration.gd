@@ -11,6 +11,7 @@ func _run_test() -> void:
 
 	var main := main_scene.instantiate()
 	root.add_child(main)
+	preload("res://tests/player_test_support.gd").unlock_current_powers(main.get_node("Player"))
 
 	var player := main.get_node("Player") as CharacterBody3D
 	assert(player is PlayerCharacter)

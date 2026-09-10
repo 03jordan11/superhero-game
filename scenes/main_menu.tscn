@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dkqg4b6tjqe0e" path="res://scripts/ui-scripts/main_menu.gd" id="1_main_menu"]
 
+[ext_resource type="PackedScene" path="res://scenes/ui/settings_menu.tscn" id="99_settings_menu"]
+
 [node name="MainMenu" type="Control" unique_id=1887152426]
 layout_mode = 3
 anchors_preset = 15
@@ -70,63 +72,10 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "Quit"
 
-[node name="SettingsMenu" type="VBoxContainer" parent="Center" unique_id=1738455003]
-visible = false
+[node name="SettingsMenu" parent="Center" instance=ExtResource("99_settings_menu")]
 layout_mode = 2
-theme_override_constants/separation = 18
-
-[node name="Title" type="Label" parent="Center/SettingsMenu" unique_id=1519183471]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.3, 0.75, 1, 1)
-theme_override_font_sizes/font_size = 42
-text = "SETTINGS"
-horizontal_alignment = 1
-
-[node name="Spacer" type="Control" parent="Center/SettingsMenu" unique_id=852552830]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 2
-
-[node name="DisplayModeRow" type="HBoxContainer" parent="Center/SettingsMenu" unique_id=576010395]
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="DisplayModeLabel" type="Label" parent="Center/SettingsMenu/DisplayModeRow" unique_id=1787548059]
-custom_minimum_size = Vector2(140, 48)
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "Display Mode"
-vertical_alignment = 1
-
-[node name="DisplayModeDropdown" type="OptionButton" parent="Center/SettingsMenu/DisplayModeRow" unique_id=152445365]
-custom_minimum_size = Vector2(180, 48)
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-
-[node name="ResolutionRow" type="HBoxContainer" parent="Center/SettingsMenu" unique_id=273681564]
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="ResolutionLabel" type="Label" parent="Center/SettingsMenu/ResolutionRow" unique_id=376382263]
-custom_minimum_size = Vector2(140, 48)
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "Resolution"
-vertical_alignment = 1
-
-[node name="ResolutionDropdown" type="OptionButton" parent="Center/SettingsMenu/ResolutionRow" unique_id=1694764292]
-custom_minimum_size = Vector2(180, 48)
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-
-[node name="BackButton" type="Button" parent="Center/SettingsMenu" unique_id=363040754]
-custom_minimum_size = Vector2(336, 56)
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "Back"
 
 [connection signal="pressed" from="Center/Menu/PlayButton" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Center/Menu/SettingsButton" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Center/Menu/QuitButton" to="." method="_on_quit_pressed"]
-[connection signal="item_selected" from="Center/SettingsMenu/DisplayModeRow/DisplayModeDropdown" to="." method="_on_display_mode_dropdown_item_selected"]
-[connection signal="item_selected" from="Center/SettingsMenu/ResolutionRow/ResolutionDropdown" to="." method="_on_resolution_dropdown_item_selected"]
-[connection signal="pressed" from="Center/SettingsMenu/BackButton" to="." method="_on_back_pressed"]
+[connection signal="back_requested" from="Center/SettingsMenu" to="." method="_on_back_pressed"]

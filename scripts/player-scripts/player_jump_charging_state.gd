@@ -29,3 +29,18 @@ func enter(_previous_state: PlayerState, context: Dictionary = {}) -> void:
 
 func exit(_next_state: PlayerState) -> void:
 	_reset_jump_charge()
+
+
+func physics_update(delta: float, input: PlayerInputSnapshot) -> void:
+	if not player.is_on_floor():
+		state_machine.transition_to(&"AirborneState")
+		state_machine.physics_update(delta, input)
+		return
+	super.physics_update(delta, input)
+
+
+func post_physics_update(delta: float, input: PlayerInputSnapshot) -> void:
+	if not player.is_on_floor():
+		state_machine.transition_to(&"AirborneState")
+		return
+	super.post_physics_update(delta, input)

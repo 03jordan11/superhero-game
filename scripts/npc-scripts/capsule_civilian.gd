@@ -22,6 +22,18 @@ var _crossing_active := false
 var pending_damage: Array = []
 var promotion_blocked := false
 
+signal damage_position_changed
+
+func _enter_tree() -> void:
+	# Local notifications update damage lookup immediately on movement/teleports.
+	# Global notifications also account for a transformed parent.
+	set_notify_local_transform(true)
+	set_notify_transform(true)
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_LOCAL_TRANSFORM_CHANGED or what == NOTIFICATION_TRANSFORM_CHANGED:
+		if is_inside_tree(): damage_position_changed.emit()
+
 func begin_ambient_route(network: Node3D, a: int, b: int) -> void:
 	graph = network
 	_current_id = a

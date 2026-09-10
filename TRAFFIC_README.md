@@ -14,7 +14,29 @@ Spawns are weighted by road length inside the local radius, with a preference fo
 
 The actual existing colored vehicle scenes are instantiated. Meshes, scales, collision boxes and damage/throw functionality are preserved. Traffic drives the frozen RigidBody3D in kinematic freeze mode; no wheel animation, suspension or VehicleBody3D is used. The supplied meshes are treated as facing local +Z. Each entry has Heading Offset Degrees (use 180 for a scene facing -Z).
 
+## Vehicle engine audio
+
+All seven base vehicle scenes instance `scenes/vehicles/engine_sound.tscn` as `EngineSound`; colored variants inherit it. The shared `scripts/traffic/vehicle_engine_sound.gd` starts the supplied `assets/audio/Vehicles/care_engine.mp3` automatically, loops a private resource copy, and stops on destruction. Random playback offsets prevent spawned cars from playing the recording in lockstep without changing traffic's random sequence. Pickups retain their engine sound.
+
+Open `engine_sound.tscn` to tune all cars together: **Volume Db** defaults to -6, **Unit Size** to 12 metres, and **Max Distance** to 80 metres. AudioStreamPlayer3D supplies spatial panning and distance attenuation relative to the active camera/listener. **Engine Enabled** controls playback at spawn. Distant traffic proxies stay silent; full vehicle scenes carry the sound. Normal scene pause behavior pauses engines too.
+
+Each model's **EngineSound → Engine Character → Base Pitch** gives it a distinct sound: SUV 0.82, cop 0.92, normal car 1 0.96, taxi 1.00, normal car 2 1.03, sports car 1 1.16, and sports car 2 1.23. Color variants inherit these values. Every spawned car adds a stable random variation of up to ±4%. **Base Pitch** replaces the native Pitch Scale for tuning, since the script updates Pitch Scale live.
+
+**Speed Pitch Increase** raises pitch by up to 18% at **Pitch Reference Speed** (12 m/s), with **Pitch Response** smoothing acceleration and deceleration. Set the increase to zero to disable this response or variation to zero to remove per-car randomness. Godot's pitch scaling also speeds up/slows down playback of the same recording; these settings affect audio only, not driving speeds. Cars carried or thrown return to idle pitch. Engine Character controls can be tuned live in the Remote Inspector; save lasting changes in the scene Inspector.
+
+Test beside a busy road: approaching cars should become louder, move across the stereo field, and fade as they leave. Compare the deeper SUV with the higher sports cars, and listen to traffic slow at a junction and accelerate away. Walk farther away or fly up to check distance attenuation. Destroy a vehicle to verify its engine stops. Run `tests/test_vehicle_engine_sound.gd` for scene, playback, pitch variation, speed response, looping, inheritance, reparenting, and destruction checks; these do not replace an in-game listening test.
+
+## Vehicle explosion audio
+
+The shared `effects/vehicle_explosion_effect.tscn` plays `assets/audio/Vehicles/explosion.mp3` at the blast location whenever a vehicle explodes. Its **Explosion Audio** Inspector group exposes **Sound Enabled**, **Sound Volume Db** (+3 dB), and **Minimum / Maximum Sound Pitch** (0.92–1.08). Pitch variation also varies playback length, roughly ±8%, independently for each explosion. The source MP3 is unchanged.
+
+The child **ExplosionSound** exposes native 3D distance settings: Unit Size 25 m and Max Distance 180 m. A dedicated **VehicleExplosions** bus limits peaks. The sound belongs to the explosion effect, so removing the vehicle does not cut it off. Visuals still end after their configured lifetime; the hidden effect is freed once the audio finishes.
+
+Test several vehicle explosions, listen for small variations, and step farther away to check attenuation. `tests/test_vehicle_explosion_audio.gd` verifies actual vehicle destruction, spatial placement, variation, the sound tail, and cleanup. The existing thrown-vehicle and engine-audio checks cover related behavior.
+
 ## Inspector settings
+
+The main and pause menus now expose Low / Medium / High population presets. Inspector values remain the High baseline; see [Population settings](POPULATION_SETTINGS.md) for density/distance mappings, persistence, and testing. City rendering distance is deferred.
 
 Select `SuperCity/TrafficManager`:
 

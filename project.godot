@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 DebugManager="*uid://dvrevw5sttcbg"
 SaveManager="*res://scripts/save_manager.gd"
+GameSettings="*res://scripts/game_settings.gd"
 
 [display]
 

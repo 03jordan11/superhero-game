@@ -36,10 +36,6 @@ func exit(_next_state: PlayerState) -> void:
 	pass
 
 
-func handle_input(_input: PlayerInputSnapshot) -> void:
-	pass
-
-
 func physics_update(_delta: float, _input: PlayerInputSnapshot) -> void:
 	pass
 

@@ -73,6 +73,30 @@ var _promotion_radius := 150.0
 var _previous_focus := Vector3.ZERO
 var _had_focus := false
 var _region_size := 250.0
+var _population_baseline: Dictionary = {}
+
+func apply_population_settings(density: float, distance: float) -> void:
+	if _population_baseline.is_empty():
+		for key in ["view_distance", "far_view_distance", "population_target", "max_boxes", "far_population_target", "far_max_proxies"]:
+			_population_baseline[key] = get(key)
+	var base_near: float = _population_baseline.view_distance
+	var base_far: float = maxf(base_near, _population_baseline.far_view_distance)
+	# Preserve room for full vehicles and their maximum approach lead.
+	var near_floor := maxf(_manager.spawn_radius+40.0, maxf(demote_distance+40.0, maxf(promote_distance,interaction_guard_distance)+190.0))
+	view_distance = minf(base_near, maxf(near_floor, base_near*clampf(distance,0.0,1.0)))
+	far_view_distance = maxf(view_distance, base_far*clampf(distance,0.0,1.0))
+	if distance >= 1.0: far_view_distance = _population_baseline.far_view_distance
+	# Approximate road coverage by area. A smaller ring must not squeeze its
+	# original population into the streets that remain.
+	var near_area := pow(view_distance/maxf(base_near,1.0), 2.0)
+	var base_ring := base_far*base_far-base_near*base_near
+	var ring_area := clampf((far_view_distance*far_view_distance-view_distance*view_distance)/maxf(base_ring,1.0),0.0,1.0)
+	if distance >= 1.0: ring_area = 1.0
+	population_target = roundi(_population_baseline.population_target*density*near_area)
+	max_boxes = roundi(_population_baseline.max_boxes*density*near_area)
+	far_population_target = roundi(_population_baseline.far_population_target*density*ring_area)
+	far_max_proxies = roundi(_population_baseline.far_max_proxies*density*ring_area)
+	_population_timer = 0.0
 
 func setup(manager: Node3D) -> void:
 	_manager = manager

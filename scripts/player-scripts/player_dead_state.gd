@@ -2,6 +2,7 @@ class_name PlayerDeadState
 extends PlayerState
 
 ## Terminal state that owns death cleanup and body settling.
+signal death_started
 
 
 func can_exit(_next_state: PlayerState) -> bool:
@@ -26,6 +27,7 @@ func enter(_previous_state: PlayerState, _context: Dictionary = {}) -> void:
 		player.vehicle_interactor.drop_held_vehicle()
 	player.combat_controller.cancel_punch()
 	player.animation_controller.play_death()
+	death_started.emit()
 
 
 func physics_update(delta: float, _input: PlayerInputSnapshot) -> void:

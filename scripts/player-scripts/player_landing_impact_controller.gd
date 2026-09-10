@@ -9,6 +9,8 @@ const HARD_LANDING_EFFECT_SCENE: PackedScene = preload(
 const DAMAGE_INFO_SCRIPT = preload("res://scripts/combat-scripts/damage_info.gd")
 
 signal landing_classified(category: String)
+## Emitted only when the impact effect containing the ground decal is spawned.
+signal hard_landing_effect_spawned
 
 @export var heavy_landing_speed: float = 20.0
 @export var super_landing_speed: float = 35.0
@@ -115,6 +117,7 @@ func spawn_hard_landing_effect(
 	)
 	player.get_tree().current_scene.add_child(effect)
 	effect.global_position = spawn_position
+	hard_landing_effect_spawned.emit()
 
 
 func _apply_landing_impact_damage(

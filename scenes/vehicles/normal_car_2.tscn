@@ -2,6 +2,7 @@
 
 [ext_resource type="ArrayMesh" uid="uid://c5ek81f66vt1t" path="res://assets/Mesh/Vehcile/Realistic Car Pack - Nov 2018/FBX/NormalCar2.fbx" id="1_mesh"]
 [ext_resource type="Script" uid="uid://5c25ifc27ibm" path="res://scripts/vehicle.gd" id="2_vehicle"]
+[ext_resource type="PackedScene" path="res://scenes/vehicles/engine_sound.tscn" id="3_engine"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_satia"]
 size = Vector3(2.1485937, 1.5919333, 4.5601845)
@@ -18,3 +19,6 @@ mesh = ExtResource("1_mesh")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=54053175]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00408113, 0.756016, 0.019952774)
 shape = SubResource("BoxShape3D_satia")
+
+[node name="EngineSound" parent="." instance=ExtResource("3_engine")]
+base_pitch = 1.03

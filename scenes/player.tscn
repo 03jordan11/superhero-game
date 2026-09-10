@@ -21,9 +21,14 @@
 [ext_resource type="Script" uid="uid://d2a6v0x3k7d5b" path="res://scripts/player-scripts/player_damage_receiver.gd" id="19_damage_receiver"]
 [ext_resource type="Script" uid="uid://q888jqqp5led" path="res://scripts/player-scripts/player_vehicle_interactor.gd" id="20_vehicle_interactor"]
 [ext_resource type="Script" uid="uid://c1kxl8yq48of5" path="res://scripts/player-scripts/player_landing_impact_controller.gd" id="21_landing_impact"]
-[ext_resource type="Script" path="res://scripts/player-scripts/player_encounter_indicator.gd" id="22_encounter_indicator"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_player"]
+[ext_resource type="Script" uid="uid://dx81i6ed88pep" path="res://scripts/player-scripts/player_encounter_indicator.gd" id="22_encounter_indicator"]
+[ext_resource type="PackedScene" path="res://scenes/ui/gameplay_hud.tscn" id="23_gameplay_hud"]
+[ext_resource type="Script" uid="uid://v5hvaus1uxqs" path="res://scripts/player-scripts/player_sound_manager.gd" id="24_sound_manager"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_speed_feedback.gd" id="25_speed_feedback"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_input_controller.gd" id="26_input_controller"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_power_controller.gd" id="27_power_controller"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_stamina.gd" id="28_stamina"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_bounding_controller.gd" id="29_bounding"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_player"]
 
@@ -43,22 +48,18 @@ script = ExtResource("1_player")
 strength = 10
 resilience = 10
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=209341954]
-visible = false
-mesh = SubResource("CapsuleMesh_player")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1699340848]
 shape = SubResource("CapsuleShape3D_player")
 
-[node name="EncounterIndicator" type="Node3D" parent="."]
+[node name="EncounterIndicator" type="Node3D" parent="." unique_id=1790370650]
 script = ExtResource("22_encounter_indicator")
 
-[node name="Arrow" type="MeshInstance3D" parent="EncounterIndicator"]
-rotation_degrees = Vector3(-90, 0, 0)
+[node name="Arrow" type="MeshInstance3D" parent="EncounterIndicator" unique_id=1254010724]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
 mesh = SubResource("CylinderMesh_encounter_indicator")
 
-[node name="DistanceLabel" type="Label3D" parent="EncounterIndicator"]
-position = Vector3(0, 0.6, 0)
+[node name="DistanceLabel" type="Label3D" parent="EncounterIndicator" unique_id=565183735]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 billboard = 1
 modulate = Color(1, 0.9, 0.35, 1)
 font_size = 48
@@ -198,7 +199,7 @@ offset_bottom = -46.0
 theme_override_font_sizes/font_size = 20
 text = "Health: 100 / 100"
 
-[node name="ExperienceLabel" type="Label" parent="ChargeUI"]
+[node name="ExperienceLabel" type="Label" parent="ChargeUI" unique_id=2136597913]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -209,7 +210,7 @@ offset_bottom = -106.0
 theme_override_font_sizes/font_size = 20
 text = "Level 1: 0 / 100 XP"
 
-[node name="ExperienceBar" type="ProgressBar" parent="ChargeUI"]
+[node name="ExperienceBar" type="ProgressBar" parent="ChargeUI" unique_id=1178525266]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -217,7 +218,6 @@ offset_left = 24.0
 offset_top = -102.0
 offset_right = 324.0
 offset_bottom = -78.0
-max_value = 100.0
 show_percentage = false
 
 [node name="HealthBar" type="ProgressBar" parent="ChargeUI" unique_id=1879967820]
@@ -230,6 +230,8 @@ offset_right = 324.0
 offset_bottom = -18.0
 value = 100.0
 show_percentage = false
+
+[node name="GameplayHUD" parent="." unique_id=2002191483 instance=ExtResource("23_gameplay_hud")]
 
 [node name="PlayerCombatController" type="Node" parent="." unique_id=1144521910]
 script = ExtResource("7_combat_controller")
@@ -245,3 +247,49 @@ script = ExtResource("20_vehicle_interactor")
 
 [node name="PlayerLandingImpactController" type="Node" parent="." unique_id=137563013]
 script = ExtResource("21_landing_impact")
+
+[node name="PlayerSoundManager" type="Node" parent="." unique_id=2134492044]
+script = ExtResource("24_sound_manager")
+
+[node name="HeavyLanding" type="AudioStreamPlayer" parent="PlayerSoundManager" unique_id=683757004]
+bus = &"PlayerImpacts"
+max_polyphony = 2
+
+[node name="Footstep" type="AudioStreamPlayer" parent="PlayerSoundManager" unique_id=1832471846]
+max_polyphony = 2
+bus = &"PlayerFootsteps"
+
+[node name="ComboPunch" type="AudioStreamPlayer" parent="PlayerSoundManager"]
+bus = &"SFX"
+max_polyphony = 2
+
+[node name="SpeedWind" type="AudioStreamPlayer" parent="PlayerSoundManager"]
+bus = &"PlayerSpeedWind"
+
+[node name="JumpCharge" type="AudioStreamPlayer" parent="PlayerSoundManager"]
+bus = &"SFX"
+
+[node name="Death" type="AudioStreamPlayer" parent="PlayerSoundManager"]
+bus = &"Voice"
+
+[node name="HeavyLift" type="AudioStreamPlayer" parent="PlayerSoundManager"]
+bus = &"Voice"
+
+[node name="PlayerSpeedFeedback" type="Node3D" parent="."]
+script = ExtResource("25_speed_feedback")
+
+[node name="PlayerInputController" type="Node" parent="."]
+script = ExtResource("26_input_controller")
+
+[node name="PlayerPowerController" type="Node" parent="."]
+script = ExtResource("27_power_controller")
+
+[node name="PlayerStamina" type="Node" parent="."]
+script = ExtResource("28_stamina")
+
+[node name="PlayerBoundingController" type="Node" parent="."]
+script = ExtResource("29_bounding")
+
+[node name="BulletHit" type="AudioStreamPlayer" parent="PlayerSoundManager"]
+bus = &"SFX"
+max_polyphony = 4

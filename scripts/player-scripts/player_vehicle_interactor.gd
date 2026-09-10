@@ -4,6 +4,7 @@ extends Node
 ## Owns vehicle pickup, carry, drop, and throw behavior for a Player body.
 
 signal vehicle_released(vehicle: RigidBody3D, release_speed: float)
+signal vehicle_picked_up(vehicle: RigidBody3D)
 signal throw_charge_changed(is_visible: bool, hold_time: float, max_charge_time: float)
 
 @export_category("Vehicle Pickup")
@@ -41,14 +42,10 @@ func is_charging_throw() -> bool:
 	return is_charging_vehicle_throw
 
 
-func get_throw_charge_percent() -> float:
-	if not is_charging_vehicle_throw:
-		return 0.0
-	return vehicle_throw_hold_time / maxf(vehicle_throw_charge_time, 0.001)
-
-
 func try_pick_up_vehicle() -> bool:
 	if held_vehicle != null or player_body == null or camera == null:
+		return false
+	if player_body is PlayerCharacter and not player_body.abilities.is_unlocked(PlayerAbilities.VEHICLE_LIFT):
 		return false
 
 	var ray_start := camera.global_position
@@ -76,6 +73,7 @@ func try_pick_up_vehicle() -> bool:
 	vehicle.reparent(player_body)
 	vehicle.position = held_vehicle_offset
 	held_vehicle = vehicle
+	vehicle_picked_up.emit(vehicle)
 	return true
 
 
@@ -150,10 +148,9 @@ func _release_held_vehicle(
 	vehicle_released.emit(vehicle, release_velocity.length())
 
 
-func _publish_throw_charge(force: bool = false) -> void:
+func _publish_throw_charge() -> void:
 	if (
-		not force
-		and is_charging_vehicle_throw == _last_published_throw_visibility
+		is_charging_vehicle_throw == _last_published_throw_visibility
 		and is_equal_approx(
 			vehicle_throw_hold_time,
 			_last_published_throw_hold_time

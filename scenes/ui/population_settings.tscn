@@ -1,0 +1,64 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/ui-scripts/population_settings.gd" id="1"]
+
+[node name="PopulationSettings" type="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 18
+script = ExtResource("1")
+
+[node name="CrowdRow" type="HBoxContainer" parent="."]
+layout_mode = 2
+tooltip_text = "How many pedestrians populate the sidewalks."
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="CrowdRow"]
+custom_minimum_size = Vector2(380, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Crowd Density"
+
+[node name="Dropdown" type="OptionButton" parent="CrowdRow"]
+custom_minimum_size = Vector2(180, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 22
+
+[node name="VehicleRow" type="HBoxContainer" parent="."]
+layout_mode = 2
+tooltip_text = "How many vehicles populate nearby and distant roads."
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="VehicleRow"]
+custom_minimum_size = Vector2(380, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Vehicle Density"
+
+[node name="Dropdown" type="OptionButton" parent="VehicleRow"]
+custom_minimum_size = Vector2(180, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 22
+
+[node name="DistanceRow" type="HBoxContainer" parent="."]
+layout_mode = 2
+tooltip_text = "How far away pedestrians and traffic appear. Buildings are unaffected."
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="DistanceRow"]
+custom_minimum_size = Vector2(380, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Population View Distance"
+
+[node name="Dropdown" type="OptionButton" parent="DistanceRow"]
+custom_minimum_size = Vector2(180, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 22
+
+[node name="SaveStatus" type="Label" parent="."]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 18

@@ -6,6 +6,7 @@ var impact_direction: Vector3
 var reaction: StringName
 var source: Node3D
 var impact_speed: float
+var damage_type: StringName = &"generic"
 
 
 func _init(

@@ -11,12 +11,14 @@ func _run_test() -> void:
 
 	var main := main_scene.instantiate()
 	root.add_child(main)
+	preload("res://tests/player_test_support.gd").unlock_current_powers(main.get_node("Player"))
 
 	var player := main.get_node("Player") as PlayerCharacter
 	var machine := player.get_node("PlayerStateMachine") as PlayerStateMachine
 	var abilities := player.get("abilities") as PlayerAbilities
 	var status_effects := player.get_node("PlayerStatusEffects") as PlayerStatusEffects
 	var hud := player.get_node("ChargeUI") as PlayerHud
+	hud.show()
 	var initial_charge_delta := 0.5
 	assert(machine.active_state is PlayerGroundedState)
 	assert(machine.transition_to(
@@ -30,8 +32,13 @@ func _run_test() -> void:
 
 	player.velocity = Vector3(5.0, 0.0, 5.0)
 	machine.physics_update(0.1, PlayerInputSnapshot.new())
-	assert(player.velocity.x == 0.0)
-	assert(player.velocity.z == 0.0)
+	# This fixture has not contacted the floor: charging must cancel immediately.
+	assert(machine.active_state is PlayerAirborneState)
+	assert(not player.is_charging_jump)
+	assert(player.jump_charge == 0.0)
+	assert(machine.transition_to(&"GroundedState"))
+	assert(machine.transition_to(&"JumpChargingState"))
+	player.velocity = Vector3.ZERO
 
 	player.set("jump_charge", 0.75)
 	var expected_charge_percent := 0.75 / float(player.get("max_jump_charge_time"))

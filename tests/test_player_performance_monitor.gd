@@ -11,7 +11,9 @@ func _initialize() -> void:
 func _run_test() -> void:
 	var main := load("res://scenes/main.tscn").instantiate() as Node3D
 	root.add_child(main)
+	preload("res://tests/player_test_support.gd").unlock_current_powers(main.get_node("Player"))
 	current_scene = main
+	main.get_node("Player/ChargeUI").show()
 	assert(main.has_node("PerformanceMonitors/CombatPerformanceMonitor"))
 	var monitor := main.get_node("PerformanceMonitors/PlayerPerformanceMonitor")
 	monitor.set_process(false) # Explicit sample boundaries for this test.

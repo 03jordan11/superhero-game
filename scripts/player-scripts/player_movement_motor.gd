@@ -155,19 +155,25 @@ func get_charged_jump_velocity(
 	minimum_jump_velocity: float,
 	maximum_jump_velocity: float,
 	maximum_forward_boost: float,
-	movement_speed_multiplier: float
+	movement_speed_multiplier: float,
+	jump_output_multiplier: float = 1.0
 ) -> Vector3:
 	var launch_velocity := current_velocity
+	var bounded_charge := clampf(charge_percent, 0.0, 1.0)
+	# Height is proportional to upward speed squared. Longer airtime supplies
+	# the other sqrt factor for the power's forward distance on level ground.
+	var launch_multiplier := sqrt(maxf(jump_output_multiplier, 1.0))
 	launch_velocity.y = lerpf(
 		minimum_jump_velocity,
 		maximum_jump_velocity,
-		charge_percent
-	)
+		bounded_charge
+	) * launch_multiplier
 
 	var forward_boost := (
 		maximum_forward_boost
-		* charge_percent
+		* bounded_charge
 		* movement_speed_multiplier
+		* launch_multiplier
 	)
 	var normalized_forward := forward_direction.normalized()
 	launch_velocity.x += normalized_forward.x * forward_boost

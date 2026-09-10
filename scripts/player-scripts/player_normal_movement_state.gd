@@ -19,9 +19,46 @@ func physics_update(delta: float, input: PlayerInputSnapshot) -> void:
 	if _stop_horizontal_movement_if_combat_locked():
 		_publish_movement_changes()
 		return
-	_update_jump_input(delta, input)
+	var jump_consumed := player.bounding_controller.handle_jump(input)
+	if player.bounding_controller.launched_this_tick:
+		_publish_movement_changes()
+		return
+	if not jump_consumed:
+		_update_jump_input(delta, input)
 	_apply_horizontal_movement(delta, input)
+	if not jump_consumed and input.jump_just_pressed and not player.is_on_floor():
+		_try_air_jump()
 	_publish_movement_changes()
+
+
+func _try_air_jump() -> bool:
+	if (
+		player.is_on_floor() or player.air_jump_used
+		or not player.abilities.is_unlocked(PlayerAbilities.AIR_JUMP)
+		or player.is_flying or player.is_ground_slamming or player.is_wall_running
+		or player.is_dead or player.is_knocked_out or player.is_charging_jump
+		or player.combat_controller.is_action_locked()
+	):
+		return false
+	# Add only the power's impulse to horizontal momentum. Replace vertical
+	# velocity so even a fast fall produces the same upward launch.
+	var impulse := player.movement_motor.get_charged_jump_velocity(
+		Vector3.ZERO, -player.transform.basis.z, 1.0,
+		player.min_jump_velocity, player.max_jump_velocity,
+		player.max_forward_jump_boost,
+		player.status_effects.get_movement_speed_multiplier(),
+		player.charged_jump_output_multiplier
+	) * player.air_jump_power_ratio
+	player.velocity.x += impulse.x
+	player.velocity.z += impulse.z
+	player.velocity.y = impulse.y
+	player.air_jump_used = true
+	player.is_jump_active = true
+	_reset_jump_charge()
+	# The new upward launch cancels the fall that preceded it.
+	player.landing_impact_controller.reset_normal_landing_tracking()
+	player.landing_impact_controller.max_effect_downward_speed = 0.0
+	return true
 
 
 func post_physics_update(_delta: float, input: PlayerInputSnapshot) -> void:
@@ -60,7 +97,7 @@ func _update_jump_input(delta: float, input: PlayerInputSnapshot) -> void:
 					player.jump_charge + delta,
 					player.max_jump_charge_time
 				)
-			elif player.jump_hold_time >= player.power_jump_charge_threshold:
+			elif player.jump_hold_time >= player.power_jump_charge_threshold and player.abilities.is_unlocked(PlayerAbilities.POWER_JUMP):
 				state_machine.transition_to(
 					&"JumpChargingState",
 					{"initial_charge_delta": delta}
@@ -79,7 +116,8 @@ func _apply_horizontal_movement(delta: float, input: PlayerInputSnapshot) -> voi
 	)
 	var walk_speed := _get_walk_speed()
 	var run_speed := _get_run_speed()
-	var is_sprinting := input.sprint_pressed and direction.length_squared() > 0.0
+	var is_sprinting := input.sprint_pressed and direction.length_squared() > 0.0 and not player.is_charging_jump and player.abilities.is_unlocked(PlayerAbilities.SUPER_SPEED) and player.stamina.request_boost(false)
+	var acceleration_multiplier := _get_speed_attribute_multiplier() if is_sprinting else 1.0
 	player.current_ground_speed = player.movement_motor.approach_ground_speed(
 		player.current_ground_speed,
 		walk_speed,
@@ -87,12 +125,13 @@ func _apply_horizontal_movement(delta: float, input: PlayerInputSnapshot) -> voi
 		is_sprinting,
 		player.sprint_acceleration,
 		player.sprint_deceleration,
-		_get_speed_attribute_multiplier(),
+		acceleration_multiplier,
 		delta
 	)
 	var target_speed := (
 		player.current_ground_speed
 		* player.status_effects.get_movement_speed_multiplier()
+		* minf(input.movement.length(), 1.0)
 	)
 
 	if player.is_charging_jump:
@@ -102,10 +141,12 @@ func _apply_horizontal_movement(delta: float, input: PlayerInputSnapshot) -> voi
 
 	var horizontal_acceleration := player.movement_motor.get_horizontal_acceleration(
 		player.acceleration,
-		_get_speed_attribute_multiplier(),
+		acceleration_multiplier,
 		player.air_control_strength,
 		player.is_on_floor()
 	)
+	if player.bounding_controller.preserve_momentum(direction, target_speed, horizontal_acceleration, delta):
+		return
 	player.velocity = player.movement_motor.approach_horizontal_velocity(
 		player.velocity,
 		direction,
@@ -126,7 +167,8 @@ func _release_jump() -> void:
 			player.min_jump_velocity,
 			player.max_jump_velocity,
 			player.max_forward_jump_boost,
-			player.status_effects.get_movement_speed_multiplier()
+			player.status_effects.get_movement_speed_multiplier(),
+			player.charged_jump_output_multiplier
 		)
 	else:
 		player.velocity = player.movement_motor.get_quick_jump_velocity(

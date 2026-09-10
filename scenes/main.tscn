@@ -8,12 +8,15 @@
 [ext_resource type="Script" uid="uid://dx8se6n6vx0vw" path="res://scripts/combat-scripts/explosion_controller.gd" id="49_explosion_controller"]
 [ext_resource type="PackedScene" path="res://scenes/npcs/hostile.tscn" id="50_bjg73"]
 [ext_resource type="Script" uid="uid://u2i5bari8ks2" path="res://scripts/ui-scripts/combat_performance_monitor.gd" id="51_combat_perf"]
-[ext_resource type="Script" path="res://scripts/ui-scripts/player_performance_monitor.gd" id="52_player_perf"]
+[ext_resource type="Script" uid="uid://cvf74vsf03xhk" path="res://scripts/ui-scripts/player_performance_monitor.gd" id="52_player_perf"]
+[ext_resource type="Script" uid="uid://451lqf5rckg7" path="res://scripts/ui-scripts/city_performance_monitor.gd" id="54_city_perf"]
+[ext_resource type="Script" uid="uid://75johhh483vx" path="res://scripts/ui-scripts/civilian_crowd_performance_monitor.gd" id="55_crowd_perf"]
+[ext_resource type="Script" uid="uid://blnc1ehnihpyy" path="res://scripts/ui-scripts/vehicle_performance_monitor.gd" id="56_vehicle_perf"]
+[ext_resource type="PackedScene" path="res://scenes/ui/settings_menu.tscn" id="99_settings_menu"]
 
-[ext_resource type="PackedScene" path="res://scenes/vehicles/vehicle_color_gallery.tscn" id="53_vehicle_gallery"]
-[ext_resource type="Script" path="res://scripts/ui-scripts/city_performance_monitor.gd" id="54_city_perf"]
-[ext_resource type="Script" path="res://scripts/ui-scripts/civilian_crowd_performance_monitor.gd" id="55_crowd_perf"]
-[ext_resource type="Script" path="res://scripts/ui-scripts/vehicle_performance_monitor.gd" id="56_vehicle_perf"]
+[ext_resource type="Script" path="res://scripts/ui-scripts/gameplay_menu.gd" id="100_gameplay_menu"]
+
+[ext_resource type="Script" path="res://scripts/ui-scripts/developer_performance_hud.gd" id="101_dev_perf"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_sn0t7"]
 panorama = ExtResource("11_efxa6")
@@ -30,18 +33,18 @@ fog_sky_affect = 0.25
 
 [node name="Main" type="Node3D" unique_id=52622882]
 
-[node name="PerformanceMonitors" type="Node" parent="."]
+[node name="PerformanceMonitors" type="Node" parent="." unique_id=2066694129]
 
-[node name="VehiclePerformanceMonitor" type="Node" parent="PerformanceMonitors"]
+[node name="VehiclePerformanceMonitor" type="Node" parent="PerformanceMonitors" unique_id=757941673]
 script = ExtResource("56_vehicle_perf")
 
-[node name="CityPerformanceMonitor" type="Node" parent="PerformanceMonitors"]
+[node name="CityPerformanceMonitor" type="Node" parent="PerformanceMonitors" unique_id=439540223]
 script = ExtResource("54_city_perf")
 
-[node name="CivilianCrowdPerformanceMonitor" type="Node" parent="PerformanceMonitors"]
+[node name="CivilianCrowdPerformanceMonitor" type="Node" parent="PerformanceMonitors" unique_id=608768255]
 script = ExtResource("55_crowd_perf")
 
-[node name="PlayerPerformanceMonitor" type="Node" parent="PerformanceMonitors"]
+[node name="PlayerPerformanceMonitor" type="Node" parent="PerformanceMonitors" unique_id=654192210]
 script = ExtResource("52_player_perf")
 
 [node name="CombatPerformanceMonitor" type="Node" parent="PerformanceMonitors" unique_id=586603152]
@@ -51,169 +54,9 @@ script = ExtResource("51_combat_perf")
 layer = 10
 script = ExtResource("12_developer_menu")
 
-[node name="Panel" type="PanelContainer" parent="DeveloperMenu" unique_id=377188207]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -304.0
-offset_top = 168.0
-offset_right = -24.0
-offset_bottom = 1020.0
-grow_horizontal = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="DeveloperMenu/Panel" unique_id=1912889954]
-layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
-
-[node name="Options" type="VBoxContainer" parent="DeveloperMenu/Panel/MarginContainer" unique_id=689463482]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="Title" type="Label" parent="DeveloperMenu/Panel/MarginContainer/Options" unique_id=1028651671]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Developer"
-
-[node name="ShowLandingCheckBox" type="CheckBox" parent="DeveloperMenu/Panel/MarginContainer/Options" unique_id=121199002]
-layout_mode = 2
-text = "Show Landing"
-
-[node name="ShowPerformanceHudCheckBox" type="CheckBox" parent="DeveloperMenu/Panel/MarginContainer/Options" unique_id=1914266589]
-layout_mode = 2
-text = "Show Performance HUD"
-
-[node name="SpawnCivilianButton" type="Button" parent="DeveloperMenu/Panel/MarginContainer/Options" unique_id=75577392]
-layout_mode = 2
-text = "Spawn Civilian"
-
-[node name="SpawnHostileButton" type="Button" parent="DeveloperMenu/Panel/MarginContainer/Options" unique_id=1727131369]
-layout_mode = 2
-text = "Spawn Hostile"
-
-[node name="LoadSaveButton" type="Button" parent="DeveloperMenu/Panel/MarginContainer/Options" unique_id=1617157119]
-layout_mode = 2
-text = "Load Save"
-
-[node name="LoadStatusLabel" type="Label" parent="DeveloperMenu/Panel/MarginContainer/Options" unique_id=1092912763]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.95, 0.8, 0.35, 1)
-autowrap_mode = 2
-
-[node name="EncountersSeparator" type="HSeparator" parent="DeveloperMenu/Panel/MarginContainer/Options" unique_id=278648315]
-layout_mode = 2
-
-[node name="EncountersTitle" type="Label" parent="DeveloperMenu/Panel/MarginContainer/Options" unique_id=1669400463]
-layout_mode = 2
-theme_override_font_sizes/font_size = 16
-text = "Encounters"
-
-[node name="EncounterRow" type="HBoxContainer" parent="DeveloperMenu/Panel/MarginContainer/Options" unique_id=1217607513]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="EncounterDropdown" type="OptionButton" parent="DeveloperMenu/Panel/MarginContainer/Options/EncounterRow" unique_id=547782010]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="SpawnEncounterButton" type="Button" parent="DeveloperMenu/Panel/MarginContainer/Options/EncounterRow" unique_id=1703326715]
-layout_mode = 2
-text = "Spawn"
-
-[node name="AbilitiesSeparator" type="HSeparator" parent="DeveloperMenu/Panel/MarginContainer/Options" unique_id=1520102415]
-layout_mode = 2
-
-[node name="AbilitiesTitle" type="Label" parent="DeveloperMenu/Panel/MarginContainer/Options" unique_id=1095793631]
-layout_mode = 2
-theme_override_font_sizes/font_size = 16
-text = "Powers"
-
-[node name="AbilityToggles" type="VBoxContainer" parent="DeveloperMenu/Panel/MarginContainer/Options" unique_id=104168127]
-layout_mode = 2
-theme_override_constants/separation = 4
-
-[node name="AttributesSeparator" type="HSeparator" parent="DeveloperMenu/Panel/MarginContainer/Options" unique_id=1276678834]
-layout_mode = 2
-
-[node name="AttributesTitle" type="Label" parent="DeveloperMenu/Panel/MarginContainer/Options" unique_id=1072761184]
-layout_mode = 2
-theme_override_font_sizes/font_size = 16
-text = "Player Attributes"
-
-[node name="AttributesGrid" type="GridContainer" parent="DeveloperMenu/Panel/MarginContainer/Options" unique_id=316324574]
-layout_mode = 2
-theme_override_constants/h_separation = 10
-theme_override_constants/v_separation = 8
-columns = 2
-
-[node name="StrengthLabel" type="Label" parent="DeveloperMenu/Panel/MarginContainer/Options/AttributesGrid" unique_id=957332684]
-layout_mode = 2
-text = "Strength"
-
-[node name="StrengthSpinBox" type="SpinBox" parent="DeveloperMenu/Panel/MarginContainer/Options/AttributesGrid" unique_id=1157698861]
-custom_minimum_size = Vector2(120, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-min_value = 1.0
-max_value = 999.0
-value = 1.0
-allow_greater = true
-
-[node name="SpeedLabel" type="Label" parent="DeveloperMenu/Panel/MarginContainer/Options/AttributesGrid" unique_id=909348012]
-layout_mode = 2
-text = "Speed"
-
-[node name="SpeedSpinBox" type="SpinBox" parent="DeveloperMenu/Panel/MarginContainer/Options/AttributesGrid" unique_id=156713858]
-custom_minimum_size = Vector2(120, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-min_value = 1.0
-max_value = 999.0
-value = 1.0
-allow_greater = true
-
-[node name="ResilienceLabel" type="Label" parent="DeveloperMenu/Panel/MarginContainer/Options/AttributesGrid" unique_id=1554038699]
-layout_mode = 2
-text = "Resilience"
-
-[node name="ResilienceSpinBox" type="SpinBox" parent="DeveloperMenu/Panel/MarginContainer/Options/AttributesGrid" unique_id=1809133031]
-custom_minimum_size = Vector2(120, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-min_value = 1.0
-max_value = 999.0
-value = 1.0
-allow_greater = true
-
-[node name="ProgressionSeparator" type="HSeparator" parent="DeveloperMenu/Panel/MarginContainer/Options" unique_id=702211061]
-layout_mode = 2
-
-[node name="ProgressionTitle" type="Label" parent="DeveloperMenu/Panel/MarginContainer/Options" unique_id=1510170904]
-layout_mode = 2
-theme_override_font_sizes/font_size = 16
-text = "Progression"
-
-[node name="ProgressionRow" type="HBoxContainer" parent="DeveloperMenu/Panel/MarginContainer/Options" unique_id=731111015]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="ExperienceSpinBox" type="SpinBox" parent="DeveloperMenu/Panel/MarginContainer/Options/ProgressionRow" unique_id=1140548022]
-custom_minimum_size = Vector2(120, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-max_value = 999999.0
-value = 100.0
-allow_greater = true
-
-[node name="GiveExperienceButton" type="Button" parent="DeveloperMenu/Panel/MarginContainer/Options/ProgressionRow" unique_id=834467395]
-layout_mode = 2
-text = "Give XP"
-
 [node name="PerformanceHUD" type="CanvasLayer" parent="." unique_id=922255658]
 layer = 9
+script = ExtResource("101_dev_perf")
 
 [node name="Panel" type="PanelContainer" parent="PerformanceHUD" unique_id=95612020]
 anchors_preset = 1
@@ -245,6 +88,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4669523, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=747374090]
 environment = SubResource("Environment_bhunq")
+
+[node name="GameplayMenu" type="CanvasLayer" parent="."]
+process_mode = 3
+script = ExtResource("100_gameplay_menu")
 
 [node name="PauseMenu" type="CanvasLayer" parent="." unique_id=733373199]
 process_mode = 3
@@ -311,62 +158,8 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "Quit"
 
-[node name="SettingsMenu" type="VBoxContainer" parent="PauseMenu/Center" unique_id=704608254]
-visible = false
+[node name="SettingsMenu" parent="PauseMenu/Center" instance=ExtResource("99_settings_menu")]
 layout_mode = 2
-theme_override_constants/separation = 18
-
-[node name="Title" type="Label" parent="PauseMenu/Center/SettingsMenu" unique_id=941467682]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.3, 0.75, 1, 1)
-theme_override_font_sizes/font_size = 42
-text = "SETTINGS"
-horizontal_alignment = 1
-
-[node name="Spacer" type="Control" parent="PauseMenu/Center/SettingsMenu" unique_id=331431998]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-
-[node name="DisplayModeRow" type="HBoxContainer" parent="PauseMenu/Center/SettingsMenu" unique_id=2042087103]
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="DisplayModeLabel" type="Label" parent="PauseMenu/Center/SettingsMenu/DisplayModeRow" unique_id=2067758159]
-custom_minimum_size = Vector2(140, 48)
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "Display Mode"
-vertical_alignment = 1
-
-[node name="DisplayModeDropdown" type="OptionButton" parent="PauseMenu/Center/SettingsMenu/DisplayModeRow" unique_id=1240766575]
-custom_minimum_size = Vector2(180, 48)
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-
-[node name="ResolutionRow" type="HBoxContainer" parent="PauseMenu/Center/SettingsMenu" unique_id=1465573451]
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="ResolutionLabel" type="Label" parent="PauseMenu/Center/SettingsMenu/ResolutionRow" unique_id=781267434]
-custom_minimum_size = Vector2(140, 48)
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "Resolution"
-vertical_alignment = 1
-
-[node name="ResolutionDropdown" type="OptionButton" parent="PauseMenu/Center/SettingsMenu/ResolutionRow" unique_id=1040150800]
-custom_minimum_size = Vector2(180, 48)
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-
-[node name="BackButton" type="Button" parent="PauseMenu/Center/SettingsMenu" unique_id=322822843]
-custom_minimum_size = Vector2(336, 56)
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "Back"
-
-[node name="Vehicles" parent="." instance=ExtResource("53_vehicle_gallery")]
-position = Vector3(-31, 0, -17)
 
 [node name="ExplosionController" type="Node3D" parent="." unique_id=1421420735]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.3742466, 0)
@@ -605,6 +398,4 @@ chest_hit_stun_duration = null
 [connection signal="pressed" from="PauseMenu/Center/Menu/SettingsButton" to="PauseMenu" method="_on_settings_pressed"]
 [connection signal="pressed" from="PauseMenu/Center/Menu/SaveButton" to="PauseMenu" method="_on_save_pressed"]
 [connection signal="pressed" from="PauseMenu/Center/Menu/QuitButton" to="PauseMenu" method="_on_quit_pressed"]
-[connection signal="item_selected" from="PauseMenu/Center/SettingsMenu/DisplayModeRow/DisplayModeDropdown" to="PauseMenu" method="_on_display_mode_dropdown_item_selected"]
-[connection signal="item_selected" from="PauseMenu/Center/SettingsMenu/ResolutionRow/ResolutionDropdown" to="PauseMenu" method="_on_resolution_dropdown_item_selected"]
-[connection signal="pressed" from="PauseMenu/Center/SettingsMenu/BackButton" to="PauseMenu" method="_on_back_pressed"]
+[connection signal="back_requested" from="PauseMenu/Center/SettingsMenu" to="PauseMenu" method="_on_back_pressed"]

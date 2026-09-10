@@ -43,7 +43,7 @@ func _run_test() -> void:
 	interactor.drop_held_vehicle()
 	assert(not interactor.has_held_vehicle())
 	assert(not interactor.is_charging_throw())
-	assert(is_equal_approx(interactor.get_throw_charge_percent(), 0.0))
+	assert(is_equal_approx(interactor.vehicle_throw_hold_time, 0.0))
 	assert(not throw_charge_visible)
 	assert(vehicle.get_parent() == vehicle_parent)
 	assert(vehicle.collision_layer == 5)

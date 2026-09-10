@@ -1,314 +1,191 @@
 extends CanvasLayer
-
-const PLAYER_PERF = preload("res://scripts/ui-scripts/player_performance_monitor.gd")
-
-const PERFORMANCE_SAMPLE_WINDOW_SECONDS: float = 1.0
-const PERFORMANCE_REFRESH_INTERVAL_SECONDS: float = 0.25
-const CIVILIAN_SCENE: PackedScene = preload("res://scenes/npcs/civilian.tscn")
-const HOSTILE_SCENE: PackedScene = preload("res://scenes/npcs/hostile.tscn")
-const GANG_ACTIVITY_SCENE: PackedScene = preload(
-	"res://scenes/encounters/gang-activity/gang_activity.tscn"
-)
-const NPC_SPAWN_START_RADIUS: float = 6.0
-const NPC_SPAWN_SPACING: float = 2.5
-const GOLDEN_ANGLE_RADIANS: float = 2.399963
-
-@onready var show_landing_check_box: CheckBox = $Panel/MarginContainer/Options/ShowLandingCheckBox
-@onready var show_performance_hud_check_box: CheckBox = (
-	$Panel/MarginContainer/Options/ShowPerformanceHudCheckBox
-)
-@onready var spawn_civilian_button: Button = $Panel/MarginContainer/Options/SpawnCivilianButton
-@onready var spawn_hostile_button: Button = $Panel/MarginContainer/Options/SpawnHostileButton
-@onready var load_save_button: Button = $Panel/MarginContainer/Options/LoadSaveButton
-@onready var load_status_label: Label = $Panel/MarginContainer/Options/LoadStatusLabel
-@onready var encounter_dropdown: OptionButton = (
-	$Panel/MarginContainer/Options/EncounterRow/EncounterDropdown
-)
-@onready var spawn_encounter_button: Button = (
-	$Panel/MarginContainer/Options/EncounterRow/SpawnEncounterButton
-)
-@onready var ability_toggles: VBoxContainer = (
-	$Panel/MarginContainer/Options/AbilityToggles
-)
-@onready var strength_spin_box: SpinBox = (
-	$Panel/MarginContainer/Options/AttributesGrid/StrengthSpinBox
-)
-@onready var speed_spin_box: SpinBox = (
-	$Panel/MarginContainer/Options/AttributesGrid/SpeedSpinBox
-)
-@onready var resilience_spin_box: SpinBox = (
-	$Panel/MarginContainer/Options/AttributesGrid/ResilienceSpinBox
-)
-@onready var experience_spin_box: SpinBox = (
-	$Panel/MarginContainer/Options/ProgressionRow/ExperienceSpinBox
-)
-@onready var give_experience_button: Button = (
-	$Panel/MarginContainer/Options/ProgressionRow/GiveExperienceButton
-)
-@onready var performance_hud: CanvasLayer = $"../PerformanceHUD"
-@onready var performance_label: Label = $"../PerformanceHUD/Panel/MarginContainer/PerformanceLabel"
-@onready var player: PlayerCharacter = $"../Player"
-
-var previous_mouse_mode: Input.MouseMode = Input.MOUSE_MODE_CAPTURED
-var frame_time_samples: Array[float] = []
-var sampled_frame_time: float = 0.0
-var performance_refresh_elapsed: float = 0.0
-var spawned_npc_count: int = 0
-var ability_check_boxes: Dictionary[StringName, CheckBox] = {}
-
+## Paused, debug-build-only console. Game operations live in developer_commands.gd.
+const COPY = preload("res://scripts/ui-scripts/powers_text.gd")
+const PALETTE = preload("res://assets/ui/default_palette.tres")
+const COMMANDS = preload("res://scripts/ui-scripts/developer_commands.gd")
+const MAX_HISTORY := 100
+const MAX_OUTPUT_LINES := 300
+var commands: RefCounted
+var command_input: LineEdit
+var output: RichTextLabel
+var title_label: Label
+var hint_label: Label
+var previous_mouse_mode := Input.MOUSE_MODE_CAPTURED
+var _owns_pause := false
+var _history: Array[String] = []
+var _history_index := 0
+var _draft := ""
+var _output_lines: PackedStringArray = []
+var _completion_matches: Array[String] = []
+var _completion_index := -1
+var _last_completion := ""
 
 func _ready() -> void:
 	if not OS.is_debug_build():
-		performance_hud.queue_free()
 		queue_free()
 		return
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	layer = 20
+	commands = COMMANDS.new(get_parent().get_node("Player"))
+	_build_ui()
+	_refresh_copy()
+	_append_output(COPY.text("console.welcome"))
+	hide()
 
-	visible = false
-	performance_hud.visible = DebugManager.show_performance_hud
-	show_landing_check_box.toggled.connect(_on_show_landing_check_box_toggled)
-	show_performance_hud_check_box.toggled.connect(_on_show_performance_hud_check_box_toggled)
-	spawn_civilian_button.pressed.connect(_on_spawn_civilian_button_pressed)
-	spawn_hostile_button.pressed.connect(_on_spawn_hostile_button_pressed)
-	load_save_button.pressed.connect(_on_load_save_button_pressed)
-	spawn_encounter_button.pressed.connect(_on_spawn_encounter_button_pressed)
-	strength_spin_box.value_changed.connect(_on_strength_spin_box_value_changed)
-	speed_spin_box.value_changed.connect(_on_speed_spin_box_value_changed)
-	resilience_spin_box.value_changed.connect(_on_resilience_spin_box_value_changed)
-	give_experience_button.pressed.connect(_on_give_experience_button_pressed)
-	encounter_dropdown.add_item("Gang Activity")
-	encounter_dropdown.select(0)
-	_create_ability_toggles()
-	player.abilities.ability_changed.connect(_on_ability_changed)
+func _build_ui() -> void:
+	var panel := PanelContainer.new()
+	panel.name = "Console"
+	panel.set_anchors_and_offsets_preset(Control.PRESET_TOP_RIGHT)
+	panel.anchor_left = 0.55
+	panel.anchor_bottom = 0.6
+	panel.offset_left = 0
+	panel.offset_top = 24
+	panel.offset_right = -24
+	panel.offset_bottom = 0
+	var box := StyleBoxFlat.new()
+	box.bg_color = PALETTE.background
+	box.border_color = PALETTE.owned_border
+	box.set_border_width_all(1)
+	box.set_corner_radius_all(8)
+	for side in [SIDE_LEFT, SIDE_TOP, SIDE_RIGHT, SIDE_BOTTOM]: box.set_content_margin(side, 24)
+	panel.add_theme_stylebox_override("panel", box)
+	add_child(panel)
+	var column := VBoxContainer.new()
+	column.add_theme_constant_override("separation", 16)
+	panel.add_child(column)
+	title_label = Label.new()
+	title_label.add_theme_font_size_override("font_size", 28)
+	title_label.add_theme_color_override("font_color", PALETTE.accent)
+	column.add_child(title_label)
+	output = RichTextLabel.new()
+	output.name = "Output"
+	output.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	output.scroll_following = true
+	output.selection_enabled = true
+	output.bbcode_enabled = false
+	output.focus_mode = Control.FOCUS_NONE
+	output.add_theme_font_size_override("normal_font_size", 24)
+	output.add_theme_color_override("default_color", PALETTE.text_primary)
+	var mono := SystemFont.new()
+	mono.font_names = PackedStringArray(["Consolas", "DejaVu Sans Mono", "monospace"])
+	output.add_theme_font_override("normal_font", mono)
+	column.add_child(output)
+	var row := HBoxContainer.new()
+	column.add_child(row)
+	var prompt := Label.new()
+	prompt.text = ">"
+	prompt.add_theme_color_override("font_color", PALETTE.accent)
+	prompt.add_theme_font_size_override("font_size", 24)
+	row.add_child(prompt)
+	command_input = LineEdit.new()
+	command_input.name = "Command"
+	command_input.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	command_input.custom_minimum_size.y = 46
+	command_input.max_length = 256
+	command_input.add_theme_font_override("font", mono)
+	command_input.add_theme_font_size_override("font_size", 24)
+	command_input.text_submitted.connect(_submit)
+	command_input.gui_input.connect(_command_gui_input)
+	row.add_child(command_input)
+	hint_label = Label.new()
+	hint_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	hint_label.add_theme_font_size_override("font_size", 20)
+	hint_label.add_theme_color_override("font_color", PALETTE.text_secondary)
+	column.add_child(hint_label)
 
-
-func _process(delta: float) -> void:
-	var perf_started := PLAYER_PERF.begin(self)
-	_profiled_process(delta)
-	PLAYER_PERF.finish(&"developer_menu_process", perf_started)
-
-
-func _profiled_process(delta: float) -> void:
-	if not DebugManager.show_performance_hud:
-		return
-
-	_add_frame_time_sample(delta)
-	performance_refresh_elapsed += delta
-	if performance_refresh_elapsed < PERFORMANCE_REFRESH_INTERVAL_SECONDS:
-		return
-
-	performance_refresh_elapsed = 0.0
-	_update_performance_label()
-
-
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("toggle_debug"):
-		_set_menu_open(not visible)
+func _input(event: InputEvent) -> void:
+	var bindings: Node = get_node("/root/GameSettings").input_bindings
+	if bindings.is_capturing: return
+	if visible:
+		if bindings.is_action_press(event, "toggle_debug") or bindings.is_action_press(event, "pause") or event.is_action_pressed("ui_cancel"):
+			_set_menu_open(false)
+			get_viewport().set_input_as_handled()
+	elif not get_tree().paused and bindings.is_action_press(event, "toggle_debug"):
+		_set_menu_open(true)
 		get_viewport().set_input_as_handled()
 
-
 func _set_menu_open(is_open: bool) -> void:
-	visible = is_open
-	DebugManager.developer_menu_open = is_open
-
+	if is_open == visible: return
 	if is_open:
+		if get_tree().paused: return
 		previous_mouse_mode = Input.mouse_mode
+		_owns_pause = true
+		DebugManager.developer_menu_open = true
+		get_tree().paused = true
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		show_landing_check_box.set_pressed_no_signal(DebugManager.show_landing_target)
-		show_performance_hud_check_box.set_pressed_no_signal(DebugManager.show_performance_hud)
-		_refresh_attribute_controls()
-		_refresh_ability_controls()
+		show()
+		command_input.grab_focus()
 	else:
+		hide()
+		DebugManager.developer_menu_open = false
+		if _owns_pause:
+			get_tree().paused = false
+			_owns_pause = false
+			Input.mouse_mode = previous_mouse_mode
+
+func _submit(line: String) -> void:
+	var clean := line.strip_edges()
+	if clean.is_empty(): return
+	if _history.is_empty() or _history.back() != clean: _history.append(clean)
+	if _history.size() > MAX_HISTORY: _history.pop_front()
+	_history_index = _history.size()
+	_draft = ""
+	_completion_matches.clear()
+	command_input.clear()
+	if clean.to_lower() == "clear":
+		_output_lines.clear()
+		output.text = ""
+		return
+	_append_output("> " + clean)
+	_append_output(commands.execute(clean))
+
+func _append_output(message: String) -> void:
+	if message.is_empty(): return
+	_output_lines.append_array(message.split("\n"))
+	if _output_lines.size() > MAX_OUTPUT_LINES:
+		_output_lines = _output_lines.slice(_output_lines.size() - MAX_OUTPUT_LINES)
+	output.text = "\n".join(_output_lines)
+
+func _command_gui_input(event: InputEvent) -> void:
+	if not event is InputEventKey or not event.pressed: return
+	if event.keycode == KEY_UP or event.keycode == KEY_DOWN:
+		_recall(-1 if event.keycode == KEY_UP else 1)
+		command_input.accept_event()
+	elif event.keycode == KEY_TAB:
+		_complete()
+		command_input.accept_event()
+
+func _recall(direction: int) -> void:
+	if _history.is_empty(): return
+	if _history_index == _history.size(): _draft = command_input.text
+	_history_index = clampi(_history_index + direction, 0, _history.size())
+	command_input.text = _draft if _history_index == _history.size() else _history[_history_index]
+	command_input.caret_column = command_input.text.length()
+	_completion_matches.clear()
+
+func _complete() -> void:
+	var prefix := command_input.text.to_lower()
+	if _completion_matches.is_empty() or prefix != _last_completion:
+		_completion_matches.clear()
+		for completion in COMMANDS.COMPLETIONS:
+			if completion.begins_with(prefix): _completion_matches.append(completion)
+		_completion_index = -1
+	if _completion_matches.is_empty(): return
+	_completion_index = (_completion_index + 1) % _completion_matches.size()
+	_last_completion = _completion_matches[_completion_index]
+	command_input.text = _last_completion
+	command_input.caret_column = command_input.text.length()
+
+func _refresh_copy() -> void:
+	title_label.text = COPY.text("console.title")
+	command_input.placeholder_text = COPY.text("console.placeholder")
+	hint_label.text = COPY.text("console.hint")
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_TRANSLATION_CHANGED and is_instance_valid(title_label): _refresh_copy()
+
+func _exit_tree() -> void:
+	if _owns_pause:
+		get_tree().paused = false
+		DebugManager.developer_menu_open = false
 		Input.mouse_mode = previous_mouse_mode
-
-
-func _on_show_landing_check_box_toggled(is_enabled: bool) -> void:
-	DebugManager.show_landing_target = is_enabled
-
-
-func _on_show_performance_hud_check_box_toggled(is_enabled: bool) -> void:
-	DebugManager.show_performance_hud = is_enabled
-	performance_hud.visible = is_enabled
-	if is_enabled:
-		_reset_performance_samples()
-		_update_performance_label()
-
-
-func _on_spawn_civilian_button_pressed() -> void:
-	_spawn_npc(CIVILIAN_SCENE, &"DevCivilian")
-
-
-func _on_spawn_hostile_button_pressed() -> void:
-	_spawn_npc(HOSTILE_SCENE, &"DevHostile")
-
-
-func _on_load_save_button_pressed() -> void:
-	if not SaveManager.has_save():
-		load_status_label.text = "No save file found."
-		return
-
-	if SaveManager.load_game():
-		load_status_label.text = "Save loaded."
-	else:
-		load_status_label.text = "Load failed. Check the Output panel."
-
-
-func _on_spawn_encounter_button_pressed() -> void:
-	if encounter_dropdown.selected != 0:
-		return
-
-	var encounter := GANG_ACTIVITY_SCENE.instantiate() as BaseEncounter
-	if encounter == null:
-		push_error("Developer menu could not instantiate Gang Activity.")
-		return
-
-	get_parent().add_child(encounter, true)
-	encounter.start_encounter()
-
-
-func _spawn_npc(npc_scene: PackedScene, npc_name: StringName) -> void:
-	var npc: CharacterBody3D = npc_scene.instantiate() as CharacterBody3D
-	if npc == null:
-		push_error("Failed to instantiate the %s scene." % npc_name)
-		return
-
-	var spawn_angle: float = spawned_npc_count * GOLDEN_ANGLE_RADIANS
-	var spawn_radius: float = (
-		NPC_SPAWN_START_RADIUS
-		+ sqrt(float(spawned_npc_count)) * NPC_SPAWN_SPACING
-	)
-	var spawn_position: Vector3 = player.global_position + Vector3(
-		cos(spawn_angle) * spawn_radius,
-		0.0,
-		sin(spawn_angle) * spawn_radius
-	)
-	spawn_position = _get_grounded_spawn_position(spawn_position)
-
-	npc.name = npc_name
-	get_parent().add_child(npc, true)
-	npc.global_position = spawn_position
-	spawned_npc_count += 1
-
-
-func _refresh_attribute_controls() -> void:
-	strength_spin_box.set_value_no_signal(float(player.get("strength")))
-	speed_spin_box.set_value_no_signal(float(player.get("speed")))
-	resilience_spin_box.set_value_no_signal(float(player.get("resilience")))
-
-
-func _on_strength_spin_box_value_changed(value: float) -> void:
-	player.set("strength", roundi(value))
-
-
-func _on_speed_spin_box_value_changed(value: float) -> void:
-	player.set("speed", roundi(value))
-
-
-func _on_resilience_spin_box_value_changed(value: float) -> void:
-	player.set("resilience", roundi(value))
-
-
-func _on_give_experience_button_pressed() -> void:
-	player.stats.add_experience(roundi(experience_spin_box.value))
-
-
-func _create_ability_toggles() -> void:
-	var ability_ids := player.abilities.unlocked_abilities.keys()
-	ability_ids.sort()
-	for ability_id_variant in ability_ids:
-		var ability_id := StringName(ability_id_variant)
-		var check_box := CheckBox.new()
-		check_box.text = String(ability_id).replace("_", " ").capitalize()
-		check_box.set_pressed_no_signal(player.abilities.is_unlocked(ability_id))
-		check_box.toggled.connect(_on_ability_toggle_toggled.bind(ability_id))
-		ability_toggles.add_child(check_box)
-		ability_check_boxes[ability_id] = check_box
-
-
-func _refresh_ability_controls() -> void:
-	for ability_id in ability_check_boxes:
-		ability_check_boxes[ability_id].set_pressed_no_signal(
-			player.abilities.is_unlocked(ability_id)
-		)
-
-
-func _on_ability_toggle_toggled(is_unlocked: bool, ability_id: StringName) -> void:
-	player.abilities.set_unlocked(ability_id, is_unlocked)
-
-
-func _on_ability_changed(ability_id: StringName, is_unlocked: bool) -> void:
-	if ability_check_boxes.has(ability_id):
-		ability_check_boxes[ability_id].set_pressed_no_signal(is_unlocked)
-
-
-func _get_grounded_spawn_position(horizontal_position: Vector3) -> Vector3:
-	var ray_start := horizontal_position + Vector3.UP * 50.0
-	var ray_end := horizontal_position + Vector3.DOWN * 200.0
-	var query := PhysicsRayQueryParameters3D.create(ray_start, ray_end)
-	query.exclude = [player.get_rid()]
-	var result: Dictionary = player.get_world_3d().direct_space_state.intersect_ray(query)
-	if result.is_empty():
-		return horizontal_position
-	return result["position"] + Vector3.UP * 0.05
-
-
-func _add_frame_time_sample(delta: float) -> void:
-	frame_time_samples.append(delta)
-	sampled_frame_time += delta
-	while (
-		sampled_frame_time > PERFORMANCE_SAMPLE_WINDOW_SECONDS
-		and frame_time_samples.size() > 1
-	):
-		sampled_frame_time -= frame_time_samples.pop_front()
-
-
-func _reset_performance_samples() -> void:
-	frame_time_samples.clear()
-	sampled_frame_time = 0.0
-	performance_refresh_elapsed = 0.0
-
-
-func _update_performance_label() -> void:
-	var perf_started := PLAYER_PERF.begin(self)
-	_profiled_update_performance_label()
-	PLAYER_PERF.finish(&"performance_hud", perf_started)
-
-
-func _profiled_update_performance_label() -> void:
-	var average_frame_time_ms: float = 0.0
-	var worst_frame_time_ms: float = 0.0
-	if not frame_time_samples.is_empty():
-		average_frame_time_ms = (
-			sampled_frame_time / float(frame_time_samples.size())
-		) * 1000.0
-		for frame_time in frame_time_samples:
-			worst_frame_time_ms = maxf(worst_frame_time_ms, frame_time * 1000.0)
-
-	var civilian_count: int = 0
-	var moving_civilian_count: int = 0
-	for civilian in get_tree().get_nodes_in_group(&"civilian"):
-		civilian_count += 1
-		if civilian is CharacterBody3D:
-			var civilian_body: CharacterBody3D = civilian as CharacterBody3D
-			if Vector2(civilian_body.velocity.x, civilian_body.velocity.z).length() > 0.1:
-				moving_civilian_count += 1
-
-	var draw_calls: int = RenderingServer.get_rendering_info(
-		RenderingServer.RENDERING_INFO_TOTAL_DRAW_CALLS_IN_FRAME
-	)
-	performance_label.text = (
-		"Performance\n"
-		+ "FPS: %d | Frame: %.2f ms avg | %.2f ms worst\n" % [
-			roundi(Engine.get_frames_per_second()),
-			average_frame_time_ms,
-			worst_frame_time_ms
-		]
-		+ "Draw calls: %d | Scene nodes: %d\n" % [
-			draw_calls,
-			get_tree().get_node_count()
-		]
-		+ "Civilians: %d (%d moving) | Vehicles: %d" % [
-			civilian_count,
-			moving_civilian_count,
-			get_tree().get_nodes_in_group(&"explodable").size()
-		]
-	)

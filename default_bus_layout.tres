@@ -1,0 +1,90 @@
+[gd_resource type="AudioBusLayout" format=3 uid="uid://cuwmlf4j1kqls"]
+
+[sub_resource type="AudioEffectEQ6" id="AudioEffectEQ6_impact"]
+resource_name = "Impact Bass"
+band_db/32_hz = 2.0
+band_db/100_hz = 5.0
+band_db/320_hz = 1.5
+band_db/3200_hz = -1.0
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_impact"]
+resource_name = "Impact Tail"
+predelay_msec = 18.0
+predelay_feedback = 0.08
+room_size = 0.55
+damping = 0.6
+hipass = 0.15
+wet = 0.22
+
+[sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_impact"]
+resource_name = "Impact Peak Control"
+ceiling_db = -1.0
+
+[sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_footsteps"]
+resource_name = "Footstep Peak Control"
+ceiling_db = -1.0
+
+[sub_resource type="AudioEffectEQ6" id="AudioEffectEQ6_flight_wind"]
+resource_name = "Speed Wind Bass"
+band_db/32_hz = 10.0
+band_db/100_hz = 12.0
+band_db/320_hz = 6.0
+band_db/3200_hz = -4.0
+band_db/10000_hz = -8.0
+
+[sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_flight_wind"]
+resource_name = "Speed Wind Peak Control"
+ceiling_db = -1.0
+
+[sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_vehicle_explosions"]
+resource_name = "Explosion Peak Control"
+ceiling_db = -1.0
+
+[resource]
+bus/1/name = &"SFX"
+bus/1/send = &"Master"
+bus/1/volume_db = 0.0
+bus/2/name = &"Music"
+bus/2/send = &"Master"
+bus/2/volume_db = 0.0
+bus/3/name = &"Voice"
+bus/3/send = &"Master"
+bus/3/volume_db = 0.0
+bus/4/name = &"PlayerImpacts"
+bus/4/solo = false
+bus/4/mute = false
+bus/4/bypass_fx = false
+bus/4/volume_db = 0.0
+bus/4/send = &"SFX"
+bus/4/effect/0/effect = SubResource("AudioEffectEQ6_impact")
+bus/4/effect/0/enabled = true
+bus/4/effect/1/effect = SubResource("AudioEffectReverb_impact")
+bus/4/effect/1/enabled = true
+bus/4/effect/2/effect = SubResource("AudioEffectLimiter_impact")
+bus/4/effect/2/enabled = true
+bus/5/name = &"PlayerFootsteps"
+bus/5/solo = false
+bus/5/mute = false
+bus/5/bypass_fx = false
+bus/5/volume_db = 0.0
+bus/5/send = &"SFX"
+bus/5/effect/0/effect = SubResource("AudioEffectLimiter_footsteps")
+bus/5/effect/0/enabled = true
+bus/6/name = &"PlayerSpeedWind"
+bus/6/solo = false
+bus/6/mute = false
+bus/6/bypass_fx = false
+bus/6/volume_db = 0.0
+bus/6/send = &"SFX"
+bus/6/effect/0/effect = SubResource("AudioEffectEQ6_flight_wind")
+bus/6/effect/0/enabled = true
+bus/6/effect/1/effect = SubResource("AudioEffectLimiter_flight_wind")
+bus/6/effect/1/enabled = true
+bus/7/name = &"VehicleExplosions"
+bus/7/solo = false
+bus/7/mute = false
+bus/7/bypass_fx = false
+bus/7/volume_db = 0.0
+bus/7/send = &"SFX"
+bus/7/effect/0/effect = SubResource("AudioEffectLimiter_vehicle_explosions")
+bus/7/effect/0/enabled = true

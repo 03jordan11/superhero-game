@@ -3,7 +3,6 @@ extends CharacterBody3D
 
 const PLAYER_PERF = preload("res://scripts/ui-scripts/player_performance_monitor.gd")
 
-signal health_depleted(damage_info)
 signal jump_charge_changed(current_charge: float, max_charge: float)
 signal ground_speed_changed(current_speed: float, walk_speed: float, run_speed: float)
 signal flight_speed_changed(current_speed: float, max_speed: float, is_active: bool)
@@ -14,11 +13,15 @@ signal flight_speed_changed(current_speed: float, max_speed: float, is_active: b
 @export var max_jump_charge_time: float = 1.5
 @export var max_forward_jump_boost: float = 30.0
 @export_range(0.0, 1.0, 0.05) var power_jump_charge_threshold: float = 0.2
+## Fraction of a fully charged jump's launch velocity and added forward boost.
+@export_range(0.1, 1.0, 0.05) var air_jump_power_ratio: float = 0.5
 
 var jump_charge: float = 0.0
 var jump_hold_time: float = 0.0
 var is_charging_jump: bool = false
 var is_jump_active: bool = false
+var air_jump_used: bool = false
+var charged_jump_output_multiplier: float = 1.0
 
 @export_category("Movement")
 @export var minimum_run_speed: float = 20.0
@@ -29,6 +32,9 @@ var is_jump_active: bool = false
 @export var sprint_deceleration: float = 20.0
 @export_range(0.0, 1.0, 0.05) var air_control_strength: float = 0.35
 @export var gravity: float = 24.0
+@export_range(0.0, 60.0, 1.0) var movement_turn_angle: float = 30.0
+@export_range(1.0, 2.0, 0.05) var sprint_turn_multiplier: float = 1.4
+@export_range(0.1, 30.0, 0.1) var movement_turn_speed: float = 10.0
 
 @export_category("Flight")
 @export var flight_acceleration: float = 5.0
@@ -103,6 +109,9 @@ var knockout_stun_remaining: float = 0.0
 @onready var superhero_character: Node3D = $SuperheroCharacter
 @onready var character_animation_player: AnimationPlayer = $SuperheroCharacter/CharacterAnimationPlayer
 @onready var state_machine: PlayerStateMachine = $PlayerStateMachine
+@onready var input_controller: Node = $PlayerInputController
+@onready var stamina: PlayerStamina = $PlayerStamina
+@onready var bounding_controller: PlayerBoundingController = $PlayerBoundingController
 @onready var grounded_state: PlayerGroundedState = $PlayerStateMachine/GroundedState
 @onready var movement_motor: PlayerMovementMotor = $PlayerMovementMotor
 @onready var animation_controller: PlayerAnimationController = $PlayerAnimationController
@@ -117,6 +126,7 @@ var knockout_stun_remaining: float = 0.0
 @onready var camera_effects: Node = $PlayerCameraEffects
 
 var superhero_character_default_rotation: Vector3
+var movement_visual_yaw: float = 0.0
 
 
 func _ready() -> void:
@@ -187,10 +197,6 @@ func get_max_health() -> float:
 	return damage_receiver.get_max_health()
 
 
-func get_stats() -> PlayerStats:
-	return stats
-
-
 func _calculate_max_health() -> float:
 	return stats.get_max_health(health_per_resilience)
 
@@ -200,9 +206,8 @@ func _on_stat_changed(stat_id: StringName, _value: int) -> void:
 		damage_receiver.set_max_health(_calculate_max_health())
 
 
-func _on_damage_death_requested(damage_info) -> void:
+func _on_damage_death_requested(_damage_info) -> void:
 	_die()
-	health_depleted.emit(damage_info)
 
 
 func _die() -> void:
@@ -226,34 +231,22 @@ func _input(event: InputEvent) -> void:
 
 
 func _profiled_input(event: InputEvent) -> void:
+	var bindings: Node = get_node("/root/GameSettings").input_bindings
+	if bindings.is_capturing: return
 	var debug_manager := get_node_or_null("/root/DebugManager")
-	if debug_manager != null and debug_manager.developer_menu_open and (
-		event is InputEventMouseMotion or event is InputEventMouseButton
-	):
+	if debug_manager != null and debug_manager.developer_menu_open:
 		return
 
 	if event is InputEventMouseMotion:
-		# Keep the body fixed while a knockdown or death animation is playing.
-		if not is_knocked_out and not is_dead:
-			rotate_y(-event.screen_relative.x * mouse_sensitivity)
+		input_controller.apply_look(event.screen_relative * mouse_sensitivity)
 
-		# Aim camera up/down.
-		spring_arm.rotation.x -= event.screen_relative.y * mouse_sensitivity
-		spring_arm.rotation.x = clamp(
-			spring_arm.rotation.x,
-			deg_to_rad(min_camera_angle),
-			deg_to_rad(max_camera_angle)
-		)
-
-	if event.is_action_pressed("ui_cancel"):
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	if bindings.is_action_press(event, "attack"):
+		if is_flying or is_jump_active:
+			_try_start_ground_slam()
+		elif not is_dead and not is_charging_jump and not is_knocked_out and not is_ground_slamming and not is_wall_running and is_on_floor():
+			combat_controller.request_punch()
 
 	if event is InputEventMouseButton and event.pressed:
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			if is_flying or is_jump_active:
-				_try_start_ground_slam()
-			elif not is_knocked_out and not is_ground_slamming and not is_wall_running and is_on_floor():
-				combat_controller.request_punch()
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
@@ -264,8 +257,8 @@ func _physics_process(delta: float) -> void:
 
 
 func _profiled_physics_process(delta: float) -> void:
-	var input_snapshot := PlayerInputSnapshot.capture()
-	state_machine.handle_input(input_snapshot)
+	var input_snapshot: PlayerInputSnapshot = input_controller.capture()
+	stamina.begin_tick(input_controller.is_sprint_requested())
 
 	status_effects.update(delta)
 
@@ -285,16 +278,34 @@ func _profiled_physics_process(delta: float) -> void:
 		or active_state is PlayerAirborneState
 		or active_state is PlayerWallRunState
 	):
-		# Flight rotates only the visible character. Restore its normal orientation
-		# before using ordinary locomotion behavior.
+		# Face into movement without rotating the camera or movement basis.
+		var target_yaw := 0.0
+		if active_state is PlayerGroundedState and not combat_controller.is_action_locked():
+			var turn_angle := deg_to_rad(movement_turn_angle)
+			if input_snapshot.sprint_pressed and stamina.can_boost():
+				turn_angle *= sprint_turn_multiplier
+			target_yaw = -input_snapshot.lateral_movement * turn_angle
+			if input_snapshot.movement.y > 0.0:
+				# Backward diagonals angle toward the matching side of the camera.
+				target_yaw = PI - target_yaw
+		movement_visual_yaw = lerp_angle(
+			movement_visual_yaw,
+			target_yaw,
+			1.0 - exp(-movement_turn_speed * delta)
+		)
+		# Clear any flight pitch/roll before applying the locomotion yaw.
 		superhero_character.rotation = superhero_character_default_rotation
+		superhero_character.rotation.y += movement_visual_yaw
+	else:
+		movement_visual_yaw = 0.0
+	bounding_controller.begin_tick(delta)
 	state_machine.physics_update(delta, input_snapshot)
 
 	if not is_dead:
 		combat_controller.update_punch_momentum(
 			self,
 			delta,
-			strength,
+			stats.get_effective_strength(),
 			status_effects.get_movement_speed_multiplier()
 		)
 
@@ -302,7 +313,14 @@ func _profiled_physics_process(delta: float) -> void:
 
 	# Actually move the character with the same collision system in both modes.
 	var move_started := PLAYER_PERF.begin(self)
+	var position_before_move := global_position
+	var was_grounded := is_on_floor()
+	var incoming_velocity := velocity
+	var bounding_excluded := is_flying or is_ground_slamming or ground_slam_impact_pending or is_wall_running or is_dead or is_knocked_out
 	move_and_slide()
+	if is_on_floor():
+		air_jump_used = false
+	stamina.finish_tick(delta, global_position - position_before_move)
 	PLAYER_PERF.finish(&"player_move_and_slide", move_started)
 	state_machine.post_physics_update(delta, input_snapshot)
 	ground_slam_impact_pending = landing_impact_controller.update_after_move(
@@ -311,6 +329,7 @@ func _profiled_physics_process(delta: float) -> void:
 		ground_slam_speed,
 		_get_speed_attribute_multiplier()
 	)
+	bounding_controller.after_move(was_grounded, incoming_velocity, bounding_excluded)
 	var animation_started := PLAYER_PERF.begin(self)
 	animation_controller.update_animation(
 		is_flying,
@@ -320,7 +339,7 @@ func _profiled_physics_process(delta: float) -> void:
 		velocity,
 		is_charging_jump,
 		is_on_floor(),
-		input_snapshot.sprint_pressed,
+		input_snapshot.sprint_pressed and stamina.can_boost(),
 		input_snapshot.move_forward_pressed
 	)
 	PLAYER_PERF.finish(&"player_animation_logic", animation_started)
@@ -362,13 +381,6 @@ func _try_start_ground_slam() -> void:
 		{"target_position": target_position}
 	):
 		return
-
-
-func _get_run_speed() -> float:
-	return stats.get_run_speed(
-		minimum_run_speed,
-		run_speed_per_attribute_point
-	)
 
 
 func _get_walk_speed() -> float:

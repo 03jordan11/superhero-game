@@ -7,6 +7,7 @@ var reaction: StringName
 var source: Node3D
 var impact_speed: float
 var damage_type: StringName = &"generic"
+var force_knockdown: bool = false
 
 
 func _init(

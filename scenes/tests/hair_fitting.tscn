@@ -1,0 +1,217 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://assets/characters/Superhero-male/Superhero_Male_FullBody.gltf" id="1_55gy3"]
+[ext_resource type="PackedScene" path="res://assets/characters/Superhero-male/Hairstyles/Hair_SimpleParted.gltf" id="2_ikgfp"]
+[ext_resource type="PackedScene" path="res://assets/characters/Superhero-male/Hairstyles/Hair_Beard.gltf" id="3_jhij3"]
+[ext_resource type="PackedScene" path="res://assets/characters/Superhero-female/Superhero_Female_FullBody.gltf" id="4_l5qcx"]
+[ext_resource type="PackedScene" path="res://assets/characters/Superhero-female/Hairstyles/Hair_Long.gltf" id="5_bh87j"]
+[ext_resource type="PackedScene" path="res://assets/characters/Superhero-female/Hairstyles/Hair_Buns.gltf" id="6_cqkym"]
+[ext_resource type="PackedScene" path="res://assets/characters/Superhero-female/Hairstyles/Hair_BuzzedFemale.gltf" id="7_8ol3a"]
+
+[sub_resource type="Environment" id="Environment_dvadg"]
+background_mode = 1
+background_color = Color(0.14901961, 0.20784314, 0.27058825, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.8627451, 0.90588236, 0.9372549, 1)
+ambient_light_energy = 0.65
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bs6o7"]
+albedo_color = Color(0.10980392, 0.15686275, 0.20784314, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7ye4x"]
+size = Vector3(17, 0.1, 5)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_g5oqw"]
+top_radius = 1.05
+bottom_radius = 1.05
+height = 0.12
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ni80u"]
+top_radius = 1.05
+bottom_radius = 1.05
+height = 0.12
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ngysc"]
+top_radius = 1.05
+bottom_radius = 1.05
+height = 0.12
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_nl6cm"]
+top_radius = 1.05
+bottom_radius = 1.05
+height = 0.12
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ylm64"]
+top_radius = 1.05
+bottom_radius = 1.05
+height = 0.12
+
+[node name="HairFitting" type="Node3D" unique_id=1932259751]
+editor_description = "Edit each station's HairAdjustment transform, then save THIS scene. Keep ReferenceBody and the imported hair child unchanged. Gameplay reads only HairAdjustment transforms on the next run."
+
+[node name="StudioEnvironment" type="WorldEnvironment" parent="." unique_id=518346725]
+environment = SubResource("Environment_dvadg")
+
+[node name="KeyLight" type="DirectionalLight3D" parent="." unique_id=962585794]
+transform = Transform3D(0.90630776, 0.24240388, -0.34618863, 0, 0.81915206, 0.57357645, 0.42261827, -0.5198368, 0.74240386, 0, 0, 0)
+
+[node name="RimLight" type="DirectionalLight3D" parent="." unique_id=526443532]
+transform = Transform3D(-0.81915206, -0.24240388, 0.5198368, 0, 0.90630776, 0.42261827, -0.57357645, 0.34618863, -0.74240386, 0, 0, 0)
+light_color = Color(0.7137255, 0.8745098, 1, 1)
+light_energy = 0.7
+
+[node name="LineupCamera" type="Camera3D" parent="." unique_id=545586964]
+transform = Transform3D(1, 0, 0, 0, 0.99054986, 0.13715307, 0, -0.13715307, 0.99054986, 0, 2.6, 10)
+current = true
+fov = 38.0
+
+[node name="StudioFloor" type="MeshInstance3D" parent="." unique_id=759890007]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+material_override = SubResource("StandardMaterial3D_bs6o7")
+mesh = SubResource("BoxMesh_7ye4x")
+
+[node name="Models" type="Node3D" parent="." unique_id=818838111]
+
+[node name="MaleSimpleParted" type="Node3D" parent="Models" unique_id=1772846423]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+
+[node name="ReferenceBody" type="Node3D" parent="Models/MaleSimpleParted" unique_id=399204944 instance=ExtResource("1_55gy3")]
+editor_description = "Fixed reference body. Adjust HairAdjustment, not this model."
+
+[node name="HairAdjustment" type="Node3D" parent="Models/MaleSimpleParted" unique_id=1309905333]
+editor_description = "MOVE / ROTATE / SCALE THIS NODE. Save hair_fitting.tscn (Ctrl+S). The game uses this transform relative to the stored neutral transform. Do not edit the metadata."
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5998, -0.01740005)
+metadata/hair_asset = "res://assets/characters/Superhero-male/Hairstyles/Hair_SimpleParted.gltf"
+metadata/neutral_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5998, -0.01740005)
+
+[node name="HairMesh" type="Node3D" parent="Models/MaleSimpleParted/HairAdjustment" unique_id=919924998 instance=ExtResource("2_ikgfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5998, 0.01740005)
+
+[node name="StationLabel" type="Label3D" parent="Models/MaleSimpleParted" unique_id=504738016]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.45, 0)
+pixel_size = 0.003
+billboard = 1
+modulate = Color(0.6156863, 0.8862745, 1, 1)
+text = "MALE / SIMPLE PARTED
+Edit HairAdjustment"
+font_size = 48
+
+[node name="Platform" type="MeshInstance3D" parent="Models/MaleSimpleParted" unique_id=183766432]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.065, 0)
+material_override = SubResource("StandardMaterial3D_bs6o7")
+mesh = SubResource("CylinderMesh_g5oqw")
+
+[node name="MaleBeard" type="Node3D" parent="Models" unique_id=391894321]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+
+[node name="ReferenceBody" type="Node3D" parent="Models/MaleBeard" unique_id=2125984366 instance=ExtResource("1_55gy3")]
+editor_description = "Fixed reference body. Adjust HairAdjustment, not this model."
+
+[node name="HairAdjustment" type="Node3D" parent="Models/MaleBeard" unique_id=1700357033]
+editor_description = "MOVE / ROTATE / SCALE THIS NODE. Save hair_fitting.tscn (Ctrl+S). The game uses this transform relative to the stored neutral transform. Do not edit the metadata."
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5998, -0.01740005)
+metadata/hair_asset = "res://assets/characters/Superhero-male/Hairstyles/Hair_Beard.gltf"
+metadata/neutral_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5998, -0.01740005)
+
+[node name="HairMesh" type="Node3D" parent="Models/MaleBeard/HairAdjustment" unique_id=1859753858 instance=ExtResource("3_jhij3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5998, 0.01740005)
+
+[node name="StationLabel" type="Label3D" parent="Models/MaleBeard" unique_id=550606442]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.45, 0)
+pixel_size = 0.003
+billboard = 1
+modulate = Color(0.6156863, 0.8862745, 1, 1)
+text = "MALE / BEARD
+Edit HairAdjustment"
+font_size = 48
+
+[node name="Platform" type="MeshInstance3D" parent="Models/MaleBeard" unique_id=1669623628]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.065, 0)
+material_override = SubResource("StandardMaterial3D_bs6o7")
+mesh = SubResource("CylinderMesh_ni80u")
+
+[node name="FemaleLong" type="Node3D" parent="Models" unique_id=1942316920]
+
+[node name="ReferenceBody" type="Node3D" parent="Models/FemaleLong" unique_id=1004345787 instance=ExtResource("4_l5qcx")]
+editor_description = "Fixed reference body. Adjust HairAdjustment, not this model."
+
+[node name="HairAdjustment" type="Node3D" parent="Models/FemaleLong" unique_id=1636926534]
+editor_description = "MOVE / ROTATE / SCALE THIS NODE. Save hair_fitting.tscn (Ctrl+S). The game uses this transform relative to the stored neutral transform. Do not edit the metadata."
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2086001e-12, 1.5496, -0.010899778)
+metadata/hair_asset = "res://assets/characters/Superhero-female/Hairstyles/Hair_Long.gltf"
+metadata/neutral_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2086001e-12, 1.5496, -0.010899778)
+
+[node name="HairMesh" type="Node3D" parent="Models/FemaleLong/HairAdjustment" unique_id=1599991532 instance=ExtResource("5_bh87j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2086001e-12, -1.5496, 0.010899778)
+
+[node name="StationLabel" type="Label3D" parent="Models/FemaleLong" unique_id=15196847]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.45, 0)
+pixel_size = 0.003
+billboard = 1
+modulate = Color(0.6156863, 0.8862745, 1, 1)
+text = "FEMALE / LONG
+Edit HairAdjustment"
+font_size = 48
+
+[node name="Platform" type="MeshInstance3D" parent="Models/FemaleLong" unique_id=1891342974]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.065, 0)
+material_override = SubResource("StandardMaterial3D_bs6o7")
+mesh = SubResource("CylinderMesh_ngysc")
+
+[node name="FemaleBuns" type="Node3D" parent="Models" unique_id=1015370660]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+
+[node name="ReferenceBody" type="Node3D" parent="Models/FemaleBuns" unique_id=43291793 instance=ExtResource("4_l5qcx")]
+editor_description = "Fixed reference body. Adjust HairAdjustment, not this model."
+
+[node name="HairAdjustment" type="Node3D" parent="Models/FemaleBuns" unique_id=849744524]
+editor_description = "MOVE / ROTATE / SCALE THIS NODE. Save hair_fitting.tscn (Ctrl+S). The game uses this transform relative to the stored neutral transform. Do not edit the metadata."
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2086001e-12, 1.5496, -0.010899778)
+metadata/hair_asset = "res://assets/characters/Superhero-female/Hairstyles/Hair_Buns.gltf"
+metadata/neutral_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2086001e-12, 1.5496, -0.010899778)
+
+[node name="HairMesh" type="Node3D" parent="Models/FemaleBuns/HairAdjustment" unique_id=1573240187 instance=ExtResource("6_cqkym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2086001e-12, -1.5496, 0.010899778)
+
+[node name="StationLabel" type="Label3D" parent="Models/FemaleBuns" unique_id=1947789212]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.45, 0)
+pixel_size = 0.003
+billboard = 1
+modulate = Color(0.6156863, 0.8862745, 1, 1)
+text = "FEMALE / BUNS
+Edit HairAdjustment"
+font_size = 48
+
+[node name="Platform" type="MeshInstance3D" parent="Models/FemaleBuns" unique_id=1457595580]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.065, 0)
+material_override = SubResource("StandardMaterial3D_bs6o7")
+mesh = SubResource("CylinderMesh_nl6cm")
+
+[node name="FemaleBuzzed" type="Node3D" parent="Models" unique_id=2097069230]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+
+[node name="ReferenceBody" type="Node3D" parent="Models/FemaleBuzzed" unique_id=1008997773 instance=ExtResource("4_l5qcx")]
+editor_description = "Fixed reference body. Adjust HairAdjustment, not this model."
+
+[node name="HairAdjustment" type="Node3D" parent="Models/FemaleBuzzed" unique_id=1806759300]
+editor_description = "MOVE / ROTATE / SCALE THIS NODE. Save hair_fitting.tscn (Ctrl+S). The game uses this transform relative to the stored neutral transform. Do not edit the metadata."
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2086001e-12, 1.5496, -0.010899778)
+metadata/hair_asset = "res://assets/characters/Superhero-female/Hairstyles/Hair_BuzzedFemale.gltf"
+metadata/neutral_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2086001e-12, 1.5496, -0.010899778)
+
+[node name="HairMesh" type="Node3D" parent="Models/FemaleBuzzed/HairAdjustment" unique_id=1370311530 instance=ExtResource("7_8ol3a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2086001e-12, -1.5496, 0.010899778)
+
+[node name="StationLabel" type="Label3D" parent="Models/FemaleBuzzed" unique_id=857223217]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.45, 0)
+pixel_size = 0.003
+billboard = 1
+modulate = Color(0.6156863, 0.8862745, 1, 1)
+text = "FEMALE / BUZZED
+Edit HairAdjustment"
+font_size = 48
+
+[node name="Platform" type="MeshInstance3D" parent="Models/FemaleBuzzed" unique_id=1723331783]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.065, 0)
+material_override = SubResource("StandardMaterial3D_bs6o7")
+mesh = SubResource("CylinderMesh_ylm64")

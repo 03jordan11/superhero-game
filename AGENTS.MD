@@ -49,6 +49,15 @@ Do not implement later systems unless specifically asked.
 
 ## Godot scenes
 
+### POI geometry budget
+
+* Hard limit: **10,000 rendered triangles per complete POI** at its highest-detail mesh level.
+* Count the building, included grounds, decorations and every placed prop instance together. Reused meshes count once per placed instance. Exclude preview-only rigs/ground and non-rendered collision shapes.
+* Verify actual exported/imported geometry, rather than relying only on Blender polygon counts or generated LOD reductions.
+* Prefer textured detail and simple shapes when reducing geometry. Preserve the POI's recognizable silhouette and traversal collision.
+* Window sills should be painted into textures rather than built as separate geometry.
+* Existing over-budget POIs must be reduced to this limit when optimized; they are not exceptions. The hospital audit is recorded in `assets/buildings/hospital/TRIANGLE_AUDIT.md`.
+
 Be careful when modifying `.tscn` files manually.
 
 Do not remove or restructure existing nodes unless required by the task.

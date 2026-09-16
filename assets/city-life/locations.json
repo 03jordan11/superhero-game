@@ -1,0 +1,18 @@
+{
+  "field": {
+    "rect": [
+      -1085,
+      85,
+      68,
+      62
+    ],
+    "alley_distance": 38,
+    "cleared_buildings": [
+      "Districts/WestVillage/WestVillage_0550",
+      "Districts/WestVillage/WestVillage_0551",
+      "Districts/WestVillage/WestVillage_0557",
+      "Districts/WestVillage/WestVillage_0563"
+    ],
+    "score": 508.29999828338623
+  }
+}

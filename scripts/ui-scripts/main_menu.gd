@@ -16,6 +16,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 func _on_play_pressed() -> void:
+	get_node("/root/SaveManager").begin_new_game()
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
 
 func _on_settings_pressed() -> void:

@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/generated-buildings/residential/textures/brownstone.res" id="1_pqcsb"]
+[ext_resource type="Texture2D" path="res://assets/generated-buildings/residential/textures/residential_building_13_brownstone_emission.res" id="2_gkqwo"]
+
+[resource]
+albedo_texture = ExtResource("1_pqcsb")
+roughness = 0.9
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.0
+emission_operator = 1
+emission_texture = ExtResource("2_gkqwo")
+texture_filter = 2

@@ -1,0 +1,89 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://assets/buildings/bank2/bank2.gd" id="1_5o6i8"]
+[ext_resource type="PackedScene" path="res://assets/buildings/bank2/bank2.glb" id="2_3h8au"]
+[ext_resource type="PackedScene" path="res://assets/buildings/bank2/props/bench.tscn" id="3_je2pn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iu45c"]
+size = Vector3(40, 9, 30)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gv18e"]
+size = Vector3(30, 81, 24)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uli3t"]
+size = Vector3(24, 22, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6wgg6"]
+size = Vector3(5.2, 3.6, 0.12)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ofmxg"]
+size = Vector3(12, 0.25, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gdpk7"]
+size = Vector3(39.4, 0.1, 29.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t5a6w"]
+size = Vector3(29.5, 0.1, 23.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oavyk"]
+size = Vector3(23.5, 0.1, 19.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5xnce"]
+size = Vector3(2, 3.2, 0.14)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_rntjr"]
+points = PackedVector3Array(-10, 112, 5, 10, 112, 5, 10, 112, -11, -10, 112, -11, -10, 120, 5, 10, 128, 5, 10, 128, -11, -10, 120, -11)
+
+[node name="Bank2" type="Node3D" unique_id=1804204591]
+script = ExtResource("1_5o6i8")
+
+[node name="Model" type="Node3D" parent="." unique_id=1655252971 instance=ExtResource("2_3h8au")]
+
+[node name="ExteriorCollision" type="StaticBody3D" parent="." unique_id=2015015440]
+
+[node name="Bankingpodium" type="CollisionShape3D" parent="ExteriorCollision" unique_id=75693075]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
+shape = SubResource("BoxShape3D_iu45c")
+
+[node name="Maintowercore" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1999165304]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 49.5, -1)
+shape = SubResource("BoxShape3D_gv18e")
+
+[node name="Uppersetbackcore" type="CollisionShape3D" parent="ExteriorCollision" unique_id=345789566]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 101, -2)
+shape = SubResource("BoxShape3D_uli3t")
+
+[node name="Entrancedoors" type="CollisionShape3D" parent="ExteriorCollision" unique_id=218165836]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 15.095)
+shape = SubResource("BoxShape3D_6wgg6")
+
+[node name="Floatingcanopy" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1995659340]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 16.2)
+shape = SubResource("BoxShape3D_ofmxg")
+
+[node name="Podiumterrace" type="CollisionShape3D" parent="ExteriorCollision" unique_id=202496126]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.05, 0)
+shape = SubResource("BoxShape3D_gdpk7")
+
+[node name="Firstsetbackterrace" type="CollisionShape3D" parent="ExteriorCollision" unique_id=2082573221]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 90.05, -1)
+shape = SubResource("BoxShape3D_t5a6w")
+
+[node name="Secondsetbackterrace" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1361147478]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 112.05, -2)
+shape = SubResource("BoxShape3D_oavyk")
+
+[node name="Rearservicedoor" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1612266019]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, -15.12)
+shape = SubResource("BoxShape3D_5xnce")
+
+[node name="SlopedCrown" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1542447973]
+shape = SubResource("ConvexPolygonShape3D_rntjr")
+
+[node name="Props" type="Node3D" parent="." unique_id=1431650231]
+
+[node name="Bench_00" type="Node3D" parent="Props" unique_id=488257134 instance=ExtResource("3_je2pn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -15.7)
+
+[node name="Bench_01" type="Node3D" parent="Props" unique_id=1315671890 instance=ExtResource("3_je2pn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -15.7)

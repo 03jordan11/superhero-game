@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/waterfront/cargo_ship/textures/painted_steel.png" id="1_i56u2"]
+
+[resource]
+resource_name = "graphite_Deck"
+albedo_color = Color(0.47058824, 0.42352942, 0.32941177, 1)
+albedo_texture = ExtResource("1_i56u2")
+metallic = 0.12
+roughness = 0.72

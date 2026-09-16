@@ -1,0 +1,55 @@
+{
+	"grid_m": 2,
+	"modules": [
+		{
+			"collision_shapes": 1,
+			"id": "straight_4m",
+			"sockets": 2,
+			"triangles": 12
+		},
+		{
+			"collision_shapes": 1,
+			"id": "straight_8m",
+			"sockets": 2,
+			"triangles": 12
+		},
+		{
+			"collision_shapes": 1,
+			"id": "straight_16m",
+			"sockets": 2,
+			"triangles": 12
+		},
+		{
+			"collision_shapes": 1,
+			"id": "straight_40m",
+			"sockets": 2,
+			"triangles": 12
+		},
+		{
+			"collision_shapes": 3,
+			"id": "corner_l",
+			"sockets": 2,
+			"triangles": 28
+		},
+		{
+			"collision_shapes": 4,
+			"id": "junction_t",
+			"sockets": 3,
+			"triangles": 36
+		},
+		{
+			"collision_shapes": 5,
+			"id": "junction_cross",
+			"sockets": 4,
+			"triangles": 44
+		},
+		{
+			"collision_shapes": 1,
+			"id": "end_cap",
+			"sockets": 1,
+			"triangles": 20
+		}
+	],
+	"top_y": 0.03,
+	"width_m": 4
+}

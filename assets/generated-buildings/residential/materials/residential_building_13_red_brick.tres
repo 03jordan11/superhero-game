@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/generated-buildings/residential/textures/red_brick.res" id="1_3x512"]
+[ext_resource type="Texture2D" path="res://assets/generated-buildings/residential/textures/residential_building_13_red_brick_emission.res" id="2_o0mme"]
+
+[resource]
+albedo_texture = ExtResource("1_3x512")
+roughness = 0.9
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.0
+emission_operator = 1
+emission_texture = ExtResource("2_o0mme")
+texture_filter = 2

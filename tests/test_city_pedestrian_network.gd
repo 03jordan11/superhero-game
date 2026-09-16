@@ -33,7 +33,7 @@ func run() -> void:
 				child.enabled_routes[key] = true
 	network.schedule_rebuild()
 	await process_frame
-	if network.enabled_module_ids.size() != 260:
+	if network.enabled_module_ids.size() != 262:
 		fail("Full network selection failed")
 		return
 	if network.inventory.component_sizes.size() != 2 or network.inventory.river_crossings != 0:
@@ -58,7 +58,7 @@ func run() -> void:
 	if not network.find_children("*","CharacterBody3D",true,false).is_empty():
 		fail("The route graph should not spawn civilians")
 		return
-	print("PASS: district defaults, checkbox serialization, 260 modules / two disconnected riverbanks, and no test spawning.")
+	print("PASS: district defaults, checkbox serialization, 262 modules / two disconnected riverbanks, and no test spawning.")
 	quit()
 
 func fail(message: String) -> void:

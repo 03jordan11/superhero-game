@@ -5,6 +5,80 @@ extends PlayerState
 
 var _last_published_speed: float = -1.0
 var _last_published_max_speed: float = -1.0
+var _button_pending := false
+var _hold_time := 0.0
+var _charge_eligible := false
+var surge_remaining := 0.0
+var is_boosting := false
+
+
+# Also called while grounded/airborne so holding F never toggles flight early.
+func handle_flight_input(delta: float, input: PlayerInputSnapshot) -> void:
+	if not player.abilities.is_unlocked(PlayerAbilities.FLIGHT_SURGE):
+		cancel_charge()
+		if input.toggle_flight_just_pressed: player._toggle_flight_state()
+		return
+	if not _can_charge_here():
+		cancel_charge()
+		if input.toggle_flight_just_pressed: player._toggle_flight_state()
+		return
+	if input.toggle_flight_just_pressed:
+		_button_pending = true
+		_hold_time = 0.0
+		_charge_eligible = player.stamina.is_full() and surge_remaining <= 0.0
+	if not _button_pending: return
+	# A suppressed input snapshot (menus, focus loss) must cancel, never launch.
+	if not input.flight_pressed and not input.flight_just_released:
+		cancel_charge()
+		return
+	if input.flight_pressed:
+		_hold_time += delta
+		_charge_eligible = _charge_eligible and player.stamina.is_full()
+		if _hold_time >= player.flight_charge_hold_threshold:
+			player.is_charging_flight = _charge_eligible
+			player.flight_charge_changed.emit(true, _charge_ratio(), _charge_eligible)
+	if input.flight_just_released:
+		var was_tap := _hold_time < player.flight_charge_hold_threshold
+		var launch := not was_tap and _charge_eligible and player.stamina.is_full()
+		var ratio := _charge_ratio()
+		var direction := Vector3.UP if player.is_on_floor() else player.superhero_character.global_basis.z.normalized()
+		cancel_charge()
+		if was_tap:
+			player._toggle_flight_state()
+		elif launch:
+			_launch_surge(direction, ratio)
+
+
+func _can_charge_here() -> bool:
+	return player.abilities.is_unlocked(PlayerAbilities.FLIGHT) and not (
+		player.is_dead or player.is_knocked_out or player.is_ground_slamming
+		or player.is_wall_running or player.is_charging_jump
+		or player.combat_controller.is_action_locked()
+	)
+
+
+func _charge_ratio() -> float:
+	return clampf((_hold_time - player.flight_charge_hold_threshold) / maxf(player.flight_charge_time, 0.001), 0.0, 1.0)
+
+
+func cancel_charge() -> void:
+	var was_pending := _button_pending
+	_button_pending = false
+	_hold_time = 0.0
+	_charge_eligible = false
+	if player != null:
+		player.is_charging_flight = false
+		if was_pending: player.flight_charge_changed.emit(false, 0.0, false)
+
+
+func _launch_surge(direction: Vector3, ratio: float) -> void:
+	if not player.is_flying and not state_machine.transition_to(&"FlyingState"): return
+	if not player.stamina.spend_full_bar(): return
+	var speed := lerpf(player.flight_surge_min_speed, player.flight_surge_max_speed, ratio)
+	player.velocity = direction * speed * player.status_effects.get_movement_speed_multiplier()
+	player.current_flight_speed = player.velocity.length()
+	surge_remaining = player.flight_surge_duration
+	_publish_flight_speed(true)
 
 
 func can_enter(_previous_state: PlayerState, _context: Dictionary = {}) -> bool:
@@ -14,6 +88,7 @@ func can_enter(_previous_state: PlayerState, _context: Dictionary = {}) -> bool:
 		and not player.is_ground_slamming
 		and not player.is_knocked_out
 		and not player.is_dead
+		and not player.hostile_grab.blocks_motion()
 	)
 
 
@@ -31,12 +106,29 @@ func enter(_previous_state: PlayerState, _context: Dictionary = {}) -> void:
 
 
 func exit(_next_state: PlayerState) -> void:
+	is_boosting = false
+	cancel_charge()
+	surge_remaining = 0.0
 	player.is_flying = false
 	player.current_ground_speed = _get_walk_speed()
 	player.flight_speed_changed.emit(0.0, _get_run_speed(), false)
 
 
 func physics_update(delta: float, input: PlayerInputSnapshot) -> void:
+	is_boosting = false
+	if surge_remaining > 0.0:
+		surge_remaining = maxf(surge_remaining - delta, 0.0)
+		# Preserve the launch impulse before returning to ordinary exhausted flight.
+		player.current_flight_speed = player.velocity.length()
+		_update_visual_rotation(delta)
+		_publish_flight_speed()
+		return
+	if player.is_charging_flight:
+		player.velocity = player.movement_motor.approach_hover_velocity(player.velocity, player.flight_stop_deceleration, 1.0, delta)
+		player.current_flight_speed = player.velocity.length()
+		# Retain the character's facing direction for the launch, even at a hover.
+		_publish_flight_speed()
+		return
 	var vertical_input := 0.0
 	if input.jump_pressed:
 		vertical_input += 1.0
@@ -49,7 +141,7 @@ func physics_update(delta: float, input: PlayerInputSnapshot) -> void:
 		player.camera.global_transform.basis
 	)
 	var has_flight_input := flight_direction.length_squared() > 0.0
-	var is_boosting := has_flight_input and input.sprint_pressed and player.abilities.is_unlocked(PlayerAbilities.FLIGHT_BOOST) and player.stamina.request_boost(true)
+	is_boosting = has_flight_input and input.sprint_pressed and player.abilities.is_unlocked(PlayerAbilities.FLIGHT_BOOST) and player.stamina.request_boost(true)
 	var speed_multiplier := player.status_effects.get_movement_speed_multiplier()
 	var attribute_speed_multiplier := _get_speed_attribute_multiplier() if is_boosting else 1.0
 	var input_strength := minf(maxf(input.movement.length(), absf(vertical_input)), 1.0)
@@ -103,6 +195,11 @@ func post_physics_update(_delta: float, _input: PlayerInputSnapshot) -> void:
 
 func _update_visual_rotation(delta: float) -> void:
 	var flight_direction := player.velocity.normalized()
+	# Hover/cruise retain an upright silhouette, including vertical movement.
+	# The horizontal rocket pose aligns fully with velocity only during fast flight.
+	if not is_boosting and surge_remaining <= 0.0:
+		flight_direction.y = 0.0
+		flight_direction = flight_direction.normalized()
 	var target_rotation: Quaternion
 	if flight_direction.length_squared() == 0.0:
 		target_rotation = player.global_transform.basis.get_rotation_quaternion() * (

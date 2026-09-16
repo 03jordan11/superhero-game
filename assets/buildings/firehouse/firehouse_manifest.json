@@ -1,0 +1,246 @@
+{
+  "units": "metres",
+  "godot_front": "+Z",
+  "base_triangles": 1448,
+  "total_triangles": 1520,
+  "base_meshes": 45,
+  "props": [
+    {
+      "kind": "bench",
+      "name": "Bench_00",
+      "position": [
+        -5,
+        0,
+        -11.65
+      ],
+      "rotation_y": 0
+    },
+    {
+      "kind": "bench",
+      "name": "Bench_01",
+      "position": [
+        11,
+        0,
+        -11.65
+      ],
+      "rotation_y": 0
+    }
+  ],
+  "bench_triangles": 36,
+  "collision_boxes": [
+    {
+      "name": "Engine house masonry",
+      "center": [
+        3,
+        6.8,
+        0
+      ],
+      "size": [
+        28,
+        13.6,
+        22
+      ]
+    },
+    {
+      "name": "Hose tower masonry",
+      "center": [
+        -14,
+        12.7,
+        7.25
+      ],
+      "size": [
+        5.8,
+        25.4,
+        7.5
+      ]
+    },
+    {
+      "name": "Main roof",
+      "center": [
+        3,
+        13.62,
+        0
+      ],
+      "size": [
+        27.5,
+        0.12,
+        21.5
+      ]
+    },
+    {
+      "name": "Roof parapets",
+      "center": [
+        -10.85,
+        14,
+        0
+      ],
+      "size": [
+        0.3,
+        1,
+        22
+      ]
+    },
+    {
+      "name": "Roof parapets",
+      "center": [
+        16.85,
+        14,
+        0
+      ],
+      "size": [
+        0.3,
+        1,
+        22
+      ]
+    },
+    {
+      "name": "Roof parapets",
+      "center": [
+        3,
+        14,
+        10.85
+      ],
+      "size": [
+        28,
+        1,
+        0.3
+      ]
+    },
+    {
+      "name": "Roof parapets",
+      "center": [
+        3,
+        14,
+        -10.85
+      ],
+      "size": [
+        28,
+        1,
+        0.3
+      ]
+    },
+    {
+      "name": "Tower roof",
+      "center": [
+        -14,
+        25.45,
+        7.25
+      ],
+      "size": [
+        5.5,
+        0.15,
+        7.2
+      ]
+    },
+    {
+      "name": "Tower crown",
+      "center": [
+        -16.75,
+        25.8,
+        7.25
+      ],
+      "size": [
+        0.3,
+        0.8,
+        7.5
+      ]
+    },
+    {
+      "name": "Tower crown",
+      "center": [
+        -11.25,
+        25.8,
+        7.25
+      ],
+      "size": [
+        0.3,
+        0.8,
+        7.5
+      ]
+    },
+    {
+      "name": "Tower crown",
+      "center": [
+        -14,
+        25.8,
+        10.85
+      ],
+      "size": [
+        5.8,
+        0.8,
+        0.3
+      ]
+    },
+    {
+      "name": "Tower crown",
+      "center": [
+        -14,
+        25.8,
+        3.65
+      ],
+      "size": [
+        5.8,
+        0.8,
+        0.3
+      ]
+    }
+  ],
+  "bounds_min_blender": [
+    -17.399999618530273,
+    -11.779999732971191,
+    0.0
+  ],
+  "bounds_max_blender": [
+    17.25,
+    11.924999237060547,
+    26.875
+  ],
+  "mesh_triangles": {
+    "Engine house masonry": 12,
+    "Hose tower masonry": 12,
+    "Stone foundation": 36,
+    "Tower foundation": 12,
+    "Main cornices": 48,
+    "Return cornices": 96,
+    "Rear cornices": 48,
+    "Main roof": 12,
+    "Roof parapets": 48,
+    "Parapet caps": 48,
+    "Front brick piers": 60,
+    "Pier bases": 60,
+    "Engine bay doors": 36,
+    "Engine bay arches": 64,
+    "Bay keystones": 48,
+    "Upper sash windows": 24,
+    "Brick lintel course": 48,
+    "Side sash windows": 28,
+    "Rear sash windows": 18,
+    "Rear service door": 2,
+    "Rear door frame": 36,
+    "Watch office entry": 2,
+    "Entry hood": 12,
+    "Tower slit windows": 12,
+    "Tower louvers": 8,
+    "Tower cornices": 48,
+    "Tower roof": 12,
+    "Tower crown": 48,
+    "Tower crest": 24,
+    "Wall lamp mounts": 60,
+    "Wall lamps": 60,
+    "Lamp caps": 60,
+    "Rain downpipes": 24,
+    "Rooftop ventilators": 24,
+    "Ventilator caps": 24,
+    "Brick chimney": 12,
+    "Chimney cap": 12,
+    "Alarm cabinet": 12,
+    "Alarm glass": 12,
+    "ENGINE HOUSE  No. 7": 120,
+    "1907": 26,
+    "1": 2,
+    "2": 10,
+    "3": 13,
+    "4": 15
+  },
+  "triangle_limit": 10000
+}

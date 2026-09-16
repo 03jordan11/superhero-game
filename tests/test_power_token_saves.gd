@@ -18,6 +18,8 @@ func run() -> void:
 	var original_path: String = manager._save_path
 	var test_path := OS.get_environment("TEMP").path_join("power_token_save_test_%d.json" % OS.get_process_id())
 	manager._save_path = test_path
+	var windows := root.get_node("CityWindows")
+	manager.begin_new_game(123456)
 	var main: Node = load("res://scenes/main.tscn").instantiate()
 	root.add_child(main)
 	var player: PlayerCharacter = main.get_node("Player")
@@ -29,6 +31,10 @@ func run() -> void:
 	check(not manager.has_save(), "Console grant does not save implicitly")
 	dev.commands.execute("save")
 	var saved := read_save(test_path)
+	check(saved.world.window_lighting.seed == 123456, "Save must persist city lighting seed")
+	manager.begin_new_game(654321)
+	manager._ready()
+	check(windows.city_seed == 123456, "Startup must read the saved seed before loading the city")
 	check(saved.power_menu.tokens == 5, "Save must include all newly added tokens")
 	check(saved.player.stats.money == 123, "Token grant must save the player's current game state too")
 	check(dev.commands.execute("status").contains("Power points 5"), "Console reports granted point balance")
@@ -42,12 +48,24 @@ func run() -> void:
 	check(saved.player.stats.money == 456, "Every grant must save fresh game state")
 	check(player.abilities.unlocked_abilities == actual_powers, "Saving menu progression must not activate gameplay powers")
 	main.free()
+	manager.begin_new_game(654321)
 	main = load("res://scenes/main.tscn").instantiate()
 	root.add_child(main)
 	page = main.get_node("GameplayMenu").powers_page
 	dev = main.get_node("DeveloperMenu")
 	check(page.progression.tokens == 0, "Fresh scene starts clean until Load Save")
 	dev.commands.execute("load")
+	check(windows.city_seed == 123456, "Loading must restore the saved city seed")
+	var tower: Node
+	for candidate in main.find_children("*", "StaticBody3D", true, false):
+		if candidate.scene_file_path.ends_with("commercial_skyscraper_02.tscn"):
+			tower = candidate; break
+	check(tower != null, "Representative tower must exist in the city")
+	var restored_pixels: PackedByteArray = tower._night_materials[0].emission_texture.get_image().get_data()
+	manager.begin_new_game(654321)
+	check(tower._night_materials[0].emission_texture.get_image().get_data() != restored_pixels, "New seed must refresh live towers")
+	dev.commands.execute("load")
+	check(tower._night_materials[0].emission_texture.get_image().get_data() == restored_pixels, "Save reload must restore exact window pixels")
 	check(page.progression.tokens == 8 and page.progression.level("ice") == 1, "Load must restore tokens and test upgrades in a fresh scene")
 	check(page.token_label.text == "8" and dev.commands.execute("status").contains("Power points 8"), "Both token displays must refresh on load")
 	check(read_save(test_path) == saved, "Loading must not trigger an autosave")
@@ -56,10 +74,12 @@ func run() -> void:
 	check(read_save(test_path).power_menu.tokens == 7, "Manual save must reflect spent tokens")
 	# Older saves omit this optional section and should reset to a clean starter.
 	saved.erase("power_menu")
+	saved.erase("world")
 	var file := FileAccess.open(test_path, FileAccess.WRITE)
 	file.store_string(JSON.stringify(saved))
 	file.close()
 	check(manager.load_game(), "Legacy saves should remain loadable")
+	check(windows.city_seed == 8421, "Legacy saves use a stable window seed")
 	check(page.progression.tokens == 0 and page.progression.level("ice") == -1 and page.progression.level("super_leap") == 0, "Legacy saves start with zero points and only Power Jump")
 	page.progression.apply_save_data({"tokens": -8, "upgrades": {"ice": 99, "super_leap": -5, "fire": "invalid"}})
 	check(page.progression.tokens == 0 and page.progression.level("ice") == 3 and page.progression.level("super_leap") == 0 and page.progression.level("fire") == -1, "Loaded currency and upgrade values must be bounded")

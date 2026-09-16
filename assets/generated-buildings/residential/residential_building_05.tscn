@@ -1,15 +1,29 @@
 [gd_scene format=3]
 
-[ext_resource type="ArrayMesh" path="res://assets/generated-buildings/residential/meshes/residential_building_05.res" id="1_wxhta"]
+[ext_resource type="Script" path="res://assets/generated-buildings/residential/residential_building.gd" id="1_cqvsr"]
+[ext_resource type="ArrayMesh" path="res://assets/generated-buildings/residential/meshes/residential_building_05.res" id="2_todf1"]
+[ext_resource type="PackedScene" path="res://assets/props/rooftop_hvac/rooftop_hvac_lowpoly.tscn" id="3_sbtt2"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_uc81l"]
-size = Vector3(20.15, 20.7, 18.15)
+[sub_resource type="BoxShape3D" id="BoxShape3D_pqd5k"]
+size = Vector3(20, 18.6, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tt7ci"]
+size = Vector3(10, 18.6, 8)
 
 [node name="residential_building_05" type="StaticBody3D" unique_id=554796272]
+script = ExtResource("1_cqvsr")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2105367205]
-mesh = ExtResource("1_wxhta")
+mesh = ExtResource("2_todf1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=418463531]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.35, 0)
-shape = SubResource("BoxShape3D_uc81l")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.3, -4)
+shape = SubResource("BoxShape3D_pqd5k")
+
+[node name="RooftopHVAC" type="StaticBody3D" parent="." unique_id=661342222 instance=ExtResource("3_sbtt2")]
+transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, 0, 18.6, -3.9999998)
+metadata/source = "Blender budget variant of the stock hospital HVAC: hidden caps removed, top panels flattened"
+
+[node name="TierCollision1" type="CollisionShape3D" parent="." unique_id=1262374180]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 9.3, 5)
+shape = SubResource("BoxShape3D_tt7ci")

@@ -64,7 +64,8 @@ func render_all() -> void:
 		current = load(OUT+"residential_building_%02d.tscn" % i).instantiate()
 		world.add_child(current)
 		var size: Vector3 = current.get_node("MeshInstance3D").mesh.get_aabb().size
-		heading.text = "%02d  /  %s" % [i,catalog[i-1].name]
+		size.y=catalog[i-1].height_m
+		heading.text = "Residential %02d" % i
 		dimensions.text = "%.0f x %.0f m  /  %.1f m tall" % [size.x,size.z,size.y]
 		camera.size = maxf(size.y * 1.4, (size.x + size.z) * 0.95)
 		var target = Vector3(0,size.y*0.48,0)

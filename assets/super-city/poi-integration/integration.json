@@ -1,0 +1,258 @@
+{
+  "cleared_props": [
+    "HotdogStands/HotdogStands12",
+    "Benches/Benches46",
+    "Hydrants/Hydrants84",
+    "Benches/Benches19"
+  ],
+  "pois": [
+    {
+      "asset": "res://assets/buildings/city_hall/city_hall.tscn",
+      "district": "Parkside",
+      "node": "CityHall",
+      "position": [
+        -292.0,
+        0.100000001490116,
+        -404.0
+      ],
+      "rect": [
+        -384.325012207031,
+        -469.325012207031,
+        184.650009155273,
+        133.575012207031
+      ],
+      "rotation_y": 0.0,
+      "site": [
+        -414.0,
+        -470.0,
+        245.0,
+        132.0
+      ]
+    },
+    {
+      "asset": "res://assets/buildings/hospital/hospital.tscn",
+      "district": "FinancialQuarter",
+      "node": "Hospital",
+      "position": [
+        -292.0,
+        0.0299999993294477,
+        387.0
+      ],
+      "rect": [
+        -344.274993896484,
+        345.5,
+        104.549987792969,
+        72.3299865722656
+      ],
+      "rotation_y": 3.14159265358979,
+      "site": [
+        -370.0,
+        338.0,
+        160.0,
+        98.0
+      ]
+    },
+    {
+      "asset": "res://assets/buildings/police_station/police_station.tscn",
+      "district": "Parkside",
+      "node": "PoliceStation",
+      "position": [
+        -435.0,
+        0.0299999993294477,
+        -356.0
+      ],
+      "rect": [
+        -453.125,
+        -369.099975585938,
+        36.25,
+        30.5999755859375
+      ],
+      "rotation_y": 0.0,
+      "site": [
+        -460.0,
+        -376.0,
+        50.0,
+        38.0
+      ]
+    },
+    {
+      "asset": "res://assets/buildings/bank1/bank1.tscn",
+      "district": "FinancialQuarter",
+      "node": "Bank1",
+      "position": [
+        -139.0,
+        0.0299999993294477,
+        516.0
+      ],
+      "rect": [
+        -156.5,
+        497.850006103516,
+        35.0,
+        32.1499938964844
+      ],
+      "rotation_y": 3.14159265358979,
+      "site": [
+        -164.0,
+        494.0,
+        50.0,
+        44.0
+      ]
+    },
+    {
+      "asset": "res://assets/buildings/bank2/bank2.tscn",
+      "district": "FinancialQuarter",
+      "node": "Bank2",
+      "position": [
+        109.0,
+        0.0299999993294477,
+        602.0
+      ],
+      "rect": [
+        88.8499984741211,
+        586.0,
+        40.2999954223633,
+        34.2899780273438
+      ],
+      "rotation_y": 0.0,
+      "site": [
+        82.0,
+        575.0,
+        56.0,
+        47.0
+      ]
+    },
+    {
+      "asset": "res://assets/buildings/firehouse/firehouse.tscn",
+      "district": "CivicCenter",
+      "node": "Firehouse",
+      "position": [
+        -616.0,
+        0.0299999993294477,
+        507.0
+      ],
+      "rect": [
+        -633.25,
+        495.220001220703,
+        34.6500244140625,
+        23.7050476074219
+      ],
+      "rotation_y": 3.14159265358979,
+      "site": [
+        -636.0,
+        494.0,
+        40.0,
+        32.0
+      ]
+    }
+  ],
+  "removed_buildings": [
+    "Districts/CivicCenter/CivicCenter_0859",
+    "Districts/CivicCenter/CivicCenter_0860",
+    "Districts/CivicCenter/CivicCenter_0865",
+    "Districts/Parkside/Parkside_0924",
+    "Districts/Parkside/Parkside_0927",
+    "Districts/Parkside/Parkside_0929",
+    "Districts/Parkside/Parkside_0930",
+    "Districts/Parkside/Parkside_1098",
+    "Districts/Parkside/Parkside_1101",
+    "Districts/Parkside/Parkside_1104",
+    "Districts/Parkside/Parkside_1105",
+    "Districts/FinancialQuarter/FinancialQuarter_1121",
+    "Districts/FinancialQuarter/FinancialQuarter_1122",
+    "Districts/FinancialQuarter/FinancialQuarter_1126",
+    "Districts/FinancialQuarter/FinancialQuarter_1129",
+    "Districts/FinancialQuarter/FinancialQuarter_1229",
+    "Districts/FinancialQuarter/FinancialQuarter_1230"
+  ],
+  "removed_roads": [
+    {
+      "arms": 0.0,
+      "axis": 1.0,
+      "crossing_corridor": false,
+      "kind": "street",
+      "rect": [
+        -390.0,
+        -470.0,
+        20.0,
+        136.0
+      ],
+      "width": 20.0
+    },
+    {
+      "arms": 0.0,
+      "axis": 1.0,
+      "crossing_corridor": false,
+      "kind": "street",
+      "rect": [
+        -210.0,
+        -470.0,
+        20.0,
+        136.0
+      ],
+      "width": 20.0
+    },
+    {
+      "arms": 0.0,
+      "axis": 1.0,
+      "crossing_corridor": false,
+      "kind": "alley",
+      "rect": [
+        -293.0,
+        334.0,
+        6.0,
+        136.0
+      ],
+      "width": 6.0
+    }
+  ],
+  "surface_replacements": [
+    {
+      "node": "Roads/roads_2_1/CollisionShape3D",
+      "shape": "res://assets/super-city/poi-integration/roads_2_1_collision.res"
+    },
+    {
+      "node": "Roads/roads_2_2/CollisionShape3D",
+      "shape": "res://assets/super-city/poi-integration/roads_2_2_collision.res"
+    },
+    {
+      "node": "Roads/roads_1_3/CollisionShape3D",
+      "shape": "res://assets/super-city/poi-integration/roads_1_3_collision.res"
+    },
+    {
+      "node": "Roads/roads_2_3/CollisionShape3D",
+      "shape": "res://assets/super-city/poi-integration/roads_2_3_collision.res"
+    },
+    {
+      "node": "Roads/roads_3_3/CollisionShape3D",
+      "shape": "res://assets/super-city/poi-integration/roads_3_3_collision.res"
+    },
+    {
+      "node": "Sidewalks/sidewalks_2_1/CollisionShape3D",
+      "shape": "res://assets/super-city/poi-integration/sidewalks_2_1_collision.res"
+    },
+    {
+      "node": "Sidewalks/sidewalks_2_2/CollisionShape3D",
+      "shape": "res://assets/super-city/poi-integration/sidewalks_2_2_collision.res"
+    },
+    {
+      "node": "Sidewalks/sidewalks_1_3/CollisionShape3D",
+      "shape": "res://assets/super-city/poi-integration/sidewalks_1_3_collision.res"
+    },
+    {
+      "node": "Sidewalks/sidewalks_2_3/CollisionShape3D",
+      "shape": "res://assets/super-city/poi-integration/sidewalks_2_3_collision.res"
+    },
+    {
+      "node": "Sidewalks/sidewalks_3_3/CollisionShape3D",
+      "shape": "res://assets/super-city/poi-integration/sidewalks_3_3_collision.res"
+    },
+    {
+      "node": "Ground/GroundMesh/CollisionShape3D",
+      "shape": "res://assets/super-city/poi-integration/ground_collision.res"
+    },
+    {
+      "node": "Sidewalks/sidewalks_1_2/CollisionShape3D",
+      "shape": "res://assets/super-city/poi-integration/sidewalks_1_2_collision.res"
+    }
+  ]
+}

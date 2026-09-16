@@ -1,76 +1,61 @@
-# Industrial building test pack
+# Industrial buildings
 
-10 original generic urban industrial PackedScenes, named `industrial_building_01.tscn` through `industrial_building_10.tscn`. Includes freight warehouses, a sawtooth workshop, a foundry, cold storage, a twin-gable depot, a textile mill, a boiler house, a silo mill, a utility plant, and a repair works. Heights range from 8.8 to 30.4 meters, including chimneys and roof structures. No existing City Crafter collection was replaced.
+All ten industrial models were edited in Blender. Their existing scene paths update 113 city placements. Nameplates are removed; personnel doors and loading shutters remain. Editable source: `blender/industrial_01_10.blend`.
 
-## Use
+## Lighting and smoke
 
-Drag the scenes into entries of a CityConfiguration resource's **Industrial Buildings** (`Array[PackedScene]`) property. Test using a duplicate configuration. Keep the `meshes`, `materials`, and `textures` subfolders with the scenes. The finished runtime assets are self-contained; neither of the other packs is needed to instance them.
+Each model has facade emission maps preserving window frames and warm detail. The foundry (03) originally had no windows; its private `foundry_windows` texture adds a narrow painted clerestory without adding geometry.
 
-Each building contains exactly three nodes:
+`industrial_building.gd` uses the commercial controller and CityWindows cache. Six seeded variants remove 70-80% of previously lit windows (75.45% measured), leaving industrial buildings darker than residential. Existing dark pixels stay dark. Individual windows are switched off, with subtle attenuation on retained windows. Industrial patterns permit adjacent dark windows to reach this sparse occupancy. No additional window lights are used.
 
-```text
-StaticBody3D
-├── MeshInstance3D
-└── CollisionShape3D (BoxShape3D)
-```
+Tune **Remote > CityWindows > Industrial Windows Off** (default 0.75). Patterns are reconstructed from the saved game seed and remain stable across day/night transitions. See [seeded windows](../../../docs/seeded_city_windows.md).
 
-Each scene has one combined mesh, identity root/mesh transforms, and unit collision scale. Units are meters. Bounds are centered horizontally and start exactly at Y=0. Signs and loading-door textures face -Z and +Z; the freight canopy is on -Z. Default world collision layer/mask is 1.
+Models 03, 07 and 09 instance the shared `res://assets/effects/stack_smoke/stack_smoke.tscn` at their stack outlets. Each uses 18 soft GPU particles; at most 12 emitters run within 350 m of the camera. Smoke has no collision, lights or shadows. See the effect's README for tuning.
 
-## Appearance and cost
+## Solid collision
 
-Six shared 64 x 64 textures represent brick, divided factory windows, concrete panels, and corrugated cladding. One shared 256 x 256 atlas supplies fictional company signs, personnel doors, roller shutters, and muted hazard stripes. All textures are mipmapped native ImageTexture `.res` files with pixel filtering. Eight shared StandardMaterial3D resources serve the whole pack. Solid roofs, tanks, chimneys, and metal details share one vertex-colored material.
+The ten models contain 43 solid collision shapes. Main walls use boxes; pitched and sawtooth roofs, tapered stacks and silos use closed convex volumes. Roof collision follows each section instead of filling the entire building bounds. Small trim is covered within a 0.25 m tolerance. Buildings have no enterable interiors.
 
-Each building has 44–226 triangles and 3–5 material surfaces. There are no individual window meshes, transparent glass, custom shaders, interior rooms, smoke particles, lights, or runtime scripts. The sawtooth roof glazing is opaque. Silos and chimneys use eight sides, and rooftop chillers are simple boxes. These are compact urban plants, not large industrial campuses.
+Existing `StaticBody3D`, `MeshInstance3D` and primary `CollisionShape3D` paths are preserved. Additional solids are named `SolidCollision1`, etc. Shapes use layer 1. Collision objects are also included in the Blender source for inspection.
 
-## Collision and spacing
+## Geometry audit
 
-Each collider is one conservative box covering all visible geometry. That includes the full height of chimneys and tanks, so the box fills space above lower roofs and between silos. Pitched and sawtooth roofs also receive flat box collision. Roof landings can therefore happen above the visible surface; this pack favors minimal physics cost over precise industrial rooftop traversal. There are no enterable loading bays or interiors.
+Actual GLB and native Godot triangle counts match. Non-rendered collision is excluded.
 
-City Crafter's existing industrial GLBs, imports, configuration resources, and spacing logic were inspected. They use 25x import scaling; reference A is roughly 52.1 x 31.1 m and G roughly 42.0 x 32.1 m. The new assets occupy about 28.0–34.2 m by 22.3–27.7 m, including protrusions. Geometry is centered during generation rather than inheriting the asymmetric origins of some source examples.
+| Model | Design | Building triangles | Solid shapes | Maximum smoke triangles |
+| --- | --- | ---: | ---: | ---: |
+| 01 | Freight warehouse | 54 | 3 | 0 |
+| 02 | Sawtooth workshop | 44 | 5 | 0 |
+| 03 | Foundry | 74 | 4 | 36 |
+| 04 | Cold storage | 64 | 4 | 0 |
+| 05 | Twin-gable depot | 52 | 3 | 0 |
+| 06 | Textile mill | 60 | 2 | 0 |
+| 07 | Boiler house | 126 | 5 | 36 |
+| 08 | Silo mill | 222 | 10 | 0 |
+| 09 | Utility plant | 56 | 4 | 36 |
+| 10 | Repair works | 40 | 3 | 0 |
 
-City Crafter uses center spacing and random scale; it does not check building bounds. Its class default industrial spacing is 35 m, which can overlap this pack. The largest new footprint diagonal is 44.02 m. Conservative settings for the full pack at any rotation are:
+## Build and validation
 
-| Scale variation | Industrial spacing | Border margin |
-| --- | ---: | ---: |
-| 0 | 45 m | 23 m |
-| 0.3 | 59 m | 30 m |
-| 0.5 | 68 m | 34 m |
+`tools/export_blender_batch.gd` extracts source data for `tools/blender_rework_batch.py`. Blender exports GLBs and solid-shape data into `artifacts/industrial_batch`. `tools/import_blender_batch.gd` writes native Godot resources, staging replacement scenes and meshes under that artifact directory. Apply staged resources only after the importing Godot process exits. The older `generate_pack.gd` describes the original assets and does not preserve this rework.
 
-These are recommendations for a duplicate test configuration and were not applied. Use sufficiently large blocks and reduce requested building density if few buildings fit; border margins need room on both sides of each block. Other building packs can require larger spacing. Scale variation 0 preserves exact meter dimensions.
+Godot 4.7.2 validation passed for all ten scenes. `tests/test_industrial_rework.gd` checks exported geometry, solid interior overlaps, upward wall movement, roof landings, visible-vertex coverage, emission targets, seed restoration and smoke limits. Commercial seeded-window, residential wall-collision and save/load regression tests passed. Existing certificate/settings/road UID warnings remain.
 
-## Generation, verification, and tests
+Day and night contact sheets were rendered in Godot and inspected. Traversal gameplay was not visually tested. Day previews are in `previews/`; night previews and test logs are in `artifacts/industrial_batch/` at the project root.
 
-`tools/generate_pack.gd` defines the ten designs. For **regeneration only**, it loads the shared builder and pixel-font helper from `../residential/tools/`. Keep those helper files if you want to regenerate the pack; the saved `.tscn`, `.res`, and `.tres` runtime assets do not reference them. Generation writes only this industrial folder.
+## Test in the game
 
-Run from the project directory, replacing `godot` with your executable path. Pipe to `Out-Host` in PowerShell to wait for each GUI executable invocation to finish:
+1. Restart the running scene so existing placements reload their resources.
+2. Run up warehouse walls and land on pitched and sawtooth roofs. Walk around silos and stacks with visible collision shapes enabled; check for gaps or floating landings.
+3. Enter `time night`, then `time pause`; inspect sparse warm windows and smoke on models 03, 07 and 09. Move beyond 350 m to check smoke distance culling.
+4. Save, change the City Seed, then load. The saved window pattern should return.
 
-```powershell
-godot --headless --path . --script res://assets/generated-buildings/industrial/tools/generate_pack.gd | Out-Host
-godot --headless --path . --script res://assets/generated-buildings/industrial/tools/validate_pack.gd | Out-Host
-godot --path . --rendering-method gl_compatibility --rendering-driver opengl3 --script res://assets/generated-buildings/industrial/tools/render_preview.gd | Out-Host
-```
+## Modified files
 
-Validated with Godot 4.7.2: all 10 scenes load and instantiate; exact structure, identity/unit transforms, Y=0, centered bounds, coverage of all vertices by collision, materials, triangle winding, and nondegenerate geometry pass. The actual CityConfiguration **Industrial Buildings** property accepted all ten entries in memory. Result: zero failures, recorded in `tools/validation_report.json`. Sandboxed headless startup logged a Windows certificate-store access warning; local asset validation was unaffected.
+- This pack's ten scenes, meshes, manifest, facade materials and emission textures.
+- `blender/industrial_01_10.blend`, batch tools, preview tools and validation report.
+- `industrial_building.gd` and the project script `scripts/city_window_lighting.gd`.
+- Shared `assets/effects/stack_smoke/` scene and script.
+- `tests/test_industrial_rework.gd` and `docs/seeded_city_windows.md`.
 
-All ten assets were rendered in Godot's Compatibility renderer and visually inspected. `previews/contact_sheet.png` frames each building independently, **not at a shared scale**. `previews/street_detail.png` shows the repair works doors and sign. No superhero gameplay or generated industrial city was run.
-
-Test in Godot: place the freight warehouse, foundry, and silo mill on a floor at Y=0; walk into their walls and try jumping and landing while visible collision shapes are enabled. Then assign the scenes to a duplicate industrial collection and generate a temporary district to inspect density, rotated footprints, and spacing. Expect conservative rooftop collision as described above.
-
-Only the new residential and industrial folders were added. Commercial assets, existing addon scenes/resources, generation logic, player code, and game scenes were preserved.
-
-## Catalog
-
-See the table below and `manifest.json` for measured dimensions and mesh statistics.
-
-| Scene | Name | Design | Width x depth | Height | Triangles |
-| --- | --- | --- | ---: | ---: | ---: |
-| industrial_building_01.tscn | QUAY FREIGHT | Brick freight warehouse with three loading bays, canopy, and office penthouse | 34.2 x 27.7 m | 12.6 m | 58 |
-| industrial_building_02.tscn | RIVET TOOLWORKS | Four-bay sawtooth machine workshop with opaque clerestory glazing | 30.0 x 24.0 m | 9.8 m | 48 |
-| industrial_building_03.tscn | IRONVALE FOUNDRY | Pitched-roof foundry with an eight-sided tapered chimney | 30.3 x 26.3 m | 25.6 m | 78 |
-| industrial_building_04.tscn | NORTH COLD STORE | Insulated cold-storage warehouse with three rooftop chiller blocks | 32.2 x 26.2 m | 14.1 m | 68 |
-| industrial_building_05.tscn | CROSSLINE DEPOT | Twin-gable distribution depot with four roller shutters | 32.0 x 24.0 m | 8.8 m | 56 |
-| industrial_building_06.tscn | MILLSTONE TEXTILE | Six-story textile mill with stone floor bands and rooftop stair tower | 28.3 x 22.3 m | 29.0 m | 64 |
-| industrial_building_07.tscn | CANAL BOILERWORKS | Masonry boiler house with paired narrow smokestacks | 30.2 x 24.2 m | 28.6 m | 130 |
-| industrial_building_08.tscn | BULKLINE MILL | Compact bulk mill with four octagonal storage silos on a solid base | 32.0 x 24.0 m | 24.0 m | 226 |
-| industrial_building_09.tscn | WARD POWER | Urban utility plant with raised turbine hall and square exhaust tower | 28.0 x 24.0 m | 30.4 m | 60 |
-| industrial_building_10.tscn | DOCKSIDE REPAIR | Repair works with tall office wing and lower pitched service hall | 30.0 x 24.0 m | 12.0 m | 44 |
+Commercial/residential asset resources and the sky, fog and environment settings were checked against their pre-edit hashes and remain unchanged.

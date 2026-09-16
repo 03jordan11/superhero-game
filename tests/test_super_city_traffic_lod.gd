@@ -25,11 +25,15 @@ func _run() -> void:
 	camera.look_at(Vector3(-1000,0,-1000))
 	camera.make_current()
 	var lod = manager.get_node("DistantTraffic")
+	var blockers = city.get_node("CityOcclusion")
+	assert(blockers.building_count > 0 and blockers.triangle_count > 0)
+	assert(blockers.get_child_count() == 10)
+	for blocker in blockers.get_children(): assert(blocker.occluder is ArrayOccluder3D)
 	lod.far_enabled = "--tier3" in OS.get_cmdline_user_args()
 	for tick in range(50):
 		await physics_frame
 		manager._step(0.25)
-	assert(lod.proxies.size() >= 100 and lod.proxies.size() <= lod._proxy_limit())
+	assert(lod.proxies.size() >= 15 and lod.proxies.size() <= lod._proxy_limit())
 	assert(manager.active_count == 0,"High flight kept spawning full physics vehicles below")
 	var farthest := 0.0
 	var visible := 0
@@ -41,6 +45,10 @@ func _run() -> void:
 		assert(farthest > 1000.0 and lod.rectangle_count > 0 and lod.silhouette_count > 0)
 	print("City LOD: ",lod.proxies.size()," boxes in ",lod._batches.size()," regions, ",visible," visible; farthest ",roundi(farthest)," m")
 	print("Tier counts: ",lod.silhouette_count," silhouettes, ",lod.rectangle_count," rectangles")
+	lod.occlusion_culling_enabled = false
+	for batch in lod._batches.values(): assert(batch.ignore_occlusion_culling)
+	lod.occlusion_culling_enabled = true
+	for batch in lod._batches.values(): assert(not batch.ignore_occlusion_culling)
 	if "--capture" in OS.get_cmdline_user_args():
 		await RenderingServer.frame_post_draw
 		var capture_path := OS.get_environment("TEMP").path_join("traffic_box_lod_preview.png")

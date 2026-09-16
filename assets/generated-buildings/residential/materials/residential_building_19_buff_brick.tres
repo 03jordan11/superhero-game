@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/generated-buildings/residential/textures/buff_brick.res" id="1_gujcf"]
+[ext_resource type="Texture2D" path="res://assets/generated-buildings/residential/textures/residential_building_19_buff_brick_emission.res" id="2_m3gcm"]
+
+[resource]
+albedo_texture = ExtResource("1_gujcf")
+roughness = 0.9
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.0
+emission_operator = 1
+emission_texture = ExtResource("2_m3gcm")
+texture_filter = 2

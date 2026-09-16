@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/waterfront/cargo_ship/textures/painted_steel.png" id="1_w720e"]
+
+[resource]
+resource_name = "graphite_Hull"
+albedo_color = Color(0.20392157, 0.23921569, 0.28235295, 1)
+albedo_texture = ExtResource("1_w720e")
+metallic = 0.12
+roughness = 0.72

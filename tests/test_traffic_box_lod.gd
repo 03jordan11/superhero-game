@@ -71,6 +71,12 @@ func _run() -> void:
 	var previous: float = proxy.progress
 	lod._advance(proxy,1.0)
 	assert(proxy.progress > previous,"Distant box performed collision stopping")
+	# Smooth prediction between 10/5 Hz state updates must not jump when committed.
+	proxy["motion_elapsed"] = 0.075
+	var predicted: Vector3 = lod._point(proxy)
+	assert(predicted.distance_to(lod._raw_point(proxy)) > 0.0)
+	lod._flush_motion(proxy)
+	assert(lod._point(proxy).distance_to(predicted) < 0.001,"Low-rate motion update jumped visually")
 	# But promotion must fail rather than create an overlapping physical vehicle.
 	focus.position = lod._point(proxy)+Vector3.UP*2.0
 	lod._transition_timer = 0.0
@@ -118,7 +124,7 @@ func _run() -> void:
 	manager._step(0.0)
 	assert(lod.proxies.is_empty() and manager._cars.size() == 1)
 	manager.max_vehicles = 12
-	# Promote in the middle of a straight crossing without resetting its position.
+	# Finish a straight crossing before joining physical traffic rules.
 	focus.position += Vector3.UP*500.0
 	lod._transition_timer = 0.0
 	manager._step(0.0)
@@ -131,17 +137,16 @@ func _run() -> void:
 	focus.position = before_promotion+Vector3.UP*20.0
 	lod._transition_timer = 0.0
 	manager._step(0.0)
+	assert(manager._cars.is_empty() and lod.proxies.size() == 1)
+	assert(lod._point(proxy).distance_to(before_promotion) < 0.001)
+	for tick in 100:
+		lod._transition_timer = 0.0
+		manager._step(0.1)
+		if not manager._cars.is_empty(): break
 	assert(lod.proxies.is_empty() and manager._cars.size() == 1)
 	full = manager._cars[0]
-	assert(full.car.global_position.distance_to(before_promotion) < 0.001)
-	assert(not full.connection.is_empty() and manager._junction_owners.size() == 1)
-	focus.position += Vector3.UP*500.0
-	lod._transition_timer = 0.0
-	manager._step(0.0)
-	assert(lod.proxies.is_empty(),"A crossing car demoted before clearing the junction")
-	full.crossing_progress = full.connection.length+full.half_length+manager.junction_stop_margin-0.01
-	manager._drive_crossing(full,0.1)
 	assert(full.connection.is_empty() and manager._junction_owners.is_empty())
+	focus.position += Vector3.UP*500.0
 	lod._transition_timer = 0.0
 	manager._step(0.0)
 	assert(lod.proxies.size() == 1)

@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/generated-buildings/commercial/textures/commercial_skyscraper_01_podium_albedo.res" id="1_x4t16"]
+
+[resource]
+albedo_texture = ExtResource("1_x4t16")
+roughness = 0.9
+texture_filter = 2

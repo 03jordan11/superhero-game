@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/waterfront/cargo_ship/textures/painted_steel.png" id="1_6yq74"]
+
+[resource]
+resource_name = "deep_teal_Superstructure"
+albedo_color = Color(0.84313726, 0.8666667, 0.8392157, 1)
+albedo_texture = ExtResource("1_6yq74")
+metallic = 0.12
+roughness = 0.72

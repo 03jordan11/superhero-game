@@ -1,15 +1,102 @@
 [gd_scene format=3]
 
-[ext_resource type="ArrayMesh" path="res://assets/generated-buildings/industrial/meshes/industrial_building_03.res" id="1_15eth"]
+[ext_resource type="Script" path="res://assets/generated-buildings/industrial/industrial_building.gd" id="1_x8dv3"]
+[ext_resource type="ArrayMesh" path="res://assets/generated-buildings/industrial/meshes/industrial_building_03.res" id="2_6w3e2"]
+[ext_resource type="PackedScene" path="res://assets/effects/stack_smoke/stack_smoke.tscn" id="3_jvpru"]
+[ext_resource type="Script" path="res://assets/effects/stack_smoke/stack_smoke.gd" id="4_prx11"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_wukaq"]
-size = Vector3(30.3, 25.6, 26.3)
+[sub_resource type="BoxShape3D" id="BoxShape3D_ocb7x"]
+size = Vector3(30, 11, 26)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ev6lu"]
+points = PackedVector3Array(-15.15, 11, -13.15, -15.15, 11, 13.15, 15.15, 11, -13.15, 15.15, 11, 13.15, 0, 15, -13.15, 0, 15, 13.15)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ogtl1"]
+points = PackedVector3Array(-7, 11, 8, -7.8786798, 11, 10.121321, -10, 11, 11, -12.121321, 11, 10.121321, -13, 11, 8, -12.121321, 11, 5.8786798, -10, 11, 5, -7.8786798, 11, 5.8786798, -7.78, 25, 8, -8.4302225, 25, 9.5697775, -10, 25, 10.22, -11.5697775, 25, 9.5697775, -12.22, 25, 8, -11.5697775, 25, 6.430223, -10, 25, 5.78, -8.4302225, 25, 6.430223)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_rwnns"]
+points = PackedVector3Array(-7.6, 25, 8, -8.302944, 25, 9.697056, -10, 25, 10.4, -11.697056, 25, 9.697056, -12.4, 25, 8, -11.697056, 25, 6.3029437, -10, 25, 5.6, -8.302944, 25, 6.3029437, -7.6, 25.6, 8, -8.302944, 25.6, 9.697056, -10, 25.6, 10.4, -11.697056, 25.6, 9.697056, -12.4, 25.6, 8, -11.697056, 25.6, 6.3029437, -10, 25.6, 5.6, -8.302944, 25.6, 6.3029437)
+
+[sub_resource type="Gradient" id="Gradient_5v4fb"]
+offsets = PackedFloat32Array(0, 0.15, 0.55, 1)
+colors = PackedColorArray(0.45, 0.46, 0.47, 0, 0.45, 0.46, 0.47, 0.26, 0.5, 0.51, 0.52, 0.2, 0.52, 0.53, 0.54, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bu805"]
+gradient = SubResource("Gradient_5v4fb")
+
+[sub_resource type="Curve" id="Curve_ei6ei"]
+_data = [Vector2(0, 0.3), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_c276y"]
+curve = SubResource("Curve_ei6ei")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_oavgv"]
+direction = Vector3(0, 1, 0)
+spread = 15.0
+initial_velocity_min = 0.9
+initial_velocity_max = 1.5
+gravity = Vector3(0.18, 0.12, 0.06)
+scale_min = 0.6
+scale_max = 1.1
+scale_curve = SubResource("CurveTexture_c276y")
+color_ramp = SubResource("GradientTexture1D_bu805")
+
+[sub_resource type="Gradient" id="Gradient_sg5a8"]
+offsets = PackedFloat32Array(0, 0.35, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.65, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rnj61"]
+gradient = SubResource("Gradient_sg5a8")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v2wr1"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("GradientTexture2D_rnj61")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_2kc8g"]
+material = SubResource("StandardMaterial3D_v2wr1")
+size = Vector2(3, 3)
 
 [node name="industrial_building_03" type="StaticBody3D" unique_id=671653547]
+script = ExtResource("1_x8dv3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=188910968]
-mesh = ExtResource("1_15eth")
+mesh = ExtResource("2_6w3e2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=501074749]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.8, 0)
-shape = SubResource("BoxShape3D_wukaq")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5, 0)
+shape = SubResource("BoxShape3D_ocb7x")
+
+[node name="SolidCollision1" type="CollisionShape3D" parent="." unique_id=1446259836]
+shape = SubResource("ConvexPolygonShape3D_ev6lu")
+
+[node name="SolidCollision2" type="CollisionShape3D" parent="." unique_id=567998078]
+shape = SubResource("ConvexPolygonShape3D_ogtl1")
+
+[node name="SolidCollision3" type="CollisionShape3D" parent="." unique_id=225245932]
+shape = SubResource("ConvexPolygonShape3D_rwnns")
+
+[node name="StackSmoke" type="GPUParticles3D" parent="." unique_id=1044517333 instance=ExtResource("3_jvpru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 25.7, 8)
+cast_shadow = 0
+emitting = false
+amount = 18
+lifetime = 8.0
+preprocess = 4.0
+fixed_fps = 15
+visibility_aabb = AABB(-12, -2, -12, 24, 30, 24)
+process_material = SubResource("ParticleProcessMaterial_oavgv")
+draw_pass_1 = SubResource("QuadMesh_2kc8g")
+script = ExtResource("4_prx11")

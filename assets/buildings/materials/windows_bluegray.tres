@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/buildings/materials/windows_bluegray_atlas_albedo.png" id="1_windows"]
+
+[resource]
+resource_name = "Reusable blue gray room windows (8 x 8 atlas)"
+albedo_texture = ExtResource("1_windows")
+metallic = 0.15
+roughness = 0.38
+texture_filter = 5

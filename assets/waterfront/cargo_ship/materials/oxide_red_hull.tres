@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/waterfront/cargo_ship/textures/painted_steel.png" id="1_svvp5"]
+
+[resource]
+resource_name = "oxide_red_Hull"
+albedo_color = Color(0.57254905, 0.23529412, 0.19607843, 1)
+albedo_texture = ExtResource("1_svvp5")
+metallic = 0.12
+roughness = 0.72

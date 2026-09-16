@@ -18,8 +18,8 @@ func _run_test() -> void:
 		player.get_node("PlayerLandingImpactController")
 		as PlayerLandingImpactController
 	)
-	var hud := player.get_node("ChargeUI") as PlayerHud
-	hud.show()
+	var categories: Array[String] = []
+	controller.landing_classified.connect(func(category: String): categories.append(category))
 	assert(controller != null)
 	assert(controller.player == player)
 
@@ -29,11 +29,11 @@ func _run_test() -> void:
 	controller.resolve_normal_landing()
 	assert(not controller.was_airborne)
 	assert(controller.max_downward_speed == 0.0)
-	assert(hud.landing_label.text == "Landing: Heavy")
+	assert(categories.back() == "Heavy")
 
 	controller.observe_normal_airborne(-40.0)
 	controller.resolve_normal_landing()
-	assert(hud.landing_label.text == "Landing: Super")
+	assert(categories.back() == "Super")
 
 	print("PASS: PlayerLandingImpactController tracking and classification")
 	quit()

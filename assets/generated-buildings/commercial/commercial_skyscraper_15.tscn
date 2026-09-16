@@ -1,15 +1,36 @@
 [gd_scene format=3]
 
-[ext_resource type="ArrayMesh" path="res://assets/generated-buildings/commercial/meshes/commercial_skyscraper_15.res" id="1_vy83c"]
+[ext_resource type="Script" path="res://assets/generated-buildings/commercial/commercial_skyscraper_01.gd" id="1_oxy26"]
+[ext_resource type="ArrayMesh" path="res://assets/generated-buildings/commercial/meshes/commercial_skyscraper_15.res" id="2_s21pb"]
+[ext_resource type="PackedScene" path="res://assets/props/rooftop_hvac/rooftop_hvac.tscn" id="3_go7li"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_axj2n"]
-size = Vector3(32, 99.2, 24.04)
+[sub_resource type="BoxShape3D" id="BoxShape3D_l1bks"]
+size = Vector3(32, 8, 24.04)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lk427"]
+size = Vector3(30, 80, 22)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_denpn"]
+size = Vector3(24, 8, 20)
 
 [node name="commercial_skyscraper_15" type="StaticBody3D" unique_id=381467673]
+script = ExtResource("1_oxy26")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1622175240]
-mesh = ExtResource("1_vy83c")
+mesh = ExtResource("2_s21pb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1334887593]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 49.6, 0)
-shape = SubResource("BoxShape3D_axj2n")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+shape = SubResource("BoxShape3D_l1bks")
+
+[node name="TierCollision1" type="CollisionShape3D" parent="." unique_id=658602779]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 48, 0)
+shape = SubResource("BoxShape3D_lk427")
+
+[node name="TierCollision2" type="CollisionShape3D" parent="." unique_id=154785996]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 92, 0)
+shape = SubResource("BoxShape3D_denpn")
+
+[node name="RooftopHVAC" type="StaticBody3D" parent="." unique_id=661342222 instance=ExtResource("3_go7li")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 96, 0)
+metadata/source = "hospital / Roof equipment / unit at (-13, 129, -18)"

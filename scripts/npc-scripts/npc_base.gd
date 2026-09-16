@@ -8,6 +8,7 @@ signal died(npc: NPCBase)
 @export var max_health: float = 100.0
 @export var knockback_speed: float = 8.0
 @export var knockback_deceleration: float = 8.0
+@export var knockback_resistant: bool = false
 @export var chest_hit_stun_duration: float = 0.75
 @export var animation_controller_path: NodePath
 
@@ -67,7 +68,12 @@ func apply_damage(damage_info) -> bool:
 	is_waiting_for_chest_hit_stun = false
 	is_waiting_for_knockback_stun = false
 	knockback_velocity = Vector3.ZERO
-	match damage_info.reaction:
+	# Resolve locally: shared area-damage payloads must keep their reaction for
+	# other targets. Resistant NPCs still take damage and a normal hit stagger.
+	var reaction: StringName = damage_info.reaction
+	if knockback_resistant and not damage_info.force_knockdown and reaction in [&"knockback", &"ground_slam"]:
+		reaction = &"chest"
+	match reaction:
 		&"knockback":
 			is_waiting_for_knockback_stun = true
 			knockback_stun_remaining = chest_hit_stun_duration * 2.0
@@ -161,6 +167,8 @@ func _apply_knockback_from(
 
 
 func _die() -> void:
+	if is_dead:
+		return
 	is_dead = true
 	is_hit_reacting = false
 	is_waiting_for_chest_hit_stun = false

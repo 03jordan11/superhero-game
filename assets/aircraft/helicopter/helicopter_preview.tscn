@@ -1,0 +1,103 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://assets/aircraft/helicopter/tools/preview_camera.gd" id="1_baf2r"]
+[ext_resource type="PackedScene" path="res://assets/aircraft/helicopter/helicopter.tscn" id="2_f40do"]
+[ext_resource type="Script" path="res://assets/aircraft/helicopter/helicopter.gd" id="3_ukwyk"]
+
+[sub_resource type="Environment" id="Environment_qngk3"]
+background_mode = 1
+background_color = Color(0.6627451, 0.7294118, 0.78431374, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.7647059, 0.827451, 0.88235295, 1)
+ambient_light_energy = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dhs6c"]
+albedo_color = Color(0.38431373, 0.42352942, 0.4509804, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_kalic"]
+size = Vector2(100, 100)
+
+[node name="HelicopterPreview" type="Node3D" unique_id=1479982267]
+
+[node name="@WorldEnvironment@3" type="WorldEnvironment" parent="." unique_id=95602542]
+environment = SubResource("Environment_qngk3")
+
+[node name="@DirectionalLight3D@4" type="DirectionalLight3D" parent="." unique_id=1960900447]
+transform = Transform3D(0.81915206, 0.4262504, -0.38379753, 0, 0.66913056, 0.74314487, 0.57357645, -0.6087487, 0.54811966, 0, 0, 0)
+light_energy = 0.9
+shadow_enabled = true
+
+[node name="@MeshInstance3D@5" type="MeshInstance3D" parent="." unique_id=1446188376]
+material_override = SubResource("StandardMaterial3D_dhs6c")
+mesh = SubResource("PlaneMesh_kalic")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=932902546]
+transform = Transform3D(-0.7540816, 0.30437747, -0.5819925, 0, 0.8861291, 0.4634385, 0.6567807, 0.34947047, -0.66821367, -27, 23, -31)
+current = true
+fov = 48.0
+script = ExtResource("1_baf2r")
+
+[node name="ForestStatic" type="Node3D" parent="." unique_id=632560006 instance=ExtResource("2_f40do")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -8)
+script = ExtResource("3_ukwyk")
+parked_collision_enabled = true
+
+[node name="@Label3D@6" type="Label3D" parent="." unique_id=1763541451]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0.15, -13)
+pixel_size = 0.012
+billboard = 1
+text = "FOREST / CREAM · STATIC"
+font_size = 42
+
+[node name="RescueSpinning" type="Node3D" parent="." unique_id=1490255763 instance=ExtResource("2_f40do")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -8)
+script = ExtResource("3_ukwyk")
+livery = 1
+rotors_spinning = true
+parked_collision_enabled = true
+
+[node name="@Label3D@7" type="Label3D" parent="." unique_id=527594067]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.15, -13)
+pixel_size = 0.012
+billboard = 1
+text = "RESCUE RED · SPINNING"
+font_size = 42
+
+[node name="CoastalStatic" type="Node3D" parent="." unique_id=1512925963 instance=ExtResource("2_f40do")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 8)
+script = ExtResource("3_ukwyk")
+livery = 2
+parked_collision_enabled = true
+
+[node name="@Label3D@8" type="Label3D" parent="." unique_id=1488079430]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0.15, 3)
+pixel_size = 0.012
+billboard = 1
+text = "COASTAL BLUE · STATIC"
+font_size = 42
+
+[node name="CharcoalSpinning" type="Node3D" parent="." unique_id=1391643983 instance=ExtResource("2_f40do")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 8)
+script = ExtResource("3_ukwyk")
+livery = 3
+rotors_spinning = true
+parked_collision_enabled = true
+
+[node name="@Label3D@9" type="Label3D" parent="." unique_id=960815043]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.15, 3)
+pixel_size = 0.012
+billboard = 1
+text = "CHARCOAL / ORANGE · SPINNING"
+font_size = 42
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=492750299]
+
+[node name="@Label@10" type="Label" parent="CanvasLayer" unique_id=329662082]
+offset_left = 18.0
+offset_top = 18.0
+offset_right = 18.0
+offset_bottom = 18.0
+theme_override_font_sizes/font_size = 18
+text = "HELICOPTER PREVIEW
+Right mouse + WASD: fly camera | Q/E: down/up | Shift: faster
+Select a helicopter root in the Inspector to change livery, rotor speed or static mode."

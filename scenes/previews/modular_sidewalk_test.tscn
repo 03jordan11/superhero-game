@@ -1,0 +1,368 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/previews/modular_sidewalk_test.gd" id="1_eprhi"]
+[ext_resource type="PackedScene" path="res://assets/super-city/modular-sidewalks/straight_4m.tscn" id="2_6lftg"]
+[ext_resource type="PackedScene" path="res://assets/super-city/modular-sidewalks/straight_8m.tscn" id="3_gtikk"]
+[ext_resource type="PackedScene" path="res://assets/super-city/modular-sidewalks/straight_16m.tscn" id="4_4047o"]
+[ext_resource type="PackedScene" path="res://assets/super-city/modular-sidewalks/straight_40m.tscn" id="5_tka1f"]
+[ext_resource type="PackedScene" path="res://assets/super-city/modular-sidewalks/corner_l.tscn" id="6_hg2ed"]
+[ext_resource type="PackedScene" path="res://assets/super-city/modular-sidewalks/junction_t.tscn" id="7_i2ykb"]
+[ext_resource type="PackedScene" path="res://assets/super-city/modular-sidewalks/junction_cross.tscn" id="8_h1aqq"]
+[ext_resource type="PackedScene" path="res://assets/super-city/modular-sidewalks/end_cap.tscn" id="9_si3hh"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="10_xvkv3"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_character.gd" id="11_cca43"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_stats.gd" id="12_lbd2i"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_abilities.gd" id="13_efnos"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gvre4"]
+albedo_color = Color(0.065, 0.09, 0.12, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_thqnh"]
+size = Vector3(156, 0.2, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ooay8"]
+size = Vector3(156, 0.2, 100)
+
+[sub_resource type="Environment" id="Environment_ool3f"]
+background_mode = 1
+background_color = Color(0.11, 0.15, 0.2, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.8, 0.87, 1, 1)
+ambient_light_energy = 0.35
+tonemap_mode = 2
+
+[sub_resource type="Resource" id="Resource_v41xj"]
+script = ExtResource("12_lbd2i")
+strength = 10
+resilience = 10
+
+[sub_resource type="Resource" id="Resource_n38qs"]
+script = ExtResource("13_efnos")
+
+[node name="ModularSidewalkTest" type="Node3D" unique_id=234183049]
+script = ExtResource("1_eprhi")
+
+[node name="LoosePieces" type="Node3D" parent="." unique_id=1961256508]
+
+[node name="Straight4m" type="StaticBody3D" parent="LoosePieces" unique_id=995938103 instance=ExtResource("2_6lftg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76, 0, -24)
+metadata/sidewalk_module = "straight_4m"
+metadata/snap_grid_m = 2.0
+metadata/path_width_m = 4.0
+metadata/_edit_group_ = true
+
+[node name="Straight8m" type="StaticBody3D" parent="LoosePieces" unique_id=357484289 instance=ExtResource("3_gtikk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, -24)
+metadata/sidewalk_module = "straight_8m"
+metadata/snap_grid_m = 2.0
+metadata/path_width_m = 4.0
+metadata/_edit_group_ = true
+
+[node name="Straight16m" type="StaticBody3D" parent="LoosePieces" unique_id=1040765413 instance=ExtResource("4_4047o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44, 0, -24)
+metadata/sidewalk_module = "straight_16m"
+metadata/snap_grid_m = 2.0
+metadata/path_width_m = 4.0
+metadata/_edit_group_ = true
+
+[node name="Straight40m" type="StaticBody3D" parent="LoosePieces" unique_id=673721983 instance=ExtResource("5_tka1f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, -24)
+metadata/sidewalk_module = "straight_40m"
+metadata/snap_grid_m = 2.0
+metadata/path_width_m = 4.0
+metadata/_edit_group_ = true
+
+[node name="CornerL" type="StaticBody3D" parent="LoosePieces" unique_id=358647469 instance=ExtResource("6_hg2ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76, 0, 0)
+metadata/sidewalk_module = "corner_l"
+metadata/snap_grid_m = 2.0
+metadata/path_width_m = 4.0
+metadata/_edit_group_ = true
+
+[node name="JunctionT" type="StaticBody3D" parent="LoosePieces" unique_id=1918081161 instance=ExtResource("7_i2ykb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, 0)
+metadata/sidewalk_module = "junction_t"
+metadata/snap_grid_m = 2.0
+metadata/path_width_m = 4.0
+metadata/_edit_group_ = true
+
+[node name="JunctionCross" type="StaticBody3D" parent="LoosePieces" unique_id=27284530 instance=ExtResource("8_h1aqq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44, 0, 0)
+metadata/sidewalk_module = "junction_cross"
+metadata/snap_grid_m = 2.0
+metadata/path_width_m = 4.0
+metadata/_edit_group_ = true
+
+[node name="EndCap" type="StaticBody3D" parent="LoosePieces" unique_id=970225194 instance=ExtResource("9_si3hh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, 0)
+metadata/sidewalk_module = "end_cap"
+metadata/snap_grid_m = 2.0
+metadata/path_width_m = 4.0
+metadata/_edit_group_ = true
+
+[node name="Labels" type="Node3D" parent="." unique_id=359340787]
+
+[node name="straight_4mLabel" type="Label3D" parent="Labels" unique_id=1808627691]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76, 1, -29)
+pixel_size = 0.06
+billboard = 1
+modulate = Color(0.8, 0.92, 1, 1)
+outline_modulate = Color(0.03, 0.04, 0.06, 1)
+text = "4 m"
+font_size = 48
+outline_size = 10
+
+[node name="straight_8mLabel" type="Label3D" parent="Labels" unique_id=798338243]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 1, -31)
+pixel_size = 0.06
+billboard = 1
+modulate = Color(0.8, 0.92, 1, 1)
+outline_modulate = Color(0.03, 0.04, 0.06, 1)
+text = "8 m"
+font_size = 48
+outline_size = 10
+
+[node name="straight_16mLabel" type="Label3D" parent="Labels" unique_id=1416339104]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44, 1, -35)
+pixel_size = 0.06
+billboard = 1
+modulate = Color(0.8, 0.92, 1, 1)
+outline_modulate = Color(0.03, 0.04, 0.06, 1)
+text = "16 m"
+font_size = 48
+outline_size = 10
+
+[node name="straight_40mLabel" type="Label3D" parent="Labels" unique_id=1915108087]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 1, -47)
+pixel_size = 0.06
+billboard = 1
+modulate = Color(0.8, 0.92, 1, 1)
+outline_modulate = Color(0.03, 0.04, 0.06, 1)
+text = "40 m"
+font_size = 48
+outline_size = 10
+
+[node name="corner_lLabel" type="Label3D" parent="Labels" unique_id=1051218147]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76, 1, 10)
+pixel_size = 0.06
+billboard = 1
+modulate = Color(0.8, 0.92, 1, 1)
+outline_modulate = Color(0.03, 0.04, 0.06, 1)
+text = "CORNER"
+font_size = 44
+outline_size = 10
+
+[node name="junction_tLabel" type="Label3D" parent="Labels" unique_id=545260667]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 1, 10)
+pixel_size = 0.06
+billboard = 1
+modulate = Color(0.8, 0.92, 1, 1)
+outline_modulate = Color(0.03, 0.04, 0.06, 1)
+text = "T JUNCTION"
+font_size = 44
+outline_size = 10
+
+[node name="junction_crossLabel" type="Label3D" parent="Labels" unique_id=1118778638]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44, 1, 10)
+pixel_size = 0.06
+billboard = 1
+modulate = Color(0.8, 0.92, 1, 1)
+outline_modulate = Color(0.03, 0.04, 0.06, 1)
+text = "CROSS"
+font_size = 44
+outline_size = 10
+
+[node name="end_capLabel" type="Label3D" parent="Labels" unique_id=1755672614]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 1, 10)
+pixel_size = 0.06
+billboard = 1
+modulate = Color(0.8, 0.92, 1, 1)
+outline_modulate = Color(0.03, 0.04, 0.06, 1)
+text = "END CAP"
+font_size = 44
+outline_size = 10
+
+[node name="KitTitle" type="Label3D" parent="Labels" unique_id=1924353138]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52, 1, -57)
+pixel_size = 0.06
+billboard = 1
+modulate = Color(0.8, 0.92, 1, 1)
+outline_modulate = Color(0.03, 0.04, 0.06, 1)
+text = "LOOSE PIECES"
+font_size = 60
+outline_size = 10
+
+[node name="ExampleTitle" type="Label3D" parent="Labels" unique_id=798305111]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 1, -48)
+pixel_size = 0.06
+billboard = 1
+modulate = Color(0.8, 0.92, 1, 1)
+outline_modulate = Color(0.03, 0.04, 0.06, 1)
+text = "CONNECTED EXAMPLE"
+font_size = 60
+outline_size = 10
+
+[node name="AssembledExample" type="Node3D" parent="." unique_id=78472938]
+
+[node name="CenterCross" type="StaticBody3D" parent="AssembledExample" unique_id=347675522 instance=ExtResource("8_h1aqq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, -20)
+metadata/sidewalk_module = "junction_cross"
+metadata/snap_grid_m = 2.0
+metadata/path_width_m = 4.0
+metadata/_edit_group_ = true
+
+[node name="EastStraight" type="StaticBody3D" parent="AssembledExample" unique_id=1431138225 instance=ExtResource("4_4047o")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 42, 0, -20)
+metadata/sidewalk_module = "straight_16m"
+metadata/snap_grid_m = 2.0
+metadata/path_width_m = 4.0
+metadata/_edit_group_ = true
+
+[node name="NorthEastCorner" type="StaticBody3D" parent="AssembledExample" unique_id=2142607860 instance=ExtResource("6_hg2ed")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 56, 0, -20)
+metadata/sidewalk_module = "corner_l"
+metadata/snap_grid_m = 2.0
+metadata/path_width_m = 4.0
+metadata/_edit_group_ = true
+
+[node name="RightStraight" type="StaticBody3D" parent="AssembledExample" unique_id=692554343 instance=ExtResource("4_4047o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56, 0, -6)
+metadata/sidewalk_module = "straight_16m"
+metadata/snap_grid_m = 2.0
+metadata/path_width_m = 4.0
+metadata/_edit_group_ = true
+
+[node name="SouthEastCorner" type="StaticBody3D" parent="AssembledExample" unique_id=2009844447 instance=ExtResource("6_hg2ed")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 56, 0, 8)
+metadata/sidewalk_module = "corner_l"
+metadata/snap_grid_m = 2.0
+metadata/path_width_m = 4.0
+metadata/_edit_group_ = true
+
+[node name="BottomStraight" type="StaticBody3D" parent="AssembledExample" unique_id=430092463 instance=ExtResource("4_4047o")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 42, 0, 8)
+metadata/sidewalk_module = "straight_16m"
+metadata/snap_grid_m = 2.0
+metadata/path_width_m = 4.0
+metadata/_edit_group_ = true
+
+[node name="SouthWestCorner" type="StaticBody3D" parent="AssembledExample" unique_id=698252672 instance=ExtResource("6_hg2ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, 8)
+metadata/sidewalk_module = "corner_l"
+metadata/snap_grid_m = 2.0
+metadata/path_width_m = 4.0
+metadata/_edit_group_ = true
+
+[node name="LeftStraight" type="StaticBody3D" parent="AssembledExample" unique_id=1555032637 instance=ExtResource("4_4047o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, -6)
+metadata/sidewalk_module = "straight_16m"
+metadata/snap_grid_m = 2.0
+metadata/path_width_m = 4.0
+metadata/_edit_group_ = true
+
+[node name="NorthStraight" type="StaticBody3D" parent="AssembledExample" unique_id=1857112753 instance=ExtResource("3_gtikk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, -30)
+metadata/sidewalk_module = "straight_8m"
+metadata/snap_grid_m = 2.0
+metadata/path_width_m = 4.0
+metadata/_edit_group_ = true
+
+[node name="NorthCap" type="StaticBody3D" parent="AssembledExample" unique_id=1382887233 instance=ExtResource("9_si3hh")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 28, 0, -36)
+metadata/sidewalk_module = "end_cap"
+metadata/snap_grid_m = 2.0
+metadata/path_width_m = 4.0
+metadata/_edit_group_ = true
+
+[node name="WestStraight" type="StaticBody3D" parent="AssembledExample" unique_id=1218526668 instance=ExtResource("3_gtikk")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 18, 0, -20)
+metadata/sidewalk_module = "straight_8m"
+metadata/snap_grid_m = 2.0
+metadata/path_width_m = 4.0
+metadata/_edit_group_ = true
+
+[node name="WestJunction" type="StaticBody3D" parent="AssembledExample" unique_id=644918809 instance=ExtResource("7_i2ykb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -20)
+metadata/sidewalk_module = "junction_t"
+metadata/snap_grid_m = 2.0
+metadata/path_width_m = 4.0
+metadata/_edit_group_ = true
+
+[node name="WestBranch" type="StaticBody3D" parent="AssembledExample" unique_id=2144760582 instance=ExtResource("3_gtikk")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2, 0, -20)
+metadata/sidewalk_module = "straight_8m"
+metadata/snap_grid_m = 2.0
+metadata/path_width_m = 4.0
+metadata/_edit_group_ = true
+
+[node name="WestCap" type="StaticBody3D" parent="AssembledExample" unique_id=1708157424 instance=ExtResource("9_si3hh")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -8, 0, -20)
+metadata/sidewalk_module = "end_cap"
+metadata/snap_grid_m = 2.0
+metadata/path_width_m = 4.0
+metadata/_edit_group_ = true
+
+[node name="JunctionCap" type="StaticBody3D" parent="AssembledExample" unique_id=1476769676 instance=ExtResource("9_si3hh")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 8, 0, -28)
+metadata/sidewalk_module = "end_cap"
+metadata/snap_grid_m = 2.0
+metadata/path_width_m = 4.0
+metadata/_edit_group_ = true
+
+[node name="TestGround" type="StaticBody3D" parent="." unique_id=1062392421]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.1, -15)
+
+[node name="Mesh" type="MeshInstance3D" parent="TestGround" unique_id=626834633]
+material_override = SubResource("StandardMaterial3D_gvre4")
+mesh = SubResource("BoxMesh_thqnh")
+
+[node name="Collision" type="CollisionShape3D" parent="TestGround" unique_id=555621313]
+shape = SubResource("BoxShape3D_ooay8")
+
+[node name="Environment" type="WorldEnvironment" parent="." unique_id=2128121856]
+environment = SubResource("Environment_ool3f")
+
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=1926014098]
+transform = Transform3D(0.90630776, 0.34618863, -0.24240388, 0, 0.57357645, 0.81915206, 0.42261827, -0.74240386, 0.5198368, 0, 0, 0)
+shadow_enabled = true
+
+[node name="OverviewCamera" type="Camera3D" parent="." unique_id=719814205]
+transform = Transform3D(0.9945219, -0.09313554, 0.04745493, 0, 0.45399052, 0.8910065, -0.104528464, -0.8861255, 0.45150352, 6, 134, 53)
+projection = 1
+current = true
+size = 156.0
+far = 600.0
+
+[node name="PlayerStart" type="Marker3D" parent="." unique_id=1611377824]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 1.25, 8)
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=1272581381 instance=ExtResource("10_xvkv3")]
+process_mode = 4
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 1.25, 8)
+visible = false
+script = ExtResource("11_cca43")
+stats = SubResource("Resource_v41xj")
+strength = 10
+resilience = 10
+abilities = SubResource("Resource_n38qs")
+
+[node name="Instructions" type="CanvasLayer" parent="." unique_id=240309227]
+layer = 15
+
+[node name="Panel" type="PanelContainer" parent="Instructions" unique_id=1438532769]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 28.0
+offset_top = -104.0
+offset_right = -28.0
+offset_bottom = -24.0
+mouse_filter = 2
+
+[node name="Help" type="Label" parent="Instructions/Panel" unique_id=1955259412]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "F4: walk test | Grid snap 2 m | Rotation snap 90 degrees"
+horizontal_alignment = 1
+vertical_alignment = 1

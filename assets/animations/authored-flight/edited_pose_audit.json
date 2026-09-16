@@ -1,0 +1,17 @@
+{
+  "Flight_Fast": {
+    "max_joint_position_difference_mm": 0.021930619142171846,
+    "worst_bone": "ball_leaf_r",
+    "frames_compared": 121
+  },
+  "Flight_Hover": {
+    "max_joint_position_difference_mm": 0.0009555079140161265,
+    "worst_bone": "ball_leaf_l",
+    "frames_compared": 193
+  },
+  "Flight_Move": {
+    "max_joint_position_difference_mm": 0.0009578560996048568,
+    "worst_bone": "ball_l",
+    "frames_compared": 169
+  }
+}

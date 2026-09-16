@@ -1,0 +1,135 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://assets/buildings/gas_station_hideout/gas_station_hideout.glb" id="1_2bxco"]
+[ext_resource type="PackedScene" path="res://assets/buildings/gas_station_hideout/hideout_entrance.tscn" id="2_7q7w0"]
+[ext_resource type="Script" path="res://scripts/hideout_door.gd" id="3_xfwkl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p5lku"]
+size = Vector3(27.5, 0.12, 25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7q7w0"]
+size = Vector3(6.9, 0.28, 11.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xfwkl"]
+size = Vector3(13.3, 4.1, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bnsa1"]
+size = Vector3(6.5, 4, 10.8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1b6aq"]
+size = Vector3(13.9, 0.2, 10.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nbswy"]
+size = Vector3(7.1, 0.2, 11.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_67ik2"]
+size = Vector3(2, 0.26, 0.8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nr0ek"]
+size = Vector3(12.5, 0.37, 2.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r1msc"]
+size = Vector3(1.05, 0.2, 0.94)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xaicy"]
+size = Vector3(0.79, 0.95, 0.72)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_payvu"]
+size = Vector3(1, 0.93, 0.79)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8tfjn"]
+size = Vector3(1.05, 0.2, 0.94)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iak51"]
+size = Vector3(0.79, 0.95, 0.72)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8suw8"]
+size = Vector3(1, 0.93, 0.79)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dxrvl"]
+size = Vector3(0.29, 6, 0.29)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o6uw3"]
+size = Vector3(0.86, 0.51, 0.88)
+
+[node name="GasStationHideout" type="Node3D" unique_id=189529428]
+metadata/rendered_triangles = 2200
+metadata/exterior_only = true
+
+[node name="Model" type="Node3D" parent="." unique_id=146945550 instance=ExtResource("1_2bxco")]
+
+[node name="ExteriorCollision" type="StaticBody3D" parent="." unique_id=1974568912]
+
+[node name="Crackedforecourt" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1118151416]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06, 1)
+shape = SubResource("BoxShape3D_p5lku")
+
+[node name="Officeslab" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1971579005]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.65, 0.2, -3.2)
+shape = SubResource("BoxShape3D_7q7w0")
+
+[node name="Garageshell" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1017567216]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.25, 2.25, -4)
+shape = SubResource("BoxShape3D_xfwkl")
+
+[node name="Officeshell" type="CollisionShape3D" parent="ExteriorCollision" unique_id=733067634]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.65, 2.2, -3.2)
+shape = SubResource("BoxShape3D_bnsa1")
+
+[node name="Garageroof" type="CollisionShape3D" parent="ExteriorCollision" unique_id=265547947]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.25, 4.34, -4)
+shape = SubResource("BoxShape3D_1b6aq")
+
+[node name="Officeroof" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1753447682]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.65, 4.23, -3.05)
+shape = SubResource("BoxShape3D_nbswy")
+
+[node name="Reardoorstep" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1383586030]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6, 0.25, -8.99)
+shape = SubResource("BoxShape3D_67ik2")
+
+[node name="Pumpisland" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1139605489]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24, 7.7)
+shape = SubResource("BoxShape3D_nr0ek")
+
+[node name="Pumpplinth" type="CollisionShape3D" parent="ExteriorCollision" unique_id=873923182]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.95, 0.51, 7.7)
+shape = SubResource("BoxShape3D_r1msc")
+
+[node name="Pumppedestal" type="CollisionShape3D" parent="ExteriorCollision" unique_id=350925568]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.95, 1.01, 7.7)
+shape = SubResource("BoxShape3D_xaicy")
+
+[node name="Pumphead" type="CollisionShape3D" parent="ExteriorCollision" unique_id=847180905]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.95, 1.86, 7.7)
+shape = SubResource("BoxShape3D_payvu")
+
+[node name="Pumpplinth2" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1613011000]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.95, 0.51, 7.7)
+shape = SubResource("BoxShape3D_8tfjn")
+
+[node name="Pumppedestal2" type="CollisionShape3D" parent="ExteriorCollision" unique_id=7186761]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.95, 1.01, 7.7)
+shape = SubResource("BoxShape3D_iak51")
+
+[node name="Pumphead2" type="CollisionShape3D" parent="ExteriorCollision" unique_id=2107777823]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.95, 1.86, 7.7)
+shape = SubResource("BoxShape3D_8suw8")
+
+[node name="LampPole" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1565959707]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06, 3.4, 7.67)
+shape = SubResource("BoxShape3D_dxrvl")
+
+[node name="Servicecrate" type="CollisionShape3D" parent="ExteriorCollision" unique_id=633172696]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.85, 0.39, -2.7)
+shape = SubResource("BoxShape3D_o6uw3")
+
+[node name="Entry" type="Marker3D" parent="." unique_id=875960359]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.14, 0.22, 2.6)
+
+[node name="RearEntry" type="Marker3D" parent="." unique_id=166979505]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6, 0.12, -9.6)
+
+[node name="HideoutEntrance" type="Node3D" parent="." unique_id=172281562 instance=ExtResource("2_7q7w0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.14, 1.1, 2.6)
+script = ExtResource("3_xfwkl")

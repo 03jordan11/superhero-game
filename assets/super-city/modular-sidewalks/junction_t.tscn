@@ -1,0 +1,54 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="res://assets/super-city/modular-sidewalks/meshes/junction_t.res" id="1_a1ahj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pr1oy"]
+size = Vector3(4.002, 0.03, 4.002)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sw77d"]
+size = Vector3(4.002, 0.03, 4.002)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4mhir"]
+size = Vector3(4.002, 0.03, 4.002)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wyh74"]
+size = Vector3(4.002, 0.03, 4.002)
+
+[node name="JunctionT" type="StaticBody3D" unique_id=1918081161]
+metadata/sidewalk_module = "junction_t"
+metadata/snap_grid_m = 2.0
+metadata/path_width_m = 4.0
+metadata/_edit_group_ = true
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=964226929]
+mesh = ExtResource("1_a1ahj")
+
+[node name="Collision0" type="CollisionShape3D" parent="." unique_id=278045177]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.015, 0)
+shape = SubResource("BoxShape3D_pr1oy")
+
+[node name="Collision1" type="CollisionShape3D" parent="." unique_id=1146550315]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.015, -4)
+shape = SubResource("BoxShape3D_sw77d")
+
+[node name="Collision2" type="CollisionShape3D" parent="." unique_id=500220202]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.015, 0)
+shape = SubResource("BoxShape3D_4mhir")
+
+[node name="Collision3" type="CollisionShape3D" parent="." unique_id=686945112]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.015, 0)
+shape = SubResource("BoxShape3D_wyh74")
+
+[node name="Sockets" type="Node3D" parent="." unique_id=1336082877]
+
+[node name="North" type="Marker3D" parent="Sockets" unique_id=1165573537]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+gizmo_extents = 0.7
+
+[node name="West" type="Marker3D" parent="Sockets" unique_id=1102162324]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -6, 0, 0)
+gizmo_extents = 0.7
+
+[node name="East" type="Marker3D" parent="Sockets" unique_id=1970476100]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6, 0, 0)
+gizmo_extents = 0.7

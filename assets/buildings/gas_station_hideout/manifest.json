@@ -1,0 +1,259 @@
+{
+  "triangles": 2200,
+  "exported_triangles": 2200,
+  "limit_exclusive": 5000,
+  "units": "meters",
+  "godot_front_axis": "+Z",
+  "footprint": [
+    27.5,
+    25.0
+  ],
+  "height": 6.7,
+  "by_part": {
+    "Grounds": 12,
+    "Architecture": 108,
+    "Roof": 264,
+    "Facade": 288,
+    "Details": 124,
+    "Pumps": 768,
+    "Yard": 636
+  },
+  "collision_boxes": [
+    {
+      "name": "Cracked forecourt",
+      "center": [
+        0,
+        0.06,
+        1
+      ],
+      "size": [
+        27.5,
+        0.12,
+        25
+      ]
+    },
+    {
+      "name": "Office slab",
+      "center": [
+        -6.65,
+        0.2,
+        -3.2
+      ],
+      "size": [
+        6.9,
+        0.28,
+        11.4
+      ]
+    },
+    {
+      "name": "Garage shell",
+      "center": [
+        3.25,
+        2.25,
+        -4
+      ],
+      "size": [
+        13.3,
+        4.1,
+        10
+      ]
+    },
+    {
+      "name": "Office shell",
+      "center": [
+        -6.65,
+        2.2,
+        -3.2
+      ],
+      "size": [
+        6.5,
+        4,
+        10.8
+      ]
+    },
+    {
+      "name": "Garage roof",
+      "center": [
+        3.25,
+        4.34,
+        -4
+      ],
+      "size": [
+        13.9,
+        0.2,
+        10.6
+      ]
+    },
+    {
+      "name": "Office roof",
+      "center": [
+        -6.65,
+        4.23,
+        -3.05
+      ],
+      "size": [
+        7.1,
+        0.2,
+        11.6
+      ]
+    },
+    {
+      "name": "Rear doorstep",
+      "center": [
+        -6.6,
+        0.25,
+        -8.99
+      ],
+      "size": [
+        2.0,
+        0.26,
+        0.8
+      ]
+    },
+    {
+      "name": "Pump island",
+      "center": [
+        0,
+        0.24,
+        7.7
+      ],
+      "size": [
+        12.5,
+        0.37,
+        2.25
+      ]
+    },
+    {
+      "name": "Pump plinth",
+      "center": [
+        -3.95,
+        0.51,
+        7.7
+      ],
+      "size": [
+        1.05,
+        0.2,
+        0.94
+      ]
+    },
+    {
+      "name": "Pump pedestal",
+      "center": [
+        -3.95,
+        1.01,
+        7.7
+      ],
+      "size": [
+        0.79,
+        0.95,
+        0.72
+      ]
+    },
+    {
+      "name": "Pump head",
+      "center": [
+        -3.95,
+        1.86,
+        7.7
+      ],
+      "size": [
+        1.0,
+        0.93,
+        0.79
+      ]
+    },
+    {
+      "name": "Pump plinth",
+      "center": [
+        3.95,
+        0.51,
+        7.7
+      ],
+      "size": [
+        1.05,
+        0.2,
+        0.94
+      ]
+    },
+    {
+      "name": "Pump pedestal",
+      "center": [
+        3.95,
+        1.01,
+        7.7
+      ],
+      "size": [
+        0.79,
+        0.95,
+        0.72
+      ]
+    },
+    {
+      "name": "Pump head",
+      "center": [
+        3.95,
+        1.86,
+        7.7
+      ],
+      "size": [
+        1.0,
+        0.93,
+        0.79
+      ]
+    },
+    {
+      "name": "LampPole",
+      "center": [
+        0.06,
+        3.4,
+        7.67
+      ],
+      "size": [
+        0.29,
+        6.0,
+        0.29
+      ]
+    },
+    {
+      "name": "Service crate",
+      "center": [
+        10.85,
+        0.39,
+        -2.7
+      ],
+      "size": [
+        0.86,
+        0.51,
+        0.88
+      ]
+    }
+  ],
+  "atlas_tiles": {
+    "Plaster": 0,
+    "Red": 1,
+    "Teal": 2,
+    "CreamMetal": 3,
+    "Rust": 4,
+    "Roof": 5,
+    "Concrete": 6,
+    "Glass": 7,
+    "Wood": 8,
+    "Rubber": 9,
+    "Door": 10,
+    "Pump": 11,
+    "Sign": 12,
+    "ServiceSign": 13,
+    "Metal": 14,
+    "Weeds": 15
+  },
+  "entry_marker": [
+    -5.14,
+    0.22,
+    2.6
+  ],
+  "rear_entry_marker": [
+    -6.6,
+    0.12,
+    -9.6
+  ]
+}

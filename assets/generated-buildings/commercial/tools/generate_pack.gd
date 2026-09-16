@@ -1,5 +1,5 @@
 extends SceneTree
-## Offline asset builder. No generated building needs a runtime script.
+## Offline asset builder. Assets 01 and 02 have revision builders and night lighting.
 ## Run: godot --headless --path . --script res://assets/generated-buildings/commercial/tools/generate_pack.gd
 
 const OUT = "res://assets/generated-buildings/commercial/"
@@ -17,8 +17,14 @@ func _initialize() -> void:
 	for folder in ["materials", "textures", "meshes", "tools", "previews"]:
 		DirAccess.make_dir_recursive_absolute(OUT + folder)
 	make_materials()
+	# Keep the hand-revised asset and its metadata when regenerating the older pack.
+	# Rebuild 01/02 explicitly with their revise_skyscraper scripts if needed.
+	var existing: Array = JSON.parse_string(FileAccess.get_file_as_string(OUT + "manifest.json"))
 	var designs = get_designs()
 	for i in range(designs.size()):
+		if existing.size() > i and existing[i].has("hvac_triangles") and FileAccess.file_exists(OUT + "commercial_skyscraper_%02d.tscn" % (i + 1)):
+			manifest.append(existing[i])
+			continue
 		make_building(i, designs[i])
 	var file = FileAccess.open(OUT + "manifest.json", FileAccess.WRITE)
 	file.store_string(JSON.stringify(manifest, "\t"))

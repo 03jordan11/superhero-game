@@ -6,6 +6,7 @@ const PLAYER_PERF = preload("res://scripts/ui-scripts/player_performance_monitor
 signal jump_charge_changed(current_charge: float, max_charge: float)
 signal ground_speed_changed(current_speed: float, walk_speed: float, run_speed: float)
 signal flight_speed_changed(current_speed: float, max_speed: float, is_active: bool)
+signal flight_charge_changed(active: bool, ratio: float, eligible: bool)
 
 @export_category("Power Jump")
 @export var min_jump_velocity: float = 8.0
@@ -32,8 +33,6 @@ var charged_jump_output_multiplier: float = 1.0
 @export var sprint_deceleration: float = 20.0
 @export_range(0.0, 1.0, 0.05) var air_control_strength: float = 0.35
 @export var gravity: float = 24.0
-@export_range(0.0, 60.0, 1.0) var movement_turn_angle: float = 30.0
-@export_range(1.0, 2.0, 0.05) var sprint_turn_multiplier: float = 1.4
 @export_range(0.1, 30.0, 0.1) var movement_turn_speed: float = 10.0
 
 @export_category("Flight")
@@ -42,6 +41,12 @@ var charged_jump_output_multiplier: float = 1.0
 @export var flight_stop_deceleration: float = 25.0
 @export var flight_hover_speed_threshold: float = 0.1
 @export var flight_turn_speed: float = 10.0
+@export_range(0.1, 0.5, 0.01) var flight_charge_hold_threshold: float = 0.2
+@export_range(0.2, 5.0, 0.1) var flight_charge_time: float = 1.5
+@export var flight_surge_min_speed: float = 45.0
+@export var flight_surge_max_speed: float = 120.0
+@export_range(0.1, 2.0, 0.05) var flight_surge_duration: float = 0.45
+var is_charging_flight: bool = false
 @export var ground_slam_speed: float = 80.0
 @export var ground_slam_minimum_height: float = 4.0
 @export_range(0.8, 1.0, 0.01) var flight_knockout_speed_percent: float = 0.98
@@ -105,20 +110,25 @@ var knockout_stun_remaining: float = 0.0
 
 @onready var spring_arm: SpringArm3D = $SpringArm3D
 @onready var camera: Camera3D = $SpringArm3D/Camera3D
-@onready var player_hud: PlayerHud = $ChargeUI
 @onready var superhero_character: Node3D = $SuperheroCharacter
 @onready var character_animation_player: AnimationPlayer = $SuperheroCharacter/CharacterAnimationPlayer
 @onready var state_machine: PlayerStateMachine = $PlayerStateMachine
 @onready var input_controller: Node = $PlayerInputController
 @onready var stamina: PlayerStamina = $PlayerStamina
+@onready var laser_eyes: PlayerLaserEyes = $PlayerLaserEyes
 @onready var bounding_controller: PlayerBoundingController = $PlayerBoundingController
 @onready var grounded_state: PlayerGroundedState = $PlayerStateMachine/GroundedState
+@onready var flying_state: PlayerFlyingState = $PlayerStateMachine/FlyingState
 @onready var movement_motor: PlayerMovementMotor = $PlayerMovementMotor
 @onready var animation_controller: PlayerAnimationController = $PlayerAnimationController
 @onready var combat_controller: PlayerCombatController = $PlayerCombatController
 @onready var status_effects: PlayerStatusEffects = $PlayerStatusEffects
 @onready var damage_receiver: PlayerDamageReceiver = $PlayerDamageReceiver
 @onready var vehicle_interactor: PlayerVehicleInteractor = $PlayerVehicleInteractor
+@onready var rescue_carrier: PlayerRescueCarrier = $PlayerRescueCarrier
+@onready var ship_interaction: Node = $PlayerShipInteraction
+@onready var target_lock: Node = $PlayerTargetLock
+@onready var hostile_grab: PlayerHostileGrab = $PlayerHostileGrab
 @onready var landing_impact_controller: PlayerLandingImpactController = (
 	$PlayerLandingImpactController
 )
@@ -127,6 +137,8 @@ var knockout_stun_remaining: float = 0.0
 
 var superhero_character_default_rotation: Vector3
 var movement_visual_yaw: float = 0.0
+# World heading is independent of the camera/root yaw while walking or idle.
+var ground_facing_yaw: float = 0.0
 
 
 func _ready() -> void:
@@ -137,6 +149,7 @@ func _ready() -> void:
 	current_ground_speed = _get_walk_speed()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	superhero_character_default_rotation = superhero_character.rotation
+	ground_facing_yaw = global_rotation.y
 	animation_controller.setup(character_animation_player, is_on_floor())
 	combat_controller.setup(animation_controller)
 	damage_receiver.setup(
@@ -152,12 +165,6 @@ func _ready() -> void:
 	vehicle_interactor.vehicle_released.connect(_on_vehicle_released)
 	camera_effects.call("setup", spring_arm)
 	landing_impact_controller.initialize(self, camera_effects)
-	player_hud.setup(
-		self,
-		damage_receiver,
-		vehicle_interactor,
-		landing_impact_controller
-	)
 
 
 func apply_damage(damage_info) -> bool:
@@ -231,20 +238,38 @@ func _input(event: InputEvent) -> void:
 
 
 func _profiled_input(event: InputEvent) -> void:
+	if get_node("PlayerPowerController").is_selector_open(): return
 	var bindings: Node = get_node("/root/GameSettings").input_bindings
 	if bindings.is_capturing: return
 	var debug_manager := get_node_or_null("/root/DebugManager")
 	if debug_manager != null and debug_manager.developer_menu_open:
 		return
 
+	if bindings.is_action_press(event, "aim_power") or (event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.pressed):
+		# Release before subsequent mouse-motion events in this same frame.
+		target_lock.release_for_aim()
+		combat_controller.cancel_charge_input()
 	if event is InputEventMouseMotion:
 		input_controller.apply_look(event.screen_relative * mouse_sensitivity)
+	if ship_interaction.is_attached(): return
+	if event.is_action_released("attack"):
+		combat_controller.release_attack()
 
 	if bindings.is_action_press(event, "attack"):
-		if is_flying or is_jump_active:
+		if hostile_grab.owns_animation():
+			hostile_grab.request_slam()
+			return
+		# Reserve aimed attacks for the selected power before the next physics snapshot.
+		if input_controller.is_power_aim_requested():
+			return
+		# Continue an existing combo (including its airborne uppercut), and let
+		# actual floor contact win over the previous frame's jump flag.
+		if not is_dead and not is_knocked_out and combat_controller.is_action_locked():
+			combat_controller.begin_attack()
+		elif is_flying or (is_jump_active and not is_on_floor()):
 			_try_start_ground_slam()
-		elif not is_dead and not is_charging_jump and not is_knocked_out and not is_ground_slamming and not is_wall_running and is_on_floor():
-			combat_controller.request_punch()
+		elif not is_dead and not is_charging_jump and not is_charging_flight and not is_knocked_out and not is_ground_slamming and not is_wall_running and is_on_floor():
+			combat_controller.begin_attack()
 
 	if event is InputEventMouseButton and event.pressed:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -258,46 +283,43 @@ func _physics_process(delta: float) -> void:
 
 func _profiled_physics_process(delta: float) -> void:
 	var input_snapshot: PlayerInputSnapshot = input_controller.capture()
-	stamina.begin_tick(input_controller.is_sprint_requested())
+	stamina.begin_tick(input_snapshot.sprint_pressed)
 
 	status_effects.update(delta)
+	target_lock.update_lock(delta, input_snapshot)
+	if input_snapshot.vehicle_interact_just_pressed:
+		for door in get_tree().get_nodes_in_group(&"hideout_doors"):
+			if door.try_interact(self):
+				stamina.finish_tick(delta, Vector3.ZERO, is_on_floor())
+				return
+		for machine in get_tree().get_nodes_in_group(&"power_machines"):
+			if machine.try_interact(self):
+				stamina.finish_tick(delta, Vector3.ZERO, is_on_floor())
+				return
+		for bed in get_tree().get_nodes_in_group(&"hideout_beds"):
+			if bed.try_interact(self):
+				stamina.finish_tick(delta, Vector3.ZERO, is_on_floor())
+				return
+	if ship_interaction.handle_input(delta, input_snapshot):
+		target_lock.release()
+		stamina.finish_tick(delta, Vector3.ZERO, is_on_floor())
+		return
+	laser_eyes.update_power(delta, input_snapshot)
 
 	if not is_dead:
-		if not vehicle_interactor.has_held_vehicle() and input_snapshot.vehicle_interact_just_pressed:
-			vehicle_interactor.try_pick_up_vehicle()
+		if rescue_carrier.has_patient():
+			if input_snapshot.vehicle_interact_just_pressed: rescue_carrier.drop_patient()
 		elif vehicle_interactor.has_held_vehicle():
 			vehicle_interactor.update_throw(delta, input_snapshot)
+		elif hostile_grab.owns_animation():
+			pass # E belongs to the grab controller until its sequence finishes.
+		elif input_snapshot.vehicle_interact_just_pressed:
+			if not rescue_carrier.try_pick_up() and not hostile_grab.try_grab(): vehicle_interactor.try_pick_up_vehicle()
+	hostile_grab.update(delta,input_snapshot)
 
-	if input_snapshot.toggle_flight_just_pressed:
-		_toggle_flight_state()
+	flying_state.handle_flight_input(delta, input_snapshot)
 
-	var active_state := state_machine.active_state
-	if (
-		active_state is PlayerGroundedState
-		or active_state is PlayerJumpChargingState
-		or active_state is PlayerAirborneState
-		or active_state is PlayerWallRunState
-	):
-		# Face into movement without rotating the camera or movement basis.
-		var target_yaw := 0.0
-		if active_state is PlayerGroundedState and not combat_controller.is_action_locked():
-			var turn_angle := deg_to_rad(movement_turn_angle)
-			if input_snapshot.sprint_pressed and stamina.can_boost():
-				turn_angle *= sprint_turn_multiplier
-			target_yaw = -input_snapshot.lateral_movement * turn_angle
-			if input_snapshot.movement.y > 0.0:
-				# Backward diagonals angle toward the matching side of the camera.
-				target_yaw = PI - target_yaw
-		movement_visual_yaw = lerp_angle(
-			movement_visual_yaw,
-			target_yaw,
-			1.0 - exp(-movement_turn_speed * delta)
-		)
-		# Clear any flight pitch/roll before applying the locomotion yaw.
-		superhero_character.rotation = superhero_character_default_rotation
-		superhero_character.rotation.y += movement_visual_yaw
-	else:
-		movement_visual_yaw = 0.0
+	_update_movement_facing(delta, input_snapshot)
 	bounding_controller.begin_tick(delta)
 	state_machine.physics_update(delta, input_snapshot)
 
@@ -320,7 +342,7 @@ func _profiled_physics_process(delta: float) -> void:
 	move_and_slide()
 	if is_on_floor():
 		air_jump_used = false
-	stamina.finish_tick(delta, global_position - position_before_move)
+	stamina.finish_tick(delta, global_position - position_before_move, was_grounded and is_on_floor())
 	PLAYER_PERF.finish(&"player_move_and_slide", move_started)
 	state_machine.post_physics_update(delta, input_snapshot)
 	ground_slam_impact_pending = landing_impact_controller.update_after_move(
@@ -340,9 +362,54 @@ func _profiled_physics_process(delta: float) -> void:
 		is_charging_jump,
 		is_on_floor(),
 		input_snapshot.sprint_pressed and stamina.can_boost(),
-		input_snapshot.move_forward_pressed
+		velocity.length() > flight_hover_speed_threshold,
+		flying_state.is_boosting or flying_state.surge_remaining > 0.0
 	)
 	PLAYER_PERF.finish(&"player_animation_logic", animation_started)
+	hostile_grab.pose_after_move()
+
+
+func is_carrying() -> bool:
+	return vehicle_interactor.has_held_vehicle() or (rescue_carrier != null and rescue_carrier.has_patient()) or (hostile_grab != null and hostile_grab.has_hostile())
+
+func drop_everything() -> void:
+	vehicle_interactor.drop_held_vehicle()
+	rescue_carrier.drop_patient()
+	hostile_grab.drop()
+
+
+func _update_movement_facing(delta: float, input: PlayerInputSnapshot) -> void:
+	var active_state := state_machine.active_state
+	if target_lock.has_target() and active_state is PlayerNormalMovementState:
+		ground_facing_yaw=global_rotation.y
+		_apply_ground_facing_visual()
+		return
+	if active_state is PlayerGroundedState and not combat_controller.is_action_locked() and not is_charging_flight:
+		if input.aim_power_pressed:
+			# Aim locks facing to camera yaw, including while standing still.
+			ground_facing_yaw = global_rotation.y
+		elif input.movement.length_squared() > 0.0001:
+			# Keyboard diagonals yield 45-degree headings; sticks stay continuous.
+			var target_yaw := global_rotation.y + atan2(-input.movement.x, -input.movement.y)
+			ground_facing_yaw = lerp_angle(ground_facing_yaw, target_yaw,
+				1.0 - exp(-movement_turn_speed * delta))
+		_apply_ground_facing_visual()
+	elif active_state is PlayerNormalMovementState or active_state is PlayerWallRunState:
+		# Preserve camera-forward jumping, wall running and combat behavior.
+		movement_visual_yaw = 0.0 if input.aim_power_pressed else lerp_angle(
+			movement_visual_yaw, 0.0, 1.0 - exp(-movement_turn_speed * delta))
+		ground_facing_yaw = global_rotation.y + movement_visual_yaw
+		superhero_character.rotation = superhero_character_default_rotation
+		superhero_character.rotation.y += movement_visual_yaw
+	else:
+		movement_visual_yaw = 0.0
+		ground_facing_yaw = global_rotation.y
+
+
+func _apply_ground_facing_visual() -> void:
+	movement_visual_yaw = wrapf(ground_facing_yaw - global_rotation.y, -PI, PI)
+	superhero_character.rotation = superhero_character_default_rotation
+	superhero_character.rotation.y += movement_visual_yaw
 
 
 func _on_vehicle_released(vehicle: RigidBody3D, release_speed: float) -> void:
@@ -363,6 +430,7 @@ func _toggle_flight_state() -> void:
 
 
 func _try_start_ground_slam() -> void:
+	if is_charging_flight: return
 	if not is_flying and not is_jump_active:
 		return
 

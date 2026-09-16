@@ -16,6 +16,11 @@ func enter(_previous_state: PlayerState, _context: Dictionary = {}) -> void:
 
 func physics_update(delta: float, input: PlayerInputSnapshot) -> void:
 	_update_vertical_movement(delta)
+	if player.is_charging_flight:
+		player.velocity.x = move_toward(player.velocity.x, 0.0, player.acceleration * delta)
+		player.velocity.z = move_toward(player.velocity.z, 0.0, player.acceleration * delta)
+		_publish_movement_changes()
+		return
 	if _stop_horizontal_movement_if_combat_locked():
 		_publish_movement_changes()
 		return
@@ -81,7 +86,7 @@ func _update_vertical_movement(delta: float) -> void:
 
 
 func _stop_horizontal_movement_if_combat_locked() -> bool:
-	if not player.combat_controller.is_action_locked():
+	if not player.combat_controller.is_action_locked() and not player.hostile_grab.blocks_motion():
 		return false
 	player.velocity.x = 0.0
 	player.velocity.z = 0.0
@@ -230,6 +235,7 @@ func _sync_grounded_airborne(is_grounded: bool) -> void:
 
 
 func _try_start_wall_run(input: PlayerInputSnapshot) -> void:
+	if player.is_charging_flight: return
 	var collision_normal := _get_wall_collision_normal()
 	if collision_normal == Vector3.ZERO:
 		return

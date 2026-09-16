@@ -31,8 +31,13 @@ func run() -> void:
 	for flying in [false, true]:
 		player.state_machine.transition_to(&"FlyingState" if flying else &"AirborneState")
 		Input.action_press("move_forward")
-		Input.action_press("sprint")
+		preload("res://tests/player_test_support.gd").set_sprint_held(true)
 		for i in 50: player._profiled_physics_process(0.1)
+		if not flying:
+			check(stamina.current == stamina.maximum, "Ordinary airborne boost freezes stamina")
+			preload("res://tests/player_test_support.gd").set_sprint_held(false)
+			Input.action_release("move_forward")
+			continue
 		check(stamina.current == 0 and stamina.exhausted, "Boost exhausts shared stamina")
 		player._profiled_physics_process(0.1)
 		check(player.velocity.length() > player._get_walk_speed() and stamina.current == 0, "No recharge while coasting fast with sprint held")
@@ -41,7 +46,7 @@ func run() -> void:
 		Input.action_release("move_forward")
 		for i in 20: player._profiled_physics_process(0.1)
 		check(stamina.current == 0, "Sprint intent blocks recovery without movement input")
-		Input.action_release("sprint")
+		preload("res://tests/player_test_support.gd").set_sprint_held(false)
 		player._profiled_physics_process(1.0)
 		check(stamina.current == 0, "One-second delay begins when sprint is released")
 		player._profiled_physics_process(1.0)

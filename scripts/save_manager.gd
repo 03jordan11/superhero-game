@@ -9,6 +9,18 @@ const SAVE_VERSION := 2
 # Tests override this path to keep the real save untouched.
 var _save_path := SAVE_PATH
 
+func _ready() -> void:
+	# Restore the seed before the city enters the tree, without loading player data.
+	if has_save():
+		var json := JSON.new()
+		if json.parse(FileAccess.get_file_as_string(_save_path)) == OK and json.data is Dictionary:
+			get_node("/root/CityWindows").restore_data(_get_dictionary(_get_dictionary(json.data, "world"), "window_lighting"))
+			return
+	get_node("/root/CityWindows").start_new_game()
+
+func begin_new_game(seed_override: int = -1) -> void:
+	get_node("/root/CityWindows").start_new_game(seed_override)
+
 
 func save_game() -> bool:
 	var player := _get_player()
@@ -22,7 +34,7 @@ func save_game() -> bool:
 		"player": _get_player_save_data(player),
 		"power_menu": _get_power_menu_save_data(),
 		"progress": {},
-		"world": {},
+		"world": {"window_lighting": get_node("/root/CityWindows").save_data()},
 	}
 	var file := FileAccess.open(_save_path, FileAccess.WRITE)
 	if file == null:
@@ -60,8 +72,13 @@ func load_game() -> bool:
 		return false
 
 	var save_data: Dictionary = json.data
+	get_node("/root/CityWindows").restore_data(_get_dictionary(_get_dictionary(save_data, "world"), "window_lighting"))
 	_apply_player_save_data(player, _get_dictionary(save_data, "player"))
 	player.get_node("PlayerPowerController").progression.apply_save_data(_get_dictionary(save_data, "power_menu"))
+	var selected: Variant = _get_dictionary(save_data, "player").get("active_power", "laser_eyes")
+	var powers := player.get_node("PlayerPowerController")
+	if not selected is String or not powers.select_active_power(StringName(selected)):
+		powers.select_active_power(&"laser_eyes")
 	return true
 
 
@@ -101,6 +118,7 @@ func _get_player() -> PlayerCharacter:
 
 func _get_player_save_data(player: PlayerCharacter) -> Dictionary:
 	return {
+		"active_power": String(player.get_node("PlayerPowerController").active_power),
 		"stats": {
 			"level": player.stats.level,
 			"strength": player.stats.strength,
@@ -108,6 +126,7 @@ func _get_player_save_data(player: PlayerCharacter) -> Dictionary:
 			"resilience": player.stats.resilience,
 			"experience": player.stats.experience,
 			"money": player.stats.money,
+			"good_will": player.stats.good_will,
 			"attribute_points": player.stats.attribute_points,
 		},
 		"powers": _get_power_save_data(player),
@@ -135,6 +154,7 @@ func _apply_player_save_data(player: PlayerCharacter, player_data: Dictionary) -
 	player.stats.resilience = _get_int(stats_data, "resilience", player.stats.resilience)
 	player.stats.experience = _get_int(stats_data, "experience", player.stats.experience)
 	player.stats.money = _get_int(stats_data, "money", player.stats.money)
+	player.stats.good_will = _get_int(stats_data, "good_will", 0)
 	# Old test saves start with zero points, regardless of their saved level.
 	player.stats.attribute_points = _get_int(stats_data, "attribute_points", 0)
 

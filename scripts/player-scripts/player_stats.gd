@@ -37,6 +37,8 @@ var _power_bonuses: Dictionary[StringName, int] = {STRENGTH: 0, SPEED: 0}
 		experience_changed.emit(experience, get_experience_to_next_level())
 
 @export var money: int = 0
+## Accumulated rescue goodwill; the city sentiment system will use it later.
+@export var good_will: int = 0
 @export var attribute_points: int = 0:
 	set(value):
 		var normalized := maxi(value, 0)

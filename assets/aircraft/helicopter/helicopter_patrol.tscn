@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://assets/aircraft/helicopter/helicopter_patrol.gd" id="1_patrol"]
+[ext_resource type="PackedScene" path="res://assets/aircraft/helicopter/helicopter_flying.tscn" id="2_aircraft"]
+
+[node name="HelicopterPatrol" type="Node3D"]
+script = ExtResource("1_patrol")
+
+[node name="Aircraft" parent="." instance=ExtResource("2_aircraft")]

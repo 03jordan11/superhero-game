@@ -11,14 +11,22 @@ Open **Settings → Controls** from the main menu or pause menu. Each gameplay a
 | Jump / charged jump / ascend | Space | A |
 | Sprint / boost | Shift | L3 (left-stick click) |
 | Toggle flight | F | Y |
-| Punch / airborne ground slam | Left mouse | X |
+| Punch / charged punch / airborne ground slam | Left mouse | X |
 | Descend in flight | Ctrl | B |
+| Aim / camera-facing strafe | Hold RMB | Hold LT |
+| Secondary power / Dragon Breath while aiming | Hold Q | Hold RT |
+| Power selector | Hold Alt | Hold LB |
 | Pick up / charge throw / drop vehicle | E | RB |
+| Pick up / safely set down injured civilian | E | RB |
 | Pause | Escape | Menu |
 | Gameplay menu | Tab | R3 (right-stick click) |
 | Developer menu | Backtick | View |
 
 Jump and vehicle interaction keep their existing hold/release behavior. Sprint defaults to Hold; **Gameplay → Boost / Sprint → Toggle** also applies to L3 or its replacement. Flight and wall-running still require their existing unlocks.
+
+**Strength upgrade 1: Charged Punch.** While grounded and empty-handed, hold Attack for 0.25 seconds to begin charging, then release to punch. Full power takes 1 second total hold. Quick clicks perform normal punches on release once this upgrade is unlocked. The 10-metre, 60-degree cone deals up to 100 damage nearby, falling to 30 at its edge; shorter holds are weaker. Susceptible enemies are knocked down, supers resist knockdown, and walls block the hit. Airborne Attack still uses the existing ground slam; Attack while holding an enemy still slams them. See [tuning and animation source](docs/charged-punch.md).
+
+Rescue civilians use a press of E/RB for pickup or safe set-down. They cannot be thrown. While carrying any person or car, other pickups are blocked; a release press cannot also grab another object. Person pickup requires no Vehicle Lift unlock. Sprinting, jumping and flight remain available. Heavy/Super landings and ground slams while carrying a person subtract five seconds from the rescue's preview timer.
 
 Buttons, bumpers, stick clicks, D-pad directions, LT, and RT can be assigned. Controller stick axes cannot be reassigned or used as action buttons. The Xbox system/Guide button stays with the operating system. Keyboard bindings use individual physical keys, including modifier keys themselves; modifier chords and mouse-wheel bindings are not supported. Left/right/middle and the two standard mouse side buttons are supported.
 
@@ -29,6 +37,24 @@ The gameplay menu opens with Tab / R3 and has Powers, Gear, Attributes, Journal,
 Menu controls stay fixed: D-pad navigation, A selects, B goes back, and LB/RB switch settings tabs. Keyboard Tab/arrows/Enter and Escape remain available. Gameplay pause has its own input action, so B can descend during gameplay and go back during menus. Bindings work across controller reconnection/device IDs. All connected gamepads share the Xbox control scheme; this is a single-player input setup.
 
 ## Movement and feedback
+
+### Eight-direction movement update
+
+Changed files for this update:
+
+- `scripts/player-scripts/player_character.gd`: full ground movement facing, persistent idle heading, and camera-facing aim mode; retains the exported turn-speed setting.
+- `scripts/player-scripts/player_input_controller.gd`: preserve world-facing heading during ordinary camera rotation and follow camera yaw during aiming.
+- `scripts/input_bindings.gd`, `project.godot`: pickup E, secondary power Q, flight F; versioned saved-default migration preserves custom assignments.
+- `localization/powers.json`, `docs/fire.md`, `docs/laser_eyes.md`, `docs/power_selector.md`, and this guide: synchronized control descriptions.
+- Added `tests/test_player_directional_movement.gd` and `tests/test_player_pickup_binding.gd` (plus UIDs); updated `tests/test_control_bindings.gd` and the control descriptions in `tests/test_fire_upgrades.gd`.
+
+Validation for this update: editor import reported no GDScript parse errors. Ten headless scripts passed: directional movement, physical pickup bindings, control bindings/migration, movement motor, input snapshot, flight surge, bounding, fire upgrades, laser eyes, and vehicle-interactor cleanup. Real E input picked up and threw a car with Vehicle Lift unlocked. Environment certificate/settings warnings and some shutdown resource warnings remain. Visual gameplay feel was not observed.
+
+Manual check: walk and sprint in all eight directions, stop and orbit the camera, then hold RMB and repeat A/D/S. The body should face movement normally, stay in its last world heading while idle, and face the camera's forward direction while aiming. Release RMB while moving to resume turning. With Vehicle Lift unlocked, aim the camera at a nearby car and use E to pick up, then hold/release E to throw. Check RMB+Q with Dragon Breath unlocked and selected, and F for flight.
+
+Ground walking/sprinting turns the character fully toward camera-relative movement: eight keyboard directions and continuous stick directions. Movement responds immediately while the model turns smoothly, controlled by the player Inspector's `movement_turn_speed`. Releasing movement keeps the last world-facing direction even while orbiting the camera. Hold RMB/LT (or the aim accessibility toggle) to face camera-forward and strafe. Jump launch direction, air control and flight retain their existing camera-relative rules.
+
+Old saved default pickup R and secondary-power E bindings migrate to E and Q. Custom bindings are preserved; a custom action occupying Q takes priority. Flight stays F. Vehicle Lift must be unlocked to pick up cars, and the camera must point at a vehicle within pickup range.
 
 Left-stick movement preserves analog strength on the ground and in flight, with a circular 20% movement deadzone. Right-stick camera movement also has a deadzone and uses elapsed time, maintaining consistent rotation across frame rates and preserving existing camera pitch limits. On the player's `PlayerInputController` child, the Inspector exposes controller look speed (150 degrees/second by default) and look deadzone (20%). Mouse sensitivity keeps its existing player setting.
 

@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/generated-buildings/commercial/textures/limestone.res" id="1_2xsew"]
+[ext_resource type="Texture2D" path="res://assets/generated-buildings/commercial/textures/commercial_skyscraper_01_emission.res" id="2_jq5sq"]
+
+[resource]
+albedo_texture = ExtResource("1_2xsew")
+roughness = 0.87
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.0
+emission_operator = 1
+emission_texture = ExtResource("2_jq5sq")
+texture_filter = 2
+metadata/glow_energy = 2.0

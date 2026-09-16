@@ -1,0 +1,29 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="res://assets/super-city/modular-sidewalks/meshes/straight_40m.res" id="1_fvnrj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gtpoe"]
+size = Vector3(4.002, 0.03, 40.002)
+
+[node name="Straight40m" type="StaticBody3D" unique_id=673721983]
+metadata/sidewalk_module = "straight_40m"
+metadata/snap_grid_m = 2.0
+metadata/path_width_m = 4.0
+metadata/_edit_group_ = true
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=960014525]
+mesh = ExtResource("1_fvnrj")
+
+[node name="Collision0" type="CollisionShape3D" parent="." unique_id=700999076]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.015, 0)
+shape = SubResource("BoxShape3D_gtpoe")
+
+[node name="Sockets" type="Node3D" parent="." unique_id=801508060]
+
+[node name="North" type="Marker3D" parent="Sockets" unique_id=275507193]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+gizmo_extents = 0.7
+
+[node name="South" type="Marker3D" parent="Sockets" unique_id=120391620]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 20)
+gizmo_extents = 0.7

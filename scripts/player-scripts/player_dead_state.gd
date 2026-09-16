@@ -23,8 +23,7 @@ func enter(_previous_state: PlayerState, _context: Dictionary = {}) -> void:
 	player.jump_charge = 0.0
 	player.jump_hold_time = 0.0
 	player.velocity.y = minf(player.velocity.y, 0.0)
-	if player.vehicle_interactor.has_held_vehicle():
-		player.vehicle_interactor.drop_held_vehicle()
+	player.drop_everything()
 	player.combat_controller.cancel_punch()
 	player.animation_controller.play_death()
 	death_started.emit()

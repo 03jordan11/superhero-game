@@ -1,15 +1,38 @@
 [gd_scene format=3]
 
-[ext_resource type="ArrayMesh" path="res://assets/generated-buildings/industrial/meshes/industrial_building_04.res" id="1_djjq8"]
+[ext_resource type="Script" path="res://assets/generated-buildings/industrial/industrial_building.gd" id="1_wh7pj"]
+[ext_resource type="ArrayMesh" path="res://assets/generated-buildings/industrial/meshes/industrial_building_04.res" id="2_bx6g1"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_js852"]
-size = Vector3(32.2, 14.1, 26.2)
+[sub_resource type="BoxShape3D" id="BoxShape3D_u6c86"]
+size = Vector3(32, 12.3, 26)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rt7t8"]
+size = Vector3(5, 1.8, 6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mpijk"]
+size = Vector3(5, 1.8, 6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jcj1f"]
+size = Vector3(5, 1.8, 6)
 
 [node name="industrial_building_04" type="StaticBody3D" unique_id=1385566930]
+script = ExtResource("1_wh7pj")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2139167685]
-mesh = ExtResource("1_djjq8")
+mesh = ExtResource("2_bx6g1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=810876001]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.05, 0)
-shape = SubResource("BoxShape3D_js852")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.15, 0)
+shape = SubResource("BoxShape3D_u6c86")
+
+[node name="SolidCollision1" type="CollisionShape3D" parent="." unique_id=1719745488]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 13.2, 3)
+shape = SubResource("BoxShape3D_rt7t8")
+
+[node name="SolidCollision2" type="CollisionShape3D" parent="." unique_id=276205180]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.2, 3)
+shape = SubResource("BoxShape3D_mpijk")
+
+[node name="SolidCollision3" type="CollisionShape3D" parent="." unique_id=1363869527]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 13.2, 3)
+shape = SubResource("BoxShape3D_jcj1f")

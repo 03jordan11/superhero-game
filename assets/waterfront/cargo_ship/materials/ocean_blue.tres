@@ -1,0 +1,21 @@
+[gd_resource type="Resource" format=3]
+
+[ext_resource type="Material" path="res://assets/waterfront/cargo_ship/materials/ocean_blue_container_a.tres" id="1_ou62n"]
+[ext_resource type="Material" path="res://assets/waterfront/cargo_ship/materials/ocean_blue_container_b.tres" id="2_lyqrg"]
+[ext_resource type="Material" path="res://assets/waterfront/cargo_ship/materials/ocean_blue_container_c.tres" id="3_b4tgg"]
+[ext_resource type="Material" path="res://assets/waterfront/cargo_ship/materials/ocean_blue_container_d.tres" id="4_8ln2h"]
+[ext_resource type="Material" path="res://assets/waterfront/cargo_ship/materials/ocean_blue_deck.tres" id="5_yc6i5"]
+[ext_resource type="Material" path="res://assets/waterfront/cargo_ship/materials/ocean_blue_hull.tres" id="6_v408w"]
+[ext_resource type="Script" path="res://assets/waterfront/cargo_ship/ship_palette.gd" id="7_5428l"]
+[ext_resource type="Material" path="res://assets/waterfront/cargo_ship/materials/ocean_blue_superstructure.tres" id="8_t6nxi"]
+
+[resource]
+resource_name = "Ocean Blue"
+script = ExtResource("7_5428l")
+hull = ExtResource("6_v408w")
+deck = ExtResource("5_yc6i5")
+superstructure = ExtResource("8_t6nxi")
+container_a = ExtResource("1_ou62n")
+container_b = ExtResource("2_lyqrg")
+container_c = ExtResource("3_b4tgg")
+container_d = ExtResource("4_8ln2h")

@@ -96,8 +96,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		tabs.get_tab_bar().grab_focus()
 		get_viewport().set_input_as_handled()
 
-func open_menu() -> void:
+func open_menu(selected_tab: int = -1) -> void:
 	if visible or get_tree().paused: return
+	if selected_tab >= 0: tabs.current_tab = clampi(selected_tab, 0, TAB_IDS.size() - 1)
 	_owns_pause = true
 	get_tree().paused = true
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="PackedScene" path="res://assets/buildings/hospital/hospital.tscn" id="1_hospital"]
+[ext_resource type="Script" path="res://scripts/day_night_cycle.gd" id="2_clock"]
+[ext_resource type="Script" path="res://assets/buildings/hospital/hospital_preview.gd" id="3_preview"]
+
+[sub_resource type="Environment" id="Environment_preview"]
+
+[sub_resource type="StandardMaterial3D" id="Material_ground"]
+albedo_color = Color(0.18, 0.22, 0.21, 1)
+roughness = 0.92
+
+[sub_resource type="PlaneMesh" id="Mesh_ground"]
+material = SubResource("Material_ground")
+size = Vector2(8000, 8000)
+
+[sub_resource type="LabelSettings" id="Label_help"]
+font_size = 20
+outline_size = 5
+outline_color = Color(0.03, 0.05, 0.06, 1)
+
+[node name="HospitalPreview" type="Node3D"]
+script = ExtResource("3_preview")
+
+[node name="Hospital" parent="." instance=ExtResource("1_hospital")]
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+position = Vector3(0, -0.08, 0)
+mesh = SubResource("Mesh_ground")
+
+[node name="Daylight" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_preview")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+shadow_enabled = true
+directional_shadow_max_distance = 450.0
+
+[node name="Moon" type="DirectionalLight3D" parent="."]
+shadow_enabled = true
+directional_shadow_max_distance = 450.0
+
+[node name="DayNightCycle" type="Node" parent="."]
+script = ExtResource("2_clock")
+time_of_day = 13.0
+cycle_running = false
+sun_heading = -30.0
+day_fog_density = 0.00008
+night_fog_density = 0.00006
+
+[node name="Camera3D" type="Camera3D" parent="."]
+current = true
+fov = 45.0
+far = 15000.0
+
+[node name="Help" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="Help"]
+offset_left = 24.0
+offset_top = 22.0
+text = "MEDICAL CENTER · Hospital asset preview\n1 Day   2 Sunset   3 Night   4 Dawn   |   Drag to orbit · Wheel to zoom"
+label_settings = SubResource("Label_help")

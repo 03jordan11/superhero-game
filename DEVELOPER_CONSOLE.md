@@ -13,15 +13,29 @@ Commands and identifiers are case-insensitive. Amounts must be positive whole in
 | `add attr 3` | Grant three unspent attribute points. |
 | `add pp 5` | Grant five power points/tokens to spend in Powers. |
 | `reset` | Set all three attributes to 1, level to 1, XP and both unspent point balances to zero. Remove all powers/upgrades except the Power Jump core, cancel active traversal/combat, revive, and refill health/stamina. |
-| `spawn civilian` | Spawn one civilian near the player. |
-| `spawn hostile` | Spawn one hostile near the player. Spawned NPCs remain paused until the console closes. |
+| `spawn civilian [amount]` | Spawn civilians near the player; amount defaults to 1, maximum 50. |
+| `spawn pistol_thug [amount]` | Spawn Mafia pistol thugs near the player; amount defaults to 1, maximum 50. NPCs stay paused until the console closes. |
+| `spawn rifle_thug [amount]` | Spawn Mafia rifle thugs with 30-round magazines and automatic fire; same 1–50 count limit. |
+| `spawn melee_thug [amount]` | Spawn Mafia melee thugs with six-punch combos; at most two approach/attack each target while others surround. Same 1-50 count limit. |
+| `spawn super_thug [amount]` | Spawn Mafia super thugs: 500 health, 40-damage slow punches, 350 XP, exclusive melee turns. Same 1-50 count limit. |
+| `spawn gang_activity` | Spawn one random gang encounter scaled to hero level: Easy 1-3, Mid 4-6, Hard 7+. Follow the existing waypoint, available for this dev spawn without Trouble Sense. |
+| `spawn pirates` | Spawn a stationary offshore cargo ship with 2 pistol, 3 melee, 1 machine gunner and 1 super. Defeat all seven for 500 completion XP. See [Pirates](docs/pirates.md). |
+| `spawn rescue` | Spawn a protected injured civilian. E picks up/sets down; deliver to the hospital for 100 XP, $100 and 10 Good Will. The 2-minute preview timer cannot fail the rescue. |
+| `spawn helicopter_chase` | Spawn one armed helicopter: 100 health, sweeping bursts, 1,000 XP on destruction. Its burning wreck falls and disappears after 30 seconds. |
+| `spawn hostile [amount]` | Compatibility alias for `spawn pistol_thug`. |
 | `debug landing on` / `off` | Toggle the landing target marker. |
 | `debug hud on` / `off` | Toggle performance statistics and the existing player diagnostic readouts. |
+| `debug enemy_names on` / `off` | Toggle hostile overhead names independently of tints. |
+| `debug enemy_tints on` / `off` | Toggle type-colored mesh overlays; off restores original appearance. |
 | `save` | Save current player progression. Report write failure explicitly. |
 | `load` | Load saved player progression. Report missing/invalid files explicitly. |
 | `status` | Show base attributes, bonuses, level, XP, and both point balances. |
 | `help` / `help add` | List commands or show help for a specific command. |
 | `clear` | Clear output, retaining command history. |
+
+Spawn commands report the actual/requested count and skip positions without ground within the probe range. Each batch spreads around the current player location.
+
+Enemy names and tints start enabled in debug builds; both are disabled in release builds. Independent switches affect existing enemies and later spawns and last only for the current session.
 
 Tab completes/cycles command suggestions. Up/Down recalls command history and restores the unfinished input when returning to the bottom. History is bounded to 100 entries and output to 300 lines. Both are session-only. There is no shell execution, arbitrary property access, ability override, or hidden alias for removed tools. User-facing console copy lives under `console.*` in `localization/powers.json`; command keywords remain stable English identifiers.
 
@@ -63,3 +77,5 @@ Removed the button/checkbox developer screen, direct ability overrides, encounte
 ## Validation completed
 
 47 relevant regression scripts passed. Godot editor import found no GDScript parse errors. The console was rendered with the real Godot UI at 1280Ã—720 and inspected for readability, help text, command output and input layout. Automated tests cover keyboard Enter/history/completion, Xbox View opening, pause isolation, command validation, explicit saves, reset from death, starter progression, NPC spawning and retained diagnostic toggles. City horns still start and repeat naturally after removing preview code. Physical controller typing and full gameplay feel remain manual checks. Existing tool-environment user-directory/certificate warnings remain; failure fixtures intentionally test rejected save paths.
+
+Gang encounters lock their roster and bonus at spawn. Completion bonuses are 100/500/1,000 XP for Easy/Mid/Hard, in addition to enemy XP. Medium has a tunable 2% super chance replacing its rifle. Spawn sites are 60-200 meters away and require room for the full group. See [encounter rules](docs/encounters.md).

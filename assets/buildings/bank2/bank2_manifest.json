@@ -1,0 +1,264 @@
+{
+  "name": "bank2",
+  "units": "metres",
+  "godot_front": "+Z",
+  "base_triangles": 1824,
+  "total_triangles": 1896,
+  "base_meshes": 32,
+  "bench_triangles": 36,
+  "props": [
+    {
+      "name": "Bench_00",
+      "position": [
+        -15,
+        0,
+        -15.7
+      ]
+    },
+    {
+      "name": "Bench_01",
+      "position": [
+        15,
+        0,
+        -15.7
+      ]
+    }
+  ],
+  "collision_boxes": [
+    {
+      "name": "Banking podium",
+      "center": [
+        0,
+        4.5,
+        0
+      ],
+      "size": [
+        40,
+        9,
+        30
+      ]
+    },
+    {
+      "name": "Main tower core",
+      "center": [
+        0,
+        49.5,
+        -1
+      ],
+      "size": [
+        30,
+        81,
+        24
+      ]
+    },
+    {
+      "name": "Upper setback core",
+      "center": [
+        0,
+        101,
+        -2
+      ],
+      "size": [
+        24,
+        22,
+        20
+      ]
+    },
+    {
+      "name": "Entrance doors",
+      "center": [
+        0,
+        1.8,
+        15.095
+      ],
+      "size": [
+        5.2,
+        3.6,
+        0.12
+      ]
+    },
+    {
+      "name": "Floating canopy",
+      "center": [
+        0,
+        4.5,
+        16.2
+      ],
+      "size": [
+        12,
+        0.25,
+        4
+      ]
+    },
+    {
+      "name": "Podium terrace",
+      "center": [
+        0,
+        9.05,
+        0
+      ],
+      "size": [
+        39.4,
+        0.1,
+        29.4
+      ]
+    },
+    {
+      "name": "First setback terrace",
+      "center": [
+        0,
+        90.05,
+        -1
+      ],
+      "size": [
+        29.5,
+        0.1,
+        23.5
+      ]
+    },
+    {
+      "name": "Second setback terrace",
+      "center": [
+        0,
+        112.05,
+        -2
+      ],
+      "size": [
+        23.5,
+        0.1,
+        19.5
+      ]
+    },
+    {
+      "name": "Rear service door",
+      "center": [
+        0,
+        1.6,
+        -15.12
+      ],
+      "size": [
+        2.0,
+        3.2,
+        0.14
+      ]
+    }
+  ],
+  "collision_hulls": [
+    {
+      "name": "SlopedCrown",
+      "points": [
+        [
+          -10,
+          112,
+          5
+        ],
+        [
+          10,
+          112,
+          5
+        ],
+        [
+          10,
+          112,
+          -11
+        ],
+        [
+          -10,
+          112,
+          -11
+        ],
+        [
+          -10,
+          120,
+          5
+        ],
+        [
+          10,
+          128,
+          5
+        ],
+        [
+          10,
+          128,
+          -11
+        ],
+        [
+          -10,
+          120,
+          -11
+        ]
+      ]
+    }
+  ],
+  "bounds_min_blender": [
+    -20.149999618530273,
+    -18.290000915527344,
+    0.0
+  ],
+  "bounds_max_blender": [
+    20.149999618530273,
+    16.0,
+    128.0
+  ],
+  "mesh_triangles": {
+    "Banking podium": 12,
+    "Main tower core": 12,
+    "Upper setback core": 12,
+    "Podium coping": 12,
+    "Lobby glazing": 24,
+    "Lobby returns": 24,
+    "Podium piers": 24,
+    "Entrance doors": 12,
+    "Entrance frames": 36,
+    "Entrance header": 12,
+    "Entry handles": 24,
+    "Floating canopy": 12,
+    "Canopy fascia": 12,
+    "Bank sign plaque": 12,
+    "Front granite plinth": 24,
+    "Main curtain wall": 480,
+    "Main curtain returns": 320,
+    "Vertical steel fins": 96,
+    "Side steel fins": 72,
+    "Upper curtain wall": 80,
+    "Upper curtain returns": 80,
+    "Setback corner fins": 48,
+    "Podium terrace": 12,
+    "First setback terrace": 12,
+    "Second setback terrace": 12,
+    "Setback edge rails": 96,
+    "Sloped crown": 12,
+    "Crown ventilation": 24,
+    "Crown louver bands": 120,
+    "Rear service door": 12,
+    "Rear frame": 36,
+    "BANK": 48
+  },
+  "roof_tests": [
+    {
+      "position": [
+        18,
+        0,
+        0
+      ],
+      "height": 9.1
+    },
+    {
+      "position": [
+        14,
+        0,
+        0
+      ],
+      "height": 90.1
+    },
+    {
+      "position": [
+        0,
+        0,
+        -3
+      ],
+      "height": 124
+    }
+  ],
+  "triangle_limit": 10000
+}

@@ -64,19 +64,18 @@ func render_all() -> void:
 		current = load(OUT+"industrial_building_%02d.tscn" % i).instantiate()
 		world.add_child(current)
 		var size: Vector3 = current.get_node("MeshInstance3D").mesh.get_aabb().size
-		heading.text = "%02d  /  %s" % [i,catalog[i-1].name]
+		heading.text = "Industrial %02d" % i
 		dimensions.text = "%.0f x %.0f m  /  %.1f m tall" % [size.x,size.z,size.y]
 		camera.size = maxf(size.y * 1.4, (size.x + size.z) * 0.95)
 		var target = Vector3(0,size.y*0.48,0)
 		camera.position = target + Vector3(150,80,-220)
 		camera.look_at(target)
-		await process_frame
-		await process_frame
+		for frame in 25: await process_frame
 		await RenderingServer.frame_post_draw
 		var img = viewport.get_texture().get_image()
 		img.convert(Image.FORMAT_RGB8)
 		sheet.blit_rect(img,Rect2i(0,0,360,480),Vector2i(((i-1)%5)*360,int((i-1)/5)*480))
-		if i in [1,4,8,14,19]:
+		if i in [1,3,4,7,8,9]:
 			img.save_png(OUT+"previews/building_%02d.png" % i)
 	sheet.save_png(OUT+"previews/contact_sheet.png")
 	# Last building's lobby, at a human-scale camera height.

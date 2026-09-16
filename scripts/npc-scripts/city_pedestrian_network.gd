@@ -23,6 +23,7 @@ var inventory: Dictionary = {}
 var enabled_module_ids: Array[String] = []
 var _queued := false
 var _surface_cells: Dictionary = {}
+var _quay_road_cells: Dictionary = {}
 
 func _validate_property(property: Dictionary) -> void:
 	# The city graph uses its generated network; these inherited pilot-only
@@ -76,6 +77,14 @@ func _profiled_rebuild() -> void:
 			batches[key].append(edge)
 	walkable_surfaces.clear()
 	_surface_cells.clear()
+	_quay_road_cells.clear()
+	for row in inventory.get("quay_road_cuts",[]):
+		var rect:=Rect2(row[0],row[1],row[2],row[3])
+		for x in range(floori(rect.position.x/100),floori(rect.end.x/100)+1):
+			for z in range(floori(rect.position.y/100),floori(rect.end.y/100)+1):
+				var key:=Vector2i(x,z)
+				if not _quay_road_cells.has(key):_quay_road_cells[key]=[]
+				_quay_road_cells[key].append(rect)
 	for row in inventory.surfaces:
 		var rect := Rect2(row[0],row[1],row[2],row[3])
 		walkable_surfaces.append(rect)
@@ -100,6 +109,18 @@ func contains_body(world_point: Vector3, radius: float, a: int, b: int) -> bool:
 	var result: bool = _profiled_contains_body(world_point, radius, a, b)
 	CITY_PERF.finish(&"walkable_area_check", perf_started, not result)
 	return result
+
+func _is_extra_walkable(sample: Vector2) -> bool:
+	var rows: Array=inventory.get("river_curve_rows",[])
+	if rows.is_empty() or sample.y < -1000 or sample.y > 800:return false
+	var index:=clampi(int((sample.y+1000)/10),0,rows.size()-2)
+	var a: Array=rows[index];var b: Array=rows[index+1]
+	var t: float=(sample.y-a[0])/(b[0]-a[0])
+	var left: float=lerpf(a[1],b[1],t);var right: float=lerpf(a[2],b[2],t)
+	if not ((sample.x>=left-12 and sample.x<=left) or (sample.x>=right and sample.x<=right+12)):return false
+	for road: Rect2 in _quay_road_cells.get(Vector2i(floori(sample.x/100),floori(sample.y/100)),[]):
+		if road.has_point(sample):return false
+	return true
 
 
 func _profiled_contains_body(world_point: Vector3, radius: float, a: int, b: int) -> bool:

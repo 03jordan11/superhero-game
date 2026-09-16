@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/waterfront/cargo_ship/textures/container_panels.png" id="1_2igku"]
+
+[resource]
+resource_name = "graphite_ContainerA"
+albedo_color = Color(0.25490198, 0.4117647, 0.52156866, 1)
+albedo_texture = ExtResource("1_2igku")
+metallic = 0.12
+roughness = 0.72

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" format=3]
+
+[ext_resource type="Material" path="res://assets/waterfront/cargo_ship/materials/deep_teal_container_a.tres" id="1_n1wnx"]
+[ext_resource type="Material" path="res://assets/waterfront/cargo_ship/materials/deep_teal_container_b.tres" id="2_vt8c3"]
+[ext_resource type="Material" path="res://assets/waterfront/cargo_ship/materials/deep_teal_container_c.tres" id="3_wbge6"]
+[ext_resource type="Material" path="res://assets/waterfront/cargo_ship/materials/deep_teal_container_d.tres" id="4_2t51i"]
+[ext_resource type="Material" path="res://assets/waterfront/cargo_ship/materials/deep_teal_deck.tres" id="5_ug8h7"]
+[ext_resource type="Material" path="res://assets/waterfront/cargo_ship/materials/deep_teal_hull.tres" id="6_lee21"]
+[ext_resource type="Script" path="res://assets/waterfront/cargo_ship/ship_palette.gd" id="7_0pu8i"]
+[ext_resource type="Material" path="res://assets/waterfront/cargo_ship/materials/deep_teal_superstructure.tres" id="8_wd34i"]
+
+[resource]
+resource_name = "Deep Teal"
+script = ExtResource("7_0pu8i")
+hull = ExtResource("6_lee21")
+deck = ExtResource("5_ug8h7")
+superstructure = ExtResource("8_wd34i")
+container_a = ExtResource("1_n1wnx")
+container_b = ExtResource("2_vt8c3")
+container_c = ExtResource("3_wbge6")
+container_d = ExtResource("4_2t51i")

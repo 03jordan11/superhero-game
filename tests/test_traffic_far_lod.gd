@@ -74,17 +74,23 @@ func _run() -> void:
 	manager._step(0.0)
 	assert(not record.flat and not record.connection.is_empty())
 	assert(lod._point(record).is_equal_approx(crossing_position))
-	# A teleport/dive can go directly from rectangle to full at the same position.
+	# A dive preserves position, then finishes the crossing before physical promotion.
 	focus.position = crossing_position+Vector3.UP*1100.0
 	manager._step(0.0)
 	assert(record.flat)
 	focus.position = crossing_position+Vector3.UP*20.0
 	lod._transition_timer = 0.0
 	manager._step(0.0)
+	assert(lod.proxies.size() == 1 and manager._cars.is_empty())
+	assert(lod._point(record).distance_to(crossing_position) < 0.001)
+	for tick in 100:
+		lod._transition_timer = 0.0
+		manager._step(0.1)
+		if not manager._cars.is_empty(): break
 	assert(lod.proxies.is_empty() and manager._cars.size() == 1)
 	var full: Dictionary = manager._cars[0]
 	assert(full.traffic_id == id and full.entry == entry and full.following_gap == gap)
-	assert(full.car.global_position.distance_to(crossing_position) < 0.001)
+	assert(full.connection.is_empty())
 	full.car.free()
 	manager._step(0.0)
 	# Separate radial populations keep the existing near field populated.

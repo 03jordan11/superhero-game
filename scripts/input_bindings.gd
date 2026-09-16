@@ -14,13 +14,19 @@ const ACTIONS := {
 	"jump": ["Jump / Charge Jump / Ascend", KEY_SPACE, JOY_BUTTON_A],
 	"sprint": ["Sprint / Boost", KEY_SHIFT, JOY_BUTTON_LEFT_STICK],
 	"toggle_flight": ["Toggle Flight", KEY_F, JOY_BUTTON_Y],
-	"attack": ["Attack / Air Slam", -MOUSE_BUTTON_LEFT, JOY_BUTTON_X],
+	"attack": ["Attack / Air Slam / Active Power", -MOUSE_BUTTON_LEFT, JOY_BUTTON_X],
 	"flight_descend": ["Descend", KEY_CTRL, JOY_BUTTON_B],
 	"pick_up_vehicle": ["Pick Up / Charge Throw / Drop", KEY_E, JOY_BUTTON_RIGHT_SHOULDER],
 	"pause": ["Pause", KEY_ESCAPE, JOY_BUTTON_START],
 	"toggle_debug": ["Developer Console", KEY_QUOTELEFT, JOY_BUTTON_BACK],
-	"gameplay_menu": ["controls.gameplay_menu", KEY_TAB, JOY_BUTTON_RIGHT_STICK],
+	"gameplay_menu": ["controls.gameplay_menu", KEY_P, JOY_BUTTON_RIGHT_STICK],
+	"aim_power": ["Aim / Zoom", -MOUSE_BUTTON_RIGHT, -1],
+	"secondary_power": ["Dragon Breath (Hold While Aiming)", KEY_Q, -1],
+	"power_selector": ["Power Selector (Hold)", KEY_ALT, JOY_BUTTON_LEFT_SHOULDER],
+	"lock_target": ["Lock On / Next Enemy (Hold to Release)", KEY_TAB, JOY_BUTTON_DPAD_LEFT],
 }
+const BINDING_VERSION := 3
+const PREVIOUS_KEYBOARD_DEFAULTS := {"pick_up_vehicle": KEY_R, "secondary_power": KEY_E}
 const STICKS := {
 	"move_left": [JOY_AXIS_LEFT_X, -1.0], "move_right": [JOY_AXIS_LEFT_X, 1.0],
 	"move_forward": [JOY_AXIS_LEFT_Y, -1.0], "move_backward": [JOY_AXIS_LEFT_Y, 1.0],
@@ -61,6 +67,9 @@ func _ready() -> void:
 func defaults(device: String) -> Dictionary:
 	var result := {}
 	for action in ACTIONS:
+		if device == "controller" and action in ["aim_power", "secondary_power"]:
+			result[action] = {"kind": "trigger", "code": JOY_AXIS_TRIGGER_LEFT if action == "aim_power" else JOY_AXIS_TRIGGER_RIGHT}
+			continue
 		var code: int = ACTIONS[action][1 if device == "keyboard" else 2]
 		if device == "controller" and code < 0: continue
 		result[action] = {"kind": "button" if device == "controller" else ("key" if code > 0 else "mouse"), "code": absi(code)}
@@ -71,8 +80,19 @@ func load_config(config: ConfigFile) -> void:
 		var candidate := defaults(device)
 		var valid := true
 		var used: Array = []
+		var migrated_actions: Array[String] = []
+		if device == "keyboard" and int(config.get_value("bindings", "version", 0)) < 2:
+			for action in PREVIOUS_KEYBOARD_DEFAULTS:
+				if config.get_value("bindings_keyboard", action, {}) == {"kind": "key", "code": PREVIOUS_KEYBOARD_DEFAULTS[action]}:
+					migrated_actions.append(action)
+		if device == "keyboard" and int(config.get_value("bindings", "version", 0)) < 3:
+			for action in {"lock_target": KEY_CAPSLOCK, "gameplay_menu": KEY_TAB}:
+				var old_code: int=KEY_CAPSLOCK if action=="lock_target" else KEY_TAB
+				if config.get_value("bindings_keyboard",action,{})=={"kind":"key","code":old_code}:
+					migrated_actions.append(action)
 		# Read saved assignments first; a new action must not reset older custom bindings.
 		for action in candidate:
+			if action in migrated_actions: continue
 			if not config.has_section_key("bindings_" + device, action): continue
 			var value: Variant = config.get_value("bindings_" + device, action, candidate[action])
 			if not _valid_binding(value, device) or value in used:
@@ -82,7 +102,7 @@ func load_config(config: ConfigFile) -> void:
 			used.append(value)
 		if valid:
 			for action in candidate:
-				if config.has_section_key("bindings_" + device, action): continue
+				if config.has_section_key("bindings_" + device, action) and action not in migrated_actions: continue
 				if candidate[action] in used:
 					candidate[action] = _unused_binding(device, used)
 				used.append(candidate[action])
@@ -101,6 +121,7 @@ func action_label(action: String) -> String:
 	return COPY.text(ACTIONS[action][0]) if action == "gameplay_menu" else ACTIONS[action][0]
 
 func write_config(config: ConfigFile) -> void:
+	config.set_value("bindings", "version", BINDING_VERSION)
 	for device in bindings:
 		for action in bindings[device]:
 			config.set_value("bindings_" + device, action, bindings[device][action])
@@ -235,6 +256,26 @@ func _input(event: InputEvent) -> void:
 	if device != active_device:
 		active_device = device
 		device_changed.emit()
+
+func is_bound_control_held(action: StringName) -> bool:
+	# Check controls independently of the cached action state. In Godot 4.7.2
+	# on Windows, Shift's action can remain pressed after the key is released:
+	# https://github.com/godotengine/godot/issues/122728
+	for binding in InputMap.action_get_events(action):
+		if binding is InputEventKey:
+			if binding.physical_keycode != 0:
+				if Input.is_physical_key_pressed(binding.physical_keycode): return true
+			elif Input.is_key_pressed(binding.keycode): return true
+		elif binding is InputEventMouseButton:
+			if Input.is_mouse_button_pressed(binding.button_index): return true
+		elif binding is InputEventJoypadButton or binding is InputEventJoypadMotion:
+			var devices: Array = Input.get_connected_joypads() if binding.device < 0 else [int(binding.device)]
+			for device in devices:
+				if binding is InputEventJoypadButton:
+					if Input.is_joy_button_pressed(device, binding.button_index): return true
+				elif Input.get_joy_axis(device, binding.axis) * binding.axis_value > InputMap.action_get_deadzone(action):
+					return true
+	return false
 
 func is_action_press(event: InputEvent, action: String) -> bool:
 	# Triggers send repeated motion events while squeezed. Fire once per squeeze.

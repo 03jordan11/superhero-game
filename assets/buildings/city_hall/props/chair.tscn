@@ -1,0 +1,23 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://assets/buildings/city_hall/props/chair.glb" id="1_4wabs"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2uahs"]
+size = Vector3(0.48, 0.49, 0.46)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lnykt"]
+size = Vector3(0.48, 0.45, 0.06)
+
+[node name="Chair" type="Node3D" unique_id=908936062]
+
+[node name="Mesh" type="Node3D" parent="." unique_id=693219033 instance=ExtResource("1_4wabs")]
+
+[node name="Collision" type="StaticBody3D" parent="." unique_id=18452584]
+
+[node name="Seat" type="CollisionShape3D" parent="Collision" unique_id=1181363870]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.245, 0)
+shape = SubResource("BoxShape3D_2uahs")
+
+[node name="Back" type="CollisionShape3D" parent="Collision" unique_id=2142542772]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.72, -0.22)
+shape = SubResource("BoxShape3D_lnykt")

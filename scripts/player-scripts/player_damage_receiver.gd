@@ -42,6 +42,10 @@ func apply_damage(
 	damage_received.emit(damage_info)
 	if health_component.is_depleted():
 		return true
+	# Taking damage still costs health and plays impact audio. A committed melee
+	# attack has armor against bullet flinches/slowdown so it can reach its target.
+	if damage_info.damage_type == &"bullet" and combat_controller != null and combat_controller.is_action_locked():
+		return true
 
 	if status_effects != null:
 		hit_slowdown_requested.emit(status_effects.apply_hit_slowdown())
@@ -50,6 +54,7 @@ func apply_damage(
 	elif (
 		animation_controller != null
 		and (combat_controller == null or not combat_controller.is_action_locked())
+		and not (get_parent() is PlayerCharacter and get_parent().hostile_grab.owns_animation())
 		and not is_knocked_out
 	):
 		animation_controller.play_hit_reaction()
@@ -71,6 +76,11 @@ func set_max_health(new_max_health: float) -> void:
 
 func _on_health_changed(current_health: float, max_health: float) -> void:
 	health_changed.emit(current_health, max_health)
+
+
+func restore_full_health() -> void:
+	if health_component != null:
+		health_component.restore_full_health()
 
 
 func _on_health_depleted(damage_info) -> void:

@@ -30,6 +30,10 @@ static func _get_cached_animation_library() -> AnimationLibrary:
 	has_built_cached_animation_library = true
 	var animation_library_loader := CharacterAnimationLibraryLoader.new()
 	var hostile_animation_library := AnimationLibrary.new()
+	for punch in [&"Punch_01", &"Punch_02", &"Punch_03"]:
+		if not animation_library_loader.add_animation(hostile_animation_library,
+			CharacterAnimationLibraryLoader.FIGHTING_GROUP, punch, punch):
+			return null
 	if not animation_library_loader.add_animation(
 		hostile_animation_library,
 		CharacterAnimationLibraryLoader.UAL1_GROUP,
@@ -104,6 +108,15 @@ func set_is_running() -> void:
 
 func play_pistol_shot() -> void:
 	animation_player.play("Pistol_Shoot", 0.1)
+
+
+func play_melee_punch(index: int, playback_speed: float = 1.0) -> void:
+	# Repeat the three existing clips for longer combos.
+	animation_player.play("Punch_%02d" % (index % 3 + 1), 0.1, playback_speed)
+
+
+func is_melee_punch_playing() -> bool:
+	return animation_player.current_animation.begins_with("Punch_") and animation_player.is_playing()
 
 
 func play_pistol_reload() -> void:

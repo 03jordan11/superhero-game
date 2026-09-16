@@ -31,10 +31,6 @@ func _process(_delta: float) -> void:
 func _profiled_process(_delta: float) -> void:
 	if player == null:
 		return
-	if not player.abilities.is_unlocked(PlayerAbilities.TROUBLE_SENSE):
-		visible = false
-		return
-
 	var encounter := _get_nearest_active_encounter()
 	if encounter == null:
 		visible = false
@@ -47,17 +43,22 @@ func _profiled_process(_delta: float) -> void:
 func _get_nearest_active_encounter() -> BaseEncounter:
 	var nearest_encounter: BaseEncounter
 	var nearest_distance_squared := INF
+	var priority := -1
 	for node in get_tree().get_nodes_in_group(&"encounter"):
 		var encounter := node as BaseEncounter
 		if encounter == null or encounter.state != BaseEncounter.EncounterState.ACTIVE:
 			continue
+		if not player.abilities.is_unlocked(PlayerAbilities.TROUBLE_SENSE) and not (OS.is_debug_build() and encounter.debug_waypoint):
+			continue
 
 		var distance_squared := player.global_position.distance_squared_to(
-			encounter.global_position
+			encounter.get_waypoint_position()
 		)
-		if distance_squared < nearest_distance_squared:
+		var candidate_priority := encounter.get_waypoint_priority()
+		if candidate_priority > priority or (candidate_priority == priority and distance_squared < nearest_distance_squared):
 			nearest_encounter = encounter
 			nearest_distance_squared = distance_squared
+			priority = candidate_priority
 	return nearest_encounter
 
 
@@ -74,12 +75,12 @@ func _update_marker(encounter: BaseEncounter) -> void:
 		+ forward * forward_distance
 		+ Vector3.UP * height_above_player
 	)
-	var target_position := encounter.global_position
+	var target_position := encounter.get_waypoint_position()
 	target_position.y = global_position.y
 	if target_position.distance_squared_to(global_position) > 0.001:
 		look_at(target_position, Vector3.UP)
 
 	var distance_meters := roundi(player.global_position.distance_to(
-		encounter.global_position
+		encounter.get_waypoint_position()
 	))
-	distance_label.text = "%s\n%d m" % [encounter.display_name, distance_meters]
+	distance_label.text = "%s\n%d m" % [encounter.get_waypoint_label(), distance_meters]

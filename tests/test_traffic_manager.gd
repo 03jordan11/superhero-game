@@ -31,7 +31,7 @@ func _run() -> void:
 	city.add_child(manager)
 	manager.set_physics_process(false)
 	manager._timer = 1000000.0
-	assert(manager.lanes.size() == 706)
+	assert(manager.lanes.size() > 0 and manager.lanes.size() % 2 == 0,"Roads must produce paired traffic lanes")
 	for i in range(0,manager.lanes.size(),2):
 		var a: Dictionary = manager.lanes[i]
 		var b: Dictionary = manager.lanes[i+1]

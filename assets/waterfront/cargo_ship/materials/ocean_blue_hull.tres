@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/waterfront/cargo_ship/textures/painted_steel.png" id="1_0hr7g"]
+
+[resource]
+resource_name = "ocean_blue_Hull"
+albedo_color = Color(0.07450981, 0.36862746, 0.5882353, 1)
+albedo_texture = ExtResource("1_0hr7g")
+metallic = 0.12
+roughness = 0.72

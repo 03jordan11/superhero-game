@@ -1,15 +1,36 @@
 [gd_scene format=3]
 
-[ext_resource type="ArrayMesh" path="res://assets/generated-buildings/commercial/meshes/commercial_skyscraper_13.res" id="1_2o08g"]
+[ext_resource type="Script" path="res://assets/generated-buildings/commercial/commercial_skyscraper_01.gd" id="1_gp11k"]
+[ext_resource type="ArrayMesh" path="res://assets/generated-buildings/commercial/meshes/commercial_skyscraper_13.res" id="2_4fnbq"]
+[ext_resource type="PackedScene" path="res://assets/props/rooftop_hvac/rooftop_hvac.tscn" id="3_ult8q"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ceevd"]
-size = Vector3(26, 75.2, 24.04)
+[sub_resource type="BoxShape3D" id="BoxShape3D_url0k"]
+size = Vector3(26, 6, 24.04)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5reds"]
+size = Vector3(24, 54, 22)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jv2b5"]
+size = Vector3(20, 12, 18)
 
 [node name="commercial_skyscraper_13" type="StaticBody3D" unique_id=1637118609]
+script = ExtResource("1_gp11k")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1991565063]
-mesh = ExtResource("1_2o08g")
+mesh = ExtResource("2_4fnbq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1654738699]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 37.6, 0)
-shape = SubResource("BoxShape3D_ceevd")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+shape = SubResource("BoxShape3D_url0k")
+
+[node name="TierCollision1" type="CollisionShape3D" parent="." unique_id=1665630345]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 33, 0)
+shape = SubResource("BoxShape3D_5reds")
+
+[node name="TierCollision2" type="CollisionShape3D" parent="." unique_id=1753347342]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 66, 0)
+shape = SubResource("BoxShape3D_jv2b5")
+
+[node name="RooftopHVAC" type="StaticBody3D" parent="." unique_id=661342222 instance=ExtResource("3_ult8q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 72, 0)
+metadata/source = "hospital / Roof equipment / unit at (-13, 129, -18)"

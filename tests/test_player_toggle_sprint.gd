@@ -24,9 +24,9 @@ func run() -> void:
 	preload("res://tests/player_test_support.gd").unlock_current_powers(player)
 	player.set_physics_process(false)
 	var controller := player.input_controller
-	Input.action_press("sprint")
+	preload("res://tests/player_test_support.gd").set_sprint_held(true)
 	check(controller.capture().sprint_pressed, "Hold mode follows held input")
-	Input.action_release("sprint")
+	preload("res://tests/player_test_support.gd").set_sprint_held(false)
 	check(not controller.capture().sprint_pressed, "Hold mode stops on release")
 	settings.set_accessibility(true, false, false)
 	press_sprint()

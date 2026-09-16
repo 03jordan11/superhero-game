@@ -1,0 +1,30 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://assets/buildings/firehouse/props/bench.glb" id="1_cilke"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oyhvl"]
+size = Vector3(2, 0.16, 0.55)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xnbee"]
+size = Vector3(0.28, 0.4, 0.42)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_two8b"]
+size = Vector3(0.28, 0.4, 0.42)
+
+[node name="StoneBench" type="Node3D" unique_id=1462012096]
+
+[node name="Mesh" type="Node3D" parent="." unique_id=2144894239 instance=ExtResource("1_cilke")]
+
+[node name="Collision" type="StaticBody3D" parent="." unique_id=1715859625]
+
+[node name="Seat" type="CollisionShape3D" parent="Collision" unique_id=624755605]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48, 0)
+shape = SubResource("BoxShape3D_oyhvl")
+
+[node name="Support" type="CollisionShape3D" parent="Collision" unique_id=1244729884]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.65, 0.2, 0)
+shape = SubResource("BoxShape3D_xnbee")
+
+[node name="Support2" type="CollisionShape3D" parent="Collision" unique_id=826476501]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65, 0.2, 0)
+shape = SubResource("BoxShape3D_two8b")

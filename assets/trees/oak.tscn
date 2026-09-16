@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://assets/trees/tree.gd" id="1"]
+[ext_resource type="ArrayMesh" path="res://assets/central-park/meshes/tree_oak.res" id="2"]
+
+[node name="Oak" type="MeshInstance3D"]
+mesh = ExtResource("2")
+script = ExtResource("1")

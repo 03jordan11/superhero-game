@@ -14,6 +14,8 @@ var centers: Array[int] = []
 var point_lookup: Dictionary = {}
 var edge_lookup: Dictionary = {}
 var warnings: Array[String] = []
+var river_curve: Array = []
+var road_footprints: Array[Rect2] = []
 
 func _initialize() -> void:
 	generate.call_deferred()
@@ -21,6 +23,8 @@ func _initialize() -> void:
 func generate() -> void:
 	DirAccess.make_dir_recursive_absolute(DEST)
 	var layout = JSON.parse_string(FileAccess.get_file_as_string(OUT+"layout.json"))
+	river_curve=layout.get("river_curve_rows",[])
+	for row in layout.roads:road_footprints.append(to_rect(row.rect))
 	for row in layout.river_rects: water.append(to_rect(row))
 	water.append_array(subtract_rect(to_rect(layout.bay_rect),to_rect(layout.pier_rect)))
 	var source = load(SCENE).instantiate()
@@ -38,6 +42,10 @@ func generate() -> void:
 		if node.position.distance_to(Vector3(building.position[0],building.position[1],building.position[2])) > 0.1:
 			warnings.append("Moved building checked at current position: "+building.node)
 	source.free()
+	# Complete POIs include grounds/steps/props, so reserve their authored envelope
+	# as well as ordinary building boxes. The perimeter sidewalks remain routable.
+	for landmark in layout.get("landmarks",[]):
+		footprints.append(to_rect(landmark.rect))
 	for rect in footprints:
 		for key in spatial_keys(rect):
 			if not obstacle_cells.has(key): obstacle_cells[key] = []
@@ -100,6 +108,8 @@ func generate() -> void:
 					p = Vector2(rect.position.x-2,z)
 					q = Vector2(rect.end.x+2,z)
 			if p != Vector2.INF: connect_crossing(p,q)
+	connect_curved_quays()
+	discard_unused_points()
 	var astar := AStar3D.new()
 	for i in range(points.size()): astar.add_point(i,Vector3(points[i][0],0.03,points[i][2]))
 	for edge in edges: astar.connect_points(edge[0],edge[1])
@@ -145,6 +155,8 @@ func generate() -> void:
 			for neighbor in owners:
 				if neighbor != key and not neighbor in modules[key].neighbors: modules[key].neighbors.append(neighbor)
 	var saved := {"points":points,"edges":edges,"modules":modules,"surfaces":surfaces.map(func(r): return [r.position.x,r.position.y,r.size.x,r.size.y]),"excluded_water":water.map(func(r): return [r.position.x,r.position.y,r.size.x,r.size.y]),"component_sizes":component_sizes,"warnings":warnings,"source_scene":SCENE,"source_scene_sha256":FileAccess.get_sha256(SCENE),"river_crossings":0}
+	saved.river_curve_rows=river_curve
+	saved.quay_road_cuts=road_footprints.map(func(r):return [r.position.x,r.position.y,r.size.x,r.size.y])
 	FileAccess.open(DEST+"network.json",FileAccess.WRITE).store_string(JSON.stringify(saved,"\t"))
 	write_scene()
 	write_inventory(component_sizes)
@@ -162,7 +174,11 @@ func point_clear(p: Vector2, crossing := false) -> bool:
 	for i in range(9):
 		var sample := p+(Vector2.from_angle(i*TAU/8.0)*0.56 if i < 8 else Vector2.ZERO)
 		for rect in water:
+			if not river_curve.is_empty() and rect.position.y>=-1000 and rect.end.y<=800:continue
 			if rect.has_point(sample): return false
+		if not river_curve.is_empty() and sample.y>=-1000 and sample.y<=800:
+			var bounds:=curve_bounds(sample.y)
+			if sample.x>=bounds.x and sample.x<=bounds.y:return false
 		for rect in obstacle_cells.get(Vector2i(floori(sample.x/100),floori(sample.y/100)),[]):
 			if rect.has_point(sample): return false
 		if crossing: continue
@@ -171,8 +187,56 @@ func point_clear(p: Vector2, crossing := false) -> bool:
 			if surfaces[index].has_point(sample):
 				inside = true
 				break
-		if not inside: return false
+		if not inside and not on_curved_quay(sample): return false
 	return true
+
+func on_curved_quay(p: Vector2) -> bool:
+	if river_curve.is_empty() or p.y < -1000 or p.y > 800:return false
+	var bounds:=curve_bounds(p.y)
+	var left:=bounds.x;var right:=bounds.y
+	if not ((p.x>=left-12 and p.x<=left) or (p.x>=right and p.x<=right+12)):return false
+	for road in road_footprints:
+		if road.has_point(p):return false
+	return true
+
+func curve_bounds(z: float) -> Vector2:
+	var index:=clampi(int((z+1000)/10),0,river_curve.size()-2)
+	var a: Array=river_curve[index];var b: Array=river_curve[index+1]
+	var t: float=(z-a[0])/(b[0]-a[0])
+	var left: float=lerpf(a[1],b[1],t);var right: float=lerpf(a[2],b[2],t)
+	return Vector2(left,right)
+
+func connect_curved_quays() -> void:
+	if river_curve.is_empty():return
+	var existing_count:=points.size()
+	for side in [-1,1]:
+		var previous:=-1
+		for row in river_curve:
+			var p:=Vector2(row[1]-6 if side==-1 else row[2]+6,row[0])
+			if not point_clear(p):previous=-1;continue
+			var id:=add_point(p)
+			if previous>=0:add_edge(previous,id,"sidewalk")
+			previous=id
+			var nearest:=-1;var distance:=35.0
+			for candidate in existing_count:
+				var q:=Vector2(points[candidate][0],points[candidate][2]);var d:=p.distance_to(q)
+				if d<distance and candidate!=id and segment_clear(p,q):nearest=candidate;distance=d
+			if nearest>=0:add_edge(id,nearest,"sidewalk")
+
+func discard_unused_points() -> void:
+	# Clipped sidewalk slivers can have a center but no usable connection.
+	# Do not publish these as isolated A* destinations or crowd spawn candidates.
+	var used:={};var remap:={};var kept: Array=[]
+	for edge in edges:used[edge[0]]=true;used[edge[1]]=true
+	for id in points.size():
+		if used.has(id):remap[id]=kept.size();kept.append(points[id])
+	for edge in edges:edge[0]=remap[edge[0]];edge[1]=remap[edge[1]]
+	for module in modules.values():
+		var updated:={}
+		for id in module.nodes:
+			if remap.has(id):updated[remap[id]]=true
+		module.nodes=updated
+	points=kept
 
 func segment_clear(p: Vector2, q: Vector2, crossing := false) -> bool:
 	var steps := maxi(1,ceili(p.distance_to(q)/1.0))
@@ -233,7 +297,7 @@ func write_scene() -> void:
 		previous = load("res://scenes/npcs/city_pedestrian_routes.tscn").instantiate()
 	var text := '[gd_scene format=3]\n\n[ext_resource type="Script" path="res://scripts/npc-scripts/city_pedestrian_network.gd" id="1"]\n[ext_resource type="Script" path="res://scripts/npc-scripts/pedestrian_district.gd" id="2"]\n\n[node name="CityPedestrianRoutes" type="Node3D"]\nscript = ExtResource("1")\n'
 	if previous != null:
-		for property in ["network_enabled","show_disabled_routes","crossing_passing_margin"]:
+		for property in ["network_enabled","show_debug_routes","show_disabled_routes","crossing_passing_margin"]:
 			text += property+" = "+var_to_str(previous.get(property))+"\n"
 	for district in ["WestVillage","NorthHeights","Parkside","CivicCenter","FinancialQuarter","Eastbank","FoundryWard","Docklands"]:
 		var selected := ""

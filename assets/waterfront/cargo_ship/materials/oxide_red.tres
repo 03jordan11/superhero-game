@@ -1,0 +1,21 @@
+[gd_resource type="Resource" format=3]
+
+[ext_resource type="Material" path="res://assets/waterfront/cargo_ship/materials/oxide_red_container_a.tres" id="1_3ohax"]
+[ext_resource type="Material" path="res://assets/waterfront/cargo_ship/materials/oxide_red_container_b.tres" id="2_s3xhr"]
+[ext_resource type="Material" path="res://assets/waterfront/cargo_ship/materials/oxide_red_container_c.tres" id="3_hjx71"]
+[ext_resource type="Material" path="res://assets/waterfront/cargo_ship/materials/oxide_red_container_d.tres" id="4_y2i06"]
+[ext_resource type="Material" path="res://assets/waterfront/cargo_ship/materials/oxide_red_deck.tres" id="5_8b80j"]
+[ext_resource type="Material" path="res://assets/waterfront/cargo_ship/materials/oxide_red_hull.tres" id="6_nys3g"]
+[ext_resource type="Script" path="res://assets/waterfront/cargo_ship/ship_palette.gd" id="7_rkg4c"]
+[ext_resource type="Material" path="res://assets/waterfront/cargo_ship/materials/oxide_red_superstructure.tres" id="8_cbd4r"]
+
+[resource]
+resource_name = "Oxide Red"
+script = ExtResource("7_rkg4c")
+hull = ExtResource("6_nys3g")
+deck = ExtResource("5_8b80j")
+superstructure = ExtResource("8_cbd4r")
+container_a = ExtResource("1_3ohax")
+container_b = ExtResource("2_s3xhr")
+container_c = ExtResource("3_hjx71")
+container_d = ExtResource("4_y2i06")

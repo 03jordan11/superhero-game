@@ -6,17 +6,43 @@
 
 Drag any of `commercial_skyscraper_01.tscn` through `commercial_skyscraper_20.tscn` into entries in a CityConfiguration resource's **Commercial Buildings** array. Keep the `materials`, `textures`, and `meshes` folders with the scenes. The existing collections and addon were not changed or replaced.
 
-Every scene contains exactly:
+All scenes now use a structure like:
 
 ```text
 StaticBody3D
 ├── MeshInstance3D
-└── CollisionShape3D (BoxShape3D)
+├── CollisionShape3D (BoxShape3D)
+├── Additional tier collision shapes
+└── RooftopHVAC (stock unit or its Blender budget variant)
 ```
 
 The body and mesh have identity transforms. The collision is translated to half the building height and has unit scale. Each mesh is centered horizontally, starts exactly at Y=0, and uses meters directly. Entrances face -Z and +Z; quarter-turn rotations are supported. The default world collision layer/mask is 1.
 
+Scene 01 now uses a blank stone podium, no tenant sign, a flat roof at 132 m,
+and a separate reusable hospital HVAC instance. It has separate podium/tower
+collision and a night-window script. Total height including equipment is 134.8 m;
+the complete asset is **96 triangles** (48 building + 48 HVAC), previously 108.
+See [its revision notes](commercial_skyscraper_01.md) for files, checks and rebuilding.
+Reusable buildings should use generic asset IDs, with no baked tenant names.
+
+Scene 02 now has a flush 30 x 21 m base, no tenant plaque, retained entrance
+doors, and the stock hospital HVAC replacing its topmost mechanical box.
+The smaller upper tier is preserved. The complete asset is **104 triangles**
+(56 building + 48 HVAC), previously 108. Its dedicated window emission mask
+follows the existing day/night clock. See [revision notes](commercial_skyscraper_02.md).
+The pack generator preserves revisions 01 and 02. The validator counts their
+HVAC instances and checks their separate colliders; the optional City Crafter
+configuration check is skipped when that addon is absent.
+
 ## Dimensions and placement
+
+**Current revision:** Commercial 03–20 were batch-edited in Blender. All nameplates
+are removed, doors and tier silhouettes remain, rooftop boxes use the hospital
+HVAC, and each has a dedicated emission PNG. Complete assets contain **86–108
+triangles**, including HVAC. See [batch notes and file list](COMMERCIAL_BATCH_REWORK.md)
+and the editable `blender/commercial_03_20.blend` (one scene per building).
+The general generator now preserves all revised scenes. The older generation,
+node-count and single-collider descriptions below are historical baseline notes.
 
 Before generation, the addon's commercial GLBs, their import settings, CityConfiguration resources, and spawning/spacing logic were inspected. The example skyscraper imports apply a 25x scale: skyscraper A/B occupy about 34 x 34 meters; C/D about 32 x 34.7 meters. They are Y-up, horizontally centered, and grounded at Y=0. These new buildings have footprints 18–32 meters wide and 20–26 meters deep, with heights of 75.2–241.2 meters. Signs extend 2 cm beyond each front/back facade; this is included in collision and recorded bounds.
 
@@ -38,7 +64,7 @@ The contact sheet reads left to right, top to bottom. Each tile is framed indepe
 
 | Scene number | Fictional tenant | Design | Height |
 | --- | --- | --- | ---: |
-| 01 | Mercer Works | Narrow limestone tower | 139.2 m |
+| 01 | Unnamed | Narrow limestone tower, flat roof and reusable HVAC | 134.8 m |
 | 02 | Portman Group | Broad dark-glass office slab | 113.2 m |
 | 03 | Alder Capital | Square light-glass tower | 163.2 m |
 | 04 | Civic Exchange | Limestone tower with three setbacks | 161.2 m |

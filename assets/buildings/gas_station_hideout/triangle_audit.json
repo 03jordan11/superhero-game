@@ -1,0 +1,15 @@
+{
+	"by_part": {
+		"Architecture": 108,
+		"Details": 124,
+		"Facade": 288,
+		"Grounds": 12,
+		"Pumps": 768,
+		"Roof": 264,
+		"Yard": 636
+	},
+	"failures": 0,
+	"limit_exclusive": 5000,
+	"surfaces": 7,
+	"triangles": 2200
+}

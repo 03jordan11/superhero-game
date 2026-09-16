@@ -1,0 +1,306 @@
+{
+  "name": "police_station",
+  "units": "metres",
+  "godot_front": "+Z",
+  "base_triangles": 1075,
+  "total_triangles": 1147,
+  "base_meshes": 42,
+  "bench_triangles": 36,
+  "props": [
+    {
+      "name": "Bench_00",
+      "position": [
+        -10,
+        0,
+        -12.8
+      ]
+    },
+    {
+      "name": "Bench_01",
+      "position": [
+        10,
+        0,
+        -12.8
+      ]
+    }
+  ],
+  "collision_boxes": [
+    {
+      "name": "Five storey main block",
+      "center": [
+        0,
+        10.4,
+        0
+      ],
+      "size": [
+        36,
+        20.8,
+        24
+      ]
+    },
+    {
+      "name": "Raised entrance tower",
+      "center": [
+        -4.7,
+        11.8,
+        12.55
+      ],
+      "size": [
+        4.4,
+        23.6,
+        1.1
+      ]
+    },
+    {
+      "name": "Public entrance wing",
+      "center": [
+        8.2,
+        2.6,
+        13.9
+      ],
+      "size": [
+        17.6,
+        5.2,
+        3.8
+      ]
+    },
+    {
+      "name": "Public doors",
+      "center": [
+        6.3,
+        1.575,
+        15.94
+      ],
+      "size": [
+        3,
+        3.15,
+        0.12
+      ]
+    },
+    {
+      "name": "Rear service doors",
+      "center": [
+        1.5,
+        1.4,
+        -12.18
+      ],
+      "size": [
+        2.1,
+        2.8,
+        0.12
+      ]
+    },
+    {
+      "name": "Blue entrance canopy",
+      "center": [
+        6.3,
+        3.65,
+        16.4
+      ],
+      "size": [
+        5.6,
+        0.2,
+        2.2
+      ]
+    },
+    {
+      "name": "Main roof",
+      "center": [
+        0,
+        20.85,
+        0
+      ],
+      "size": [
+        35.4,
+        0.1,
+        23.4
+      ]
+    },
+    {
+      "name": "Side parapets",
+      "center": [
+        -17.8,
+        21.3,
+        0
+      ],
+      "size": [
+        0.4,
+        1,
+        24
+      ]
+    },
+    {
+      "name": "Side parapets",
+      "center": [
+        17.8,
+        21.3,
+        0
+      ],
+      "size": [
+        0.4,
+        1,
+        24
+      ]
+    },
+    {
+      "name": "Front rear parapets",
+      "center": [
+        0,
+        21.3,
+        11.8
+      ],
+      "size": [
+        36,
+        1,
+        0.4
+      ]
+    },
+    {
+      "name": "Front rear parapets",
+      "center": [
+        0,
+        21.3,
+        -11.8
+      ],
+      "size": [
+        36,
+        1,
+        0.4
+      ]
+    },
+    {
+      "name": "Tower coping",
+      "center": [
+        -4.7,
+        23.67,
+        12.55
+      ],
+      "size": [
+        4.65,
+        0.14,
+        1.35
+      ]
+    },
+    {
+      "name": "Wing roof",
+      "center": [
+        8.2,
+        5.26,
+        13.9
+      ],
+      "size": [
+        17.6,
+        0.12,
+        3.8
+      ]
+    },
+    {
+      "name": "Rooftop equipment",
+      "center": [
+        -10,
+        21.45,
+        -4
+      ],
+      "size": [
+        3.5,
+        1.1,
+        2.7
+      ]
+    },
+    {
+      "name": "Rooftop equipment",
+      "center": [
+        9,
+        21.45,
+        -4
+      ],
+      "size": [
+        3.5,
+        1.1,
+        2.7
+      ]
+    }
+  ],
+  "collision_hulls": [],
+  "bounds_min_blender": [
+    -18.125,
+    -17.5,
+    0.0
+  ],
+  "bounds_max_blender": [
+    18.125,
+    13.100000381469727,
+    27.200000762939453
+  ],
+  "mesh_triangles": {
+    "Five storey main block": 12,
+    "Raised entrance tower": 12,
+    "Tower edge": 12,
+    "Public entrance wing": 12,
+    "Rear base": 24,
+    "Front left base": 12,
+    "Side base": 24,
+    "Wing base": 24,
+    "Front office glazing": 86,
+    "Side office glazing": 120,
+    "Rear office glazing": 80,
+    "Public doors": 12,
+    "Public doors frame": 24,
+    "Public doors header": 12,
+    "Public doors center": 12,
+    "Public doors handles": 24,
+    "Rear service doors": 12,
+    "Rear service doors frame": 24,
+    "Rear service doors header": 12,
+    "Rear service doors center": 12,
+    "Rear service doors handles": 24,
+    "Blue entrance canopy": 12,
+    "Entrance sign panel": 12,
+    "Wing clerestory": 6,
+    "Wall lamp housings": 24,
+    "Wall lamp lenses": 24,
+    "Rear lamp housings": 24,
+    "Rear lamp lenses": 24,
+    "Precinct shield": 2,
+    "Main roof": 12,
+    "Side parapets": 24,
+    "Parapet coping": 48,
+    "Front rear parapets": 24,
+    "Tower coping": 12,
+    "Wing roof": 12,
+    "Wing roof fascia": 12,
+    "Rooftop equipment": 24,
+    "Equipment caps": 24,
+    "Radio mast": 12,
+    "Radio crossbars": 24,
+    "POLICE": 44,
+    "PRECINCT 05": 89
+  },
+  "roof_tests": [
+    {
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "height": 20.9
+    },
+    {
+      "position": [
+        9,
+        0,
+        14
+      ],
+      "height": 5.32
+    },
+    {
+      "position": [
+        -4.7,
+        0,
+        12.55
+      ],
+      "height": 23.74
+    }
+  ],
+  "triangle_limit": 10000
+}

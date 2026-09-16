@@ -1,15 +1,36 @@
 [gd_scene format=3]
 
-[ext_resource type="ArrayMesh" path="res://assets/generated-buildings/residential/meshes/residential_building_15.res" id="1_s3g2v"]
+[ext_resource type="Script" path="res://assets/generated-buildings/residential/residential_building.gd" id="1_6rm2i"]
+[ext_resource type="ArrayMesh" path="res://assets/generated-buildings/residential/meshes/residential_building_15.res" id="2_0dvjj"]
+[ext_resource type="PackedScene" path="res://assets/props/rooftop_hvac/rooftop_hvac_lowpoly.tscn" id="3_3xp0p"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_y88lo"]
-size = Vector3(24.15, 56, 20.15)
+[sub_resource type="BoxShape3D" id="BoxShape3D_2uifg"]
+size = Vector3(24, 31.2, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_16bsc"]
+size = Vector3(20, 15.5, 17)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pfw3t"]
+size = Vector3(14, 9.3, 13)
 
 [node name="residential_building_15" type="StaticBody3D" unique_id=588230023]
+script = ExtResource("1_6rm2i")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1517264261]
-mesh = ExtResource("1_s3g2v")
+mesh = ExtResource("2_0dvjj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=431599758]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 28, 0)
-shape = SubResource("BoxShape3D_y88lo")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.6, 0)
+shape = SubResource("BoxShape3D_2uifg")
+
+[node name="RooftopHVAC" type="StaticBody3D" parent="." unique_id=661342222 instance=ExtResource("3_3xp0p")]
+transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, 0, 56, 0)
+metadata/source = "Blender budget variant of the stock hospital HVAC: hidden caps removed, top panels flattened"
+
+[node name="TierCollision1" type="CollisionShape3D" parent="." unique_id=1629734364]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 38.95, 0)
+shape = SubResource("BoxShape3D_16bsc")
+
+[node name="TierCollision2" type="CollisionShape3D" parent="." unique_id=1510999459]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 51.35, 0)
+shape = SubResource("BoxShape3D_pfw3t")

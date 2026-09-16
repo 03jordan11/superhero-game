@@ -1,0 +1,21 @@
+{
+  "fps": 60,
+  "clips": [
+    {
+      "name": "Hero_ChargePunchWindup",
+      "duration": 0.4,
+      "loop": false
+    },
+    {
+      "name": "Hero_ChargePunchHold",
+      "duration": 1.5,
+      "loop": true
+    },
+    {
+      "name": "Hero_ChargePunchRelease",
+      "duration": 0.7,
+      "loop": false,
+      "impact": 0.2
+    }
+  ]
+}

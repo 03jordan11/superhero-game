@@ -1,0 +1,16 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://assets/buildings/city_hall/props/planter.glb" id="1_j08rx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_566a4"]
+size = Vector3(1.4, 0.72, 1.4)
+
+[node name="Planter" type="Node3D" unique_id=886124083]
+
+[node name="Mesh" type="Node3D" parent="." unique_id=631406676 instance=ExtResource("1_j08rx")]
+
+[node name="Collision" type="StaticBody3D" parent="." unique_id=2138955724]
+
+[node name="Pot" type="CollisionShape3D" parent="Collision" unique_id=877746015]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.36, 0)
+shape = SubResource("BoxShape3D_566a4")

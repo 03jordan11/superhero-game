@@ -1,0 +1,46 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/npcs/melee_thug.tscn" id="1_melee"]
+[ext_resource type="Script" path="res://scripts/npc-scripts/super_hostile.gd" id="2_super"]
+
+[sub_resource type="CapsuleShape3D" id="Capsule_super"]
+radius = 0.75
+height = 2.6315918
+
+[node name="SuperThug" instance=ExtResource("1_melee")]
+script = ExtResource("2_super")
+enemy_type = &"super_thug"
+display_name = "Super Thug"
+nameplate_text = "SUPER"
+nameplate_kind = 3
+nameplate_height = 4.275
+max_health = 500.0
+knockback_resistant = true
+can_grab = false
+experience_gain = 350
+approach_speed = 5.0
+surround_speed = 2.5
+search_speed = 3.5
+attack_range = 3.0
+attack_height_tolerance = 3.0
+punch_damage = 40.0
+punch_hit_delay = 0.4
+punch_animation_speed = 0.5
+punch_animation_timeout = 4.0
+combo_recovery_time = 0.8
+sight_origin_height = 2.1
+obstacle_probe_radius = 0.75
+obstacle_probe_height = 1.35
+
+[node name="CollisionShape3D" parent="." index="0"]
+position = Vector3(0, 1.3157959, 0)
+shape = SubResource("Capsule_super")
+
+[node name="HealthLabel" parent="." index="1"]
+position = Vector3(0, 3.6, 0)
+
+[node name="Superhero_Male_FullBody" parent="." index="2"]
+transform = Transform3D(-1.5, 0, 0, 0, 1.5, 0, 0, 0, -1.5, 0, 0, 0)
+
+[node name="AlertIndicator" parent="." index="4"]
+position = Vector3(0, 5.475, 0)

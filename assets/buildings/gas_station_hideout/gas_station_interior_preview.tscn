@@ -1,0 +1,239 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://assets/buildings/gas_station_hideout/gas_station_interior.tscn" id="1_3ralj"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="2_14avv"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_character.gd" id="3_j2bpx"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_stats.gd" id="4_d2fyx"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_abilities.gd" id="5_wt3eb"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_encounter_indicator.gd" id="6_lqqcy"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_laser_eyes.gd" id="7_u07ay"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_state_machine.gd" id="8_3oydd"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_grounded_state.gd" id="9_yhvin"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_jump_charging_state.gd" id="10_n8it1"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_airborne_state.gd" id="11_g5mnl"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_flying_state.gd" id="12_jivy6"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_ground_slam_state.gd" id="13_a473j"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_wall_run_state.gd" id="14_onla4"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_knocked_down_state.gd" id="15_702w4"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_dead_state.gd" id="16_qdeot"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_movement_motor.gd" id="17_vycn5"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_animation_controller.gd" id="18_h4hul"]
+[ext_resource type="Script" path="res://scripts/player-scripts/landing_target_indicator.gd" id="19_8gjxj"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_camera_effects.gd" id="20_tbuio"]
+[ext_resource type="Script" path="res://scripts/ui-scripts/gameplay_hud.gd" id="21_mpryk"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_combat_controller.gd" id="22_epacs"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_status_effects.gd" id="23_r3q35"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_damage_receiver.gd" id="24_2ag5w"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_vehicle_interactor.gd" id="25_ssol6"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_landing_impact_controller.gd" id="26_2d068"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_sound_manager.gd" id="27_20foj"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_speed_feedback.gd" id="28_240c2"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_input_controller.gd" id="29_w51lx"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_power_controller.gd" id="30_72mp2"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_stamina.gd" id="31_h8qen"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_bounding_controller.gd" id="32_mrtdn"]
+[ext_resource type="Script" path="res://scripts/ui-scripts/power_selector.gd" id="33_8v8py"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_fire.gd" id="34_t4bp4"]
+[ext_resource type="Script" path="res://scripts/character_hair.gd" id="35_tgf7g"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_electricity.gd" id="36_7u83m"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_rescue_carrier.gd" id="37_4loff"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_ship_interaction.gd" id="38_eutqc"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_target_lock.gd" id="39_t0nc3"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_hostile_grab.gd" id="40_0t854"]
+[ext_resource type="Script" path="res://scripts/ui-scripts/rescue_timer_hud.gd" id="41_ssp5h"]
+
+[sub_resource type="Resource" id="Resource_0nd8m"]
+script = ExtResource("4_d2fyx")
+strength = 10
+resilience = 10
+
+[sub_resource type="Resource" id="Resource_4n15o"]
+script = ExtResource("5_wt3eb")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_player"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_encounter_indicator"]
+albedo_color = Color(1, 0.85, 0.15, 1)
+emission_enabled = true
+emission = Color(1, 0.6, 0.05, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_encounter_indicator"]
+material = SubResource("StandardMaterial3D_encounter_indicator")
+top_radius = 0.0
+bottom_radius = 0.28
+height = 0.8
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1s1tm"]
+radius = 0.3
+
+[node name="HideoutInteriorPreview" type="Node3D" unique_id=235819665]
+
+[node name="GasStationInterior" type="Node3D" parent="." unique_id=784254770 instance=ExtResource("1_3ralj")]
+metadata/rendered_triangles = 2286
+
+[node name="Player" parent="." unique_id=1272581381 instance=ExtResource("2_14avv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.4, -1.8)
+script = ExtResource("3_j2bpx")
+stats = SubResource("Resource_0nd8m")
+strength = 10
+resilience = 10
+abilities = SubResource("Resource_4n15o")
+
+[node name="CollisionShape3D" parent="Player" index="0" unique_id=1699340848]
+shape = SubResource("CapsuleShape3D_player")
+
+[node name="EncounterIndicator" parent="Player" index="1" unique_id=1790370650]
+script = ExtResource("6_lqqcy")
+
+[node name="Arrow" parent="Player/EncounterIndicator" index="0" unique_id=1254010724]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_encounter_indicator")
+
+[node name="DistanceLabel" parent="Player/EncounterIndicator" index="1" unique_id=565183735]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+billboard = 1
+modulate = Color(1, 0.9, 0.35, 1)
+font_size = 48
+outline_size = 6
+
+[node name="SuperheroCharacter" parent="Player" index="2" unique_id=674603265]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0, -1, 0)
+
+[node name="PlayerLaserEyes" parent="Player" index="3"]
+script = ExtResource("7_u07ay")
+
+[node name="PlayerStateMachine" parent="Player" index="4" unique_id=1856800475]
+script = ExtResource("8_3oydd")
+
+[node name="GroundedState" parent="Player/PlayerStateMachine" index="0" unique_id=585032173]
+script = ExtResource("9_yhvin")
+
+[node name="JumpChargingState" parent="Player/PlayerStateMachine" index="1" unique_id=512900076]
+script = ExtResource("10_n8it1")
+
+[node name="AirborneState" parent="Player/PlayerStateMachine" index="2" unique_id=763372750]
+script = ExtResource("11_g5mnl")
+
+[node name="FlyingState" parent="Player/PlayerStateMachine" index="3" unique_id=364243515]
+script = ExtResource("12_jivy6")
+
+[node name="GroundSlamState" parent="Player/PlayerStateMachine" index="4" unique_id=929265217]
+script = ExtResource("13_a473j")
+
+[node name="WallRunState" parent="Player/PlayerStateMachine" index="5" unique_id=1330540168]
+script = ExtResource("14_onla4")
+
+[node name="KnockedDownState" parent="Player/PlayerStateMachine" index="6" unique_id=1717262771]
+script = ExtResource("15_702w4")
+
+[node name="DeadState" parent="Player/PlayerStateMachine" index="7" unique_id=424849072]
+script = ExtResource("16_qdeot")
+
+[node name="PlayerMovementMotor" parent="Player" index="5" unique_id=764393939]
+script = ExtResource("17_vycn5")
+
+[node name="PlayerAnimationController" parent="Player" index="6" unique_id=519522135]
+script = ExtResource("18_h4hul")
+
+[node name="LandingTarget" parent="Player" index="7" unique_id=50859486]
+script = ExtResource("19_8gjxj")
+
+[node name="PlayerCameraEffects" parent="Player" index="8" unique_id=1571283697]
+script = ExtResource("20_tbuio")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="Player" unique_id=1356520718]
+transform = Transform3D(1, 0, 0, 0, 0.99026805, 0.1391731, 0, -0.1391731, 0.99026805, 0.6, 0.75, 0)
+shape = SubResource("SphereShape3D_1s1tm")
+spring_length = 1.5
+margin = 0.25
+
+[node name="Camera3D" parent="Player/SpringArm3D" index="0" unique_id=99221370]
+far = 60000.0
+
+[node name="GameplayHUD" parent="Player" index="10" unique_id=2002191483]
+script = ExtResource("21_mpryk")
+
+[node name="PlayerCombatController" parent="Player" index="11" unique_id=1144521910]
+script = ExtResource("22_epacs")
+
+[node name="PlayerStatusEffects" parent="Player" index="12" unique_id=1099164344]
+script = ExtResource("23_r3q35")
+
+[node name="PlayerDamageReceiver" parent="Player" index="13" unique_id=203328943]
+script = ExtResource("24_2ag5w")
+
+[node name="PlayerVehicleInteractor" parent="Player" index="14" unique_id=1234231188]
+script = ExtResource("25_ssol6")
+
+[node name="PlayerLandingImpactController" parent="Player" index="15" unique_id=137563013]
+script = ExtResource("26_2d068")
+
+[node name="PlayerSoundManager" parent="Player" index="16" unique_id=2134492044]
+script = ExtResource("27_20foj")
+
+[node name="HeavyLanding" parent="Player/PlayerSoundManager" index="0" unique_id=683757004]
+max_polyphony = 2
+
+[node name="Footstep" parent="Player/PlayerSoundManager" index="1" unique_id=1832471846]
+max_polyphony = 2
+
+[node name="ComboPunch" parent="Player/PlayerSoundManager" index="2"]
+max_polyphony = 2
+
+[node name="BulletHit" parent="Player/PlayerSoundManager" index="7"]
+max_polyphony = 4
+
+[node name="PlayerSpeedFeedback" parent="Player" index="17"]
+script = ExtResource("28_240c2")
+
+[node name="PlayerInputController" parent="Player" index="18"]
+script = ExtResource("29_w51lx")
+
+[node name="PlayerPowerController" parent="Player" index="19"]
+script = ExtResource("30_72mp2")
+
+[node name="PlayerStamina" parent="Player" index="20"]
+script = ExtResource("31_h8qen")
+
+[node name="PlayerBoundingController" parent="Player" index="21"]
+script = ExtResource("32_mrtdn")
+
+[node name="PowerSelector" parent="Player" index="22"]
+layer = 8
+
+[node name="Wheel" parent="Player/PowerSelector" index="0"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("33_8v8py")
+
+[node name="PlayerFire" parent="Player" index="23"]
+script = ExtResource("34_t4bp4")
+
+[node name="CharacterHair" parent="Player" index="24"]
+script = ExtResource("35_tgf7g")
+model_path = NodePath("../SuperheroCharacter")
+female_npc = false
+
+[node name="PlayerElectricity" parent="Player" index="25"]
+script = ExtResource("36_7u83m")
+
+[node name="PlayerRescueCarrier" parent="Player" index="26"]
+script = ExtResource("37_4loff")
+
+[node name="PlayerShipInteraction" parent="Player" index="27"]
+script = ExtResource("38_eutqc")
+
+[node name="PlayerTargetLock" parent="Player" index="28"]
+script = ExtResource("39_t0nc3")
+
+[node name="PlayerHostileGrab" parent="Player" index="29"]
+script = ExtResource("40_0t854")
+
+[node name="RescueTimerHUD" parent="Player" index="30"]
+script = ExtResource("41_ssp5h")
+
+[editable path="Player"]

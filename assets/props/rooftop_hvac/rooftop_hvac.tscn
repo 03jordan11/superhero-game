@@ -1,0 +1,18 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="res://assets/props/rooftop_hvac/rooftop_hvac.res" id="1_ydvq5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tchug"]
+size = Vector3(9.399757, 2.800354, 6.4000607)
+
+[node name="RooftopHVAC" type="StaticBody3D" unique_id=661342222]
+metadata/source = "hospital / Roof equipment / unit at (-13, 129, -18)"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=104091257]
+visibility_range_end = 1500.0
+visibility_range_end_margin = 60.0
+mesh = ExtResource("1_ydvq5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=682508889]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0008831024, 1.399826, -7.343292e-05)
+shape = SubResource("BoxShape3D_tchug")

@@ -6,6 +6,7 @@
 [node name="CityPedestrianRoutes" type="Node3D"]
 script = ExtResource("1")
 network_enabled = true
+show_debug_routes = true
 show_disabled_routes = false
 crossing_passing_margin = 0.5
 
@@ -325,7 +326,7 @@ gizmo_extents = 3.0
 metadata/module_id = "NorthHeights_Block_01_10"
 
 [node name="StartHere" type="Marker3D" parent="NorthHeights/Block_01_10"]
-position = Vector3(302.0, 0.03, -948.0)
+position = Vector3(305.0, 0.03, -948.0)
 gizmo_extents = 3.0
 
 [node name="Block_01_11" type="Node3D" parent="NorthHeights"]
@@ -430,7 +431,7 @@ gizmo_extents = 3.0
 metadata/module_id = "NorthHeights_Block_02_11"
 
 [node name="StartHere" type="Marker3D" parent="NorthHeights/Block_02_11"]
-position = Vector3(315.0, 0.03, -808.0)
+position = Vector3(320.0, 0.03, -808.0)
 gizmo_extents = 3.0
 
 [node name="Block_02_12" type="Node3D" parent="NorthHeights"]
@@ -521,14 +522,14 @@ gizmo_extents = 3.0
 metadata/module_id = "NorthHeights_Block_03_10"
 
 [node name="StartHere" type="Marker3D" parent="NorthHeights/Block_03_10"]
-position = Vector3(165.0, 0.03, -660.0)
+position = Vector3(183.297882080078, 0.03, -680.0)
 gizmo_extents = 3.0
 
 [node name="Block_03_11" type="Node3D" parent="NorthHeights"]
 metadata/module_id = "NorthHeights_Block_03_11"
 
 [node name="StartHere" type="Marker3D" parent="NorthHeights/Block_03_11"]
-position = Vector3(322.0, 0.03, -652.0)
+position = Vector3(325.0, 0.03, -652.0)
 gizmo_extents = 3.0
 
 [node name="Block_03_12" type="Node3D" parent="NorthHeights"]
@@ -619,14 +620,14 @@ gizmo_extents = 3.0
 metadata/module_id = "NorthHeights_Block_04_10"
 
 [node name="StartHere" type="Marker3D" parent="NorthHeights/Block_04_10"]
-position = Vector3(302.0, 0.03, -492.0)
+position = Vector3(305.0, 0.03, -492.0)
 gizmo_extents = 3.0
 
 [node name="Block_04_11" type="Node3D" parent="NorthHeights"]
 metadata/module_id = "NorthHeights_Block_04_11"
 
 [node name="StartHere" type="Marker3D" parent="NorthHeights/Block_04_11"]
-position = Vector3(302.0, 0.03, -492.0)
+position = Vector3(305.0, 0.03, -492.0)
 gizmo_extents = 3.0
 
 [node name="Block_04_12" type="Node3D" parent="NorthHeights"]
@@ -698,14 +699,14 @@ gizmo_extents = 3.0
 metadata/module_id = "Parkside_Block_04_07"
 
 [node name="StartHere" type="Marker3D" parent="Parkside/Block_04_07"]
-position = Vector3(-392.0, 0.03, -338.0)
+position = Vector3(-404.0, 0.03, -338.0)
 gizmo_extents = 3.0
 
 [node name="Block_04_08" type="Node3D" parent="Parkside"]
 metadata/module_id = "Parkside_Block_04_08"
 
 [node name="StartHere" type="Marker3D" parent="Parkside/Block_04_08"]
-position = Vector3(-212.0, 0.03, -338.0)
+position = Vector3(-188.0, 0.03, -338.0)
 gizmo_extents = 3.0
 
 [node name="Block_04_09" type="Node3D" parent="Parkside"]
@@ -713,6 +714,13 @@ metadata/module_id = "Parkside_Block_04_09"
 
 [node name="StartHere" type="Marker3D" parent="Parkside/Block_04_09"]
 position = Vector3(-36.0, 0.03, -338.0)
+gizmo_extents = 3.0
+
+[node name="Block_04_10" type="Node3D" parent="Parkside"]
+metadata/module_id = "Parkside_Block_04_10"
+
+[node name="StartHere" type="Marker3D" parent="Parkside/Block_04_10"]
+position = Vector3(130.383819580078, 0.03, -430.0)
 gizmo_extents = 3.0
 
 [node name="Block_05_05" type="Node3D" parent="Parkside"]
@@ -740,7 +748,7 @@ gizmo_extents = 3.0
 metadata/module_id = "Parkside_Block_05_08"
 
 [node name="StartHere" type="Marker3D" parent="Parkside/Block_05_08"]
-position = Vector3(-212.0, 0.03, -336.0)
+position = Vector3(-210.0, 0.03, -334.875)
 gizmo_extents = 3.0
 
 [node name="Block_05_09" type="Node3D" parent="Parkside"]
@@ -768,7 +776,14 @@ gizmo_extents = 3.0
 metadata/module_id = "Parkside_Block_06_09"
 
 [node name="StartHere" type="Marker3D" parent="Parkside/Block_06_09"]
-position = Vector3(30.0, 0.03, -168.0)
+position = Vector3(27.0, 0.03, -168.0)
+gizmo_extents = 3.0
+
+[node name="Block_06_10" type="Node3D" parent="Parkside"]
+metadata/module_id = "Parkside_Block_06_10"
+
+[node name="StartHere" type="Marker3D" parent="Parkside/Block_06_10"]
+position = Vector3(119.5, 0.03, -70.0)
 gizmo_extents = 3.0
 
 [node name="Block_07_05" type="Node3D" parent="Parkside"]
@@ -789,14 +804,14 @@ gizmo_extents = 3.0
 metadata/module_id = "Parkside_Block_07_09"
 
 [node name="StartHere" type="Marker3D" parent="Parkside/Block_07_09"]
-position = Vector3(60.0, 0.03, -12.0)
+position = Vector3(57.0, 0.03, -12.0)
 gizmo_extents = 3.0
 
 [node name="Block_07_10" type="Node3D" parent="Parkside"]
 metadata/module_id = "Parkside_Block_07_10"
 
 [node name="StartHere" type="Marker3D" parent="Parkside/Block_07_10"]
-position = Vector3(124.0, 0.03, -12.0)
+position = Vector3(120.0, 0.03, -12.0)
 gizmo_extents = 3.0
 
 [node name="Block_08_05" type="Node3D" parent="Parkside"]
@@ -1143,7 +1158,7 @@ gizmo_extents = 3.0
 metadata/module_id = "FinancialQuarter_Block_09_11"
 
 [node name="StartHere" type="Marker3D" parent="FinancialQuarter/Block_09_11"]
-position = Vector3(425.0, 0.03, 380.0)
+position = Vector3(407.992492675781, 0.03, 380.0)
 gizmo_extents = 3.0
 
 [node name="Block_09_12" type="Node3D" parent="FinancialQuarter"]
@@ -1199,14 +1214,14 @@ gizmo_extents = 3.0
 metadata/module_id = "FinancialQuarter_Block_10_11"
 
 [node name="StartHere" type="Marker3D" parent="FinancialQuarter/Block_10_11"]
-position = Vector3(462.0, 0.03, 468.0)
+position = Vector3(465.0, 0.03, 468.0)
 gizmo_extents = 3.0
 
 [node name="Block_10_12" type="Node3D" parent="FinancialQuarter"]
 metadata/module_id = "FinancialQuarter_Block_10_12"
 
 [node name="StartHere" type="Marker3D" parent="FinancialQuarter/Block_10_12"]
-position = Vector3(462.0, 0.03, 468.0)
+position = Vector3(465.0, 0.03, 468.0)
 gizmo_extents = 3.0
 
 [node name="Block_10_13" type="Node3D" parent="FinancialQuarter"]
@@ -1255,7 +1270,7 @@ gizmo_extents = 3.0
 metadata/module_id = "FinancialQuarter_Block_11_11"
 
 [node name="StartHere" type="Marker3D" parent="FinancialQuarter/Block_11_11"]
-position = Vector3(393.5, 0.03, 624.0)
+position = Vector3(419.590942382813, 0.03, 624.0)
 gizmo_extents = 3.0
 
 [node name="Block_11_12" type="Node3D" parent="FinancialQuarter"]
@@ -1304,21 +1319,21 @@ gizmo_extents = 3.0
 metadata/module_id = "FinancialQuarter_Block_12_10"
 
 [node name="StartHere" type="Marker3D" parent="FinancialQuarter/Block_12_10"]
-position = Vector3(295.0, 0.03, 772.0)
+position = Vector3(124.833335876465, 0.03, 772.0)
 gizmo_extents = 3.0
 
 [node name="Block_12_11" type="Node3D" parent="FinancialQuarter"]
 metadata/module_id = "FinancialQuarter_Block_12_11"
 
 [node name="StartHere" type="Marker3D" parent="FinancialQuarter/Block_12_11"]
-position = Vector3(295.0, 0.03, 772.0)
+position = Vector3(478.330078125, 0.03, 772.0)
 gizmo_extents = 3.0
 
 [node name="Block_12_12" type="Node3D" parent="FinancialQuarter"]
 metadata/module_id = "FinancialQuarter_Block_12_12"
 
 [node name="StartHere" type="Marker3D" parent="FinancialQuarter/Block_12_12"]
-position = Vector3(510.0, 0.03, 772.0)
+position = Vector3(497.1650390625, 0.03, 772.0)
 gizmo_extents = 3.0
 
 [node name="Block_12_13" type="Node3D" parent="FinancialQuarter"]
@@ -1332,7 +1347,7 @@ gizmo_extents = 3.0
 metadata/module_id = "FinancialQuarter_Waterfront"
 
 [node name="StartHere" type="Marker3D" parent="FinancialQuarter/Waterfront"]
-position = Vector3(-690.0, 0.03, 785.0)
+position = Vector3(477.996948242188, 0.03, 780.0)
 gizmo_extents = 3.0
 
 [node name="Eastbank" type="Node3D" parent="."]
@@ -1348,7 +1363,7 @@ show_debug = true
 metadata/module_id = "Eastbank_Block_04_10"
 
 [node name="StartHere" type="Marker3D" parent="Eastbank/Block_04_10"]
-position = Vector3(265.0, 0.03, -440.0)
+position = Vector3(246.383819580078, 0.03, -430.0)
 gizmo_extents = 3.0
 
 [node name="Block_04_11" type="Node3D" parent="Eastbank"]
@@ -1404,14 +1419,14 @@ gizmo_extents = 3.0
 metadata/module_id = "Eastbank_Block_05_10"
 
 [node name="StartHere" type="Marker3D" parent="Eastbank/Block_05_10"]
-position = Vector3(285.0, 0.03, -336.0)
+position = Vector3(290.0, 0.03, -336.0)
 gizmo_extents = 3.0
 
 [node name="Block_05_11" type="Node3D" parent="Eastbank"]
 metadata/module_id = "Eastbank_Block_05_11"
 
 [node name="StartHere" type="Marker3D" parent="Eastbank/Block_05_11"]
-position = Vector3(285.0, 0.03, -336.0)
+position = Vector3(290.0, 0.03, -336.0)
 gizmo_extents = 3.0
 
 [node name="Block_05_12" type="Node3D" parent="Eastbank"]
@@ -1460,7 +1475,7 @@ gizmo_extents = 3.0
 metadata/module_id = "Eastbank_Block_06_10"
 
 [node name="StartHere" type="Marker3D" parent="Eastbank/Block_06_10"]
-position = Vector3(277.0, 0.03, -152.0)
+position = Vector3(280.0, 0.03, -152.0)
 gizmo_extents = 3.0
 
 [node name="Block_06_11" type="Node3D" parent="Eastbank"]
@@ -1495,7 +1510,7 @@ gizmo_extents = 3.0
 metadata/module_id = "Eastbank_Block_07_10"
 
 [node name="StartHere" type="Marker3D" parent="Eastbank/Block_07_10"]
-position = Vector3(296.0, 0.03, 12.0)
+position = Vector3(300.0, 0.03, 12.0)
 gizmo_extents = 3.0
 
 [node name="Block_07_11" type="Node3D" parent="Eastbank"]
@@ -1558,7 +1573,7 @@ gizmo_extents = 3.0
 metadata/module_id = "Eastbank_Block_09_11"
 
 [node name="StartHere" type="Marker3D" parent="Eastbank/Block_09_11"]
-position = Vector3(472.0, 0.03, 336.0)
+position = Vector3(475.0, 0.03, 336.0)
 gizmo_extents = 3.0
 
 [node name="Block_09_12" type="Node3D" parent="Eastbank"]
@@ -1622,13 +1637,6 @@ metadata/module_id = "Eastbank_Block_12_14"
 
 [node name="StartHere" type="Marker3D" parent="Eastbank/Block_12_14"]
 position = Vector3(870.0, 0.03, 772.0)
-gizmo_extents = 3.0
-
-[node name="Waterfront" type="Node3D" parent="Eastbank"]
-metadata/module_id = "Eastbank_Waterfront"
-
-[node name="StartHere" type="Marker3D" parent="Eastbank/Waterfront"]
-position = Vector3(1046.0, 0.03, 785.0)
 gizmo_extents = 3.0
 
 [node name="FoundryWard" type="Node3D" parent="."]
@@ -1899,4 +1907,11 @@ metadata/module_id = "Docklands_Pier"
 
 [node name="StartHere" type="Marker3D" parent="Docklands/Pier"]
 position = Vector3(1048.0, 0.03, 774.0)
+gizmo_extents = 3.0
+
+[node name="Waterfront" type="Node3D" parent="Docklands"]
+metadata/module_id = "Docklands_Waterfront"
+
+[node name="StartHere" type="Marker3D" parent="Docklands/Waterfront"]
+position = Vector3(1046.0, 0.03, 785.0)
 gizmo_extents = 3.0

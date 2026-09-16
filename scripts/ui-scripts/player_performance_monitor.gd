@@ -6,7 +6,7 @@ extends Node
 @export_range(1.0, 30.0, 1.0) var sample_interval: float = 5.0
 @export var player_path: NodePath = ^"../../Player"
 @export var hud_paths: Array[NodePath] = [
-	^"../../Player/ChargeUI", ^"../../PerformanceHUD",
+	^"../../Player/GameplayHUD", ^"../../PerformanceHUD",
 	^"../../DeveloperMenu", ^"../../PauseMenu",
 ]
 

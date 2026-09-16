@@ -1,0 +1,21 @@
+[gd_resource type="Resource" format=3]
+
+[ext_resource type="Material" path="res://assets/waterfront/cargo_ship/materials/graphite_container_a.tres" id="1_fliot"]
+[ext_resource type="Material" path="res://assets/waterfront/cargo_ship/materials/graphite_container_b.tres" id="2_obxu1"]
+[ext_resource type="Material" path="res://assets/waterfront/cargo_ship/materials/graphite_container_c.tres" id="3_60a6x"]
+[ext_resource type="Material" path="res://assets/waterfront/cargo_ship/materials/graphite_container_d.tres" id="4_ny5ao"]
+[ext_resource type="Material" path="res://assets/waterfront/cargo_ship/materials/graphite_deck.tres" id="5_b6bvw"]
+[ext_resource type="Material" path="res://assets/waterfront/cargo_ship/materials/graphite_hull.tres" id="6_x7dve"]
+[ext_resource type="Script" path="res://assets/waterfront/cargo_ship/ship_palette.gd" id="7_qrhec"]
+[ext_resource type="Material" path="res://assets/waterfront/cargo_ship/materials/graphite_superstructure.tres" id="8_sgsog"]
+
+[resource]
+resource_name = "Graphite"
+script = ExtResource("7_qrhec")
+hull = ExtResource("6_x7dve")
+deck = ExtResource("5_b6bvw")
+superstructure = ExtResource("8_sgsog")
+container_a = ExtResource("1_fliot")
+container_b = ExtResource("2_obxu1")
+container_c = ExtResource("3_60a6x")
+container_d = ExtResource("4_ny5ao")

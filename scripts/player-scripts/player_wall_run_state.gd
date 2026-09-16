@@ -14,6 +14,8 @@ func can_enter(_previous_state: PlayerState, context: Dictionary = {}) -> bool:
 		or player.is_knocked_out
 		or player.is_dead
 		or player.is_wall_running
+		or player.is_carrying()
+		or player.combat_controller.is_action_locked()
 		or input == null
 		or not input.sprint_pressed
 		or input.movement.length_squared() == 0.0

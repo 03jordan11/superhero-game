@@ -1,15 +1,43 @@
 [gd_scene format=3]
 
-[ext_resource type="ArrayMesh" path="res://assets/generated-buildings/residential/meshes/residential_building_01.res" id="1_lrvu5"]
+[ext_resource type="Script" path="res://assets/generated-buildings/residential/residential_building.gd" id="1_tns8b"]
+[ext_resource type="ArrayMesh" path="res://assets/generated-buildings/residential/meshes/residential_building_01.res" id="2_q04oh"]
+[ext_resource type="PackedScene" path="res://assets/props/rooftop_hvac/rooftop_hvac_lowpoly.tscn" id="3_qka5f"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_4ffjp"]
-size = Vector3(8.8, 13.9, 15.375)
+[sub_resource type="BoxShape3D" id="BoxShape3D_7sewr"]
+size = Vector3(8.4, 12.4, 14)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k0wwr"]
+size = Vector3(2, 0.24, 1.35)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_acmhd"]
+size = Vector3(2, 0.24, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v68wg"]
+size = Vector3(2, 0.24, 0.65)
 
 [node name="residential_building_01" type="StaticBody3D" unique_id=1709010885]
+script = ExtResource("1_tns8b")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=965385932]
-mesh = ExtResource("1_lrvu5")
+mesh = ExtResource("2_q04oh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1692755683]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.95, 0)
-shape = SubResource("BoxShape3D_4ffjp")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.2, 0.5375004)
+shape = SubResource("BoxShape3D_7sewr")
+
+[node name="RooftopHVAC" type="StaticBody3D" parent="." unique_id=661342222 instance=ExtResource("3_qka5f")]
+transform = Transform3D(0.5457447, 0, 0, 0, 0.5457447, 0, 0, 0, 0.5457447, 0, 12.4, 0.5375004)
+metadata/source = "Blender budget variant of the stock hospital HVAC: hidden caps removed, top panels flattened"
+
+[node name="StoopCollision3" type="CollisionShape3D" parent="." unique_id=2004426741]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8, 0.12, -7.0125)
+shape = SubResource("BoxShape3D_k0wwr")
+
+[node name="StoopCollision4" type="CollisionShape3D" parent="." unique_id=2006919808]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8, 0.36, -6.8624997)
+shape = SubResource("BoxShape3D_acmhd")
+
+[node name="StoopCollision5" type="CollisionShape3D" parent="." unique_id=252818564]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8, 0.6, -6.7124996)
+shape = SubResource("BoxShape3D_v68wg")

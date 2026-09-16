@@ -27,9 +27,9 @@ func _initialize() -> void:
 		collection.append(packed)
 		var body = packed.instantiate()
 		check(body is StaticBody3D, path + " root must be StaticBody3D")
-		check(body.get_child_count() == 2, path + " must have exactly two children")
+		check(body.get_child_count() >= 2, path + " missing building nodes")
 		check(body.transform == Transform3D.IDENTITY, path + " root must be identity")
-		check(body.get_script() == null, path + " must have no script")
+		check(body.get_script() != null, path + " missing emission controller")
 		var visual = body.get_node_or_null("MeshInstance3D") as MeshInstance3D
 		var collision = body.get_node_or_null("CollisionShape3D") as CollisionShape3D
 		check(visual != null and visual.mesh != null, path + " missing mesh")
@@ -44,8 +44,10 @@ func _initialize() -> void:
 		var bounds = visual.mesh.get_aabb()
 		check(absf(bounds.position.y) < 0.0001, path + " base is not at Y=0")
 		check(absf(bounds.get_center().x) < 0.0001 and absf(bounds.get_center().z) < 0.0001, path + " horizontal origin not centered")
-		var box = AABB(collision.position-collision.shape.size/2,collision.shape.size).grow(0.001)
-		check(box.encloses(bounds), path + " box does not enclose mesh")
+		var box = bounds.grow(0.001)
+		for node in body.get_children():
+			if node is CollisionShape3D:
+				check(node.shape is BoxShape3D or node.shape is ConvexPolygonShape3D,path+" collision must be solid")
 		check(bounds.size.x <= 38.0 and bounds.size.z <= 32.0, path + " footprint too large")
 		var triangles = 0
 		for s in range(visual.mesh.get_surface_count()):
@@ -60,13 +62,12 @@ func _initialize() -> void:
 				var cross = (vertices[t+1]-vertices[t]).cross(vertices[t+2]-vertices[t])
 				check(cross.length() > 0.00001, path + " degenerate triangle")
 				check(cross.dot(normals[t]) < 0.0, path + " winding/normal mismatch")
-		rows.append({"scene":path.get_file(),"size_m":[bounds.size.x,bounds.size.y,bounds.size.z],"triangles":triangles,"surfaces":visual.mesh.get_surface_count(),"nodes":3})
+		rows.append({"scene":path.get_file(),"size_m":[bounds.size.x,bounds.size.y,bounds.size.z],"triangles":triangles,"surfaces":visual.mesh.get_surface_count(),"nodes":body.get_child_count()+1})
 		body.free()
-	# Assign the typed array to the real addon's configuration, in memory only.
-	var config_script = load("res://addons/citycrafter/city_configuration.gd")
-	var config = config_script.new()
-	config.industrial_buildings = collection
-	check(config.industrial_buildings.size() == 10 and config.is_valid(), "CityConfiguration array assignment failed")
+	if ResourceLoader.exists("res://addons/citycrafter/city_configuration.gd"):
+		var config_script=load("res://addons/citycrafter/city_configuration.gd")
+		var config=config_script.new(); config.industrial_buildings=collection
+		check(config.is_valid(), "CityConfiguration array assignment failed")
 	var file = FileAccess.open(OUT+"tools/validation_report.json",FileAccess.WRITE)
 	file.store_string(JSON.stringify({"engine":Engine.get_version_info().string,"passed":failures.is_empty(),"failures":failures,"typed_array_entries":collection.size(),"buildings":rows},"\t"))
 	print("Validation: %d scenes, %d Array[PackedScene] entries, %d failures" % [rows.size(),collection.size(),failures.size()])

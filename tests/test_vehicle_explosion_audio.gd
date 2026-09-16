@@ -41,7 +41,7 @@ func run() -> void:
 	check(audio.playing and not audio.stream.loop, "Destroyed vehicle starts its explosion one-shot")
 	check(audio.global_position.is_equal_approx(explosion_position), "Explosion sound stays at the blast location")
 	check(audio.stream.data == load("res://assets/audio/Vehicles/explosion.mp3").data, "Uses the supplied explosion clip")
-	check(audio.volume_db == 3.0, "Explosion receives the requested modest volume boost")
+	check(audio.volume_db == -15.0, "Explosion gain is halved again with another 6 dB reduction")
 	check(audio.pitch_scale >= 0.92 and audio.pitch_scale <= 1.08, "Pitch varies within a subtle range")
 	check(audio.bus == &"VehicleExplosions", "Explosion uses its own peak control bus")
 	var bus := AudioServer.get_bus_index(&"VehicleExplosions")

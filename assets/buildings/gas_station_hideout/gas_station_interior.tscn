@@ -1,0 +1,706 @@
+[gd_scene format=3 uid="uid://dac7ehymweeu3"]
+
+[ext_resource type="Script" path="res://scripts/power_machine_interaction.gd" id="50_power_machine_interaction"]
+[ext_resource type="Script" path="res://scripts/hideout_bed.gd" id="51_bed"]
+[ext_resource type="Script" path="res://scripts/game_clock.gd" id="52_clock"]
+[ext_resource type="Script" uid="uid://d26g0mqvesomc" path="res://scripts/hideout_door.gd" id="2_mngh1"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/gas_station_hideout/interior_meshes/Ceiling.res" id="3_7fs45"]
+[ext_resource type="PackedScene" uid="uid://b8i8qd4l5tjgl" path="res://assets/props/power_machine/power_machine.glb" id="3_mngh1"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/gas_station_hideout/interior_meshes/Doors.res" id="4_gqlm3"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/gas_station_hideout/interior_meshes/Floor.res" id="5_6k57v"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/gas_station_hideout/interior_meshes/Walls.res" id="6_hvjlj"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/gas_station_hideout/interior_meshes/Desk.res" id="7_qmyfx"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/gas_station_hideout/interior_meshes/DeskMonitor1.res" id="8_uu5ah"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/gas_station_hideout/interior_meshes/DeskMonitor2.res" id="9_b06bt"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/gas_station_hideout/interior_meshes/Keyboard.res" id="10_0hguj"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/gas_station_hideout/interior_meshes/ComputerTower.res" id="11_ikmyx"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/gas_station_hideout/interior_meshes/Chair.res" id="12_f8fgq"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/gas_station_hideout/interior_meshes/InvestigationBoard.res" id="13_v64nq"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/gas_station_hideout/interior_meshes/Cot.res" id="14_x2d8v"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/gas_station_hideout/interior_meshes/Blanket.res" id="15_fmc4p"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/gas_station_hideout/interior_meshes/Pillow.res" id="16_3ueok"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/gas_station_hideout/interior_meshes/Footlocker.res" id="17_q0gev"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/gas_station_hideout/interior_meshes/Locker1.res" id="18_sq8n4"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/gas_station_hideout/interior_meshes/Locker2.res" id="19_hwanl"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/gas_station_hideout/interior_meshes/Workbench.res" id="20_elgqi"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/gas_station_hideout/interior_meshes/BenchVise.res" id="21_1xwy4"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/gas_station_hideout/interior_meshes/Toolbox.res" id="22_2yp8c"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/gas_station_hideout/interior_meshes/OilTin1.res" id="23_873xn"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/gas_station_hideout/interior_meshes/OilTin2.res" id="24_y61vq"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/gas_station_hideout/interior_meshes/OilTin3.res" id="25_x7s3h"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/gas_station_hideout/interior_meshes/Toolboard.res" id="26_rg10s"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/gas_station_hideout/interior_meshes/StorageRack1.res" id="27_k6kxv"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/gas_station_hideout/interior_meshes/Rack1Crate1.res" id="28_n6cof"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/gas_station_hideout/interior_meshes/Rack1Crate2.res" id="29_24nik"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/gas_station_hideout/interior_meshes/Rack1Crate3.res" id="30_h21js"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/gas_station_hideout/interior_meshes/Rack1Crate4.res" id="31_gv4p0"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/gas_station_hideout/interior_meshes/StorageRack2.res" id="32_w6or3"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/gas_station_hideout/interior_meshes/Rack2Crate1.res" id="33_32m6s"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/gas_station_hideout/interior_meshes/Rack2Crate2.res" id="34_rqwyb"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/gas_station_hideout/interior_meshes/Rack2Crate3.res" id="35_31cl6"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/gas_station_hideout/interior_meshes/Rack2Crate4.res" id="36_8tufq"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/gas_station_hideout/interior_meshes/TrainingMat.res" id="37_4cs5v"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/gas_station_hideout/interior_meshes/Tire1.res" id="38_k4qbg"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/gas_station_hideout/interior_meshes/Tire2.res" id="39_shoj0"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/gas_station_hideout/interior_meshes/Drum.res" id="40_cdi18"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/gas_station_hideout/interior_meshes/CeilingFixture0.res" id="41_2iksk"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/gas_station_hideout/interior_meshes/CeilingFixture1.res" id="42_6gp4b"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/gas_station_hideout/interior_meshes/CeilingFixture2.res" id="43_1d5wi"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/gas_station_hideout/interior_meshes/CeilingFixture3.res" id="44_m5bvk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m8fsy"]
+size = Vector3(6.3, 0.2, 10.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ib314"]
+size = Vector3(13.2, 0.2, 9.8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j1eam"]
+size = Vector3(0.5, 0.2, 2.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_om521"]
+size = Vector3(0.18, 3.72, 10.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aeqaw"]
+size = Vector3(6.3, 3.72, 0.18)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_isnnd"]
+size = Vector3(6.3, 3.72, 0.18)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ryucu"]
+size = Vector3(0.18, 3.78, 9.8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hbayx"]
+size = Vector3(13.2, 3.78, 0.18)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0sbuw"]
+size = Vector3(13.2, 3.78, 0.18)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y072o"]
+size = Vector3(0.2, 3.72, 4.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vpipl"]
+size = Vector3(0.2, 3.72, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ym615"]
+size = Vector3(0.2, 0.88, 2.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r1gnw"]
+size = Vector3(6.3, 0.16, 10.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gdjo6"]
+size = Vector3(13.2, 0.16, 9.8)
+
+[sub_resource type="Environment" id="Environment_xe1ha"]
+background_mode = 1
+background_color = Color(0.035, 0.04, 0.037, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.66, 0.7, 0.64, 1)
+ambient_light_energy = 0.48
+tonemap_mode = 2
+ssao_enabled = true
+ssao_radius = 0.7
+ssao_intensity = 1.3
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jpfxn"]
+size = Vector3(1.3, 0.83, 2.3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fk6kc"]
+size = Vector3(0.54, 0.78, 0.57)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5u3go"]
+size = Vector3(2.65, 0.62, 1.12)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t8fpv"]
+size = Vector3(1.9, 0.5, 0.65)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_87bgf"]
+size = Vector3(0.83, 2.08, 0.68)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uu626"]
+size = Vector3(0.83, 2.08, 0.68)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_thpoh"]
+size = Vector3(5.2, 0.88, 1.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n28x3"]
+size = Vector3(1.05, 2.56, 2.45)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7ii6u"]
+size = Vector3(1.05, 2.56, 2.45)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ljswi"]
+size = Vector3(0.72, 0.91, 0.72)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bhunq"]
+size = Vector3(3.5488434, 2.1479492, 1.3095703)
+
+[node name="GasStationInterior" type="Node3D" unique_id=784254770]
+metadata/rendered_triangles = 4554
+metadata/editable_interior_props = true
+
+[node name="Clock" type="Node" parent="."]
+script = ExtResource("52_clock")
+
+[node name="RoomCollision" type="StaticBody3D" parent="." unique_id=700987963]
+
+[node name="Officefloor" type="CollisionShape3D" parent="RoomCollision" unique_id=363523643]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.65, 0.26, -3.2)
+shape = SubResource("BoxShape3D_m8fsy")
+
+[node name="Garagefloor" type="CollisionShape3D" parent="RoomCollision" unique_id=149356286]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2, 0.26, -4)
+shape = SubResource("BoxShape3D_ib314")
+
+[node name="Officegaragethreshold" type="CollisionShape3D" parent="RoomCollision" unique_id=979840079]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.45, 0.26, -3.25)
+shape = SubResource("BoxShape3D_j1eam")
+
+[node name="Officewest" type="CollisionShape3D" parent="RoomCollision" unique_id=1541599375]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.72, 2.22, -3.2)
+shape = SubResource("BoxShape3D_om521")
+
+[node name="Officefront" type="CollisionShape3D" parent="RoomCollision" unique_id=220579297]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.65, 2.22, 2.01)
+shape = SubResource("BoxShape3D_aeqaw")
+
+[node name="Officerear" type="CollisionShape3D" parent="RoomCollision" unique_id=450100906]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.65, 2.22, -8.41)
+shape = SubResource("BoxShape3D_isnnd")
+
+[node name="Garageeast" type="CollisionShape3D" parent="RoomCollision" unique_id=846737447]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.71, 2.25, -4)
+shape = SubResource("BoxShape3D_ryucu")
+
+[node name="Garagerear" type="CollisionShape3D" parent="RoomCollision" unique_id=215328215]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2, 2.25, -8.81)
+shape = SubResource("BoxShape3D_hbayx")
+
+[node name="Garagefront" type="CollisionShape3D" parent="RoomCollision" unique_id=1129364752]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2, 2.25, 0.81)
+shape = SubResource("BoxShape3D_0sbuw")
+
+[node name="Partitionfront" type="CollisionShape3D" parent="RoomCollision" unique_id=1596285532]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.45, 2.22, 0.1)
+shape = SubResource("BoxShape3D_y072o")
+
+[node name="Partitionrear" type="CollisionShape3D" parent="RoomCollision" unique_id=1311741561]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.45, 2.22, -6.5)
+shape = SubResource("BoxShape3D_vpipl")
+
+[node name="Openinglintel" type="CollisionShape3D" parent="RoomCollision" unique_id=1935757433]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.45, 3.64, -3.25)
+shape = SubResource("BoxShape3D_ym615")
+
+[node name="Officeceiling" type="CollisionShape3D" parent="RoomCollision" unique_id=818009071]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.65, 4.07, -3.2)
+shape = SubResource("BoxShape3D_r1gnw")
+
+[node name="Garageceiling" type="CollisionShape3D" parent="RoomCollision" unique_id=871944942]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2, 4.12, -4)
+shape = SubResource("BoxShape3D_gdjo6")
+
+[node name="InteriorEnvironment" type="WorldEnvironment" parent="." unique_id=867639567]
+environment = SubResource("Environment_xe1ha")
+
+[node name="PlayerSpawn" type="Marker3D" parent="." unique_id=180292124]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.14, 1.4, 0.5)
+
+[node name="ExitDoor" type="Node3D" parent="." unique_id=834463705]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -5.14, 1.55, 1.83)
+script = ExtResource("2_mngh1")
+is_exit = true
+
+[node name="Prompt" type="Label3D" parent="ExitDoor" unique_id=1348716096]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.72, 0)
+pixel_size = 0.004
+billboard = 1
+modulate = Color(0.48, 1, 0.72, 1)
+text = "[E] EXIT"
+font_size = 36
+outline_size = 8
+
+[node name="Model" type="Node3D" parent="." unique_id=625137250]
+
+[node name="Shell" type="Node3D" parent="Model" unique_id=947915253]
+
+[node name="Ceiling" type="MeshInstance3D" parent="Model/Shell" unique_id=317302870]
+mesh = ExtResource("3_7fs45")
+metadata/interior_mesh = "Ceiling"
+
+[node name="Doors" type="MeshInstance3D" parent="Model/Shell" unique_id=974283487]
+mesh = ExtResource("4_gqlm3")
+metadata/interior_mesh = "Doors"
+
+[node name="Floor" type="MeshInstance3D" parent="Model/Shell" unique_id=1076697691]
+mesh = ExtResource("5_6k57v")
+metadata/interior_mesh = "Floor"
+
+[node name="Walls" type="MeshInstance3D" parent="Model/Shell" unique_id=134827651]
+mesh = ExtResource("6_hvjlj")
+metadata/interior_mesh = "Walls"
+
+[node name="Props" type="Node3D" parent="Model" unique_id=702677044]
+
+[node name="Desk" type="Node3D" parent="Model/Props" unique_id=99200529]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 0.36, -0.55)
+metadata/interior_prop = "Desk"
+metadata/_edit_group_ = true
+
+[node name="Mesh" type="MeshInstance3D" parent="Model/Props/Desk" unique_id=1343667378]
+mesh = ExtResource("7_qmyfx")
+metadata/interior_mesh = "Desk"
+
+[node name="DeskMonitor1" type="Node3D" parent="Model/Props/Desk" unique_id=507497044]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32999992, 0.76, 0.45000002)
+metadata/interior_prop = "DeskMonitor1"
+metadata/_edit_group_ = true
+
+[node name="Mesh" type="MeshInstance3D" parent="Model/Props/Desk/DeskMonitor1" unique_id=1890196111]
+mesh = ExtResource("8_uu5ah")
+metadata/interior_mesh = "DeskMonitor1"
+
+[node name="DeskMonitor2" type="Node3D" parent="Model/Props/Desk" unique_id=676938427]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32999992, 0.76, -0.47999996)
+metadata/interior_prop = "DeskMonitor2"
+metadata/_edit_group_ = true
+
+[node name="Mesh" type="MeshInstance3D" parent="Model/Props/Desk/DeskMonitor2" unique_id=976625903]
+mesh = ExtResource("9_b06bt")
+metadata/interior_mesh = "DeskMonitor2"
+
+[node name="Keyboard" type="Node3D" parent="Model/Props/Desk" unique_id=1002024440]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18999958, 0.76, 0)
+metadata/interior_prop = "Keyboard"
+metadata/_edit_group_ = true
+
+[node name="Mesh" type="MeshInstance3D" parent="Model/Props/Desk/Keyboard" unique_id=1221379633]
+mesh = ExtResource("10_0hguj")
+metadata/interior_mesh = "Keyboard"
+
+[node name="Collision" type="StaticBody3D" parent="Model/Props/Desk" unique_id=1702029341]
+
+[node name="Shape" type="CollisionShape3D" parent="Model/Props/Desk/Collision" unique_id=1011328781]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.34499997, 0)
+shape = SubResource("BoxShape3D_jpfxn")
+
+[node name="ComputerTower" type="Node3D" parent="Model/Props" unique_id=1289383628]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.72, 0.36, -1.99)
+metadata/interior_prop = "ComputerTower"
+metadata/_edit_group_ = true
+
+[node name="Mesh" type="MeshInstance3D" parent="Model/Props/ComputerTower" unique_id=564357531]
+mesh = ExtResource("11_ikmyx")
+metadata/interior_mesh = "ComputerTower"
+
+[node name="Collision" type="StaticBody3D" parent="Model/Props/ComputerTower" unique_id=1498244302]
+
+[node name="Shape" type="CollisionShape3D" parent="Model/Props/ComputerTower/Collision" unique_id=1200683256]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.39, 0)
+shape = SubResource("BoxShape3D_fk6kc")
+
+[node name="Chair" type="Node3D" parent="Model/Props" unique_id=2127822498]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.3, 0.36, -0.55)
+metadata/interior_prop = "Chair"
+metadata/_edit_group_ = true
+
+[node name="Mesh" type="MeshInstance3D" parent="Model/Props/Chair" unique_id=1259811947]
+mesh = ExtResource("12_f8fgq")
+metadata/interior_mesh = "Chair"
+
+[node name="InvestigationBoard" type="Node3D" parent="Model/Props" unique_id=612501577]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.59, 2.35, -3.25)
+metadata/interior_prop = "InvestigationBoard"
+metadata/_edit_group_ = true
+
+[node name="Mesh" type="MeshInstance3D" parent="Model/Props/InvestigationBoard" unique_id=339766227]
+mesh = ExtResource("13_v64nq")
+metadata/interior_mesh = "InvestigationBoard"
+
+[node name="Cot" type="Node3D" parent="Model/Props" unique_id=355114915]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.3, 0.36, -6.68)
+metadata/interior_prop = "Cot"
+metadata/_edit_group_ = true
+
+[node name="Mesh" type="MeshInstance3D" parent="Model/Props/Cot" unique_id=954936641]
+mesh = ExtResource("14_x2d8v")
+metadata/interior_mesh = "Cot"
+
+[node name="SleepInteraction" type="Node3D" parent="Model/Props/Cot"]
+position = Vector3(0, 0.85, 0)
+script = ExtResource("51_bed")
+
+[node name="Prompt" type="Label3D" parent="Model/Props/Cot/SleepInteraction"]
+position = Vector3(0, 0.7, 0)
+visible = false
+pixel_size = 0.003
+billboard = 1
+modulate = Color(0.48, 1, 0.72, 1)
+font_size = 32
+outline_size = 8
+
+[node name="Blanket" type="Node3D" parent="Model/Props/Cot" unique_id=333485826]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6500001, 0.61, 0)
+metadata/interior_prop = "Blanket"
+metadata/_edit_group_ = true
+
+[node name="Mesh" type="MeshInstance3D" parent="Model/Props/Cot/Blanket" unique_id=149524632]
+mesh = ExtResource("15_fmc4p")
+metadata/interior_mesh = "Blanket"
+
+[node name="Pillow" type="Node3D" parent="Model/Props/Cot" unique_id=806083961]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.90999985, 0.59999996, 0)
+metadata/interior_prop = "Pillow"
+metadata/_edit_group_ = true
+
+[node name="Mesh" type="MeshInstance3D" parent="Model/Props/Cot/Pillow" unique_id=649519180]
+mesh = ExtResource("16_3ueok")
+metadata/interior_mesh = "Pillow"
+
+[node name="Collision" type="StaticBody3D" parent="Model/Props/Cot" unique_id=784277645]
+
+[node name="Shape" type="CollisionShape3D" parent="Model/Props/Cot/Collision" unique_id=1348601213]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.31, 0)
+shape = SubResource("BoxShape3D_5u3go")
+
+[node name="Footlocker" type="Node3D" parent="Model/Props" unique_id=707858860]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.2, 0.36, -7.95)
+metadata/interior_prop = "Footlocker"
+metadata/_edit_group_ = true
+
+[node name="Mesh" type="MeshInstance3D" parent="Model/Props/Footlocker" unique_id=857647588]
+mesh = ExtResource("17_q0gev")
+metadata/interior_mesh = "Footlocker"
+
+[node name="Collision" type="StaticBody3D" parent="Model/Props/Footlocker" unique_id=1206863462]
+
+[node name="Shape" type="CollisionShape3D" parent="Model/Props/Footlocker/Collision" unique_id=1018245186]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+shape = SubResource("BoxShape3D_t8fpv")
+
+[node name="Locker1" type="Node3D" parent="Model/Props" unique_id=177042395]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.55, 0.36, -7.94)
+metadata/interior_prop = "Locker1"
+metadata/_edit_group_ = true
+
+[node name="Mesh" type="MeshInstance3D" parent="Model/Props/Locker1" unique_id=1759220500]
+mesh = ExtResource("18_sq8n4")
+metadata/interior_mesh = "Locker1"
+
+[node name="Collision" type="StaticBody3D" parent="Model/Props/Locker1" unique_id=526647465]
+
+[node name="Shape" type="CollisionShape3D" parent="Model/Props/Locker1/Collision" unique_id=224848851]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04, 0)
+shape = SubResource("BoxShape3D_87bgf")
+
+[node name="Locker2" type="Node3D" parent="Model/Props" unique_id=1465168596]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.65, 0.36, -7.94)
+metadata/interior_prop = "Locker2"
+metadata/_edit_group_ = true
+
+[node name="Mesh" type="MeshInstance3D" parent="Model/Props/Locker2" unique_id=2112872713]
+mesh = ExtResource("19_hwanl")
+metadata/interior_mesh = "Locker2"
+
+[node name="Collision" type="StaticBody3D" parent="Model/Props/Locker2" unique_id=871904657]
+
+[node name="Shape" type="CollisionShape3D" parent="Model/Props/Locker2/Collision" unique_id=768108513]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04, 0)
+shape = SubResource("BoxShape3D_uu626")
+
+[node name="Workbench" type="Node3D" parent="Model/Props" unique_id=744413327]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7000003, 0.36, -8.02)
+metadata/interior_prop = "Workbench"
+metadata/_edit_group_ = true
+
+[node name="Mesh" type="MeshInstance3D" parent="Model/Props/Workbench" unique_id=424767078]
+mesh = ExtResource("20_elgqi")
+metadata/interior_mesh = "Workbench"
+
+[node name="BenchVise" type="Node3D" parent="Model/Props/Workbench" unique_id=1320132749]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8499999, 0.80999994, 0.32000065)
+metadata/interior_prop = "BenchVise"
+metadata/_edit_group_ = true
+
+[node name="Mesh" type="MeshInstance3D" parent="Model/Props/Workbench/BenchVise" unique_id=897461206]
+mesh = ExtResource("21_1xwy4")
+metadata/interior_mesh = "BenchVise"
+
+[node name="Toolbox" type="Node3D" parent="Model/Props/Workbench" unique_id=415072506]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1000001, 0.80999994, -0.09999943)
+metadata/interior_prop = "Toolbox"
+metadata/_edit_group_ = true
+
+[node name="Mesh" type="MeshInstance3D" parent="Model/Props/Workbench/Toolbox" unique_id=625519367]
+mesh = ExtResource("22_2yp8c")
+metadata/interior_mesh = "Toolbox"
+
+[node name="OilTin1" type="Node3D" parent="Model/Props/Workbench" unique_id=844054242]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1000001, 0.81999993, -0.23999977)
+metadata/interior_prop = "OilTin1"
+metadata/_edit_group_ = true
+
+[node name="Mesh" type="MeshInstance3D" parent="Model/Props/Workbench/OilTin1" unique_id=224491348]
+mesh = ExtResource("23_873xn")
+metadata/interior_mesh = "OilTin1"
+
+[node name="OilTin2" type="Node3D" parent="Model/Props/Workbench" unique_id=1598854404]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.70000005, 0.81999993, -0.23999977)
+metadata/interior_prop = "OilTin2"
+metadata/_edit_group_ = true
+
+[node name="Mesh" type="MeshInstance3D" parent="Model/Props/Workbench/OilTin2" unique_id=846151412]
+mesh = ExtResource("24_y61vq")
+metadata/interior_mesh = "OilTin2"
+
+[node name="OilTin3" type="Node3D" parent="Model/Props/Workbench" unique_id=1550865041]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3000002, 0.81999993, -0.23999977)
+metadata/interior_prop = "OilTin3"
+metadata/_edit_group_ = true
+
+[node name="Mesh" type="MeshInstance3D" parent="Model/Props/Workbench/OilTin3" unique_id=1403614282]
+mesh = ExtResource("25_x7s3h")
+metadata/interior_mesh = "OilTin3"
+
+[node name="Collision" type="StaticBody3D" parent="Model/Props/Workbench" unique_id=1250823629]
+
+[node name="Shape" type="CollisionShape3D" parent="Model/Props/Workbench/Collision" unique_id=442511965]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37, 0)
+shape = SubResource("BoxShape3D_thpoh")
+
+[node name="Toolboard" type="Node3D" parent="Model/Props" unique_id=571824568]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7000003, 2.2, -8.68)
+metadata/interior_prop = "Toolboard"
+metadata/_edit_group_ = true
+
+[node name="Mesh" type="MeshInstance3D" parent="Model/Props/Toolboard" unique_id=933058874]
+mesh = ExtResource("26_rg10s")
+metadata/interior_mesh = "Toolboard"
+
+[node name="StorageRack1" type="Node3D" parent="Model/Props" unique_id=343511398]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.93, 0.36, -6.6)
+metadata/interior_prop = "StorageRack1"
+metadata/_edit_group_ = true
+
+[node name="Mesh" type="MeshInstance3D" parent="Model/Props/StorageRack1" unique_id=35578316]
+mesh = ExtResource("27_k6kxv")
+metadata/interior_mesh = "StorageRack1"
+
+[node name="Rack1Crate1" type="Node3D" parent="Model/Props/StorageRack1" unique_id=1516245472]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15499997, 0.5999999)
+metadata/interior_prop = "Rack1Crate1"
+metadata/_edit_group_ = true
+
+[node name="Mesh" type="MeshInstance3D" parent="Model/Props/StorageRack1/Rack1Crate1" unique_id=1109408795]
+mesh = ExtResource("28_n6cof")
+metadata/interior_mesh = "Rack1Crate1"
+
+[node name="Rack1Crate2" type="Node3D" parent="Model/Props/StorageRack1" unique_id=1682547035]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15499997, -0.5700002)
+metadata/interior_prop = "Rack1Crate2"
+metadata/_edit_group_ = true
+
+[node name="Mesh" type="MeshInstance3D" parent="Model/Props/StorageRack1/Rack1Crate2" unique_id=142398900]
+mesh = ExtResource("29_24nik")
+metadata/interior_mesh = "Rack1Crate2"
+
+[node name="Rack1Crate3" type="Node3D" parent="Model/Props/StorageRack1" unique_id=1196948647]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.905, 0.5499997)
+metadata/interior_prop = "Rack1Crate3"
+metadata/_edit_group_ = true
+
+[node name="Mesh" type="MeshInstance3D" parent="Model/Props/StorageRack1/Rack1Crate3" unique_id=1923681240]
+mesh = ExtResource("30_h21js")
+metadata/interior_mesh = "Rack1Crate3"
+
+[node name="Rack1Crate4" type="Node3D" parent="Model/Props/StorageRack1" unique_id=952279413]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6750001, -0.5999999)
+metadata/interior_prop = "Rack1Crate4"
+metadata/_edit_group_ = true
+
+[node name="Mesh" type="MeshInstance3D" parent="Model/Props/StorageRack1/Rack1Crate4" unique_id=371257449]
+mesh = ExtResource("31_gv4p0")
+metadata/interior_mesh = "Rack1Crate4"
+
+[node name="Collision" type="StaticBody3D" parent="Model/Props/StorageRack1" unique_id=1968401527]
+
+[node name="Shape" type="CollisionShape3D" parent="Model/Props/StorageRack1/Collision" unique_id=1671634570]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28, 0)
+shape = SubResource("BoxShape3D_n28x3")
+
+[node name="StorageRack2" type="Node3D" parent="Model/Props" unique_id=1785445931]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.93, 0.36, -3.5)
+metadata/interior_prop = "StorageRack2"
+metadata/_edit_group_ = true
+
+[node name="Mesh" type="MeshInstance3D" parent="Model/Props/StorageRack2" unique_id=1200154875]
+mesh = ExtResource("32_w6or3")
+metadata/interior_mesh = "StorageRack2"
+
+[node name="Rack2Crate1" type="Node3D" parent="Model/Props/StorageRack2" unique_id=1617312879]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15499997, 0.5999999)
+metadata/interior_prop = "Rack2Crate1"
+metadata/_edit_group_ = true
+
+[node name="Mesh" type="MeshInstance3D" parent="Model/Props/StorageRack2/Rack2Crate1" unique_id=298815506]
+mesh = ExtResource("33_32m6s")
+metadata/interior_mesh = "Rack2Crate1"
+
+[node name="Rack2Crate2" type="Node3D" parent="Model/Props/StorageRack2" unique_id=1538612613]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15499997, -0.5700002)
+metadata/interior_prop = "Rack2Crate2"
+metadata/_edit_group_ = true
+
+[node name="Mesh" type="MeshInstance3D" parent="Model/Props/StorageRack2/Rack2Crate2" unique_id=755736869]
+mesh = ExtResource("34_rqwyb")
+metadata/interior_mesh = "Rack2Crate2"
+
+[node name="Rack2Crate3" type="Node3D" parent="Model/Props/StorageRack2" unique_id=1299978472]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.905, 0.54999995)
+metadata/interior_prop = "Rack2Crate3"
+metadata/_edit_group_ = true
+
+[node name="Mesh" type="MeshInstance3D" parent="Model/Props/StorageRack2/Rack2Crate3" unique_id=1228385099]
+mesh = ExtResource("35_31cl6")
+metadata/interior_mesh = "Rack2Crate3"
+
+[node name="Rack2Crate4" type="Node3D" parent="Model/Props/StorageRack2" unique_id=819743406]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6750001, -0.5999999)
+metadata/interior_prop = "Rack2Crate4"
+metadata/_edit_group_ = true
+
+[node name="Mesh" type="MeshInstance3D" parent="Model/Props/StorageRack2/Rack2Crate4" unique_id=1743813652]
+mesh = ExtResource("36_8tufq")
+metadata/interior_mesh = "Rack2Crate4"
+
+[node name="Collision" type="StaticBody3D" parent="Model/Props/StorageRack2" unique_id=1563836128]
+
+[node name="Shape" type="CollisionShape3D" parent="Model/Props/StorageRack2/Collision" unique_id=2088130102]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28, 0)
+shape = SubResource("BoxShape3D_7ii6u")
+
+[node name="TrainingMat" type="Node3D" parent="Model/Props" unique_id=1573783539]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.36, -3.7)
+metadata/interior_prop = "TrainingMat"
+metadata/_edit_group_ = true
+
+[node name="Mesh" type="MeshInstance3D" parent="Model/Props/TrainingMat" unique_id=2129111606]
+mesh = ExtResource("37_4cs5v")
+metadata/interior_mesh = "TrainingMat"
+
+[node name="Tire1" type="Node3D" parent="Model/Props" unique_id=1899802199]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0.4, -0.13)
+metadata/interior_prop = "Tire1"
+metadata/_edit_group_ = true
+
+[node name="Mesh" type="MeshInstance3D" parent="Model/Props/Tire1" unique_id=217599412]
+mesh = ExtResource("38_k4qbg")
+metadata/interior_mesh = "Tire1"
+
+[node name="Tire2" type="Node3D" parent="Model/Props/Tire1" unique_id=959458203]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32000002, 0)
+metadata/interior_prop = "Tire2"
+metadata/_edit_group_ = true
+
+[node name="Mesh" type="MeshInstance3D" parent="Model/Props/Tire1/Tire2" unique_id=1558025695]
+mesh = ExtResource("39_shoj0")
+metadata/interior_mesh = "Tire2"
+
+[node name="Drum" type="Node3D" parent="Model/Props" unique_id=991588030]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.48, 0.36, -7.96)
+metadata/interior_prop = "Drum"
+metadata/_edit_group_ = true
+
+[node name="Mesh" type="MeshInstance3D" parent="Model/Props/Drum" unique_id=2017005198]
+mesh = ExtResource("40_cdi18")
+metadata/interior_mesh = "Drum"
+
+[node name="Collision" type="StaticBody3D" parent="Model/Props/Drum" unique_id=1244349744]
+
+[node name="Shape" type="CollisionShape3D" parent="Model/Props/Drum/Collision" unique_id=745617086]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45499998, 0)
+shape = SubResource("BoxShape3D_ljswi")
+
+[node name="CeilingFixture0" type="Node3D" parent="Model/Props" unique_id=1050986289]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6, 3.82, -1)
+metadata/interior_prop = "CeilingFixture0"
+metadata/_edit_group_ = true
+
+[node name="Mesh" type="MeshInstance3D" parent="Model/Props/CeilingFixture0" unique_id=906265092]
+mesh = ExtResource("41_2iksk")
+metadata/interior_mesh = "CeilingFixture0"
+
+[node name="CeilingLight0" type="OmniLight3D" parent="Model/Props/CeilingFixture0" unique_id=486787613]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+light_color = Color(1, 0.87, 0.66, 1)
+light_energy = 1.8
+shadow_enabled = true
+omni_range = 7.4
+
+[node name="CeilingFixture1" type="Node3D" parent="Model/Props" unique_id=744067686]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6, 3.82, -6.3)
+metadata/interior_prop = "CeilingFixture1"
+metadata/_edit_group_ = true
+
+[node name="Mesh" type="MeshInstance3D" parent="Model/Props/CeilingFixture1" unique_id=161484061]
+mesh = ExtResource("42_6gp4b")
+metadata/interior_mesh = "CeilingFixture1"
+
+[node name="CeilingLight1" type="OmniLight3D" parent="Model/Props/CeilingFixture1" unique_id=2079719061]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+light_color = Color(1, 0.87, 0.66, 1)
+light_energy = 1.8
+shadow_enabled = true
+omni_range = 7.4
+
+[node name="CeilingFixture2" type="Node3D" parent="Model/Props" unique_id=732775049]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3.83, -3)
+metadata/interior_prop = "CeilingFixture2"
+metadata/_edit_group_ = true
+
+[node name="Mesh" type="MeshInstance3D" parent="Model/Props/CeilingFixture2" unique_id=339910350]
+mesh = ExtResource("43_1d5wi")
+metadata/interior_mesh = "CeilingFixture2"
+
+[node name="CeilingLight2" type="OmniLight3D" parent="Model/Props/CeilingFixture2" unique_id=1605575723]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+light_color = Color(0.84, 0.93, 0.88, 1)
+light_energy = 1.8
+shadow_enabled = true
+omni_range = 7.4
+
+[node name="CeilingFixture3" type="Node3D" parent="Model/Props" unique_id=663156532]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 3.83, -6.2)
+metadata/interior_prop = "CeilingFixture3"
+metadata/_edit_group_ = true
+
+[node name="Mesh" type="MeshInstance3D" parent="Model/Props/CeilingFixture3" unique_id=1949374270]
+mesh = ExtResource("44_m5bvk")
+metadata/interior_mesh = "CeilingFixture3"
+
+[node name="CeilingLight3" type="OmniLight3D" parent="Model/Props/CeilingFixture3" unique_id=1168563124]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+light_color = Color(0.84, 0.93, 0.88, 1)
+light_energy = 1.8
+shadow_enabled = true
+omni_range = 7.4
+
+[node name="power_machine" parent="." unique_id=1625613240 instance=ExtResource("3_mngh1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8846767, 0.3599999, -7.960701)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="power_machine" unique_id=1306622577]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="power_machine/StaticBody3D" unique_id=1900344798]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.008766174, 1.0749389, 0.030517578)
+shape = SubResource("BoxShape3D_bhunq")
+
+[node name="Interaction" type="Node3D" parent="power_machine"]
+script = ExtResource("50_power_machine_interaction")
+
+[node name="Prompt" type="Label3D" parent="power_machine/Interaction"]
+position = Vector3(0, 2.5, 0.85)
+pixel_size = 0.003
+billboard = 1
+modulate = Color(0.48, 1, 0.9, 1)
+text = "POWER MACHINE"
+font_size = 36
+outline_size = 8

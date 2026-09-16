@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bp7vepnrdebg1"]
+
+[ext_resource type="Texture2D" uid="uid://iavyumdx4w8g" path="res://assets/aircraft/helicopter/textures/forest_cream.res" id="1_fsa36"]
+
+[resource]
+resource_name = "forest_cream"
+albedo_texture = ExtResource("1_fsa36")
+roughness = 0.65

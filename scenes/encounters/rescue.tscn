@@ -1,0 +1,6 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/encounter-scripts/rescue_encounter.gd" id="1"]
+
+[node name="RescueEncounter" type="Node3D"]
+script = ExtResource("1")

@@ -10,7 +10,7 @@ func check(value: bool, message: String) -> void:
 func tick(stamina: PlayerStamina, seconds: float, boosting: bool, flying := false, moving := true) -> void:
 	stamina.begin_tick(boosting)
 	if boosting: stamina.request_boost(flying)
-	stamina.finish_tick(seconds, Vector3.FORWARD if moving else Vector3.ZERO)
+	stamina.finish_tick(seconds, Vector3.FORWARD if moving else Vector3.ZERO, true)
 
 func run() -> void:
 	var settings := root.get_node("GameSettings")
@@ -81,7 +81,7 @@ func run() -> void:
 	stamina.begin_tick()
 	player.state_machine.physics_update(0.1, input)
 	check(player.current_flight_speed > 10, "Speed still improves boosted flight")
-	stamina.finish_tick(5.0, Vector3.FORWARD)
+	stamina.finish_tick(5.0, Vector3.FORWARD, false)
 	player.state_machine.physics_update(2.0, input)
 	check(player.is_flying and player.current_flight_speed == 10, "Exhaustion returns to normal flight without dropping player")
 	player.state_machine.transition_to(&"AirborneState")
@@ -92,10 +92,10 @@ func run() -> void:
 	tick(stamina, 10.0, false)
 	player.state_machine.transition_to(&"FlyingState")
 	Input.action_press("move_forward")
-	Input.action_press("sprint")
+	preload("res://tests/player_test_support.gd").set_sprint_held(true)
 	player._profiled_physics_process(0.25)
 	check(stamina.current == 95, "Real physics loop drains stamina during flight movement")
-	Input.action_release("sprint")
+	preload("res://tests/player_test_support.gd").set_sprint_held(false)
 	player._profiled_physics_process(1.5)
 	check(stamina.current == 100, "Normal flight regenerates stamina after delay")
 	Input.action_release("move_forward")

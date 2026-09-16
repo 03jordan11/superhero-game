@@ -43,3 +43,9 @@ func set_max_health(new_max_health: float, preserve_current_ratio: bool = true) 
 
 func is_depleted() -> bool:
 	return current_health <= 0.0
+
+
+func restore_full_health() -> void:
+	if is_depleted(): return
+	current_health = max_health
+	health_changed.emit(current_health, max_health)

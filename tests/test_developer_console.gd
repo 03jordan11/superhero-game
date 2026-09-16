@@ -77,7 +77,7 @@ func run() -> void:
 	check(commands.execute("load").contains("loaded") and player.stats.strength == 25 and progression.level("strength") == 0, "Load restores saved attributes and purchases")
 	check(FileAccess.get_file_as_string(path) == saved, "Load does not autosave")
 	commands.execute("debug hud on")
-	check(main.get_node("PerformanceHUD").visible and player.player_hud.visible, "HUD command controls performance and player diagnostics")
+	check(main.get_node("PerformanceHUD").visible and not player.has_node("ChargeUI"), "HUD command shows only the performance monitor")
 	commands.execute("debug landing on")
 	check(root.get_node("DebugManager").show_landing_target, "Landing command reaches existing indicator")
 	commands.execute("debug hud off")
@@ -86,6 +86,46 @@ func run() -> void:
 	commands.execute("spawn civilian")
 	commands.execute("spawn hostile")
 	check(main.get_child_count() == before + 2 and paused, "NPC commands spawn while simulation stays paused")
+	var before_batch := get_nodes_in_group(&"hostile").size()
+	var batch_result: String = commands.execute("spawn pistol_thug 3")
+	check(get_nodes_in_group(&"hostile").size() == before_batch + 3 and batch_result.contains("3/3"), "Named enemy command spawns the requested batch")
+	var positions: Array[Vector3] = []
+	for npc in get_nodes_in_group(&"hostile"):
+		if str(npc.name).begins_with("DevPistolThug"):
+			check(npc.faction == &"mafia" and npc.enemy_type == &"pistol_thug", "Console spawns the canonical Mafia enemy")
+			check(not positions.has(npc.global_position), "Spawn positions are distinct")
+			positions.append(npc.global_position)
+	var before_invalid := main.get_child_count()
+	for invalid in ["spawn pistol_thug 0", "spawn pistol_thug -2", "spawn pistol_thug 1.5", "spawn pistol_thug 51", "spawn pistol_thug 999999999999999999999999", "spawn pistol_thug 2 extra", "spawn unknown 3"]:
+		commands.execute(invalid)
+	check(main.get_child_count() == before_invalid, "Invalid spawn requests do not partially spawn enemies")
+	check(commands.execute("help spawn").contains("pistol_thug"), "Spawn help includes the new enemy type and amount")
+	var before_rifles := get_nodes_in_group(&"hostile").size()
+	var rifle_result: String = commands.execute("spawn rifle_thug 3")
+	check(get_nodes_in_group(&"hostile").size() == before_rifles + 3 and rifle_result.contains("3/3"), "Console spawns rifle batches")
+	for npc in get_nodes_in_group(&"hostile"):
+		if str(npc.name).begins_with("DevRifleThug"):
+			check(npc.enemy_type == &"rifle_thug" and npc.ammo_count == 30 and npc.nameplate.text == "RIFLE", "Console rifles have correct identity, magazine and label")
+	commands.execute("debug enemy_names off")
+	commands.execute("debug enemy_tints off")
+	var melee_result: String = commands.execute("spawn melee_thug 5")
+	check(melee_result.contains("5/5") and get_nodes_in_group(&"melee_hostile").size() == 5, "Console spawns melee batches")
+	for npc in get_nodes_in_group(&"melee_hostile"):
+		check(npc.faction == &"mafia" and npc.nameplate.text == "MELEE", "Console melee identity and label")
+		check(not npc.nameplate.visible and npc._debug_meshes[0].material_overlay == null, "Console debug switches apply to new spawns")
+	commands.execute("debug enemy_names on")
+	commands.execute("debug enemy_tints on")
+	for npc in get_nodes_in_group(&"hostile"):
+		check(npc.nameplate.visible and npc._debug_meshes[0].material_overlay == npc._debug_tint, "Console enables visuals for all existing hostile types")
+	check(commands.execute("help spawn").contains("melee_thug") and commands.execute("help debug").contains("enemy_tints"), "Help documents melee and visual switches")
+	var super_result: String = commands.execute("spawn super_thug 2")
+	check(super_result.contains("2/2") and commands.execute("help spawn").contains("super_thug"), "Console spawns super batches and documents them")
+	var super_count := 0
+	for npc in get_nodes_in_group(&"hostile"):
+		if npc is SuperHostile:
+			super_count += 1
+			check(npc.get_current_health() == 500 and npc.nameplate.text == "SUPER" and npc.experience_gain == 350, "Console super has requested stats and label")
+	check(super_count == 2, "Requested super count exists")
 	var current_health := player.get_current_health()
 	await physics_frame
 	await physics_frame

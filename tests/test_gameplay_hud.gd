@@ -21,7 +21,7 @@ func run() -> void:
 	var player: PlayerCharacter = main.get_node("Player")
 	player.set_physics_process(false)
 	var hud = player.get_node("GameplayHUD")
-	check(hud.visible and not player.player_hud.visible, "New HUD must be visible with diagnostics off")
+	check(hud.visible and not player.has_node("ChargeUI"), "Gameplay HUD remains visible without obsolete diagnostics")
 	check(hud.health_label.text == "1000 / 1000" and hud.health_bar.value == 1000, "Initial health must match the initialized player")
 	check(hud.level_label.text == "Lv 1" and hud.experience_label.text == "0 / 100 XP", "Initial progression should be visible without recent XP")
 	player.apply_damage(DAMAGE.new(25.0))

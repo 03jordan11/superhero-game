@@ -17,8 +17,6 @@ func _run_test() -> void:
 	var machine := player.get_node("PlayerStateMachine") as PlayerStateMachine
 	var abilities := player.get("abilities") as PlayerAbilities
 	var status_effects := player.get_node("PlayerStatusEffects") as PlayerStatusEffects
-	var hud := player.get_node("ChargeUI") as PlayerHud
-	hud.show()
 	var initial_charge_delta := 0.5
 	assert(machine.active_state is PlayerGroundedState)
 	assert(machine.transition_to(
@@ -28,7 +26,6 @@ func _run_test() -> void:
 	assert(machine.active_state is PlayerJumpChargingState)
 	assert(player.get("is_charging_jump"))
 	assert(is_equal_approx(player.get("jump_charge"), initial_charge_delta))
-	assert(hud.charge_bar.value > 0.0)
 
 	player.velocity = Vector3(5.0, 0.0, 5.0)
 	machine.physics_update(0.1, PlayerInputSnapshot.new())
@@ -59,7 +56,6 @@ func _run_test() -> void:
 	assert(not player.get("is_charging_jump"))
 	assert(player.get("jump_charge") == 0.0)
 	assert(player.get("jump_hold_time") == 0.0)
-	assert(hud.charge_bar.value == 0.0)
 	assert(is_equal_approx(player.velocity.y, expected_vertical_velocity))
 	assert(is_equal_approx(player.velocity.z, -expected_forward_boost))
 

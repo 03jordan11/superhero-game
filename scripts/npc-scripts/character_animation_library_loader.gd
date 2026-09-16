@@ -5,12 +5,10 @@ static var has_validated_animation_catalogs: bool = false
 
 const UAL1_ANIMATION_LIBRARY: AnimationLibrary = preload("res://assets/animations/UAL1_Standard.glb")
 const UAL2_ANIMATION_LIBRARY: AnimationLibrary = preload("res://assets/animations/UAL2_Standard.glb")
-const FLYING_ANIMATION_LIBRARY: AnimationLibrary = preload("res://assets/animations/Flying.fbx")
 const FIGHTING_ANIMATION_LIBRARY: AnimationLibrary = preload("res://assets/animations/fight-animations/fighting_animations.glb")
 
 const UAL1_GROUP: StringName = &"UAL1"
 const UAL2_GROUP: StringName = &"UAL2"
-const FLYING_GROUP: StringName = &"Flying"
 const FIGHTING_GROUP: StringName = &"Fighting"
 
 const UAL1_ANIMATION_SOURCES := {
@@ -105,10 +103,6 @@ const UAL2_ANIMATION_SOURCES := {
 	"Zombie_Walk_Fwd": "Zombie_Walk_Fwd"
 }
 
-const FLYING_ANIMATION_SOURCES := {
-	"mixamo_com": "mixamo_com"
-}
-
 const FIGHTING_ANIMATION_SOURCES := {
 	"Punch_01": "Punch_01",
 	"Punch_02": "Punch_02",
@@ -118,7 +112,6 @@ const FIGHTING_ANIMATION_SOURCES := {
 const ANIMATION_CATALOGS := {
 	UAL1_GROUP: UAL1_ANIMATION_SOURCES,
 	UAL2_GROUP: UAL2_ANIMATION_SOURCES,
-	FLYING_GROUP: FLYING_ANIMATION_SOURCES,
 	FIGHTING_GROUP: FIGHTING_ANIMATION_SOURCES
 }
 
@@ -239,8 +232,6 @@ func _get_source_library(animation_group: StringName) -> AnimationLibrary:
 			return UAL1_ANIMATION_LIBRARY
 		UAL2_GROUP:
 			return UAL2_ANIMATION_LIBRARY
-		FLYING_GROUP:
-			return FLYING_ANIMATION_LIBRARY
 		FIGHTING_GROUP:
 			return FIGHTING_ANIMATION_LIBRARY
 		_:

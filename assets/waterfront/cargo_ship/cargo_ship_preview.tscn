@@ -1,0 +1,76 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="PackedScene" path="res://assets/waterfront/cargo_ship/cargo_ship.tscn" id="1"]
+[ext_resource type="Script" path="res://assets/waterfront/cargo_ship/cargo_ship_preview.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/day_night_cycle.gd" id="3"]
+[ext_resource type="Shader" path="res://assets/waterfront/water.gdshader" id="4"]
+
+[sub_resource type="Environment" id="Environment"]
+
+[sub_resource type="PlaneMesh" id="Ocean"]
+size = Vector2(8000, 8000)
+
+[sub_resource type="ShaderMaterial" id="Water"]
+resource_local_to_scene = true
+shader = ExtResource("4")
+shader_parameter/wave_strength = 0.65
+
+[sub_resource type="LabelSettings" id="Text"]
+font_size = 18
+font_color = Color(0.88, 0.94, 0.96, 1)
+
+[sub_resource type="StyleBoxFlat" id="Panel"]
+bg_color = Color(0.025, 0.045, 0.055, 0.88)
+content_margin_left = 20.0
+content_margin_top = 14.0
+content_margin_right = 20.0
+content_margin_bottom = 14.0
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+
+[node name="CargoShipPreview" type="Node3D"]
+script = ExtResource("2")
+
+[node name="Ship" parent="." instance=ExtResource("1")]
+
+[node name="Water" type="MeshInstance3D" parent="."]
+mesh = SubResource("Ocean")
+material_override = SubResource("Water")
+
+[node name="Daylight" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+shadow_enabled = true
+directional_shadow_max_distance = 500.0
+
+[node name="Moon" type="DirectionalLight3D" parent="."]
+
+[node name="DayNightCycle" type="Node" parent="."]
+script = ExtResource("3")
+time_of_day = 13.0
+cycle_running = false
+sun_heading = -30.0
+day_fog_density = 0.000025
+night_fog_density = 0.00008
+
+[node name="Camera3D" type="Camera3D" parent="."]
+current = true
+fov = 48.0
+near = 0.2
+far = 10000.0
+
+[node name="Help" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="PanelContainer" parent="Help"]
+offset_left = 22.0
+offset_top = 22.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="Label" type="Label" parent="Help/Panel"]
+layout_mode = 2
+label_settings = SubResource("Text")
+text = "Cargo ship"

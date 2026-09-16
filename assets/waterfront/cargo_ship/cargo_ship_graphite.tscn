@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://assets/waterfront/cargo_ship/cargo_ship.tscn" id="1"]
+[ext_resource type="Resource" path="res://assets/waterfront/cargo_ship/materials/graphite.tres" id="2"]
+
+[node name="CargoShip" instance=ExtResource("1")]
+palette = ExtResource("2")

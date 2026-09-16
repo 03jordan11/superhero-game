@@ -14,13 +14,17 @@ const AIR_JUMP: StringName = &"air_jump"
 const BOUNDING: StringName = &"bounding"
 const SUPER_SPEED: StringName = &"super_speed"
 const FLIGHT_BOOST: StringName = &"flight_boost"
+const FLIGHT_SURGE: StringName = &"flight_surge"
 const VEHICLE_LIFT: StringName = &"vehicle_lift"
+const CHARGED_PUNCH: StringName = &"charged_punch"
 const TROUBLE_SENSE: StringName = &"trouble_sense"
 const ICE: StringName = &"ice"
 const LASER_EYES: StringName = &"laser_eyes"
 const TELEKINESIS: StringName = &"telekinesis"
 const ELECTRICITY: StringName = &"electricity"
 const FIRE: StringName = &"fire"
+const CHARGED_FIREBALL: StringName = &"charged_fireball"
+const DRAGON_BREATH: StringName = &"dragon_breath"
 
 ## The single source of truth for powers available to this player.
 ## Add entries in the form &"ability_id": true or false.
@@ -33,13 +37,17 @@ const FIRE: StringName = &"fire"
 	BOUNDING: false,
 	SUPER_SPEED: false,
 	FLIGHT_BOOST: false,
+	FLIGHT_SURGE: false,
 	VEHICLE_LIFT: false,
+	CHARGED_PUNCH: false,
 	TROUBLE_SENSE: false,
 	ICE: false,
 	LASER_EYES: false,
 	TELEKINESIS: false,
 	ELECTRICITY: false,
 	FIRE: false,
+	CHARGED_FIREBALL: false,
+	DRAGON_BREATH: false,
 }
 
 

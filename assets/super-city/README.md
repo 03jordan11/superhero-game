@@ -1,5 +1,11 @@
 # Super City
 
+The September 2026 [POI integration](poi-integration/README.md) places city hall,
+the hospital, both banks, a police station and a firehouse in the city, with
+revised pavement and A* routes. There are now 2,043 generated building instances
+plus six POIs. The original generation figures below are retained as historical
+context; see the integration notes for current placements and validation.
+
 Open `res://scenes/super_city.tscn` in Godot. This is a baked, editable city scene using the existing 50 generated building designs. It has no runtime generator or CityCrafter dependency. No player or camera is included; drag in your player as planned. `TraversalStarts/ParkToSkyline` at `(-520, 1.4, 286)` is an optional placement reference.
 
 ## Layout
@@ -19,17 +25,19 @@ There are 2,060 building instances, with unchanged source meshes, dimensions and
 | Foundry Ward | 67 | Factories, warehouses and open industrial yards |
 | Docklands | 46 | Industrial waterfront and pier approach |
 
-The central park is a clear 508 × 604 m green rectangle. The river is approximately 140 m wide, built from connected blue rectangles following a winding route through the center to the bay. Five flat road crossings connect both banks. A 240 × 160 m pier footprint extends from the southern waterfront. Water placeholders are currently solid surfaces at Y -1.4; swimming and actual water are not implemented.
+Central Park fills 508 × 604 m with a lake, walking trails, varied woodland, lanterns and hidden houses. See [Central Park](../central-park/README.md) for editing, nighttime discoveries and validation. The approximately 140 m wide river now has animated water and stone embankments, opening into an ocean south of the city. Five road crossings connect both banks. The original 240 × 160 m pier apron now connects to working docks with cranes, cargo and boats. Blackwater prison island lies offshore. See [Waterfront](../waterfront/README.md) for locations, tuning and validation. Water surfaces have submerged beds; swimming is not implemented.
 
 ## Roads, sidewalks and ground
+
+[Coastal International and the extended coastline](../coastal-airport/README.md) add a western airport with scheduled arrivals/departures, beaches and wooded terrain extending 30 km beyond the city, plus a distant panorama horizon. The western access road begins at X −1460, Z −480.
 
 - Standard streets: 20 m carriageway with 4 m sidewalks on each side.
 - Selected avenues: 28 m; quieter local streets: 12 m.
 - 100 alleys: 6 m wide, connecting to the street network.
 - Riverside walks: 6 m; waterfront promenade: 10 m, with a broad pier apron.
-- Road top: Y 0.03; sidewalk top: Y 0.03 (flush with roads to remove the raised curb); ground: Y 0; park: Y 0.025.
+- Road top: Y 0.03; sidewalk top: Y 0.03 (flush with roads to remove the raised curb); ground: Y 0; park edges: Y 0.025, rising into low hills inland.
 
-Road textures include asphalt grain, lane markings and intersection crosswalks. Sidewalks use a custom repeating slab texture. These are generated native ImageTexture resources in `textures/`. No new decorative objects were added.
+Road textures include asphalt grain, lane markings and intersection crosswalks. Sidewalks use a custom repeating slab texture. These are generated native ImageTexture resources in `textures/`. The separate [City Life layer](../city-life/README.md) adds diners, hotdog carts, benches, bus shelters, hydrants, traffic controls, steaming grates, a West Village baseball sandlot, an advertising blimp and the forest highway to Pine Pass. Four original West Village courtyard buildings are hidden for the sandlot; the district table above retains the original generated instance counts.
 
 All road and sidewalk bodies have exactly this structure:
 

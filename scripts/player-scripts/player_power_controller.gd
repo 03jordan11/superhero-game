@@ -1,4 +1,20 @@
 extends Node
+signal active_power_changed(power: StringName)
+const SELECTABLE_POWERS: Array[StringName] = [&"laser_eyes", &"ice", &"fire", &"electricity"]
+var active_power: StringName = &"laser_eyes"
+
+func select_active_power(power: StringName) -> bool:
+	if power not in SELECTABLE_POWERS: return false
+	if power == active_power: return true
+	active_power = power
+	if player.is_node_ready(): player.input_controller.reset()
+	active_power_changed.emit(active_power)
+	return true
+
+func is_selector_open() -> bool:
+	var wheel := get_node_or_null("../PowerSelector/Wheel")
+	return wheel != null and wheel.visible
+
 ## Applies purchased abilities and derived bonuses without changing base stats.
 @export_range(0, 100, 1) var strength_core_bonus: int = 5
 @export_range(0, 100, 1) var speed_core_bonus: int = 5
@@ -12,7 +28,14 @@ const REQUIREMENTS := {
 	PlayerAbilities.FLIGHT: ["flight", 0],
 	PlayerAbilities.FLIGHT_BOOST: ["flight", 1],
 	PlayerAbilities.GROUND_SLAM: ["flight", 2],
+	PlayerAbilities.FLIGHT_SURGE: ["flight", 3],
+	PlayerAbilities.LASER_EYES: ["laser_eyes", 0],
+	PlayerAbilities.FIRE: ["fire", 0],
+	PlayerAbilities.ELECTRICITY: ["electricity", 0],
+	PlayerAbilities.CHARGED_FIREBALL: ["fire", 1],
+	PlayerAbilities.DRAGON_BREATH: ["fire", 2],
 	PlayerAbilities.VEHICLE_LIFT: ["strength", 2],
+	PlayerAbilities.CHARGED_PUNCH: ["strength", 1],
 	PlayerAbilities.TROUBLE_SENSE: ["mind", 0],
 }
 var progression = PROGRESSION.new()

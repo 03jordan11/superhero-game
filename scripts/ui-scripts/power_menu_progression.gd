@@ -8,13 +8,13 @@ const CATEGORIES := ["Movement", "Body", "Elemental"]
 const POWERS := {
 	"super_leap": {"category": "Movement", "implemented": [0, 1, 2, 3], "max_upgrades": 3, "unlock_cost": 1, "upgrade_cost": 1},
 	"super_speed": {"category": "Movement", "implemented": [0, 1, 3], "max_upgrades": 3, "unlock_cost": 1, "upgrade_cost": 1},
-	"flight": {"category": "Movement", "implemented": [0, 1, 2], "max_upgrades": 3, "unlock_cost": 1, "upgrade_cost": 1},
-	"strength": {"category": "Body", "implemented": [0, 2], "max_upgrades": 3, "unlock_cost": 1, "upgrade_cost": 1},
+	"flight": {"category": "Movement", "implemented": [0, 1, 2, 3], "max_upgrades": 3, "unlock_cost": 1, "upgrade_cost": 1},
+	"strength": {"category": "Body", "implemented": [0, 1, 2], "max_upgrades": 3, "unlock_cost": 1, "upgrade_cost": 1},
 	"mind": {"category": "Body", "implemented": [0], "max_upgrades": 3, "unlock_cost": 1, "upgrade_cost": 1},
-	"laser_eyes": {"category": "Body", "implemented": [], "max_upgrades": 3, "unlock_cost": 1, "upgrade_cost": 1},
+	"laser_eyes": {"category": "Body", "implemented": [0], "max_upgrades": 3, "unlock_cost": 1, "upgrade_cost": 1},
 	"ice": {"category": "Elemental", "implemented": [], "max_upgrades": 3, "unlock_cost": 1, "upgrade_cost": 1},
-	"fire": {"category": "Elemental", "implemented": [], "max_upgrades": 3, "unlock_cost": 1, "upgrade_cost": 1},
-	"electricity": {"category": "Elemental", "implemented": [], "max_upgrades": 3, "unlock_cost": 1, "upgrade_cost": 1},
+	"fire": {"category": "Elemental", "implemented": [0, 1, 2], "max_upgrades": 3, "unlock_cost": 1, "upgrade_cost": 1},
+	"electricity": {"category": "Elemental", "implemented": [0], "max_upgrades": 3, "unlock_cost": 1, "upgrade_cost": 1},
 }
 var tokens := 0
 # -1 = locked; 0 = core purchased; 1–3 = sequential upgrades purchased.

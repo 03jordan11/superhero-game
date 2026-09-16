@@ -12,6 +12,7 @@ func enter(_previous_state: PlayerState, context: Dictionary = {}) -> void:
 	player.knockout_stun_remaining = 0.0
 	player.current_flight_speed = 0.0
 	player.combat_controller.cancel_punch()
+	player.drop_everything()
 
 	if context.get("cause") == &"flight_collision":
 		var collision_normal: Vector3 = context.get("collision_normal", Vector3.ZERO)

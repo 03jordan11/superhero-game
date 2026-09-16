@@ -1,0 +1,43 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="res://assets/super-city/modular-sidewalks/meshes/corner_l.res" id="1_egdna"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u4mdy"]
+size = Vector3(4.002, 0.03, 4.002)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yu5va"]
+size = Vector3(4.002, 0.03, 4.002)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_16ng6"]
+size = Vector3(4.002, 0.03, 4.002)
+
+[node name="CornerL" type="StaticBody3D" unique_id=358647469]
+metadata/sidewalk_module = "corner_l"
+metadata/snap_grid_m = 2.0
+metadata/path_width_m = 4.0
+metadata/_edit_group_ = true
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1985368159]
+mesh = ExtResource("1_egdna")
+
+[node name="Collision0" type="CollisionShape3D" parent="." unique_id=24807190]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.015, 0)
+shape = SubResource("BoxShape3D_u4mdy")
+
+[node name="Collision1" type="CollisionShape3D" parent="." unique_id=1245121154]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.015, -4)
+shape = SubResource("BoxShape3D_yu5va")
+
+[node name="Collision2" type="CollisionShape3D" parent="." unique_id=1507902299]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.015, 0)
+shape = SubResource("BoxShape3D_16ng6")
+
+[node name="Sockets" type="Node3D" parent="." unique_id=2015803821]
+
+[node name="North" type="Marker3D" parent="Sockets" unique_id=1569823668]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+gizmo_extents = 0.7
+
+[node name="East" type="Marker3D" parent="Sockets" unique_id=1639247242]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6, 0, 0)
+gizmo_extents = 0.7

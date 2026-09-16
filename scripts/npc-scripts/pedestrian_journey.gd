@@ -1,6 +1,6 @@
 extends RefCounted
 ## Route data shared by full civilians and cheap visual walkers.
-const FIELDS := ["_path","_waypoints","_path_index","_current_id","_pause_remaining","_crossing_active","walk_speed","lane_offset","spacing_speed_limit","crossing_wait_seconds","waypoint_arrival_distance","completed_destinations","skin_tone_index"]
+const FIELDS := ["_path","_waypoints","_path_index","_current_id","_pause_remaining","_crossing_active","walk_speed","lane_offset","spacing_speed_limit","crossing_wait_seconds","waypoint_arrival_distance","completed_destinations","skin_tone_index","hair_style_index","hair_color_index"]
 
 static func make_path(graph: Node3D, a: int, b: int) -> PackedInt64Array:
 	var path := PackedInt64Array([a,b])

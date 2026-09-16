@@ -1,0 +1,32 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://assets/buildings/gas_station_hideout/gas_station_hideout.tscn" id="1_fvfc6"]
+
+[sub_resource type="Environment" id="Environment_cjwrg"]
+background_mode = 1
+background_color = Color(0.16, 0.2, 0.23, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.75, 0.82, 0.9, 1)
+ambient_light_energy = 0.45
+tonemap_mode = 2
+
+[node name="GasStationPreview" type="Node3D" unique_id=395272201]
+
+[node name="GasStationHideout" type="Node3D" parent="." unique_id=189529428 instance=ExtResource("1_fvfc6")]
+metadata/rendered_triangles = 2200
+metadata/exterior_only = true
+
+[node name="Environment" type="WorldEnvironment" parent="." unique_id=1413943980]
+environment = SubResource("Environment_cjwrg")
+
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=1486288124]
+transform = Transform3D(0.8480481, 0.3938068, -0.35458517, 0, 0.66913056, 0.74314487, 0.52991927, -0.63022256, 0.5674549, 0, 0, 0)
+light_energy = 1.25
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=609941896]
+transform = Transform3D(0.75313854, -0.29695973, 0.5870241, 0, 0.89232105, 0.45140126, -0.65786195, -0.3399677, 0.67204136, 29, 24, 34)
+projection = 1
+current = true
+size = 36.0
+far = 200.0

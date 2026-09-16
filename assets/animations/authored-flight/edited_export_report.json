@@ -1,0 +1,38 @@
+{
+  "source_sha256": "b21f307d5adb2fb18cdc83e8912809d07ee0ec99e9f5ee08fc3f3095da310c8c",
+  "export_sha256": "ffb5ca27f77feb58a55a909bd0b4c99907f707cd117f4ec602fc25835960ca30",
+  "fps": 60,
+  "actions": {
+    "Flight_Hover": {
+      "frames": [
+        1.0,
+        193.0
+      ],
+      "seconds": 3.2,
+      "source_key_count": 1846,
+      "source_loop_position_gap_m": 0.0,
+      "source_loop_angle_gap_deg": 0.0
+    },
+    "Flight_Move": {
+      "frames": [
+        1.0,
+        169.0
+      ],
+      "seconds": 2.8,
+      "source_key_count": 1495,
+      "source_loop_position_gap_m": 0.0,
+      "source_loop_angle_gap_deg": 0.0
+    },
+    "Flight_Fast": {
+      "frames": [
+        1.0,
+        121.0
+      ],
+      "seconds": 2.0,
+      "source_key_count": 1375,
+      "source_loop_position_gap_m": 0.0,
+      "source_loop_angle_gap_deg": 0.0
+    }
+  },
+  "source_file_unchanged": true
+}

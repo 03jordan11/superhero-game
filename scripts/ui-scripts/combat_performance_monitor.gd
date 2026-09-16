@@ -37,7 +37,7 @@ func collect_sample() -> Dictionary:
 		var state_name: String = hostile.State.keys()[hostile.current_state]
 		states[state_name] = int(states.get(state_name, 0)) + 1
 		if hostile.is_hit_reacting: reacting += 1
-		if hostile.is_relocating: relocating += 1
+		if hostile is RangedHostile and hostile.is_relocating: relocating += 1
 		total_usec += hostile.debug_physics_usec
 		peak_usec = maxi(peak_usec, hostile.debug_physics_peak_usec)
 		ground_usec += hostile.debug_ground_query_usec

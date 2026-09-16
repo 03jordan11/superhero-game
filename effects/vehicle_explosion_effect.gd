@@ -8,7 +8,7 @@ extends Node3D
 
 @export_category("Explosion Audio")
 @export var sound_enabled := true
-@export_range(-60.0, 12.0, 0.5, "suffix:dB") var sound_volume_db := 3.0
+@export_range(-60.0, 12.0, 0.5, "suffix:dB") var sound_volume_db := -15.0
 ## Pitch also changes duration; lower pitch produces a slightly longer explosion.
 @export_range(0.5, 2.0, 0.01) var minimum_sound_pitch := 0.92
 @export_range(0.5, 2.0, 0.01) var maximum_sound_pitch := 1.08

@@ -85,9 +85,12 @@ func contains_body(world_point: Vector3, radius: float, a: int, b: int) -> bool:
 			if rect.has_point(sample):
 				inside = true
 				break
-		if not inside:
+		if not inside and not _is_extra_walkable(sample):
 			return false
 	return true
+
+func _is_extra_walkable(_sample: Vector2) -> bool:
+	return false
 
 func route(from_id: int, to_id: int, allow_crossings := true) -> PackedInt64Array:
 	if not valid or not astar.has_point(from_id) or not astar.has_point(to_id):

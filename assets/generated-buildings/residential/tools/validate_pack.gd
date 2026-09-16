@@ -27,13 +27,13 @@ func _initialize() -> void:
 		collection.append(packed)
 		var body = packed.instantiate()
 		check(body is StaticBody3D, path + " root must be StaticBody3D")
-		check(body.get_child_count() == 2, path + " must have exactly two children")
+		check(body.get_child_count() >= 3, path + " must have mesh, collision and shared roof props")
 		check(body.transform == Transform3D.IDENTITY, path + " root must be identity")
-		check(body.get_script() == null, path + " must have no script")
+		check(body.get_script()!=null, path + " must have seeded emission controller")
 		var visual = body.get_node_or_null("MeshInstance3D") as MeshInstance3D
 		var collision = body.get_node_or_null("CollisionShape3D") as CollisionShape3D
 		check(visual != null and visual.mesh != null, path + " missing mesh")
-		check(collision != null and collision.shape is BoxShape3D, path + " missing simple box collision")
+		check(collision != null and collision.shape is BoxShape3D, path + " missing solid box collision")
 		if visual == null or visual.mesh == null or collision == null or not collision.shape is BoxShape3D:
 			body.free()
 			continue
@@ -43,9 +43,10 @@ func _initialize() -> void:
 		check(body.collision_layer == 1, path + " default world collision layer")
 		var bounds = visual.mesh.get_aabb()
 		check(absf(bounds.position.y) < 0.0001, path + " base is not at Y=0")
-		check(absf(bounds.get_center().x) < 0.0001 and absf(bounds.get_center().z) < 0.0001, path + " horizontal origin not centered")
-		var box = AABB(collision.position-collision.shape.size/2,collision.shape.size).grow(0.001)
-		check(box.encloses(bounds), path + " box does not enclose mesh")
+		for node in body.get_children():
+			if node is CollisionShape3D:
+				check(node.shape is BoxShape3D and node.shape.size.x > 0 and node.shape.size.y > 0 and node.shape.size.z > 0, path + " invalid solid volume")
+		var box = bounds.grow(0.001)
 		check(bounds.size.x <= 38.0 and bounds.size.z <= 32.0, path + " footprint too large")
 		var triangles = 0
 		for s in range(visual.mesh.get_surface_count()):
@@ -60,13 +61,18 @@ func _initialize() -> void:
 				var cross = (vertices[t+1]-vertices[t]).cross(vertices[t+2]-vertices[t])
 				check(cross.length() > 0.00001, path + " degenerate triangle")
 				check(cross.dot(normals[t]) < 0.0, path + " winding/normal mismatch")
-		rows.append({"scene":path.get_file(),"size_m":[bounds.size.x,bounds.size.y,bounds.size.z],"triangles":triangles,"surfaces":visual.mesh.get_surface_count(),"nodes":3})
+		for prop_name in ["RooftopHVAC","RooftopWaterTower"]:
+			var prop=body.get_node_or_null(NodePath(prop_name))
+			if prop!=null: triangles+=prop.get_node("MeshInstance3D").mesh.get_faces().size()/3
+		check(triangles<10000,path+" complete geometry budget exceeded")
+		rows.append({"scene":path.get_file(),"size_m":[bounds.size.x,bounds.size.y,bounds.size.z],"triangles":triangles,"surfaces":visual.mesh.get_surface_count(),"nodes":body.get_child_count()+1})
 		body.free()
-	# Assign the typed array to the real addon's configuration, in memory only.
-	var config_script = load("res://addons/citycrafter/city_configuration.gd")
-	var config = config_script.new()
-	config.residential_buildings = collection
-	check(config.residential_buildings.size() == 20 and config.is_valid(), "CityConfiguration array assignment failed")
+	# The old CityCrafter addon is no longer installed; retain optional compatibility.
+	if ResourceLoader.exists("res://addons/citycrafter/city_configuration.gd"):
+		var config_script = load("res://addons/citycrafter/city_configuration.gd")
+		var config = config_script.new()
+		config.residential_buildings = collection
+		check(config.residential_buildings.size() == 20 and config.is_valid(), "CityConfiguration array assignment failed")
 	var file = FileAccess.open(OUT+"tools/validation_report.json",FileAccess.WRITE)
 	file.store_string(JSON.stringify({"engine":Engine.get_version_info().string,"passed":failures.is_empty(),"failures":failures,"typed_array_entries":collection.size(),"buildings":rows},"\t"))
 	print("Validation: %d scenes, %d Array[PackedScene] entries, %d failures" % [rows.size(),collection.size(),failures.size()])

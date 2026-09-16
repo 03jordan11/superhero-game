@@ -1,0 +1,15 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="res://assets/props/rooftop_water_tower/rooftop_water_tower.res" id="1_ivi6b"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e6fyh"]
+size = Vector3(2.808, 4.25, 2.808)
+
+[node name="RooftopWaterTower" type="StaticBody3D" unique_id=985446838]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=93156198]
+mesh = ExtResource("1_ivi6b")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1062918585]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.125, 0)
+shape = SubResource("BoxShape3D_e6fyh")

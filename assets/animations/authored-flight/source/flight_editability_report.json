@@ -1,0 +1,81 @@
+{
+  "fps": 60,
+  "position_limit_m": 0.001,
+  "angular_limit_degrees": 0.15,
+  "sample_step_frames": 0.25,
+  "interpolation": "Bezier / automatic handles / Cycles repeat",
+  "clips": {
+    "Flight_Hover": {
+      "frame_range": [
+        1,
+        193
+      ],
+      "seconds": 3.2,
+      "pose_frames": [
+        1.0,
+        49.0,
+        97.0,
+        145.0,
+        193.0
+      ],
+      "original_key_count": 50759,
+      "editable_key_count": 1315,
+      "max_bone_endpoint_error_mm": 0.6771701635684974,
+      "max_bone_angle_error_deg": 0.04787427881056843,
+      "max_skinned_vertex_error_mm": 0.7041614646971178,
+      "loop_position_error_mm": 0.0,
+      "loop_angle_error_deg": 2.4148365394514667e-06,
+      "loop_curve_slope_gap": 2.220446049250313e-16,
+      "skeleton_samples": 769,
+      "skin_samples": 33
+    },
+    "Flight_Move": {
+      "frame_range": [
+        1,
+        169
+      ],
+      "seconds": 2.8,
+      "pose_frames": [
+        1.0,
+        43.0,
+        85.0,
+        127.0,
+        169.0
+      ],
+      "original_key_count": 44447,
+      "editable_key_count": 1315,
+      "max_bone_endpoint_error_mm": 0.7313642702378378,
+      "max_bone_angle_error_deg": 0.04781996943336607,
+      "max_skinned_vertex_error_mm": 0.7584609600235949,
+      "loop_position_error_mm": 0.0,
+      "loop_angle_error_deg": 2.9575586669421963e-06,
+      "loop_curve_slope_gap": 6.652304104977098e-11,
+      "skeleton_samples": 673,
+      "skin_samples": 33
+    },
+    "Flight_Fast": {
+      "frame_range": [
+        1,
+        121
+      ],
+      "seconds": 2.0,
+      "pose_frames": [
+        1.0,
+        31.0,
+        61.0,
+        91.0,
+        121.0
+      ],
+      "original_key_count": 31823,
+      "editable_key_count": 1315,
+      "max_bone_endpoint_error_mm": 0.32223208140510534,
+      "max_bone_angle_error_deg": 0.0215531762315203,
+      "max_skinned_vertex_error_mm": 0.30493618094841846,
+      "loop_position_error_mm": 0.0,
+      "loop_angle_error_deg": 2.9575586669421963e-06,
+      "loop_curve_slope_gap": 2.22044604937956e-17,
+      "skeleton_samples": 481,
+      "skin_samples": 33
+    }
+  }
+}

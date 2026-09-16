@@ -1,8 +1,12 @@
 [gd_scene format=3 uid="uid://ci1surt3ll4n5"]
 
+[ext_resource type="Script" path="res://scripts/player-scripts/player_rescue_carrier.gd" id="rescue_carrier"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_ship_interaction.gd" id="ship_interaction"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_target_lock.gd" id="target_lock"]
+[ext_resource type="Script" path="res://scripts/ui-scripts/rescue_timer_hud.gd" id="rescue_timer"]
+
 [ext_resource type="Script" uid="uid://ckmvx8w0ymkt6" path="res://scripts/player-scripts/player_character.gd" id="1_player"]
-[ext_resource type="PackedScene" uid="uid://djuiolvewh3lx" path="res://assets/characters/Superhero_Male_FullBody.gltf" id="2_superhero"]
-[ext_resource type="Script" uid="uid://r0emup6ufvxv" path="res://scripts/ui-scripts/player_hud.gd" id="3_player_hud"]
+[ext_resource type="PackedScene" uid="uid://djuiolvewh3lx" path="res://assets/characters/Superhero-male/Superhero_Male_FullBody.gltf" id="2_superhero"]
 [ext_resource type="Script" uid="uid://bi8s7hwdcoono" path="res://scripts/player-scripts/player_animation_controller.gd" id="4_animation_controller"]
 [ext_resource type="Script" uid="uid://ciys3ckvpawm8" path="res://scripts/player-scripts/landing_target_indicator.gd" id="5_landing_target"]
 [ext_resource type="Script" uid="uid://bvglu4x7p24cx" path="res://scripts/player-scripts/player_camera_effects.gd" id="6_camera_effects"]
@@ -29,6 +33,13 @@
 [ext_resource type="Script" path="res://scripts/player-scripts/player_power_controller.gd" id="27_power_controller"]
 [ext_resource type="Script" path="res://scripts/player-scripts/player_stamina.gd" id="28_stamina"]
 [ext_resource type="Script" path="res://scripts/player-scripts/player_bounding_controller.gd" id="29_bounding"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_laser_eyes.gd" id="30_laser_eyes"]
+[ext_resource type="Script" path="res://scripts/ui-scripts/power_selector.gd" id="31_power_selector"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_fire.gd" id="32_fire"]
+[ext_resource type="Script" path="res://scripts/character_hair.gd" id="33_hair"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_hostile_grab.gd" id="hostile_grab"]
+
+[ext_resource type="Script" path="res://scripts/player-scripts/player_electricity.gd" id="34_electricity"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_player"]
 
@@ -67,6 +78,9 @@ outline_size = 6
 
 [node name="SuperheroCharacter" parent="." unique_id=674603265 instance=ExtResource("2_superhero")]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0, -1, 0)
+
+[node name="PlayerLaserEyes" type="Node3D" parent="."]
+script = ExtResource("30_laser_eyes")
 
 [node name="CharacterAnimationPlayer" type="AnimationPlayer" parent="SuperheroCharacter" unique_id=573504705]
 
@@ -114,122 +128,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
 spring_length = 5.0
 
 [node name="Camera3D" type="Camera3D" parent="SpringArm3D" unique_id=99221370]
-
-[node name="ChargeUI" type="CanvasLayer" parent="." unique_id=1352459268]
-script = ExtResource("3_player_hud")
-
-[node name="ChargeLabel" type="Label" parent="ChargeUI" unique_id=484328950]
-offset_left = 24.0
-offset_top = 24.0
-offset_right = 324.0
-offset_bottom = 50.0
-theme_override_font_sizes/font_size = 20
-text = "Power Jump: 0%"
-
-[node name="ChargeBar" type="ProgressBar" parent="ChargeUI" unique_id=1008159963]
-offset_left = 24.0
-offset_top = 54.0
-offset_right = 324.0
-offset_bottom = 78.0
-show_percentage = false
-
-[node name="LandingLabel" type="Label" parent="ChargeUI" unique_id=2059343948]
-offset_left = 24.0
-offset_top = 86.0
-offset_right = 324.0
-offset_bottom = 112.0
-theme_override_font_sizes/font_size = 20
-text = "Landing: --"
-
-[node name="FlightSpeedLabel" type="Label" parent="ChargeUI" unique_id=1348809076]
-offset_left = 24.0
-offset_top = 120.0
-offset_right = 324.0
-offset_bottom = 146.0
-theme_override_font_sizes/font_size = 20
-text = "Flight Speed: 0%"
-
-[node name="FlightSpeedBar" type="ProgressBar" parent="ChargeUI" unique_id=2008420]
-offset_left = 24.0
-offset_top = 150.0
-offset_right = 324.0
-offset_bottom = 174.0
-show_percentage = false
-
-[node name="SprintSpeedLabel" type="Label" parent="ChargeUI" unique_id=409986397]
-offset_left = 24.0
-offset_top = 182.0
-offset_right = 324.0
-offset_bottom = 208.0
-theme_override_font_sizes/font_size = 20
-text = "Sprint Speed: 0%"
-
-[node name="SprintSpeedBar" type="ProgressBar" parent="ChargeUI" unique_id=1889929132]
-offset_left = 24.0
-offset_top = 212.0
-offset_right = 324.0
-offset_bottom = 236.0
-show_percentage = false
-
-[node name="VehicleThrowChargeLabel" type="Label" parent="ChargeUI" unique_id=219188000]
-visible = false
-offset_left = 24.0
-offset_top = 244.0
-offset_right = 324.0
-offset_bottom = 270.0
-theme_override_font_sizes/font_size = 20
-text = "Vehicle Throw: 0%"
-
-[node name="VehicleThrowChargeBar" type="ProgressBar" parent="ChargeUI" unique_id=1872003292]
-visible = false
-offset_left = 24.0
-offset_top = 274.0
-offset_right = 324.0
-offset_bottom = 298.0
-show_percentage = false
-
-[node name="HealthLabel" type="Label" parent="ChargeUI" unique_id=344261157]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 24.0
-offset_top = -72.0
-offset_right = 324.0
-offset_bottom = -46.0
-theme_override_font_sizes/font_size = 20
-text = "Health: 100 / 100"
-
-[node name="ExperienceLabel" type="Label" parent="ChargeUI" unique_id=2136597913]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 24.0
-offset_top = -132.0
-offset_right = 324.0
-offset_bottom = -106.0
-theme_override_font_sizes/font_size = 20
-text = "Level 1: 0 / 100 XP"
-
-[node name="ExperienceBar" type="ProgressBar" parent="ChargeUI" unique_id=1178525266]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 24.0
-offset_top = -102.0
-offset_right = 324.0
-offset_bottom = -78.0
-show_percentage = false
-
-[node name="HealthBar" type="ProgressBar" parent="ChargeUI" unique_id=1879967820]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 24.0
-offset_top = -42.0
-offset_right = 324.0
-offset_bottom = -18.0
-value = 100.0
-show_percentage = false
+far = 60000.0
 
 [node name="GameplayHUD" parent="." unique_id=2002191483 instance=ExtResource("23_gameplay_hud")]
 
@@ -293,3 +192,41 @@ script = ExtResource("29_bounding")
 [node name="BulletHit" type="AudioStreamPlayer" parent="PlayerSoundManager"]
 bus = &"SFX"
 max_polyphony = 4
+
+[node name="PowerSelector" type="CanvasLayer" parent="."]
+layer = 8
+
+[node name="Wheel" type="Control" parent="PowerSelector"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("31_power_selector")
+
+[node name="PlayerFire" type="Node3D" parent="."]
+script = ExtResource("32_fire")
+
+[node name="CharacterHair" type="Node" parent="."]
+script = ExtResource("33_hair")
+model_path = NodePath("../SuperheroCharacter")
+female_npc = false
+
+[node name="PlayerElectricity" type="Node3D" parent="."]
+script = ExtResource("34_electricity")
+
+[node name="PlayerRescueCarrier" type="Node" parent="."]
+script = ExtResource("rescue_carrier")
+
+[node name="PlayerShipInteraction" type="Node" parent="."]
+script = ExtResource("ship_interaction")
+
+[node name="PlayerTargetLock" type="Node" parent="."]
+script = ExtResource("target_lock")
+
+[node name="PlayerHostileGrab" type="Node" parent="."]
+script = ExtResource("hostile_grab")
+
+[node name="RescueTimerHUD" type="CanvasLayer" parent="."]
+script = ExtResource("rescue_timer")

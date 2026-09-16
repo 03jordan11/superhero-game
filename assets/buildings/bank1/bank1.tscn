@@ -1,0 +1,144 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://assets/buildings/bank1/bank1.gd" id="1_mk5ed"]
+[ext_resource type="PackedScene" path="res://assets/buildings/bank1/bank1.glb" id="2_4y57p"]
+[ext_resource type="PackedScene" path="res://assets/buildings/bank1/props/bench.tscn" id="3_vco2c"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xfx1o"]
+size = Vector3(34, 20, 26)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_egt8e"]
+size = Vector3(14, 22.5, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rvh5k"]
+size = Vector3(3.5, 4, 0.06)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_duvsq"]
+size = Vector3(5, 0.25, 1.3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fbujk"]
+size = Vector3(1.85, 1.4, 1.85)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xfa0l"]
+size = Vector3(1.85, 1.4, 1.85)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cd653"]
+size = Vector3(11.8, 2.3, 3.9)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uwg0n"]
+size = Vector3(12.5, 0.24, 4.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tlfcc"]
+size = Vector3(8, 0.4, 3.9)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fj8s1"]
+size = Vector3(1.65, 3, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8s67d"]
+size = Vector3(33.4, 0.1, 25.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dq2u7"]
+size = Vector3(13.5, 0.12, 3.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r2ilw"]
+size = Vector3(0.45, 1.2, 26)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7muny"]
+size = Vector3(0.45, 1.2, 26)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iy7ss"]
+size = Vector3(34, 1.2, 0.45)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uv3x2"]
+size = Vector3(34, 1.2, 0.45)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_51gdf"]
+points = PackedVector3Array(-4.72, 1.4, 17.15, -4.8498683, 1.4, 16.750305, -5.1898685, 1.4, 16.50328, -5.6101317, 1.4, 16.50328, -5.9501314, 1.4, 16.750305, -6.08, 1.4, 17.15, -5.9501314, 1.4, 17.549694, -5.6101317, 1.4, 17.796719, -5.1898685, 1.4, 17.796719, -4.8498683, 1.4, 17.549694, -4.84, 16.5, 17.15, -4.9469504, 16.5, 16.82084, -5.2269506, 16.5, 16.617409, -5.5730495, 16.5, 16.617409, -5.8530498, 16.5, 16.82084, -5.96, 16.5, 17.15, -5.8530498, 16.5, 17.47916, -5.5730495, 16.5, 17.682592, -5.2269506, 16.5, 17.682592, -4.9469504, 16.5, 17.47916)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_uejuf"]
+points = PackedVector3Array(6.08, 1.4, 17.15, 5.9501314, 1.4, 16.750305, 5.6101317, 1.4, 16.50328, 5.1898685, 1.4, 16.50328, 4.8498683, 1.4, 16.750305, 4.72, 1.4, 17.15, 4.8498683, 1.4, 17.549694, 5.1898685, 1.4, 17.796719, 5.6101317, 1.4, 17.796719, 5.9501314, 1.4, 17.549694, 5.96, 16.5, 17.15, 5.8530498, 16.5, 16.82084, 5.5730495, 16.5, 16.617409, 5.2269506, 16.5, 16.617409, 4.9469504, 16.5, 16.82084, 4.84, 16.5, 17.15, 4.9469504, 16.5, 17.47916, 5.2269506, 16.5, 17.682592, 5.5730495, 16.5, 17.682592, 5.8530498, 16.5, 17.47916)
+
+[node name="Bank1" type="Node3D" unique_id=308994460]
+script = ExtResource("1_mk5ed")
+
+[node name="Model" type="Node3D" parent="." unique_id=1094308532 instance=ExtResource("2_4y57p")]
+
+[node name="ExteriorCollision" type="StaticBody3D" parent="." unique_id=1969904369]
+
+[node name="Bankinghall" type="CollisionShape3D" parent="ExteriorCollision" unique_id=656378941]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+shape = SubResource("BoxShape3D_xfx1o")
+
+[node name="Entrancepavilion" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1772501683]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.25, 15)
+shape = SubResource("BoxShape3D_egt8e")
+
+[node name="Entrancedoors" type="CollisionShape3D" parent="ExteriorCollision" unique_id=999743321]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 17.085)
+shape = SubResource("BoxShape3D_rvh5k")
+
+[node name="Doorcanopy" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1571549235]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.65, 17.5)
+shape = SubResource("BoxShape3D_duvsq")
+
+[node name="Columnbases" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1591952161]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4, 0.7, 17.15)
+shape = SubResource("BoxShape3D_fbujk")
+
+[node name="Columnbases2" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1896448592]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4, 0.7, 17.15)
+shape = SubResource("BoxShape3D_xfa0l")
+
+[node name="Crownsignblock" type="CollisionShape3D" parent="ExteriorCollision" unique_id=77632773]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23.9, 15)
+shape = SubResource("BoxShape3D_cd653")
+
+[node name="Crowncap" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1063833966]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25.15, 15)
+shape = SubResource("BoxShape3D_uwg0n")
+
+[node name="Raisedcrest" type="CollisionShape3D" parent="ExteriorCollision" unique_id=2060260739]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25.45, 15)
+shape = SubResource("BoxShape3D_tlfcc")
+
+[node name="Reardoor" type="CollisionShape3D" parent="ExteriorCollision" unique_id=767293656]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -13.16)
+shape = SubResource("BoxShape3D_fj8s1")
+
+[node name="Mainroof" type="CollisionShape3D" parent="ExteriorCollision" unique_id=87376991]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20.05, 0)
+shape = SubResource("BoxShape3D_8s67d")
+
+[node name="Porticoroof" type="CollisionShape3D" parent="ExteriorCollision" unique_id=2013682969]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.56, 15)
+shape = SubResource("BoxShape3D_dq2u7")
+
+[node name="Roofparapets" type="CollisionShape3D" parent="ExteriorCollision" unique_id=973659225]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.75, 20.6, 0)
+shape = SubResource("BoxShape3D_r2ilw")
+
+[node name="Roofparapets2" type="CollisionShape3D" parent="ExteriorCollision" unique_id=860590344]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.75, 20.6, 0)
+shape = SubResource("BoxShape3D_7muny")
+
+[node name="Roofparapets3" type="CollisionShape3D" parent="ExteriorCollision" unique_id=972453366]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20.6, 12.75)
+shape = SubResource("BoxShape3D_iy7ss")
+
+[node name="Roofparapets4" type="CollisionShape3D" parent="ExteriorCollision" unique_id=807644789]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20.6, -12.75)
+shape = SubResource("BoxShape3D_uv3x2")
+
+[node name="Entrance columns" type="CollisionShape3D" parent="ExteriorCollision" unique_id=2072121329]
+shape = SubResource("ConvexPolygonShape3D_51gdf")
+
+[node name="@CollisionShape3D@2" type="CollisionShape3D" parent="ExteriorCollision" unique_id=474547024]
+shape = SubResource("ConvexPolygonShape3D_uejuf")
+
+[node name="Props" type="Node3D" parent="." unique_id=1507192404]
+
+[node name="Bench_00" type="Node3D" parent="Props" unique_id=800247442 instance=ExtResource("3_vco2c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -13.7)
+
+[node name="Bench_01" type="Node3D" parent="Props" unique_id=2121944255 instance=ExtResource("3_vco2c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -13.7)

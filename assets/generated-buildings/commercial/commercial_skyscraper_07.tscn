@@ -1,15 +1,36 @@
 [gd_scene format=3]
 
-[ext_resource type="ArrayMesh" path="res://assets/generated-buildings/commercial/meshes/commercial_skyscraper_07.res" id="1_hk1ix"]
+[ext_resource type="Script" path="res://assets/generated-buildings/commercial/commercial_skyscraper_01.gd" id="1_pysbj"]
+[ext_resource type="ArrayMesh" path="res://assets/generated-buildings/commercial/meshes/commercial_skyscraper_07.res" id="2_tcsem"]
+[ext_resource type="PackedScene" path="res://assets/props/rooftop_hvac/rooftop_hvac.tscn" id="3_b2vxg"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_8o0ur"]
-size = Vector3(20, 181.2, 24.04)
+[sub_resource type="BoxShape3D" id="BoxShape3D_yym6w"]
+size = Vector3(20, 7, 24.04)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oetsf"]
+size = Vector3(18, 163, 22)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_twxv5"]
+size = Vector3(15, 8, 18)
 
 [node name="commercial_skyscraper_07" type="StaticBody3D" unique_id=1912301001]
+script = ExtResource("1_pysbj")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1220292134]
-mesh = ExtResource("1_hk1ix")
+mesh = ExtResource("2_tcsem")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2021186419]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 90.6, 0)
-shape = SubResource("BoxShape3D_8o0ur")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
+shape = SubResource("BoxShape3D_yym6w")
+
+[node name="TierCollision1" type="CollisionShape3D" parent="." unique_id=1447052902]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 88.5, 0)
+shape = SubResource("BoxShape3D_oetsf")
+
+[node name="TierCollision2" type="CollisionShape3D" parent="." unique_id=584522141]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 174, 0)
+shape = SubResource("BoxShape3D_twxv5")
+
+[node name="RooftopHVAC" type="StaticBody3D" parent="." unique_id=661342222 instance=ExtResource("3_b2vxg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 178, 0)
+metadata/source = "hospital / Roof equipment / unit at (-13, 129, -18)"

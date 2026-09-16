@@ -1,15 +1,36 @@
 [gd_scene format=3]
 
-[ext_resource type="ArrayMesh" path="res://assets/generated-buildings/commercial/meshes/commercial_skyscraper_10.res" id="1_1syhi"]
+[ext_resource type="Script" path="res://assets/generated-buildings/commercial/commercial_skyscraper_01.gd" id="1_d5u5c"]
+[ext_resource type="ArrayMesh" path="res://assets/generated-buildings/commercial/meshes/commercial_skyscraper_10.res" id="2_i2dvl"]
+[ext_resource type="PackedScene" path="res://assets/props/rooftop_hvac/rooftop_hvac_lowpoly.tscn" id="3_u0e12"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_xhc8o"]
-size = Vector3(28, 159.2, 26.04)
+[sub_resource type="BoxShape3D" id="BoxShape3D_wosoj"]
+size = Vector3(28, 8, 26.04)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u83ce"]
+size = Vector3(26, 140, 24)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w4h25"]
+size = Vector3(22, 8, 20)
 
 [node name="commercial_skyscraper_10" type="StaticBody3D" unique_id=1395065286]
+script = ExtResource("1_d5u5c")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2022215678]
-mesh = ExtResource("1_1syhi")
+mesh = ExtResource("2_i2dvl")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=886152138]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 79.6, 0)
-shape = SubResource("BoxShape3D_xhc8o")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+shape = SubResource("BoxShape3D_wosoj")
+
+[node name="TierCollision1" type="CollisionShape3D" parent="." unique_id=957914832]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 78, 0)
+shape = SubResource("BoxShape3D_u83ce")
+
+[node name="TierCollision2" type="CollisionShape3D" parent="." unique_id=187733436]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 152, 0)
+shape = SubResource("BoxShape3D_w4h25")
+
+[node name="RooftopHVAC" type="StaticBody3D" parent="." unique_id=661342222 instance=ExtResource("3_u0e12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 156, 0)
+metadata/source = "Blender budget variant of the stock hospital HVAC: hidden caps removed, top panels flattened"

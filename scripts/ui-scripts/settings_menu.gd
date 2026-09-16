@@ -148,10 +148,10 @@ func _build_gameplay() -> void:
 	_note(page, COPY.text("hud.settings.visibility_help"))
 	_heading(page, "Accessibility")
 	sprint_mode_dropdown = _option(page, "Boost / Sprint", ["Hold", "Toggle"])
-	power_mode_dropdown = _option(page, "Power Activation (Right Click)", ["Hold", "Toggle"])
+	power_mode_dropdown = _option(page, "Aim / Zoom (Right Click)", ["Hold", "Toggle"])
 	sprint_mode_dropdown.item_selected.connect(_on_accessibility_selected)
 	power_mode_dropdown.item_selected.connect(_on_accessibility_selected)
-	_note(page, "Toggle: press once to activate, again to stop. Sprint resets when paused. Right-click preference is saved for future powers such as Laser Eyes.")
+	_note(page, "Toggle: press once to activate, again to stop. Sprint and aim reset when paused. While aiming, hold Attack to fire Laser Eyes. Without aiming, Attack punches or air slams.")
 
 func _row(page: VBoxContainer, title: String) -> HBoxContainer:
 	var row := HBoxContainer.new()

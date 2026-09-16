@@ -1,0 +1,121 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://assets/buildings/hospital/hospital.gd" id="1_86l4s"]
+[ext_resource type="PackedScene" path="res://assets/buildings/hospital/hospital.glb" id="2_bik6u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jknpw"]
+size = Vector3(55, 128, 27)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h8b30"]
+size = Vector3(55, 61, 16)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pdsa5"]
+size = Vector3(18, 69, 35)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8jdia"]
+size = Vector3(18, 48, 19)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ogg1n"]
+size = Vector3(8, 29, 26)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rfb0q"]
+size = Vector3(18, 69, 35)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vh6ug"]
+size = Vector3(18, 48, 19)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ij1yt"]
+size = Vector3(8, 29, 26)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dbet0"]
+size = Vector3(29, 9, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d3gk2"]
+size = Vector3(48, 0.24, 29)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ve5r2"]
+size = Vector3(1.8, 4.8, 0.65)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_do242"]
+points = PackedVector3Array(-26, 0, 25, -27.718847, 0, 30.290068, -32.218845, 0, 33.55951, -37.781155, 0, 33.55951, -42.281155, 0, 30.290068, -44, 0, 25, -26, 48, 25, -27.718847, 48, 30.290068, -32.218845, 48, 33.55951, -37.781155, 48, 33.55951, -42.281155, 48, 30.290068, -44, 48, 25)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_sfcru"]
+points = PackedVector3Array(44, 0, 25, 42.281155, 0, 30.290068, 37.781155, 0, 33.55951, 32.218845, 0, 33.55951, 27.718847, 0, 30.290068, 26, 0, 25, 44, 48, 25, 42.281155, 48, 30.290068, 37.781155, 48, 33.55951, 32.218845, 48, 33.55951, 27.718847, 48, 30.290068, 26, 48, 25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_er8nj"]
+size = Vector3(21, 0.4, 12.3)
+
+[node name="Hospital" type="Node3D" unique_id=1327881476]
+script = ExtResource("1_86l4s")
+
+[node name="Model" type="Node3D" parent="." unique_id=429514212 instance=ExtResource("2_bik6u")]
+
+[node name="ExteriorCollision" type="StaticBody3D" parent="." unique_id=126355967]
+
+[node name="@CollisionShape3D@2" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1750470832]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 64, -17)
+shape = SubResource("BoxShape3D_jknpw")
+
+[node name="@CollisionShape3D@3" type="CollisionShape3D" parent="ExteriorCollision" unique_id=502819718]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30.5, 1)
+shape = SubResource("BoxShape3D_h8b30")
+
+[node name="@CollisionShape3D@4" type="CollisionShape3D" parent="ExteriorCollision" unique_id=2141039940]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 34.5, -8)
+shape = SubResource("BoxShape3D_pdsa5")
+
+[node name="@CollisionShape3D@5" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1229965815]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 24, 15.5)
+shape = SubResource("BoxShape3D_8jdia")
+
+[node name="@CollisionShape3D@6" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1554340181]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 14.5, 5)
+shape = SubResource("BoxShape3D_ogg1n")
+
+[node name="@CollisionShape3D@7" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1823493211]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 34.5, -8)
+shape = SubResource("BoxShape3D_rfb0q")
+
+[node name="@CollisionShape3D@8" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1516824380]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 24, 15.5)
+shape = SubResource("BoxShape3D_vh6ug")
+
+[node name="@CollisionShape3D@9" type="CollisionShape3D" parent="ExteriorCollision" unique_id=279123020]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 14.5, 5)
+shape = SubResource("BoxShape3D_ij1yt")
+
+[node name="@CollisionShape3D@10" type="CollisionShape3D" parent="ExteriorCollision" unique_id=2012779670]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 14)
+shape = SubResource("BoxShape3D_dbet0")
+
+[node name="@CollisionShape3D@11" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1817331]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12, 27)
+shape = SubResource("BoxShape3D_d3gk2")
+
+[node name="@CollisionShape3D@12" type="CollisionShape3D" parent="ExteriorCollision" unique_id=601239447]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 2.4, 34)
+shape = SubResource("BoxShape3D_ve5r2")
+
+[node name="RoundedWingLeft" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1009053811]
+shape = SubResource("ConvexPolygonShape3D_do242")
+
+[node name="RoundedWingRight" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1236046256]
+shape = SubResource("ConvexPolygonShape3D_sfcru")
+
+[node name="Canopy" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1554768640]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.45, 25.2)
+shape = SubResource("BoxShape3D_er8nj")
+
+[node name="EntranceLightLeft" type="OmniLight3D" parent="." unique_id=581070671]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 4.4, 25)
+light_color = Color(1, 0.76, 0.48, 1)
+light_energy = 0.0
+omni_range = 13.0
+omni_attenuation = 1.5
+
+[node name="EntranceLightRight" type="OmniLight3D" parent="." unique_id=1911144708]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 4.4, 25)
+light_color = Color(1, 0.76, 0.48, 1)
+light_energy = 0.0
+omni_range = 13.0
+omni_attenuation = 1.5

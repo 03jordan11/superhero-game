@@ -76,6 +76,7 @@ var _junction_owners: Dictionary = {}
 var _next_arrival := 0
 var _next_traffic_id := 0
 var _population_baseline: Dictionary = {}
+var _traffic_controls: Node
 @onready var _active: Node3D = $ActiveVehicles
 @onready var _released: Node3D = $ReleasedVehicles
 @onready var _lod = get_node_or_null("DistantTraffic")
@@ -432,15 +433,26 @@ func _wait_at_junction(record: Dictionary, delta: float) -> void:
 		record.chosen_exit = _choose_connection(lane.connections)
 	record.wait_time += delta
 	if record.wait_time < intersection_pause or _junction_owners.has(lane.junction): return
+	if not junction_lane_allowed(lane): return
 	for other in _cars:
 		if other.arrival >= 0 and other.arrival < record.arrival and other.connection.is_empty() and lanes[other.lane].junction == lane.junction:
-			if is_instance_valid(other.car) and other.car.traffic_controlled: return
+			# A vehicle waiting at a red light cannot block the green approach's queue.
+			if is_instance_valid(other.car) and other.car.traffic_controlled and junction_lane_allowed(lanes[other.lane]): return
 	if not _exit_clear(record,record.chosen_exit): return
 	_junction_owners[lane.junction] = record.id
 	record.reserved_junction = lane.junction
 	record.connection = record.chosen_exit
 	record.crossing_progress = record.progress-lane.length
 	record.speed = 0.0
+
+func junction_control_kind(lane: Dictionary) -> String:
+	if not is_instance_valid(_traffic_controls):
+		_traffic_controls=get_tree().get_first_node_in_group(&"city_traffic_controls")
+	return _traffic_controls.control_kind(lane) if is_instance_valid(_traffic_controls) else ""
+
+func junction_lane_allowed(lane: Dictionary) -> bool:
+	if junction_control_kind(lane)!="signal": return true
+	return _traffic_controls.allows_lane(lane)
 
 func _choose_connection(connections: Array) -> Dictionary:
 	var total := 0.0

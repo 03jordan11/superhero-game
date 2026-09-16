@@ -26,7 +26,6 @@ func run() -> void:
 	preload("res://tests/player_test_support.gd").unlock_current_powers(player)
 	player.set_physics_process(false)
 	player.set_process_input(false)
-	player.player_hud.show()
 	await settle_on_floor()
 	var machine := player.state_machine
 	assert(machine.transition_to(&"JumpChargingState", {"initial_charge_delta": 0.5}))
@@ -66,7 +65,6 @@ func run() -> void:
 	assert(not player.is_charging_jump)
 	assert(not player.get_node("PlayerSoundManager/JumpCharge").playing)
 	assert(player.jump_charge == 0.0 and player.jump_hold_time == 0.0)
-	assert(player.player_hud.charge_bar.value == 0.0)
 
 	await settle_on_floor()
 	assert(machine.transition_to(&"JumpChargingState", {"initial_charge_delta": 0.3}))

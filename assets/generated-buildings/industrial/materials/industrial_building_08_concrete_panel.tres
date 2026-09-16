@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/generated-buildings/industrial/textures/concrete_panel.res" id="1_qrfp7"]
+[ext_resource type="Texture2D" path="res://assets/generated-buildings/industrial/textures/industrial_building_08_concrete_panel_emission.res" id="2_3kh3j"]
+
+[resource]
+albedo_texture = ExtResource("1_qrfp7")
+roughness = 0.9
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.0
+emission_operator = 1
+emission_texture = ExtResource("2_3kh3j")
+texture_filter = 2

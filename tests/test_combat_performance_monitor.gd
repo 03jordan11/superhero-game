@@ -15,13 +15,41 @@ func _run_test() -> void:
 	var player := main.get_node("Player") as CharacterBody3D
 	player.set_physics_process(false)
 	player.global_position = Vector3(4.0, 1.0, -86.0)
+	# Main no longer contains a fixed set of test enemies. Own this fixture.
+	var enemy_scenes := [
+		preload("res://scenes/npcs/pistol_thug.tscn"),
+		preload("res://scenes/npcs/rifle_thug.tscn"),
+		preload("res://scenes/npcs/melee_thug.tscn"),
+		preload("res://scenes/npcs/super_thug.tscn"),
+		preload("res://scenes/npcs/pistol_thug.tscn"),
+		preload("res://scenes/npcs/rifle_thug.tscn"),
+	]
+	for index in enemy_scenes.size():
+		var thug := enemy_scenes[index].instantiate() as HostileBase
+		thug.position = player.position + Vector3(float(index) * 2.0, 0.0, 10.0)
+		main.add_child(thug)
+	# Sample all types before simulation and ensure relocation remains ranged-only.
+	for hostile in get_nodes_in_group(&"hostile"):
+		hostile.debug_physics_usec = 100
+		if hostile is RangedHostile:
+			hostile.is_relocating = true
+	var mixed: Dictionary = monitor.collect_sample()
+	if mixed.get("hostile_relocating", -1) != 4 or mixed.get("hostile_states", {}).get("GUARD", 0) != enemy_scenes.size():
+		push_error("Mixed enemy sample must count every hostile and only ranged relocations")
+		main.free()
+		quit(1)
+		return
+	for hostile in get_nodes_in_group(&"hostile"):
+		assert(hostile.debug_physics_usec == 0)
+		if hostile is RangedHostile:
+			hostile.is_relocating = false
 	for hostile in get_nodes_in_group(&"hostile"):
 		hostile.receive_alert(player)
 	await create_timer(5.0).timeout
 	var first: Dictionary = monitor.collect_sample()
 	print("[CombatPerf test] ", JSON.stringify(first))
 	assert(first.hostile_states.get("COMBAT", 0) > 0)
-	assert(first.hostile_states.get("COMBAT", 0) + first.hostile_states.get("SEARCH", 0) == 5)
+	assert(first.hostile_states.get("COMBAT", 0) + first.hostile_states.get("SEARCH", 0) == enemy_scenes.size())
 	assert(first.hostile_ms_per_tick > 0.0)
 	assert(first.target_ground_ms_per_tick > 0.0)
 	for hostile in get_nodes_in_group(&"hostile"):

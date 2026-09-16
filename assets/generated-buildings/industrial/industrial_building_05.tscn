@@ -1,15 +1,29 @@
 [gd_scene format=3]
 
-[ext_resource type="ArrayMesh" path="res://assets/generated-buildings/industrial/meshes/industrial_building_05.res" id="1_v6psf"]
+[ext_resource type="Script" path="res://assets/generated-buildings/industrial/industrial_building.gd" id="1_bw2cv"]
+[ext_resource type="ArrayMesh" path="res://assets/generated-buildings/industrial/meshes/industrial_building_05.res" id="2_e54s4"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_kimgu"]
-size = Vector3(32, 8.8, 24.05)
+[sub_resource type="BoxShape3D" id="BoxShape3D_k4aul"]
+size = Vector3(32, 6, 24)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vlnfi"]
+points = PackedVector3Array(-16, 6, -12, -16, 6, 12, 0, 6, -12, 0, 6, 12, -8, 8.8, -12, -8, 8.8, 12)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_w1p6b"]
+points = PackedVector3Array(0, 6, -12, 0, 6, 12, 16, 6, -12, 16, 6, 12, 8, 8.8, -12, 8, 8.8, 12)
 
 [node name="industrial_building_05" type="StaticBody3D" unique_id=568525644]
+script = ExtResource("1_bw2cv")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2026708253]
-mesh = ExtResource("1_v6psf")
+mesh = ExtResource("2_e54s4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2122222636]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.4, 0)
-shape = SubResource("BoxShape3D_kimgu")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+shape = SubResource("BoxShape3D_k4aul")
+
+[node name="SolidCollision1" type="CollisionShape3D" parent="." unique_id=195502031]
+shape = SubResource("ConvexPolygonShape3D_vlnfi")
+
+[node name="SolidCollision2" type="CollisionShape3D" parent="." unique_id=2044161968]
+shape = SubResource("ConvexPolygonShape3D_w1p6b")

@@ -39,7 +39,7 @@ func _test_reusable_scene_structure() -> void:
 		is PlayerLandingImpactController
 	)
 	assert(player.get_node("SpringArm3D/Camera3D") is Camera3D)
-	assert(player.get_node("ChargeUI") is PlayerHud)
+	assert(not player.has_node("ChargeUI"))
 	assert(player.get_node("PlayerCombatController") is PlayerCombatController)
 	player.free()
 
@@ -62,9 +62,7 @@ func _test_main_scene_instance() -> void:
 	)
 	assert(player.scene_file_path == "res://scenes/player.tscn")
 	assert(player.get_node("PlayerStateMachine").get_child_count() == 8)
-	assert(player.get_node("ChargeUI/HealthBar") is ProgressBar)
-	assert(player.get_node("ChargeUI/SprintSpeedBar") is ProgressBar)
-	assert(player.get_node("ChargeUI/VehicleThrowChargeBar") is ProgressBar)
+	assert(player.has_node("GameplayHUD/Health/Values/Bar"))
 
 	print("PASS: reusable Player scene and Main instance")
 	quit()

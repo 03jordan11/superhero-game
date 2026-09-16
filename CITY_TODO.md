@@ -45,6 +45,13 @@ These items are deferred. This file records discussion; it does not implement or
 - [ ] Reproduce hard-landing dust/debris and vehicle-explosion fire/sparks separately with rendering enabled; correlate errors with effect creation, emission and deletion using temporary lifecycle logs.
 - [ ] Determine whether this is effect initialization/cleanup or an engine renderer issue before changing behavior. Related but not confirmed identical: https://github.com/godotengine/godot/issues/122005. Headless tests cannot establish a rendering fix.
 
+## POI rendering distance and HLOD — deferred
+
+- [ ] Prioritize Godot visibility ranges for small POI props such as benches, tables and minor decorations: hide their visuals entirely beyond a tuned camera distance instead of creating replacement meshes.
+- [ ] Expose distances by prop size/type and test street movement, rooftop views and fast flight. Tune transition margins to avoid rapid visibility toggling near the cutoff; preserve independently editable prop instances and gameplay collision.
+- [ ] Keep automatic mesh LOD enabled on the buildings. Profile CPU/GPU frame time, draw calls and rendered triangles before investing in custom distant building versions.
+- [ ] If profiling justifies custom building HLOD, consolidate distant geometry/materials while preserving landmark silhouettes and night-only emission. Compare one representative POI against automatic LOD before extending the approach to all buildings.
+
 ## Working constraints
 
 - Keep each implementation change small and independently reversible.

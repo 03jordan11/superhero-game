@@ -1,15 +1,41 @@
 [gd_scene format=3]
 
-[ext_resource type="ArrayMesh" path="res://assets/generated-buildings/industrial/meshes/industrial_building_02.res" id="1_ca8dj"]
+[ext_resource type="Script" path="res://assets/generated-buildings/industrial/industrial_building.gd" id="1_fbbpi"]
+[ext_resource type="ArrayMesh" path="res://assets/generated-buildings/industrial/meshes/industrial_building_02.res" id="2_5uniu"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_kllbc"]
-size = Vector3(30, 9.8, 24.05)
+[sub_resource type="BoxShape3D" id="BoxShape3D_a50uw"]
+size = Vector3(30, 7, 24)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_brlq1"]
+points = PackedVector3Array(-15, 7, -12, -7.5, 7, -12, -7.5, 9.8, -12, -15, 7, 12, -7.5, 7, 12, -7.5, 9.8, 12)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_y7xs3"]
+points = PackedVector3Array(-7.5, 7, -12, 0, 7, -12, 0, 9.8, -12, -7.5, 7, 12, 0, 7, 12, 0, 9.8, 12)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_lua3b"]
+points = PackedVector3Array(0, 7, -12, 7.5, 7, -12, 7.5, 9.8, -12, 0, 7, 12, 7.5, 7, 12, 7.5, 9.8, 12)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jqqo4"]
+points = PackedVector3Array(7.5, 7, -12, 15, 7, -12, 15, 9.8, -12, 7.5, 7, 12, 15, 7, 12, 15, 9.8, 12)
 
 [node name="industrial_building_02" type="StaticBody3D" unique_id=1676735003]
+script = ExtResource("1_fbbpi")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1452064552]
-mesh = ExtResource("1_ca8dj")
+mesh = ExtResource("2_5uniu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=655334609]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.9, 0)
-shape = SubResource("BoxShape3D_kllbc")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
+shape = SubResource("BoxShape3D_a50uw")
+
+[node name="SolidCollision1" type="CollisionShape3D" parent="." unique_id=944178334]
+shape = SubResource("ConvexPolygonShape3D_brlq1")
+
+[node name="SolidCollision2" type="CollisionShape3D" parent="." unique_id=922472958]
+shape = SubResource("ConvexPolygonShape3D_y7xs3")
+
+[node name="SolidCollision3" type="CollisionShape3D" parent="." unique_id=1949107286]
+shape = SubResource("ConvexPolygonShape3D_lua3b")
+
+[node name="SolidCollision4" type="CollisionShape3D" parent="." unique_id=334358481]
+shape = SubResource("ConvexPolygonShape3D_jqqo4")

@@ -1,0 +1,30 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://assets/buildings/police_station/props/bench.glb" id="1_s442r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lxtok"]
+size = Vector3(2.2, 0.16, 0.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yi2mm"]
+size = Vector3(0.32, 0.38, 0.46)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mcyrw"]
+size = Vector3(0.32, 0.38, 0.46)
+
+[node name="StoneBench" type="Node3D" unique_id=1156088170]
+
+[node name="Mesh" type="Node3D" parent="." unique_id=1973220350 instance=ExtResource("1_s442r")]
+
+[node name="Collision" type="StaticBody3D" parent="." unique_id=1517689926]
+
+[node name="Seat" type="CollisionShape3D" parent="Collision" unique_id=1912360971]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46, 0)
+shape = SubResource("BoxShape3D_lxtok")
+
+[node name="Support" type="CollisionShape3D" parent="Collision" unique_id=1138882214]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.72, 0.19, 0)
+shape = SubResource("BoxShape3D_yi2mm")
+
+[node name="Support2" type="CollisionShape3D" parent="Collision" unique_id=31779444]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.72, 0.19, 0)
+shape = SubResource("BoxShape3D_mcyrw")

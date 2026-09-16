@@ -1,0 +1,24 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="res://assets/super-city/modular-sidewalks/meshes/end_cap.res" id="1_fomy8"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6cj2v"]
+points = PackedVector3Array(-2.001, 0, -2.001, -2.001, 0.03, -2.001, 2.001, 0, -2.001, 2.001, 0.03, -2.001, 2.001, 0, 1.50075, 2.001, 0.03, 1.50075, 1.50075, 0, 2.001, 1.50075, 0.03, 2.001, -1.50075, 0, 2.001, -1.50075, 0.03, 2.001, -2.001, 0, 1.50075, -2.001, 0.03, 1.50075)
+
+[node name="EndCap" type="StaticBody3D" unique_id=970225194]
+metadata/sidewalk_module = "end_cap"
+metadata/snap_grid_m = 2.0
+metadata/path_width_m = 4.0
+metadata/_edit_group_ = true
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=2079843625]
+mesh = ExtResource("1_fomy8")
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1182795429]
+shape = SubResource("ConvexPolygonShape3D_6cj2v")
+
+[node name="Sockets" type="Node3D" parent="." unique_id=1625881467]
+
+[node name="North" type="Marker3D" parent="Sockets" unique_id=499025184]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+gizmo_extents = 0.7

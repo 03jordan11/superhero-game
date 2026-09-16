@@ -80,6 +80,7 @@ func create_capsule(tone: int) -> Node3D:
 	walker.damage_position_changed.connect(_update_damage_cell.bind(walker))
 	walker.tree_exiting.connect(_remove_damage_cell.bind(walker))
 	walker.skin_tone_index = tone
+	CharacterHair.choose_for(walker)
 	_mesh.radius = capsule_radius
 	_mesh.height = maxf(capsule_height,capsule_radius*2.0)
 	if not _materials.has(tone):
@@ -174,6 +175,8 @@ func _profiled_promote(walker: Node3D) -> Node3D:
 	full._path = state._path
 	full.show_route_status = _crowd.show_civilian_status
 	full.skin_tone_index = state.skin_tone_index
+	full.hair_style_index = state.hair_style_index
+	full.hair_color_index = state.hair_color_index
 	if full.skin_tone_index >= 0: _crowd._apply_skin(full,full.skin_tone_index)
 	full.position = _crowd._active.to_local(walker.global_position)
 	_crowd._active.add_child(full)
@@ -222,13 +225,21 @@ func forget(walker: Node3D) -> void:
 	if walker.is_lightweight: capsule_count = maxi(0,capsule_count-1)
 	else: full_count = maxi(0,full_count-1)
 
-func apply_radius_damage(origin: Vector3, radius: float, info) -> void:
+func apply_radius_damage(origin: Vector3, radius: float, info, edge_damage := -1.0) -> void:
 	# Called after the normal body query, so newly promoted bodies cannot be hit twice.
 	for walker in _get_damage_candidates(origin, radius):
 		var closest := Geometry3D.get_closest_point_to_segment(origin,walker.global_position+Vector3.UP*0.5,walker.global_position+Vector3.UP*1.25)
 		if closest.distance_squared_to(origin) <= (radius+0.5)*(radius+0.5):
-			walker.apply_damage(info)
+			var amount := ExplosionController.radial_damage(info.amount, edge_damage, origin.distance_to(closest), radius)
+			var hit_info = preload("res://scripts/combat-scripts/damage_info.gd").new(amount, info.impact_origin, info.impact_direction, info.reaction, info.source, info.impact_speed)
+			hit_info.damage_type = info.damage_type
+			walker.apply_damage(hit_info)
 			_timer = 0.0 # Handoff in the next physics update, outside query callbacks.
+
+func apply_breath_damage(breath: Node3D, amount: float, source: PlayerCharacter) -> void:
+	for walker in _get_damage_candidates(breath.global_position, breath.length + 1.0):
+		if breath.damage_target(walker, walker.global_position + Vector3.UP * 0.9, amount, source):
+			_timer = 0.0
 
 func apply_melee_damage(origin: Vector3, radius: float, info) -> bool:
 	for walker in _get_damage_candidates(origin, radius):
@@ -238,6 +249,18 @@ func apply_melee_damage(origin: Vector3, radius: float, info) -> bool:
 			_timer = 0.0
 			return true
 	return false
+
+func intersect_damage_ray(from: Vector3, to: Vector3) -> Dictionary:
+	var best: Dictionary = {}
+	var nearest := from.distance_squared_to(to)
+	for walker in _get_damage_candidates((from + to) * 0.5, from.distance_to(to) * 0.5):
+		var points := Geometry3D.get_closest_points_between_segments(from, to, walker.global_position + Vector3.UP * 0.5, walker.global_position + Vector3.UP * 1.25)
+		if points[0].distance_squared_to(points[1]) > 0.25: continue
+		var distance := from.distance_squared_to(points[0])
+		if distance >= nearest: continue
+		nearest = distance
+		best = {"collider": walker, "position": points[0], "normal": (from - to).normalized()}
+	return best
 
 
 func _damage_cell(point: Vector3) -> Vector2i:

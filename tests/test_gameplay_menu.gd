@@ -35,8 +35,8 @@ func run() -> void:
 	player.current_ground_speed = player._get_walk_speed()
 	player.state_machine.physics_update(1.0, snapshot)
 	check(is_equal_approx(player.current_ground_speed, player._get_walk_speed()), "Locked super speed remains at ordinary speed")
-	root.push_input(key(KEY_TAB))
-	check(menu.visible and paused and not pause.visible, "TAB opens gameplay menu and pauses")
+	root.push_input(key(KEY_P))
+	check(menu.visible and paused and not pause.visible, "P opens gameplay menu and pauses")
 	check(menu.tabs.get_tab_count() == 5, "All five groups exist")
 	for i in range(5):
 		check(menu.tabs.get_tab_title(i) == ["Powers", "Gear", "Attributes", "Journal", "Map"][i], "Requested tab order")
@@ -44,8 +44,8 @@ func run() -> void:
 	check(menu.powers_page.progression == progression, "Page shares the player's authoritative progression")
 	check(not menu.powers_page.back_button.is_visible_in_tree(), "Embedded Powers uses outer menu close")
 	check(pause.pause_actions.get_child_count() == 7, "Pause actions no longer include Powers")
-	root.push_input(key(KEY_TAB))
-	check(not menu.visible and not paused, "TAB closes even though Tab is normally UI focus navigation")
+	root.push_input(key(KEY_P))
+	check(not menu.visible and not paused, "P closes the gameplay menu")
 	var pad := InputEventJoypadButton.new()
 	pad.button_index = JOY_BUTTON_RIGHT_STICK
 	pad.pressed = true
@@ -94,7 +94,7 @@ func run() -> void:
 	progression.purchase("mind")
 	check(player.abilities.is_unlocked(PlayerAbilities.TROUBLE_SENSE), "Mind core grants existing encounter marker")
 	progression.purchase("fire")
-	check(not player.abilities.is_unlocked(PlayerAbilities.FIRE), "Planned core does not claim a working fire ability")
+	check(player.abilities.is_unlocked(PlayerAbilities.FIRE), "Fire core unlocks the implemented fire ability")
 	menu.open_menu()
 	menu.tabs.current_tab = 2
 	player.stats.strength = 17
@@ -147,11 +147,11 @@ func run() -> void:
 	bindings.write_config(config)
 	config.erase_section_key("bindings_keyboard", "gameplay_menu")
 	config.erase_section_key("bindings_controller", "gameplay_menu")
-	config.set_value("bindings_keyboard", "jump", {"kind": "key", "code": KEY_TAB})
+	config.set_value("bindings_keyboard", "jump", {"kind": "key", "code": KEY_P})
 	config.set_value("bindings_controller", "jump", {"kind": "button", "code": JOY_BUTTON_RIGHT_STICK})
 	bindings.load_config(config)
-	check(bindings.label_for("jump", "keyboard") == "Tab" and bindings.label_for("jump", "controller").begins_with("R3"), "Adding menu binding preserves existing custom assignments")
-	check(bindings.label_for("gameplay_menu", "keyboard") != "Tab", "New action finds a free default if occupied")
+	check(bindings.label_for("jump", "keyboard") == "P" and bindings.label_for("jump", "controller").begins_with("R3"), "Adding menu binding preserves existing custom assignments")
+	check(bindings.label_for("gameplay_menu", "keyboard") != "P", "New action finds a free default if occupied")
 	main.free()
 	DirAccess.remove_absolute(path)
 	print("Gameplay menu: %s" % ("PASS" if failures == 0 else "FAIL"))

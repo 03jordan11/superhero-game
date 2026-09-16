@@ -1,0 +1,247 @@
+{
+  "fps": 60,
+  "pair_origin": "Shared actor origin and orientation; animate victim pelvis, never attach the already-offset victim clip to the hand.",
+  "clips": [
+    {
+      "name": "Hero_Grab",
+      "pair": "Grab",
+      "role": "Hero",
+      "duration": 0.6,
+      "loop": false,
+      "events": {
+        "grip": 0.2,
+        "lift_complete": 0.6
+      }
+    },
+    {
+      "name": "Victim_Grab",
+      "pair": "Grab",
+      "role": "Victim",
+      "duration": 0.6,
+      "loop": false,
+      "events": {
+        "grip": 0.2,
+        "lift_complete": 0.6
+      }
+    },
+    {
+      "name": "Hero_Hold",
+      "pair": "Hold",
+      "role": "Hero",
+      "duration": 2.4,
+      "loop": true,
+      "events": {}
+    },
+    {
+      "name": "Victim_Hold",
+      "pair": "Hold",
+      "role": "Victim",
+      "duration": 2.4,
+      "loop": true,
+      "events": {}
+    },
+    {
+      "name": "Hero_CarryWalk",
+      "pair": "CarryWalk",
+      "role": "Hero",
+      "duration": 1.3333333333333333,
+      "loop": true,
+      "events": {}
+    },
+    {
+      "name": "Victim_CarryWalk",
+      "pair": "CarryWalk",
+      "role": "Victim",
+      "duration": 1.3333333333333333,
+      "loop": true,
+      "events": {}
+    },
+    {
+      "name": "Hero_CarryRun",
+      "pair": "CarryRun",
+      "role": "Hero",
+      "duration": 0.9333333333333333,
+      "loop": true,
+      "events": {}
+    },
+    {
+      "name": "Victim_CarryRun",
+      "pair": "CarryRun",
+      "role": "Victim",
+      "duration": 0.9333333333333333,
+      "loop": true,
+      "events": {}
+    },
+    {
+      "name": "Hero_CarryFlightHover",
+      "pair": "CarryFlightHover",
+      "role": "Hero",
+      "duration": 2.4,
+      "loop": true,
+      "events": {}
+    },
+    {
+      "name": "Victim_CarryFlightHover",
+      "pair": "CarryFlightHover",
+      "role": "Victim",
+      "duration": 2.4,
+      "loop": true,
+      "events": {}
+    },
+    {
+      "name": "Hero_CarryFlightMove",
+      "pair": "CarryFlightMove",
+      "role": "Hero",
+      "duration": 2.0,
+      "loop": true,
+      "events": {}
+    },
+    {
+      "name": "Victim_CarryFlightMove",
+      "pair": "CarryFlightMove",
+      "role": "Victim",
+      "duration": 2.0,
+      "loop": true,
+      "events": {}
+    },
+    {
+      "name": "Hero_CarryFlightFast",
+      "pair": "CarryFlightFast",
+      "role": "Hero",
+      "duration": 1.6,
+      "loop": true,
+      "events": {}
+    },
+    {
+      "name": "Victim_CarryFlightFast",
+      "pair": "CarryFlightFast",
+      "role": "Victim",
+      "duration": 1.6,
+      "loop": true,
+      "events": {}
+    },
+    {
+      "name": "Hero_ThrowCharge",
+      "pair": "ThrowCharge",
+      "role": "Hero",
+      "duration": 0.6,
+      "loop": false,
+      "events": {}
+    },
+    {
+      "name": "Victim_ThrowCharge",
+      "pair": "ThrowCharge",
+      "role": "Victim",
+      "duration": 0.6,
+      "loop": false,
+      "events": {}
+    },
+    {
+      "name": "Hero_ThrowHold",
+      "pair": "ThrowHold",
+      "role": "Hero",
+      "duration": 1.6,
+      "loop": true,
+      "events": {}
+    },
+    {
+      "name": "Victim_ThrowHold",
+      "pair": "ThrowHold",
+      "role": "Victim",
+      "duration": 1.6,
+      "loop": true,
+      "events": {}
+    },
+    {
+      "name": "Hero_ThrowRelease",
+      "pair": "ThrowRelease",
+      "role": "Hero",
+      "duration": 0.7,
+      "loop": false,
+      "events": {
+        "release": 0.3
+      }
+    },
+    {
+      "name": "Victim_ThrowRelease",
+      "pair": "ThrowRelease",
+      "role": "Victim",
+      "duration": 0.7,
+      "loop": false,
+      "events": {
+        "release": 0.3
+      }
+    },
+    {
+      "name": "Hero_Slam1",
+      "pair": "Slam1",
+      "role": "Hero",
+      "duration": 1.0,
+      "loop": false,
+      "events": {
+        "impact": 0.36,
+        "lift_complete": 1.0
+      }
+    },
+    {
+      "name": "Victim_Slam1",
+      "pair": "Slam1",
+      "role": "Victim",
+      "duration": 1.0,
+      "loop": false,
+      "events": {
+        "impact": 0.36,
+        "lift_complete": 1.0
+      }
+    },
+    {
+      "name": "Hero_Slam2",
+      "pair": "Slam2",
+      "role": "Hero",
+      "duration": 1.0,
+      "loop": false,
+      "events": {
+        "impact": 0.36,
+        "lift_complete": 1.0
+      }
+    },
+    {
+      "name": "Victim_Slam2",
+      "pair": "Slam2",
+      "role": "Victim",
+      "duration": 1.0,
+      "loop": false,
+      "events": {
+        "impact": 0.36,
+        "lift_complete": 1.0
+      }
+    },
+    {
+      "name": "Hero_Slam3",
+      "pair": "Slam3",
+      "role": "Hero",
+      "duration": 1.2,
+      "loop": false,
+      "events": {
+        "impact": 0.44,
+        "release": 0.44
+      }
+    },
+    {
+      "name": "Victim_Slam3",
+      "pair": "Slam3",
+      "role": "Victim",
+      "duration": 1.2,
+      "loop": false,
+      "events": {
+        "impact": 0.44,
+        "release": 0.44
+      }
+    }
+  ],
+  "baseline_sources": {
+    "CarryWalk": "UAL1/Walk",
+    "CarryRun": "UAL1/Jog_Fwd",
+    "flight": "authored-flight pose workflow"
+  }
+}

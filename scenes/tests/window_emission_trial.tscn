@@ -1,0 +1,43 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://assets/generated-buildings/commercial/window_trial/review.gd" id="1_3enph"]
+[ext_resource type="PackedScene" path="res://assets/generated-buildings/commercial/commercial_skyscraper_02.tscn" id="2_f8j6v"]
+[ext_resource type="Script" path="res://assets/generated-buildings/commercial/commercial_skyscraper_02.gd" id="3_5sv01"]
+[ext_resource type="Script" path="res://scripts/day_night_cycle.gd" id="4_mbb04"]
+
+[ext_resource type="ArrayMesh" path="res://assets/generated-buildings/commercial/window_trial/mesh_trial.res" id="trial_mesh"]
+
+[node name="WindowEmissionTrial" type="Node3D" unique_id=675239470]
+script = ExtResource("1_3enph")
+
+[node name="Building" type="StaticBody3D" parent="." unique_id=182989752 instance=ExtResource("2_f8j6v")]
+seeded_window_patterns = false
+script = ExtResource("3_5sv01")
+
+[node name="Daylight" type="WorldEnvironment" parent="." unique_id=1037371496]
+
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=404190226]
+
+[node name="Moon" type="DirectionalLight3D" parent="." unique_id=1885166728]
+
+[node name="DayNightCycle" type="Node" parent="." unique_id=1262866109]
+script = ExtResource("4_mbb04")
+time_of_day = 0.0
+cycle_running = false
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=101019653]
+current = true
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=2055914277]
+
+[node name="Instructions" type="Label" parent="UI" unique_id=922352087]
+offset_left = 24.0
+offset_top = 20.0
+offset_right = 24.0
+offset_bottom = 20.0
+theme_override_font_sizes/font_size = 22
+
+[node name="MeshInstance3D" parent="Building" index="0"]
+mesh = ExtResource("trial_mesh")
+
+[editable path="Building"]

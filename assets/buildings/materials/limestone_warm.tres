@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/buildings/materials/limestone_warm_albedo.png" id="1_stone"]
+[ext_resource type="Texture2D" path="res://assets/buildings/materials/limestone_warm_roughness.png" id="2_rough"]
+
+[resource]
+resource_name = "Reusable warm limestone"
+albedo_texture = ExtResource("1_stone")
+roughness = 1.0
+roughness_texture = ExtResource("2_rough")
+texture_filter = 5

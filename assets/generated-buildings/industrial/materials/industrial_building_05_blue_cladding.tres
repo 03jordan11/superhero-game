@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/generated-buildings/industrial/textures/blue_cladding.res" id="1_sl8io"]
+[ext_resource type="Texture2D" path="res://assets/generated-buildings/industrial/textures/industrial_building_05_blue_cladding_emission.res" id="2_4qc7e"]
+
+[resource]
+albedo_texture = ExtResource("1_sl8io")
+roughness = 0.9
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.0
+emission_operator = 1
+emission_texture = ExtResource("2_4qc7e")
+texture_filter = 2

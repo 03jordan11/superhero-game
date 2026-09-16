@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/generated-buildings/industrial/textures/gray_cladding.res" id="1_7hp6c"]
+[ext_resource type="Texture2D" path="res://assets/generated-buildings/industrial/textures/industrial_building_09_gray_cladding_emission.res" id="2_he5bo"]
+
+[resource]
+albedo_texture = ExtResource("1_7hp6c")
+roughness = 0.9
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.0
+emission_operator = 1
+emission_texture = ExtResource("2_he5bo")
+texture_filter = 2

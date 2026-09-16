@@ -1,6 +1,6 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://w7jrknttoc3q"]
+[gd_resource type="StandardMaterial3D" format=3]
 
-[ext_resource type="Texture2D" uid="uid://edp5sqdoggwu" path="res://assets/super-city/textures/junction_20_20_14.res" id="1_8drjq"]
+[ext_resource type="Texture2D" path="res://assets/super-city/textures/junction_20_20_14.res" id="1_8drjq"]
 
 [resource]
 albedo_texture = ExtResource("1_8drjq")

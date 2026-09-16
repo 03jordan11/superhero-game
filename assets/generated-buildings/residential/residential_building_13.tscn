@@ -1,15 +1,36 @@
 [gd_scene format=3]
 
-[ext_resource type="ArrayMesh" path="res://assets/generated-buildings/residential/meshes/residential_building_13.res" id="1_xb3hv"]
+[ext_resource type="Script" path="res://assets/generated-buildings/residential/residential_building.gd" id="1_jcpx7"]
+[ext_resource type="ArrayMesh" path="res://assets/generated-buildings/residential/meshes/residential_building_13.res" id="2_yhg10"]
+[ext_resource type="PackedScene" path="res://assets/props/rooftop_hvac/rooftop_hvac_lowpoly.tscn" id="3_oktc2"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_tfieu"]
-size = Vector3(26.15, 41, 20.15)
+[sub_resource type="BoxShape3D" id="BoxShape3D_wix6u"]
+size = Vector3(26, 3.8, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1165t"]
+size = Vector3(12, 27.9, 18)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_748ep"]
+size = Vector3(10, 37.2, 18)
 
 [node name="residential_building_13" type="StaticBody3D" unique_id=568977138]
+script = ExtResource("1_jcpx7")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1395864024]
-mesh = ExtResource("1_xb3hv")
+mesh = ExtResource("2_yhg10")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=15215333]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20.5, 0)
-shape = SubResource("BoxShape3D_tfieu")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9, 0)
+shape = SubResource("BoxShape3D_wix6u")
+
+[node name="RooftopHVAC" type="StaticBody3D" parent="." unique_id=661342222 instance=ExtResource("3_oktc2")]
+transform = Transform3D(0.6478723, 0, 0, 0, 0.6478723, 0, 0, 0, 0.6478723, 8, 41, 0)
+metadata/source = "Blender budget variant of the stock hospital HVAC: hidden caps removed, top panels flattened"
+
+[node name="TierCollision1" type="CollisionShape3D" parent="." unique_id=1657760980]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 17.75, 0)
+shape = SubResource("BoxShape3D_1165t")
+
+[node name="TierCollision2" type="CollisionShape3D" parent="." unique_id=466766825]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 22.4, 0)
+shape = SubResource("BoxShape3D_748ep")

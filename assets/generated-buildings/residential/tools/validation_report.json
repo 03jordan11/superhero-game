@@ -1,29 +1,29 @@
 {
 	"buildings": [
 		{
-			"nodes": 3,
+			"nodes": 7,
 			"scene": "residential_building_01.tscn",
 			"size_m": [
 				8.80000019073486,
-				13.8999996185303,
+				12.3999996185303,
 				15.375
-			],
-			"surfaces": 3,
-			"triangles": 94
-		},
-		{
-			"nodes": 3,
-			"scene": "residential_building_02.tscn",
-			"size_m": [
-				12.5999994277954,
-				9.0,
-				13.1999998092651
 			],
 			"surfaces": 3,
 			"triangles": 102
 		},
 		{
-			"nodes": 3,
+			"nodes": 4,
+			"scene": "residential_building_02.tscn",
+			"size_m": [
+				12.5500001907349,
+				6.40000009536743,
+				13.1499996185303
+			],
+			"surfaces": 3,
+			"triangles": 98
+		},
+		{
+			"nodes": 15,
 			"scene": "residential_building_03.tscn",
 			"size_m": [
 				18.1499996185303,
@@ -31,32 +31,32 @@
 				14.3000001907349
 			],
 			"surfaces": 5,
-			"triangles": 214
+			"triangles": 232
 		},
 		{
-			"nodes": 3,
+			"nodes": 5,
 			"scene": "residential_building_04.tscn",
 			"size_m": [
 				12.3999996185303,
-				23.6000003814697,
+				19.2000007629395,
 				16.2000007629395
 			],
 			"surfaces": 3,
-			"triangles": 110
+			"triangles": 134
 		},
 		{
-			"nodes": 3,
+			"nodes": 5,
 			"scene": "residential_building_05.tscn",
 			"size_m": [
 				20.1499996185303,
-				20.7000007629395,
+				18.6000003814697,
 				18.1499996185303
 			],
 			"surfaces": 3,
-			"triangles": 86
+			"triangles": 94
 		},
 		{
-			"nodes": 3,
+			"nodes": 5,
 			"scene": "residential_building_06.tscn",
 			"size_m": [
 				18.3999996185303,
@@ -64,21 +64,21 @@
 				16.2000007629395
 			],
 			"surfaces": 4,
-			"triangles": 72
+			"triangles": 90
 		},
 		{
-			"nodes": 3,
+			"nodes": 5,
 			"scene": "residential_building_07.tscn",
 			"size_m": [
 				18.1499996185303,
-				17.2999992370605,
+				15.8000001907349,
 				15.1750001907349
 			],
 			"surfaces": 3,
-			"triangles": 62
+			"triangles": 70
 		},
 		{
-			"nodes": 3,
+			"nodes": 6,
 			"scene": "residential_building_08.tscn",
 			"size_m": [
 				20.1499996185303,
@@ -86,32 +86,32 @@
 				18.1499996185303
 			],
 			"surfaces": 4,
-			"triangles": 82
+			"triangles": 100
 		},
 		{
-			"nodes": 3,
+			"nodes": 5,
 			"scene": "residential_building_09.tscn",
 			"size_m": [
 				21.1499996185303,
-				29.3999996185303,
+				25.0,
 				16.1949996948242
 			],
 			"surfaces": 3,
-			"triangles": 148
+			"triangles": 172
 		},
 		{
-			"nodes": 3,
+			"nodes": 4,
 			"scene": "residential_building_10.tscn",
 			"size_m": [
 				24.1499996185303,
-				33.2999992370605,
-				19.1299991607666
+				31.2000007629395,
+				18.1499996185303
 			],
 			"surfaces": 3,
-			"triangles": 332
+			"triangles": 60
 		},
 		{
-			"nodes": 3,
+			"nodes": 6,
 			"scene": "residential_building_11.tscn",
 			"size_m": [
 				23.1499996185303,
@@ -119,21 +119,21 @@
 				20.1499996185303
 			],
 			"surfaces": 4,
-			"triangles": 114
+			"triangles": 132
 		},
 		{
-			"nodes": 3,
+			"nodes": 4,
 			"scene": "residential_building_12.tscn",
 			"size_m": [
 				28.1499996185303,
-				43.0,
-				17.1299991607666
+				40.5999984741211,
+				16.1499996185303
 			],
 			"surfaces": 3,
-			"triangles": 652
+			"triangles": 60
 		},
 		{
-			"nodes": 3,
+			"nodes": 6,
 			"scene": "residential_building_13.tscn",
 			"size_m": [
 				26.1499996185303,
@@ -141,21 +141,21 @@
 				20.1499996185303
 			],
 			"surfaces": 5,
-			"triangles": 82
+			"triangles": 100
 		},
 		{
-			"nodes": 3,
+			"nodes": 5,
 			"scene": "residential_building_14.tscn",
 			"size_m": [
 				22.1499996185303,
 				47.2000007629395,
-				19.1299991607666
+				18.1499996185303
 			],
 			"surfaces": 4,
-			"triangles": 382
+			"triangles": 80
 		},
 		{
-			"nodes": 3,
+			"nodes": 6,
 			"scene": "residential_building_15.tscn",
 			"size_m": [
 				24.1499996185303,
@@ -163,32 +163,32 @@
 				20.1499996185303
 			],
 			"surfaces": 4,
-			"triangles": 82
+			"triangles": 100
 		},
 		{
-			"nodes": 3,
+			"nodes": 5,
 			"scene": "residential_building_16.tscn",
 			"size_m": [
 				20.2000007629395,
-				68.0,
+				65.1999969482422,
 				20.2000007629395
 			],
 			"surfaces": 3,
-			"triangles": 62
+			"triangles": 134
 		},
 		{
-			"nodes": 3,
+			"nodes": 5,
 			"scene": "residential_building_17.tscn",
 			"size_m": [
 				26.1499996185303,
-				90.0,
+				87.4000015258789,
 				22.1499996185303
 			],
 			"surfaces": 4,
-			"triangles": 72
+			"triangles": 80
 		},
 		{
-			"nodes": 3,
+			"nodes": 5,
 			"scene": "residential_building_18.tscn",
 			"size_m": [
 				18.1499996185303,
@@ -196,10 +196,10 @@
 				18.1499996185303
 			],
 			"surfaces": 4,
-			"triangles": 62
+			"triangles": 80
 		},
 		{
-			"nodes": 3,
+			"nodes": 7,
 			"scene": "residential_building_19.tscn",
 			"size_m": [
 				24.1499996185303,
@@ -207,10 +207,10 @@
 				22.1499996185303
 			],
 			"surfaces": 5,
-			"triangles": 102
+			"triangles": 120
 		},
 		{
-			"nodes": 3,
+			"nodes": 6,
 			"scene": "residential_building_20.tscn",
 			"size_m": [
 				26.1499996185303,
@@ -218,7 +218,7 @@
 				24.1499996185303
 			],
 			"surfaces": 5,
-			"triangles": 82
+			"triangles": 100
 		}
 	],
 	"engine": "4.7.2-stable (steam)",

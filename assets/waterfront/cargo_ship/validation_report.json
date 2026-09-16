@@ -1,0 +1,27 @@
+{
+	"failures": [],
+	"passed": true,
+	"triangle_limit": 4999,
+	"variants": [
+		{
+			"complete_scene_triangles": 4268,
+			"imported_glb_triangles": 4204,
+			"variant": "ocean_blue"
+		},
+		{
+			"complete_scene_triangles": 4268,
+			"imported_glb_triangles": 4204,
+			"variant": "oxide_red"
+		},
+		{
+			"complete_scene_triangles": 4268,
+			"imported_glb_triangles": 4204,
+			"variant": "deep_teal"
+		},
+		{
+			"complete_scene_triangles": 4268,
+			"imported_glb_triangles": 4204,
+			"variant": "graphite"
+		}
+	]
+}

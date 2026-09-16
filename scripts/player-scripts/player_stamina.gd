@@ -35,6 +35,17 @@ func _on_stat_changed(id: StringName, _value: int) -> void:
 func can_boost() -> bool:
 	return not exhausted and current > 0.0
 
+func is_full() -> bool:
+	return not exhausted and current >= maximum
+
+func spend_full_bar() -> bool:
+	if not is_full(): return false
+	current = 0.0
+	exhausted = true
+	_recovery_delay = regeneration_delay
+	changed.emit(current, maximum, exhausted)
+	return true
+
 func restore_full() -> void:
 	current = maximum
 	exhausted = false
@@ -54,8 +65,11 @@ func request_boost(is_flight: bool) -> bool:
 	_flight_boost = is_flight
 	return true
 
-func finish_tick(delta: float, displacement: Vector3) -> void:
+func finish_tick(delta: float, displacement: Vector3, grounded: bool) -> void:
 	if player.is_dead or delta <= 0.0: return
+	# Ordinary airborne movement freezes both the bar and recovery delay.
+	# Flight keeps its existing boost drain and unboosted regeneration.
+	if not grounded and not player.is_flying: return
 	var previous := current
 	var was_exhausted := exhausted
 	var distance := displacement.length() if _flight_boost else Vector2(displacement.x, displacement.z).length()

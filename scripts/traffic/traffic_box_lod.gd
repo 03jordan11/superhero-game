@@ -2,12 +2,13 @@ extends Node3D
 ## Visual traffic only. Regional MultiMeshes share silhouette/rectangle meshes and one material.
 const PERF = preload("res://scripts/ui-scripts/vehicle_performance_monitor.gd")
 const PROXY_MESH = preload("res://scripts/traffic/traffic_proxy_mesh.gd")
+const NIGHT_LENSES = preload("res://scripts/traffic/traffic_night_lenses.gdshader")
 
 @export var enabled := true
 @export_category("Distant Coverage")
 @export_range(300.0,2000.0,50.0) var view_distance := 900.0
-@export_range(0,1000,1) var population_target := 160
-@export_range(0,1500,1) var max_boxes := 240
+@export_range(0,1000,1) var population_target := 24
+@export_range(0,1500,1) var max_boxes := 24
 @export_range(20.0,300.0,10.0) var retention_margin := 100.0
 @export_range(0.0,10.0,0.5) var retire_delay := 2.0
 @export_range(5.0,120.0,1.0) var terminal_recycle_delay := 15.0
@@ -16,9 +17,9 @@ const PROXY_MESH = preload("res://scripts/traffic/traffic_proxy_mesh.gd")
 ## Outer horizontal coverage; never smaller than View Distance.
 @export_range(500.0,4000.0,50.0) var far_view_distance := 1800.0
 ## Additional population outside the original horizontal View Distance.
-@export_range(0,1500,1) var far_population_target := 200
+@export_range(0,1500,1) var far_population_target := 16
 ## Additional proxy capacity, added to Max Boxes. Movement across the boundary shares this total cap.
-@export_range(0,2000,1) var far_max_proxies := 320
+@export_range(0,2000,1) var far_max_proxies := 16
 ## Actual 3D distance: return to a silhouette inside this radius.
 @export_range(300.0,3000.0,50.0) var far_promote_distance := 800.0
 ## Actual 3D distance: become a flat rectangle beyond this radius (at least 50 m above promotion).
@@ -34,11 +35,20 @@ const PROXY_MESH = preload("res://scripts/traffic/traffic_proxy_mesh.gd")
 ## Budget per direction per check, including failed promotion attempts.
 @export_range(1,8,1) var transitions_per_check := 2
 @export_category("Population Work")
+## Lane state updates; positions advance smoothly between these updates.
+@export_range(0.05,0.5,0.01) var movement_interval := 0.1
+@export_range(0.1,1.0,0.05) var far_movement_interval := 0.2
 @export_range(0.1,2.0,0.05) var population_interval := 0.25
 @export_range(1,16,1) var spawns_per_update := 4
 @export_range(1,40,1) var spawn_attempts_per_update := 20
 @export_range(5.0,80.0,1.0) var initial_spacing := 20.0
 @export_category("Rendering (Restart to Rebuild)")
+## Toggle in the Remote Inspector to compare distant-traffic rendering only.
+@export var occlusion_culling_enabled := true:
+	set(value):
+		occlusion_culling_enabled = value
+		for batch in _batches.values():
+			batch.ignore_occlusion_culling = not value
 @export_range(100.0,500.0,25.0) var region_size := 250.0
 @export_category("Car Silhouette (Restart to Rebuild)")
 ## Fraction of total vehicle height occupied by the lower body.
@@ -65,6 +75,7 @@ var _metadata: Dictionary = {}
 var _straight: Array[Dictionary] = []
 var _batches: Dictionary = {}
 var _mesh: ArrayMesh
+var _night_material: ShaderMaterial
 var _flat_mesh := PlaneMesh.new()
 var _transition_timer := 0.0
 var _population_timer := 0.0
@@ -74,6 +85,9 @@ var _previous_focus := Vector3.ZERO
 var _had_focus := false
 var _region_size := 250.0
 var _population_baseline: Dictionary = {}
+var _spawn_candidates: Dictionary = {}
+var _render_groups: Dictionary = {}
+var _render_ids: Array[int] = []
 
 func apply_population_settings(density: float, distance: float) -> void:
 	if _population_baseline.is_empty():
@@ -97,12 +111,16 @@ func apply_population_settings(density: float, distance: float) -> void:
 	far_population_target = roundi(_population_baseline.far_population_target*density*ring_area)
 	far_max_proxies = roundi(_population_baseline.far_max_proxies*density*ring_area)
 	_population_timer = 0.0
+	_spawn_candidates.clear()
 
 func setup(manager: Node3D) -> void:
 	_manager = manager
 	_city = manager.get_parent()
 	_region_size = maxf(region_size,100.0)
 	_mesh = PROXY_MESH.build(body_height_ratio,cabin_width_ratio,cabin_length_ratio,cabin_offset_ratio,window_brightness)
+	_night_material = ShaderMaterial.new()
+	_night_material.shader = NIGHT_LENSES
+	_bind_night_clock.call_deferred()
 	_flat_mesh.size = Vector2.ONE
 	_flat_mesh.material = _mesh.surface_get_material(0)
 	for lane in _manager.lanes:
@@ -164,12 +182,26 @@ func _update_tier(record: Dictionary, point: Vector3) -> void:
 		else: flat_promotions += 1
 	record["flat"] = flat
 
-func _point(record: Dictionary) -> Vector3:
+func _raw_point(record: Dictionary) -> Vector3:
 	if not record.connection.is_empty(): return _manager._crossing_point(record,record.crossing_progress)
 	var lane: Dictionary = _manager.lanes[record.lane]
 	var point: Vector3 = lane.start+lane.forward*record.progress
 	point.y = record.height
 	return point
+
+func _point(record: Dictionary) -> Vector3:
+	# All proxy connections are straight and aligned. Predict exact linear motion
+	# between infrequent lane-state updates; never extrapolate beyond a dead end.
+	var lane: Dictionary = _manager.lanes[record.lane]
+	var travel := float(record.get("motion_elapsed",0.0)) * float(record.get("cruise",record.speed))
+	if record.connection.is_empty() and _straight[record.lane].is_empty():
+		travel = minf(travel,maxf(0.0,lane.length-record.half_length-_manager.junction_stop_margin-record.progress))
+	return _raw_point(record) + lane.forward * travel
+
+func _flush_motion(record: Dictionary) -> void:
+	var elapsed: float = record.get("motion_elapsed",0.0)
+	record["motion_elapsed"] = 0.0
+	if elapsed > 0.0: _advance(record,elapsed)
 
 func _visible(record: Dictionary) -> bool:
 	var camera := get_viewport().get_camera_3d()
@@ -197,6 +229,7 @@ func _step(delta: float) -> void:
 		_had_focus = false
 		return
 	var focus: Vector3 = _manager._focus.global_position
+	var focus_moved := not _had_focus or focus.distance_squared_to(_previous_focus) > 1600.0
 	var velocity := Vector3.ZERO
 	if _manager._focus is CharacterBody3D:
 		velocity = _manager._focus.velocity
@@ -206,23 +239,25 @@ func _step(delta: float) -> void:
 	_had_focus = true
 	_promotion_radius = maxf(promote_distance,interaction_guard_distance)+minf(velocity.length()*approach_lead_seconds,150.0)
 	_transition_timer -= delta
-	var check_transitions := _transition_timer <= 0.0
+	var check_transitions := _transition_timer <= 0.0 or focus_moved
 	if check_transitions:
 		_transition_timer = maxf(transition_interval,0.05)
 		_demotions_left = transitions_per_check
 		# Nearer vehicles get the limited promotion slots first.
-		proxies.sort_custom(func(a,b): return _city.to_global(_point(a)).distance_squared_to(focus) < _city.to_global(_point(b)).distance_squared_to(focus))
+		for record in proxies:
+			record["focus_distance_squared"] = _city.to_global(_point(record)).distance_squared_to(focus)
+		proxies.sort_custom(func(a,b): return a.focus_distance_squared < b.focus_distance_squared)
 	var attempts := transitions_per_check if check_transitions else 0
 	var removed := 0
-	var counts := _population_counts()
-	for i in range(proxies.size()-1,-1,-1):
+	var counts := _population_counts() if check_transitions else Vector2i.ZERO
+	for i in range(proxies.size()-1,-1,-1) if check_transitions else []:
 		var record: Dictionary = proxies[i]
 		var world_point := _city.to_global(_point(record))
 		var horizontal_distance: float = _manager._flat_distance(world_point,focus)
 		var band := int(far_enabled and horizontal_distance > view_distance)
 		var target := mini(far_population_target,far_max_proxies) if band == 1 else mini(population_target,max_boxes)
 		var outside: bool = horizontal_distance > _coverage_radius()+retention_margin
-		record.outside_time = record.outside_time+delta if outside else 0.0
+		record.outside_time = record.outside_time+maxf(delta,transition_interval) if outside else 0.0
 		var excess: bool = counts[band] > target or proxies.size() > _proxy_limit()
 		if removed < spawns_per_update and ((outside and record.outside_time >= retire_delay) or (record.stopped_time >= terminal_recycle_delay and not _visible(record)) or (excess and not _visible(record))):
 			proxies.remove_at(i)
@@ -232,10 +267,16 @@ func _step(delta: float) -> void:
 	var promoted: Array[Dictionary] = []
 	for record in proxies:
 		var world_point := _city.to_global(_point(record))
-		_update_tier(record,world_point)
+		if check_transitions or not far_enabled: _update_tier(record,world_point)
 		var near := wants_full(world_point)
 		record.hidden = near and world_point.distance_to(focus) <= interaction_guard_distance
 		if near:
+			_flush_motion(record)
+			# Finish a crossing before entering the full vehicle's junction rules.
+			if not record.connection.is_empty():
+				record.hidden = false
+				_advance(record,delta)
+				continue
 			if attempts > 0 and _manager._owned.size() < _manager.max_vehicles:
 				attempts -= 1
 				var car: Vehicle = _manager._spawn_vehicle(record.entry,record.lane,record.progress,record)
@@ -247,7 +288,9 @@ func _step(delta: float) -> void:
 			# Hold until space/capacity is available. Never ghost through close obstacles.
 			continue
 		record.hidden = false
-		_advance(record,delta)
+		record["motion_elapsed"] = float(record.get("motion_elapsed",0.0))+delta
+		var interval := far_movement_interval if record.get("flat",false) else movement_interval
+		if record.motion_elapsed >= interval: _flush_motion(record)
 	for record in promoted: proxies.erase(record)
 	_population_timer -= delta
 	if _population_timer <= 0.0:
@@ -256,29 +299,34 @@ func _step(delta: float) -> void:
 		if far_enabled: _seed_nearby(true)
 
 func _advance(record: Dictionary, delta: float) -> void:
-	var lane: Dictionary = _manager.lanes[record.lane]
-	var lane_speed: float = (_manager.minimum_speed+maxf(_manager.minimum_speed,_manager.maximum_speed))*0.5
-	record.speed = move_toward(record.speed,lane_speed,_manager.acceleration*delta)
+	# Visual traffic deliberately ignores signals, queues and intersecting cars.
+	record.speed = float(record.get("cruise",(_manager.minimum_speed+_manager.maximum_speed)*0.5))
 	var travel: float = record.speed*delta
-	if not record.connection.is_empty():
-		record.crossing_progress += travel
-		var finish: float = record.connection.length+record.half_length+_manager.junction_stop_margin
-		if record.crossing_progress >= finish:
+	while travel > 0.0:
+		if not record.connection.is_empty():
+			var finish: float = record.connection.length+record.half_length+_manager.junction_stop_margin
+			var step_distance := minf(travel,maxf(0.0,finish-record.crossing_progress))
+			record.crossing_progress += step_distance
+			travel -= step_distance
+			if record.crossing_progress < finish: return
 			record.lane = record.connection.to
-			record.progress = record.crossing_progress-record.connection.length
+			record.progress = finish-record.connection.length
 			record.connection = {}
-		return
-	var stop_at: float = lane.length-record.half_length-_manager.junction_stop_margin
-	if _straight[record.lane].is_empty():
-		record.progress = minf(record.progress+travel,stop_at)
-		if record.progress >= stop_at:
-			record.speed = 0.0
-			record.stopped_time += delta
-		return
-	record.progress += travel
-	if record.progress >= lane.length:
+			continue
+		var lane: Dictionary = _manager.lanes[record.lane]
+		if _straight[record.lane].is_empty():
+			var stop_at: float = lane.length-record.half_length-_manager.junction_stop_margin
+			record.progress = minf(record.progress+travel,stop_at)
+			if record.progress >= stop_at:
+				record.speed = 0.0
+				record.stopped_time += delta
+			return
+		var step_distance := minf(travel,maxf(0.0,lane.length-record.progress))
+		record.progress += step_distance
+		travel -= step_distance
+		if record.progress < lane.length: return
 		record.connection = _straight[record.lane]
-		record.crossing_progress = record.progress-lane.length
+		record.crossing_progress = 0.0
 
 func try_demote(record: Dictionary, delta: float) -> bool:
 	if not enabled or not _manager.traffic_enabled or not is_instance_valid(_manager._focus): return false
@@ -319,18 +367,12 @@ func _seed_nearby(outer_band: bool = false) -> void:
 	if count >= target or proxies.size() >= _proxy_limit(): return
 	var radius := _coverage_radius() if outer_band else view_distance
 	var center: Vector3 = _city.to_local(_manager._focus.global_position)
-	var candidates: Array[Dictionary] = []
-	var total := 0.0
-	for i in range(_manager.lanes.size()):
-		var lane: Dictionary = _manager.lanes[i]
-		var along: float = (center-lane.start).dot(lane.forward)
-		var lateral: float = _manager._flat_distance(center,lane.start+lane.forward*along)
-		if lateral >= radius: continue
-		var reach := sqrt(radius*radius-lateral*lateral)
-		var interval := Vector2(maxf(8.0,along-reach),minf(lane.length-15.0,along+reach))
-		if interval.y <= interval.x: continue
-		total += interval.y-interval.x
-		candidates.append({"lane":i,"interval":interval,"weight":total})
+	var cached: Dictionary = _spawn_candidates.get(outer_band,{})
+	if cached.is_empty() or cached.radius != radius or center.distance_squared_to(cached.center) > 1600.0:
+		cached = _build_spawn_candidates(center,radius)
+		_spawn_candidates[outer_band] = cached
+	var candidates: Array = cached.candidates
+	var total: float = cached.total
 	if candidates.is_empty(): return
 	var added := 0
 	for attempt in range(spawn_attempts_per_update):
@@ -345,12 +387,14 @@ func _seed_nearby(outer_band: bool = false) -> void:
 		var progress := randf_range(candidate.interval.x,candidate.interval.y)
 		var point: Vector3 = lane.start+lane.forward*progress
 		var world_point := _city.to_global(point)
-		if outer_band and _manager._flat_distance(world_point,_manager._focus.global_position) <= view_distance: continue
+		var distance: float = _manager._flat_distance(world_point,_manager._focus.global_position)
+		if distance > radius or (outer_band and distance <= view_distance): continue
 		if world_point.distance_to(_manager._focus.global_position) <= maxf(demote_distance,_promotion_radius+40.0): continue
 		var entry = _manager._choose_entry()
 		if entry == null: return
 		var data := _get_metadata(entry)
 		if data.is_empty() or progress >= lane.length-data.half_length-_manager.junction_stop_margin: continue
+		# Initial spacing only; no per-tick distant traffic collision or queues.
 		if blocks_spawn(candidate.lane,progress,data.half_length,initial_spacing,-1): continue
 		var occupied := false
 		for full in _manager._cars:
@@ -368,11 +412,38 @@ func _seed_nearby(outer_band: bool = false) -> void:
 		_update_tier(proxies[-1],world_point)
 		added += 1
 
+func _build_spawn_candidates(center: Vector3, radius: float) -> Dictionary:
+	var candidates: Array[Dictionary] = []
+	var total := 0.0
+	for i in range(_manager.lanes.size()):
+		var lane: Dictionary = _manager.lanes[i]
+		var along: float = (center-lane.start).dot(lane.forward)
+		var lateral: float = _manager._flat_distance(center,lane.start+lane.forward*along)
+		if lateral >= radius: continue
+		var reach := sqrt(radius*radius-lateral*lateral)
+		var interval := Vector2(maxf(8.0,along-reach),minf(lane.length-15.0,along+reach))
+		if interval.y <= interval.x: continue
+		total += interval.y-interval.x
+		candidates.append({"lane":i,"interval":interval,"weight":total})
+	return {"center":center,"radius":radius,"candidates":candidates,"total":total}
+
+func _bind_night_clock() -> void:
+	var cycle := get_tree().get_first_node_in_group(&"day_night_cycle")
+	if cycle == null: return
+	cycle.night_lighting_changed.connect(_set_night_lenses)
+	_set_night_lenses(cycle.night_lighting)
+
+func _set_night_lenses(amount: float) -> void:
+	_night_material.set_shader_parameter("night_amount", amount)
+	# Remove the additional pass completely in daylight.
+	_mesh.surface_get_material(0).next_pass = _night_material if amount > 0.001 else null
+
 func draw_boxes() -> void:
 	var started := PERF.begin(self)
 	# Match the city's coordinates even if the manager has an organizational transform.
 	global_transform = _city.global_transform
-	var groups: Dictionary = {}
+	var membership_changed := false
+	var ids: Array[int] = []
 	hidden_count = 0
 	silhouette_count = 0
 	rectangle_count = 0
@@ -381,12 +452,25 @@ func draw_boxes() -> void:
 			hidden_count += 1
 			continue
 		var point := _point(record)
+		record["render_point"] = point
 		var flat: bool = record.get("flat",false)
 		if flat: rectangle_count += 1
 		else: silhouette_count += 1
 		var cell := Vector3i(floori(point.x/_region_size),floori(point.z/_region_size),int(flat))
-		if not groups.has(cell): groups[cell] = []
-		groups[cell].append(record)
+		ids.append(record.traffic_id)
+		if record.get("render_cell",Vector3i(2147483647,0,0)) != cell:
+			membership_changed = true
+			record["render_cell"] = cell
+	if ids != _render_ids or membership_changed or (_batches.is_empty() and not ids.is_empty()):
+		membership_changed = true
+		_render_ids = ids
+		_render_groups.clear()
+		for record in proxies:
+			if record.hidden: continue
+			var cell: Vector3i = record.render_cell
+			if not _render_groups.has(cell): _render_groups[cell] = []
+			_render_groups[cell].append(record)
+	var groups := _render_groups
 	for cell in _batches.keys():
 		if not groups.has(cell):
 			_batches[cell].visible = false
@@ -399,6 +483,7 @@ func draw_boxes() -> void:
 			batch = MultiMeshInstance3D.new()
 			batch.name = "Region_%d_%d_Tier%d" % [cell.x,cell.y,cell.z+2]
 			batch.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+			batch.ignore_occlusion_culling = not occlusion_culling_enabled
 			batch.multimesh = MultiMesh.new()
 			batch.multimesh.transform_format = MultiMesh.TRANSFORM_3D
 			batch.multimesh.use_colors = true
@@ -418,9 +503,9 @@ func draw_boxes() -> void:
 			var data := _get_metadata(record.entry)
 			var forward: Vector3 = _manager.lanes[record.lane].forward
 			var basis := Basis(Vector3.UP,atan2(forward.x,forward.z)+record.heading_offset)
-			var box_transform := Transform3D(basis.scaled_local(data.size),_point(record)+basis*data.center-batch.position)
+			var box_transform := Transform3D(basis.scaled_local(data.size),record.render_point+basis*data.center-batch.position)
 			mm.set_instance_transform(i,box_transform)
-			mm.set_instance_color(i,record.entry.distant_color)
+			if membership_changed: mm.set_instance_color(i,record.entry.distant_color)
 			var box_bounds: AABB = box_transform*AABB(Vector3.ONE*-0.5,Vector3.ONE)
 			bounds = box_bounds if i == 0 else bounds.merge(box_bounds)
 		mm.custom_aabb = bounds.grow(1.0)

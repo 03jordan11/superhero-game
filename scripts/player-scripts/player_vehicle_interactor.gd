@@ -35,15 +35,25 @@ func setup(target_player_body: CharacterBody3D, target_camera: Camera3D) -> void
 
 
 func has_held_vehicle() -> bool:
-	return held_vehicle != null
+	if is_instance_valid(held_vehicle): return true
+	held_vehicle = null
+	return false
 
 
 func is_charging_throw() -> bool:
 	return is_charging_vehicle_throw
 
 
+func cancel_throw_charge() -> void:
+	is_charging_vehicle_throw = false
+	vehicle_throw_hold_time = 0.0
+	_publish_throw_charge()
+
+
 func try_pick_up_vehicle() -> bool:
-	if held_vehicle != null or player_body == null or camera == null:
+	if has_held_vehicle() or player_body == null or camera == null:
+		return false
+	if player_body is PlayerCharacter and player_body.is_carrying():
 		return false
 	if player_body is PlayerCharacter and not player_body.abilities.is_unlocked(PlayerAbilities.VEHICLE_LIFT):
 		return false

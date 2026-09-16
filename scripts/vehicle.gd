@@ -4,6 +4,7 @@ extends RigidBody3D
 const VEHICLE_PERF = preload("res://scripts/ui-scripts/vehicle_performance_monitor.gd")
 
 const HEALTH_COMPONENT_SCRIPT = preload("res://scripts/health_component.gd")
+const HEADLIGHTS_SCRIPT = preload("res://scripts/traffic/vehicle_headlights.gd")
 const DAMAGE_INFO_SCRIPT = preload("res://scripts/combat-scripts/damage_info.gd")
 
 signal destroyed(impact_speed: float)
@@ -20,6 +21,10 @@ func leave_traffic() -> void:
 
 @export var max_health: float = 100.0
 @export var health_label_height: float = 3.0
+@export_group("Night Lights")
+@export var headlights_enabled := true
+@export_range(0.0, 16.0, 0.1) var headlight_energy := 7.0
+@export_range(8.0, 70.0, 1.0) var headlight_range := 38.0
 
 var is_destroyed: bool = false
 var destruction_impact_speed: float = 0.0
@@ -42,6 +47,13 @@ func _ready() -> void:
 		explosion_controller.call("register_explodable", self)
 	_create_health_label()
 	_update_health_label()
+	if headlights_enabled and not has_node("Headlights"):
+		var headlights := Node3D.new()
+		headlights.set_script(HEADLIGHTS_SCRIPT)
+		headlights.name = "Headlights"
+		headlights.beam_energy = headlight_energy
+		headlights.beam_range = headlight_range
+		add_child(headlights)
 
 
 func apply_damage(damage_info) -> bool:

@@ -11,6 +11,7 @@ func can_enter(_previous_state: PlayerState, context: Dictionary = {}) -> bool:
 		or player.is_ground_slamming
 		or player.is_knocked_out
 		or player.is_dead
+		or player.is_carrying()
 		or (not player.is_flying and not player.is_jump_active)
 		or not context.has("target_position")
 	):

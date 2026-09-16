@@ -39,6 +39,8 @@ extends Node
 ## Seconds into combo attacks 1, 2, and 3 respectively (X, Y, Z).
 @export var punch_sound_delays := Vector3(0.12, 0.16, 0.18)
 @export_range(-60.0, 12.0, 0.5, "suffix:dB") var punch_volume_db := -6.0
+@export var charge_punch_sound: AudioStream = preload("res://assets/audio/combat/melee/charge_punch.mp3")
+@export_range(-60.0, 12.0, 0.5, "suffix:dB") var charge_punch_volume_db := -6.0
 
 @export_group("Super Jump Charge")
 @export var jump_charge_sound: AudioStream = preload("res://assets/audio/player/super_jump_charge_AI.wav")
@@ -85,6 +87,7 @@ func _ready() -> void:
 	var landing_controller := get_parent().get_node("PlayerLandingImpactController")
 	landing_controller.hard_landing_effect_spawned.connect(play_heavy_landing)
 	get_parent().get_node("PlayerCombatController").combo_punch_started.connect(_on_combo_punch_started)
+	get_parent().get_node("PlayerCombatController").charge_punch_sound_started.connect(_on_charge_punch_sound_started)
 	get_parent().get_node("PlayerDamageReceiver").damage_received.connect(_on_damage_received)
 	get_parent().get_node("PlayerVehicleInteractor").vehicle_picked_up.connect(_on_vehicle_picked_up)
 	get_parent().get_node("PlayerStateMachine/DeadState").death_started.connect(_on_player_died)
@@ -145,6 +148,13 @@ func _play_footstep() -> void:
 
 func _on_combo_punch_started(punch_index: int) -> void:
 	_pending_punch = punch_index
+
+func _on_charge_punch_sound_started() -> void:
+	_pending_punch = -1
+	if not sounds_enabled or charge_punch_sound == null: return
+	_punch.stream = charge_punch_sound
+	_punch.volume_db = charge_punch_volume_db
+	_punch.play()
 
 func update_combo_audio() -> void:
 	if _pending_punch < 0: return

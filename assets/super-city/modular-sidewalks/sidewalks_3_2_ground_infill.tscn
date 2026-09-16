@@ -1,0 +1,905 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://assets/super-city/materials/ground.tres" id="1_2m11d"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8iy3g"]
+material = ExtResource("1_2m11d")
+size = Vector2(67, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f5g5v"]
+size = Vector3(67.002, 2, 4.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_h6f72"]
+material = ExtResource("1_2m11d")
+size = Vector2(53, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_smgjv"]
+size = Vector3(53.002, 2, 4.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_l21qu"]
+material = ExtResource("1_2m11d")
+size = Vector2(30, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yx6eh"]
+size = Vector3(30.002, 2, 4.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4rhgw"]
+material = ExtResource("1_2m11d")
+size = Vector2(77, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2nb8g"]
+size = Vector3(77.002, 2, 4.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_olq4k"]
+material = ExtResource("1_2m11d")
+size = Vector2(67, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jmdg3"]
+size = Vector3(67.002, 2, 4.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hknvw"]
+material = ExtResource("1_2m11d")
+size = Vector2(67, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eifaw"]
+size = Vector3(67.002, 2, 4.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_qsomg"]
+material = ExtResource("1_2m11d")
+size = Vector2(77, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_whyd7"]
+size = Vector3(77.002, 2, 4.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_tfx4n"]
+material = ExtResource("1_2m11d")
+size = Vector2(150, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_teed1"]
+size = Vector3(150.002, 2, 4.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_k3r8p"]
+material = ExtResource("1_2m11d")
+size = Vector2(20, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_shkwn"]
+size = Vector3(20.002, 2, 4.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_5apev"]
+material = ExtResource("1_2m11d")
+size = Vector2(40, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_77x8o"]
+size = Vector3(40.002, 2, 4.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_o1mn4"]
+material = ExtResource("1_2m11d")
+size = Vector2(77, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5v0if"]
+size = Vector3(77.002, 2, 4.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_a4txw"]
+material = ExtResource("1_2m11d")
+size = Vector2(67, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8u0ej"]
+size = Vector3(67.002, 2, 4.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jkb8k"]
+material = ExtResource("1_2m11d")
+size = Vector2(130, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8b6na"]
+size = Vector3(130.002, 2, 4.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_odqg2"]
+material = ExtResource("1_2m11d")
+size = Vector2(150, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m3br0"]
+size = Vector3(150.002, 2, 4.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_gt33i"]
+material = ExtResource("1_2m11d")
+size = Vector2(67, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xw6dx"]
+size = Vector3(67.002, 2, 4.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ml3tn"]
+material = ExtResource("1_2m11d")
+size = Vector2(77, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kix46"]
+size = Vector3(77.002, 2, 4.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_knniv"]
+material = ExtResource("1_2m11d")
+size = Vector2(100, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q7352"]
+size = Vector3(100.002, 2, 4.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fco3c"]
+material = ExtResource("1_2m11d")
+size = Vector2(106, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b1fjj"]
+size = Vector3(106.002, 2, 4.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_f6obd"]
+material = ExtResource("1_2m11d")
+size = Vector2(66, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mvt5d"]
+size = Vector3(66.002, 2, 4.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fo18e"]
+material = ExtResource("1_2m11d")
+size = Vector2(60, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s52lr"]
+size = Vector3(60.002, 2, 4.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_kxf0m"]
+material = ExtResource("1_2m11d")
+size = Vector2(67, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gtnx2"]
+size = Vector3(67.002, 2, 4.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ygbn2"]
+material = ExtResource("1_2m11d")
+size = Vector2(77, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5walh"]
+size = Vector3(77.002, 2, 4.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_n1ujt"]
+material = ExtResource("1_2m11d")
+size = Vector2(67, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n5c26"]
+size = Vector3(67.002, 2, 4.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1chtq"]
+material = ExtResource("1_2m11d")
+size = Vector2(77, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qv2ee"]
+size = Vector3(77.002, 2, 4.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jpf77"]
+material = ExtResource("1_2m11d")
+size = Vector2(86, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_seadl"]
+size = Vector3(86.002, 2, 4.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ayh8q"]
+material = ExtResource("1_2m11d")
+size = Vector2(80, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d1b4r"]
+size = Vector3(80.002, 2, 4.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fipkl"]
+material = ExtResource("1_2m11d")
+size = Vector2(80, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bvpwi"]
+size = Vector3(80.002, 2, 4.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_3eukq"]
+material = ExtResource("1_2m11d")
+size = Vector2(13, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vies2"]
+size = Vector3(13.002, 2, 4.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_q2f74"]
+material = ExtResource("1_2m11d")
+size = Vector2(67, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mf0q4"]
+size = Vector3(67.002, 2, 4.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ye4p5"]
+material = ExtResource("1_2m11d")
+size = Vector2(4, 62)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l30ch"]
+size = Vector3(4.002, 2, 62.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_bqoy6"]
+material = ExtResource("1_2m11d")
+size = Vector2(4, 26)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mhe0o"]
+size = Vector3(4.002, 2, 26.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ssgbn"]
+material = ExtResource("1_2m11d")
+size = Vector2(4, 128)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_12p85"]
+size = Vector3(4.002, 2, 128.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_c6s01"]
+material = ExtResource("1_2m11d")
+size = Vector2(4, 128)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2hsmy"]
+size = Vector3(4.002, 2, 128.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2pi5g"]
+material = ExtResource("1_2m11d")
+size = Vector2(4, 128)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6jf1t"]
+size = Vector3(4.002, 2, 128.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_dfpni"]
+material = ExtResource("1_2m11d")
+size = Vector2(4, 128)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_krjq6"]
+size = Vector3(4.002, 2, 128.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4wfpy"]
+material = ExtResource("1_2m11d")
+size = Vector2(4, 6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fr1op"]
+size = Vector3(4.002, 2, 6.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_20fi5"]
+material = ExtResource("1_2m11d")
+size = Vector2(4, 6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h5j4h"]
+size = Vector3(4.002, 2, 6.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_oqkns"]
+material = ExtResource("1_2m11d")
+size = Vector2(4, 66)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ho6b4"]
+size = Vector3(4.002, 2, 66.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6lupd"]
+material = ExtResource("1_2m11d")
+size = Vector2(4, 102)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2o0xf"]
+size = Vector3(4.002, 2, 102.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7w2vy"]
+material = ExtResource("1_2m11d")
+size = Vector2(14, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b67v6"]
+size = Vector3(14.002, 2, 2.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_khv0a"]
+material = ExtResource("1_2m11d")
+size = Vector2(8, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ds3d3"]
+size = Vector3(8.002, 2, 2.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_bcn1i"]
+material = ExtResource("1_2m11d")
+size = Vector2(8, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tuxob"]
+size = Vector3(8.002, 2, 2.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8mfpj"]
+material = ExtResource("1_2m11d")
+size = Vector2(18, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bbgw7"]
+size = Vector3(18.002, 2, 2.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_uor1l"]
+material = ExtResource("1_2m11d")
+size = Vector2(16, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gdsi1"]
+size = Vector3(16.002, 2, 2.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fbrqb"]
+material = ExtResource("1_2m11d")
+size = Vector2(16, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1mfnb"]
+size = Vector3(16.002, 2, 2.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_h6y56"]
+material = ExtResource("1_2m11d")
+size = Vector2(18, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o4why"]
+size = Vector3(18.002, 2, 2.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8js5u"]
+material = ExtResource("1_2m11d")
+size = Vector2(18, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0whqn"]
+size = Vector3(18.002, 2, 2.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_l0le7"]
+material = ExtResource("1_2m11d")
+size = Vector2(18, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a7ixn"]
+size = Vector3(18.002, 2, 2.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_82mke"]
+material = ExtResource("1_2m11d")
+size = Vector2(18, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_weusf"]
+size = Vector3(18.002, 2, 2.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_m1vv3"]
+material = ExtResource("1_2m11d")
+size = Vector2(18, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4ppl3"]
+size = Vector3(18.002, 2, 2.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_h5byl"]
+material = ExtResource("1_2m11d")
+size = Vector2(18, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n0plw"]
+size = Vector3(18.002, 2, 2.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jj61k"]
+material = ExtResource("1_2m11d")
+size = Vector2(18, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qg47j"]
+size = Vector3(18.002, 2, 2.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_w3qil"]
+material = ExtResource("1_2m11d")
+size = Vector2(4, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bjods"]
+size = Vector3(4.002, 2, 2.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_i4t4l"]
+material = ExtResource("1_2m11d")
+size = Vector2(4, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kqr53"]
+size = Vector3(4.002, 2, 2.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4rji3"]
+material = ExtResource("1_2m11d")
+size = Vector2(8, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o8n7q"]
+size = Vector3(8.002, 2, 2.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_y30u4"]
+material = ExtResource("1_2m11d")
+size = Vector2(8, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jg8uw"]
+size = Vector3(8.002, 2, 2.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jmtd6"]
+material = ExtResource("1_2m11d")
+size = Vector2(8, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ietrn"]
+size = Vector3(8.002, 2, 2.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_cd5re"]
+material = ExtResource("1_2m11d")
+size = Vector2(8, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ucblg"]
+size = Vector3(8.002, 2, 2.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wgpwn"]
+material = ExtResource("1_2m11d")
+size = Vector2(4, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cit3y"]
+size = Vector3(4.002, 2, 2.002)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ll5e7"]
+material = ExtResource("1_2m11d")
+size = Vector2(4, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ot86y"]
+size = Vector3(4.002, 2, 2.002)
+
+[node name="Sidewalks3_2GroundInfill" type="StaticBody3D" unique_id=356983444]
+
+[node name="GroundPatch01" type="MeshInstance3D" parent="." unique_id=2039685644]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.5, 0, 12)
+mesh = SubResource("PlaneMesh_8iy3g")
+
+[node name="GroundCollision01" type="CollisionShape3D" parent="." unique_id=1437333807]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.5, -1, 12)
+shape = SubResource("BoxShape3D_f5g5v")
+
+[node name="GroundPatch02" type="MeshInstance3D" parent="." unique_id=46710586]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99.5, 0, 12)
+mesh = SubResource("PlaneMesh_h6f72")
+
+[node name="GroundCollision02" type="CollisionShape3D" parent="." unique_id=696616099]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99.5, -1, 12)
+shape = SubResource("BoxShape3D_smgjv")
+
+[node name="GroundPatch03" type="MeshInstance3D" parent="." unique_id=504963756]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 315, 0, 12)
+mesh = SubResource("PlaneMesh_l21qu")
+
+[node name="GroundCollision03" type="CollisionShape3D" parent="." unique_id=462944336]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 315, -1, 12)
+shape = SubResource("BoxShape3D_yx6eh")
+
+[node name="GroundPatch04" type="MeshInstance3D" parent="." unique_id=1536503370]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 388.5, 0, 12)
+mesh = SubResource("PlaneMesh_4rhgw")
+
+[node name="GroundCollision04" type="CollisionShape3D" parent="." unique_id=444121177]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 388.5, -1, 12)
+shape = SubResource("BoxShape3D_2nb8g")
+
+[node name="GroundPatch05" type="MeshInstance3D" parent="." unique_id=216966947]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 466.5, 0, 12)
+mesh = SubResource("PlaneMesh_olq4k")
+
+[node name="GroundCollision05" type="CollisionShape3D" parent="." unique_id=1399151845]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 466.5, -1, 12)
+shape = SubResource("BoxShape3D_jmdg3")
+
+[node name="GroundPatch06" type="MeshInstance3D" parent="." unique_id=521458392]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.5, 0, 148)
+mesh = SubResource("PlaneMesh_hknvw")
+
+[node name="GroundCollision06" type="CollisionShape3D" parent="." unique_id=2088459168]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.5, -1, 148)
+shape = SubResource("BoxShape3D_eifaw")
+
+[node name="GroundPatch07" type="MeshInstance3D" parent="." unique_id=2074085612]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.5, 0, 148)
+mesh = SubResource("PlaneMesh_qsomg")
+
+[node name="GroundCollision07" type="CollisionShape3D" parent="." unique_id=512926942]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.5, -1, 148)
+shape = SubResource("BoxShape3D_whyd7")
+
+[node name="GroundPatch08" type="MeshInstance3D" parent="." unique_id=639746850]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75, 0, 172)
+mesh = SubResource("PlaneMesh_tfx4n")
+
+[node name="GroundCollision08" type="CollisionShape3D" parent="." unique_id=940404795]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75, -1, 172)
+shape = SubResource("BoxShape3D_teed1")
+
+[node name="GroundPatch09" type="MeshInstance3D" parent="." unique_id=789933400]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180, 0, 148)
+mesh = SubResource("PlaneMesh_k3r8p")
+
+[node name="GroundCollision09" type="CollisionShape3D" parent="." unique_id=77950519]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180, -1, 148)
+shape = SubResource("BoxShape3D_shkwn")
+
+[node name="GroundPatch10" type="MeshInstance3D" parent="." unique_id=530813458]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 190, 0, 172)
+mesh = SubResource("PlaneMesh_5apev")
+
+[node name="GroundCollision10" type="CollisionShape3D" parent="." unique_id=1240010430]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 190, -1, 172)
+shape = SubResource("BoxShape3D_77x8o")
+
+[node name="GroundPatch11" type="MeshInstance3D" parent="." unique_id=724808907]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 388.5, 0, 148)
+mesh = SubResource("PlaneMesh_o1mn4")
+
+[node name="GroundCollision11" type="CollisionShape3D" parent="." unique_id=1469393223]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 388.5, -1, 148)
+shape = SubResource("BoxShape3D_5v0if")
+
+[node name="GroundPatch12" type="MeshInstance3D" parent="." unique_id=1363024504]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 466.5, 0, 148)
+mesh = SubResource("PlaneMesh_a4txw")
+
+[node name="GroundCollision12" type="CollisionShape3D" parent="." unique_id=2110348527]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 466.5, -1, 148)
+shape = SubResource("BoxShape3D_8u0ej")
+
+[node name="GroundPatch13" type="MeshInstance3D" parent="." unique_id=456708395]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 435, 0, 172)
+mesh = SubResource("PlaneMesh_jkb8k")
+
+[node name="GroundCollision13" type="CollisionShape3D" parent="." unique_id=268768821]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 435, -1, 172)
+shape = SubResource("BoxShape3D_8b6na")
+
+[node name="GroundPatch14" type="MeshInstance3D" parent="." unique_id=2103651166]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75, 0, 304)
+mesh = SubResource("PlaneMesh_odqg2")
+
+[node name="GroundCollision14" type="CollisionShape3D" parent="." unique_id=2045824487]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75, -1, 304)
+shape = SubResource("BoxShape3D_m3br0")
+
+[node name="GroundPatch15" type="MeshInstance3D" parent="." unique_id=2058104653]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.5, 0, 336)
+mesh = SubResource("PlaneMesh_gt33i")
+
+[node name="GroundCollision15" type="CollisionShape3D" parent="." unique_id=484766569]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.5, -1, 336)
+shape = SubResource("BoxShape3D_xw6dx")
+
+[node name="GroundPatch16" type="MeshInstance3D" parent="." unique_id=97991301]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.5, 0, 336)
+mesh = SubResource("PlaneMesh_ml3tn")
+
+[node name="GroundCollision16" type="CollisionShape3D" parent="." unique_id=815485672]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.5, -1, 336)
+shape = SubResource("BoxShape3D_kix46")
+
+[node name="GroundPatch17" type="MeshInstance3D" parent="." unique_id=1462372751]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 220, 0, 304)
+mesh = SubResource("PlaneMesh_knniv")
+
+[node name="GroundCollision17" type="CollisionShape3D" parent="." unique_id=173631216]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 220, -1, 304)
+shape = SubResource("BoxShape3D_q7352")
+
+[node name="GroundPatch18" type="MeshInstance3D" parent="." unique_id=503896387]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 223, 0, 336)
+mesh = SubResource("PlaneMesh_fco3c")
+
+[node name="GroundCollision18" type="CollisionShape3D" parent="." unique_id=1841542784]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 223, -1, 336)
+shape = SubResource("BoxShape3D_b1fjj")
+
+[node name="GroundPatch19" type="MeshInstance3D" parent="." unique_id=1022683599]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 467, 0, 304)
+mesh = SubResource("PlaneMesh_f6obd")
+
+[node name="GroundCollision19" type="CollisionShape3D" parent="." unique_id=868663002]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 467, -1, 304)
+shape = SubResource("BoxShape3D_mvt5d")
+
+[node name="GroundPatch20" type="MeshInstance3D" parent="." unique_id=2136990641]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 470, 0, 336)
+mesh = SubResource("PlaneMesh_fo18e")
+
+[node name="GroundCollision20" type="CollisionShape3D" parent="." unique_id=1301525269]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 470, -1, 336)
+shape = SubResource("BoxShape3D_s52lr")
+
+[node name="GroundPatch21" type="MeshInstance3D" parent="." unique_id=2029667304]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.5, 0, 468)
+mesh = SubResource("PlaneMesh_kxf0m")
+
+[node name="GroundCollision21" type="CollisionShape3D" parent="." unique_id=1291902232]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.5, -1, 468)
+shape = SubResource("BoxShape3D_gtnx2")
+
+[node name="GroundPatch22" type="MeshInstance3D" parent="." unique_id=1029438021]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.5, 0, 468)
+mesh = SubResource("PlaneMesh_ygbn2")
+
+[node name="GroundCollision22" type="CollisionShape3D" parent="." unique_id=2020397885]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.5, -1, 468)
+shape = SubResource("BoxShape3D_5walh")
+
+[node name="GroundPatch23" type="MeshInstance3D" parent="." unique_id=661375263]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.5, 0, 492)
+mesh = SubResource("PlaneMesh_n1ujt")
+
+[node name="GroundCollision23" type="CollisionShape3D" parent="." unique_id=685039803]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.5, -1, 492)
+shape = SubResource("BoxShape3D_n5c26")
+
+[node name="GroundPatch24" type="MeshInstance3D" parent="." unique_id=1414051905]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.5, 0, 492)
+mesh = SubResource("PlaneMesh_1chtq")
+
+[node name="GroundCollision24" type="CollisionShape3D" parent="." unique_id=1775663914]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.5, -1, 492)
+shape = SubResource("BoxShape3D_qv2ee")
+
+[node name="GroundPatch25" type="MeshInstance3D" parent="." unique_id=209318858]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 213, 0, 468)
+mesh = SubResource("PlaneMesh_jpf77")
+
+[node name="GroundCollision25" type="CollisionShape3D" parent="." unique_id=1386571735]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 213, -1, 468)
+shape = SubResource("BoxShape3D_seadl")
+
+[node name="GroundPatch26" type="MeshInstance3D" parent="." unique_id=326105379]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 210, 0, 492)
+mesh = SubResource("PlaneMesh_ayh8q")
+
+[node name="GroundCollision26" type="CollisionShape3D" parent="." unique_id=1155385588]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 210, -1, 492)
+shape = SubResource("BoxShape3D_d1b4r")
+
+[node name="GroundPatch27" type="MeshInstance3D" parent="." unique_id=1599031824]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 460, 0, 468)
+mesh = SubResource("PlaneMesh_fipkl")
+
+[node name="GroundCollision27" type="CollisionShape3D" parent="." unique_id=287980704]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 460, -1, 468)
+shape = SubResource("BoxShape3D_bvpwi")
+
+[node name="GroundPatch28" type="MeshInstance3D" parent="." unique_id=1467629655]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 420.5, 0, 492)
+mesh = SubResource("PlaneMesh_3eukq")
+
+[node name="GroundCollision28" type="CollisionShape3D" parent="." unique_id=1502725965]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 420.5, -1, 492)
+shape = SubResource("BoxShape3D_vies2")
+
+[node name="GroundPatch29" type="MeshInstance3D" parent="." unique_id=625215893]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 466.5, 0, 492)
+mesh = SubResource("PlaneMesh_q2f74")
+
+[node name="GroundCollision29" type="CollisionShape3D" parent="." unique_id=30841256]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 466.5, -1, 492)
+shape = SubResource("BoxShape3D_mf0q4")
+
+[node name="GroundPatch30" type="MeshInstance3D" parent="." unique_id=1165440519]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 148, 0, 115)
+mesh = SubResource("PlaneMesh_ye4p5")
+
+[node name="GroundCollision30" type="CollisionShape3D" parent="." unique_id=283290861]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 148, -1, 115)
+shape = SubResource("BoxShape3D_l30ch")
+
+[node name="GroundPatch31" type="MeshInstance3D" parent="." unique_id=597181859]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 172, 0, 133)
+mesh = SubResource("PlaneMesh_bqoy6")
+
+[node name="GroundCollision31" type="CollisionShape3D" parent="." unique_id=5592559]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 172, -1, 133)
+shape = SubResource("BoxShape3D_mhe0o")
+
+[node name="GroundPatch32" type="MeshInstance3D" parent="." unique_id=974828813]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 148, 0, 238)
+mesh = SubResource("PlaneMesh_ssgbn")
+
+[node name="GroundCollision32" type="CollisionShape3D" parent="." unique_id=176008127]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 148, -1, 238)
+shape = SubResource("BoxShape3D_12p85")
+
+[node name="GroundPatch33" type="MeshInstance3D" parent="." unique_id=718598861]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 172, 0, 238)
+mesh = SubResource("PlaneMesh_c6s01")
+
+[node name="GroundCollision33" type="CollisionShape3D" parent="." unique_id=323871703]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 172, -1, 238)
+shape = SubResource("BoxShape3D_2hsmy")
+
+[node name="GroundPatch34" type="MeshInstance3D" parent="." unique_id=907075640]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 148, 0, 402)
+mesh = SubResource("PlaneMesh_2pi5g")
+
+[node name="GroundCollision34" type="CollisionShape3D" parent="." unique_id=1999195078]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 148, -1, 402)
+shape = SubResource("BoxShape3D_6jf1t")
+
+[node name="GroundPatch35" type="MeshInstance3D" parent="." unique_id=465490652]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 172, 0, 402)
+mesh = SubResource("PlaneMesh_dfpni")
+
+[node name="GroundCollision35" type="CollisionShape3D" parent="." unique_id=135548868]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 172, -1, 402)
+shape = SubResource("BoxShape3D_krjq6")
+
+[node name="GroundPatch36" type="MeshInstance3D" parent="." unique_id=1030217081]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 148, 0, 497)
+mesh = SubResource("PlaneMesh_4wfpy")
+
+[node name="GroundCollision36" type="CollisionShape3D" parent="." unique_id=96650705]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 148, -1, 497)
+shape = SubResource("BoxShape3D_fr1op")
+
+[node name="GroundPatch37" type="MeshInstance3D" parent="." unique_id=284208383]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 172, 0, 497)
+mesh = SubResource("PlaneMesh_20fi5")
+
+[node name="GroundCollision37" type="CollisionShape3D" parent="." unique_id=127089683]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 172, -1, 497)
+shape = SubResource("BoxShape3D_h5j4h")
+
+[node name="GroundPatch38" type="MeshInstance3D" parent="." unique_id=1828294480]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 328, 0, 47)
+mesh = SubResource("PlaneMesh_oqkns")
+
+[node name="GroundCollision38" type="CollisionShape3D" parent="." unique_id=1504871539]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 328, -1, 47)
+shape = SubResource("BoxShape3D_ho6b4")
+
+[node name="GroundPatch39" type="MeshInstance3D" parent="." unique_id=1164130828]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 352, 0, 65)
+mesh = SubResource("PlaneMesh_6lupd")
+
+[node name="GroundCollision39" type="CollisionShape3D" parent="." unique_id=1176639152]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 352, -1, 65)
+shape = SubResource("BoxShape3D_2o0xf")
+
+[node name="GroundPatch40" type="MeshInstance3D" parent="." unique_id=1711575865]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 133, 0, 1)
+mesh = SubResource("PlaneMesh_7w2vy")
+
+[node name="GroundCollision40" type="CollisionShape3D" parent="." unique_id=1830672666]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 133, -1, 1)
+shape = SubResource("BoxShape3D_b67v6")
+
+[node name="GroundPatch41" type="MeshInstance3D" parent="." unique_id=1196505079]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146, 0, 41)
+mesh = SubResource("PlaneMesh_khv0a")
+
+[node name="GroundCollision41" type="CollisionShape3D" parent="." unique_id=324107945]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146, -1, 41)
+shape = SubResource("BoxShape3D_ds3d3")
+
+[node name="GroundPatch42" type="MeshInstance3D" parent="." unique_id=1583703192]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 304, 0, 39)
+mesh = SubResource("PlaneMesh_bcn1i")
+
+[node name="GroundCollision42" type="CollisionShape3D" parent="." unique_id=1147517785]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 304, -1, 39)
+shape = SubResource("BoxShape3D_tuxob")
+
+[node name="GroundPatch43" type="MeshInstance3D" parent="." unique_id=1101686800]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 161, 0, 81)
+mesh = SubResource("PlaneMesh_8mfpj")
+
+[node name="GroundCollision43" type="CollisionShape3D" parent="." unique_id=1664728666]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 161, -1, 81)
+shape = SubResource("BoxShape3D_bbgw7")
+
+[node name="GroundPatch44" type="MeshInstance3D" parent="." unique_id=685820386]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 318, 0, 79)
+mesh = SubResource("PlaneMesh_uor1l")
+
+[node name="GroundCollision44" type="CollisionShape3D" parent="." unique_id=1529390567]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 318, -1, 79)
+shape = SubResource("BoxShape3D_gdsi1")
+
+[node name="GroundPatch45" type="MeshInstance3D" parent="." unique_id=1659938781]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182, 0, 121)
+mesh = SubResource("PlaneMesh_fbrqb")
+
+[node name="GroundCollision45" type="CollisionShape3D" parent="." unique_id=86955931]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182, -1, 121)
+shape = SubResource("BoxShape3D_1mfnb")
+
+[node name="GroundPatch46" type="MeshInstance3D" parent="." unique_id=740072963]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 339, 0, 119)
+mesh = SubResource("PlaneMesh_h6y56")
+
+[node name="GroundCollision46" type="CollisionShape3D" parent="." unique_id=1126926681]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 339, -1, 119)
+shape = SubResource("BoxShape3D_o4why")
+
+[node name="GroundPatch47" type="MeshInstance3D" parent="." unique_id=373390043]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 221, 0, 201)
+mesh = SubResource("PlaneMesh_8js5u")
+
+[node name="GroundCollision47" type="CollisionShape3D" parent="." unique_id=602493093]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 221, -1, 201)
+shape = SubResource("BoxShape3D_0whqn")
+
+[node name="GroundPatch48" type="MeshInstance3D" parent="." unique_id=2025560719]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 379, 0, 199)
+mesh = SubResource("PlaneMesh_l0le7")
+
+[node name="GroundCollision48" type="CollisionShape3D" parent="." unique_id=655332560]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 379, -1, 199)
+shape = SubResource("BoxShape3D_a7ixn")
+
+[node name="GroundPatch49" type="MeshInstance3D" parent="." unique_id=2025329151]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 241, 0, 241)
+mesh = SubResource("PlaneMesh_82mke")
+
+[node name="GroundCollision49" type="CollisionShape3D" parent="." unique_id=1753196014]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 241, -1, 241)
+shape = SubResource("BoxShape3D_weusf")
+
+[node name="GroundPatch50" type="MeshInstance3D" parent="." unique_id=1967360745]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 399, 0, 239)
+mesh = SubResource("PlaneMesh_m1vv3")
+
+[node name="GroundCollision50" type="CollisionShape3D" parent="." unique_id=1936710573]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 399, -1, 239)
+shape = SubResource("BoxShape3D_4ppl3")
+
+[node name="GroundPatch51" type="MeshInstance3D" parent="." unique_id=235873014]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 261, 0, 281)
+mesh = SubResource("PlaneMesh_h5byl")
+
+[node name="GroundCollision51" type="CollisionShape3D" parent="." unique_id=2040636093]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 261, -1, 281)
+shape = SubResource("BoxShape3D_n0plw")
+
+[node name="GroundPatch52" type="MeshInstance3D" parent="." unique_id=371043370]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 419, 0, 279)
+mesh = SubResource("PlaneMesh_jj61k")
+
+[node name="GroundCollision52" type="CollisionShape3D" parent="." unique_id=849199330]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 419, -1, 279)
+shape = SubResource("BoxShape3D_qg47j")
+
+[node name="GroundPatch53" type="MeshInstance3D" parent="." unique_id=756386092]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 278, 0, 321)
+mesh = SubResource("PlaneMesh_w3qil")
+
+[node name="GroundCollision53" type="CollisionShape3D" parent="." unique_id=760108599]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 278, -1, 321)
+shape = SubResource("BoxShape3D_bjods")
+
+[node name="GroundPatch54" type="MeshInstance3D" parent="." unique_id=419202175]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 432, 0, 319)
+mesh = SubResource("PlaneMesh_i4t4l")
+
+[node name="GroundCollision54" type="CollisionShape3D" parent="." unique_id=567694615]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 432, -1, 319)
+shape = SubResource("BoxShape3D_kqr53")
+
+[node name="GroundPatch55" type="MeshInstance3D" parent="." unique_id=1784272700]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 276, 0, 359)
+mesh = SubResource("PlaneMesh_4rji3")
+
+[node name="GroundCollision55" type="CollisionShape3D" parent="." unique_id=1195067614]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 276, -1, 359)
+shape = SubResource("BoxShape3D_o8n7q")
+
+[node name="GroundPatch56" type="MeshInstance3D" parent="." unique_id=1779179606]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 434, 0, 361)
+mesh = SubResource("PlaneMesh_y30u4")
+
+[node name="GroundCollision56" type="CollisionShape3D" parent="." unique_id=922221004]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 434, -1, 361)
+shape = SubResource("BoxShape3D_jg8uw")
+
+[node name="GroundPatch57" type="MeshInstance3D" parent="." unique_id=1994000709]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 266, 0, 399)
+mesh = SubResource("PlaneMesh_jmtd6")
+
+[node name="GroundCollision57" type="CollisionShape3D" parent="." unique_id=1572600445]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 266, -1, 399)
+shape = SubResource("BoxShape3D_ietrn")
+
+[node name="GroundPatch58" type="MeshInstance3D" parent="." unique_id=195607464]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 424, 0, 401)
+mesh = SubResource("PlaneMesh_cd5re")
+
+[node name="GroundCollision58" type="CollisionShape3D" parent="." unique_id=1827345366]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 424, -1, 401)
+shape = SubResource("BoxShape3D_ucblg")
+
+[node name="GroundPatch59" type="MeshInstance3D" parent="." unique_id=537728672]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 258, 0, 479)
+mesh = SubResource("PlaneMesh_wgpwn")
+
+[node name="GroundCollision59" type="CollisionShape3D" parent="." unique_id=98411017]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 258, -1, 479)
+shape = SubResource("BoxShape3D_cit3y")
+
+[node name="GroundPatch60" type="MeshInstance3D" parent="." unique_id=271144687]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 412, 0, 481)
+mesh = SubResource("PlaneMesh_ll5e7")
+
+[node name="GroundCollision60" type="CollisionShape3D" parent="." unique_id=1168522838]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 412, -1, 481)
+shape = SubResource("BoxShape3D_ot86y")

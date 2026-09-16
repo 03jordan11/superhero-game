@@ -25,6 +25,8 @@ enum State {
 @export var obstacle_collision_mask: int = 1
 
 var current_state: State = State.WANDER
+@export_range(-1, 2, 1) var hair_style_index := -1
+@export_range(-1, 3, 1) var hair_color_index := -1
 
 var wander_direction: Vector3 = Vector3.ZERO
 var wander_timer: float = 0.0

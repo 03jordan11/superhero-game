@@ -141,7 +141,7 @@ script = ExtResource("19_8gjxj")
 [node name="PlayerCameraEffects" parent="Player" index="8" unique_id=1571283697]
 script = ExtResource("20_tbuio")
 
-[node name="SpringArm3D" type="SpringArm3D" parent="Player" unique_id=1356520718]
+[node name="SpringArm3D" parent="Player" index="9" unique_id=1356520718]
 transform = Transform3D(1, 0, 0, 0, 0.99026805, 0.1391731, 0, -0.1391731, 0.99026805, 0.6, 0.75, 0)
 shape = SubResource("SphereShape3D_1s1tm")
 spring_length = 1.5

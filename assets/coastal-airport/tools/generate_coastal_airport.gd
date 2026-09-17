@@ -59,7 +59,7 @@ func land_point(x: float,z: float) -> Vector3: return Vector3(x,LAND.height_at(x
 
 func land_quad(tool: SurfaceTool,a:Vector3,b:Vector3,c:Vector3,d:Vector3) -> void:
 	var center: Vector3=(a+b+c+d)*0.25
-	var color:=Color("536e47").lerp(Color("667d50"),0.5+sin(center.x/180)*cos(center.z/240)*0.35)
+	var color:=Color("516443").lerp(Color("657449"),(0.5+sin(center.x/180)*cos(center.z/240)*0.35)*0.35)
 	if LAND.coast_z(center.x)-center.z<100: color=Color("b6ab8f")
 	tri(tool,a,b,c,color)
 	tri(tool,a,c,d,color)

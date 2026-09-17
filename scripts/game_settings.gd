@@ -6,8 +6,14 @@ signal display_settings_changed
 signal audio_settings_changed
 signal gameplay_settings_changed
 signal accessibility_settings_changed
+signal graphics_settings_changed
 
 enum Quality { LOW, MEDIUM, HIGH }
+enum ShadowQuality { OFF, LOW, MEDIUM, HIGH }
+const RENDER_SCALES := [50, 75, 100]
+const FPS_LIMITS := [30, 60, 120, 0]
+const SHADOW_DISTANCES := [0.0, 80.0, 160.0, 300.0]
+const SHADOW_ATLAS_SIZES := [1024, 1024, 2048, 4096]
 const SETTINGS_FILE := "user://settings.cfg"
 const DENSITY_SCALES := [0.5, 0.75, 1.0]
 const DISTANCE_SCALES := [0.6, 0.8, 1.0]
@@ -23,6 +29,11 @@ var toggle_sprint := false
 var toggle_power_activation := false
 var display_mode := 0
 var window_resolution := Vector2i(1920, 1080)
+var render_scale := 100
+var shadow_quality: int = ShadowQuality.HIGH
+var bloom_enabled := true
+var fps_limit := 0
+var vsync_enabled := true
 var audio_volumes := {&"Master": 1.0, &"SFX": 1.0, &"Music": 1.0, &"Voice": 1.0}
 var _settings_file := SETTINGS_FILE
 var input_bindings = preload("res://scripts/input_bindings.gd").new()
@@ -31,6 +42,7 @@ func _ready() -> void:
 	input_bindings.name = "InputBindings"
 	add_child(input_bindings)
 	load_settings()
+	get_tree().node_added.connect(_on_graphics_node_added)
 
 func crowd_scale() -> float:
 	return DENSITY_SCALES[crowd_density]
@@ -66,6 +78,8 @@ func save_settings(path := "") -> Error:
 	config.set_value("accessibility", "toggle_power_activation", toggle_power_activation)
 	config.set_value("display", "mode", display_mode)
 	config.set_value("display", "resolution", window_resolution)
+	for key in [&"render_scale", &"shadow_quality", &"bloom_enabled", &"fps_limit", &"vsync_enabled"]:
+		config.set_value("graphics", key, get(key))
 	for bus in audio_volumes:
 		config.set_value("audio", bus, audio_volumes[bus])
 	return config.save(path)
@@ -104,6 +118,69 @@ func load_settings(path := "") -> void:
 		if window.mode == Window.MODE_WINDOWED and window.size.x >= 640 and window.size.y >= 360:
 			window_resolution = window.size
 	display_settings_changed.emit()
+	set_graphics_settings(
+		_read_graphics_choice(config, "render_scale", RENDER_SCALES, 100),
+		_read_graphics_choice(config, "shadow_quality", [0, 1, 2, 3], ShadowQuality.HIGH),
+		_read_bool(config, "graphics", "bloom_enabled", true),
+		_read_graphics_choice(config, "fps_limit", FPS_LIMITS, 0),
+		_read_bool(config, "graphics", "vsync_enabled", true), false)
+
+func _read_graphics_choice(config: ConfigFile, key: String, choices: Array, fallback: int) -> int:
+	var value: Variant = config.get_value("graphics", key, fallback)
+	return value if value is int and value in choices else fallback
+
+func set_graphics_settings(scale_percent: int, shadows: int, bloom: bool, cap: int, vsync: bool, persist := true) -> Error:
+	if scale_percent not in RENDER_SCALES or shadows < ShadowQuality.OFF or shadows > ShadowQuality.HIGH or cap not in FPS_LIMITS:
+		return ERR_INVALID_PARAMETER
+	render_scale = scale_percent
+	shadow_quality = shadows
+	bloom_enabled = bloom
+	fps_limit = cap
+	vsync_enabled = vsync
+	apply_graphics_settings()
+	graphics_settings_changed.emit()
+	return save_settings() if persist else OK
+
+func apply_graphics_settings() -> void:
+	var window := get_window()
+	window.scaling_3d_scale = render_scale / 100.0
+	window.positional_shadow_atlas_size = SHADOW_ATLAS_SIZES[shadow_quality]
+	RenderingServer.directional_shadow_atlas_set_size(SHADOW_ATLAS_SIZES[shadow_quality], true)
+	Engine.max_fps = fps_limit
+	if DisplayServer.get_name() != "headless":
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED if vsync_enabled else DisplayServer.VSYNC_DISABLED, window.get_window_id())
+	for node in get_tree().root.find_children("*", "Light3D", true, false):
+		_apply_graphics_to_node(node)
+	for node in get_tree().root.find_children("*", "WorldEnvironment", true, false):
+		_apply_graphics_to_node(node)
+
+func _on_graphics_node_added(node: Node) -> void:
+	if node is Light3D or node is WorldEnvironment:
+		_apply_graphics_to_id.call_deferred(node.get_instance_id())
+
+func _apply_graphics_to_id(id: int) -> void:
+	# A short-lived effect or a scene change may free a light before this runs.
+	var node := instance_from_id(id) as Node
+	if is_instance_valid(node): _apply_graphics_to_node(node)
+
+func _apply_graphics_to_node(node: Node) -> void:
+	if not is_instance_valid(node) or not node.is_inside_tree(): return
+	if node is Light3D:
+		if not node.has_meta("graphics_original_shadow"):
+			node.set_meta("graphics_original_shadow", node.shadow_enabled)
+		var allowed := shadow_quality != ShadowQuality.OFF
+		if not node is DirectionalLight3D and shadow_quality == ShadowQuality.LOW: allowed = false
+		node.shadow_enabled = bool(node.get_meta("graphics_original_shadow")) and allowed
+		if node is DirectionalLight3D:
+			if not node.has_meta("graphics_original_shadow_distance"):
+				node.set_meta("graphics_original_shadow_distance", node.directional_shadow_max_distance)
+			var original: float = node.get_meta("graphics_original_shadow_distance")
+			node.directional_shadow_max_distance = original if shadow_quality == ShadowQuality.HIGH else minf(original, SHADOW_DISTANCES[shadow_quality])
+	elif node is WorldEnvironment and node.environment != null and not node.has_meta("day_night_environment"):
+		if not node.has_meta("graphics_original_glow"):
+			node.set_meta("graphics_original_glow", node.environment.glow_enabled)
+			node.environment = node.environment.duplicate()
+		node.environment.glow_enabled = bloom_enabled and bool(node.get_meta("graphics_original_glow"))
 
 func set_show_control_hints(enabled: bool, persist := true) -> Error:
 	if show_control_hints != enabled:

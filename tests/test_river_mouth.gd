@@ -21,7 +21,7 @@ func run() -> void:
 	check(graph.source_scene_sha256==FileAccess.get_sha256("res://scenes/super_city.tscn"),"Routes match final scene")
 	check(graph.component_sizes.size()==2,"Exactly two connected pedestrian riverbanks")
 	check(city.get_node("Waterfront/Water/River").visible,"Urban water visible")
-	check(main.has_node("MountainRiver") and not city.has_node("MountainRiver"),"Mountain extension remains Main-only")
+	check(not main.has_node("MountainRiver") and city.has_node("MountainRiver"),"Mountain extension belongs to SuperCity")
 	var space:=main.get_world_3d().direct_space_state
 	var bridge_samples:=0
 	for crossing in layout.crossings:

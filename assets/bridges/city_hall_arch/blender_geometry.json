@@ -1,0 +1,15 @@
+{
+  "meshes": {
+    "RoadDeck": 132,
+    "Walkways": 264,
+    "Arches": 428,
+    "TieBeams": 72,
+    "Hangers": 264,
+    "Guardrails": 1032,
+    "Supports": 72
+  },
+  "total": 2264,
+  "length_m": 320,
+  "width_m": 28,
+  "nominal_center_clearance_m": 6.9
+}

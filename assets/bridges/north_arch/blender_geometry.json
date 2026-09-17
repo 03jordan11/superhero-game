@@ -1,0 +1,15 @@
+{
+  "meshes": {
+    "RoadDeck": 132,
+    "Walkways": 264,
+    "Arches": 428,
+    "TieBeams": 72,
+    "Hangers": 168,
+    "Guardrails": 576,
+    "Supports": 48
+  },
+  "total": 1688,
+  "length_m": 158,
+  "width_m": 20,
+  "promenade_connection": "at grade with railing openings"
+}

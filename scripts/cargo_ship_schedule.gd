@@ -8,7 +8,7 @@ enum Phase { BERTHED, DEPARTING, OFFSHORE, ARRIVING }
 @export_range(.5,5,.25,"suffix:h") var departure_hours:=3.5
 @export_range(.5,5,.25,"suffix:h") var approach_hours:=3.5
 @export var inbound_points:=PackedVector3Array([
-	Vector3(2200,0,-1000),Vector3(650,0,200),Vector3(150,0,550),Vector3(0,0,350),Vector3.ZERO])
+	Vector3(2200,0,-1000),Vector3(650,0,200),Vector3(200,0,950),Vector3(0,0,750),Vector3.ZERO])
 @export var outbound_points:=PackedVector3Array([
 	Vector3.ZERO,Vector3(0,0,-200),Vector3(280,0,-420),Vector3(700,0,-600),Vector3(2400,0,-1800)])
 @export var offshore_points:=PackedVector3Array([

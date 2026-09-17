@@ -1,5 +1,5 @@
 extends Node3D
-## Main-only river reach. Shared waterfront shader, synchronized night/pause behavior.
+## City-owned river reach meeting the original solid mountain. Shared waterfront shader, synchronized night/pause behavior.
 @export_range(0.0,3.0,0.05) var animation_speed := 1.0
 var _elapsed := 0.0
 var _water: ShaderMaterial

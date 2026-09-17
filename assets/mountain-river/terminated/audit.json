@@ -1,0 +1,14 @@
+{
+  "Bed": {
+    "after": 380,
+    "before": 384
+  },
+  "Rock": {
+    "after": 603,
+    "before": 603
+  },
+  "Water": {
+    "after": 425,
+    "before": 427
+  }
+}

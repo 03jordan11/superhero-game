@@ -21,8 +21,7 @@ func run() -> void:
 	await process_frame
 	await physics_frame
 	await physics_frame
-	check(city.get_node("Landmarks/CentralPark_GreenPlaceholder/CollisionShape3D").disabled,"Old flat park cannot cover the lake bed")
-	check(not city.get_node("Landmarks/CentralPark_GreenPlaceholder/MeshInstance3D").visible,"Placeholder is hidden")
+	check(not city.has_node("Landmarks/CentralPark_GreenPlaceholder"), "Obsolete park placeholder removed")
 	check(park.get_meta("tree_count")==400,"First pass retains 400 trees (over two thirds removed)")
 	var loaded_trees := preload("res://assets/trees/tools/tree_instances.gd").trees(park)
 	check(loaded_trees.size() == 400,"Individual tree scenes retain all placements")

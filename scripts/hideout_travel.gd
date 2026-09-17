@@ -33,18 +33,28 @@ func request_transition(door: Node3D, target: PlayerCharacter) -> bool:
 	else: _enter.call_deferred(door)
 	return true
 
-func _enter(door: Node3D) -> void:
+func start_in_hideout(target: PlayerCharacter) -> bool:
+	# Loading bypasses interaction distance; the normal entrance still determines
+	# the interior and the safe return position outside the station.
+	for door in get_tree().get_nodes_in_group(&"hideout_doors"):
+		if not door.is_exit and get_tree().current_scene.is_ancestor_of(door):
+			player = target
+			_busy = true
+			return _enter(door)
+	return false
+
+func _enter(door: Node3D) -> bool:
 	var packed := load(door.interior_scene) as PackedScene
 	if packed == null:
 		push_error("Could not load hideout interior: " + door.interior_scene)
 		_busy = false
-		return
+		return false
 	var room := packed.instantiate() as Node3D
 	if room == null or not room.has_node("PlayerSpawn"):
 		if room != null: room.free()
 		push_error("Hideout interior needs a PlayerSpawn marker.")
 		_busy = false
-		return
+		return false
 	var city := get_tree().current_scene
 	_copy_clock(city, room)
 	_city_path = city.scene_file_path
@@ -78,6 +88,7 @@ func _enter(door: Node3D) -> void:
 	player.spring_arm.rotation = Vector3(deg_to_rad(shoulder_pitch_degrees), 0, 0)
 	_inside = true
 	_finish()
+	return true
 
 func _leave() -> void:
 	var packed := load(_city_path) as PackedScene

@@ -12,6 +12,8 @@
 [ext_resource type="ArrayMesh" path="res://assets/waterfront/meshes/island_surf.res" id="10_l12gr"]
 [ext_resource type="ArrayMesh" path="res://assets/waterfront/meshes/island_access_ramp.res" id="11_p7yhh"]
 
+[ext_resource type="Material" path="res://assets/super-city/modular-sidewalks/sidewalk.tres" id="pier_concrete"]
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wpu8t"]
 render_priority = 0
 shader = ExtResource("2_h12r6")
@@ -12839,6 +12841,18 @@ height = 0.35
 radial_segments = 10
 rings = 1
 
+[sub_resource type="BoxMesh" id="ConcretePierExtensionMesh"]
+size = Vector3(240, 8, 266)
+
+[sub_resource type="BoxShape3D" id="ConcretePierExtensionShape"]
+size = Vector3(240, 8, 266)
+
+[sub_resource type="BoxMesh" id="ConcretePierWestMesh"]
+size = Vector3(240, 8, 406)
+
+[sub_resource type="BoxShape3D" id="ConcretePierWestShape"]
+size = Vector3(240, 8, 406)
+
 [node name="Waterfront" type="Node3D" unique_id=1991304494]
 script = ExtResource("1_cio0b")
 metadata/island_center = Vector3(300, 0, 2400)
@@ -21355,1790 +21369,350 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 material_override = SubResource("StandardMaterial3D_kpkyv")
 mesh = SubResource("BoxMesh_66xhi")
 
-[node name="BridgePier" type="MeshInstance3D" parent="Riverbanks" unique_id=1593079132]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 198, -5, -800)
-material_override = SubResource("StandardMaterial3D_r7ulg")
-mesh = SubResource("BoxMesh_s0uo5")
-
-[node name="Solid" type="StaticBody3D" parent="Riverbanks/BridgePier" unique_id=1292163046]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Riverbanks/BridgePier/Solid" unique_id=1365126198]
-shape = SubResource("BoxShape3D_gd5gl")
-
-[node name="BridgePier2" type="MeshInstance3D" parent="Riverbanks" unique_id=1549614096]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 282, -5, -800)
-material_override = SubResource("StandardMaterial3D_r7ulg")
-mesh = SubResource("BoxMesh_1m8b6")
-
-[node name="Solid" type="StaticBody3D" parent="Riverbanks/BridgePier2" unique_id=1606198877]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Riverbanks/BridgePier2/Solid" unique_id=2121022876]
-shape = SubResource("BoxShape3D_uhb67")
-
-[node name="BridgePier3" type="MeshInstance3D" parent="Riverbanks" unique_id=995476761]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, -5, -320)
-material_override = SubResource("StandardMaterial3D_r7ulg")
-mesh = SubResource("BoxMesh_wm8j2")
-
-[node name="Solid" type="StaticBody3D" parent="Riverbanks/BridgePier3" unique_id=753381991]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Riverbanks/BridgePier3/Solid" unique_id=157659881]
-shape = SubResource("BoxShape3D_ldwpm")
-
-[node name="BridgePier4" type="MeshInstance3D" parent="Riverbanks" unique_id=838118361]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 212, -5, -320)
-material_override = SubResource("StandardMaterial3D_r7ulg")
-mesh = SubResource("BoxMesh_h1gvr")
-
-[node name="Solid" type="StaticBody3D" parent="Riverbanks/BridgePier4" unique_id=484624583]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Riverbanks/BridgePier4/Solid" unique_id=1800874870]
-shape = SubResource("BoxShape3D_mbnbq")
-
-[node name="BridgePier5" type="MeshInstance3D" parent="Riverbanks" unique_id=1319611158]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 248, -5, 160)
-material_override = SubResource("StandardMaterial3D_r7ulg")
-mesh = SubResource("BoxMesh_olbd7")
-
-[node name="Solid" type="StaticBody3D" parent="Riverbanks/BridgePier5" unique_id=206240597]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Riverbanks/BridgePier5/Solid" unique_id=898543052]
-shape = SubResource("BoxShape3D_7srty")
-
-[node name="BridgePier6" type="MeshInstance3D" parent="Riverbanks" unique_id=1775110825]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 332, -5, 160)
-material_override = SubResource("StandardMaterial3D_r7ulg")
-mesh = SubResource("BoxMesh_cegu4")
-
-[node name="Solid" type="StaticBody3D" parent="Riverbanks/BridgePier6" unique_id=1522607820]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Riverbanks/BridgePier6/Solid" unique_id=2100897731]
-shape = SubResource("BoxShape3D_hjsi3")
-
-[node name="BridgePier7" type="MeshInstance3D" parent="Riverbanks" unique_id=822291]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 218, -5, 640)
-material_override = SubResource("StandardMaterial3D_r7ulg")
-mesh = SubResource("BoxMesh_4cgon")
-
-[node name="Solid" type="StaticBody3D" parent="Riverbanks/BridgePier7" unique_id=1298761576]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Riverbanks/BridgePier7/Solid" unique_id=107347753]
-shape = SubResource("BoxShape3D_13ima")
-
-[node name="BridgePier8" type="MeshInstance3D" parent="Riverbanks" unique_id=2101369560]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 302, -5, 640)
-material_override = SubResource("StandardMaterial3D_r7ulg")
-mesh = SubResource("BoxMesh_t2mev")
-
-[node name="Solid" type="StaticBody3D" parent="Riverbanks/BridgePier8" unique_id=1625703655]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Riverbanks/BridgePier8/Solid" unique_id=438630928]
-shape = SubResource("BoxShape3D_8a4kb")
-
-[node name="BridgePier9" type="MeshInstance3D" parent="Riverbanks" unique_id=1950603637]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 148, -5, 760)
-material_override = SubResource("StandardMaterial3D_r7ulg")
-mesh = SubResource("BoxMesh_d6ke7")
-
-[node name="Solid" type="StaticBody3D" parent="Riverbanks/BridgePier9" unique_id=1094427576]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Riverbanks/BridgePier9/Solid" unique_id=944980808]
-shape = SubResource("BoxShape3D_cidyl")
-
-[node name="BridgePier10" type="MeshInstance3D" parent="Riverbanks" unique_id=1439479135]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 232, -5, 760)
-material_override = SubResource("StandardMaterial3D_r7ulg")
-mesh = SubResource("BoxMesh_hyiov")
-
-[node name="Solid" type="StaticBody3D" parent="Riverbanks/BridgePier10" unique_id=1312576027]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Riverbanks/BridgePier10/Solid" unique_id=440727734]
-shape = SubResource("BoxShape3D_cou3m")
-
 [node name="RiverFoam" type="MeshInstance3D" parent="Riverbanks" unique_id=1921803792]
 material_override = SubResource("ShaderMaterial_yauuv")
 mesh = ExtResource("7_bq4fr")
 
 [node name="Harbor" type="Node3D" parent="." unique_id=385833039]
 
-[node name="WestCargoPier" type="Node3D" parent="Harbor" unique_id=1373167199]
-
-[node name="Deck" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=1443902327]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1067.5, -0.315, 1071)
-material_override = SubResource("ShaderMaterial_vd4yg")
-mesh = SubResource("BoxMesh_y05pk")
-
-[node name="Solid" type="StaticBody3D" parent="Harbor/WestCargoPier/Deck" unique_id=1089012342]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Harbor/WestCargoPier/Deck/Solid" unique_id=2046463401]
-shape = SubResource("BoxShape3D_1vtdv")
-
-[node name="Piling" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=1106097033]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, -5.365, 940)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_jqj77")
-
-[node name="Bollard" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=424477231]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, 0.385, 940)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_eekum")
-
-[node name="MooringBar" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=2064991410]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, 0.63500005, 940)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_mr5m2")
-
-[node name="Piling2" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=237910246]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, -5.365, 940)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_cchq8")
-
-[node name="Bollard2" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=1390411317]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, 0.385, 940)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_u82n4")
-
-[node name="MooringBar2" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=43670008]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, 0.63500005, 940)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_edntm")
-
-[node name="DeckSeam" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=1560077861]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1067.5, 0.045, 940)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_6b5il")
-
-[node name="Piling3" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=487297873]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, -5.365, 956)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_0ofs5")
-
-[node name="Bollard3" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=2139374599]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, 0.385, 956)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_4j0nq")
-
-[node name="MooringBar3" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=1251173602]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, 0.63500005, 956)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_t4iyw")
-
-[node name="Piling4" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=1173341325]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, -5.365, 956)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_obroq")
-
-[node name="Bollard4" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=1246207443]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, 0.385, 956)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_6lyj7")
-
-[node name="MooringBar4" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=164032544]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, 0.63500005, 956)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_k51h5")
-
-[node name="DeckSeam2" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=2222578]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1067.5, 0.045, 956)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_80hsf")
-
-[node name="Piling5" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=1353741972]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, -5.365, 972)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_fouvo")
-
-[node name="Bollard5" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=375801176]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, 0.385, 972)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_af70m")
-
-[node name="MooringBar5" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=1819102248]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, 0.63500005, 972)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_novbt")
-
-[node name="Piling6" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=1946998258]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, -5.365, 972)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_dg373")
-
-[node name="Bollard6" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=1065527465]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, 0.385, 972)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_5i24y")
-
-[node name="MooringBar6" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=236731871]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, 0.63500005, 972)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_2hjtf")
-
-[node name="DeckSeam3" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=2143626427]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1067.5, 0.045, 972)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_dbdi1")
-
-[node name="Piling7" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=1349912533]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, -5.365, 988)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_0ljml")
-
-[node name="Bollard7" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=1218109741]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, 0.385, 988)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_26371")
-
-[node name="MooringBar7" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=1968124765]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, 0.63500005, 988)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_ouk6j")
-
-[node name="Piling8" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=1752419521]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, -5.365, 988)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_u3p7h")
-
-[node name="Bollard8" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=1929018900]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, 0.385, 988)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_ru7dd")
-
-[node name="MooringBar8" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=1234690082]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, 0.63500005, 988)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_ixx3t")
-
-[node name="DeckSeam4" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=152466378]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1067.5, 0.045, 988)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_1d8t3")
-
-[node name="Piling9" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=337957367]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, -5.365, 1004)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_t4k78")
-
-[node name="Bollard9" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=221831871]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, 0.385, 1004)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_kuqka")
-
-[node name="MooringBar9" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=852358278]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, 0.63500005, 1004)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_s4eow")
-
-[node name="Piling10" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=432641137]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, -5.365, 1004)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_flqqw")
-
-[node name="Bollard10" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=1893773564]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, 0.385, 1004)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_50m2o")
-
-[node name="MooringBar10" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=223031765]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, 0.63500005, 1004)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_7373j")
-
-[node name="DeckSeam5" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=1472804376]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1067.5, 0.045, 1004)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_3afdj")
-
-[node name="Piling11" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=421939004]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, -5.365, 1020)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_ots3r")
-
-[node name="Bollard11" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=1290572332]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, 0.385, 1020)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_y15nd")
-
-[node name="MooringBar11" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=661527405]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, 0.63500005, 1020)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_ds36t")
-
-[node name="Piling12" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=1408571143]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, -5.365, 1020)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_rw67c")
-
-[node name="Bollard12" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=1999727697]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, 0.385, 1020)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_4gu3n")
-
-[node name="MooringBar12" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=2145383103]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, 0.63500005, 1020)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_vq45s")
-
-[node name="DeckSeam6" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=161173231]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1067.5, 0.045, 1020)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_rywl7")
-
-[node name="Piling13" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=589178071]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, -5.365, 1036)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_e0nrv")
-
-[node name="Bollard13" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=307505299]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, 0.385, 1036)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_4jtga")
-
-[node name="MooringBar13" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=74706537]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, 0.63500005, 1036)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_xpq1n")
-
-[node name="Piling14" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=1856677055]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, -5.365, 1036)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_ct2mc")
-
-[node name="Bollard14" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=376028306]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, 0.385, 1036)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_juel3")
-
-[node name="MooringBar14" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=1905013401]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, 0.63500005, 1036)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_0t06y")
-
-[node name="DeckSeam7" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=1494988433]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1067.5, 0.045, 1036)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_g0c8u")
-
-[node name="Piling15" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=118140718]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, -5.365, 1052)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_61qo4")
-
-[node name="Bollard15" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=709756792]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, 0.385, 1052)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_f3ack")
-
-[node name="MooringBar15" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=826403949]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, 0.63500005, 1052)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_7uj3u")
-
-[node name="Piling16" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=492579697]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, -5.365, 1052)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_j8jtb")
-
-[node name="Bollard16" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=273904920]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, 0.385, 1052)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_udvaf")
-
-[node name="MooringBar16" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=1680223330]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, 0.63500005, 1052)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_hgtey")
-
-[node name="DeckSeam8" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=1904461457]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1067.5, 0.045, 1052)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_utrv4")
-
-[node name="Piling17" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=1328124424]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, -5.365, 1068)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_5fmpe")
-
-[node name="Bollard17" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=941029030]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, 0.385, 1068)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_68rx0")
-
-[node name="MooringBar17" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=266797669]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, 0.63500005, 1068)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_inro0")
-
-[node name="Piling18" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=53838600]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, -5.365, 1068)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_xiqbf")
-
-[node name="Bollard18" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=1832349730]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, 0.385, 1068)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_j3oi7")
-
-[node name="MooringBar18" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=988368536]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, 0.63500005, 1068)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_8p0vf")
-
-[node name="DeckSeam9" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=533694322]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1067.5, 0.045, 1068)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_1bynh")
-
-[node name="Piling19" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=2014093683]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, -5.365, 1084)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_fqxhn")
-
-[node name="Bollard19" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=814154286]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, 0.385, 1084)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_qp68c")
-
-[node name="MooringBar19" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=149778868]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, 0.63500005, 1084)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_fa4pc")
-
-[node name="Piling20" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=430959164]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, -5.365, 1084)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_rx16a")
-
-[node name="Bollard20" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=245206318]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, 0.385, 1084)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_02b25")
-
-[node name="MooringBar20" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=2144295213]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, 0.63500005, 1084)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_e1cpa")
-
-[node name="DeckSeam10" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=1955382867]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1067.5, 0.045, 1084)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_1i463")
-
-[node name="Piling21" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=830358899]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, -5.365, 1100)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_jco1p")
-
-[node name="Bollard21" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=205160275]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, 0.385, 1100)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_68dip")
-
-[node name="MooringBar21" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=610078552]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, 0.63500005, 1100)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_716fn")
-
-[node name="Piling22" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=978135271]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, -5.365, 1100)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_fyedx")
-
-[node name="Bollard22" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=562233912]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, 0.385, 1100)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_augv3")
-
-[node name="MooringBar22" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=1714826368]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, 0.63500005, 1100)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_fsxfq")
-
-[node name="DeckSeam11" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=806112349]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1067.5, 0.045, 1100)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_1kuto")
-
-[node name="Piling23" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=552435838]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, -5.365, 1116)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_rm3y2")
-
-[node name="Bollard23" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=1167947099]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, 0.385, 1116)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_kux3d")
-
-[node name="MooringBar23" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=1338462714]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, 0.63500005, 1116)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_h3dcl")
-
-[node name="Piling24" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=2138809416]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, -5.365, 1116)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_1f6n6")
-
-[node name="Bollard24" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=1706056183]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, 0.385, 1116)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_f8itv")
-
-[node name="MooringBar24" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=432521151]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, 0.63500005, 1116)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_riglv")
-
-[node name="DeckSeam12" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=190214633]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1067.5, 0.045, 1116)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_ueipm")
-
-[node name="Piling25" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=1966627363]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, -5.365, 1132)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_r3us6")
-
-[node name="Bollard25" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=1513059718]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, 0.385, 1132)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_7ruaw")
-
-[node name="MooringBar25" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=215501713]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, 0.63500005, 1132)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_18x2v")
-
-[node name="Piling26" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=2081711451]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, -5.365, 1132)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_jufj2")
-
-[node name="Bollard26" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=624616071]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, 0.385, 1132)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_3b68b")
-
-[node name="MooringBar26" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=749058650]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, 0.63500005, 1132)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_a64sx")
-
-[node name="DeckSeam13" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=2139742022]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1067.5, 0.045, 1132)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_1ch0s")
-
-[node name="Piling27" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=1897812236]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, -5.365, 1148)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_7xits")
-
-[node name="Bollard27" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=1975199887]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, 0.385, 1148)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_el25n")
-
-[node name="MooringBar27" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=935831796]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, 0.63500005, 1148)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_nhcya")
-
-[node name="Piling28" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=779596207]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, -5.365, 1148)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_sagk3")
-
-[node name="Bollard28" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=515643587]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, 0.385, 1148)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_3kf6i")
-
-[node name="MooringBar28" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=393047239]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, 0.63500005, 1148)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_m2f7y")
-
-[node name="DeckSeam14" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=539004365]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1067.5, 0.045, 1148)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_ctk8x")
-
-[node name="Piling29" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=328099671]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, -5.365, 1164)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_58u0s")
-
-[node name="Bollard29" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=344459942]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, 0.385, 1164)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_d3f8d")
-
-[node name="MooringBar29" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=2043941278]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, 0.63500005, 1164)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_btbdm")
-
-[node name="Piling30" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=364650951]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, -5.365, 1164)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_p464y")
-
-[node name="Bollard30" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=767966349]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, 0.385, 1164)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_v6ivt")
-
-[node name="MooringBar30" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=442443165]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, 0.63500005, 1164)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_pgfpa")
-
-[node name="DeckSeam15" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=1444917909]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1067.5, 0.045, 1164)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_py7s1")
-
-[node name="Piling31" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=713976889]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, -5.365, 1180)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_qkl13")
-
-[node name="Bollard31" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=509805580]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, 0.385, 1180)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_cv58r")
-
-[node name="MooringBar31" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=1626108806]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, 0.63500005, 1180)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_374e6")
-
-[node name="Piling32" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=1563607816]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, -5.365, 1180)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_meaus")
-
-[node name="Bollard32" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=2015085553]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, 0.385, 1180)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_o8x7w")
-
-[node name="MooringBar32" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=1045275618]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, 0.63500005, 1180)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_6e5jo")
-
-[node name="DeckSeam16" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=911319958]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1067.5, 0.045, 1180)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_7jkcw")
-
-[node name="Piling33" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=1702168013]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, -5.365, 1196)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_36p74")
-
-[node name="Bollard33" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=868655091]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, 0.385, 1196)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_v5eje")
-
-[node name="MooringBar33" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=1460602967]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, 0.63500005, 1196)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_6hvfu")
-
-[node name="Piling34" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=1491576054]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, -5.365, 1196)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_gqxw3")
-
-[node name="Bollard34" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=1328402204]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, 0.385, 1196)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_saumj")
-
-[node name="MooringBar34" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=1834470686]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1079.1, 0.63500005, 1196)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_780ng")
-
-[node name="DeckSeam17" type="MeshInstance3D" parent="Harbor/WestCargoPier" unique_id=2106789386]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1067.5, 0.045, 1196)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_lneep")
-
-[node name="HarborLamp" type="Node3D" parent="Harbor/WestCargoPier" unique_id=1450562275]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1056.8, 0.035, 954)
-
-[node name="Post" type="MeshInstance3D" parent="Harbor/WestCargoPier/HarborLamp" unique_id=594246502]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_ytr28")
-
-[node name="Housing" type="MeshInstance3D" parent="Harbor/WestCargoPier/HarborLamp" unique_id=1894329790]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_i2ca7")
-
-[node name="Lens" type="MeshInstance3D" parent="Harbor/WestCargoPier/HarborLamp" unique_id=381329501]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.9, 0)
-material_override = SubResource("StandardMaterial3D_yjn16")
-mesh = SubResource("BoxMesh_fcb7y")
-
-[node name="Light" type="OmniLight3D" parent="Harbor/WestCargoPier/HarborLamp" unique_id=7804468]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.7, 0)
-light_color = Color(0.6784314, 0.8352941, 0.93333334, 1)
-light_energy = 3.5
-distance_fade_enabled = true
-distance_fade_begin = 150.0
-distance_fade_length = 100.0
-omni_range = 19.0
-
-[node name="HarborLamp2" type="Node3D" parent="Harbor/WestCargoPier" unique_id=800139385]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1056.8, 0.035, 1004)
-
-[node name="Post" type="MeshInstance3D" parent="Harbor/WestCargoPier/HarborLamp2" unique_id=1797493781]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_h12d4")
-
-[node name="Housing" type="MeshInstance3D" parent="Harbor/WestCargoPier/HarborLamp2" unique_id=1324983506]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_7kdb0")
-
-[node name="Lens" type="MeshInstance3D" parent="Harbor/WestCargoPier/HarborLamp2" unique_id=1494897561]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.9, 0)
-material_override = SubResource("StandardMaterial3D_yjn16")
-mesh = SubResource("BoxMesh_kvyal")
-
-[node name="Light" type="OmniLight3D" parent="Harbor/WestCargoPier/HarborLamp2" unique_id=1329607675]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.7, 0)
-light_color = Color(0.6784314, 0.8352941, 0.93333334, 1)
-light_energy = 3.5
-distance_fade_enabled = true
-distance_fade_begin = 150.0
-distance_fade_length = 100.0
-omni_range = 19.0
-
-[node name="HarborLamp3" type="Node3D" parent="Harbor/WestCargoPier" unique_id=1018905180]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1056.8, 0.035, 1054)
-
-[node name="Post" type="MeshInstance3D" parent="Harbor/WestCargoPier/HarborLamp3" unique_id=1927628551]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_jxryr")
-
-[node name="Housing" type="MeshInstance3D" parent="Harbor/WestCargoPier/HarborLamp3" unique_id=1600138406]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_e0mda")
-
-[node name="Lens" type="MeshInstance3D" parent="Harbor/WestCargoPier/HarborLamp3" unique_id=151829262]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.9, 0)
-material_override = SubResource("StandardMaterial3D_yjn16")
-mesh = SubResource("BoxMesh_08ncq")
-
-[node name="Light" type="OmniLight3D" parent="Harbor/WestCargoPier/HarborLamp3" unique_id=340467409]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.7, 0)
-light_color = Color(0.6784314, 0.8352941, 0.93333334, 1)
-light_energy = 3.5
-distance_fade_enabled = true
-distance_fade_begin = 150.0
-distance_fade_length = 100.0
-omni_range = 19.0
-
-[node name="HarborLamp4" type="Node3D" parent="Harbor/WestCargoPier" unique_id=136265158]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1056.8, 0.035, 1104)
-
-[node name="Post" type="MeshInstance3D" parent="Harbor/WestCargoPier/HarborLamp4" unique_id=1738393408]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_pgqw6")
-
-[node name="Housing" type="MeshInstance3D" parent="Harbor/WestCargoPier/HarborLamp4" unique_id=922080419]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_ljybq")
-
-[node name="Lens" type="MeshInstance3D" parent="Harbor/WestCargoPier/HarborLamp4" unique_id=1318486509]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.9, 0)
-material_override = SubResource("StandardMaterial3D_yjn16")
-mesh = SubResource("BoxMesh_r0vev")
-
-[node name="Light" type="OmniLight3D" parent="Harbor/WestCargoPier/HarborLamp4" unique_id=2088863266]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.7, 0)
-light_color = Color(0.6784314, 0.8352941, 0.93333334, 1)
-light_energy = 3.5
-distance_fade_enabled = true
-distance_fade_begin = 150.0
-distance_fade_length = 100.0
-omni_range = 19.0
-
-[node name="HarborLamp5" type="Node3D" parent="Harbor/WestCargoPier" unique_id=309779550]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1056.8, 0.035, 1154)
-
-[node name="Post" type="MeshInstance3D" parent="Harbor/WestCargoPier/HarborLamp5" unique_id=1192134622]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_ywvb5")
-
-[node name="Housing" type="MeshInstance3D" parent="Harbor/WestCargoPier/HarborLamp5" unique_id=849206633]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_oy8mi")
-
-[node name="Lens" type="MeshInstance3D" parent="Harbor/WestCargoPier/HarborLamp5" unique_id=317104030]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.9, 0)
-material_override = SubResource("StandardMaterial3D_yjn16")
-mesh = SubResource("BoxMesh_cqtcl")
-
-[node name="Light" type="OmniLight3D" parent="Harbor/WestCargoPier/HarborLamp5" unique_id=1019677056]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.7, 0)
-light_color = Color(0.6784314, 0.8352941, 0.93333334, 1)
-light_energy = 3.5
-distance_fade_enabled = true
-distance_fade_begin = 150.0
-distance_fade_length = 100.0
-omni_range = 19.0
-
-[node name="HarborLamp6" type="Node3D" parent="Harbor/WestCargoPier" unique_id=763468113]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1056.8, 0.035, 1204)
-
-[node name="Post" type="MeshInstance3D" parent="Harbor/WestCargoPier/HarborLamp6" unique_id=1238613471]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_b1qa3")
-
-[node name="Housing" type="MeshInstance3D" parent="Harbor/WestCargoPier/HarborLamp6" unique_id=1119895258]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_dv66j")
-
-[node name="Lens" type="MeshInstance3D" parent="Harbor/WestCargoPier/HarborLamp6" unique_id=2069560683]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.9, 0)
-material_override = SubResource("StandardMaterial3D_yjn16")
-mesh = SubResource("BoxMesh_6rpmx")
-
-[node name="Light" type="OmniLight3D" parent="Harbor/WestCargoPier/HarborLamp6" unique_id=2120832575]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.7, 0)
-light_color = Color(0.6784314, 0.8352941, 0.93333334, 1)
-light_energy = 3.5
-distance_fade_enabled = true
-distance_fade_begin = 150.0
-distance_fade_length = 100.0
-omni_range = 19.0
-
-[node name="EastCargoPier" type="Node3D" parent="Harbor" unique_id=1780302417]
-
-[node name="Deck" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=182465192]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1202.5, -0.315, 1071)
-material_override = SubResource("ShaderMaterial_vd4yg")
-mesh = SubResource("BoxMesh_w2hiq")
-
-[node name="Solid" type="StaticBody3D" parent="Harbor/EastCargoPier/Deck" unique_id=1610416504]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Harbor/EastCargoPier/Deck/Solid" unique_id=1559883581]
-shape = SubResource("BoxShape3D_mngh1")
-
-[node name="Piling" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1087361302]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, -5.365, 940)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_inpkq")
-
-[node name="Bollard" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=351564110]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, 0.385, 940)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_od6gk")
-
-[node name="MooringBar" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1786360953]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, 0.63500005, 940)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_pn0ux")
-
-[node name="Piling2" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1382631690]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, -5.365, 940)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_1nrb1")
-
-[node name="Bollard2" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=117014543]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, 0.385, 940)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_uitn1")
-
-[node name="MooringBar2" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=869259645]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, 0.63500005, 940)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_ska03")
-
-[node name="DeckSeam" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=983637204]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1202.5, 0.045, 940)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_ulis3")
-
-[node name="Piling3" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=682216306]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, -5.365, 956)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_rug0t")
-
-[node name="Bollard3" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1271302044]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, 0.385, 956)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_v4mgq")
-
-[node name="MooringBar3" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1746228325]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, 0.63500005, 956)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_nuji1")
-
-[node name="Piling4" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=951833487]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, -5.365, 956)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_akbq1")
-
-[node name="Bollard4" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=945805093]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, 0.385, 956)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_hy260")
-
-[node name="MooringBar4" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=205614539]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, 0.63500005, 956)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_5jbpw")
-
-[node name="DeckSeam2" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1091633641]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1202.5, 0.045, 956)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_142us")
-
-[node name="Piling5" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1454707355]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, -5.365, 972)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_p4ulx")
-
-[node name="Bollard5" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=417945067]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, 0.385, 972)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_wwvjh")
-
-[node name="MooringBar5" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1218881029]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, 0.63500005, 972)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_2o36v")
-
-[node name="Piling6" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1346429131]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, -5.365, 972)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_ha0a1")
-
-[node name="Bollard6" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=969307039]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, 0.385, 972)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_fy18q")
-
-[node name="MooringBar6" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=378084160]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, 0.63500005, 972)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_yp302")
-
-[node name="DeckSeam3" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=528706152]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1202.5, 0.045, 972)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_exeef")
-
-[node name="Piling7" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1304753475]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, -5.365, 988)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_5gbc8")
-
-[node name="Bollard7" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=667194413]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, 0.385, 988)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_di0pt")
-
-[node name="MooringBar7" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1479230296]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, 0.63500005, 988)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_euv15")
-
-[node name="Piling8" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=350232663]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, -5.365, 988)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_qn4ig")
-
-[node name="Bollard8" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=2038763352]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, 0.385, 988)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_pibrw")
-
-[node name="MooringBar8" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=2025400560]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, 0.63500005, 988)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_3xh57")
-
-[node name="DeckSeam4" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1595941521]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1202.5, 0.045, 988)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_2qlmc")
-
-[node name="Piling9" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1040961735]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, -5.365, 1004)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_eft8w")
-
-[node name="Bollard9" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=191393046]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, 0.385, 1004)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_nws0a")
-
-[node name="MooringBar9" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=144560877]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, 0.63500005, 1004)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_nc7ll")
-
-[node name="Piling10" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1449246617]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, -5.365, 1004)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_ffcuv")
-
-[node name="Bollard10" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=874124539]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, 0.385, 1004)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_e4svh")
-
-[node name="MooringBar10" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1062557447]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, 0.63500005, 1004)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_fe6q5")
-
-[node name="DeckSeam5" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=723456057]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1202.5, 0.045, 1004)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_1n4o1")
-
-[node name="Piling11" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1602968222]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, -5.365, 1020)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_j6r2m")
-
-[node name="Bollard11" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=397898817]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, 0.385, 1020)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_brpip")
-
-[node name="MooringBar11" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1931599043]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, 0.63500005, 1020)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_s4vj6")
-
-[node name="Piling12" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1343287114]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, -5.365, 1020)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_r50pk")
-
-[node name="Bollard12" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=35758822]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, 0.385, 1020)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_444l6")
-
-[node name="MooringBar12" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=325776548]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, 0.63500005, 1020)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_kdquc")
-
-[node name="DeckSeam6" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=912212275]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1202.5, 0.045, 1020)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_5nsbo")
-
-[node name="Piling13" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1641235510]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, -5.365, 1036)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_xg1v0")
-
-[node name="Bollard13" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1840953057]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, 0.385, 1036)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_5b7u1")
-
-[node name="MooringBar13" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=2004873620]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, 0.63500005, 1036)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_qf7ry")
-
-[node name="Piling14" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=8995842]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, -5.365, 1036)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_gf04w")
-
-[node name="Bollard14" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1829265883]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, 0.385, 1036)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_xu1rj")
-
-[node name="MooringBar14" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1496535405]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, 0.63500005, 1036)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_lx7y2")
-
-[node name="DeckSeam7" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=138117582]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1202.5, 0.045, 1036)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_vgl6p")
-
-[node name="Piling15" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1594702742]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, -5.365, 1052)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_td5q5")
-
-[node name="Bollard15" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1278166590]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, 0.385, 1052)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_x8yrq")
-
-[node name="MooringBar15" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1370796132]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, 0.63500005, 1052)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_mnvw4")
-
-[node name="Piling16" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=114415870]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, -5.365, 1052)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_4j253")
-
-[node name="Bollard16" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1047647287]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, 0.385, 1052)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_w4tkh")
-
-[node name="MooringBar16" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1842065000]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, 0.63500005, 1052)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_2nyq6")
-
-[node name="DeckSeam8" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=373906181]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1202.5, 0.045, 1052)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_liobo")
-
-[node name="Piling17" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=796932504]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, -5.365, 1068)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_hpksr")
-
-[node name="Bollard17" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=2078464806]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, 0.385, 1068)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_y2fhm")
-
-[node name="MooringBar17" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=785317143]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, 0.63500005, 1068)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_mms2i")
-
-[node name="Piling18" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1866007498]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, -5.365, 1068)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_t0spb")
-
-[node name="Bollard18" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=140426198]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, 0.385, 1068)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_xyfu1")
-
-[node name="MooringBar18" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1066311739]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, 0.63500005, 1068)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_pfs40")
-
-[node name="DeckSeam9" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1660471551]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1202.5, 0.045, 1068)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_6b6h6")
-
-[node name="Piling19" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=362996816]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, -5.365, 1084)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_wo1vp")
-
-[node name="Bollard19" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=995565316]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, 0.385, 1084)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_jk7gu")
-
-[node name="MooringBar19" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=112223646]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, 0.63500005, 1084)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_sod3f")
-
-[node name="Piling20" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=418808055]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, -5.365, 1084)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_wqmuo")
-
-[node name="Bollard20" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=522325355]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, 0.385, 1084)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_c28vw")
-
-[node name="MooringBar20" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=886875253]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, 0.63500005, 1084)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_vuqk0")
-
-[node name="DeckSeam10" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=986816254]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1202.5, 0.045, 1084)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_vcay2")
-
-[node name="Piling21" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=2124433110]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, -5.365, 1100)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_t5n77")
-
-[node name="Bollard21" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=367057171]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, 0.385, 1100)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_bffem")
-
-[node name="MooringBar21" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=650560271]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, 0.63500005, 1100)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_h5w78")
-
-[node name="Piling22" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=381417371]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, -5.365, 1100)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_yykwn")
-
-[node name="Bollard22" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=686650856]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, 0.385, 1100)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_bohcy")
-
-[node name="MooringBar22" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=638336493]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, 0.63500005, 1100)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_cf2t6")
-
-[node name="DeckSeam11" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=2006473060]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1202.5, 0.045, 1100)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_ro7lu")
-
-[node name="Piling23" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1903905899]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, -5.365, 1116)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_uiuet")
-
-[node name="Bollard23" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1800995325]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, 0.385, 1116)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_b8ex1")
-
-[node name="MooringBar23" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1924821009]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, 0.63500005, 1116)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_vmnp1")
-
-[node name="Piling24" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=582203419]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, -5.365, 1116)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_gif8p")
-
-[node name="Bollard24" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1125188285]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, 0.385, 1116)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_guurw")
-
-[node name="MooringBar24" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1260656941]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, 0.63500005, 1116)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_n4hlc")
-
-[node name="DeckSeam12" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=394229520]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1202.5, 0.045, 1116)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_n7mjj")
-
-[node name="Piling25" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1520849722]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, -5.365, 1132)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_vbyoc")
-
-[node name="Bollard25" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=2117142788]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, 0.385, 1132)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_ceg8w")
-
-[node name="MooringBar25" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1190016745]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, 0.63500005, 1132)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_bgd7u")
-
-[node name="Piling26" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=269023490]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, -5.365, 1132)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_56fyc")
-
-[node name="Bollard26" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1125806056]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, 0.385, 1132)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_f5vhp")
-
-[node name="MooringBar26" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1625580494]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, 0.63500005, 1132)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_2tvwr")
-
-[node name="DeckSeam13" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1141371051]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1202.5, 0.045, 1132)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_btwek")
-
-[node name="Piling27" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=184939482]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, -5.365, 1148)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_ols2w")
-
-[node name="Bollard27" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1208103887]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, 0.385, 1148)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_5qeix")
-
-[node name="MooringBar27" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=197142009]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, 0.63500005, 1148)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_qw1s3")
-
-[node name="Piling28" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1779063900]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, -5.365, 1148)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_k64jm")
-
-[node name="Bollard28" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1630713881]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, 0.385, 1148)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_twg8i")
-
-[node name="MooringBar28" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1056364994]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, 0.63500005, 1148)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_dd34t")
-
-[node name="DeckSeam14" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1788693573]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1202.5, 0.045, 1148)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_8h6up")
-
-[node name="Piling29" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1279164682]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, -5.365, 1164)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_qucd5")
-
-[node name="Bollard29" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=237276593]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, 0.385, 1164)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_och73")
-
-[node name="MooringBar29" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=2133334631]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, 0.63500005, 1164)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_pilkj")
-
-[node name="Piling30" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1663166600]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, -5.365, 1164)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_h6dv6")
-
-[node name="Bollard30" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1444987429]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, 0.385, 1164)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_cecjq")
-
-[node name="MooringBar30" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1403921341]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, 0.63500005, 1164)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_5jfsa")
-
-[node name="DeckSeam15" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=203513154]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1202.5, 0.045, 1164)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_vx0kd")
-
-[node name="Piling31" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1897179362]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, -5.365, 1180)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_86l3f")
-
-[node name="Bollard31" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=468115534]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, 0.385, 1180)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_f4x1x")
-
-[node name="MooringBar31" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=503983264]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, 0.63500005, 1180)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_l1t86")
-
-[node name="Piling32" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=158560981]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, -5.365, 1180)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_yijpn")
-
-[node name="Bollard32" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=294214712]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, 0.385, 1180)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_dbei1")
-
-[node name="MooringBar32" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1211345057]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, 0.63500005, 1180)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_an6cu")
-
-[node name="DeckSeam16" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=963834202]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1202.5, 0.045, 1180)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_nd8tx")
-
-[node name="Piling33" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=282175524]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, -5.365, 1196)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_4pfjo")
-
-[node name="Bollard33" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=2032878973]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, 0.385, 1196)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_k63yw")
-
-[node name="MooringBar33" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1516786400]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1190.9, 0.63500005, 1196)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_vj7f4")
-
-[node name="Piling34" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1346233268]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, -5.365, 1196)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_vv5np")
-
-[node name="Bollard34" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=152713766]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, 0.385, 1196)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_nsbig")
-
-[node name="MooringBar34" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1850775579]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, 0.63500005, 1196)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_1i3ib")
-
-[node name="DeckSeam17" type="MeshInstance3D" parent="Harbor/EastCargoPier" unique_id=1987989063]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1202.5, 0.045, 1196)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_qdtep")
-
-[node name="HarborLamp" type="Node3D" parent="Harbor/EastCargoPier" unique_id=1200207166]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1191.8, 0.035, 954)
-
-[node name="Post" type="MeshInstance3D" parent="Harbor/EastCargoPier/HarborLamp" unique_id=1157816319]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_jm4bg")
-
-[node name="Housing" type="MeshInstance3D" parent="Harbor/EastCargoPier/HarborLamp" unique_id=1613180027]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_7qqhd")
-
-[node name="Lens" type="MeshInstance3D" parent="Harbor/EastCargoPier/HarborLamp" unique_id=30811400]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.9, 0)
-material_override = SubResource("StandardMaterial3D_yjn16")
-mesh = SubResource("BoxMesh_yhvji")
-
-[node name="Light" type="OmniLight3D" parent="Harbor/EastCargoPier/HarborLamp" unique_id=1042357588]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.7, 0)
-light_color = Color(0.6784314, 0.8352941, 0.93333334, 1)
-light_energy = 3.5
-distance_fade_enabled = true
-distance_fade_begin = 150.0
-distance_fade_length = 100.0
-omni_range = 19.0
-
-[node name="HarborLamp2" type="Node3D" parent="Harbor/EastCargoPier" unique_id=668261643]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1191.8, 0.035, 1004)
-
-[node name="Post" type="MeshInstance3D" parent="Harbor/EastCargoPier/HarborLamp2" unique_id=1223468238]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_owatm")
-
-[node name="Housing" type="MeshInstance3D" parent="Harbor/EastCargoPier/HarborLamp2" unique_id=1518145748]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_n3sap")
-
-[node name="Lens" type="MeshInstance3D" parent="Harbor/EastCargoPier/HarborLamp2" unique_id=2020536163]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.9, 0)
-material_override = SubResource("StandardMaterial3D_yjn16")
-mesh = SubResource("BoxMesh_eiqjn")
-
-[node name="Light" type="OmniLight3D" parent="Harbor/EastCargoPier/HarborLamp2" unique_id=2082496477]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.7, 0)
-light_color = Color(0.6784314, 0.8352941, 0.93333334, 1)
-light_energy = 3.5
-distance_fade_enabled = true
-distance_fade_begin = 150.0
-distance_fade_length = 100.0
-omni_range = 19.0
-
-[node name="HarborLamp3" type="Node3D" parent="Harbor/EastCargoPier" unique_id=1667764045]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1191.8, 0.035, 1054)
-
-[node name="Post" type="MeshInstance3D" parent="Harbor/EastCargoPier/HarborLamp3" unique_id=1912629226]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_qqmon")
-
-[node name="Housing" type="MeshInstance3D" parent="Harbor/EastCargoPier/HarborLamp3" unique_id=385395405]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_kqh1r")
-
-[node name="Lens" type="MeshInstance3D" parent="Harbor/EastCargoPier/HarborLamp3" unique_id=1571140990]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.9, 0)
-material_override = SubResource("StandardMaterial3D_yjn16")
-mesh = SubResource("BoxMesh_l45ps")
-
-[node name="Light" type="OmniLight3D" parent="Harbor/EastCargoPier/HarborLamp3" unique_id=1736859910]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.7, 0)
-light_color = Color(0.6784314, 0.8352941, 0.93333334, 1)
-light_energy = 3.5
-distance_fade_enabled = true
-distance_fade_begin = 150.0
-distance_fade_length = 100.0
-omni_range = 19.0
-
-[node name="HarborLamp4" type="Node3D" parent="Harbor/EastCargoPier" unique_id=676633034]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1191.8, 0.035, 1104)
-
-[node name="Post" type="MeshInstance3D" parent="Harbor/EastCargoPier/HarborLamp4" unique_id=1824621156]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_ydpm1")
-
-[node name="Housing" type="MeshInstance3D" parent="Harbor/EastCargoPier/HarborLamp4" unique_id=1744145344]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_ojji6")
-
-[node name="Lens" type="MeshInstance3D" parent="Harbor/EastCargoPier/HarborLamp4" unique_id=1092154975]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.9, 0)
-material_override = SubResource("StandardMaterial3D_yjn16")
-mesh = SubResource("BoxMesh_cqjll")
-
-[node name="Light" type="OmniLight3D" parent="Harbor/EastCargoPier/HarborLamp4" unique_id=1850281327]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.7, 0)
-light_color = Color(0.6784314, 0.8352941, 0.93333334, 1)
-light_energy = 3.5
-distance_fade_enabled = true
-distance_fade_begin = 150.0
-distance_fade_length = 100.0
-omni_range = 19.0
-
-[node name="HarborLamp5" type="Node3D" parent="Harbor/EastCargoPier" unique_id=42770023]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1191.8, 0.035, 1154)
-
-[node name="Post" type="MeshInstance3D" parent="Harbor/EastCargoPier/HarborLamp5" unique_id=587407121]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_7tsex")
-
-[node name="Housing" type="MeshInstance3D" parent="Harbor/EastCargoPier/HarborLamp5" unique_id=2019066868]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_g7bh0")
-
-[node name="Lens" type="MeshInstance3D" parent="Harbor/EastCargoPier/HarborLamp5" unique_id=313418987]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.9, 0)
-material_override = SubResource("StandardMaterial3D_yjn16")
-mesh = SubResource("BoxMesh_0vy2p")
-
-[node name="Light" type="OmniLight3D" parent="Harbor/EastCargoPier/HarborLamp5" unique_id=1782002237]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.7, 0)
-light_color = Color(0.6784314, 0.8352941, 0.93333334, 1)
-light_energy = 3.5
-distance_fade_enabled = true
-distance_fade_begin = 150.0
-distance_fade_length = 100.0
-omni_range = 19.0
-
-[node name="HarborLamp6" type="Node3D" parent="Harbor/EastCargoPier" unique_id=874869853]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1191.8, 0.035, 1204)
-
-[node name="Post" type="MeshInstance3D" parent="Harbor/EastCargoPier/HarborLamp6" unique_id=1133157195]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_hd3qd")
-
-[node name="Housing" type="MeshInstance3D" parent="Harbor/EastCargoPier/HarborLamp6" unique_id=1574261281]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_bgbi3")
-
-[node name="Lens" type="MeshInstance3D" parent="Harbor/EastCargoPier/HarborLamp6" unique_id=254835269]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.9, 0)
-material_override = SubResource("StandardMaterial3D_yjn16")
-mesh = SubResource("BoxMesh_ilr00")
-
-[node name="Light" type="OmniLight3D" parent="Harbor/EastCargoPier/HarborLamp6" unique_id=370148876]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.7, 0)
-light_color = Color(0.6784314, 0.8352941, 0.93333334, 1)
-light_energy = 3.5
-distance_fade_enabled = true
-distance_fade_begin = 150.0
-distance_fade_length = 100.0
-omni_range = 19.0
-
-[node name="OuterBoardwalk" type="Node3D" parent="Harbor" unique_id=1361620879]
-
-[node name="Deck" type="MeshInstance3D" parent="Harbor/OuterBoardwalk" unique_id=247994709]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1135, -0.315, 1198)
-material_override = SubResource("ShaderMaterial_vd4yg")
-mesh = SubResource("BoxMesh_g8v0h")
-
-[node name="Solid" type="StaticBody3D" parent="Harbor/OuterBoardwalk/Deck" unique_id=272434466]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Harbor/OuterBoardwalk/Deck/Solid" unique_id=2079832031]
-shape = SubResource("BoxShape3D_5cy0t")
-
-[node name="Piling" type="MeshInstance3D" parent="Harbor/OuterBoardwalk" unique_id=120950893]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, -5.365, 1194)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_qa0vf")
-
-[node name="Bollard" type="MeshInstance3D" parent="Harbor/OuterBoardwalk" unique_id=61372951]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, 0.385, 1194)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_rhajo")
-
-[node name="MooringBar" type="MeshInstance3D" parent="Harbor/OuterBoardwalk" unique_id=1110662045]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.9, 0.63500005, 1194)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_ix8w6")
-
-[node name="Piling2" type="MeshInstance3D" parent="Harbor/OuterBoardwalk" unique_id=494915731]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, -5.365, 1194)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_hvmri")
-
-[node name="Bollard2" type="MeshInstance3D" parent="Harbor/OuterBoardwalk" unique_id=2015350414]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, 0.385, 1194)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_rbvkp")
-
-[node name="MooringBar2" type="MeshInstance3D" parent="Harbor/OuterBoardwalk" unique_id=924559632]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1214.1, 0.63500005, 1194)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_rqxeu")
-
-[node name="DeckSeam" type="MeshInstance3D" parent="Harbor/OuterBoardwalk" unique_id=965799143]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1135, 0.045, 1194)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_f52bk")
-
-[node name="FishingFinger" type="Node3D" parent="Harbor" unique_id=1558562646]
-
-[node name="Deck" type="MeshInstance3D" parent="Harbor/FishingFinger" unique_id=1540152986]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1114.5, -0.315, 1038)
-material_override = SubResource("ShaderMaterial_vd4yg")
-mesh = SubResource("BoxMesh_iicb4")
-
-[node name="Solid" type="StaticBody3D" parent="Harbor/FishingFinger/Deck" unique_id=1150018302]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Harbor/FishingFinger/Deck/Solid" unique_id=739069370]
-shape = SubResource("BoxShape3D_ljmyp")
-
-[node name="Piling" type="MeshInstance3D" parent="Harbor/FishingFinger" unique_id=1926546781]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1080.9, -5.365, 1036)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_qbnrq")
-
-[node name="Bollard" type="MeshInstance3D" parent="Harbor/FishingFinger" unique_id=437080272]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1080.9, 0.385, 1036)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_it2gv")
-
-[node name="MooringBar" type="MeshInstance3D" parent="Harbor/FishingFinger" unique_id=892151888]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1080.9, 0.63500005, 1036)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_jhmxs")
-
-[node name="Piling2" type="MeshInstance3D" parent="Harbor/FishingFinger" unique_id=1435211042]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1148.1, -5.365, 1036)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_3uoxy")
-
-[node name="Bollard2" type="MeshInstance3D" parent="Harbor/FishingFinger" unique_id=717456083]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1148.1, 0.385, 1036)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_yvj7o")
-
-[node name="MooringBar2" type="MeshInstance3D" parent="Harbor/FishingFinger" unique_id=149641429]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1148.1, 0.63500005, 1036)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_f0gkx")
-
-[node name="DeckSeam" type="MeshInstance3D" parent="Harbor/FishingFinger" unique_id=221883665]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1114.5, 0.045, 1036)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_s8qwg")
-
-[node name="FerryFinger" type="Node3D" parent="Harbor" unique_id=1153546427]
-
-[node name="Deck" type="MeshInstance3D" parent="Harbor/FerryFinger" unique_id=873343697]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1160, -0.315, 1117)
-material_override = SubResource("ShaderMaterial_vd4yg")
-mesh = SubResource("BoxMesh_qo7gg")
-
-[node name="Solid" type="StaticBody3D" parent="Harbor/FerryFinger/Deck" unique_id=625732319]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Harbor/FerryFinger/Deck/Solid" unique_id=1831867455]
-shape = SubResource("BoxShape3D_2uloe")
-
-[node name="Piling" type="MeshInstance3D" parent="Harbor/FerryFinger" unique_id=1755820828]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1130.9, -5.365, 1114)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_ysoqh")
-
-[node name="Bollard" type="MeshInstance3D" parent="Harbor/FerryFinger" unique_id=2058908995]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1130.9, 0.385, 1114)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_vrcww")
-
-[node name="MooringBar" type="MeshInstance3D" parent="Harbor/FerryFinger" unique_id=313972097]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1130.9, 0.63500005, 1114)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_iuuu7")
-
-[node name="Piling2" type="MeshInstance3D" parent="Harbor/FerryFinger" unique_id=1920314793]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1189.1, -5.365, 1114)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("CylinderMesh_41leo")
-
-[node name="Bollard2" type="MeshInstance3D" parent="Harbor/FerryFinger" unique_id=1785770146]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1189.1, 0.385, 1114)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_8ryvd")
-
-[node name="MooringBar2" type="MeshInstance3D" parent="Harbor/FerryFinger" unique_id=2115213507]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1189.1, 0.63500005, 1114)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_74hvu")
-
-[node name="DeckSeam" type="MeshInstance3D" parent="Harbor/FerryFinger" unique_id=727338777]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1160, 0.045, 1114)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("BoxMesh_8hhy5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 [node name="QuayWall" type="MeshInstance3D" parent="Harbor" unique_id=92835025]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1010, -5, 870)
@@ -30572,517 +29146,110 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18, -82)
 
 [node name="Boats" type="Node3D" parent="." unique_id=174012177]
 
-[node name="HarborTug" type="AnimatableBody3D" parent="Boats" unique_id=2045402524]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1091, -1.4, 980)
-sync_to_physics = false
-metadata/kind = "tug"
-
-[node name="Hull" type="MeshInstance3D" parent="Boats/HarborTug" unique_id=591083001]
-material_override = SubResource("StandardMaterial3D_qsrla")
-mesh = SubResource("ArrayMesh_7lk4e")
-
-[node name="HullCollision" type="CollisionShape3D" parent="Boats/HarborTug" unique_id=630770370]
-shape = SubResource("ConvexPolygonShape3D_87oer")
-
-[node name="Deck" type="MeshInstance3D" parent="Boats/HarborTug" unique_id=101134463]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("BoxMesh_fwwbu")
-
-[node name="Wheelhouse" type="MeshInstance3D" parent="Boats/HarborTug" unique_id=409686617]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4, -2)
-material_override = SubResource("StandardMaterial3D_6k1y5")
-mesh = SubResource("BoxMesh_w02ph")
-
-[node name="FrontGlass" type="MeshInstance3D" parent="Boats/HarborTug/Wheelhouse" unique_id=220570046]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 2.605)
-material_override = SubResource("StandardMaterial3D_u1c0x")
-mesh = SubResource("BoxMesh_fac33")
-
-[node name="SideGlass" type="MeshInstance3D" parent="Boats/HarborTug/Wheelhouse" unique_id=827870957]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.45, 0.5, 0)
-material_override = SubResource("StandardMaterial3D_u1c0x")
-mesh = SubResource("BoxMesh_kta1b")
-
-[node name="SideGlass2" type="MeshInstance3D" parent="Boats/HarborTug/Wheelhouse" unique_id=1057505603]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.45, 0.5, 0)
-material_override = SubResource("StandardMaterial3D_u1c0x")
-mesh = SubResource("BoxMesh_lx86q")
-
-[node name="Roof" type="MeshInstance3D" parent="Boats/HarborTug" unique_id=2133306395]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.2, -2)
-material_override = SubResource("StandardMaterial3D_1wfcn")
-mesh = SubResource("BoxMesh_g1uk2")
-
-[node name="Antenna" type="MeshInstance3D" parent="Boats/HarborTug" unique_id=25490222]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 0, 6.6, -2)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_undv3")
-
-[node name="Exhaust" type="MeshInstance3D" parent="Boats/HarborTug" unique_id=650622625]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -4)
-material_override = SubResource("StandardMaterial3D_qsrla")
-mesh = SubResource("CylinderMesh_bas0v")
-
-[node name="TireFender" type="MeshInstance3D" parent="Boats/HarborTug" unique_id=38455858]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -3.5, 1, -6)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("TorusMesh_3gwxe")
-
-[node name="TireFender2" type="MeshInstance3D" parent="Boats/HarborTug" unique_id=204694572]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 3.5, 1, -6)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("TorusMesh_kmowc")
-
-[node name="TireFender3" type="MeshInstance3D" parent="Boats/HarborTug" unique_id=1447697820]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -3.5, 1, -2)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("TorusMesh_sm4bm")
-
-[node name="TireFender4" type="MeshInstance3D" parent="Boats/HarborTug" unique_id=730630627]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 3.5, 1, -2)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("TorusMesh_6re6x")
-
-[node name="TireFender5" type="MeshInstance3D" parent="Boats/HarborTug" unique_id=590274030]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -3.5, 1, 2)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("TorusMesh_dl3gl")
-
-[node name="TireFender6" type="MeshInstance3D" parent="Boats/HarborTug" unique_id=1608058501]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 3.5, 1, 2)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("TorusMesh_newgn")
-
-[node name="TireFender7" type="MeshInstance3D" parent="Boats/HarborTug" unique_id=1718471864]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -3.5, 1, 6)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("TorusMesh_pdyin")
-
-[node name="TireFender8" type="MeshInstance3D" parent="Boats/HarborTug" unique_id=2009499672]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 3.5, 1, 6)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("TorusMesh_aagrt")
-
-[node name="NavigationLens" type="MeshInstance3D" parent="Boats/HarborTug" unique_id=308815815]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8, 2.1, 1)
-material_override = SubResource("StandardMaterial3D_hr8ci")
-mesh = SubResource("BoxMesh_fsyau")
-
-[node name="Rail" type="MeshInstance3D" parent="Boats/HarborTug" unique_id=1805224340]
-transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, -2.66, 2.5, -0.855)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_vcf3d")
-
-[node name="Stanchion" type="MeshInstance3D" parent="Boats/HarborTug" unique_id=1807817125]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -2.66, 2.1, -6.84)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_8rldc")
-
-[node name="Stanchion2" type="MeshInstance3D" parent="Boats/HarborTug" unique_id=264327731]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -2.66, 2.1, 0)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_t6tio")
-
-[node name="Stanchion3" type="MeshInstance3D" parent="Boats/HarborTug" unique_id=1602529507]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -2.66, 2.1, 5.13)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_qma6k")
-
-[node name="NavigationLens2" type="MeshInstance3D" parent="Boats/HarborTug" unique_id=441999155]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8, 2.1, 1)
-material_override = SubResource("StandardMaterial3D_ppmqr")
-mesh = SubResource("BoxMesh_nhi0g")
-
-[node name="Rail2" type="MeshInstance3D" parent="Boats/HarborTug" unique_id=1722801746]
-transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 2.66, 2.5, -0.855)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_eis7a")
-
-[node name="Stanchion4" type="MeshInstance3D" parent="Boats/HarborTug" unique_id=1837538542]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 2.66, 2.1, -6.84)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_osdfx")
-
-[node name="Stanchion5" type="MeshInstance3D" parent="Boats/HarborTug" unique_id=778469354]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 2.66, 2.1, 0)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_tkidd")
-
-[node name="Stanchion6" type="MeshInstance3D" parent="Boats/HarborTug" unique_id=1873739618]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 2.66, 2.1, 5.13)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_j4vnh")
-
-[node name="FishingTrawler" type="AnimatableBody3D" parent="Boats" unique_id=2054322364]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1120, -1.4, 1021)
-sync_to_physics = false
-metadata/kind = "fishing"
-
-[node name="Hull" type="MeshInstance3D" parent="Boats/FishingTrawler" unique_id=1170080800]
-material_override = SubResource("StandardMaterial3D_1wfcn")
-mesh = SubResource("ArrayMesh_fpdt8")
-
-[node name="HullCollision" type="CollisionShape3D" parent="Boats/FishingTrawler" unique_id=809778965]
-shape = SubResource("ConvexPolygonShape3D_axeef")
-
-[node name="Deck" type="MeshInstance3D" parent="Boats/FishingTrawler" unique_id=95467022]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("BoxMesh_w1qbh")
-
-[node name="Wheelhouse" type="MeshInstance3D" parent="Boats/FishingTrawler" unique_id=1574491782]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4, 2)
-material_override = SubResource("StandardMaterial3D_6k1y5")
-mesh = SubResource("BoxMesh_gho0c")
-
-[node name="FrontGlass" type="MeshInstance3D" parent="Boats/FishingTrawler/Wheelhouse" unique_id=829880856]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 1.93)
-material_override = SubResource("StandardMaterial3D_u1c0x")
-mesh = SubResource("BoxMesh_xeker")
-
-[node name="SideGlass" type="MeshInstance3D" parent="Boats/FishingTrawler/Wheelhouse" unique_id=1822510548]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.575, 0.5, 0)
-material_override = SubResource("StandardMaterial3D_u1c0x")
-mesh = SubResource("BoxMesh_corue")
-
-[node name="SideGlass2" type="MeshInstance3D" parent="Boats/FishingTrawler/Wheelhouse" unique_id=451497105]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.575, 0.5, 0)
-material_override = SubResource("StandardMaterial3D_u1c0x")
-mesh = SubResource("BoxMesh_enkeh")
-
-[node name="Roof" type="MeshInstance3D" parent="Boats/FishingTrawler" unique_id=1168113909]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.2, 2)
-material_override = SubResource("StandardMaterial3D_1wfcn")
-mesh = SubResource("BoxMesh_f8rep")
-
-[node name="Antenna" type="MeshInstance3D" parent="Boats/FishingTrawler" unique_id=1323546338]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 0, 6.6, 2)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_vbsel")
-
-[node name="FishingRig" type="MeshInstance3D" parent="Boats/FishingTrawler" unique_id=649589607]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -1.5, 4.5, -4)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_8such")
-
-[node name="FishingRig2" type="MeshInstance3D" parent="Boats/FishingTrawler" unique_id=2122309101]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 1.5, 4.5, -4)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_1eypf")
-
-[node name="RigCrossbar" type="MeshInstance3D" parent="Boats/FishingTrawler" unique_id=30315463]
-transform = Transform3D(0, 1, 0, 0, 0, -1, -1, 0, 0, 0, 7, -4)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_hl0x6")
-
-[node name="FishCrate" type="MeshInstance3D" parent="Boats/FishingTrawler" unique_id=580667862]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.15, -4)
-material_override = SubResource("StandardMaterial3D_uqxn2")
-mesh = SubResource("BoxMesh_yhqe3")
-
-[node name="FishCrate2" type="MeshInstance3D" parent="Boats/FishingTrawler" unique_id=1034243723]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.15, -2)
-material_override = SubResource("StandardMaterial3D_uqxn2")
-mesh = SubResource("BoxMesh_eq1yc")
-
-[node name="NavigationLens" type="MeshInstance3D" parent="Boats/FishingTrawler" unique_id=15135807]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8, 2.1, 1)
-material_override = SubResource("StandardMaterial3D_hr8ci")
-mesh = SubResource("BoxMesh_bmswx")
-
-[node name="Rail" type="MeshInstance3D" parent="Boats/FishingTrawler" unique_id=792718291]
-transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, -1.71, 2.5, -0.63)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_ushw6")
-
-[node name="Stanchion" type="MeshInstance3D" parent="Boats/FishingTrawler" unique_id=1509545133]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -1.71, 2.1, -5.04)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_tx31b")
-
-[node name="Stanchion2" type="MeshInstance3D" parent="Boats/FishingTrawler" unique_id=288614168]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -1.71, 2.1, 0)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_wxgt6")
-
-[node name="Stanchion3" type="MeshInstance3D" parent="Boats/FishingTrawler" unique_id=269187785]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -1.71, 2.1, 3.78)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_hqo1d")
-
-[node name="NavigationLens2" type="MeshInstance3D" parent="Boats/FishingTrawler" unique_id=785883906]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 2.1, 1)
-material_override = SubResource("StandardMaterial3D_ppmqr")
-mesh = SubResource("BoxMesh_c7nr4")
-
-[node name="Rail2" type="MeshInstance3D" parent="Boats/FishingTrawler" unique_id=299218254]
-transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 1.71, 2.5, -0.63)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_pfwul")
-
-[node name="Stanchion4" type="MeshInstance3D" parent="Boats/FishingTrawler" unique_id=412767198]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 1.71, 2.1, -5.04)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_mn5jf")
-
-[node name="Stanchion5" type="MeshInstance3D" parent="Boats/FishingTrawler" unique_id=898792538]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 1.71, 2.1, 0)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_38l14")
-
-[node name="Stanchion6" type="MeshInstance3D" parent="Boats/FishingTrawler" unique_id=1755677696]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 1.71, 2.1, 3.78)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_i0fmu")
-
-[node name="PassengerFerry" type="AnimatableBody3D" parent="Boats" unique_id=904120878]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1150, -1.4, 1137)
-sync_to_physics = false
-metadata/kind = "ferry"
-
-[node name="Hull" type="MeshInstance3D" parent="Boats/PassengerFerry" unique_id=1570256502]
-material_override = SubResource("StandardMaterial3D_6k1y5")
-mesh = SubResource("ArrayMesh_cyfxx")
-
-[node name="HullCollision" type="CollisionShape3D" parent="Boats/PassengerFerry" unique_id=463631972]
-shape = SubResource("ConvexPolygonShape3D_fajfy")
-
-[node name="Deck" type="MeshInstance3D" parent="Boats/PassengerFerry" unique_id=574080741]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("BoxMesh_cy4nj")
-
-[node name="Wheelhouse" type="MeshInstance3D" parent="Boats/PassengerFerry" unique_id=21356637]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4, -2)
-material_override = SubResource("StandardMaterial3D_6k1y5")
-mesh = SubResource("BoxMesh_wqdtt")
-
-[node name="FrontGlass" type="MeshInstance3D" parent="Boats/PassengerFerry/Wheelhouse" unique_id=1784385786]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 4.9)
-material_override = SubResource("StandardMaterial3D_u1c0x")
-mesh = SubResource("BoxMesh_bq02y")
-
-[node name="SideGlass" type="MeshInstance3D" parent="Boats/PassengerFerry/Wheelhouse" unique_id=1735776747]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0.5, 0)
-material_override = SubResource("StandardMaterial3D_u1c0x")
-mesh = SubResource("BoxMesh_83qu4")
-
-[node name="SideGlass2" type="MeshInstance3D" parent="Boats/PassengerFerry/Wheelhouse" unique_id=235418087]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0.5, 0)
-material_override = SubResource("StandardMaterial3D_u1c0x")
-mesh = SubResource("BoxMesh_2llkb")
-
-[node name="Roof" type="MeshInstance3D" parent="Boats/PassengerFerry" unique_id=953520372]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.2, -2)
-material_override = SubResource("StandardMaterial3D_1wfcn")
-mesh = SubResource("BoxMesh_0dsdr")
-
-[node name="Antenna" type="MeshInstance3D" parent="Boats/PassengerFerry" unique_id=275849103]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 0, 6.6, -2)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_ub7ly")
-
-[node name="PassengerDeck" type="MeshInstance3D" parent="Boats/PassengerFerry" unique_id=1470369767]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -10)
-material_override = SubResource("StandardMaterial3D_6k1y5")
-mesh = SubResource("BoxMesh_kyas1")
-
-[node name="PassengerWindow" type="MeshInstance3D" parent="Boats/PassengerFerry" unique_id=1116897900]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.05, 3.4, -15)
-material_override = SubResource("StandardMaterial3D_5nsh7")
-mesh = SubResource("BoxMesh_7xn7t")
-
-[node name="PassengerWindow2" type="MeshInstance3D" parent="Boats/PassengerFerry" unique_id=530375338]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.05, 3.4, -15)
-material_override = SubResource("StandardMaterial3D_5nsh7")
-mesh = SubResource("BoxMesh_pwgoy")
-
-[node name="PassengerWindow3" type="MeshInstance3D" parent="Boats/PassengerFerry" unique_id=179475969]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.05, 3.4, -13)
-material_override = SubResource("StandardMaterial3D_5nsh7")
-mesh = SubResource("BoxMesh_0vi1n")
-
-[node name="PassengerWindow4" type="MeshInstance3D" parent="Boats/PassengerFerry" unique_id=1356664133]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.05, 3.4, -13)
-material_override = SubResource("StandardMaterial3D_5nsh7")
-mesh = SubResource("BoxMesh_g4jtf")
-
-[node name="PassengerWindow5" type="MeshInstance3D" parent="Boats/PassengerFerry" unique_id=890196211]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.05, 3.4, -11)
-material_override = SubResource("StandardMaterial3D_5nsh7")
-mesh = SubResource("BoxMesh_l3ggq")
-
-[node name="PassengerWindow6" type="MeshInstance3D" parent="Boats/PassengerFerry" unique_id=446796341]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.05, 3.4, -11)
-material_override = SubResource("StandardMaterial3D_5nsh7")
-mesh = SubResource("BoxMesh_tsm8e")
-
-[node name="PassengerWindow7" type="MeshInstance3D" parent="Boats/PassengerFerry" unique_id=279046894]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.05, 3.4, -9)
-material_override = SubResource("StandardMaterial3D_5nsh7")
-mesh = SubResource("BoxMesh_6xpl5")
-
-[node name="PassengerWindow8" type="MeshInstance3D" parent="Boats/PassengerFerry" unique_id=1730809254]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.05, 3.4, -9)
-material_override = SubResource("StandardMaterial3D_5nsh7")
-mesh = SubResource("BoxMesh_nul05")
-
-[node name="PassengerWindow9" type="MeshInstance3D" parent="Boats/PassengerFerry" unique_id=1874515260]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.05, 3.4, -7)
-material_override = SubResource("StandardMaterial3D_5nsh7")
-mesh = SubResource("BoxMesh_plfdw")
-
-[node name="PassengerWindow10" type="MeshInstance3D" parent="Boats/PassengerFerry" unique_id=583125076]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.05, 3.4, -7)
-material_override = SubResource("StandardMaterial3D_5nsh7")
-mesh = SubResource("BoxMesh_uj05o")
-
-[node name="PassengerWindow11" type="MeshInstance3D" parent="Boats/PassengerFerry" unique_id=262739575]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.05, 3.4, -5)
-material_override = SubResource("StandardMaterial3D_5nsh7")
-mesh = SubResource("BoxMesh_lvqq2")
-
-[node name="PassengerWindow12" type="MeshInstance3D" parent="Boats/PassengerFerry" unique_id=1394119568]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.05, 3.4, -5)
-material_override = SubResource("StandardMaterial3D_5nsh7")
-mesh = SubResource("BoxMesh_cutgt")
-
-[node name="NavigationLens" type="MeshInstance3D" parent="Boats/PassengerFerry" unique_id=1265138400]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2.1, 1)
-material_override = SubResource("StandardMaterial3D_hr8ci")
-mesh = SubResource("BoxMesh_465nc")
-
-[node name="Rail" type="MeshInstance3D" parent="Boats/PassengerFerry" unique_id=1493740266]
-transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, -3.8, 2.5, -1.6199999)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_obgqy")
-
-[node name="Stanchion" type="MeshInstance3D" parent="Boats/PassengerFerry" unique_id=998741286]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -3.8, 2.1, -12.96)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_nwawt")
-
-[node name="Stanchion2" type="MeshInstance3D" parent="Boats/PassengerFerry" unique_id=1812864134]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -3.8, 2.1, 0)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_m4b0a")
-
-[node name="Stanchion3" type="MeshInstance3D" parent="Boats/PassengerFerry" unique_id=1426898550]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -3.8, 2.1, 9.72)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_q0clq")
-
-[node name="NavigationLens2" type="MeshInstance3D" parent="Boats/PassengerFerry" unique_id=1361259704]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2.1, 1)
-material_override = SubResource("StandardMaterial3D_ppmqr")
-mesh = SubResource("BoxMesh_ih134")
-
-[node name="Rail2" type="MeshInstance3D" parent="Boats/PassengerFerry" unique_id=393776961]
-transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 3.8, 2.5, -1.6199999)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_ook1s")
-
-[node name="Stanchion4" type="MeshInstance3D" parent="Boats/PassengerFerry" unique_id=1445570059]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 3.8, 2.1, -12.96)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_n63y6")
-
-[node name="Stanchion5" type="MeshInstance3D" parent="Boats/PassengerFerry" unique_id=1360537939]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 3.8, 2.1, 0)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_ocd0t")
-
-[node name="Stanchion6" type="MeshInstance3D" parent="Boats/PassengerFerry" unique_id=1599491385]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 3.8, 2.1, 9.72)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_vkj8c")
-
-[node name="SloopAtMooring" type="AnimatableBody3D" parent="Boats" unique_id=1292958769]
-transform = Transform3D(0.9800666, 0, 0.19866933, 0, 1, 0, -0.19866933, 0, 0.9800666, 1227, -1.4, 1110)
-sync_to_physics = false
-metadata/kind = "sail"
-
-[node name="Hull" type="MeshInstance3D" parent="Boats/SloopAtMooring" unique_id=1135189254]
-material_override = SubResource("StandardMaterial3D_6k1y5")
-mesh = SubResource("ArrayMesh_dra8o")
-
-[node name="HullCollision" type="CollisionShape3D" parent="Boats/SloopAtMooring" unique_id=858274364]
-shape = SubResource("ConvexPolygonShape3D_h21s7")
-
-[node name="Deck" type="MeshInstance3D" parent="Boats/SloopAtMooring" unique_id=1299780486]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
-material_override = SubResource("StandardMaterial3D_x4oyu")
-mesh = SubResource("BoxMesh_yq2mx")
-
-[node name="Mast" type="MeshInstance3D" parent="Boats/SloopAtMooring" unique_id=2096134973]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 0, 10.4, 0)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_154oq")
-
-[node name="Boom" type="MeshInstance3D" parent="Boats/SloopAtMooring" unique_id=718437690]
-transform = Transform3D(-1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 3, -2.75)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_0lnbt")
-
-[node name="Sails" type="MeshInstance3D" parent="Boats/SloopAtMooring" unique_id=1436710434]
-material_override = SubResource("StandardMaterial3D_xnv5w")
-mesh = SubResource("ArrayMesh_ieaev")
-
-[node name="Cabin" type="MeshInstance3D" parent="Boats/SloopAtMooring" unique_id=550923744]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, -1)
-material_override = SubResource("StandardMaterial3D_6k1y5")
-mesh = SubResource("BoxMesh_qeii5")
-
-[node name="NavigationLens" type="MeshInstance3D" parent="Boats/SloopAtMooring" unique_id=437251599]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8, 2.1, 1)
-material_override = SubResource("StandardMaterial3D_hr8ci")
-mesh = SubResource("BoxMesh_l1oha")
-
-[node name="Rail" type="MeshInstance3D" parent="Boats/SloopAtMooring" unique_id=23941361]
-transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, -1.71, 2.5, -0.63)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_82q73")
-
-[node name="Stanchion" type="MeshInstance3D" parent="Boats/SloopAtMooring" unique_id=1176255437]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -1.71, 2.1, -5.04)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_xwopv")
-
-[node name="Stanchion2" type="MeshInstance3D" parent="Boats/SloopAtMooring" unique_id=1125867250]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -1.71, 2.1, 0)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_832tu")
-
-[node name="Stanchion3" type="MeshInstance3D" parent="Boats/SloopAtMooring" unique_id=924281689]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -1.71, 2.1, 3.78)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_niw0v")
-
-[node name="NavigationLens2" type="MeshInstance3D" parent="Boats/SloopAtMooring" unique_id=1310544896]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 2.1, 1)
-material_override = SubResource("StandardMaterial3D_ppmqr")
-mesh = SubResource("BoxMesh_76l30")
-
-[node name="Rail2" type="MeshInstance3D" parent="Boats/SloopAtMooring" unique_id=921518484]
-transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 1.71, 2.5, -0.63)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_4usop")
-
-[node name="Stanchion4" type="MeshInstance3D" parent="Boats/SloopAtMooring" unique_id=322505296]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 1.71, 2.1, -5.04)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_fhrio")
-
-[node name="Stanchion5" type="MeshInstance3D" parent="Boats/SloopAtMooring" unique_id=1833988083]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 1.71, 2.1, 0)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_3w5y3")
-
-[node name="Stanchion6" type="MeshInstance3D" parent="Boats/SloopAtMooring" unique_id=816743372]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 1.71, 2.1, 3.78)
-material_override = SubResource("StandardMaterial3D_kpkyv")
-mesh = SubResource("CylinderMesh_33yqs")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 [node name="OuterHarborSailboat" type="AnimatableBody3D" parent="Boats" unique_id=969140767]
 transform = Transform3D(0.8253356, 0, -0.5646425, 0, 1, 0, 0.5646425, 0, 0.8253356, 760, -1.4, 1470)
@@ -31827,3 +29994,23 @@ mesh = SubResource("CylinderMesh_5yiu8")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.15, 0)
 material_override = SubResource("StandardMaterial3D_hr8ci")
 mesh = SubResource("CylinderMesh_rdp18")
+
+[node name="ConcretePierExtension" type="MeshInstance3D" parent="Harbor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1130, -3.97, 1073)
+material_override = ExtResource("pier_concrete")
+mesh = SubResource("ConcretePierExtensionMesh")
+
+[node name="Solid" type="StaticBody3D" parent="Harbor/ConcretePierExtension"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Harbor/ConcretePierExtension/Solid"]
+shape = SubResource("ConcretePierExtensionShape")
+
+[node name="ConcretePierWest" type="MeshInstance3D" parent="Harbor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 730, -3.97, 1003)
+material_override = ExtResource("pier_concrete")
+mesh = SubResource("ConcretePierWestMesh")
+
+[node name="Solid" type="StaticBody3D" parent="Harbor/ConcretePierWest"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Harbor/ConcretePierWest/Solid"]
+shape = SubResource("ConcretePierWestShape")

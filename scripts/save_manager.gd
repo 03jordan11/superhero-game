@@ -52,18 +52,9 @@ func save_game() -> bool:
 
 
 func load_game() -> bool:
-	if not has_save():
-		push_warning("SaveManager could not load because no save file exists.")
-		return false
-
-	var file := FileAccess.open(_save_path, FileAccess.READ)
-	if file == null:
-		push_error("SaveManager could not open %s for reading." % _save_path)
-		return false
-
-	var json := JSON.new()
-	if json.parse(file.get_as_text()) != OK or not json.data is Dictionary:
-		push_warning("SaveManager could not parse %s as a save file." % _save_path)
+	var save_data := _read_save_data()
+	if save_data.is_empty():
+		push_warning("SaveManager could not read a supported save from %s." % _save_path)
 		return false
 
 	var player := _get_player()
@@ -71,7 +62,82 @@ func load_game() -> bool:
 		push_warning("SaveManager could not load because no PlayerCharacter was found.")
 		return false
 
-	var save_data: Dictionary = json.data
+	_apply_game_save_data(player, save_data)
+	return true
+
+
+func can_load_game() -> bool:
+	return not _read_save_data().is_empty()
+
+
+## Launch from the main menu through the normal hideout travel path, preserving
+## the placed gas station's exit location and all gameplay menus.
+func start_saved_game() -> bool:
+	var save_data := _read_save_data()
+	if save_data.is_empty():
+		return false
+	return _start_game_in_hideout(save_data)
+
+
+func start_new_game() -> bool:
+	return _start_game_in_hideout({})
+
+
+func _start_game_in_hideout(save_data: Dictionary) -> bool:
+	if _get_player() != null:
+		return false
+	var packed := load("res://scenes/main.tscn") as PackedScene
+	if packed == null: return false
+	var city := packed.instantiate()
+	var player := city.get_node_or_null("Player") as PlayerCharacter
+	if player == null:
+		city.free()
+		return false
+	var menu := get_tree().current_scene
+	# Restore the seed before the city initializes its window materials.
+	if save_data.is_empty():
+		begin_new_game()
+	else:
+		get_node("/root/CityWindows").restore_data(_get_dictionary(_get_dictionary(save_data, "world"), "window_lighting"))
+	get_tree().root.add_child(city)
+	get_tree().current_scene = city
+	if not save_data.is_empty():
+		_apply_game_save_data(player, save_data)
+	var travel := get_tree().get_first_node_in_group(&"hideout_travel")
+	var new_travel := travel == null
+	if new_travel:
+		travel = preload("res://scripts/hideout_travel.gd").new()
+		travel.name = "HideoutTravel"
+		get_tree().root.add_child(travel)
+	if not travel.start_in_hideout(player):
+		get_tree().current_scene = menu
+		city.free()
+		if new_travel: travel.free()
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		return false
+	get_tree().paused = false
+	if menu != null: menu.queue_free()
+	return true
+
+
+func _read_save_data() -> Dictionary:
+	if not has_save(): return {}
+	var file := FileAccess.open(_save_path, FileAccess.READ)
+	if file == null: return {}
+	var json := JSON.new()
+	var error := json.parse(file.get_as_text())
+	file.close()
+	if error != OK or not json.data is Dictionary: return {}
+	var data: Dictionary = json.data
+	if not data.get("player") is Dictionary: return {}
+	# Version 1 (including unversioned legacy saves) remains supported.
+	var version: Variant = data.get("save_version", 1)
+	if not (version is int or version is float): return {}
+	if float(version) not in [1.0, float(SAVE_VERSION)]: return {}
+	return data
+
+
+func _apply_game_save_data(player: PlayerCharacter, save_data: Dictionary) -> void:
 	get_node("/root/CityWindows").restore_data(_get_dictionary(_get_dictionary(save_data, "world"), "window_lighting"))
 	_apply_player_save_data(player, _get_dictionary(save_data, "player"))
 	player.get_node("PlayerPowerController").progression.apply_save_data(_get_dictionary(save_data, "power_menu"))
@@ -79,7 +145,6 @@ func load_game() -> bool:
 	var powers := player.get_node("PlayerPowerController")
 	if not selected is String or not powers.select_active_power(StringName(selected)):
 		powers.select_active_power(&"laser_eyes")
-	return true
 
 
 func has_save() -> bool:

@@ -1,0 +1,324 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/previews/modular_road_test.gd" id="preview"]
+[ext_resource type="PackedScene" path="res://assets/super-city/modular-roads/straight_12m.tscn" id="straight_12m"]
+[ext_resource type="PackedScene" path="res://assets/super-city/modular-roads/straight_20m.tscn" id="straight_20m"]
+[ext_resource type="PackedScene" path="res://assets/super-city/modular-roads/straight_28m.tscn" id="straight_28m"]
+[ext_resource type="PackedScene" path="res://assets/super-city/modular-roads/alley_6m.tscn" id="alley_6m"]
+[ext_resource type="PackedScene" path="res://assets/super-city/modular-roads/junction_cross.tscn" id="junction_cross"]
+[ext_resource type="PackedScene" path="res://assets/super-city/modular-roads/junction_t.tscn" id="junction_t"]
+[ext_resource type="PackedScene" path="res://assets/super-city/modular-roads/corner_90.tscn" id="corner_90"]
+[ext_resource type="PackedScene" path="res://assets/super-city/modular-roads/dead_end.tscn" id="dead_end"]
+[ext_resource type="PackedScene" path="res://assets/super-city/modular-roads/alley_entrance.tscn" id="alley_entrance"]
+[ext_resource type="PackedScene" path="res://assets/super-city/modular-sidewalks/straight_adjustable.tscn" id="sidewalk"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="player"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_stats.gd" id="stats"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_abilities.gd" id="abilities"]
+
+[sub_resource type="StandardMaterial3D" id="ground_mat"]
+albedo_color = Color(0.055, 0.077, 0.10, 1)
+roughness = 1.0
+
+[sub_resource type="BoxMesh" id="ground_mesh"]
+size = Vector3(460, 0.2, 340)
+material = SubResource("ground_mat")
+
+[sub_resource type="BoxShape3D" id="ground_shape"]
+size = Vector3(460, 0.2, 340)
+
+[sub_resource type="Environment" id="environment"]
+background_mode = 1
+background_color = Color(0.065, 0.09, 0.12, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.8, 0.88, 1, 1)
+ambient_light_energy = 0.5
+tonemap_mode = 2
+
+[sub_resource type="Resource" id="stats_resource"]
+script = ExtResource("stats")
+strength = 10
+resilience = 10
+
+[sub_resource type="Resource" id="abilities_resource"]
+script = ExtResource("abilities")
+
+[node name="ModularRoadTest" type="Node3D"]
+script = ExtResource("preview")
+
+[node name="Samples" type="Node3D" parent="."]
+
+[node name="ConnectedExample" type="Node3D" parent="."]
+
+[node name="LengthComparison" type="Node3D" parent="."]
+
+[node name="SeparateSidewalks" type="Node3D" parent="."]
+
+[node name="Straight12M" parent="Samples" instance=ExtResource("straight_12m")]
+position = Vector3(-175, 0, -90)
+
+[node name="Straight20M" parent="Samples" instance=ExtResource("straight_20m")]
+position = Vector3(-125, 0, -90)
+
+[node name="Straight28M" parent="Samples" instance=ExtResource("straight_28m")]
+position = Vector3(-70, 0, -90)
+
+[node name="Alley6M" parent="Samples" instance=ExtResource("alley_6m")]
+position = Vector3(-20, 0, -90)
+
+[node name="DeadEnd" parent="Samples" instance=ExtResource("dead_end")]
+position = Vector3(35, 0, -90)
+
+[node name="Corner90" parent="Samples" instance=ExtResource("corner_90")]
+position = Vector3(100, 0, -90)
+
+[node name="AlleyEntrance" parent="Samples" instance=ExtResource("alley_entrance")]
+position = Vector3(165, 0, -90)
+
+[node name="MixedCross" parent="ConnectedExample" instance=ExtResource("junction_cross")]
+position = Vector3(-55, 0, 40)
+width_m = 20
+cross_width_m = 28
+
+[node name="North20" parent="ConnectedExample" instance=ExtResource("straight_20m")]
+position = Vector3(-55, 0, -2)
+
+[node name="East28" parent="ConnectedExample" instance=ExtResource("straight_28m")]
+position = Vector3(-17, 0, 40)
+rotation = Vector3(0, 1.5707963267948966, 0)
+
+[node name="West28" parent="ConnectedExample" instance=ExtResource("straight_28m")]
+position = Vector3(-93, 0, 40)
+rotation = Vector3(0, 1.5707963267948966, 0)
+
+[node name="WestEnd28" parent="ConnectedExample" instance=ExtResource("dead_end")]
+position = Vector3(-119, 0, 40)
+rotation = Vector3(0, -1.5707963267948966, 0)
+width_m = 28
+length_m = 12.0
+
+[node name="South20" parent="ConnectedExample" instance=ExtResource("straight_20m")]
+position = Vector3(-55, 0, 94)
+length_m = 64.0
+
+[node name="SouthEnd20" parent="ConnectedExample" instance=ExtResource("dead_end")]
+position = Vector3(-55, 0, 134)
+length_m = 16.0
+
+[node name="MixedT" parent="ConnectedExample" instance=ExtResource("junction_t")]
+position = Vector3(17, 0, 40)
+width_m = 12
+cross_width_m = 28
+
+[node name="North12" parent="ConnectedExample" instance=ExtResource("straight_12m")]
+position = Vector3(17, 0, -2)
+
+[node name="EastEnd28" parent="ConnectedExample" instance=ExtResource("dead_end")]
+position = Vector3(43, 0, 40)
+rotation = Vector3(0, 1.5707963267948966, 0)
+width_m = 28
+length_m = 24.0
+
+[node name="Long120m" parent="LengthComparison" instance=ExtResource("straight_20m")]
+position = Vector3(110, 0, 50)
+length_m = 120.0
+crosswalk_north = true
+crosswalk_south = true
+
+[node name="Short40m" parent="LengthComparison" instance=ExtResource("straight_20m")]
+position = Vector3(160, 0, 50)
+length_m = 40.0
+crosswalk_north = true
+crosswalk_south = true
+
+[node name="RoadOnly" parent="SeparateSidewalks" instance=ExtResource("straight_20m")]
+position = Vector3(165, 0, 112)
+length_m = 24.0
+include_sidewalks = false
+
+[node name="ExistingWalkWest" parent="SeparateSidewalks" instance=ExtResource("sidewalk")]
+position = Vector3(153, 0, 112)
+length_m = 24.0
+
+[node name="ExistingWalkEast" parent="SeparateSidewalks" instance=ExtResource("sidewalk")]
+position = Vector3(177, 0, 112)
+length_m = 24.0
+
+[node name="Labels" type="Node3D" parent="."]
+
+[node name="Label0" type="Label3D" parent="Labels"]
+position = Vector3(-175, 0.2, -120)
+rotation = Vector3(-1.5707963, 0, 0)
+pixel_size = 0.07
+font_size = 38
+outline_size = 8
+text = "LOCAL / 12 m"
+modulate = Color(0.78, 0.9, 0.95, 1)
+no_depth_test = true
+
+[node name="Label1" type="Label3D" parent="Labels"]
+position = Vector3(-125, 0.2, -120)
+rotation = Vector3(-1.5707963, 0, 0)
+pixel_size = 0.07
+font_size = 38
+outline_size = 8
+text = "STREET / 20 m"
+modulate = Color(0.78, 0.9, 0.95, 1)
+no_depth_test = true
+
+[node name="Label2" type="Label3D" parent="Labels"]
+position = Vector3(-70, 0.2, -120)
+rotation = Vector3(-1.5707963, 0, 0)
+pixel_size = 0.07
+font_size = 38
+outline_size = 8
+text = "AVENUE / 28 m"
+modulate = Color(0.78, 0.9, 0.95, 1)
+no_depth_test = true
+
+[node name="Label3" type="Label3D" parent="Labels"]
+position = Vector3(-20, 0.2, -120)
+rotation = Vector3(-1.5707963, 0, 0)
+pixel_size = 0.07
+font_size = 38
+outline_size = 8
+text = "ALLEY / 6 m"
+modulate = Color(0.78, 0.9, 0.95, 1)
+no_depth_test = true
+
+[node name="Label4" type="Label3D" parent="Labels"]
+position = Vector3(35, 0.2, -120)
+rotation = Vector3(-1.5707963, 0, 0)
+pixel_size = 0.07
+font_size = 38
+outline_size = 8
+text = "DEAD END"
+modulate = Color(0.78, 0.9, 0.95, 1)
+no_depth_test = true
+
+[node name="Label5" type="Label3D" parent="Labels"]
+position = Vector3(100, 0.2, -120)
+rotation = Vector3(-1.5707963, 0, 0)
+pixel_size = 0.07
+font_size = 38
+outline_size = 8
+text = "90 DEG CORNER"
+modulate = Color(0.78, 0.9, 0.95, 1)
+no_depth_test = true
+
+[node name="Label6" type="Label3D" parent="Labels"]
+position = Vector3(165, 0.2, -120)
+rotation = Vector3(-1.5707963, 0, 0)
+pixel_size = 0.07
+font_size = 38
+outline_size = 8
+text = "ALLEY ENTRANCE"
+modulate = Color(0.78, 0.9, 0.95, 1)
+no_depth_test = true
+
+[node name="Label7" type="Label3D" parent="Labels"]
+position = Vector3(-70, 0.2, -42)
+rotation = Vector3(-1.5707963, 0, 0)
+pixel_size = 0.07
+font_size = 38
+outline_size = 8
+text = "CONNECTED STREETS / 20 + 28 + 12 m"
+modulate = Color(0.78, 0.9, 0.95, 1)
+no_depth_test = true
+
+[node name="Label8" type="Label3D" parent="Labels"]
+position = Vector3(130, 0.2, -30)
+rotation = Vector3(-1.5707963, 0, 0)
+pixel_size = 0.07
+font_size = 38
+outline_size = 8
+text = "SAME TEXTURE SCALE"
+modulate = Color(0.78, 0.9, 0.95, 1)
+no_depth_test = true
+
+[node name="Label9" type="Label3D" parent="Labels"]
+position = Vector3(110, 0.2, 118)
+rotation = Vector3(-1.5707963, 0, 0)
+pixel_size = 0.07
+font_size = 38
+outline_size = 8
+text = "120 m"
+modulate = Color(0.78, 0.9, 0.95, 1)
+no_depth_test = true
+
+[node name="Label10" type="Label3D" parent="Labels"]
+position = Vector3(160, 0.2, 78)
+rotation = Vector3(-1.5707963, 0, 0)
+pixel_size = 0.07
+font_size = 38
+outline_size = 8
+text = "40 m"
+modulate = Color(0.78, 0.9, 0.95, 1)
+no_depth_test = true
+
+[node name="Label11" type="Label3D" parent="Labels"]
+position = Vector3(165, 0.2, 137)
+rotation = Vector3(-1.5707963, 0, 0)
+pixel_size = 0.07
+font_size = 38
+outline_size = 8
+text = "EXISTING SIDEWALK KIT"
+modulate = Color(0.78, 0.9, 0.95, 1)
+no_depth_test = true
+
+[node name="TestGround" type="StaticBody3D" parent="."]
+position = Vector3(0, -0.13, 5)
+
+[node name="Mesh" type="MeshInstance3D" parent="TestGround"]
+mesh = SubResource("ground_mesh")
+
+[node name="Collision" type="CollisionShape3D" parent="TestGround"]
+shape = SubResource("ground_shape")
+
+[node name="Environment" type="WorldEnvironment" parent="."]
+environment = SubResource("environment")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+rotation_degrees = Vector3(-60, -25, 0)
+light_energy = 1.2
+shadow_enabled = true
+
+[node name="OverviewCamera" type="Camera3D" parent="."]
+position = Vector3(0, 300, 90)
+rotation_degrees = Vector3(-74, 0, 0)
+projection = 1
+current = true
+size = 330.0
+far = 1000.0
+
+[node name="PlayerStart" type="Marker3D" parent="."]
+position = Vector3(-43, 1.25, 0)
+
+[node name="Player" parent="." instance=ExtResource("player")]
+position = Vector3(-43, 1.25, 0)
+process_mode = 4
+visible = false
+stats = SubResource("stats_resource")
+strength = 10
+resilience = 10
+abilities = SubResource("abilities_resource")
+
+[node name="Instructions" type="CanvasLayer" parent="."]
+layer = 15
+
+[node name="Panel" type="PanelContainer" parent="Instructions"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -96.0
+offset_right = -24.0
+offset_bottom = -20.0
+mouse_filter = 2
+
+[node name="Help" type="Label" parent="Instructions/Panel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "ROAD KIT | F4: walk test | Right-drag: orbit | Middle-drag: pan | Wheel: zoom"
+horizontal_alignment = 1
+vertical_alignment = 1

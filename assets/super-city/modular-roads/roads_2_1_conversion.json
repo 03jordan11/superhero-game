@@ -1,0 +1,876 @@
+{
+  "chunk": "roads_2_1",
+  "bounds": [
+    -500.0,
+    -500.0,
+    500.0,
+    500.0
+  ],
+  "origin": [
+    -250.0,
+    0.0,
+    -250.0
+  ],
+  "original_rects": [
+    [
+      -500.0,
+      -490.0,
+      110.0,
+      20.0
+    ],
+    [
+      -370.0,
+      -490.0,
+      160.0,
+      20.0
+    ],
+    [
+      -190.0,
+      -490.0,
+      156.0,
+      20.0
+    ],
+    [
+      -6.0,
+      -490.0,
+      6.0,
+      20.0
+    ],
+    [
+      -500.0,
+      -334.0,
+      110.0,
+      28.0
+    ],
+    [
+      -370.0,
+      -334.0,
+      160.0,
+      28.0
+    ],
+    [
+      -190.0,
+      -334.0,
+      156.0,
+      28.0
+    ],
+    [
+      -6.0,
+      -334.0,
+      6.0,
+      28.0
+    ],
+    [
+      -6.0,
+      -166.0,
+      6.0,
+      12.0
+    ],
+    [
+      -6.0,
+      -10.0,
+      6.0,
+      10.0
+    ],
+    [
+      -390.0,
+      -500.0,
+      20.0,
+      10.0
+    ],
+    [
+      -210.0,
+      -500.0,
+      20.0,
+      10.0
+    ],
+    [
+      -34.0,
+      -500.0,
+      28.0,
+      10.0
+    ],
+    [
+      -34.0,
+      -306.0,
+      28.0,
+      140.0
+    ],
+    [
+      -34.0,
+      -470.0,
+      28.0,
+      136.0
+    ],
+    [
+      -34.0,
+      -154.0,
+      28.0,
+      144.0
+    ],
+    [
+      -390.0,
+      -490.0,
+      20.0,
+      20.0
+    ],
+    [
+      -210.0,
+      -490.0,
+      20.0,
+      20.0
+    ],
+    [
+      -390.0,
+      -334.0,
+      20.0,
+      28.0
+    ],
+    [
+      -210.0,
+      -334.0,
+      20.0,
+      28.0
+    ],
+    [
+      -34.0,
+      -490.0,
+      28.0,
+      20.0
+    ],
+    [
+      -34.0,
+      -334.0,
+      28.0,
+      28.0
+    ],
+    [
+      -34.0,
+      -166.0,
+      28.0,
+      12.0
+    ],
+    [
+      -34.0,
+      -10.0,
+      28.0,
+      10.0
+    ],
+    [
+      -473.0,
+      -500.0,
+      6.0,
+      10.0
+    ],
+    [
+      -293.0,
+      -500.0,
+      6.0,
+      10.0
+    ],
+    [
+      -473.0,
+      -470.0,
+      6.0,
+      136.0
+    ],
+    [
+      -113.0,
+      -470.0,
+      6.0,
+      136.0
+    ]
+  ],
+  "original_triangles": 280,
+  "placements": [
+    {
+      "name": "T_425",
+      "source_road": 425,
+      "asset": "junction_t",
+      "x": -380.0,
+      "z": -480.0,
+      "axis": 1,
+      "properties": {
+        "width_m": 20,
+        "cross_width_m": 20,
+        "active_arms": 11,
+        "crosswalk_arms": 11,
+        "include_sidewalks": false
+      },
+      "rects": [
+        [
+          -390.0,
+          -490.0,
+          20.0,
+          20.0
+        ],
+        [
+          -390.0,
+          -498.0,
+          20.0,
+          8.0
+        ],
+        [
+          -370.0,
+          -490.0,
+          8.0,
+          20.0
+        ],
+        [
+          -398.0,
+          -490.0,
+          8.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "name": "Through_426",
+      "source_road": 426,
+      "asset": "junction_t",
+      "x": -380.0,
+      "z": -320.0,
+      "axis": 1,
+      "properties": {
+        "width_m": 20,
+        "cross_width_m": 28,
+        "active_arms": 10,
+        "crosswalk_arms": 10,
+        "include_sidewalks": false
+      },
+      "rects": [
+        [
+          -390.0,
+          -334.0,
+          20.0,
+          28.0
+        ],
+        [
+          -370.0,
+          -334.0,
+          8.0,
+          28.0
+        ],
+        [
+          -398.0,
+          -334.0,
+          8.0,
+          28.0
+        ]
+      ]
+    },
+    {
+      "name": "T_434",
+      "source_road": 434,
+      "asset": "junction_t",
+      "x": -200.0,
+      "z": -480.0,
+      "axis": 1,
+      "properties": {
+        "width_m": 20,
+        "cross_width_m": 20,
+        "active_arms": 11,
+        "crosswalk_arms": 11,
+        "include_sidewalks": false
+      },
+      "rects": [
+        [
+          -210.0,
+          -490.0,
+          20.0,
+          20.0
+        ],
+        [
+          -210.0,
+          -498.0,
+          20.0,
+          8.0
+        ],
+        [
+          -190.0,
+          -490.0,
+          8.0,
+          20.0
+        ],
+        [
+          -218.0,
+          -490.0,
+          8.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "name": "Through_435",
+      "source_road": 435,
+      "asset": "junction_t",
+      "x": -200.0,
+      "z": -320.0,
+      "axis": 1,
+      "properties": {
+        "width_m": 20,
+        "cross_width_m": 28,
+        "active_arms": 10,
+        "crosswalk_arms": 10,
+        "include_sidewalks": false
+      },
+      "rects": [
+        [
+          -210.0,
+          -334.0,
+          20.0,
+          28.0
+        ],
+        [
+          -190.0,
+          -334.0,
+          8.0,
+          28.0
+        ],
+        [
+          -218.0,
+          -334.0,
+          8.0,
+          28.0
+        ]
+      ]
+    },
+    {
+      "name": "Cross_443",
+      "source_road": 443,
+      "asset": "junction_cross",
+      "x": -20.0,
+      "z": -480.0,
+      "axis": 1,
+      "properties": {
+        "width_m": 28,
+        "cross_width_m": 20,
+        "active_arms": 15,
+        "crosswalk_arms": 15,
+        "include_sidewalks": false,
+        "trim_to_bounds": true,
+        "trim_bounds": [
+          -480.0,
+          -20.0,
+          500,
+          500
+        ]
+      },
+      "rects": [
+        [
+          -34.0,
+          -490.0,
+          28.0,
+          20.0
+        ],
+        [
+          -34.0,
+          -498.0,
+          28.0,
+          8.0
+        ],
+        [
+          -6.0,
+          -490.0,
+          6.0,
+          20.0
+        ],
+        [
+          -34.0,
+          -470.0,
+          28.0,
+          8.0
+        ],
+        [
+          -42.0,
+          -490.0,
+          8.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "name": "Cross_444",
+      "source_road": 444,
+      "asset": "junction_cross",
+      "x": -20.0,
+      "z": -320.0,
+      "axis": 1,
+      "properties": {
+        "width_m": 28,
+        "cross_width_m": 28,
+        "active_arms": 15,
+        "crosswalk_arms": 15,
+        "include_sidewalks": false,
+        "trim_to_bounds": true,
+        "trim_bounds": [
+          -480.0,
+          -180.0,
+          500,
+          500
+        ]
+      },
+      "rects": [
+        [
+          -34.0,
+          -334.0,
+          28.0,
+          28.0
+        ],
+        [
+          -34.0,
+          -342.0,
+          28.0,
+          8.0
+        ],
+        [
+          -6.0,
+          -334.0,
+          6.0,
+          28.0
+        ],
+        [
+          -34.0,
+          -306.0,
+          28.0,
+          8.0
+        ],
+        [
+          -42.0,
+          -334.0,
+          8.0,
+          28.0
+        ]
+      ]
+    },
+    {
+      "name": "T_445",
+      "source_road": 445,
+      "asset": "junction_t",
+      "x": -20.0,
+      "z": -160.0,
+      "axis": 1,
+      "properties": {
+        "width_m": 28,
+        "cross_width_m": 12,
+        "active_arms": 7,
+        "crosswalk_arms": 7,
+        "include_sidewalks": false,
+        "trim_to_bounds": true,
+        "trim_bounds": [
+          -480.0,
+          -340.0,
+          500,
+          500
+        ]
+      },
+      "rects": [
+        [
+          -34.0,
+          -166.0,
+          28.0,
+          12.0
+        ],
+        [
+          -34.0,
+          -174.0,
+          28.0,
+          8.0
+        ],
+        [
+          -6.0,
+          -166.0,
+          6.0,
+          12.0
+        ],
+        [
+          -34.0,
+          -154.0,
+          28.0,
+          8.0
+        ]
+      ]
+    },
+    {
+      "name": "T_446",
+      "source_road": 446,
+      "asset": "junction_t",
+      "x": -20.0,
+      "z": 0.0,
+      "axis": 1,
+      "properties": {
+        "width_m": 28,
+        "cross_width_m": 20,
+        "active_arms": 7,
+        "crosswalk_arms": 7,
+        "include_sidewalks": false,
+        "trim_to_bounds": true,
+        "trim_bounds": [
+          -480.0,
+          -500.0,
+          500,
+          500
+        ]
+      },
+      "rects": [
+        [
+          -34.0,
+          -10.0,
+          28.0,
+          10.0
+        ],
+        [
+          -34.0,
+          -18.0,
+          28.0,
+          8.0
+        ],
+        [
+          -6.0,
+          -10.0,
+          6.0,
+          10.0
+        ]
+      ]
+    },
+    {
+      "name": "Straight_053_1",
+      "source_road": 53,
+      "asset": "straight_20m",
+      "x": -449.0,
+      "z": -480.0,
+      "axis": 0,
+      "properties": {
+        "width_m": 20,
+        "length_m": 102.0,
+        "include_sidewalks": false
+      },
+      "rects": [
+        [
+          -500.0,
+          -490.0,
+          102.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "name": "Straight_054_1",
+      "source_road": 54,
+      "asset": "straight_20m",
+      "x": -290.0,
+      "z": -480.0,
+      "axis": 0,
+      "properties": {
+        "width_m": 20,
+        "length_m": 144.0,
+        "include_sidewalks": false
+      },
+      "rects": [
+        [
+          -362.0,
+          -490.0,
+          144.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "name": "Straight_055_1",
+      "source_road": 55,
+      "asset": "straight_20m",
+      "x": -112.0,
+      "z": -480.0,
+      "axis": 0,
+      "properties": {
+        "width_m": 20,
+        "length_m": 140.0,
+        "include_sidewalks": false
+      },
+      "rects": [
+        [
+          -182.0,
+          -490.0,
+          140.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "name": "Straight_069_1",
+      "source_road": 69,
+      "asset": "straight_28m",
+      "x": -449.0,
+      "z": -320.0,
+      "axis": 0,
+      "properties": {
+        "width_m": 28,
+        "length_m": 102.0,
+        "include_sidewalks": false
+      },
+      "rects": [
+        [
+          -500.0,
+          -334.0,
+          102.0,
+          28.0
+        ]
+      ]
+    },
+    {
+      "name": "Straight_070_1",
+      "source_road": 70,
+      "asset": "straight_28m",
+      "x": -290.0,
+      "z": -320.0,
+      "axis": 0,
+      "properties": {
+        "width_m": 28,
+        "length_m": 144.0,
+        "include_sidewalks": false
+      },
+      "rects": [
+        [
+          -362.0,
+          -334.0,
+          144.0,
+          28.0
+        ]
+      ]
+    },
+    {
+      "name": "Straight_071_1",
+      "source_road": 71,
+      "asset": "straight_28m",
+      "x": -112.0,
+      "z": -320.0,
+      "axis": 0,
+      "properties": {
+        "width_m": 28,
+        "length_m": 140.0,
+        "include_sidewalks": false
+      },
+      "rects": [
+        [
+          -182.0,
+          -334.0,
+          140.0,
+          28.0
+        ]
+      ]
+    },
+    {
+      "name": "Straight_251_1",
+      "source_road": 251,
+      "asset": "straight_20m",
+      "x": -380.0,
+      "z": -499.0,
+      "axis": 1,
+      "properties": {
+        "width_m": 20,
+        "length_m": 2.0,
+        "include_sidewalks": false
+      },
+      "rects": [
+        [
+          -390.0,
+          -500.0,
+          20.0,
+          2.0
+        ]
+      ]
+    },
+    {
+      "name": "Straight_257_1",
+      "source_road": 257,
+      "asset": "straight_20m",
+      "x": -200.0,
+      "z": -499.0,
+      "axis": 1,
+      "properties": {
+        "width_m": 20,
+        "length_m": 2.0,
+        "include_sidewalks": false
+      },
+      "rects": [
+        [
+          -210.0,
+          -500.0,
+          20.0,
+          2.0
+        ]
+      ]
+    },
+    {
+      "name": "Straight_263_1",
+      "source_road": 263,
+      "asset": "straight_28m",
+      "x": -20.0,
+      "z": -499.0,
+      "axis": 1,
+      "properties": {
+        "width_m": 28,
+        "length_m": 2.0,
+        "include_sidewalks": false
+      },
+      "rects": [
+        [
+          -34.0,
+          -500.0,
+          28.0,
+          2.0
+        ]
+      ]
+    },
+    {
+      "name": "Straight_264_1",
+      "source_road": 264,
+      "asset": "straight_28m",
+      "x": -20.0,
+      "z": -402.0,
+      "axis": 1,
+      "properties": {
+        "width_m": 28,
+        "length_m": 120.0,
+        "include_sidewalks": false
+      },
+      "rects": [
+        [
+          -34.0,
+          -462.0,
+          28.0,
+          120.0
+        ]
+      ]
+    },
+    {
+      "name": "Straight_265_1",
+      "source_road": 265,
+      "asset": "straight_28m",
+      "x": -20.0,
+      "z": -236.0,
+      "axis": 1,
+      "properties": {
+        "width_m": 28,
+        "length_m": 124.0,
+        "include_sidewalks": false
+      },
+      "rects": [
+        [
+          -34.0,
+          -298.0,
+          28.0,
+          124.0
+        ]
+      ]
+    },
+    {
+      "name": "Straight_266_1",
+      "source_road": 266,
+      "asset": "straight_28m",
+      "x": -20.0,
+      "z": -82.0,
+      "axis": 1,
+      "properties": {
+        "width_m": 28,
+        "length_m": 128.0,
+        "include_sidewalks": false
+      },
+      "rects": [
+        [
+          -34.0,
+          -146.0,
+          28.0,
+          128.0
+        ]
+      ]
+    },
+    {
+      "name": "Alley_580_1",
+      "source_road": 580,
+      "asset": "alley_6m",
+      "x": -470.0,
+      "z": -495.0,
+      "axis": 1,
+      "properties": {
+        "width_m": 6,
+        "length_m": 10.0,
+        "include_sidewalks": false
+      },
+      "rects": [
+        [
+          -473.0,
+          -500.0,
+          6.0,
+          10.0
+        ]
+      ]
+    },
+    {
+      "name": "Alley_581_1",
+      "source_road": 581,
+      "asset": "alley_6m",
+      "x": -470.0,
+      "z": -402.0,
+      "axis": 1,
+      "properties": {
+        "width_m": 6,
+        "length_m": 136.0,
+        "include_sidewalks": false
+      },
+      "rects": [
+        [
+          -473.0,
+          -470.0,
+          6.0,
+          136.0
+        ]
+      ]
+    },
+    {
+      "name": "Alley_585_1",
+      "source_road": 585,
+      "asset": "alley_6m",
+      "x": -290.0,
+      "z": -495.0,
+      "axis": 1,
+      "properties": {
+        "width_m": 6,
+        "length_m": 10.0,
+        "include_sidewalks": false
+      },
+      "rects": [
+        [
+          -293.0,
+          -500.0,
+          6.0,
+          10.0
+        ]
+      ]
+    },
+    {
+      "name": "Alley_589_1",
+      "source_road": 589,
+      "asset": "alley_6m",
+      "x": -110.0,
+      "z": -402.0,
+      "axis": 1,
+      "properties": {
+        "width_m": 6,
+        "length_m": 136.0,
+        "include_sidewalks": false
+      },
+      "rects": [
+        [
+          -113.0,
+          -470.0,
+          6.0,
+          136.0
+        ]
+      ]
+    }
+  ],
+  "new_triangles": 470,
+  "area_m2": 38940.0,
+  "layout_sha256": "edba69ddc9354c32f460d7f37b764feecdadae32ee1b287c726085a39ca7e4cf"
+}

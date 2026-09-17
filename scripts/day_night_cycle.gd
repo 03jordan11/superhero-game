@@ -45,6 +45,7 @@ var _cloud_offset := Vector2.ZERO
 var _update_elapsed := 0.0
 var night_lighting := 0.0
 var _last_window_settings := Vector2(-1,-1)
+var _bloom_allowed := true
 
 func _ready() -> void:
 	super._ready()
@@ -88,6 +89,12 @@ func _ready() -> void:
 	_environment.fog_enabled = true
 	_environment.fog_sky_affect = 0.0
 	world.environment = _environment
+	world.set_meta("day_night_environment", true)
+	if not Engine.is_editor_hint():
+		var settings := get_node_or_null("/root/GameSettings")
+		if settings != null:
+			settings.graphics_settings_changed.connect(_on_graphics_settings_changed)
+			_bloom_allowed = settings.bloom_enabled
 	_sun.sky_mode = DirectionalLight3D.SKY_MODE_LIGHT_ONLY
 	_moon.sky_mode = DirectionalLight3D.SKY_MODE_LIGHT_ONLY
 	add_to_group(&"day_night_cycle")
@@ -111,13 +118,17 @@ func _process(delta: float) -> void:
 func _on_time_changed(_hours: float) -> void:
 	_update_environment()
 
+func _on_graphics_settings_changed() -> void:
+	_bloom_allowed = get_node("/root/GameSettings").bloom_enabled
+	_update_environment()
+
 func _update_environment() -> void:
 	if _environment == null: return
 	var window_settings := Vector2(window_occupancy_scale,window_brightness_scale)
 	if not window_settings.is_equal_approx(_last_window_settings):
 		_last_window_settings=window_settings
 		window_settings_changed.emit(window_occupancy_scale,window_brightness_scale)
-	_environment.glow_enabled = bloom_intensity > 0
+	_environment.glow_enabled = _bloom_allowed and bloom_intensity > 0
 	_environment.glow_intensity = bloom_intensity
 	_environment.glow_hdr_threshold = bloom_threshold
 	var orbit := (time_of_day - 6.0) / 24.0 * TAU

@@ -1,0 +1,92 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="res://assets/super-city/modular-roads/meshes/junction_cross.res" id="2_iet27"]
+[ext_resource type="Shape3D" path="res://assets/super-city/modular-roads/meshes/junction_cross_collision.res" id="3_u1u0j"]
+[ext_resource type="Script" path="res://assets/super-city/modular-roads/road_module.gd" id="script"]
+
+[node name="JunctionCross" type="StaticBody3D" unique_id=1307549184]
+script = ExtResource("script")
+piece_type = 1
+metadata/_edit_group_ = true
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1167977248]
+mesh = ExtResource("2_iet27")
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=150982582]
+shape = ExtResource("3_u1u0j")
+
+[node name="RoadSockets" type="Node3D" parent="." unique_id=1311619881]
+
+[node name="North" type="Marker3D" parent="RoadSockets" unique_id=1378063095]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18)
+gizmo_extents = 0.7
+metadata/active = true
+metadata/width_m = 20.0
+
+[node name="East" type="Marker3D" parent="RoadSockets" unique_id=155211156]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 18, 0, 0)
+gizmo_extents = 0.7
+metadata/active = true
+metadata/width_m = 20.0
+
+[node name="South" type="Marker3D" parent="RoadSockets" unique_id=480795042]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 18)
+gizmo_extents = 0.7
+metadata/active = true
+metadata/width_m = 20.0
+
+[node name="West" type="Marker3D" parent="RoadSockets" unique_id=692966469]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -18, 0, 0)
+gizmo_extents = 0.7
+metadata/active = true
+metadata/width_m = 20.0
+
+[node name="SidewalkSockets" type="Node3D" parent="." unique_id=2066120024]
+
+[node name="NorthLeft" type="Marker3D" parent="SidewalkSockets" unique_id=1693149957]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -18)
+gizmo_extents = 0.7
+metadata/active = true
+metadata/width_m = 4.0
+
+[node name="NorthRight" type="Marker3D" parent="SidewalkSockets" unique_id=228219305]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -18)
+gizmo_extents = 0.7
+metadata/active = true
+metadata/width_m = 4.0
+
+[node name="EastLeft" type="Marker3D" parent="SidewalkSockets" unique_id=433630040]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 18, 0, -12)
+gizmo_extents = 0.7
+metadata/active = true
+metadata/width_m = 4.0
+
+[node name="EastRight" type="Marker3D" parent="SidewalkSockets" unique_id=382657108]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 18, 0, 12)
+gizmo_extents = 0.7
+metadata/active = true
+metadata/width_m = 4.0
+
+[node name="SouthLeft" type="Marker3D" parent="SidewalkSockets" unique_id=1532906610]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 12, 0, 18)
+gizmo_extents = 0.7
+metadata/active = true
+metadata/width_m = 4.0
+
+[node name="SouthRight" type="Marker3D" parent="SidewalkSockets" unique_id=956491603]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, -12, 0, 18)
+gizmo_extents = 0.7
+metadata/active = true
+metadata/width_m = 4.0
+
+[node name="WestLeft" type="Marker3D" parent="SidewalkSockets" unique_id=1759694918]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -18, 0, 12)
+gizmo_extents = 0.7
+metadata/active = true
+metadata/width_m = 4.0
+
+[node name="WestRight" type="Marker3D" parent="SidewalkSockets" unique_id=1649495749]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -18, 0, -12)
+gizmo_extents = 0.7
+metadata/active = true
+metadata/width_m = 4.0

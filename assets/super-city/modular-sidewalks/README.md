@@ -3,10 +3,61 @@
 Open **`res://scenes/previews/modular_sidewalk_test.tscn`** to try the kit.
 It contains eight loose samples and a connected example made from ordinary,
 individually selectable scene instances. Press **F6** to run this test scene.
-All **24 Sidewalks/sidewalks_* chunks** in `res://scenes/super_city.tscn` now use
-individually editable modules. The approved `sidewalks_3_2` trial, the preview
-scene and the continuous riverside promenade were preserved during the full
-city rollout. Open the city scene and expand `Sidewalks` to edit any chunk.
+The city now uses combined road/sidewalk modules for most streets. Select them
+under `Roads/roads_*` in `res://scenes/super_city.tscn`. **55 independent paving
+pieces** remain under `Sidewalks/sidewalks_*` for custom gaps and frontage. Empty
+chunk roots are retained. The continuous riverside promenade is unchanged.
+See [the road kit guide](../modular-roads/README.md) for current counts, fitting
+controls and measured performance.
+
+This standalone kit remains useful for independent pavement and new layouts.
+Disable Include Sidewalks on a road before adding separate pavement there, to
+avoid overlapping geometry. The consolidation and conversion records below
+are historical; their footprint audits remain inputs to the current regression
+checks, but their placement counts no longer describe the live city.
+
+## Previous sidewalk consolidation
+
+Adjoining pieces from the same authored straight run are consolidated, up to
+**200 m per piece**. Corners, access gaps, distinct paving widths, separate
+authored runs and chunk boundaries are preserved. Wider paving merges only
+along its existing length; neighboring rows remain independently editable.
+Retained pieces keep their original names and node IDs where present.
+
+Measured by loading the saved scene in Godot before and after:
+
+| Sidewalk metric | Before | After | Saved |
+| --- | ---: | ---: | ---: |
+| All nodes under the 24 sidewalk chunks, including chunk roots | 22,530 | 11,994 | **10,536 (46.8%)** |
+| Individually editable pieces | 3,555 | 1,799 | 1,756 |
+| Collision shapes | 4,731 | 2,975 | 1,756 |
+| Rendered sidewalk triangles | 52,068 | 30,996 | 21,072 |
+
+All 588 corner pieces remain. The 1,211 remaining straight/paving pieces use
+the existing adjustable prefab, so mesh, collision and sockets resize together
+and the texture retains its world-space tile size. Ground infill is unchanged
+and is excluded from the counts above. Other city nodes are unchanged, so the
+city scene also has exactly 10,536 fewer nodes overall.
+
+The saved city passed 65,454 support/seam probes across the 23 rollout chunks,
+14,905 probes in the original trial, and the city POI/pedestrian integration
+check. The original retained footprints and pedestrian graph are unchanged;
+only the graph's source-scene fingerprint was refreshed. No script parse errors
+remain. These are node/geometry measurements, not an FPS improvement claim.
+
+Select an existing straight and edit **Length M**, or **Width M** for broad
+paving. Try a long run beside an intersection, walk across its joins, and move
+then undo it to check the editing granularity. Use **Scene → Reload Saved Scene**
+on Super City and Main if the editor still shows the shorter pieces, after
+protecting unsaved work.
+
+Changed: `scenes/super_city.tscn`, this guide, `city_conversion.json`,
+`sidewalks_3_2_conversion.json`, `assets/super-city/pedestrians/network.json`
+(fingerprint only), and `tests/test_sidewalks_3_2_modular.gd` (reads current
+expected counts from the placement audit). Inspection/merge helpers, measured
+counts and backups are in Git-ignored `artifacts/long_sidewalks*` files/folders;
+the backup folder is also excluded from Godot scanning. Earlier conversion
+counts below document the previous stages, before this consolidation.
 
 ## Pieces
 
@@ -107,7 +158,7 @@ needed for placing pieces or running the preview. No city generator, pedestrian
 route generator, traffic data or existing city mesh is modified by this kit.
 The first city conversion is described below.
 
-## First city conversion: sidewalks_3_2
+## First city conversion: sidewalks_3_2 (before consolidation)
 
 Open `res://scenes/super_city.tscn`, expand `Sidewalks > sidewalks_3_2`, and
 select a `Straight_*` or `Corner_*` child. The parent is now a Node3D containing
@@ -165,7 +216,7 @@ manually playtested. In Godot, move and undo a module, adjust its length, and wa
 across the joins. Confirm the edit granularity suits your workflow before
 converting another chunk.
 
-## Full city rollout
+## Full city rollout (before consolidation)
 
 The other **23 chunks** now contain **3,457 modules**, bringing the city total
 to **3,555**, including the unchanged 98-piece trial. Their retained footprints

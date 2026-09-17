@@ -1,0 +1,16 @@
+{
+	"meshes": {
+		"DeckStructure": 864,
+		"Foundations": 144,
+		"Guardrails": 1872,
+		"Hangers": 840,
+		"MainCables": 1168,
+		"RoadDeck": 324,
+		"TowerRecesses": 96,
+		"Towers": 1632,
+		"Walkways": 648,
+		"WestApproach": 30
+	},
+	"source": "Godot imported GLB highest-detail index buffers plus rebuilt approach",
+	"total": 7618
+}

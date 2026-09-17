@@ -1108,64 +1108,32 @@
     {
       "name": "Straight_01_01",
       "kind": "straight_adjustable",
-      "x": 20.0,
+      "x": 33.5,
       "z": 12.0,
       "turn": 90,
-      "length_m": 40,
+      "length_m": 67.0,
       "rects": [
         [
-          0,
+          0.0,
           10.0,
-          40,
-          4.0
-        ]
-      ]
-    },
-    {
-      "name": "Straight_01_02",
-      "kind": "straight_adjustable",
-      "x": 53.5,
-      "z": 12.0,
-      "turn": 90,
-      "length_m": 27.0,
-      "rects": [
-        [
-          40,
-          10.0,
-          27.0,
-          4.0
+          67.0,
+          4
         ]
       ]
     },
     {
       "name": "Straight_02_01",
       "kind": "straight_adjustable",
-      "x": 93.0,
+      "x": 99.5,
       "z": 12.0,
       "turn": 90,
-      "length_m": 40,
+      "length_m": 53.0,
       "rects": [
         [
           73.0,
           10.0,
-          40,
-          4.0
-        ]
-      ]
-    },
-    {
-      "name": "Straight_02_02",
-      "kind": "straight_adjustable",
-      "x": 119.5,
-      "z": 12.0,
-      "turn": 90,
-      "length_m": 13.0,
-      "rects": [
-        [
-          113.0,
-          10.0,
-          13.0,
-          4.0
+          53.0,
+          4
         ]
       ]
     },
@@ -1188,192 +1156,80 @@
     {
       "name": "Straight_04_01",
       "kind": "straight_adjustable",
-      "x": 378.0,
+      "x": 392.5,
       "z": 12.0,
       "turn": 90,
-      "length_m": 40,
+      "length_m": 69.0,
       "rects": [
         [
-          358,
+          358.0,
           10.0,
-          40,
-          4.0
-        ]
-      ]
-    },
-    {
-      "name": "Straight_04_02",
-      "kind": "straight_adjustable",
-      "x": 412.5,
-      "z": 12.0,
-      "turn": 90,
-      "length_m": 29.0,
-      "rects": [
-        [
-          398,
-          10.0,
-          29.0,
-          4.0
+          69.0,
+          4
         ]
       ]
     },
     {
       "name": "Straight_05_01",
       "kind": "straight_adjustable",
-      "x": 453.0,
+      "x": 466.5,
       "z": 12.0,
       "turn": 90,
-      "length_m": 40,
+      "length_m": 67.0,
       "rects": [
         [
           433.0,
           10.0,
-          40,
-          4.0
-        ]
-      ]
-    },
-    {
-      "name": "Straight_05_02",
-      "kind": "straight_adjustable",
-      "x": 486.5,
-      "z": 12.0,
-      "turn": 90,
-      "length_m": 27.0,
-      "rects": [
-        [
-          473.0,
-          10.0,
-          27.0,
-          4.0
+          67.0,
+          4
         ]
       ]
     },
     {
       "name": "Straight_06_01",
       "kind": "straight_adjustable",
-      "x": 20.0,
+      "x": 33.5,
       "z": 148.0,
       "turn": 90,
-      "length_m": 40,
+      "length_m": 67.0,
       "rects": [
         [
-          0,
+          0.0,
           146.0,
-          40,
-          4.0
-        ]
-      ]
-    },
-    {
-      "name": "Straight_06_02",
-      "kind": "straight_adjustable",
-      "x": 53.5,
-      "z": 148.0,
-      "turn": 90,
-      "length_m": 27.0,
-      "rects": [
-        [
-          40,
-          146.0,
-          27.0,
-          4.0
+          67.0,
+          4
         ]
       ]
     },
     {
       "name": "Straight_07_01",
       "kind": "straight_adjustable",
-      "x": 93.0,
+      "x": 107.5,
       "z": 148.0,
       "turn": 90,
-      "length_m": 40,
+      "length_m": 69.0,
       "rects": [
         [
           73.0,
           146.0,
-          40,
-          4.0
-        ]
-      ]
-    },
-    {
-      "name": "Straight_07_02",
-      "kind": "straight_adjustable",
-      "x": 127.5,
-      "z": 148.0,
-      "turn": 90,
-      "length_m": 29.0,
-      "rects": [
-        [
-          113.0,
-          146.0,
-          29.0,
-          4.0
+          69.0,
+          4
         ]
       ]
     },
     {
       "name": "Straight_08_01",
       "kind": "straight_adjustable",
-      "x": 20.0,
+      "x": 71.0,
       "z": 172.0,
       "turn": 90,
-      "length_m": 40,
+      "length_m": 142.0,
       "rects": [
         [
-          0,
+          0.0,
           170.0,
-          40,
-          4.0
-        ]
-      ]
-    },
-    {
-      "name": "Straight_08_02",
-      "kind": "straight_adjustable",
-      "x": 60.0,
-      "z": 172.0,
-      "turn": 90,
-      "length_m": 40,
-      "rects": [
-        [
-          40,
-          170.0,
-          40,
-          4.0
-        ]
-      ]
-    },
-    {
-      "name": "Straight_08_03",
-      "kind": "straight_adjustable",
-      "x": 100.0,
-      "z": 172.0,
-      "turn": 90,
-      "length_m": 40,
-      "rects": [
-        [
-          80,
-          170.0,
-          40,
-          4.0
-        ]
-      ]
-    },
-    {
-      "name": "Straight_08_04",
-      "kind": "straight_adjustable",
-      "x": 131.0,
-      "z": 172.0,
-      "turn": 90,
-      "length_m": 22,
-      "rects": [
-        [
-          120,
-          170.0,
-          22,
-          4.0
+          142.0,
+          4
         ]
       ]
     },
@@ -1412,640 +1268,272 @@
     {
       "name": "Straight_11_01",
       "kind": "straight_adjustable",
-      "x": 370.0,
+      "x": 388.5,
       "z": 148.0,
       "turn": 90,
-      "length_m": 40,
+      "length_m": 77.0,
       "rects": [
         [
           350.0,
           146.0,
-          40,
-          4.0
-        ]
-      ]
-    },
-    {
-      "name": "Straight_11_02",
-      "kind": "straight_adjustable",
-      "x": 408.5,
-      "z": 148.0,
-      "turn": 90,
-      "length_m": 37.0,
-      "rects": [
-        [
-          390.0,
-          146.0,
-          37.0,
-          4.0
+          77.0,
+          4
         ]
       ]
     },
     {
       "name": "Straight_12_01",
       "kind": "straight_adjustable",
-      "x": 453.0,
+      "x": 466.5,
       "z": 148.0,
       "turn": 90,
-      "length_m": 40,
+      "length_m": 67.0,
       "rects": [
         [
           433.0,
           146.0,
-          40,
-          4.0
-        ]
-      ]
-    },
-    {
-      "name": "Straight_12_02",
-      "kind": "straight_adjustable",
-      "x": 486.5,
-      "z": 148.0,
-      "turn": 90,
-      "length_m": 27.0,
-      "rects": [
-        [
-          473.0,
-          146.0,
-          27.0,
-          4.0
+          67.0,
+          4
         ]
       ]
     },
     {
       "name": "Straight_13_01",
       "kind": "straight_adjustable",
-      "x": 390.0,
+      "x": 435.0,
       "z": 172.0,
       "turn": 90,
-      "length_m": 40,
+      "length_m": 130.0,
       "rects": [
         [
           370.0,
           170.0,
-          40,
-          4.0
-        ]
-      ]
-    },
-    {
-      "name": "Straight_13_02",
-      "kind": "straight_adjustable",
-      "x": 430.0,
-      "z": 172.0,
-      "turn": 90,
-      "length_m": 40,
-      "rects": [
-        [
-          410.0,
-          170.0,
-          40,
-          4.0
-        ]
-      ]
-    },
-    {
-      "name": "Straight_13_03",
-      "kind": "straight_adjustable",
-      "x": 470.0,
-      "z": 172.0,
-      "turn": 90,
-      "length_m": 40,
-      "rects": [
-        [
-          450.0,
-          170.0,
-          40,
-          4.0
-        ]
-      ]
-    },
-    {
-      "name": "Straight_13_04",
-      "kind": "straight_adjustable",
-      "x": 495.0,
-      "z": 172.0,
-      "turn": 90,
-      "length_m": 10.0,
-      "rects": [
-        [
-          490.0,
-          170.0,
-          10.0,
-          4.0
+          130.0,
+          4
         ]
       ]
     },
     {
       "name": "Straight_14_01",
       "kind": "straight_adjustable",
-      "x": 20.0,
+      "x": 71.0,
       "z": 304.0,
       "turn": 90,
-      "length_m": 40,
+      "length_m": 142.0,
       "rects": [
         [
-          0,
+          0.0,
           302.0,
-          40,
-          4.0
-        ]
-      ]
-    },
-    {
-      "name": "Straight_14_02",
-      "kind": "straight_adjustable",
-      "x": 60.0,
-      "z": 304.0,
-      "turn": 90,
-      "length_m": 40,
-      "rects": [
-        [
-          40,
-          302.0,
-          40,
-          4.0
-        ]
-      ]
-    },
-    {
-      "name": "Straight_14_03",
-      "kind": "straight_adjustable",
-      "x": 100.0,
-      "z": 304.0,
-      "turn": 90,
-      "length_m": 40,
-      "rects": [
-        [
-          80,
-          302.0,
-          40,
-          4.0
-        ]
-      ]
-    },
-    {
-      "name": "Straight_14_04",
-      "kind": "straight_adjustable",
-      "x": 131.0,
-      "z": 304.0,
-      "turn": 90,
-      "length_m": 22,
-      "rects": [
-        [
-          120,
-          302.0,
-          22,
-          4.0
+          142.0,
+          4
         ]
       ]
     },
     {
       "name": "Straight_15_01",
       "kind": "straight_adjustable",
-      "x": 20.0,
+      "x": 33.5,
       "z": 336.0,
       "turn": 90,
-      "length_m": 40,
+      "length_m": 67.0,
       "rects": [
         [
-          0,
+          0.0,
           334.0,
-          40,
-          4.0
-        ]
-      ]
-    },
-    {
-      "name": "Straight_15_02",
-      "kind": "straight_adjustable",
-      "x": 53.5,
-      "z": 336.0,
-      "turn": 90,
-      "length_m": 27.0,
-      "rects": [
-        [
-          40,
-          334.0,
-          27.0,
-          4.0
+          67.0,
+          4
         ]
       ]
     },
     {
       "name": "Straight_16_01",
       "kind": "straight_adjustable",
-      "x": 93.0,
+      "x": 107.5,
       "z": 336.0,
       "turn": 90,
-      "length_m": 40,
+      "length_m": 69.0,
       "rects": [
         [
           73.0,
           334.0,
-          40,
-          4.0
-        ]
-      ]
-    },
-    {
-      "name": "Straight_16_02",
-      "kind": "straight_adjustable",
-      "x": 127.5,
-      "z": 336.0,
-      "turn": 90,
-      "length_m": 29.0,
-      "rects": [
-        [
-          113.0,
-          334.0,
-          29.0,
-          4.0
+          69.0,
+          4
         ]
       ]
     },
     {
       "name": "Straight_17_01",
       "kind": "straight_adjustable",
-      "x": 198.0,
+      "x": 224.0,
       "z": 304.0,
       "turn": 90,
-      "length_m": 40,
+      "length_m": 92.0,
       "rects": [
         [
-          178,
+          178.0,
           302.0,
-          40,
-          4.0
-        ]
-      ]
-    },
-    {
-      "name": "Straight_17_02",
-      "kind": "straight_adjustable",
-      "x": 238.0,
-      "z": 304.0,
-      "turn": 90,
-      "length_m": 40,
-      "rects": [
-        [
-          218,
-          302.0,
-          40,
-          4.0
-        ]
-      ]
-    },
-    {
-      "name": "Straight_17_03",
-      "kind": "straight_adjustable",
-      "x": 264.0,
-      "z": 304.0,
-      "turn": 90,
-      "length_m": 12.0,
-      "rects": [
-        [
-          258,
-          302.0,
-          12.0,
-          4.0
+          92.0,
+          4
         ]
       ]
     },
     {
       "name": "Straight_18_01",
       "kind": "straight_adjustable",
-      "x": 198.0,
+      "x": 227.0,
       "z": 336.0,
       "turn": 90,
-      "length_m": 40,
+      "length_m": 98.0,
       "rects": [
         [
-          178,
+          178.0,
           334.0,
-          40,
-          4.0
-        ]
-      ]
-    },
-    {
-      "name": "Straight_18_02",
-      "kind": "straight_adjustable",
-      "x": 238.0,
-      "z": 336.0,
-      "turn": 90,
-      "length_m": 40,
-      "rects": [
-        [
-          218,
-          334.0,
-          40,
-          4.0
-        ]
-      ]
-    },
-    {
-      "name": "Straight_18_03",
-      "kind": "straight_adjustable",
-      "x": 267.0,
-      "z": 336.0,
-      "turn": 90,
-      "length_m": 18.0,
-      "rects": [
-        [
-          258,
-          334.0,
-          18.0,
-          4.0
+          98.0,
+          4
         ]
       ]
     },
     {
       "name": "Straight_19_01",
       "kind": "straight_adjustable",
-      "x": 454.0,
+      "x": 467.0,
       "z": 304.0,
       "turn": 90,
-      "length_m": 40,
+      "length_m": 66.0,
       "rects": [
         [
           434.0,
           302.0,
-          40,
-          4.0
-        ]
-      ]
-    },
-    {
-      "name": "Straight_19_02",
-      "kind": "straight_adjustable",
-      "x": 487.0,
-      "z": 304.0,
-      "turn": 90,
-      "length_m": 26.0,
-      "rects": [
-        [
-          474.0,
-          302.0,
-          26.0,
-          4.0
+          66.0,
+          4
         ]
       ]
     },
     {
       "name": "Straight_20_01",
       "kind": "straight_adjustable",
-      "x": 460.0,
+      "x": 470.0,
       "z": 336.0,
       "turn": 90,
-      "length_m": 40,
+      "length_m": 60.0,
       "rects": [
         [
           440.0,
           334.0,
-          40,
-          4.0
-        ]
-      ]
-    },
-    {
-      "name": "Straight_20_02",
-      "kind": "straight_adjustable",
-      "x": 490.0,
-      "z": 336.0,
-      "turn": 90,
-      "length_m": 20.0,
-      "rects": [
-        [
-          480.0,
-          334.0,
-          20.0,
-          4.0
+          60.0,
+          4
         ]
       ]
     },
     {
       "name": "Straight_21_01",
       "kind": "straight_adjustable",
-      "x": 20.0,
+      "x": 33.5,
       "z": 468.0,
       "turn": 90,
-      "length_m": 40,
+      "length_m": 67.0,
       "rects": [
         [
-          0,
+          0.0,
           466.0,
-          40,
-          4.0
-        ]
-      ]
-    },
-    {
-      "name": "Straight_21_02",
-      "kind": "straight_adjustable",
-      "x": 53.5,
-      "z": 468.0,
-      "turn": 90,
-      "length_m": 27.0,
-      "rects": [
-        [
-          40,
-          466.0,
-          27.0,
-          4.0
+          67.0,
+          4
         ]
       ]
     },
     {
       "name": "Straight_22_01",
       "kind": "straight_adjustable",
-      "x": 93.0,
+      "x": 107.5,
       "z": 468.0,
       "turn": 90,
-      "length_m": 40,
+      "length_m": 69.0,
       "rects": [
         [
           73.0,
           466.0,
-          40,
-          4.0
-        ]
-      ]
-    },
-    {
-      "name": "Straight_22_02",
-      "kind": "straight_adjustable",
-      "x": 127.5,
-      "z": 468.0,
-      "turn": 90,
-      "length_m": 29.0,
-      "rects": [
-        [
-          113.0,
-          466.0,
-          29.0,
-          4.0
+          69.0,
+          4
         ]
       ]
     },
     {
       "name": "Straight_23_01",
       "kind": "straight_adjustable",
-      "x": 20.0,
+      "x": 33.5,
       "z": 492.0,
       "turn": 90,
-      "length_m": 40,
+      "length_m": 67.0,
       "rects": [
         [
-          0,
+          0.0,
           490.0,
-          40,
-          4.0
-        ]
-      ]
-    },
-    {
-      "name": "Straight_23_02",
-      "kind": "straight_adjustable",
-      "x": 53.5,
-      "z": 492.0,
-      "turn": 90,
-      "length_m": 27.0,
-      "rects": [
-        [
-          40,
-          490.0,
-          27.0,
-          4.0
+          67.0,
+          4
         ]
       ]
     },
     {
       "name": "Straight_24_01",
       "kind": "straight_adjustable",
-      "x": 93.0,
+      "x": 107.5,
       "z": 492.0,
       "turn": 90,
-      "length_m": 40,
+      "length_m": 69.0,
       "rects": [
         [
           73.0,
           490.0,
-          40,
-          4.0
-        ]
-      ]
-    },
-    {
-      "name": "Straight_24_02",
-      "kind": "straight_adjustable",
-      "x": 127.5,
-      "z": 492.0,
-      "turn": 90,
-      "length_m": 29.0,
-      "rects": [
-        [
-          113.0,
-          490.0,
-          29.0,
-          4.0
+          69.0,
+          4
         ]
       ]
     },
     {
       "name": "Straight_25_01",
       "kind": "straight_adjustable",
-      "x": 198.0,
+      "x": 217.0,
       "z": 468.0,
       "turn": 90,
-      "length_m": 40,
+      "length_m": 78.0,
       "rects": [
         [
-          178,
+          178.0,
           466.0,
-          40,
-          4.0
-        ]
-      ]
-    },
-    {
-      "name": "Straight_25_02",
-      "kind": "straight_adjustable",
-      "x": 237.0,
-      "z": 468.0,
-      "turn": 90,
-      "length_m": 38.0,
-      "rects": [
-        [
-          218,
-          466.0,
-          38.0,
-          4.0
+          78.0,
+          4
         ]
       ]
     },
     {
       "name": "Straight_26_01",
       "kind": "straight_adjustable",
-      "x": 198.0,
+      "x": 214.0,
       "z": 492.0,
       "turn": 90,
-      "length_m": 40,
+      "length_m": 72.0,
       "rects": [
         [
-          178,
+          178.0,
           490.0,
-          40,
-          4.0
-        ]
-      ]
-    },
-    {
-      "name": "Straight_26_02",
-      "kind": "straight_adjustable",
-      "x": 234.0,
-      "z": 492.0,
-      "turn": 90,
-      "length_m": 32.0,
-      "rects": [
-        [
-          218,
-          490.0,
-          32.0,
-          4.0
+          72.0,
+          4
         ]
       ]
     },
     {
       "name": "Straight_27_01",
       "kind": "straight_adjustable",
-      "x": 440.0,
+      "x": 460.0,
       "z": 468.0,
       "turn": 90,
-      "length_m": 40,
+      "length_m": 80.0,
       "rects": [
         [
           420.0,
           466.0,
-          40,
-          4.0
-        ]
-      ]
-    },
-    {
-      "name": "Straight_27_02",
-      "kind": "straight_adjustable",
-      "x": 480.0,
-      "z": 468.0,
-      "turn": 90,
-      "length_m": 40.0,
-      "rects": [
-        [
-          460.0,
-          466.0,
-          40.0,
-          4.0
+          80.0,
+          4
         ]
       ]
     },
@@ -2068,32 +1556,16 @@
     {
       "name": "Straight_29_01",
       "kind": "straight_adjustable",
-      "x": 453.0,
+      "x": 466.5,
       "z": 492.0,
       "turn": 90,
-      "length_m": 40,
+      "length_m": 67.0,
       "rects": [
         [
           433.0,
           490.0,
-          40,
-          4.0
-        ]
-      ]
-    },
-    {
-      "name": "Straight_29_02",
-      "kind": "straight_adjustable",
-      "x": 486.5,
-      "z": 492.0,
-      "turn": 90,
-      "length_m": 27.0,
-      "rects": [
-        [
-          473.0,
-          490.0,
-          27.0,
-          4.0
+          67.0,
+          4
         ]
       ]
     },
@@ -2101,31 +1573,15 @@
       "name": "Straight_30_01",
       "kind": "straight_adjustable",
       "x": 148.0,
-      "z": 104.0,
+      "z": 113.0,
       "turn": 0,
-      "length_m": 40,
+      "length_m": 58.0,
       "rects": [
         [
           146.0,
           84.0,
-          4.0,
-          40
-        ]
-      ]
-    },
-    {
-      "name": "Straight_30_02",
-      "kind": "straight_adjustable",
-      "x": 148.0,
-      "z": 133.0,
-      "turn": 0,
-      "length_m": 18.0,
-      "rects": [
-        [
-          146.0,
-          124.0,
-          4.0,
-          18.0
+          4,
+          58.0
         ]
       ]
     },
@@ -2149,47 +1605,15 @@
       "name": "Straight_32_01",
       "kind": "straight_adjustable",
       "x": 148.0,
-      "z": 198.0,
-      "turn": 0,
-      "length_m": 40,
-      "rects": [
-        [
-          146.0,
-          178,
-          4.0,
-          40
-        ]
-      ]
-    },
-    {
-      "name": "Straight_32_02",
-      "kind": "straight_adjustable",
-      "x": 148.0,
       "z": 238.0,
       "turn": 0,
-      "length_m": 40,
+      "length_m": 120.0,
       "rects": [
         [
           146.0,
-          218,
-          4.0,
-          40
-        ]
-      ]
-    },
-    {
-      "name": "Straight_32_03",
-      "kind": "straight_adjustable",
-      "x": 148.0,
-      "z": 278.0,
-      "turn": 0,
-      "length_m": 40,
-      "rects": [
-        [
-          146.0,
-          258,
-          4.0,
-          40
+          178.0,
+          4,
+          120.0
         ]
       ]
     },
@@ -2197,47 +1621,15 @@
       "name": "Straight_33_01",
       "kind": "straight_adjustable",
       "x": 172.0,
-      "z": 198.0,
-      "turn": 0,
-      "length_m": 40,
-      "rects": [
-        [
-          170.0,
-          178,
-          4.0,
-          40
-        ]
-      ]
-    },
-    {
-      "name": "Straight_33_02",
-      "kind": "straight_adjustable",
-      "x": 172.0,
       "z": 238.0,
       "turn": 0,
-      "length_m": 40,
+      "length_m": 120.0,
       "rects": [
         [
           170.0,
-          218,
-          4.0,
-          40
-        ]
-      ]
-    },
-    {
-      "name": "Straight_33_03",
-      "kind": "straight_adjustable",
-      "x": 172.0,
-      "z": 278.0,
-      "turn": 0,
-      "length_m": 40,
-      "rects": [
-        [
-          170.0,
-          258,
-          4.0,
-          40
+          178.0,
+          4,
+          120.0
         ]
       ]
     },
@@ -2245,47 +1637,15 @@
       "name": "Straight_34_01",
       "kind": "straight_adjustable",
       "x": 148.0,
-      "z": 362.0,
-      "turn": 0,
-      "length_m": 40,
-      "rects": [
-        [
-          146.0,
-          342,
-          4.0,
-          40
-        ]
-      ]
-    },
-    {
-      "name": "Straight_34_02",
-      "kind": "straight_adjustable",
-      "x": 148.0,
       "z": 402.0,
       "turn": 0,
-      "length_m": 40,
+      "length_m": 120.0,
       "rects": [
         [
           146.0,
-          382,
-          4.0,
-          40
-        ]
-      ]
-    },
-    {
-      "name": "Straight_34_03",
-      "kind": "straight_adjustable",
-      "x": 148.0,
-      "z": 442.0,
-      "turn": 0,
-      "length_m": 40,
-      "rects": [
-        [
-          146.0,
-          422,
-          4.0,
-          40
+          342.0,
+          4,
+          120.0
         ]
       ]
     },
@@ -2293,47 +1653,15 @@
       "name": "Straight_35_01",
       "kind": "straight_adjustable",
       "x": 172.0,
-      "z": 362.0,
-      "turn": 0,
-      "length_m": 40,
-      "rects": [
-        [
-          170.0,
-          342,
-          4.0,
-          40
-        ]
-      ]
-    },
-    {
-      "name": "Straight_35_02",
-      "kind": "straight_adjustable",
-      "x": 172.0,
       "z": 402.0,
       "turn": 0,
-      "length_m": 40,
+      "length_m": 120.0,
       "rects": [
         [
           170.0,
-          382,
-          4.0,
-          40
-        ]
-      ]
-    },
-    {
-      "name": "Straight_35_03",
-      "kind": "straight_adjustable",
-      "x": 172.0,
-      "z": 442.0,
-      "turn": 0,
-      "length_m": 40,
-      "rects": [
-        [
-          170.0,
-          422,
-          4.0,
-          40
+          342.0,
+          4,
+          120.0
         ]
       ]
     },
@@ -2373,31 +1701,15 @@
       "name": "Straight_38_01",
       "kind": "straight_adjustable",
       "x": 328.0,
-      "z": 38.0,
+      "z": 49.0,
       "turn": 0,
-      "length_m": 40,
+      "length_m": 62.0,
       "rects": [
         [
           326.0,
-          18,
-          4.0,
-          40
-        ]
-      ]
-    },
-    {
-      "name": "Straight_38_02",
-      "kind": "straight_adjustable",
-      "x": 328.0,
-      "z": 69.0,
-      "turn": 0,
-      "length_m": 22.0,
-      "rects": [
-        [
-          326.0,
-          58,
-          4.0,
-          22.0
+          18.0,
+          4,
+          62.0
         ]
       ]
     },
@@ -2405,47 +1717,15 @@
       "name": "Straight_39_01",
       "kind": "straight_adjustable",
       "x": 352.0,
-      "z": 38.0,
+      "z": 67.0,
       "turn": 0,
-      "length_m": 40,
+      "length_m": 98.0,
       "rects": [
         [
           350.0,
-          18,
-          4.0,
-          40
-        ]
-      ]
-    },
-    {
-      "name": "Straight_39_02",
-      "kind": "straight_adjustable",
-      "x": 352.0,
-      "z": 78.0,
-      "turn": 0,
-      "length_m": 40,
-      "rects": [
-        [
-          350.0,
-          58,
-          4.0,
-          40
-        ]
-      ]
-    },
-    {
-      "name": "Straight_39_03",
-      "kind": "straight_adjustable",
-      "x": 352.0,
-      "z": 107.0,
-      "turn": 0,
-      "length_m": 18.0,
-      "rects": [
-        [
-          350.0,
-          98,
-          4.0,
-          18.0
+          18.0,
+          4,
+          98.0
         ]
       ]
     }
@@ -2454,7 +1734,7 @@
   "new_top_area_m2": 11768.0,
   "removed_top_area_m2": 508.0,
   "old_triangles": 566,
-  "new_triangles": 1400,
+  "new_triangles": 860,
   "pruned_route_endpoints": [
     977,
     978

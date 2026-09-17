@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://ce38ahkbxcke7"]
 
 [ext_resource type="Script" uid="uid://dkqg4b6tjqe0e" path="res://scripts/ui-scripts/main_menu.gd" id="1_main_menu"]
-
 [ext_resource type="PackedScene" path="res://scenes/ui/settings_menu.tscn" id="99_settings_menu"]
 
 [node name="MainMenu" type="Control" unique_id=1887152426]
@@ -39,7 +38,7 @@ theme_override_constants/separation = 18
 layout_mode = 2
 theme_override_colors/font_color = Color(0.3, 0.75, 1, 1)
 theme_override_font_sizes/font_size = 56
-text = "SUPERHERO"
+text = "SUPERHERO CITY"
 horizontal_alignment = 1
 
 [node name="Spacer" type="Control" parent="Center/Menu" unique_id=1661460702]
@@ -50,12 +49,12 @@ layout_mode = 2
 custom_minimum_size = Vector2(300, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
-text = "Play"
+text = "New Game"
 
-[node name="LoadButton" type="Button" parent="Center/Menu"]
+[node name="LoadButton" type="Button" parent="Center/Menu" unique_id=1353698869]
 custom_minimum_size = Vector2(300, 64)
 layout_mode = 2
-tooltip_text = "Loading is not implemented yet."
+tooltip_text = "No saved game found."
 theme_override_font_sizes/font_size = 28
 disabled = true
 text = "Load Game"
@@ -72,10 +71,16 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "Quit"
 
-[node name="SettingsMenu" parent="Center" instance=ExtResource("99_settings_menu")]
+[node name="LoadStatus" type="Label" parent="Center/Menu" unique_id=247868031]
+visible = false
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="SettingsMenu" parent="Center" unique_id=251952364 instance=ExtResource("99_settings_menu")]
 layout_mode = 2
 
 [connection signal="pressed" from="Center/Menu/PlayButton" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Center/Menu/LoadButton" to="." method="_on_load_pressed"]
 [connection signal="pressed" from="Center/Menu/SettingsButton" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Center/Menu/QuitButton" to="." method="_on_quit_pressed"]
 [connection signal="back_requested" from="Center/SettingsMenu" to="." method="_on_back_pressed"]

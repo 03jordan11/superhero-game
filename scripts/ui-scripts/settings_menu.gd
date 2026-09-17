@@ -6,7 +6,7 @@ const POPULATION = preload("res://scenes/ui/population_settings.tscn")
 const HINT_SETTINGS = preload("res://scripts/ui-scripts/control_hint_settings.gd")
 const COPY = preload("res://scripts/ui-scripts/powers_text.gd")
 const HUD_LABELS := {&"always_show_health": "Always Show Health", &"always_show_stamina": "Always Show Stamina", &"always_show_experience": "Always Show Level / XP"}
-const RESOLUTIONS: Array[Vector2i] = [Vector2i(1280, 720), Vector2i(1600, 900), Vector2i(1920, 1080), Vector2i(2560, 1440), Vector2i(3840, 2160)]
+const RESOLUTIONS: Array[Vector2i] = [Vector2i(1280, 720), Vector2i(1600, 900), Vector2i(1920, 1080), Vector2i(2560, 1440), Vector2i(3440, 1440), Vector2i(3840, 2160)]
 var resolutions: Array[Vector2i] = RESOLUTIONS.duplicate()
 var pages: Dictionary = {}
 var volume_sliders: Dictionary = {}
@@ -14,6 +14,11 @@ var volume_labels: Dictionary = {}
 var hud_toggles: Dictionary = {}
 var display_mode_dropdown: OptionButton
 var resolution_dropdown: OptionButton
+var render_scale_dropdown: OptionButton
+var shadow_quality_dropdown: OptionButton
+var bloom_dropdown: OptionButton
+var fps_limit_dropdown: OptionButton
+var vsync_dropdown: OptionButton
 var sprint_mode_dropdown: OptionButton
 var power_mode_dropdown: OptionButton
 var population_settings: Node
@@ -48,10 +53,12 @@ func _ready() -> void:
 	controls_panel.status_changed.connect(func(copy: String): status.text = copy)
 	$Margin/Layout/BackButton.pressed.connect(func(): back_requested.emit())
 	settings.display_settings_changed.connect(_refresh_display)
+	settings.graphics_settings_changed.connect(_refresh_graphics)
 	settings.audio_settings_changed.connect(_refresh_audio)
 	settings.gameplay_settings_changed.connect(_refresh_gameplay)
 	settings.accessibility_settings_changed.connect(_refresh_gameplay)
 	_refresh_display()
+	_refresh_graphics()
 	_refresh_audio()
 	_refresh_gameplay()
 	_audio_save_timer = Timer.new()
@@ -63,6 +70,7 @@ func _ready() -> void:
 
 func open_page() -> void:
 	_refresh_display()
+	_refresh_graphics()
 	_refresh_audio()
 	_refresh_gameplay()
 	show()
@@ -103,6 +111,17 @@ func _build_graphics() -> void:
 	resolution_dropdown.tooltip_text = "Window size. Fullscreen uses your display's native resolution."
 	display_mode_dropdown.item_selected.connect(_on_display_selected)
 	resolution_dropdown.item_selected.connect(_on_display_selected)
+	render_scale_dropdown = _option(page, "3D Render Scale", ["50%", "75%", "100%"])
+	render_scale_dropdown.tooltip_text = "Lower values improve GPU performance at the cost of a softer image. The HUD stays sharp."
+	shadow_quality_dropdown = _option(page, "Shadow Quality", ["Off", "Low", "Medium", "High"])
+	shadow_quality_dropdown.tooltip_text = "Lower settings reduce shadow detail and distance. Low disables shadows from local lights."
+	bloom_dropdown = _option(page, "Bloom", ["Off", "On"])
+	bloom_dropdown.tooltip_text = "Glow around bright lights and effects."
+	fps_limit_dropdown = _option(page, "FPS Limit", ["30 FPS", "60 FPS", "120 FPS", "Unlimited"])
+	vsync_dropdown = _option(page, "VSync", ["Off", "On"])
+	vsync_dropdown.tooltip_text = "Prevents screen tearing. Your display's refresh rate may limit FPS even when Unlimited is selected."
+	for option in [render_scale_dropdown, shadow_quality_dropdown, bloom_dropdown, fps_limit_dropdown, vsync_dropdown]:
+		option.item_selected.connect(_on_graphics_selected)
 	_heading(page, "Performance")
 	population_settings = POPULATION.instantiate()
 	page.add_child(population_settings)
@@ -211,6 +230,18 @@ func _refresh_audio() -> void:
 		var value := roundi(float(settings.audio_volumes[bus]) * 100.0)
 		volume_sliders[bus].set_value_no_signal(value)
 		volume_labels[bus].text = "%d%%" % value
+
+func _refresh_graphics() -> void:
+	render_scale_dropdown.select(settings.RENDER_SCALES.find(settings.render_scale))
+	shadow_quality_dropdown.select(settings.shadow_quality)
+	bloom_dropdown.select(1 if settings.bloom_enabled else 0)
+	fps_limit_dropdown.select(settings.FPS_LIMITS.find(settings.fps_limit))
+	vsync_dropdown.select(1 if settings.vsync_enabled else 0)
+
+func _on_graphics_selected(_index: int) -> void:
+	_report_save(settings.set_graphics_settings(
+		settings.RENDER_SCALES[render_scale_dropdown.selected], shadow_quality_dropdown.selected,
+		bloom_dropdown.selected == 1, settings.FPS_LIMITS[fps_limit_dropdown.selected], vsync_dropdown.selected == 1))
 
 func _refresh_gameplay() -> void:
 	for key in hud_toggles:

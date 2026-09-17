@@ -1,0 +1,109 @@
+shader_type spatial;
+
+uniform sampler2D asphalt : source_color, filter_linear_mipmap_anisotropic, repeat_enable;
+uniform float width_m = 20.0;
+uniform float cross_width_m = 20.0;
+uniform float length_m = 40.0;
+uniform bool junction = false;
+uniform int arms = 15;
+uniform int crosswalks = 15;
+uniform bool crossing_north = false;
+uniform bool crossing_south = false;
+uniform float dash_offset_m = 0.0;
+varying vec3 local_position;
+varying vec3 world_position;
+varying vec2 marking_position;
+varying float top_face;
+
+void vertex() {
+	local_position = VERTEX;
+	world_position = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
+	// Canonical world directions keep dashes continuous across grid-aligned pieces,
+	// including pieces rotated 90 or 180 degrees. Offset remains available for tuning.
+	marking_position = vec2(dot(world_position.xz, abs(normalize(MODEL_MATRIX[0].xz))),
+		dot(world_position.xz, abs(normalize(MODEL_MATRIX[2].xz))));
+	top_face = max(NORMAL.y, 0.0);
+}
+
+// Physical metres, never normalized UVs: extending a road adds repeats.
+float stripe(float distance_to_line, float half_width, float aa) {
+	return 1.0 - smoothstep(half_width - aa, half_width + aa, abs(distance_to_line));
+}
+
+// Half-carriageway stop bar for right-hand traffic: 1 m clear of the crosswalk,
+// 0.5 m thick. incoming_across is positive on the approaching traffic's side.
+float stop_line(float distance, float incoming_across, float width, float aa, float depth_aa) {
+	float half_lane = smoothstep(0.22 - aa, 0.22 + aa, incoming_across)
+		* (1.0 - smoothstep(width * 0.5 - 0.6 - aa, width * 0.5 - 0.6 + aa, incoming_across));
+	return stripe(distance - 6.25, 0.25, depth_aa) * half_lane;
+}
+
+void fragment() {
+	vec3 base = texture(asphalt, world_position.xz / 4.0).rgb;
+	vec2 p = local_position.xz;
+	float across = p.x;
+	float along = marking_position.y;
+	float width = width_m;
+	// Compute derivatives before selecting an arm to avoid artifacts at junction edges.
+	vec2 across_aa = max(fwidth(p), vec2(0.015));
+	vec2 phase_aa = max(fwidth(marking_position), vec2(0.015));
+	float aa = across_aa.x;
+	float along_aa = phase_aa.y;
+	bool marked = !junction;
+	bool crossing = false;
+	bool lane_lines = true;
+	float stop_bar = 0.0;
+	if (junction) {
+		if (abs(p.y) > cross_width_m * 0.5 && abs(p.x) <= width_m * 0.5) {
+			int arm = p.y < 0.0 ? 1 : 4;
+			float approach = abs(p.y) - cross_width_m * 0.5;
+			marked = (arms & arm) != 0;
+			bool has_crosswalk = (crosswalks & arm) != 0;
+			crossing = has_crosswalk && approach >= 2.0 && approach <= 5.0;
+			lane_lines = !has_crosswalk || approach >= 6.5;
+			if (has_crosswalk) stop_bar = stop_line(approach, across * sign(p.y), width, aa, across_aa.y);
+		} else if (abs(p.x) > width_m * 0.5 && abs(p.y) <= cross_width_m * 0.5) {
+			int arm = p.x > 0.0 ? 2 : 8;
+			float approach = abs(p.x) - width_m * 0.5;
+			across = p.y;
+			along = marking_position.x;
+			width = cross_width_m;
+			aa = across_aa.y;
+			along_aa = phase_aa.x;
+			marked = (arms & arm) != 0;
+			bool has_crosswalk = (crosswalks & arm) != 0;
+			crossing = has_crosswalk && approach >= 2.0 && approach <= 5.0;
+			lane_lines = !has_crosswalk || approach >= 6.5;
+			if (has_crosswalk) stop_bar = stop_line(approach, -across * sign(p.x), width, aa, across_aa.x);
+		}
+	} else {
+		float from_north = p.y + length_m * 0.5;
+		float from_south = length_m * 0.5 - p.y;
+		crossing = (crossing_north && from_north >= 2.0 && from_north <= 5.0)
+			|| (crossing_south && from_south >= 2.0 && from_south <= 5.0);
+		lane_lines = (!crossing_north || from_north >= 6.5) && (!crossing_south || from_south >= 6.5);
+		if (crossing_north) stop_bar = stop_line(from_north, across, width, aa, across_aa.y);
+		if (crossing_south) stop_bar = max(stop_bar, stop_line(from_south, -across, width, aa, across_aa.y));
+	}
+	if (marked && top_face > 0.5) {
+		if (width > 6.1 && lane_lines) {
+			float yellow = stripe(abs(across) - 0.16, 0.055, aa);
+			float white = stripe(abs(across) - (width * 0.5 - 0.6), 0.07, aa);
+			if (width >= 19.9) {
+				float phase = mod(along + dash_offset_m, 8.0);
+				float dash = smoothstep(0.0, along_aa, phase) * (1.0 - smoothstep(3.0 - along_aa, 3.0 + along_aa, phase));
+				white = max(white, stripe(abs(across) - width * 0.25, 0.07, aa) * dash);
+			}
+			base = mix(base, vec3(0.73, 0.66, 0.36), yellow);
+			base = mix(base, vec3(0.76, 0.78, 0.74), white);
+		}
+		if (crossing) {
+			float phase = mod(across + width * 0.5, 1.2);
+			float zebra = smoothstep(0.0, aa, phase) * (1.0 - smoothstep(0.6 - aa, 0.6 + aa, phase));
+			base = mix(texture(asphalt, world_position.xz / 4.0).rgb, vec3(0.78, 0.80, 0.76), zebra);
+		}
+		base = mix(base, vec3(0.78, 0.80, 0.76), stop_bar);
+	}
+	ALBEDO = base;
+	ROUGHNESS = 0.98;
+}

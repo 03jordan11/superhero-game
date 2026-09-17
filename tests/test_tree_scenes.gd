@@ -18,7 +18,10 @@ func run() -> void:
 	for file in baseline:
 		var scene: Node = load("res://scenes/%s.tscn" % file).instantiate()
 		var found := TREES.trees(scene)
-		var removed: Array = pruning.removed_trees.get(file,[])
+		var removed: Array = pruning.removed_trees.get(file,[]).duplicate()
+		if file == "city_life":
+			var thinning: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://assets/trees/highway_thinning.json"))
+			removed.append_array(thinning.removed)
 		# Include manual deletions made after the original tree conversion, before this task.
 		var before_count: int = pruning.before_tree_counts[file]
 		saved_counts[file]=before_count-removed.size()

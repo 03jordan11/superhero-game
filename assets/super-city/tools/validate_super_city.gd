@@ -126,7 +126,7 @@ func _initialize() -> void:
 		districts[row.district] = districts.get(row.district,0)+1
 	check(districts.size() == 8,"Expected eight populated districts")
 	check(data.used_building_assets.size() == 50,"Not all 50 created building designs are represented")
-	for category in ["Ground","WaterPlaceholders","Roads","Sidewalks","Landmarks"]:
+	for category in ["Ground","Roads","Sidewalks","Landmarks"]:
 		for body in city.get_node(category).get_children():
 			body_check(body)
 	for filename in DirAccess.get_files_at(OUT+"prefabs"):

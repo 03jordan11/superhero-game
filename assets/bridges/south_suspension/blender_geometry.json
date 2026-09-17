@@ -1,0 +1,17 @@
+{
+  "triangles": {
+    "RoadDeck": 324,
+    "Walkways": 648,
+    "DeckStructure": 864,
+    "Towers": 1632,
+    "TowerRecesses": 96,
+    "MainCables": 1168,
+    "Hangers": 840,
+    "Guardrails": 1872,
+    "Foundations": 144
+  },
+  "total": 7588,
+  "length_m": 400,
+  "road_width_m": 20,
+  "tower_height_m": 93.5
+}

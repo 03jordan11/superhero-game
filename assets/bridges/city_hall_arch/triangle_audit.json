@@ -1,0 +1,13 @@
+{
+	"meshes": {
+		"Arches": 428,
+		"Guardrails": 1032,
+		"Hangers": 264,
+		"RoadDeck": 132,
+		"Supports": 72,
+		"TieBeams": 72,
+		"Walkways": 264
+	},
+	"source": "Godot imported GLB highest-detail index buffers including road, sidewalks, railings and all supports",
+	"total": 2264
+}

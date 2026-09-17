@@ -1,10 +1,16 @@
 # Mountain river and forest clearing
 
-The later [river-mouth revision](mouth/README.md) widens the mouth to 350 m,
-replaces the urban paving with continuous curved promenades, and updates NPC
-routes. Urban water/banks now belong to SuperCity; only the mountain reach is
-instanced separately in Main. The initial-pass notes below describe the earlier
-104 m channel and are superseded for urban geometry by that revision.
+## Current placement: solid mountain
+
+The river extension now belongs to `SuperCity/MountainRiver` in `scenes/super_city.tscn`. Main inherits it through SuperCity; its separate river instance and all river-specific terrain overrides have been removed.
+
+`PinePassMountains` retains the original mesh and collision from `city_life.tscn`, without a canyon cut. Water ends at the solid mountain surface. The hidden water, bank rock, and riverbed geometry beneath the mountain have been removed, with matching trimmed bank/bed collisions. Resources are in `terminated/`; `tools/trim_at_mountain.gd` clips against the original mountain faces without modifying them. The existing NorthernGround and CoastalTerrain channel resources are applied in SuperCity to keep the forest approach visible; neither changes the mountain's form.
+
+Validation: `tests/test_mountain_river.gd` compares original mountain vertices and collision in both scene contexts, checks 76 mountain and 140 open-channel ray probes, and verifies water day/night and pause behavior. All passed. An additional 1,408 triangle probes verify that no remaining river triangle centers are beneath the mountain; bank and bed collision faces match the trimmed meshes. Native SuperCity renders were inspected; manual player traversal was not performed.
+
+Review: open SuperCity directly and fly north along the river to the mountain face. Main should show the same intact mountain and only one river extension.
+
+The notes below are historical. Do not run `tools/apply_main.py` or the old terrain-carving workflow: those restore the superseded Main-only canyon arrangement.
 
 ## Initial forest and mountain pass
 

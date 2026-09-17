@@ -22,7 +22,11 @@ func run() -> void:
 	check(panel.tabs.get_tab_count() == 4, "Four categories")
 	for i in range(4):
 		check(panel.tabs.get_tab_title(i) == ["Graphics", "Audio", "Gameplay", "Controls"][i], "Tab order matches requested categories")
-	check(panel.controls_panel.buttons.keyboard.size() == 13 and panel.controls_panel.buttons.controller.size() == 9, "Controls has keyboard and Xbox binding buttons")
+	for device in ["keyboard", "controller"]:
+		var expected: Dictionary = settings.input_bindings.defaults(device)
+		check(panel.controls_panel.buttons[device].size() == expected.size(), "Controls exposes every current binding: " + device)
+		for action in expected:
+			check(panel.controls_panel.buttons[device].has(action), "Missing binding control: " + action)
 	check(panel.get_theme_stylebox("panel").bg_color.a == 1.0, "Settings has an opaque background")
 	check(panel.hint_settings.toggle is CheckBox, "Show Control Hints is a checkbox")
 	panel.tabs.current_tab = 2

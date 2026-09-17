@@ -16,8 +16,7 @@ func run() -> void:
 	await process_frame
 	await physics_frame
 	await physics_frame
-	check(city.get_node("WaterPlaceholders/RiverAndBay_BluePlaceholder/CollisionShape3D").disabled,"Water placeholder collision disabled")
-	check(not city.get_node("WaterPlaceholders/RiverAndBay_BluePlaceholder/MeshInstance3D").visible,"Blue placeholder hidden")
+	check(not city.has_node("WaterPlaceholders"), "Obsolete water placeholder removed")
 	var space:=city.get_world_3d().direct_space_state
 	for point in [Vector3(200,10,-600),Vector3(600,10,1600)]:
 		var hit:=space.intersect_ray(PhysicsRayQueryParameters3D.create(point,point+Vector3.DOWN*60))

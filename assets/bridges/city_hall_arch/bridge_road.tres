@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/super-city/modular-roads/road.gdshader" id="1_vddcw"]
+[ext_resource type="Texture2D" path="res://assets/super-city/textures/junction_20_20_15.res" id="2_6bwyl"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_vddcw")
+shader_parameter/asphalt = ExtResource("2_6bwyl")
+shader_parameter/width_m = 28.0
+shader_parameter/cross_width_m = null
+shader_parameter/length_m = 320.0
+shader_parameter/junction = null
+shader_parameter/arms = null
+shader_parameter/crosswalks = null
+shader_parameter/crossing_north = null
+shader_parameter/crossing_south = null
+shader_parameter/dash_offset_m = null

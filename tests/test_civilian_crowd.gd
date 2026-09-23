@@ -86,6 +86,7 @@ func run() -> void:
 	var before: Dictionary = {}
 	var offsets: Dictionary = {}
 	var shifted := 0
+	var shared_material: Material
 	for walker in crowd.get_node("ActiveCivilians").get_children():
 		before[walker] = walker.global_position
 		offsets[snappedf(walker.lane_offset,0.1)] = true
@@ -96,8 +97,17 @@ func run() -> void:
 		if not walker.ambient_roaming or walker.graph == null:
 			fail("Segment spawn did not initialize route movement")
 			return
-	if offsets.size() < 2 or shifted < 2 or crowd._skin_materials.size() < 2:
-		fail("Expected varied offsets and shared skin materials")
+		var meshes: Array[Node] = walker.find_children("*", "MeshInstance3D", true, false)
+		if meshes.size() != 1:
+			fail("Meshy crowd should have one integrated body/hair mesh")
+			return
+		var material: Material = meshes[0].get_active_material(0)
+		if shared_material == null: shared_material = material
+		elif material != shared_material:
+			fail("Meshy civilians must share their original textured material")
+			return
+	if offsets.size() < 2 or shifted < 2 or not crowd._skin_materials.is_empty():
+		fail("Expected varied lane offsets and unchanged Meshy texture without legacy skin tints")
 		return
 	for frame in range(180): await physics_frame
 	var moved := 0

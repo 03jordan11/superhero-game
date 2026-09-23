@@ -39,6 +39,8 @@ func run() -> void:
 	pause.pause_game()
 	pause._on_settings_pressed()
 	var other = pause.settings_menu
+	other.sensitivity_slider.value = 1.5
+	check(is_equal_approx(settings.look_sensitivity, 1.5) and is_equal_approx(panel.sensitivity_slider.value, 1.5) and panel.sensitivity_label.text == "1.5", "Look sensitivity updates and synchronizes both menus while paused")
 	other.sprint_mode_dropdown.select(1)
 	other.sprint_mode_dropdown.item_selected.emit(1)
 	other.power_mode_dropdown.select(1)
@@ -61,6 +63,7 @@ func run() -> void:
 	await create_timer(0.35).timeout
 	var saved := ConfigFile.new()
 	check(saved.load(path) == OK and saved.get_value("audio", "Voice") == 0.4, "Debounced slider change persists while paused")
+	check(saved.get_value("controls", "look_sensitivity") == 1.5, "Look sensitivity persists while paused")
 	check(saved.get_value("accessibility", "toggle_power_activation") and not saved.get_value("hud", "always_show_stamina"), "Future preferences persist")
 	for bus in [&"PlayerImpacts", &"PlayerFootsteps", &"PlayerSpeedWind", &"VehicleExplosions"]:
 		check(AudioServer.get_bus_send(AudioServer.get_bus_index(bus)) == &"SFX", "Existing effect bus feeds SFX: " + String(bus))
@@ -103,17 +106,35 @@ func run() -> void:
 	settings.set_hud_preference(&"always_show_experience", true, false)
 	check(hud.get_node("Health").visible and hud.get_node("Progression").visible, "Always-show restores persistent HUD")
 	check(player.get_node("PlayerSoundManager/Death").bus == &"Voice" and player.get_node("PlayerSoundManager/ComboPunch").bus == &"SFX", "Player vocals and effects have distinct routes")
+	settings.set_look_sensitivity(0.5, false)
 	settings.load_settings(path)
+	check(is_equal_approx(settings.look_sensitivity, 1.5) and is_equal_approx(panel.sensitivity_slider.value, 1.5), "Saved sensitivity survives reload and refreshes the menu")
 	check(settings.toggle_sprint and settings.audio_volumes.Voice == 0.4 and not settings.always_show_health, "Saved preferences survive reload")
 	# Invalid types must not enable toggles or inject non-finite mixer/display values.
 	var invalid := ConfigFile.new()
 	invalid.set_value("audio", "SFX", NAN)
+	invalid.set_value("controls", "look_sensitivity", NAN)
 	invalid.set_value("accessibility", "toggle_sprint", "true")
 	invalid.set_value("hud", "always_show_health", 0)
 	invalid.set_value("display", "mode", 99)
 	invalid.set_value("display", "resolution", Vector2i(-1, -1))
 	invalid.save(path)
 	settings.load_settings(path)
+	check(is_equal_approx(settings.look_sensitivity, 1.0), "Non-finite sensitivity uses the default")
+	for value in ["fast", true, Vector2.ONE]:
+		invalid.set_value("controls", "look_sensitivity", value)
+		invalid.save(path)
+		settings.load_settings(path)
+		check(is_equal_approx(settings.look_sensitivity, 1.0), "Invalid sensitivity types use the default")
+	check(settings.set_look_sensitivity(INF, false) == ERR_INVALID_PARAMETER, "Non-finite live sensitivity is rejected")
+	settings.set_look_sensitivity(-1.0, false)
+	check(is_equal_approx(settings.look_sensitivity, settings.MIN_LOOK_SENSITIVITY), "Sensitivity cannot disable or reverse look")
+	settings.set_look_sensitivity(100.0, false)
+	check(is_equal_approx(settings.look_sensitivity, settings.MAX_LOOK_SENSITIVITY), "Sensitivity has an upper bound")
+	invalid.erase_section_key("controls", "look_sensitivity")
+	invalid.save(path)
+	settings.load_settings(path)
+	check(is_equal_approx(settings.look_sensitivity, 1.0), "Older settings files preserve original camera speed")
 	check(settings.audio_volumes.SFX == 1.0 and not settings.toggle_sprint and settings.always_show_health, "Invalid preferences use safe defaults")
 	check(settings.display_mode == 0 and settings.window_resolution == Vector2i(1920, 1080), "Invalid display values use defaults")
 	settings._settings_file = "res://.godot/nonexistent_settings_dir/preferences.cfg"

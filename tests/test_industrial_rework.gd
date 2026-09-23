@@ -8,7 +8,7 @@ func run() -> void:
 	var windows:=root.get_node("CityWindows"); windows.set_city_seed(12345)
 	var world:=Node3D.new(); root.add_child(world)
 	var audit: Array=JSON.parse_string(FileAccess.get_file_as_string("res://artifacts/industrial_batch/audit.json"))
-	var all_lit:=0; var all_off:=0; var emitter_count:=0; var shape_count:=0
+	var emitter_count:=0; var shape_count:=0
 	for i in range(1,11):
 		var body: StaticBody3D=load(BASE+"industrial_building_%02d.tscn"%i).instantiate()
 		body.position.x=i*100; body.follow_day_night_cycle=false; world.add_child(body)
@@ -29,29 +29,16 @@ func run() -> void:
 			if material.resource_path.ends_with("signs_and_doors.tres"):
 				for uv in mesh.surface_get_arrays(surface)[Mesh.ARRAY_TEX_UV]: check(uv.y>.8,"Nameplate remains")
 			if not material.emission_enabled: continue
-			var source:=material.emission_texture.get_image()
-			for variant in 6:
-				var image: Image=windows.texture_for(mesh,surface,variant).get_image()
-				var lit:=0; var off:=0
-				for y in image.get_height()/16:
-					for x in image.get_width()/16:
-						if source.get_pixel((x*16+5)%64,(y*16+5)%64).r<=.1: continue
-						lit+=1
-						if image.get_pixel(x*16+5,y*16+5).r<.1: off+=1
-				check(off==roundi(lit*windows.reduction_for(variant,false,true)),"Industrial occupancy missed target")
-				all_lit+=lit; all_off+=off
-				for y in image.get_height():
-					for x in image.get_width():
-						var a:=source.get_pixel(x%64,y%64); var b:=image.get_pixel(x,y)
-						if b.r>a.r+.001 or b.g>a.g+.001 or b.b>a.b+.001: check(false,"Emission spilled into walls"); break
-		for mat in body._night_materials: check(mat.emission_energy_multiplier==2,"Night intensity wrong")
+			# Full mask/percentage coverage lives in test_seeded_city_windows.gd.
+
+		for mat in body._night_materials: check(mat.get_shader_parameter("emission_energy")==2,"Night intensity wrong")
 		body.apply_night(0)
-		for mat in body._night_materials: check(mat.emission_energy_multiplier==0,"Day windows stayed lit")
+		for mat in body._night_materials: check(mat.get_shader_parameter("emission_energy")==0,"Day windows stayed lit")
 	check(emitter_count==3,"Expected three smokestack models")
 	var sample: Node=world.get_child(5)
-	var first: PackedByteArray=sample._night_materials[0].emission_texture.get_image().get_data()
-	windows.set_city_seed(54321); check(first!=sample._night_materials[0].emission_texture.get_image().get_data(),"New seeds must differ")
-	windows.restore_data({"seed":12345}); check(first==sample._night_materials[0].emission_texture.get_image().get_data(),"Reload must restore windows")
+	var first: PackedByteArray=sample._night_materials[0].get_shader_parameter("room_data").get_image().get_data()
+	windows.set_city_seed(54321); check(first!=sample._night_materials[0].get_shader_parameter("room_data").get_image().get_data(),"New seeds must differ")
+	windows.restore_data({"seed":12345}); check(first==sample._night_materials[0].get_shader_parameter("room_data").get_image().get_data(),"Reload must restore windows")
 	var runner:=CharacterBody3D.new(); runner.collision_layer=2; runner.collision_mask=1
 	var capsule:=CollisionShape3D.new(); capsule.shape=CapsuleShape3D.new(); runner.add_child(capsule); world.add_child(runner)
 	await physics_frame; await physics_frame
@@ -99,5 +86,5 @@ func run() -> void:
 	for node in city.find_children("*","StaticBody3D",true,false):
 		if node.scene_file_path.begins_with(BASE): placements+=1
 	city.free()
-	print("INDUSTRIAL_PASS: 10 assets, ",placements," placements, ",shape_count," solids, 3 smoke models, off fraction=",float(all_off)/all_lit,", failures=",failures)
+	print("INDUSTRIAL_PASS: 10 assets, ",placements," placements, ",shape_count," solids, 3 smoke models, failures=",failures)
 	quit(1 if failures else 0)

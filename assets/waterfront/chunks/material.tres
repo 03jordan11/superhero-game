@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/waterfront/chunks/riverbank.gdshader" id="1_pl5de"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_pl5de")
+shader_parameter/night_amount = 0.0
+shader_parameter/course_color = Color(0.16078432, 0.20784314, 0.23529412, 1)
+shader_parameter/lamp_emission = Color(1, 0.7372549, 0.44705883, 1)

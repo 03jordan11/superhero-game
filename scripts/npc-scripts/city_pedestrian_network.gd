@@ -24,6 +24,8 @@ var enabled_module_ids: Array[String] = []
 var _queued := false
 var _surface_cells: Dictionary = {}
 var _quay_road_cells: Dictionary = {}
+var _authored_pavement = preload("res://scripts/npc-scripts/pedestrian_surface_index.gd").new()
+var _clear_centers = preload("res://scripts/npc-scripts/pedestrian_surface_index.gd").new()
 
 func _validate_property(property: Dictionary) -> void:
 	# The city graph uses its generated network; these inherited pilot-only
@@ -94,6 +96,8 @@ func _profiled_rebuild() -> void:
 				if not _surface_cells.has(key): _surface_cells[key] = []
 				_surface_cells[key].append(rect)
 	valid = true
+	_authored_pavement.build(inventory.get("floor_triangles",[]))
+	_clear_centers.build(inventory.get("clear_triangles",[]))
 	for key in batches:
 		var district = get_node_or_null(NodePath(inventory.modules[key].district))
 		if district == null: continue
@@ -124,6 +128,20 @@ func _is_extra_walkable(sample: Vector2) -> bool:
 
 
 func _profiled_contains_body(world_point: Vector3, radius: float, a: int, b: int) -> bool:
+	if inventory.get("version",1) >= 2:
+		var point := to_local(world_point)
+		var crossing := is_crossing(a,b)
+		# Baked polygons already reserve body clearance around static obstacles.
+		# Recast's coarse height interpolation differs slightly on park hills.
+		# Exact authored pavement below still enforces the walking layer.
+		if not _clear_centers.contains(point,true,0.45): return false
+		for i in range(9):
+			var sample := point
+			if i<8:
+				var offset := Vector2.from_angle(i*TAU/8.0)*radius
+				sample += Vector3(offset.x,0,offset.y)
+			if not _authored_pavement.contains(sample,crossing): return false
+		return true
 	# Reuse the proven corridor check with only nearby surface rectangles.
 	var p := to_local(world_point)
 	var saved := walkable_surfaces

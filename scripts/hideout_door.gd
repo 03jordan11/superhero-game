@@ -2,6 +2,11 @@ extends Node3D
 ## A door consumes the existing E / pick-up action before nearby grab interactions.
 @export var is_exit := false
 @export_file("*.tscn") var interior_scene := "res://assets/buildings/gas_station_hideout/gas_station_interior.tscn"
+@export var destination_name := "HIDEOUT"
+@export var new_game_destination := true
+@export var require_looking_at_door := false
+@export var door_half_size := Vector2(1.65, 1.55)
+@export_node_path("Marker3D") var return_marker: NodePath
 @export_range(1.0, 4.0, 0.1) var interaction_distance := 2.4
 @export_range(3.0, 30.0, 1.0) var marker_distance := 16.0
 var _refresh := 0.0
@@ -19,15 +24,36 @@ func _process(delta: float) -> void:
 	if not label.visible: return
 	var bindings: Node = get_node("/root/GameSettings").input_bindings
 	var key: String = bindings.label_for("pick_up_vehicle", bindings.active_device)
-	label.text = ("[%s] EXIT" if is_exit else "[%s] ENTER HIDEOUT") % key if can_interact(player) else ("EXIT" if is_exit else "HIDEOUT")
+	var title := "EXIT" if is_exit else "ENTER " + destination_name
+	label.text = "[%s] %s" % [key, title] if can_interact(player) else ("EXIT" if is_exit else destination_name)
 
 func can_interact(player: PlayerCharacter) -> bool:
+	if is_exit:
+		var travel := get_tree().get_first_node_in_group(&"hideout_travel")
+		if travel == null or not travel._inside: return false
 	if player.is_dead or player.is_knocked_out or player.is_carrying(): return false
 	if player.combat_controller.is_action_locked() or player.ship_interaction.is_attached(): return false
 	if player.is_ground_slamming or player.is_wall_running or player.is_charging_jump: return false
 	if global_position.distance_to(player.global_position) > interaction_distance: return false
 	# Only the front side of this marker is usable (never through the exterior wall).
-	return to_local(player.global_position).z > -0.15
+	if to_local(player.global_position).z <= -0.15: return false
+	return not require_looking_at_door or _is_looking_at_door(player)
+
+func _is_looking_at_door(player: PlayerCharacter) -> bool:
+	var camera := player.camera
+	var origin := to_local(camera.global_position)
+	var direction := global_basis.inverse() * -camera.global_basis.z
+	if direction.z >= -0.001: return false
+	var distance := -origin.z / direction.z
+	if distance <= 0.0: return false
+	var point := origin + direction * distance
+	if absf(point.x) > door_half_size.x or absf(point.y) > door_half_size.y: return false
+	# Reject intervening walls/props, allowing the door panel's shallow relief.
+	var target := to_global(point)
+	var ray := PhysicsRayQueryParameters3D.create(camera.global_position, target, 1)
+	ray.exclude = [player.get_rid()]
+	var hit := get_world_3d().direct_space_state.intersect_ray(ray)
+	return hit.is_empty() or hit.position.distance_to(target) < 0.25
 
 func try_interact(player: PlayerCharacter) -> bool:
 	if not can_interact(player): return false

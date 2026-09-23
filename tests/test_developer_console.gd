@@ -30,6 +30,18 @@ func run() -> void:
 	check(not menu.visible and not paused, "Console starts hidden")
 	key(KEY_QUOTELEFT)
 	check(menu.visible and paused and root.get_node("DebugManager").developer_menu_open and menu.command_input.has_focus(), "Shortcut opens a paused focused console")
+	var window_controls: Control = menu.get_node("WindowLightingControls")
+	var windows := root.get_node("CityWindows")
+	var previous_tuning: Dictionary = windows.save_data()
+	window_controls._district_toggle.button_pressed = false
+	window_controls._sliders.lit_window_percent.value = 43
+	check(paused and windows.lit_window_percent == 43, "Debug menu must expose working window controls while paused")
+	var clock := get_first_node_in_group(&"day_night_cycle")
+	var previous_time: float = clock.time_of_day
+	window_controls._night_button.pressed.emit()
+	check(clock.time_of_day == 0 and clock.night_lighting > .99, "Midnight preview must update while paused")
+	clock.set_time(previous_time)
+	windows.restore_data(previous_tuning)
 	await process_frame
 	menu.command_input.text = "SeT strength 20"
 	key(KEY_ENTER)

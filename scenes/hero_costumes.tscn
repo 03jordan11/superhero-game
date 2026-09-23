@@ -1,0 +1,169 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/previews/hero_costumes.gd" id="1_preview"]
+[ext_resource type="PackedScene" path="res://assets/characters/hero_meshy/hero_meshy.glb" id="2_underwear"]
+[ext_resource type="PackedScene" path="res://assets/characters/hero_starter_suit/hero_starter_suit_rigged.glb" id="3_starter"]
+
+[sub_resource type="Environment" id="Environment_studio"]
+background_mode = 1
+background_color = Color(0.105, 0.13, 0.17, 1)
+ambient_light_source = 3
+ambient_light_color = Color(0.82, 0.88, 1, 1)
+ambient_light_energy = 0.65
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="Material_floor"]
+albedo_color = Color(0.18, 0.22, 0.28, 1)
+roughness = 0.9
+
+[sub_resource type="PlaneMesh" id="Mesh_floor"]
+material = SubResource("Material_floor")
+size = Vector2(40, 40)
+
+[sub_resource type="StandardMaterial3D" id="Material_plinth"]
+albedo_color = Color(0.27, 0.32, 0.39, 1)
+roughness = 0.8
+
+[sub_resource type="CylinderMesh" id="Mesh_plinth"]
+material = SubResource("Material_plinth")
+top_radius = 0.64
+bottom_radius = 0.64
+height = 0.08
+radial_segments = 48
+rings = 1
+
+[node name="HeroCostumes" type="Node3D"]
+script = ExtResource("1_preview")
+
+[node name="Costumes" type="Node3D" parent="."]
+
+[node name="Underwear" type="Node3D" parent="Costumes"]
+position = Vector3(-1.3, 0, 0)
+metadata/display_name = "Underwear"
+
+[node name="Model" parent="Costumes/Underwear" instance=ExtResource("2_underwear")]
+position = Vector3(0, 0.08, 0)
+
+[node name="Plinth" type="MeshInstance3D" parent="Costumes/Underwear"]
+position = Vector3(0, 0.04, 0)
+mesh = SubResource("Mesh_plinth")
+
+[node name="Label" type="Label3D" parent="Costumes/Underwear"]
+position = Vector3(0, 0.08, 0.85)
+billboard = 1
+text = "01 / UNDERWEAR"
+font_size = 40
+pixel_size = 0.0016
+modulate = Color(0.8, 0.88, 1, 1)
+outline_size = 6
+
+[node name="StarterSuit" type="Node3D" parent="Costumes"]
+position = Vector3(1.3, 0, 0)
+metadata/display_name = "Starter suit"
+
+[node name="Model" parent="Costumes/StarterSuit" instance=ExtResource("3_starter")]
+position = Vector3(0, 0.08, 0)
+
+[node name="Plinth" type="MeshInstance3D" parent="Costumes/StarterSuit"]
+position = Vector3(0, 0.04, 0)
+mesh = SubResource("Mesh_plinth")
+
+[node name="Label" type="Label3D" parent="Costumes/StarterSuit"]
+position = Vector3(0, 0.08, 0.85)
+billboard = 1
+text = "02 / STARTER SUIT"
+font_size = 40
+pixel_size = 0.0016
+modulate = Color(0.8, 0.88, 1, 1)
+outline_size = 6
+
+[node name="Studio" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Studio"]
+environment = SubResource("Environment_studio")
+
+[node name="Key" type="DirectionalLight3D" parent="Studio"]
+rotation_degrees = Vector3(-35, -30, 0)
+light_color = Color(1, 0.94, 0.85, 1)
+light_energy = 1.3
+shadow_enabled = true
+
+[node name="Fill" type="DirectionalLight3D" parent="Studio"]
+rotation_degrees = Vector3(-25, 145, 0)
+light_color = Color(0.75, 0.85, 1, 1)
+light_energy = 0.55
+
+[node name="Floor" type="MeshInstance3D" parent="Studio"]
+mesh = SubResource("Mesh_floor")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+position = Vector3(0, 1.8982016, 7.447053)
+rotation = Vector3(-0.12, 0, 0)
+current = true
+fov = 38.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+offset_left = 28.0
+offset_top = 24.0
+
+[node name="Controls" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="CanvasLayer/MarginContainer/Controls"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "HERO COSTUMES"
+
+[node name="Instructions" type="Label" parent="CanvasLayer/MarginContainer/Controls"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.78, 0.88, 1)
+text = "Right drag: orbit  ·  Scroll: zoom  ·  R: reset\nSpace: play / pause  ·  Drag timeline to inspect"
+
+[node name="ViewPicker" type="OptionButton" parent="CanvasLayer/MarginContainer/Controls"]
+custom_minimum_size = Vector2(240, 36)
+layout_mode = 2
+focus_mode = 0
+tooltip_text = "Focus the camera on one outfit or compare both."
+
+[node name="ClipPicker" type="OptionButton" parent="CanvasLayer/MarginContainer/Controls"]
+custom_minimum_size = Vector2(360, 36)
+layout_mode = 2
+focus_mode = 0
+tooltip_text = "Both outfits play the same player animation in sync."
+
+[node name="Playback" type="HBoxContainer" parent="CanvasLayer/MarginContainer/Controls"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Play" type="Button" parent="CanvasLayer/MarginContainer/Controls/Playback"]
+custom_minimum_size = Vector2(88, 36)
+layout_mode = 2
+focus_mode = 0
+text = "Pause"
+
+[node name="Restart" type="Button" parent="CanvasLayer/MarginContainer/Controls/Playback"]
+layout_mode = 2
+focus_mode = 0
+text = "Restart"
+tooltip_text = "Return both outfits to the start of the clip."
+
+[node name="Speed" type="OptionButton" parent="CanvasLayer/MarginContainer/Controls/Playback"]
+custom_minimum_size = Vector2(96, 36)
+layout_mode = 2
+focus_mode = 0
+tooltip_text = "Playback speed"
+
+[node name="Scrub" type="HSlider" parent="CanvasLayer/MarginContainer/Controls"]
+custom_minimum_size = Vector2(360, 24)
+layout_mode = 2
+focus_mode = 0
+max_value = 1.0
+step = 0.0001
+tooltip_text = "Drag to pause and inspect the same pose on both outfits."
+
+[node name="Time" type="Label" parent="CanvasLayer/MarginContainer/Controls"]
+layout_mode = 2
+text = "0.00 / 0.00 s"

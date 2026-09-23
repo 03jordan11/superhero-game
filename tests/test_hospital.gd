@@ -20,10 +20,10 @@ func run() -> void:
 	assert(not day._entrance_lights[0].visible and night._entrance_lights[0].visible)
 	for index in day._night_materials.size():
 		assert(day._night_materials[index] != night._night_materials[index], "Material state leaked between hospitals")
-		assert(is_zero_approx(day._night_materials[index].emission_energy_multiplier))
-		assert(night._night_materials[index].emission_energy_multiplier > 0.0)
+		assert(is_zero_approx(_energy(day._night_materials[index])))
+		assert(_energy(night._night_materials[index]) > 0.0)
 	night.apply_night(0.5)
-	assert(is_equal_approx(night._night_materials[0].emission_energy_multiplier, night.window_emission_energy * 0.5) or is_equal_approx(night._night_materials[0].emission_energy_multiplier, night.sign_emission_energy * 0.5))
+	assert(is_equal_approx(_energy(night._night_materials[0]), night.window_emission_energy * 0.5) or is_equal_approx(_energy(night._night_materials[0]), night.sign_emission_energy * 0.5))
 	var meshes := day.get_node("Model").find_children("*", "MeshInstance3D", true, false)
 	assert(meshes.size() == 25)
 	var bounds := AABB()
@@ -77,3 +77,6 @@ func run() -> void:
 	night.free()
 	print("HOSPITAL_TEST_PASS: revised mesh, canopy material, isolated emission, masks, removed signs/bays, rounded wing and courtyard collision")
 	quit()
+
+func _energy(material: Material) -> float:
+	return material.get_shader_parameter("emission_energy") if material is ShaderMaterial else material.emission_energy_multiplier

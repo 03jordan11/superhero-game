@@ -1,0 +1,11 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="res://assets/buildings/gas_station_hideout/interior_meshes/Rack1Crate2.res" id="1_4tjve"]
+
+[node name="Rack1Crate2" type="Node3D" unique_id=999038076]
+metadata/interior_prop = "Rack1Crate2"
+metadata/_edit_group_ = true
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=902519503]
+mesh = ExtResource("1_4tjve")
+metadata/interior_mesh = "Rack1Crate2"

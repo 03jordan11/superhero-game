@@ -1,0 +1,21 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/hideout_door.gd" id="1"]
+
+[node name="GymEntrance" type="Node3D"]
+position = Vector3(0, 1.4, 11.65)
+script = ExtResource("1")
+interior_scene = "res://assets/interiors/boxing_gym/boxing_gym.tscn"
+destination_name = "BOXING GYM"
+new_game_destination = false
+require_looking_at_door = true
+return_marker = NodePath("../FrontReturn")
+
+[node name="Prompt" type="Label3D" parent="."]
+position = Vector3(0, 0.8, 0.1)
+pixel_size = 0.003
+billboard = 1
+modulate = Color(0.48, 1, 0.72, 1)
+text = "BOXING GYM"
+font_size = 36
+outline_size = 8

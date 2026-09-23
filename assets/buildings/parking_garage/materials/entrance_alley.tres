@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3]
+
+[ext_resource type="Shader" path="res://assets/super-city/modular-sidewalks/sidewalk.gdshader" id="1"]
+[ext_resource type="Texture2D" path="res://assets/super-city/textures/junction_20_20_15.res" id="2"]
+
+[resource]
+resource_name = "GarageEntranceAsphalt"
+shader = ExtResource("1")
+shader_parameter/paving = ExtResource("2")
+shader_parameter/tile_size = 4.0

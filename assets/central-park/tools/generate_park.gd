@@ -329,17 +329,7 @@ func make_dock() -> void:
 	box(dock,"LakePlatform",Vector3(8,0.25,12),Vector3(-34,0.4,0),materials.wood,true)
 	for x in [-36,-24,-12,0]:
 		for z in [-1.8,1.8]: box(dock,"Piling",Vector3(0.3,6,0.3),Vector3(x,-2.5,z),materials.darkwood)
-	bench(dock,Vector3(-34,0.53,-4),0.0)
 	marker("MoonwaterDock",Vector2(123,-57),5.0)
-
-func bench(parent: Node, position: Vector3, yaw: float) -> void:
-	var seat := Node3D.new()
-	add(seat,parent,"Bench")
-	seat.position = position
-	seat.rotation.y = yaw
-	box(seat,"Seat",Vector3(2.8,0.13,0.65),Vector3(0,0.62,0),materials.wood,true)
-	box(seat,"Back",Vector3(2.8,0.68,0.12),Vector3(0,1,-0.34),materials.wood)
-	for x in [-1,1]: box(seat,"Leg",Vector3(0.16,0.6,0.5),Vector3(x,0.3,0),materials.iron)
 
 func make_houses() -> void:
 	var names := ["WillowHermitage","BirchHideaway","MosskeeperCottage"]
@@ -372,7 +362,6 @@ func make_houses() -> void:
 		box(house,"Porch",Vector3(7,0.18,2.1),Vector3(0,0.05,5.05),materials.wood,true)
 		var ramp := box(house,"EntryRamp",Vector3(2.5,0.08,2.0),Vector3(0,0.03,7.1),materials.wood,true)
 		ramp.rotation.x = atan(0.07)
-		bench(house,Vector3(-2.1,0.18,5),0.0)
 		box(house,"BedFrame",Vector3(1.5,0.4,2.5),Vector3(-3.4,0.4,-1.9),materials.darkwood,true)
 		box(house,"Blanket",Vector3(1.45,0.15,2.35),Vector3(-3.4,0.68,-1.9),material(Color("657b72")))
 		box(house,"Table",Vector3(1.8,0.14,1.3),Vector3(2.5,1.0,-1),materials.wood,true)
@@ -569,9 +558,6 @@ func make_details() -> void:
 		if i % 2 == 0: bushes.append(pose) # Retain half, preserving the RNG sequence for later props.
 	assert(bushes.size() == 140,"Half of the original 280 bushes must remain")
 	batch(bush_mesh,bushes,park.get_node("Foliage"),"Undergrowth")
-	for entry in [[Vector2(-15,269),0.0],[Vector2(-204,125),PI*0.5],[Vector2(182,-89),-PI*0.5],[Vector2(65,218),0.0]]:
-		var p: Vector2=entry[0]
-		bench(park.get_node("Landmarks"),Vector3(p.x,LAYOUT.height(p),p.y),entry[1])
 	# Low stone entrance piers frame four park approaches without closing them.
 	for entry in [[Vector2(0,296),0.0],[Vector2(-70,-296),0.0],[Vector2(-249,135),PI*0.5],[Vector2(248,58),PI*0.5]]:
 		var p: Vector2=entry[0]

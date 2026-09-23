@@ -1,7 +1,7 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://ikpkbaxxw85t"]
 
-[ext_resource type="Script" path="res://assets/generated-buildings/commercial/commercial_skyscraper_01.gd" id="1_1tspd"]
-[ext_resource type="ArrayMesh" path="res://assets/generated-buildings/commercial/meshes/commercial_skyscraper_05.res" id="2_sp5uk"]
+[ext_resource type="Script" uid="uid://xri1dxtywjs6" path="res://assets/generated-buildings/commercial/commercial_skyscraper_01.gd" id="1_1tspd"]
+[ext_resource type="ArrayMesh" uid="uid://c4ywsa5j0nsil" path="res://assets/generated-buildings/commercial/meshes/commercial_skyscraper_05.res" id="2_sp5uk"]
 [ext_resource type="PackedScene" path="res://assets/props/rooftop_hvac/rooftop_hvac.tscn" id="3_r1x77"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_igrja"]
@@ -31,6 +31,5 @@ shape = SubResource("BoxShape3D_0srtg")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 73, 0)
 shape = SubResource("BoxShape3D_0elbn")
 
-[node name="RooftopHVAC" type="StaticBody3D" parent="." unique_id=661342222 instance=ExtResource("3_r1x77")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 78, 0)
-metadata/source = "hospital / Roof equipment / unit at (-13, 129, -18)"
+[node name="RooftopHVAC" parent="." unique_id=661342222 instance=ExtResource("3_r1x77")]
+transform = Transform3D(0.64000005, 0, 0, 0, 0.7, 0, 0, 0, 0.5, 7, 78, -6)

@@ -1,9 +1,8 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://l6w7nqbmc7c6"]
 
-[ext_resource type="Script" path="res://assets/generated-buildings/industrial/industrial_building.gd" id="1_x8dv3"]
-[ext_resource type="ArrayMesh" path="res://assets/generated-buildings/industrial/meshes/industrial_building_03.res" id="2_6w3e2"]
+[ext_resource type="Script" uid="uid://bc2vomxnaah7f" path="res://assets/generated-buildings/industrial/industrial_building.gd" id="1_x8dv3"]
+[ext_resource type="ArrayMesh" uid="uid://dfdxrek2tbcmp" path="res://assets/generated-buildings/industrial/meshes/industrial_building_03.res" id="2_6w3e2"]
 [ext_resource type="PackedScene" path="res://assets/effects/stack_smoke/stack_smoke.tscn" id="3_jvpru"]
-[ext_resource type="Script" path="res://assets/effects/stack_smoke/stack_smoke.gd" id="4_prx11"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ocb7x"]
 size = Vector3(30, 11, 26)
@@ -11,11 +10,8 @@ size = Vector3(30, 11, 26)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ev6lu"]
 points = PackedVector3Array(-15.15, 11, -13.15, -15.15, 11, 13.15, 15.15, 11, -13.15, 15.15, 11, 13.15, 0, 15, -13.15, 0, 15, 13.15)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ogtl1"]
-points = PackedVector3Array(-7, 11, 8, -7.8786798, 11, 10.121321, -10, 11, 11, -12.121321, 11, 10.121321, -13, 11, 8, -12.121321, 11, 5.8786798, -10, 11, 5, -7.8786798, 11, 5.8786798, -7.78, 25, 8, -8.4302225, 25, 9.5697775, -10, 25, 10.22, -11.5697775, 25, 9.5697775, -12.22, 25, 8, -11.5697775, 25, 6.430223, -10, 25, 5.78, -8.4302225, 25, 6.430223)
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_rwnns"]
-points = PackedVector3Array(-7.6, 25, 8, -8.302944, 25, 9.697056, -10, 25, 10.4, -11.697056, 25, 9.697056, -12.4, 25, 8, -11.697056, 25, 6.3029437, -10, 25, 5.6, -8.302944, 25, 6.3029437, -7.6, 25.6, 8, -8.302944, 25.6, 9.697056, -10, 25.6, 10.4, -11.697056, 25.6, 9.697056, -12.4, 25.6, 8, -11.697056, 25.6, 6.3029437, -10, 25.6, 5.6, -8.302944, 25.6, 6.3029437)
+[sub_resource type="BoxShape3D" id="BoxShape3D_5snwo"]
+size = Vector3(5.691986, 14.173584, 5.5672073)
 
 [sub_resource type="Gradient" id="Gradient_5v4fb"]
 offsets = PackedFloat32Array(0, 0.15, 0.55, 1)
@@ -82,21 +78,11 @@ shape = SubResource("BoxShape3D_ocb7x")
 [node name="SolidCollision1" type="CollisionShape3D" parent="." unique_id=1446259836]
 shape = SubResource("ConvexPolygonShape3D_ev6lu")
 
-[node name="SolidCollision2" type="CollisionShape3D" parent="." unique_id=567998078]
-shape = SubResource("ConvexPolygonShape3D_ogtl1")
+[node name="SmokestackCollision" type="CollisionShape3D" parent="." unique_id=567998078]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.033463, 18.549927, 7.953312)
+shape = SubResource("BoxShape3D_5snwo")
 
-[node name="SolidCollision3" type="CollisionShape3D" parent="." unique_id=225245932]
-shape = SubResource("ConvexPolygonShape3D_rwnns")
-
-[node name="StackSmoke" type="GPUParticles3D" parent="." unique_id=1044517333 instance=ExtResource("3_jvpru")]
+[node name="StackSmoke" parent="." unique_id=1044517333 instance=ExtResource("3_jvpru")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 25.7, 8)
-cast_shadow = 0
-emitting = false
-amount = 18
-lifetime = 8.0
-preprocess = 4.0
-fixed_fps = 15
-visibility_aabb = AABB(-12, -2, -12, 24, 30, 24)
 process_material = SubResource("ParticleProcessMaterial_oavgv")
 draw_pass_1 = SubResource("QuadMesh_2kc8g")
-script = ExtResource("4_prx11")

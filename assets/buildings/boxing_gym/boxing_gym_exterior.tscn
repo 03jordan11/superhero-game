@@ -1,0 +1,108 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://assets/buildings/boxing_gym/gym_entrance.tscn" id="10_gym_door"]
+
+[ext_resource type="PackedScene" path="res://assets/buildings/boxing_gym/props/shell.tscn" id="1_hp216"]
+[ext_resource type="PackedScene" path="res://assets/buildings/boxing_gym/props/entrance.tscn" id="2_nqdlh"]
+[ext_resource type="PackedScene" path="res://assets/buildings/boxing_gym/props/front_window.tscn" id="3_0ib5h"]
+[ext_resource type="PackedScene" path="res://assets/buildings/boxing_gym/props/sign_panel.tscn" id="4_578oy"]
+[ext_resource type="PackedScene" path="res://assets/buildings/boxing_gym/props/canopy.tscn" id="5_3p1w7"]
+[ext_resource type="PackedScene" path="res://assets/buildings/boxing_gym/props/upper_window.tscn" id="6_fw54n"]
+[ext_resource type="PackedScene" path="res://assets/buildings/boxing_gym/props/rear_door.tscn" id="7_ua6lt"]
+[ext_resource type="PackedScene" path="res://assets/buildings/boxing_gym/props/roof_unit.tscn" id="8_noy14"]
+[ext_resource type="PackedScene" path="res://assets/buildings/boxing_gym/props/wall_lamp.tscn" id="9_g15yu"]
+
+[sub_resource type="BoxOccluder3D" id="GymOccluder"]
+size = Vector3(24.6, 8, 22.6)
+
+[node name="BoxingGymExterior" type="Node3D" unique_id=1802684162]
+metadata/rendered_triangles = 4128
+metadata/wall_footprint_metres = Vector2(24.8, 22.8)
+metadata/front_direction = "+Z"
+metadata/exterior_only = true
+
+[node name="Occluder" type="OccluderInstance3D" parent="."]
+position = Vector3(0, 4.05, 0)
+occluder = SubResource("GymOccluder")
+
+[node name="BuildingShell" type="Node3D" parent="." unique_id=147599399 instance=ExtResource("1_hp216")]
+metadata/rendered_triangles = 596
+
+[node name="GymEntrance" parent="." instance=ExtResource("10_gym_door")]
+
+[node name="FrontDoor" type="Node3D" parent="." unique_id=868407234 instance=ExtResource("2_nqdlh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.48)
+metadata/rendered_triangles = 288
+
+[node name="FrontWindowLeft" type="Node3D" parent="." unique_id=2132167500 instance=ExtResource("3_0ib5h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.9, 1.82, 11.47)
+metadata/rendered_triangles = 216
+
+[node name="FrontWindowRight" type="Node3D" parent="." unique_id=97220584 instance=ExtResource("3_0ib5h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.9, 1.82, 11.47)
+metadata/rendered_triangles = 216
+
+[node name="BlankGymSign" type="Node3D" parent="." unique_id=435041803 instance=ExtResource("4_578oy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.03, 11.65)
+metadata/rendered_triangles = 92
+
+[node name="EntryCanopy" type="Node3D" parent="." unique_id=1074750049 instance=ExtResource("5_3p1w7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.46, 11.48)
+metadata/rendered_triangles = 92
+
+[node name="UpperWindow_-1_0" type="Node3D" parent="." unique_id=832746187 instance=ExtResource("6_fw54n")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -12.43, 5.2, -6)
+metadata/rendered_triangles = 168
+
+[node name="UpperWindow_-1_1" type="Node3D" parent="." unique_id=1138988430 instance=ExtResource("6_fw54n")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -12.43, 5.2, 0)
+metadata/rendered_triangles = 168
+
+[node name="UpperWindow_-1_2" type="Node3D" parent="." unique_id=355276258 instance=ExtResource("6_fw54n")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -12.43, 5.2, 6)
+metadata/rendered_triangles = 168
+
+[node name="UpperWindow_1_0" type="Node3D" parent="." unique_id=1399608875 instance=ExtResource("6_fw54n")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12.43, 5.2, -6)
+metadata/rendered_triangles = 168
+
+[node name="UpperWindow_1_1" type="Node3D" parent="." unique_id=1135189839 instance=ExtResource("6_fw54n")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12.43, 5.2, 0)
+metadata/rendered_triangles = 168
+
+[node name="UpperWindow_1_2" type="Node3D" parent="." unique_id=2084369807 instance=ExtResource("6_fw54n")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12.43, 5.2, 6)
+metadata/rendered_triangles = 168
+
+[node name="RearDoor" type="Node3D" parent="." unique_id=13866309 instance=ExtResource("7_ua6lt")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -8.65, 0, -11.47)
+metadata/rendered_triangles = 96
+
+[node name="RoofUnit1" type="Node3D" parent="." unique_id=1570474255 instance=ExtResource("8_noy14")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 8.21, -4)
+metadata/rendered_triangles = 672
+
+[node name="RoofUnit2" type="Node3D" parent="." unique_id=1057004236 instance=ExtResource("8_noy14")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 8.21, -4)
+metadata/rendered_triangles = 672
+
+[node name="EntranceLamp1" type="Node3D" parent="." unique_id=141744809 instance=ExtResource("9_g15yu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.08, 2.37, 11.65)
+metadata/rendered_triangles = 60
+
+[node name="EntranceLamp2" type="Node3D" parent="." unique_id=1055360110 instance=ExtResource("9_g15yu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08, 2.37, 11.65)
+metadata/rendered_triangles = 60
+
+[node name="RearLamp" type="Node3D" parent="." unique_id=18668939 instance=ExtResource("9_g15yu")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -8.65, 3.18, -11.55)
+metadata/rendered_triangles = 60
+
+[node name="FrontEntry" type="Marker3D" parent="." unique_id=257965215]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05, 12.6)
+
+[node name="FrontReturn" type="Marker3D" parent="." unique_id=786165560]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05, 13.3)
+
+[node name="RearEntry" type="Marker3D" parent="." unique_id=364731573]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -8.65, 1.05, -12.6)

@@ -27,26 +27,27 @@ func run() -> void:
 			assert(mesh.get_active_material(surface) != null, "Missing material")
 			triangle_count += mesh.mesh.surface_get_array_index_len(surface) / 3
 	var manifest: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(FOLDER + "firehouse_manifest.json"))
-	assert(triangle_count == int(manifest.total_triangles), "Manifest disagrees with actual imported geometry")
+	assert(triangle_count == int(manifest.base_triangles), "Building geometry preserved after removing bench props")
 	assert(triangle_count < 10000, "Complete POI exceeds triangle budget")
 	assert(absf(bounds.size.x - 34.65) < .05 and absf(bounds.end.y - 26.875) < .05, "Metre scale changed")
-	assert(absf(bounds.size.z - 23.705) < .05)
-	assert(hall.get_node("Props").get_child_count() == 2)
+	# Building-only depth; the old 23.705 m footprint included benches.
+	assert(absf(bounds.size.z - 23.085) < .05)
+	assert(hall.get_node("Props").get_child_count() == 0, "Outdoor benches removed")
 	assert(hall._night_materials.size() == 2, "Expected window and fixture emission")
 	clock.set_time(0)
 	for i in hall._night_materials.size():
 		assert(hall._night_materials[i] != independent._night_materials[i])
-		assert(hall._night_materials[i].emission_energy_multiplier > 0)
-		assert(is_zero_approx(independent._night_materials[i].emission_energy_multiplier))
+		assert(_energy(hall._night_materials[i]) > 0)
+		assert(is_zero_approx(_energy(independent._night_materials[i])))
 	var late: Node3D = load(FOLDER + "firehouse.tscn").instantiate()
 	late.position.x = 200
 	root.add_child(late)
 	await process_frame
 	await process_frame
-	assert(late._night_materials[0].emission_energy_multiplier > 0, "Night spawn did not synchronize")
+	assert(_energy(late._night_materials[0]) > 0, "Night spawn did not synchronize")
 	clock.set_time(13)
-	for mat: StandardMaterial3D in hall._night_materials:
-		assert(is_zero_approx(mat.emission_energy_multiplier), "Daytime emission remains")
+	for mat: Material in hall._night_materials:
+		assert(is_zero_approx(_energy(mat)), "Daytime emission remains")
 	var emission := (load(FOLDER + "firehouse_details_emission.png") as Texture2D).get_image()
 	# All four cell corners are opaque trim with no emission.
 	for y in [0, 511, 512, 1023]:
@@ -63,14 +64,6 @@ func run() -> void:
 		var door := ray(space, Vector3(x, 2, 15), Vector3(x, 2, 9))
 		assert(not door.is_empty() and absf(door.position.z - 11) < .03, "Closed bay must be solid")
 	assert(ray(space, Vector3(0, 5, 20), Vector3(0, -1, 20)).is_empty(), "Asset contains unwanted outer ground")
-	var bench: Node3D = hall.get_node("Props/Bench_00")
-	assert(bench.scene_file_path == FOLDER + "props/bench.tscn")
-	var old_position := bench.global_position
-	assert(ray(space, old_position + Vector3.UP * 3, old_position - Vector3.UP).get("collider") == bench.get_node("Collision"))
-	bench.position.x += 60
-	await physics_frame
-	await physics_frame
-	assert(ray(space, old_position + Vector3.UP * 3, old_position - Vector3.UP).is_empty(), "Moved bench left ghost collision")
 	print("FIREHOUSE_TEST_PASS: %d triangles; scale, materials, no sill meshes, roof and closed-bay collision, independent props, night/day and night spawn" % triangle_count)
 	late.free()
 	independent.free()
@@ -79,3 +72,6 @@ func run() -> void:
 
 func ray(space: PhysicsDirectSpaceState3D, start: Vector3, finish: Vector3) -> Dictionary:
 	return space.intersect_ray(PhysicsRayQueryParameters3D.create(start, finish))
+
+func _energy(material: Material) -> float:
+	return material.get_shader_parameter("emission_energy") if material is ShaderMaterial else material.emission_energy_multiplier

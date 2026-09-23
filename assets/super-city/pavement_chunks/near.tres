@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/super-city/pavement_chunks/pavement.gdshader" id="1_36wt7"]
+[ext_resource type="Texture2D" path="res://assets/super-city/textures/junction_20_20_15.res" id="2_qqph6"]
+[ext_resource type="Texture2D" path="res://assets/super-city/textures/road_6m.res" id="3_a8aax"]
+[ext_resource type="Texture2D" path="res://assets/super-city/pavement_chunks/road_parameters.res" id="4_pqh2x"]
+[ext_resource type="Texture2D" path="res://assets/super-city/textures/sidewalk.res" id="5_3737b"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_36wt7")
+shader_parameter/asphalt = ExtResource("2_qqph6")
+shader_parameter/paving = ExtResource("5_3737b")
+shader_parameter/legacy_road = ExtResource("3_a8aax")
+shader_parameter/parameters = ExtResource("4_pqh2x")
+shader_parameter/distant_detail = null

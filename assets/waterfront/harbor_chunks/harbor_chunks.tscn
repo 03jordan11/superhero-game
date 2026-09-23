@@ -1,0 +1,24 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/harbor_chunks.gd" id="1_es0yc"]
+[ext_resource type="ArrayMesh" path="res://assets/waterfront/harbor_chunks/CargoCombined.res" id="2_uvibn"]
+[ext_resource type="ArrayMesh" path="res://assets/waterfront/harbor_chunks/StructuresCombined.res" id="3_8u22r"]
+[ext_resource type="ArrayMesh" path="res://assets/waterfront/harbor_chunks/DistantProxy.res" id="4_dimc6"]
+
+[node name="HarborChunks" type="Node3D" unique_id=10129214]
+script = ExtResource("1_es0yc")
+
+[node name="Harbor_0" type="Node3D" parent="." unique_id=160850255]
+visible = false
+
+[node name="FullDetail" type="Node3D" parent="Harbor_0" unique_id=1299341541]
+
+[node name="CargoCombined" type="MeshInstance3D" parent="Harbor_0/FullDetail" unique_id=1725688423]
+mesh = ExtResource("2_uvibn")
+
+[node name="StructuresCombined" type="MeshInstance3D" parent="Harbor_0/FullDetail" unique_id=1789887895]
+mesh = ExtResource("3_8u22r")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Harbor_0" unique_id=631331923]
+cast_shadow = 0
+mesh = ExtResource("4_dimc6")

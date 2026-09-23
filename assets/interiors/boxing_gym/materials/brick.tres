@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/interiors/boxing_gym/textures/concrete.png" id="1_i6pft"]
+
+[resource]
+resource_name = "Brick"
+albedo_color = Color(0.42, 0.33, 0.25, 1)
+albedo_texture = ExtResource("1_i6pft")
+roughness = 0.85
+texture_filter = 5

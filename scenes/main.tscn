@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ci1surt3ll4n5" path="res://scenes/player.tscn" id="1_player"]
 [ext_resource type="Script" uid="uid://ckp7prv4iwgsn" path="res://scripts/ui-scripts/developer_menu.gd" id="12_developer_menu"]
+[ext_resource type="Material" path="res://assets/parking_lots/parking_lot_material.tres" id="14_yc10j"]
 [ext_resource type="Script" uid="uid://blmlybmyr4hv1" path="res://scripts/ui-scripts/pause_menu.gd" id="18_pause_menu"]
 [ext_resource type="PackedScene" path="res://assets/waterfront/cargo_ship/cargo_ship.tscn" id="20_og1vs"]
 [ext_resource type="Shader" uid="uid://b1rqdwwqewkv" path="res://assets/sky/hero_sky.gdshader" id="20_pm3ni"]
@@ -20,6 +21,33 @@
 [ext_resource type="Script" uid="uid://cax7bct2eluw8" path="res://scripts/ui-scripts/gameplay_menu.gd" id="100_gameplay_menu"]
 [ext_resource type="Script" uid="uid://baa6qekbtngcl" path="res://scripts/ui-scripts/developer_performance_hud.gd" id="101_dev_perf"]
 [ext_resource type="Script" uid="uid://dwlgqjjhsydy2" path="res://scripts/cargo_ship_schedule.gd" id="cargo_schedule"]
+[ext_resource type="PackedScene" uid="uid://bumcntngahpm8" path="res://assets/super-city/chunks/city_chunks.tscn" id="city_building_chunks"]
+[ext_resource type="Script" uid="uid://cqi8ptj0j5ej6" path="res://scripts/landmark_proxies.gd" id="landmark_proxies"]
+[ext_resource type="Script" path="res://scripts/regional_proxies.gd" id="regional_proxies"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_pm3ni"]
+material = ExtResource("14_yc10j")
+size = Vector2(30, 36)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_y6deb"]
+material = ExtResource("14_yc10j")
+size = Vector2(30, 36)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_og1vs"]
+material = ExtResource("14_yc10j")
+size = Vector2(30, 36)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2wyq8"]
+material = ExtResource("14_yc10j")
+size = Vector2(30, 36)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vxglm"]
+material = ExtResource("14_yc10j")
+size = Vector2(30, 36)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2f3dj"]
+material = ExtResource("14_yc10j")
+size = Vector2(30, 36)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ceevd"]
 size = Vector3(26, 75.2, 24.04)
@@ -51,6 +79,10 @@ size = Vector3(32, 151.2, 24.04)
 [sub_resource type="BoxShape3D" id="BoxShape3D_loisc"]
 size = Vector3(30, 161.2, 24.04)
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_yq6so"]
+material = ExtResource("14_yc10j")
+size = Vector2(30, 36)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_xhc8o"]
 size = Vector3(28, 159.2, 26.04)
 
@@ -75,19 +107,19 @@ size = Vector3(28, 169.2, 26.04)
 [sub_resource type="BoxShape3D" id="BoxShape3D_p40i1"]
 size = Vector3(28, 241.2, 24.04)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_vxglm"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_fv21b"]
 seed = 8421
 frequency = 0.008
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2f3dj"]
-noise = SubResource("FastNoiseLite_vxglm")
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tel4y"]
+noise = SubResource("FastNoiseLite_fv21b")
 seamless = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yq6so"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qkpxi"]
 shader = ExtResource("20_pm3ni")
 shader_parameter/milky_way = ExtResource("22_og1vs")
 shader_parameter/bright_stars = ExtResource("21_y6deb")
-shader_parameter/cloud_noise = SubResource("NoiseTexture2D_2f3dj")
+shader_parameter/cloud_noise = SubResource("NoiseTexture2D_tel4y")
 shader_parameter/star_rotation = Basis(-0.00042547286, -0.79124016, -0.6115054, 0.34618863, 0.57357645, -0.74240386, 0.93816483, -0.2120121, 0.27367428)
 shader_parameter/sun_direction = Vector3(-0.5419717, 0.21225083, -0.81315213)
 shader_parameter/moon_direction = Vector3(0.5419717, -0.21225083, 0.81315213)
@@ -99,18 +131,19 @@ shader_parameter/cloud_coverage = 0.32
 shader_parameter/cloud_offset = Vector2(0, 0)
 shader_parameter/moon_size = 0.015009831567151233
 
-[sub_resource type="Sky" id="Sky_fv21b"]
-sky_material = SubResource("ShaderMaterial_yq6so")
+[sub_resource type="Sky" id="Sky_5q0nq"]
+sky_material = SubResource("ShaderMaterial_qkpxi")
 process_mode = 3
 
-[sub_resource type="Environment" id="Environment_tel4y"]
+[sub_resource type="Environment" id="Environment_dgi5k"]
 background_mode = 2
-sky = SubResource("Sky_fv21b")
+sky = SubResource("Sky_5q0nq")
 ambient_light_source = 2
 ambient_light_color = Color(0.75926334, 0.8393247, 0.99949354, 1)
 ambient_light_energy = 0.6494322
 reflected_light_source = 2
 tonemap_mode = 2
+glow_enabled = true
 glow_intensity = 0.18
 glow_hdr_threshold = 1.8
 fog_enabled = true
@@ -118,6 +151,22 @@ fog_light_color = Color(0.5502453, 0.63955045, 0.7818617, 1)
 fog_light_energy = 0.69946283
 fog_density = 0.00024992327
 fog_sky_affect = 0.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_j8jky"]
+material = ExtResource("14_yc10j")
+size = Vector2(30, 36)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_kmb1v"]
+material = ExtResource("14_yc10j")
+size = Vector2(30, 36)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fuf3a"]
+material = ExtResource("14_yc10j")
+size = Vector2(30, 36)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_pibwh"]
+material = ExtResource("14_yc10j")
+size = Vector2(30, 36)
 
 [node name="Main" type="Node3D" unique_id=52622882]
 
@@ -251,83 +300,101 @@ script = ExtResource("49_explosion_controller")
 
 [node name="SuperCity" parent="." unique_id=1139948486 instance=ExtResource("46_txyw0")]
 
-[node name="Container" parent="SuperCity/Waterfront/Harbor" parent_id_path=PackedInt32Array(1139948486, 42659947, 385833039) index="10" unique_id=259876849]
+[node name="ParkingLot" parent="SuperCity/Ground/GroundMesh" parent_id_path=PackedInt32Array(1139948486, 1831606977) index="2" unique_id=829432096]
+mesh = SubResource("PlaneMesh_pm3ni")
+
+[node name="ParkingLot2" parent="SuperCity/Ground/GroundMesh" parent_id_path=PackedInt32Array(1139948486, 1831606977) index="3" unique_id=92284228]
+mesh = SubResource("PlaneMesh_y6deb")
+
+[node name="ParkingLot3" parent="SuperCity/Ground/GroundMesh" parent_id_path=PackedInt32Array(1139948486, 1831606977) index="4" unique_id=1455165306]
+mesh = SubResource("PlaneMesh_og1vs")
+
+[node name="ParkingLot4" parent="SuperCity/Ground/GroundMesh" parent_id_path=PackedInt32Array(1139948486, 1831606977) index="5" unique_id=29140360]
+mesh = SubResource("PlaneMesh_2wyq8")
+
+[node name="Container" parent="SuperCity/Waterfront/Harbor" parent_id_path=PackedInt32Array(1139948486, 42659947, 385833039) index="5" unique_id=259876849]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1093.8513, 1.5, 820)
 
-[node name="Container2" parent="SuperCity/Waterfront/Harbor" parent_id_path=PackedInt32Array(1139948486, 42659947, 385833039) index="11" unique_id=1861937605]
+[node name="Container2" parent="SuperCity/Waterfront/Harbor" parent_id_path=PackedInt32Array(1139948486, 42659947, 385833039) index="6" unique_id=1861937605]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1093.8513, 4.5, 820)
 
-[node name="Container3" parent="SuperCity/Waterfront/Harbor" parent_id_path=PackedInt32Array(1139948486, 42659947, 385833039) index="12" unique_id=1101979631]
+[node name="Container3" parent="SuperCity/Waterfront/Harbor" parent_id_path=PackedInt32Array(1139948486, 42659947, 385833039) index="7" unique_id=1101979631]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1103.8513, 1.5, 820)
 
-[node name="Container4" parent="SuperCity/Waterfront/Harbor" parent_id_path=PackedInt32Array(1139948486, 42659947, 385833039) index="13" unique_id=294728271]
+[node name="Container4" parent="SuperCity/Waterfront/Harbor" parent_id_path=PackedInt32Array(1139948486, 42659947, 385833039) index="8" unique_id=294728271]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1113.8513, 1.5, 820)
 
-[node name="Container5" parent="SuperCity/Waterfront/Harbor" parent_id_path=PackedInt32Array(1139948486, 42659947, 385833039) index="14" unique_id=831387690]
+[node name="Container5" parent="SuperCity/Waterfront/Harbor" parent_id_path=PackedInt32Array(1139948486, 42659947, 385833039) index="9" unique_id=831387690]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1123.8513, 1.5, 820)
 
-[node name="Container6" parent="SuperCity/Waterfront/Harbor" parent_id_path=PackedInt32Array(1139948486, 42659947, 385833039) index="15" unique_id=1637298075]
+[node name="Container6" parent="SuperCity/Waterfront/Harbor" parent_id_path=PackedInt32Array(1139948486, 42659947, 385833039) index="10" unique_id=1637298075]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1123.8513, 4.5, 820)
 
-[node name="Container7" parent="SuperCity/Waterfront/Harbor" parent_id_path=PackedInt32Array(1139948486, 42659947, 385833039) index="16" unique_id=1511130778]
+[node name="Container7" parent="SuperCity/Waterfront/Harbor" parent_id_path=PackedInt32Array(1139948486, 42659947, 385833039) index="11" unique_id=1511130778]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1133.8513, 1.5, 820)
 
-[node name="Container8" parent="SuperCity/Waterfront/Harbor" parent_id_path=PackedInt32Array(1139948486, 42659947, 385833039) index="17" unique_id=376824424]
+[node name="Container8" parent="SuperCity/Waterfront/Harbor" parent_id_path=PackedInt32Array(1139948486, 42659947, 385833039) index="12" unique_id=376824424]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1143.8513, 1.5, 820)
 
-[node name="Container9" parent="SuperCity/Waterfront/Harbor" parent_id_path=PackedInt32Array(1139948486, 42659947, 385833039) index="18" unique_id=322071213]
+[node name="Container9" parent="SuperCity/Waterfront/Harbor" parent_id_path=PackedInt32Array(1139948486, 42659947, 385833039) index="13" unique_id=322071213]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1093.8513, 1.5, 839)
 
-[node name="Container10" parent="SuperCity/Waterfront/Harbor" parent_id_path=PackedInt32Array(1139948486, 42659947, 385833039) index="19" unique_id=1945763395]
+[node name="Container10" parent="SuperCity/Waterfront/Harbor" parent_id_path=PackedInt32Array(1139948486, 42659947, 385833039) index="14" unique_id=1945763395]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1093.8513, 4.5, 839)
 
-[node name="Container11" parent="SuperCity/Waterfront/Harbor" parent_id_path=PackedInt32Array(1139948486, 42659947, 385833039) index="20" unique_id=652084255]
+[node name="Container11" parent="SuperCity/Waterfront/Harbor" parent_id_path=PackedInt32Array(1139948486, 42659947, 385833039) index="15" unique_id=652084255]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1103.8513, 1.5, 839)
 
-[node name="Container12" parent="SuperCity/Waterfront/Harbor" parent_id_path=PackedInt32Array(1139948486, 42659947, 385833039) index="21" unique_id=2032156900]
+[node name="Container12" parent="SuperCity/Waterfront/Harbor" parent_id_path=PackedInt32Array(1139948486, 42659947, 385833039) index="16" unique_id=2032156900]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1113.8513, 1.5, 839)
 
-[node name="Container13" parent="SuperCity/Waterfront/Harbor" parent_id_path=PackedInt32Array(1139948486, 42659947, 385833039) index="22" unique_id=856379975]
+[node name="Container13" parent="SuperCity/Waterfront/Harbor" parent_id_path=PackedInt32Array(1139948486, 42659947, 385833039) index="17" unique_id=856379975]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1123.8513, 1.5, 839)
 
-[node name="Container14" parent="SuperCity/Waterfront/Harbor" parent_id_path=PackedInt32Array(1139948486, 42659947, 385833039) index="23" unique_id=935445963]
+[node name="Container14" parent="SuperCity/Waterfront/Harbor" parent_id_path=PackedInt32Array(1139948486, 42659947, 385833039) index="18" unique_id=935445963]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1123.8513, 4.5, 839)
 
-[node name="Container15" parent="SuperCity/Waterfront/Harbor" parent_id_path=PackedInt32Array(1139948486, 42659947, 385833039) index="24" unique_id=1955288237]
+[node name="Container15" parent="SuperCity/Waterfront/Harbor" parent_id_path=PackedInt32Array(1139948486, 42659947, 385833039) index="19" unique_id=1955288237]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1133.8513, 1.5, 839)
 
-[node name="Container16" parent="SuperCity/Waterfront/Harbor" parent_id_path=PackedInt32Array(1139948486, 42659947, 385833039) index="25" unique_id=1718023409]
+[node name="Container16" parent="SuperCity/Waterfront/Harbor" parent_id_path=PackedInt32Array(1139948486, 42659947, 385833039) index="20" unique_id=1718023409]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1143.8513, 1.5, 839)
 
-[node name="Container17" parent="SuperCity/Waterfront/Harbor" parent_id_path=PackedInt32Array(1139948486, 42659947, 385833039) index="26" unique_id=1672819025]
+[node name="Container17" parent="SuperCity/Waterfront/Harbor" parent_id_path=PackedInt32Array(1139948486, 42659947, 385833039) index="21" unique_id=1672819025]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1093.8513, 1.5, 858)
 
-[node name="Container18" parent="SuperCity/Waterfront/Harbor" parent_id_path=PackedInt32Array(1139948486, 42659947, 385833039) index="27" unique_id=1255531547]
+[node name="Container18" parent="SuperCity/Waterfront/Harbor" parent_id_path=PackedInt32Array(1139948486, 42659947, 385833039) index="22" unique_id=1255531547]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1093.8513, 4.5, 858)
 
-[node name="Container19" parent="SuperCity/Waterfront/Harbor" parent_id_path=PackedInt32Array(1139948486, 42659947, 385833039) index="28" unique_id=330249856]
+[node name="Container19" parent="SuperCity/Waterfront/Harbor" parent_id_path=PackedInt32Array(1139948486, 42659947, 385833039) index="23" unique_id=330249856]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1103.8513, 1.5, 858)
 
-[node name="Container20" parent="SuperCity/Waterfront/Harbor" parent_id_path=PackedInt32Array(1139948486, 42659947, 385833039) index="29" unique_id=120123191]
+[node name="Container20" parent="SuperCity/Waterfront/Harbor" parent_id_path=PackedInt32Array(1139948486, 42659947, 385833039) index="24" unique_id=120123191]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1113.8513, 1.5, 858)
 
-[node name="Container21" parent="SuperCity/Waterfront/Harbor" parent_id_path=PackedInt32Array(1139948486, 42659947, 385833039) index="30" unique_id=2054019938]
+[node name="Container21" parent="SuperCity/Waterfront/Harbor" parent_id_path=PackedInt32Array(1139948486, 42659947, 385833039) index="25" unique_id=2054019938]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1123.8513, 1.5, 858)
 
-[node name="Container22" parent="SuperCity/Waterfront/Harbor" parent_id_path=PackedInt32Array(1139948486, 42659947, 385833039) index="31" unique_id=516880751]
+[node name="Container22" parent="SuperCity/Waterfront/Harbor" parent_id_path=PackedInt32Array(1139948486, 42659947, 385833039) index="26" unique_id=516880751]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1123.8513, 4.5, 858)
 
-[node name="Container23" parent="SuperCity/Waterfront/Harbor" parent_id_path=PackedInt32Array(1139948486, 42659947, 385833039) index="32" unique_id=486394348]
+[node name="Container23" parent="SuperCity/Waterfront/Harbor" parent_id_path=PackedInt32Array(1139948486, 42659947, 385833039) index="27" unique_id=486394348]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1133.8513, 1.5, 858)
 
-[node name="Container24" parent="SuperCity/Waterfront/Harbor" parent_id_path=PackedInt32Array(1139948486, 42659947, 385833039) index="33" unique_id=1679379661]
+[node name="Container24" parent="SuperCity/Waterfront/Harbor" parent_id_path=PackedInt32Array(1139948486, 42659947, 385833039) index="28" unique_id=1679379661]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1143.8513, 1.5, 858)
 
+[node name="MedianBarrier" parent="SuperCity/CityLife/Highway" parent_id_path=PackedInt32Array(1139948486, 1157347002, 788556127) index="3" unique_id=96643167]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -740, 0.455, -987.05)
 
+[node name="CityHallEastConnection" parent="SuperCity/Roads/roads_2_1" parent_id_path=PackedInt32Array(1139948486, 943538391) index="14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, -152)
 
+[node name="ParkingLot" parent="SuperCity/Roads/roads_5_3" parent_id_path=PackedInt32Array(1139948486, 1228355636) index="21" unique_id=1093086426]
+mesh = SubResource("PlaneMesh_vxglm")
 
-
-
+[node name="ParkingLot" parent="SuperCity/Sidewalks/sidewalks_5_3" parent_id_path=PackedInt32Array(1139948486, 536860563) index="10" unique_id=953275508]
+mesh = SubResource("PlaneMesh_2f3dj")
 
 [node name="CargoShip" parent="SuperCity/Sidewalks" parent_id_path=PackedInt32Array(1139948486, 1834405138) index="24" unique_id=681049721 instance=ExtResource("20_og1vs")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1130.8622, 1.0316639, 1225.0393)
@@ -340,6 +407,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2952.5176, 5.985969, -84.194
 
 [node name="GasStationHideout" parent="SuperCity/Sidewalks" parent_id_path=PackedInt32Array(1139948486, 1834405138) index="26" unique_id=189529428 instance=ExtResource("23_vxglm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1487.6904, 0, -502.16824)
+
+[node name="FrontStairApron" parent="SuperCity/Sidewalks/CityHallSurrounds" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -301, 0, -340.4)
+
+[node name="RearRetainingWalk" parent="SuperCity/Sidewalks/CityHallSurrounds" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -301, 0, -464.25)
+
+[node name="EastRetainingWalk" parent="SuperCity/Sidewalks/CityHallSurrounds" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -216.1, 0, -402)
+
+[node name="WestEdgeInfill" parent="SuperCity/Sidewalks/CityHallSurrounds" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384.0625, 0, -402)
 
 [node name="CollisionShape3D" parent="SuperCity/Districts/CivicCenter/CivicCenter_0180" parent_id_path=PackedInt32Array(1139948486, 1637118609) index="1" unique_id=1654738699]
 shape = SubResource("BoxShape3D_ceevd")
@@ -785,6 +864,9 @@ shape = SubResource("BoxShape3D_tfo3j")
 [node name="CollisionShape3D" parent="SuperCity/Districts/Parkside/Parkside_1267" parent_id_path=PackedInt32Array(1139948486, 1352852852) index="1" unique_id=202470658]
 shape = SubResource("BoxShape3D_hkaux")
 
+[node name="ParkingLot" parent="SuperCity/Districts/Parkside" parent_id_path=PackedInt32Array(1139948486, 1093275052) index="118" unique_id=820502988]
+mesh = SubResource("PlaneMesh_yq6so")
+
 [node name="CollisionShape3D" parent="SuperCity/Districts/FinancialQuarter/FinancialQuarter_1024" parent_id_path=PackedInt32Array(1139948486, 1046005120) index="1" unique_id=1279844126]
 shape = SubResource("BoxShape3D_ct22t")
 
@@ -923,26 +1005,14 @@ shape = SubResource("BoxShape3D_qav48")
 [node name="CollisionShape3D" parent="SuperCity/Districts/FinancialQuarter/FinancialQuarter_1226" parent_id_path=PackedInt32Array(1139948486, 2115767211) index="1" unique_id=1812015348]
 shape = SubResource("BoxShape3D_qav48")
 
-[node name="CollisionShape3D" parent="SuperCity/Districts/FinancialQuarter/FinancialQuarter_1227" parent_id_path=PackedInt32Array(1139948486, 1842541626) index="1" unique_id=201487474]
-shape = SubResource("BoxShape3D_rby6j")
-
 [node name="CollisionShape3D" parent="SuperCity/Districts/FinancialQuarter/FinancialQuarter_1228" parent_id_path=PackedInt32Array(1139948486, 852601670) index="1" unique_id=1497180140]
 shape = SubResource("BoxShape3D_p40i1")
 
 [node name="CollisionShape3D" parent="SuperCity/Districts/FinancialQuarter/FinancialQuarter_1231" parent_id_path=PackedInt32Array(1139948486, 1867861115) index="1" unique_id=1739442330]
 shape = SubResource("BoxShape3D_dla2b")
 
-[node name="CollisionShape3D" parent="SuperCity/Districts/FinancialQuarter/FinancialQuarter_1232" parent_id_path=PackedInt32Array(1139948486, 608421809) index="1" unique_id=201487474]
-shape = SubResource("BoxShape3D_rby6j")
-
-[node name="CollisionShape3D" parent="SuperCity/Districts/FinancialQuarter/FinancialQuarter_1233" parent_id_path=PackedInt32Array(1139948486, 837745712) index="1" unique_id=1497180140]
-shape = SubResource("BoxShape3D_p40i1")
-
 [node name="CollisionShape3D" parent="SuperCity/Districts/FinancialQuarter/FinancialQuarter_1234" parent_id_path=PackedInt32Array(1139948486, 1841076978) index="1" unique_id=1812015348]
 shape = SubResource("BoxShape3D_qav48")
-
-[node name="CollisionShape3D" parent="SuperCity/Districts/FinancialQuarter/FinancialQuarter_1235" parent_id_path=PackedInt32Array(1139948486, 346085911) index="1" unique_id=201487474]
-shape = SubResource("BoxShape3D_rby6j")
 
 [node name="CollisionShape3D" parent="SuperCity/Districts/FinancialQuarter/FinancialQuarter_1236" parent_id_path=PackedInt32Array(1139948486, 332683141) index="1" unique_id=2021186419]
 shape = SubResource("BoxShape3D_8o0ur")
@@ -955,18 +1025,6 @@ shape = SubResource("BoxShape3D_8o0ur")
 
 [node name="CollisionShape3D" parent="SuperCity/Districts/FinancialQuarter/FinancialQuarter_1239" parent_id_path=PackedInt32Array(1139948486, 1884417444) index="1" unique_id=1739442330]
 shape = SubResource("BoxShape3D_dla2b")
-
-[node name="CollisionShape3D" parent="SuperCity/Districts/FinancialQuarter/FinancialQuarter_1240" parent_id_path=PackedInt32Array(1139948486, 1240557852) index="1" unique_id=2021186419]
-shape = SubResource("BoxShape3D_8o0ur")
-
-[node name="CollisionShape3D" parent="SuperCity/Districts/FinancialQuarter/FinancialQuarter_1241" parent_id_path=PackedInt32Array(1139948486, 203515651) index="1" unique_id=1812015348]
-shape = SubResource("BoxShape3D_qav48")
-
-[node name="CollisionShape3D" parent="SuperCity/Districts/FinancialQuarter/FinancialQuarter_1242" parent_id_path=PackedInt32Array(1139948486, 512844461) index="1" unique_id=2021186419]
-shape = SubResource("BoxShape3D_8o0ur")
-
-[node name="CollisionShape3D" parent="SuperCity/Districts/FinancialQuarter/FinancialQuarter_1243" parent_id_path=PackedInt32Array(1139948486, 1651539961) index="1" unique_id=57556117]
-shape = SubResource("BoxShape3D_ww383")
 
 [node name="CollisionShape3D" parent="SuperCity/Districts/FinancialQuarter/FinancialQuarter_1270" parent_id_path=PackedInt32Array(1139948486, 1055172154) index="1" unique_id=1540801338]
 shape = SubResource("BoxShape3D_gbu8x")
@@ -1250,13 +1308,68 @@ shape = SubResource("BoxShape3D_10six")
 [node name="CollisionShape3D" parent="SuperCity/Districts/Eastbank/Eastbank_2009" parent_id_path=PackedInt32Array(1139948486, 897888321) index="1" unique_id=1279844126]
 shape = SubResource("BoxShape3D_ct22t")
 
-[node name="Daylight" parent="SuperCity" index="12" unique_id=1402928504]
-environment = SubResource("Environment_tel4y")
+[node name="Daylight" parent="SuperCity" index="11" unique_id=1402928504]
+environment = SubResource("Environment_dgi5k")
 
-[node name="DayNightCycle" parent="SuperCity" index="13" unique_id=79188708]
+[node name="DayNightCycle" parent="SuperCity" index="12" unique_id=79188708]
 star_intensity = 1.5
 night_fog_density = 0.0002
 
+[node name="StartHere" parent="SuperCity/CityPedestrianRoutes/Parkside/Block_06_08" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.66668, 0.8818463, -48.666668)
+
+[node name="StartHere" parent="SuperCity/CityPedestrianRoutes/Parkside/Block_06_07" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -241.66669, 0.5009847, -162.83336)
+
+[node name="StartHere" parent="SuperCity/CityPedestrianRoutes/Parkside/Block_07_07" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -397.66672, 1.0312762, -1.6666666)
+
+[node name="StartHere" parent="SuperCity/CityPedestrianRoutes/Parkside/Block_07_08" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90.03333, 0.42929217, -5.7333336)
+
+[node name="StartHere" parent="SuperCity/CityPedestrianRoutes/Parkside/Block_08_08" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -136.66667, 0.2028244, 167.33336)
+
+[node name="StartHere" parent="SuperCity/CityPedestrianRoutes/Parkside/Block_08_07" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -289, 1.6267952, 263.16666)
+
+[node name="StartHere" parent="SuperCity/CityPedestrianRoutes/Parkside/Block_05_10" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 135.66667, 8.179999, -336.33337)
+
+[node name="StartHere" parent="SuperCity/CityPedestrianRoutes/Parkside/Block_09_11" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 300.33334, 0.03, 313.66666)
+
+[node name="StartHere" parent="SuperCity/CityPedestrianRoutes/CivicCenter/Waterfront" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1459.6669, 0.03, 786.33344)
+
+[node name="StartHere" parent="SuperCity/CityPedestrianRoutes/CivicCenter/Block_09_11" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 301.33334, 0.03, 353.16672)
+
+[node name="StartHere" parent="SuperCity/CityPedestrianRoutes/FinancialQuarter/Pier" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 595.5, 0.03, 786.33344)
+
+[node name="StartHere" parent="SuperCity/CityPedestrianRoutes/Eastbank/Pier" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 784.00006, 0.03, 786.33344)
+
+[node name="ParkingLot" parent="SuperCity" index="41" unique_id=278743167]
+mesh = SubResource("PlaneMesh_j8jky")
+
+[node name="ParkingLot2" parent="SuperCity" index="42" unique_id=1865766748]
+mesh = SubResource("PlaneMesh_kmb1v")
+
+[node name="ParkingLot3" parent="SuperCity" index="43" unique_id=313864339]
+mesh = SubResource("PlaneMesh_fuf3a")
+
+[node name="ParkingLot4" parent="SuperCity" index="44" unique_id=2059690142]
+mesh = SubResource("PlaneMesh_pibwh")
+
+[node name="CityBuildingChunks" parent="SuperCity" unique_id=615149118 instance=ExtResource("city_building_chunks")]
+
+[node name="LandmarkProxies" type="Node3D" parent="SuperCity" unique_id=1225256942]
+script = ExtResource("landmark_proxies")
+
+[node name="RegionalProxies" type="Node3D" parent="SuperCity"]
+script = ExtResource("regional_proxies")
 
 [connection signal="pressed" from="PauseMenu/Center/Menu/ResumeButton" to="PauseMenu" method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/Center/Menu/SettingsButton" to="PauseMenu" method="_on_settings_pressed"]
@@ -1488,15 +1601,9 @@ night_fog_density = 0.0002
 [editable path="SuperCity/Districts/WestVillage/WestVillage_0245"]
 [editable path="SuperCity/Districts/WestVillage/WestVillage_0246"]
 [editable path="SuperCity/Districts/WestVillage/WestVillage_0247"]
-[editable path="SuperCity/Districts/WestVillage/WestVillage_0248"]
-[editable path="SuperCity/Districts/WestVillage/WestVillage_0249"]
-[editable path="SuperCity/Districts/WestVillage/WestVillage_0250"]
 [editable path="SuperCity/Districts/WestVillage/WestVillage_0251"]
 [editable path="SuperCity/Districts/WestVillage/WestVillage_0252"]
 [editable path="SuperCity/Districts/WestVillage/WestVillage_0253"]
-[editable path="SuperCity/Districts/WestVillage/WestVillage_0254"]
-[editable path="SuperCity/Districts/WestVillage/WestVillage_0255"]
-[editable path="SuperCity/Districts/WestVillage/WestVillage_0256"]
 [editable path="SuperCity/Districts/WestVillage/WestVillage_0257"]
 [editable path="SuperCity/Districts/WestVillage/WestVillage_0258"]
 [editable path="SuperCity/Districts/WestVillage/WestVillage_0259"]
@@ -1576,7 +1683,6 @@ night_fog_density = 0.0002
 [editable path="SuperCity/Districts/WestVillage/WestVillage_0333"]
 [editable path="SuperCity/Districts/WestVillage/WestVillage_0334"]
 [editable path="SuperCity/Districts/WestVillage/WestVillage_0335"]
-[editable path="SuperCity/Districts/WestVillage/WestVillage_0336"]
 [editable path="SuperCity/Districts/WestVillage/WestVillage_0337"]
 [editable path="SuperCity/Districts/WestVillage/WestVillage_0338"]
 [editable path="SuperCity/Districts/WestVillage/WestVillage_0339"]
@@ -2249,34 +2355,23 @@ night_fog_density = 0.0002
 [editable path="SuperCity/Districts/NorthHeights/NorthHeights_1096"]
 [editable path="SuperCity/Districts/NorthHeights/NorthHeights_1097"]
 [editable path="SuperCity/Districts/NorthHeights/NorthHeights_1137"]
-[editable path="SuperCity/Districts/NorthHeights/NorthHeights_1138"]
 [editable path="SuperCity/Districts/NorthHeights/NorthHeights_1139"]
 [editable path="SuperCity/Districts/NorthHeights/NorthHeights_1140"]
-[editable path="SuperCity/Districts/NorthHeights/NorthHeights_1141"]
 [editable path="SuperCity/Districts/NorthHeights/NorthHeights_1142"]
 [editable path="SuperCity/Districts/NorthHeights/NorthHeights_1143"]
-[editable path="SuperCity/Districts/NorthHeights/NorthHeights_1144"]
-[editable path="SuperCity/Districts/NorthHeights/NorthHeights_1145"]
-[editable path="SuperCity/Districts/NorthHeights/NorthHeights_1146"]
-[editable path="SuperCity/Districts/NorthHeights/NorthHeights_1147"]
 [editable path="SuperCity/Districts/NorthHeights/NorthHeights_1148"]
 [editable path="SuperCity/Districts/NorthHeights/NorthHeights_1149"]
-[editable path="SuperCity/Districts/NorthHeights/NorthHeights_1150"]
 [editable path="SuperCity/Districts/NorthHeights/NorthHeights_1152"]
 [editable path="SuperCity/Districts/NorthHeights/NorthHeights_1153"]
-[editable path="SuperCity/Districts/NorthHeights/NorthHeights_1154"]
 [editable path="SuperCity/Districts/NorthHeights/NorthHeights_1156"]
 [editable path="SuperCity/Districts/NorthHeights/NorthHeights_1157"]
 [editable path="SuperCity/Districts/NorthHeights/NorthHeights_1160"]
 [editable path="SuperCity/Districts/NorthHeights/NorthHeights_1161"]
-[editable path="SuperCity/Districts/NorthHeights/NorthHeights_1162"]
 [editable path="SuperCity/Districts/NorthHeights/NorthHeights_1163"]
 [editable path="SuperCity/Districts/NorthHeights/NorthHeights_1164"]
 [editable path="SuperCity/Districts/NorthHeights/NorthHeights_1165"]
 [editable path="SuperCity/Districts/NorthHeights/NorthHeights_1166"]
 [editable path="SuperCity/Districts/NorthHeights/NorthHeights_1167"]
-[editable path="SuperCity/Districts/NorthHeights/NorthHeights_1168"]
-[editable path="SuperCity/Districts/NorthHeights/NorthHeights_1169"]
 [editable path="SuperCity/Districts/NorthHeights/NorthHeights_1244"]
 [editable path="SuperCity/Districts/NorthHeights/NorthHeights_1245"]
 [editable path="SuperCity/Districts/NorthHeights/NorthHeights_1246"]
@@ -2484,7 +2579,6 @@ night_fog_density = 0.0002
 [editable path="SuperCity/Districts/NorthHeights/NorthHeights_1838"]
 [editable path="SuperCity/Districts/NorthHeights/NorthHeights_1839"]
 [editable path="SuperCity/Districts/NorthHeights/NorthHeights_1840"]
-[editable path="SuperCity/Districts/NorthHeights/NorthHeights_1841"]
 [editable path="SuperCity/Districts/NorthHeights/NorthHeights_1842"]
 [editable path="SuperCity/Districts/NorthHeights/NorthHeights_1843"]
 [editable path="SuperCity/Districts/NorthHeights/NorthHeights_1844"]
@@ -2724,21 +2818,13 @@ night_fog_density = 0.0002
 [editable path="SuperCity/Districts/FinancialQuarter/FinancialQuarter_1224"]
 [editable path="SuperCity/Districts/FinancialQuarter/FinancialQuarter_1225"]
 [editable path="SuperCity/Districts/FinancialQuarter/FinancialQuarter_1226"]
-[editable path="SuperCity/Districts/FinancialQuarter/FinancialQuarter_1227"]
 [editable path="SuperCity/Districts/FinancialQuarter/FinancialQuarter_1228"]
 [editable path="SuperCity/Districts/FinancialQuarter/FinancialQuarter_1231"]
-[editable path="SuperCity/Districts/FinancialQuarter/FinancialQuarter_1232"]
-[editable path="SuperCity/Districts/FinancialQuarter/FinancialQuarter_1233"]
 [editable path="SuperCity/Districts/FinancialQuarter/FinancialQuarter_1234"]
-[editable path="SuperCity/Districts/FinancialQuarter/FinancialQuarter_1235"]
 [editable path="SuperCity/Districts/FinancialQuarter/FinancialQuarter_1236"]
 [editable path="SuperCity/Districts/FinancialQuarter/FinancialQuarter_1237"]
 [editable path="SuperCity/Districts/FinancialQuarter/FinancialQuarter_1238"]
 [editable path="SuperCity/Districts/FinancialQuarter/FinancialQuarter_1239"]
-[editable path="SuperCity/Districts/FinancialQuarter/FinancialQuarter_1240"]
-[editable path="SuperCity/Districts/FinancialQuarter/FinancialQuarter_1241"]
-[editable path="SuperCity/Districts/FinancialQuarter/FinancialQuarter_1242"]
-[editable path="SuperCity/Districts/FinancialQuarter/FinancialQuarter_1243"]
 [editable path="SuperCity/Districts/FinancialQuarter/FinancialQuarter_1270"]
 [editable path="SuperCity/Districts/FinancialQuarter/FinancialQuarter_1271"]
 [editable path="SuperCity/Districts/FinancialQuarter/FinancialQuarter_1272"]
@@ -3045,7 +3131,6 @@ night_fog_density = 0.0002
 [editable path="SuperCity/Districts/Eastbank/Eastbank_1756"]
 [editable path="SuperCity/Districts/Eastbank/Eastbank_1757"]
 [editable path="SuperCity/Districts/Eastbank/Eastbank_1758"]
-[editable path="SuperCity/Districts/Eastbank/Eastbank_1759"]
 [editable path="SuperCity/Districts/Eastbank/Eastbank_1760"]
 [editable path="SuperCity/Districts/Eastbank/Eastbank_1761"]
 [editable path="SuperCity/Districts/Eastbank/Eastbank_1762"]
@@ -3211,7 +3296,6 @@ night_fog_density = 0.0002
 [editable path="SuperCity/Districts/FoundryWard/FoundryWard_1909"]
 [editable path="SuperCity/Districts/FoundryWard/FoundryWard_1910"]
 [editable path="SuperCity/Districts/FoundryWard/FoundryWard_1911"]
-[editable path="SuperCity/Districts/FoundryWard/FoundryWard_1912"]
 [editable path="SuperCity/Districts/FoundryWard/FoundryWard_1913"]
 [editable path="SuperCity/Districts/FoundryWard/FoundryWard_1914"]
 [editable path="SuperCity/Districts/FoundryWard/FoundryWard_1915"]

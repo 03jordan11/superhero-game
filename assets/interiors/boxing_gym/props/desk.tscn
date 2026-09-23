@@ -1,0 +1,44 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/desk_Steel.res" id="1_uhija"]
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/desk_SteelEdge.res" id="2_ws5d0"]
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/desk_Wood.res" id="3_t7i0l"]
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/desk_WoodLight.res" id="4_44ypi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fovmc"]
+size = Vector3(1.9, 0.09, 0.82)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iuou8"]
+size = Vector3(0.12, 0.72, 0.7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kaj0n"]
+size = Vector3(0.12, 0.72, 0.7)
+
+[node name="Desk" type="Node3D" unique_id=131348672]
+metadata/rendered_triangles = 60
+
+[node name="desk_Steel" type="MeshInstance3D" parent="." unique_id=1580766910]
+mesh = ExtResource("1_uhija")
+
+[node name="desk_SteelEdge" type="MeshInstance3D" parent="." unique_id=1158351643]
+mesh = ExtResource("2_ws5d0")
+
+[node name="desk_Wood" type="MeshInstance3D" parent="." unique_id=1706355171]
+mesh = ExtResource("3_t7i0l")
+
+[node name="desk_WoodLight" type="MeshInstance3D" parent="." unique_id=591593411]
+mesh = ExtResource("4_44ypi")
+
+[node name="Collision" type="StaticBody3D" parent="." unique_id=1552246264]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision" unique_id=298320941]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.78, 0)
+shape = SubResource("BoxShape3D_fovmc")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Collision" unique_id=413067628]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78, 0.36, 0)
+shape = SubResource("BoxShape3D_iuou8")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Collision" unique_id=1811316713]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.78, 0.36, 0)
+shape = SubResource("BoxShape3D_kaj0n")

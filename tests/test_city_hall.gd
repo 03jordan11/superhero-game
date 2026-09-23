@@ -34,14 +34,20 @@ func run() -> void:
 		for surface in mesh.mesh.get_surface_count():
 			assert(mesh.get_active_material(surface) != null, "Missing imported material")
 			triangle_count += mesh.mesh.surface_get_array_index_len(surface) / 3
-	assert(absf(bounds.size.x - 184.65) < .1 and absf(bounds.size.z - 133.575) < .1, "Site must end at the retaining walls and stair foot")
+	assert(absf(bounds.size.x - 184.65) < .1 and absf(bounds.size.z - 133.325) < .1, "Site must end at the retaining walls and stair foot")
 	assert(absf(bounds.end.y - 78) < .1, "Dome scale/axis changed")
 	assert(triangle_count < 6000, "Textured trim and box columns should reduce base geometry")
 	var props := hall.get_node("GardenProps")
-	assert(props.get_child_count() == 44)
-	assert(props.find_children("Table_*", "", false, false).size() == 6)
-	assert(props.find_children("Bench_*", "", false, false).size() == 24)
-	assert(props.find_children("Hedge_*", "", false, false).size() == 14)
+	var manifest: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://assets/buildings/city_hall/city_hall_manifest.json"))
+	var retained_props: Array = manifest.props.filter(func(entry): return entry.kind != "bench")
+	assert(props.get_child_count() == retained_props.size(), "Preserve remaining authored props")
+	var total_triangles := triangle_count
+	for prop_mesh: MeshInstance3D in props.find_children("*", "MeshInstance3D", true, false):
+		total_triangles += prop_mesh.mesh.get_faces().size()/3
+	assert(total_triangles <= 10000, "Complete POI exceeds geometry budget")
+	for entry: Dictionary in retained_props:
+		assert(props.has_node(entry.name), "Authored prop disappeared")
+		assert(props.get_node(entry.name).position.is_equal_approx(Vector3(entry.position[0],entry.position[1],entry.position[2])))
 	for prop: Node3D in props.get_children():
 		assert(prop.scene_file_path.begins_with("res://assets/buildings/city_hall/props/"))
 		assert(prop.has_node("Mesh") and prop.has_node("Collision"), "Prop must carry mesh and collision together")
@@ -66,10 +72,11 @@ func run() -> void:
 	for side: float in [-1.0, 1.0]:
 		var wall := ray(space, Vector3(side * 100, 4, 0), Vector3(side * 80, 4, 0))
 		assert(not wall.is_empty() and absf(absf(wall.position.x) - 92) < .02)
-		for tier in 4:
-			var z := 65.0 - tier * 7.4
-			var lawn := ray(space, Vector3(side * 50, 12, z), Vector3(side * 50, -1, z))
-			assert(not lawn.is_empty() and absf(lawn.position.y - (tier + 1) * 2) < .02, "Front garden terrace must be flat and supported")
+		for z: float in [44, 50, 58, 65]:
+			var plaza := ray(space, Vector3(side*50,12,z), Vector3(side*50,-1,z))
+			assert(not plaza.is_empty() and absf(plaza.position.y-.03)<.02, "Removed tiers must become flat ground-level space")
+		var frontage := ray(space,Vector3(side*50,4,50),Vector3(side*50,4,38))
+		assert(not frontage.is_empty() and absf(frontage.position.z-41.8)<.03, "Retaining wall must hug the upper terrace")
 	# Removing a prop also removes its collision, without touching the building model.
 	var table := props.get_node("Table_00") as Node3D
 	var table_position := table.global_position
@@ -105,7 +112,7 @@ func run() -> void:
 		assert(walker.position.z < 31 and walker.position.y > 8.8, "Walker caught on stairs: %s" % walker.position)
 		print("Central stair ascent passed: ", walker.position)
 		walker.free()
-	print("CITY_HALL_TEST_PASS: metre scale, reduced geometry, textured central stairs, retaining walls, flat garden terraces, removed slope/sidewalk collision, courtyard, props, roof/dome, stair traversal.")
+	print("CITY_HALL_TEST_PASS: scale, complete POI budget, stairs, setback walls, ground-level forecourts, courtyard, authored props, roof/dome, stair traversal.")
 	hall.free()
 	quit()
 

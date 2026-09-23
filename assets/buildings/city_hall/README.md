@@ -1,63 +1,111 @@
 # City Hall
 
-Exterior-only, metre-scale civic landmark inspired by the supplied Pennsylvania Capitol references. No interiors, statues or trees. The main scene is not modified by the asset builder.
+Metre-scale civic landmark. Front is Godot +Z; the root is at ground level.
+The building is approximately 158 m wide, 87 m deep and 78 m tall.
 
-## Current geometry
+## Current frontage and materials
 
-| Component | Triangles |
+The four stepped lawn terraces flanking the central stairs have been removed.
+Full-height limestone retaining walls now hug the upper esplanade at Z=41.8 m.
+Open paved forecourts occupy the former tiers, at ground level on both sides.
+The four central stair flights and their smooth traversal collision are retained.
+Their side walls are now two continuous solids, including the sections beside
+the landings, and use the exact limestone material of the retaining walls.
+
+The surrounding public paving is authored in `scenes/super_city.tscn` under
+`Sidewalks/CityHallSurrounds`: a front apron meeting the stair foot, rear paving,
+and fitted edge strips. `Roads/roads_2_1/CityHallEastConnection` is the 120 m road
+between the rear intersection and the intersection beside the park. Both
+junctions have their connecting arms and crosswalks enabled. These additions
+reuse the existing adjustable road/sidewalk pieces and their collision.
+
+The saved City Hall placement (X/Z scale 0.9, position -301, 0.019211411, -404)
+now lives in `super_city`; the redundant `main` transform override was removed.
+Traffic routes were not changed.
+
+The front walls use the same limestone material as the other retaining walls.
+Walking surfaces, including the front forecourts, upper paths, esplanade,
+landings and courtyard, use the exact shared city material:
+`res://assets/super-city/modular-sidewalks/sidewalk.tres`.
+Its texture repeats in world space at the same scale as surrounding sidewalks.
+`tools/city_sidewalk_import.gd` applies it when Godot imports the building GLB.
+
+The [Superhero City Color Palette Guide](https://docs.google.com/document/d/1Ei42N1fOiKi5Oz9Ini6oioNT8moRGq8uQoVhiqnsWQY/edit)
+informs the muted civic materials: warm gray stone around #C4C0B6, restrained
+trim, weathered green roofs around #53645C, and lawn around #687763. Texture
+variation remains; the shared city window palette and night occupancy settings
+remain active. The building is deliberately a little lighter than its neighbors.
+
+## Preserved props and geometry budget
+
+The user-authored native `GardenProps` scene block and all files in `props/`
+were preserved byte-for-byte. This includes moved/scaled hedges and removed
+furniture. Native scene placements are authoritative; the historical Blender
+presentation collection is not used to overwrite them.
+
+| Component | Imported triangles |
 | --- | ---: |
-| Building, stairs and retained garden terraces | 5,490 |
-| Six stone tables | 216 |
-| 24 stone benches (12 dining benches and 12 standalone benches) | 864 |
-| 14 textured hedge rows | 168 |
-| **Furnished site total** | **6,738** |
+| Architecture, stairs, walls and grounds | 5,082 |
+| 4 tables and 18 benches | 792 |
+| 6 hedge instances | 72 |
+| **Complete POI** | **5,946** |
 
-The previous revision used 23,008 triangles. This revision removes 16,270 triangles (70.7%). The hospital reference asset uses 19,124 triangles.
+`TRIANGLE_AUDIT.json` counts actual Godot-imported geometry at highest detail,
+including every placed prop instance. Preview ground/lighting and collision
+shapes are excluded. The total remains under the 10,000-triangle POI limit.
 
-Each table and bench uses three rectangular boxes: one slab and two supports, totaling 36 triangles. Each hedge is one 8 m long, 1.2 m deep, 1.3 m high textured box (12 triangles). All 44 props are independent scene instances under GardenProps, with collision that follows each prop.
+## Editing and rebuilding
 
-Window sills and arch surrounds are painted into city_hall_windows_albedo.png. Every window is one rectangular panel. The upper half of the atlas holds arched windows, and city_hall_windows_emission.png follows the glass shapes without illuminating the painted stone. The 16 dome columns use diamond-oriented rectangular shafts, bases and caps. The six entrance columns retain simple round shafts with rectangular bases and caps.
+- `city_hall.blend`: editable architecture with packed textures.
+- `city_hall.glb`: exported architecture and grounds, excluding native props.
+- `city_hall.tscn`: collision, model instance, and user-edited prop layout.
+- `city_hall_manifest.json`: geometry/collision data and current prop inventory.
+- `civic_*.png`: dedicated recolored building textures; prop textures are separate.
+- `city_hall_preview.tscn`: standalone preview using the game's day/night clock.
 
-## Scale and placement
-
-One Blender unit equals one Godot unit equals one metre. Godot front is +Z; Blender front is -Y. The root origin stays at ground level. Building size remains approximately 158 m wide, 87 m deep including the entrance, and 78 m tall.
-
-The site now ends at its retaining walls and stair foot, approximately 184.65 x 133.575 m including coping. Godot X limits are -92.325 to 92.325; Z limits are -65.325 to 68.25. The outer lawn, stair forecourt and central park walkup are removed, including their collision. Align the stair foot at Z=68 with the existing sidewalk. No surrounding ground is included in this asset.
-
-Interior lawns, four flat front garden tiers, upper garden paths and the rear courtyard remain. The central staircase is 42 m wide, 3 m beyond each side of the 36 m entrance portico. It has four flights of ten steps, 0.20 m risers, 0.44 m treads and 3 m intermediate landings. Dark risers and textured tread edges improve readability. Invisible collision ramps meet the top landing at 8 m.
-
-## Files and editing
-
-- city_hall.blend: editable Blender source with packed textures and separate architecture, props and presentation collections.
-- city_hall.glb: 56 building/grounds meshes, excluding furniture.
-- city_hall.tscn: reusable native scene with collision and independent props.
-- city_hall_preview.tscn: standalone orbit preview with the game's day/night sky.
-- props/bench.tscn, table.tscn, hedge.tscn and corresponding GLBs: current reusable props. Older chair/planter files are unused by this scene.
-- city_hall_manifest.json: counts, metre dimensions, collision and prop placements.
-- city_hall_windows_albedo.png, city_hall_windows_emission.png, city_hall_hedge.png, city_hall_stair_treads.png: dedicated textures.
-- tools/build_city_hall.py, prepare_city_hall.gd and render_city_hall.gd: generation, scene preparation and Godot captures.
-
-Editing a prop scene updates its instances. Moving an individual GardenProps child moves its collision with it. Rebuilding overwrites generated model files and preparing overwrites the native scene/prop placements; preserve manual edits first.
-
-## Night lighting
-
-city_hall.gd duplicates emitting materials per building and follows day_night_cycle.night_lighting_changed, matching the hospital's dusk/dawn fade. Daytime intensity is zero; instances loaded at night synchronize immediately. window_emission_energy defaults to 2.0. Without a clock, standalone_night_amount defaults to daytime. The GLB alone has no clock script.
-
-## Verification
-
-Open city_hall_preview.tscn and press F6. Drag to orbit and use the wheel to zoom. Keys: 1 day, 2 sunset, 5 night, 6 dawn, 3 courtyard, 4 entrance, R reset. Inspect the painted window trim, six dining sets, hedge texture, simplified columns and trimmed site boundary. Compare 1 and 5 to verify glass-only night lighting.
-
-Test player traversal in a separate player test scene: start on your sidewalk in front of Z=68, walk up all four flights and onto the entrance esplanade, then follow the upper side paths to the courtyard. The rear retaining wall has no ground-level entrance. This asset does not include a player controller.
-
-Rebuild/check from the project root using installed executable paths:
+For this frontage revision, run from the project root:
 
 ```powershell
-blender --background --python assets/buildings/city_hall/tools/build_city_hall.py
-godot --headless --editor --import --path .
-godot --headless --path . --script res://assets/buildings/city_hall/tools/prepare_city_hall.gd
-godot --headless --path . --script res://tests/test_city_hall.gd --quit-after 3600
-godot --headless --path . --script res://tests/test_city_hall_lighting.gd --quit-after 1200
-godot --path . --script res://assets/buildings/city_hall/tools/render_city_hall.gd
+blender --background --python assets/buildings/city_hall/tools/update_frontage.py
+python assets/buildings/city_hall/tools/update_frontage_collision.py
+godot --headless --editor --import --path . --quit
 ```
 
-Automated checks cover scale, reduced mesh budget, removed trim/outer-ground geometry, exact prop counts, moveable prop collision, retaining walls, garden tier heights, roof/dome collision and CharacterBody3D stair ascent at three lateral positions. Lighting checks exercise the actual clock, night spawn, per-instance isolation and nonemitting frames. Actual Godot GPU captures are in artifacts/city_hall. These checks do not constitute a manual playtest of the superhero controller.
+The Blender updater edits only the architecture collection and exports only
+the building GLB. The collision updater patches the affected frontage shapes
+while retaining the native GardenProps text exactly. The shared sidewalk
+material is assigned during GLB import, so Blender itself shows its original
+paving preview material.
+
+`build_city_hall.py` and `prepare_city_hall.gd` are the historical full-generation
+tools. They recreate default props and placements; do not use them for routine
+updates to the hand-edited native scene. If intentionally rebuilding the base
+architecture, reapply the frontage updater and preserve the native props first.
+Then run `tools/update_stair_sides.py` in Blender, reimport the GLB, and run
+`tools/prepare_stair_sides.gd` to replace the old segmented collision. This last
+step preserves the native GardenProps block verbatim.
+
+`tests/test_city_hall_surrounds.gd` checks the saved main/super_city placement,
+continuous stair materials/collision, sidewalk coverage, and 483 road collision
+probes across the new connection and both intersections. Pass `-- --write-audit`
+to refresh the complete imported triangle audit.
+
+## Verify in Godot
+
+Open `city_hall_preview.tscn` and press F6. Drag to orbit, scroll to zoom;
+1 = day, 5 = night, 3 = courtyard, 4 = entrance, R = reset.
+Inspect the flat spaces beside the stairs, the wall at the upper terrace,
+matching sidewalk tiling, muted roof/stone, and preserved courtyard furniture.
+Also inspect the instance in `scenes/super_city.tscn` beside neighboring buildings.
+
+```powershell
+godot --headless --fixed-fps 60 --path . --script res://tests/test_city_hall.gd --quit-after 1500
+godot --headless --path . --script res://tests/test_city_hall_lighting.gd --quit-after 180
+```
+
+Checks cover actual complete-POI geometry, authored prop inventory, ground-level
+forecourt collision, setback retaining walls, roof/dome collision and three
+CharacterBody3D ascents of the main stairs. Day/night tests cover emission,
+clock transitions and per-instance materials. Day and night GPU captures,
+including views with nearby city buildings, are in `artifacts/city_hall/`.
+These automated traversal probes are not a manual superhero-controller playtest.

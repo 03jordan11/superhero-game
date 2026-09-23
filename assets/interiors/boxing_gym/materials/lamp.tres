@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[resource]
+resource_name = "Lamp"
+albedo_color = Color(0.95, 0.78, 0.48, 1)
+roughness = 0.85
+emission_enabled = true
+emission = Color(0.95, 0.78, 0.48, 1)
+emission_energy_multiplier = 3.0
+texture_filter = 5

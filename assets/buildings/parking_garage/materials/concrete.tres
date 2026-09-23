@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bl775krn15wgx"]
+
+[ext_resource type="Texture2D" uid="uid://csfpjn44uw3dl" path="res://assets/buildings/parking_garage/textures/concrete.png" id="1_6n1k3"]
+
+[resource]
+resource_name = "GarageConcrete"
+albedo_texture = ExtResource("1_6n1k3")
+roughness = 0.87
+texture_filter = 5

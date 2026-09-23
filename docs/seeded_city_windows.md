@@ -1,110 +1,162 @@
-# Seeded city windows
+# City window colors and occupancy
 
-Industrial models 01–10 also use this system. **Industrial Windows Off** defaults
-to 0.75, with six variants spanning 70–80% fewer previously lit windows (75.45%
-measured). Their individual-window masks allow adjacent dark groups to reach this
-sparser occupancy; original lit shapes and warm color ratios remain intact. The
-commercial/residential restriction on long dark groups is unchanged. Industrial
-maps use the same saved seed and cache, with no per-frame texture generation.
-See the [industrial asset guide](../assets/generated-buildings/industrial/README.md).
+All 20 commercial, 20 residential and 10 industrial models share this system.
+Separate building percentages are enabled by default: **industrial 5%**,
+**residential 7%**, **commercial 10%**. Colors default to **60% warm**
+(amber/soft yellow), remaining windows cool blue-white, brightness **2x**.
+Existing saves with explicit window settings retain those saved values.
 
-Residential models 01–20 also use this system. `Residential Extra Windows Off`
-adds 0.20 to their removal rate, giving six variants from 50–70% (about 60% fewer
-previously lit windows). Commercial patterns retain their existing seeds and
-30–50% rates. See the [residential asset guide](../assets/generated-buildings/residential/README.md).
+## Shared palette and POIs
 
-Commercial skyscrapers 01–20 now use six emission variants per asset, generated
-from the current game's city seed. They switch off 30%, 34%, 38%, 42%, 46%, or 50%
-of the **previously lit** windows, averaging about 40% across the variants. Existing
-dark windows remain dark. Minor rounding applies to small upper tiers.
+`assets/buildings/materials/city_window_palette.tres` is the reusable palette:
+amber `#e4b766`, soft yellow `#f2dba6`, and cool blue-white `#9ac8dc`.
+Both the generated buildings and POIs use this resource and the same color-mixing
+shader include. Edit that resource to change the colors for all participating
+buildings. The debug HUD's warm mix and brightness also apply to all of them.
 
-## Appearance
+| POI | Lit windows |
+| --- | ---: |
+| Bank 1 and Bank 2 | 2% |
+| Police station | 20% |
+| City Hall | 10% |
+| Hospital | 30% |
+| Firehouse | 10% |
 
-The original 64×64 emission artwork is copied over each facade's complete UV
-extent, then selected individual window cells are darkened. Occasional horizontal
-pairs remain; the generator prevents new three-cell dark runs and 2×2 patches.
-It never creates lit rectangles or overwrites the original window silhouettes.
-About 35% of retained windows receive subtle brightness attenuation (88–100%).
-The original warm color ratios, emission strength, albedo, and frames are retained.
+These five POI sliders are available in **Night windows** and saved with the city
+settings. They apply independently of the three district sliders. Existing saves
+without POI settings receive these defaults.
 
-Each asset's native mesh is shared, with an added UV2 channel for emission only.
-Geometry and collisions are unchanged. Opposite faces retain their original shared
-mapping; different placements select among six variants using their asset path,
-world position and city seed. This breaks the four-floor repetition of occupancy
-edits while preserving the original authored pattern underneath.
+POI window surfaces receive emission-only UV2 room IDs. Ranks are selected across
+each complete building, keeping patterns stable when sliders change; percentages
+round to whole windows (the historic bank has 39 openings, so 2% lights one).
+Hospital curtain-wall sections receive separate ranks for their rows and columns,
+including vertically repeated tiles. Partially clipped arch cells can make the
+visible fraction differ slightly. No triangles or collision shapes are added.
 
-## New game and saves
+Recovered glass masks preserve rectangular/arched openings, frames and mullions.
+`assets/buildings/materials/tools/build_window_masks.py` rebuilds them from the
+authored emission atlases. Signs, police/firehouse fixtures, hospital entrance
+lights and the rescue marker retain their separate lighting behavior.
 
-- **Play** in the main menu starts a new lighting seed before loading the city.
-- Manual saves include `world.window_lighting.seed` and `pattern_version` (1).
-- Loading restores the seed and rebuilds any live tower patterns from it.
-- On startup, an existing save's seed is read before the city loads. This does
-  not load player progression; the existing manual Load command still does that.
-- Older saves without a lighting seed consistently use 8421.
-- `SaveManager.begin_new_game(123456)` can start a reproducible test game.
-- Nothing writes or deletes the user's save merely to choose a new seed.
+The gas-station hideout and Harbor Authority office are additional special
+buildings outside this POI window pass; their existing lighting remains unchanged.
 
-Maps are generated once when a particular asset/variant is first needed, cached
-and shared by placements. They do not flicker or regenerate as the camera moves
-or the clock changes. Only the seed is saved; the textures are reconstructed.
-No window lights or new shaders are used. The fully populated six-variant native
-texture set measured 34.23 MiB of image data (GPU allocation can differ).
+## Controls
 
-## Tuning
+While playing a debug build, press **backtick** (or your rebound developer-menu
+shortcut). **Night windows** appears beside the console. Gameplay pauses and the
+mouse releases; lighting changes still render immediately.
 
-During play, select **Remote → CityWindows** in the Scene tree. These exported
-controls rebuild patterns immediately when edited. Edit script defaults to keep
-tuning across runs; these development controls are not saved as player settings.
+- **Lit windows:** 0–100% across all three building types.
+- **Use separate building percentages:** replaces the citywide percentage with
+  independent commercial, residential and industrial percentages.
+- **Warm colors:** warm versus cool mix; occupancy changes preserve window colors.
+- **Brightness:** 0–3 times the new palette's default glow.
+- **Set midnight / Set noon:** change the game clock to compare night and day.
 
-| Control | Default | Meaning |
-| --- | --- | --- |
-| Additional Windows Off | 0.40 | Fraction removed from originally lit windows |
-| Industrial Windows Off | 0.75 | Industrial removal rate; variation is capped at ±0.05 |
-| Building Variation | 0.10 | Spread around that fraction, giving 30–50% |
-| Variants Per Asset | 6 | Shared variants per asset; more uses more texture memory |
-| Minimum Window Brightness | 0.88 | Minimum multiplier for subtly dimmed windows |
-| City Seed | Current game's seed | Reproducible pattern and placement selection |
+The performance HUD also shows C/R/I percentages. Exported properties are under
+**Remote → CityWindows** in the Inspector. Use the existing console **save**
+command to keep tuning; **load** restores tuning and seed. Sliders never autosave.
 
-Very high removal settings may be limited by the rule against long dark groups.
-Set a building's `seeded_window_patterns` to false before it enters the tree to
-keep original emission, as the historical one-building review scene does.
-The old DayNightCycle window occupancy controls remain inactive. Its sky,
-environment, fog and bloom settings, and all street lighting are unchanged.
+## Implementation
 
-## Verify in Godot
+### Shared runtime window materials (September 22)
 
-1. Press Play, open the developer console, and enter `time night`, then `time pause`.
-2. View the downtown towers close up and from a rooftop. Check the reduced number
-   of lit windows, preserved frames/colors, and variation between repeated models.
-3. Enter `save`. Note a tower's pattern, then change CityWindows' City Seed in the
-   Remote Inspector. Enter `load`; its original saved pattern should return exactly.
-4. Switch to `time day`, then `time night`. Occupancy should stay identical.
-5. Starting again through the main menu's Play chooses a new pattern seed.
+Wall/roof resources and room-data textures were already shared, but the generated
+building script created a new ShaderMaterial for each placed building's window
+surface. Identical-looking resources still have distinct identities, preventing
+some otherwise compatible draws from batching.
 
-## Validation and changed files
+Clock-driven generated buildings now obtain shared materials from CityWindows,
+keyed by original mesh/surface, source override, window-pattern variant, emission
+intensity and clock. Settings/palette changes and day/night emission update each
+cached material once. Seed changes rebuild bindings, and leaving the scene
+releases that clock's material cache. No shader code, textures or geometry change.
+Standalone previews and explicit per-building `apply_night()` overrides retain
+private materials. Different intensity overrides and clocks remain independent.
+POI materials keep their existing per-building room layouts and behavior.
 
-Godot 4.7.2 checks cover all 20 meshes, every surface and six variants, full image
-pixel/hue preservation, target occupancy, prohibited patches, cache sharing,
-placement variation, seed reproducibility and save/load restoration of live towers.
-The audited reduction was 40.05%. Existing building geometry/collision, night-light,
-save progression, and historical review checks also pass. Original and seeded
-real-city skyline/office views were rendered in Forward+ and inspected; traversal
-gameplay was not visually tested. Existing certificate, settings and road UID
-warnings remain. The save-failure test intentionally logs one failed write.
+The same recorded corridor benchmark now measured 4,274 draws versus 4,872 before
+(598 fewer, about 12%). Live median frame time was 10.29 ms versus 11.85 ms;
+frozen-scene rendered objects and primitives were unchanged at 8,861 and 857,178.
+These are local benchmark results, not a guaranteed FPS gain in every view.
+Evidence: `artifacts/corridor_rendering/material_sharing_baseline.json` and its
+PNG; original measurements remain in `artifacts/corridor_rendering/results.json`.
+Use the corridor benchmark with `--baseline-only` to repeat the shorter check.
 
-- `scripts/city_window_lighting.gd`: new seeded native texture/UV cache and tuning.
-- `project.godot`: registers CityWindows before SaveManager.
-- `scripts/save_manager.gd`: seed creation, startup restore and save/load field.
-- `scripts/ui-scripts/main_menu.gd`: starts a fresh seed on Play.
+Validation passed: `test_shared_building_materials.gd`,
+`test_seeded_city_windows.gd`, `test_urban_night.gd`, and
+`test_poi_window_palette.gd`, plus the graphical corridor replay. The screenshot
+was inspected. Sandbox settings/cache/certificate warnings remain in the logs.
+
+For a manual check, restart with F5 and revisit the same corridor. Compare draw
+calls, then use `time pause`, `time 17` and `time 18` to inspect daylight and
+evening. Change Night windows brightness/occupancy in the developer menu, and
+enter/exit the hideout to verify that patterns and lighting remain correct.
+
+Files in this change: `scripts/city_window_lighting.gd`,
+`assets/generated-buildings/commercial/commercial_skyscraper_01.gd`,
+`tests/test_shared_building_materials.gd`,
+`benchmarks/corridor_rendering.gd`, and this guide.
+
+The shared controller preserves geometry, collision, albedo, roughness and metallic
+settings. Its shader combines the facade with a recovered full window mask and a
+small, nearest-sampled floating-point room-data texture. Masks preserve frames and
+mullions; the foundry's solid wall rows remain excluded. Previously dark windows
+are eligible, so 100% includes all windows, not just the originally lit subset.
+
+Fixed shuffled ranks select lit windows. Raising occupancy adds windows without
+reshuffling retained colors or brightness. Changes update uniforms, without
+regenerating textures or meshes. Day/night signals fade emission to zero in daytime.
+There are no new triangles, per-window lights or time-based noise.
+The palette normalizes the previous 2x emission strength to retain its colors
+rather than clipping to white; brightness remains adjustable.
+
+Percentages apply to the eligible facade UV grid, rounded to whole rooms. Shared
+and partial UV regions mean one visible side may not measure exactly the chosen
+percentage. Opposite faces retain their authored UV sharing. Six cached placement
+variants break repetition between buildings. All 50 assets/six variants use about
+**0.77 MiB** of native room data, plus small shared masks; GPU allocation differs.
+
+Buildings with `seeded_window_patterns = false` retain their original materials.
+The sky and street lighting are unaffected. See the POI section for landmark coverage.
+
+Manual saves include `world.window_lighting`: seed, pattern version 2, occupancy,
+district overrides, warm fraction and brightness. Legacy saves retain their seed
+and get new tuning defaults. Invalid/missing seeds use 8421; non-finite settings
+are rejected and percentages clamped. New Game changes the seed, retaining tuning.
+
+## Validation and manual check
+
+Automated checks cover all 50 models/six variants, unchanged geometry, mask
+boundaries, 0/25/50/75/100%, live overrides, cache sharing, stable seeds, real
+save/load, paused controls and day/night. Existing developer-console, residential
+and industrial regression checks pass. Forward+ city screenshots at each
+percentage, daytime and the debug panel are in `artifacts/window_colors/`.
+Gameplay traversal was not manually tested.
+
+In Godot, face several buildings, open the debug menu, set midnight and compare
+0, 25, 50, 75 and 100%. Try separate district percentages, then set noon. Save a
+preferred combination, change it and load to confirm restoration.
+
+## Changed files
+
+- `scripts/city_window_lighting.gd`: masks, room data, settings and persistence.
 - `assets/generated-buildings/commercial/commercial_skyscraper_01.gd`: shared
-  controller applies seeded textures to all 20 commercial types.
-- `scenes/tests/window_emission_trial.tscn` and its builder: opt the old trial out.
-- `tests/test_seeded_city_windows.gd`: new seeded asset and texture audit.
-- `tests/test_power_token_saves.gd`: adds seed persistence and live restoration tests.
-- `tests/test_urban_night.gd`, `tests/test_window_emission_trial.gd`: current behavior.
-- `assets/sky/tools/render_seeded_windows.gd`: reproducible city comparison renderer.
-- This guide, `docs/urban_night_lighting.md`, and the old trial README: current status.
-- `artifacts/seeded_windows/`: original/seeded screenshots and validation summary.
+  controller used by all three packs.
+- `assets/generated-buildings/commercial/materials/city_windows.gdshader`: emission.
+- `scripts/ui-scripts/window_lighting_controls.gd`, `developer_menu.gd`,
+  `developer_performance_hud.gd`: controls and percentage readout.
+- `assets/sky/tools/render_seeded_windows.gd`: reproducible visual comparisons.
+- `tests/test_seeded_city_windows.gd`, `test_urban_night.gd`,
+  `test_power_token_saves.gd`, `test_residential_rework.gd`,
+  `test_industrial_rework.gd`, `test_developer_console.gd`: updated coverage.
+- This guide and new script/shader UID files.
 
-All authored commercial textures/materials/meshes and the sky/environment/street
-files were checked against the existing hash ledger and remain byte-identical.
+POI extension files: the six controllers under `assets/buildings/`,
+`scripts/poi_window_lighting.gd`, `scripts/window_light_palette.gd`, shared palette,
+POI shader/include and eight masks under `assets/buildings/materials/`, the mask
+builder, `tests/test_poi_window_palette.gd`, and updated bank, City Hall, hospital,
+police and firehouse regression tests. Previews are in `artifacts/poi_palette/`.
+Check each POI at midnight, change its slider to 0 and 100, then restore the default;
+confirm that fixture/sign lights remain on and all night lighting fades at noon.

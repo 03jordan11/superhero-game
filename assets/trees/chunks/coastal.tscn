@@ -1,0 +1,1335 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/forest_chunks.gd" id="1_yos6q"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-12_-6_full_detail.res" id="2_i0w6u"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-12_-6_distant_proxy.res" id="3_g8lvv"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-11_3_full_detail.res" id="4_hsqm4"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-11_3_distant_proxy.res" id="5_jf3dm"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-9_-2_full_detail.res" id="6_fa73u"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-9_-2_distant_proxy.res" id="7_vkue0"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-8_1_full_detail.res" id="8_2ihk6"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-8_1_distant_proxy.res" id="9_dg8ji"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-7_3_full_detail.res" id="10_77hiv"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-7_3_distant_proxy.res" id="11_je087"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-5_2_full_detail.res" id="12_3f8ox"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-5_2_distant_proxy.res" id="13_14l74"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_8_-5_full_detail.res" id="14_qh2xo"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_8_-5_distant_proxy.res" id="15_7o5fv"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_8_3_full_detail.res" id="16_l34ds"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_8_3_distant_proxy.res" id="17_hloe3"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-13_1_full_detail.res" id="18_114uq"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-13_1_distant_proxy.res" id="19_kfrkb"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-12_3_full_detail.res" id="20_qsj0d"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-12_3_distant_proxy.res" id="21_d8yus"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-11_-1_full_detail.res" id="22_25gkh"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-11_-1_distant_proxy.res" id="23_og3ut"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-10_0_full_detail.res" id="24_8bv4o"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-10_0_distant_proxy.res" id="25_yh573"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-9_-3_full_detail.res" id="26_eiywh"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-9_-3_distant_proxy.res" id="27_7fklu"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-8_3_full_detail.res" id="28_gwvqj"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-8_3_distant_proxy.res" id="29_sihc6"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-4_-2_full_detail.res" id="30_oahmv"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-4_-2_distant_proxy.res" id="31_0usce"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_3_-1_full_detail.res" id="32_ume1v"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_3_-1_distant_proxy.res" id="33_mgrmy"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_4_2_full_detail.res" id="34_s3yyy"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_4_2_distant_proxy.res" id="35_nnvrn"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_7_-6_full_detail.res" id="36_06thg"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_7_-6_distant_proxy.res" id="37_14u5i"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_9_-3_full_detail.res" id="38_r1iwm"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_9_-3_distant_proxy.res" id="39_ofb6u"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_9_2_full_detail.res" id="40_ulyej"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_9_2_distant_proxy.res" id="41_8xl4l"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-13_-3_full_detail.res" id="42_glvsc"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-13_-3_distant_proxy.res" id="43_6xmpf"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-11_-5_full_detail.res" id="44_2nljd"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-11_-5_distant_proxy.res" id="45_pn44w"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-11_-4_full_detail.res" id="46_bay46"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-11_-4_distant_proxy.res" id="47_0b0ps"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_3_1_full_detail.res" id="48_26vwk"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_3_1_distant_proxy.res" id="49_u2b7n"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_5_-3_full_detail.res" id="50_opu86"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_5_-3_distant_proxy.res" id="51_df25x"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_5_1_full_detail.res" id="52_cky6s"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_5_1_distant_proxy.res" id="53_de7nm"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_6_-6_full_detail.res" id="54_3lrea"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_6_-6_distant_proxy.res" id="55_t7tk2"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_7_-4_full_detail.res" id="56_2vnwn"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_7_-4_distant_proxy.res" id="57_oftrk"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_8_0_full_detail.res" id="58_kpt5r"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_8_0_distant_proxy.res" id="59_7ja1k"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-14_-1_full_detail.res" id="60_qw5gq"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-14_-1_distant_proxy.res" id="61_m4sv8"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-13_-2_full_detail.res" id="62_0qakh"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-13_-2_distant_proxy.res" id="63_fwjej"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-13_2_full_detail.res" id="64_mfnjr"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-13_2_distant_proxy.res" id="65_b65bd"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-10_-6_full_detail.res" id="66_qrh5l"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-10_-6_distant_proxy.res" id="67_8mh2y"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-5_-1_full_detail.res" id="68_2bqil"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-5_-1_distant_proxy.res" id="69_uvtdt"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-5_1_full_detail.res" id="70_bbmo2"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-5_1_distant_proxy.res" id="71_pft71"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_5_-6_full_detail.res" id="72_0hbhs"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_5_-6_distant_proxy.res" id="73_eb3kv"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_5_-2_full_detail.res" id="74_0jpkv"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_5_-2_distant_proxy.res" id="75_4048r"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_9_-1_full_detail.res" id="76_27cxp"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_9_-1_distant_proxy.res" id="77_j1thp"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-12_-1_full_detail.res" id="78_1s76h"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-12_-1_distant_proxy.res" id="79_fl2as"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-11_0_full_detail.res" id="80_3wln5"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-11_0_distant_proxy.res" id="81_jm2rw"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_4_-5_full_detail.res" id="82_coar0"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_4_-5_distant_proxy.res" id="83_gl68x"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_7_-1_full_detail.res" id="84_o5rw1"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_7_-1_distant_proxy.res" id="85_w657u"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-8_2_full_detail.res" id="86_j5fy4"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-8_2_distant_proxy.res" id="87_5th35"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-7_-2_full_detail.res" id="88_fp8bk"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-7_-2_distant_proxy.res" id="89_4l53b"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-6_-2_full_detail.res" id="90_dmy77"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-6_-2_distant_proxy.res" id="91_hs21r"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-9_2_full_detail.res" id="92_8d4fy"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-9_2_distant_proxy.res" id="93_r6xrc"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-6_1_full_detail.res" id="94_4hbbl"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-6_1_distant_proxy.res" id="95_w2fg2"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_4_-2_full_detail.res" id="96_egf21"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_4_-2_distant_proxy.res" id="97_yau21"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_6_3_full_detail.res" id="98_4x32l"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_6_3_distant_proxy.res" id="99_eoahe"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-12_-4_full_detail.res" id="100_jp37h"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-12_-4_distant_proxy.res" id="101_qmsmf"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-10_-2_full_detail.res" id="102_pqrgt"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-10_-2_distant_proxy.res" id="103_ihpdq"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-10_2_full_detail.res" id="104_02rs8"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-10_2_distant_proxy.res" id="105_3abl1"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_6_-4_full_detail.res" id="106_4gpul"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_6_-4_distant_proxy.res" id="107_ide1s"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-9_-5_full_detail.res" id="108_akevy"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-9_-5_distant_proxy.res" id="109_jh5sb"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_3_-2_full_detail.res" id="110_k6rs8"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_3_-2_distant_proxy.res" id="111_ci6k4"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_8_1_full_detail.res" id="112_81ya4"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_8_1_distant_proxy.res" id="113_wl6ne"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_6_-1_full_detail.res" id="114_cywa8"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_6_-1_distant_proxy.res" id="115_m36am"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_6_2_full_detail.res" id="116_5reqk"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_6_2_distant_proxy.res" id="117_8wieb"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-4_0_full_detail.res" id="118_lk8ww"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-4_0_distant_proxy.res" id="119_ucm3y"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_4_0_full_detail.res" id="120_tdo7e"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_4_0_distant_proxy.res" id="121_12oxl"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-13_-4_full_detail.res" id="122_g2036"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-13_-4_distant_proxy.res" id="123_46ofm"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-13_-1_full_detail.res" id="124_qu3hq"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-13_-1_distant_proxy.res" id="125_oc1mp"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-12_-2_full_detail.res" id="126_p6v28"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-12_-2_distant_proxy.res" id="127_5s7wu"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-11_-6_full_detail.res" id="128_h72xs"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-11_-6_distant_proxy.res" id="129_w42a1"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-10_-3_full_detail.res" id="130_0bxfw"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-10_-3_distant_proxy.res" id="131_00fhw"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-7_2_full_detail.res" id="132_65s4i"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-7_2_distant_proxy.res" id="133_4ubm7"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-4_-1_full_detail.res" id="134_oe33l"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-4_-1_distant_proxy.res" id="135_uwr4p"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_5_-4_full_detail.res" id="136_jmwph"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_5_-4_distant_proxy.res" id="137_sbbdv"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_5_-1_full_detail.res" id="138_q7up0"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_5_-1_distant_proxy.res" id="139_g5mee"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_7_1_full_detail.res" id="140_x1kgw"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_7_1_distant_proxy.res" id="141_fus6v"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-11_-3_full_detail.res" id="142_887gb"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-11_-3_distant_proxy.res" id="143_rqdob"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-11_-2_full_detail.res" id="144_1gtuk"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-11_-2_distant_proxy.res" id="145_tkwkl"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_4_-1_full_detail.res" id="146_x1s4l"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_4_-1_distant_proxy.res" id="147_3kxam"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_7_2_full_detail.res" id="148_v4jcq"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_7_2_distant_proxy.res" id="149_cvyn2"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-13_0_full_detail.res" id="150_v1o0q"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-13_0_distant_proxy.res" id="151_mog7x"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_8_2_full_detail.res" id="152_j1dmy"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_8_2_distant_proxy.res" id="153_nuld6"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_6_0_full_detail.res" id="154_xdgto"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_6_0_distant_proxy.res" id="155_frakd"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_8_-3_full_detail.res" id="156_3w2p7"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_8_-3_distant_proxy.res" id="157_uekv3"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_8_-2_full_detail.res" id="158_gmwfh"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_8_-2_distant_proxy.res" id="159_5jjqi"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_5_0_full_detail.res" id="160_p33xh"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_5_0_distant_proxy.res" id="161_b7saa"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-11_1_full_detail.res" id="162_rtj6i"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-11_1_distant_proxy.res" id="163_aql7m"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-11_2_full_detail.res" id="164_r4xof"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_-11_2_distant_proxy.res" id="165_iv5bb"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_7_-2_full_detail.res" id="166_mnr2v"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/chunks/coastal_chunk_7_-2_distant_proxy.res" id="167_5yffj"]
+
+[node name="ForestChunks" type="Node3D" unique_id=859824932]
+script = ExtResource("1_yos6q")
+inventory_path = "res://assets/trees/chunks/coastal.json"
+
+[node name="Chunk_-12_-6" type="Node3D" parent="." unique_id=1456820555]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5763.8623, 31.603073, -2275.732)
+visible = false
+metadata/cells = "[(-12, -6), (-12, -5)]"
+metadata/tree_count = 6
+metadata/source_bounds = AABB(-6010.423, 11.913491, -2533.669, 493.1206, 39.379166, 515.8739)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_-12_-6" unique_id=27106991]
+mesh = ExtResource("2_i0w6u")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_-12_-6" unique_id=275256421]
+cast_shadow = 0
+mesh = ExtResource("3_g8lvv")
+
+[node name="Chunk_-11_3" type="Node3D" parent="." unique_id=1574228807]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4954.3647, 21.378403, 1662.6827)
+visible = false
+metadata/cells = "[(-11, 3), (-10, 3)]"
+metadata/tree_count = 5
+metadata/source_bounds = AABB(-5392.222, 0.81449026, 1503.4446, 875.71484, 41.127827, 318.47632)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_-11_3" unique_id=1623763979]
+mesh = ExtResource("4_hsqm4")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_-11_3" unique_id=538522488]
+cast_shadow = 0
+mesh = ExtResource("5_jf3dm")
+
+[node name="Chunk_-9_-2" type="Node3D" parent="." unique_id=1866196054]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3997.6387, 23.61748, -912.0009)
+visible = false
+metadata/cells = "[(-9, -2), (-8, -2)]"
+metadata/tree_count = 2
+metadata/source_bounds = AABB(-4415.0625, 6.029749, -972.192, 834.8474, 35.17546, 120.3822)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_-9_-2" unique_id=890070580]
+mesh = ExtResource("6_fa73u")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_-9_-2" unique_id=1955084292]
+cast_shadow = 0
+mesh = ExtResource("7_vkue0")
+
+[node name="Chunk_-8_1" type="Node3D" parent="." unique_id=807953905]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3387.62, 31.790657, 914.343)
+visible = false
+metadata/cells = "[(-8, 1), (-7, 1)]"
+metadata/tree_count = 5
+metadata/source_bounds = AABB(-3554.966, 11.066693, 824.5117, 334.6919, 41.44793, 179.66266)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_-8_1" unique_id=836746965]
+mesh = ExtResource("8_2ihk6")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_-8_1" unique_id=427460763]
+cast_shadow = 0
+mesh = ExtResource("9_dg8ji")
+
+[node name="Chunk_-7_3" type="Node3D" parent="." unique_id=494895661]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3179.7793, 17.902134, 1571.7344)
+visible = false
+metadata/cells = "[(-7, 3), (-6, 3)]"
+metadata/tree_count = 2
+metadata/source_bounds = AABB(-3377.8655, 1.7570533, 1494.0872, 396.17212, 32.29016, 155.29456)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_-7_3" unique_id=306822822]
+mesh = ExtResource("10_77hiv")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_-7_3" unique_id=189932309]
+cast_shadow = 0
+mesh = ExtResource("11_je087")
+
+[node name="Chunk_-5_2" type="Node3D" parent="." unique_id=818949432]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2645.207, 28.251411, 1166.3451)
+visible = false
+metadata/cells = "[(-5, 2), (-6, 2)]"
+metadata/tree_count = 13
+metadata/source_bounds = AABB(-2932.099, 0.3223504, 987.04877, 573.7842, 55.858124, 358.5927)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_-5_2" unique_id=1934863726]
+mesh = ExtResource("12_3f8ox")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_-5_2" unique_id=212489281]
+cast_shadow = 0
+mesh = ExtResource("13_14l74")
+
+[node name="Chunk_8_-5" type="Node3D" parent="." unique_id=962488389]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4132.83, 26.987068, -1874.6636)
+visible = false
+metadata/cells = "[(8, -5), (8, -4)]"
+metadata/tree_count = 3
+metadata/source_bounds = AABB(4050.1902, 14.271266, -2224.6501, 165.28003, 25.431606, 699.97314)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_8_-5" unique_id=1941051368]
+mesh = ExtResource("14_qh2xo")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_8_-5" unique_id=1086129030]
+cast_shadow = 0
+mesh = ExtResource("15_7o5fv")
+
+[node name="Chunk_8_3" type="Node3D" parent="." unique_id=82975544]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3917.8364, 23.47689, 1525.4314)
+visible = false
+metadata/cells = "[(8, 3), (7, 3)]"
+metadata/tree_count = 3
+metadata/source_bounds = AABB(3788.545, 7.828059, 1494.0394, 258.58276, 31.297665, 62.784058)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_8_3" unique_id=1935984100]
+mesh = ExtResource("16_l34ds")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_8_3" unique_id=437822648]
+cast_shadow = 0
+mesh = ExtResource("17_hloe3")
+
+[node name="Chunk_-13_1" type="Node3D" parent="." unique_id=73421370]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5840.9507, 42.1782, 767.45605)
+visible = false
+metadata/cells = "[(-13, 1), (-12, 1)]"
+metadata/tree_count = 11
+metadata/source_bounds = AABB(-6179.591, 19.783646, 525.625, 677.2803, 44.78911, 483.6621)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_-13_1" unique_id=1124220995]
+mesh = ExtResource("18_114uq")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_-13_1" unique_id=2124150]
+cast_shadow = 0
+mesh = ExtResource("19_kfrkb")
+
+[node name="Chunk_-12_3" type="Node3D" parent="." unique_id=544570676]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5956.6655, 28.475176, 1648.4055)
+visible = false
+metadata/cells = "[(-12, 3), (-13, 3)]"
+metadata/tree_count = 6
+metadata/source_bounds = AABB(-6331.066, 0.08383528, 1494.7081, 748.8008, 56.78268, 307.39465)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_-12_3" unique_id=2123702453]
+mesh = ExtResource("20_qsj0d")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_-12_3" unique_id=386313342]
+cast_shadow = 0
+mesh = ExtResource("21_d8yus")
+
+[node name="Chunk_-11_-1" type="Node3D" parent="." unique_id=311998199]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5120.162, 33.638462, -251.38126)
+visible = false
+metadata/cells = "[(-11, -1), (-10, -1)]"
+metadata/tree_count = 4
+metadata/source_bounds = AABB(-5477.456, 10.049118, -508.6971, 714.5879, 47.178688, 514.6317)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_-11_-1" unique_id=165336850]
+mesh = ExtResource("22_25gkh")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_-11_-1" unique_id=1275656762]
+cast_shadow = 0
+mesh = ExtResource("23_og3ut")
+
+[node name="Chunk_-10_0" type="Node3D" parent="." unique_id=1916750194]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4798.385, 32.694386, 555.88135)
+visible = false
+metadata/cells = "[(-10, 0), (-10, 1)]"
+metadata/tree_count = 10
+metadata/source_bounds = AABB(-4956.3604, 10.928901, 113.574135, 315.95068, 43.530968, 884.61444)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_-10_0" unique_id=235963457]
+mesh = ExtResource("24_8bv4o")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_-10_0" unique_id=2083807716]
+cast_shadow = 0
+mesh = ExtResource("25_yh573")
+
+[node name="Chunk_-9_-3" type="Node3D" parent="." unique_id=1144454493]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4383.698, 28.538952, -1707.3579)
+visible = false
+metadata/cells = "[(-9, -3), (-9, -4)]"
+metadata/tree_count = 7
+metadata/source_bounds = AABB(-4485.775, 3.9223375, -1948.7975, 204.15381, 49.233227, 482.87915)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_-9_-3" unique_id=56492566]
+mesh = ExtResource("26_eiywh")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_-9_-3" unique_id=1070037064]
+cast_shadow = 0
+mesh = ExtResource("27_7fklu")
+
+[node name="Chunk_-8_3" type="Node3D" parent="." unique_id=707945742]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4016.3687, 28.466234, 1632.7859)
+visible = false
+metadata/cells = "[(-8, 3), (-9, 3)]"
+metadata/tree_count = 9
+metadata/source_bounds = AABB(-4424.5254, 1.024524, 1491.0419, 816.3135, 54.88342, 283.48816)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_-8_3" unique_id=1455837035]
+mesh = ExtResource("28_gwvqj")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_-8_3" unique_id=2000662976]
+cast_shadow = 0
+mesh = ExtResource("29_sihc6")
+
+[node name="Chunk_-4_-2" type="Node3D" parent="." unique_id=334697212]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2044.4049, 34.101288, -741.43835)
+visible = false
+metadata/cells = "[(-4, -2), (-5, -2)]"
+metadata/tree_count = 8
+metadata/source_bounds = AABB(-2444.8733, 2.499621, -931.80646, 800.93677, 63.203335, 380.73615)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_-4_-2" unique_id=1861088103]
+mesh = ExtResource("30_oahmv")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_-4_-2" unique_id=710523438]
+cast_shadow = 0
+mesh = ExtResource("31_0usce")
+
+[node name="Chunk_3_-1" type="Node3D" parent="." unique_id=30348057]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1793.7036, 30.073612, 1.7400208)
+visible = false
+metadata/cells = "[(3, -1), (3, 0)]"
+metadata/tree_count = 10
+metadata/source_bounds = AABB(1631.0946, 5.0446343, -486.9735, 325.2179, 50.057957, 977.42706)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_3_-1" unique_id=1394677178]
+mesh = ExtResource("32_ume1v")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_3_-1" unique_id=1404232471]
+cast_shadow = 0
+mesh = ExtResource("33_mgrmy")
+
+[node name="Chunk_4_2" type="Node3D" parent="." unique_id=1546502392]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2641.7842, 24.034727, 1231.2908)
+visible = false
+metadata/cells = "[(4, 2), (5, 2)]"
+metadata/tree_count = 6
+metadata/source_bounds = AABB(2332.8428, 0.64773977, 1025.6294, 617.88306, 46.773975, 411.32275)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_4_2" unique_id=397814972]
+mesh = ExtResource("34_s3yyy")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_4_2" unique_id=270891395]
+cast_shadow = 0
+mesh = ExtResource("35_nnvrn")
+
+[node name="Chunk_7_-6" type="Node3D" parent="." unique_id=935689473]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3666.9321, 26.467655, -2390.7915)
+visible = false
+metadata/cells = "[(7, -6), (7, -5)]"
+metadata/tree_count = 6
+metadata/source_bounds = AABB(3498.0676, 2, -2596.146, 337.72876, 48.93531, 410.70874)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_7_-6" unique_id=292602468]
+mesh = ExtResource("36_06thg")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_7_-6" unique_id=1997342350]
+cast_shadow = 0
+mesh = ExtResource("37_14u5i")
+
+[node name="Chunk_9_-3" type="Node3D" parent="." unique_id=848038459]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4597.5654, 32.6307, -965.2483)
+visible = false
+metadata/cells = "[(9, -3), (9, -2)]"
+metadata/tree_count = 7
+metadata/source_bounds = AABB(4507.742, 6.1722426, -1431.3278, 179.646, 52.916916, 932.15894)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_9_-3" unique_id=153691645]
+mesh = ExtResource("38_r1iwm")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_9_-3" unique_id=1684001369]
+cast_shadow = 0
+mesh = ExtResource("39_ofb6u")
+
+[node name="Chunk_9_2" type="Node3D" parent="." unique_id=1385919019]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4651.651, 40.994255, 853.19135)
+visible = false
+metadata/cells = "[(9, 2), (9, 1)]"
+metadata/tree_count = 11
+metadata/source_bounds = AABB(4493.8213, 12.064497, 488.49194, 315.65918, 57.85952, 729.3988)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_9_2" unique_id=1823508226]
+mesh = ExtResource("40_ulyej")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_9_2" unique_id=907506701]
+cast_shadow = 0
+mesh = ExtResource("41_8xl4l")
+
+[node name="Chunk_-13_-3" type="Node3D" parent="." unique_id=926983457]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6021.3926, 31.625202, -1236.8632)
+visible = false
+metadata/cells = "[(-13, -3), (-12, -3)]"
+metadata/tree_count = 15
+metadata/source_bounds = AABB(-6511.0073, 2, -1478.113, 979.2295, 59.250404, 482.4997)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_-13_-3" unique_id=227008586]
+mesh = ExtResource("42_glvsc")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_-13_-3" unique_id=1693041055]
+cast_shadow = 0
+mesh = ExtResource("43_6xmpf")
+
+[node name="Chunk_-11_-5" type="Node3D" parent="." unique_id=1633901190]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4995.509, 32.48063, -2269.2046)
+visible = false
+metadata/cells = "[(-11, -5), (-10, -5)]"
+metadata/tree_count = 11
+metadata/source_bounds = AABB(-5481.671, 4.0602646, -2449.1543, 972.3237, 56.84073, 359.89966)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_-11_-5" unique_id=1656679496]
+mesh = ExtResource("44_2nljd")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_-11_-5" unique_id=1214354901]
+cast_shadow = 0
+mesh = ExtResource("45_pn44w")
+
+[node name="Chunk_-11_-4" type="Node3D" parent="." unique_id=1126179573]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4937.081, 36.448475, -1736.1797)
+visible = false
+metadata/cells = "[(-11, -4), (-10, -4)]"
+metadata/tree_count = 7
+metadata/source_bounds = AABB(-5289.5034, 3.6611784, -1985.5743, 704.84424, 65.57459, 498.78943)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_-11_-4" unique_id=1724774359]
+mesh = ExtResource("46_bay46")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_-11_-4" unique_id=1083453386]
+cast_shadow = 0
+mesh = ExtResource("47_0b0ps")
+
+[node name="Chunk_3_1" type="Node3D" parent="." unique_id=1918577496]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2060.8281, 19.799545, 709.8719)
+visible = false
+metadata/cells = "[(3, 1), (4, 1)]"
+metadata/tree_count = 13
+metadata/source_bounds = AABB(1737.2688, 0.3533946, 482.9994, 647.1189, 38.8923, 453.745)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_3_1" unique_id=1875037403]
+mesh = ExtResource("48_26vwk")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_3_1" unique_id=596154133]
+cast_shadow = 0
+mesh = ExtResource("49_u2b7n")
+
+[node name="Chunk_5_-3" type="Node3D" parent="." unique_id=631094770]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3042.0083, 38.3857, -1276.6827)
+visible = false
+metadata/cells = "[(5, -3), (6, -3)]"
+metadata/tree_count = 11
+metadata/source_bounds = AABB(2594.327, 7.4721036, -1499.2485, 895.36255, 61.82719, 445.1316)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_5_-3" unique_id=941518284]
+mesh = ExtResource("50_opu86")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_5_-3" unique_id=1057138943]
+cast_shadow = 0
+mesh = ExtResource("51_df25x")
+
+[node name="Chunk_5_1" type="Node3D" parent="." unique_id=1463060447]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3028.4214, 33.899055, 649.59265)
+visible = false
+metadata/cells = "[(5, 1), (6, 1)]"
+metadata/tree_count = 6
+metadata/source_bounds = AABB(2567.4673, 13.819835, 515.4541, 921.90845, 40.15844, 268.27716)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_5_1" unique_id=267673695]
+mesh = ExtResource("52_cky6s")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_5_1" unique_id=693798907]
+cast_shadow = 0
+mesh = ExtResource("53_de7nm")
+
+[node name="Chunk_6_-6" type="Node3D" parent="." unique_id=669853571]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3262.4805, 34.502914, -2407.144)
+visible = false
+metadata/cells = "[(6, -6), (6, -5)]"
+metadata/tree_count = 12
+metadata/source_bounds = AABB(3036.723, 4.609594, -2810.9092, 451.51538, 59.78664, 807.5303)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_6_-6" unique_id=1710498983]
+mesh = ExtResource("54_3lrea")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_6_-6" unique_id=1098809491]
+cast_shadow = 0
+mesh = ExtResource("55_t7tk2")
+
+[node name="Chunk_7_-4" type="Node3D" parent="." unique_id=1262230144]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3745.7998, 32.282406, -1444.5615)
+visible = false
+metadata/cells = "[(7, -4), (7, -3)]"
+metadata/tree_count = 13
+metadata/source_bounds = AABB(3525.3362, 2.5620372, -1874.9197, 440.927, 59.440735, 860.7162)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_7_-4" unique_id=144456036]
+mesh = ExtResource("56_2vnwn")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_7_-4" unique_id=1384915693]
+cast_shadow = 0
+mesh = ExtResource("57_oftrk")
+
+[node name="Chunk_8_0" type="Node3D" parent="." unique_id=143085211]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4509.6924, 49.615295, 237.4564)
+visible = false
+metadata/cells = "[(8, 0), (9, 0)]"
+metadata/tree_count = 10
+metadata/source_bounds = AABB(4257.0894, 25.60579, 21.593287, 505.20557, 48.019012, 431.72623)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_8_0" unique_id=852904014]
+mesh = ExtResource("58_kpt5r")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_8_0" unique_id=38824267]
+cast_shadow = 0
+mesh = ExtResource("59_7ja1k")
+
+[node name="Chunk_-14_-1" type="Node3D" parent="." unique_id=667131468]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6556.722, 31.847656, 69.77164)
+visible = false
+metadata/cells = "[(-14, -1), (-14, 0)]"
+metadata/tree_count = 10
+metadata/source_bounds = AABB(-6605.7974, 10.58332, -200.94766, 98.15039, 42.528675, 541.4386)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_-14_-1" unique_id=1644171816]
+mesh = ExtResource("60_qw5gq")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_-14_-1" unique_id=1981913890]
+cast_shadow = 0
+mesh = ExtResource("61_m4sv8")
+
+[node name="Chunk_-13_-2" type="Node3D" parent="." unique_id=1013315684]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6199.9126, 34.29119, -717.6778)
+visible = false
+metadata/cells = "[(-13, -2)]"
+metadata/tree_count = 4
+metadata/source_bounds = AABB(-6408.3213, 17.01856, -942.54346, 416.81738, 34.545258, 449.73132)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_-13_-2" unique_id=1147364243]
+mesh = ExtResource("62_0qakh")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_-13_-2" unique_id=2026290595]
+cast_shadow = 0
+mesh = ExtResource("63_fwjej")
+
+[node name="Chunk_-13_2" type="Node3D" parent="." unique_id=658816612]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5909.0967, 37.771984, 1255.8805)
+visible = false
+metadata/cells = "[(-13, 2), (-12, 2)]"
+metadata/tree_count = 13
+metadata/source_bounds = AABB(-6271.8555, 8.654328, 1029.097, 725.5171, 58.235313, 453.5669)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_-13_2" unique_id=1719110052]
+mesh = ExtResource("64_mfnjr")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_-13_2" unique_id=306396279]
+cast_shadow = 0
+mesh = ExtResource("65_b65bd")
+
+[node name="Chunk_-10_-6" type="Node3D" parent="." unique_id=41086366]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4750.3706, 33.760204, -2922.3823)
+visible = false
+metadata/cells = "[(-10, -6), (-10, -7)]"
+metadata/tree_count = 9
+metadata/source_bounds = AABB(-4950.1816, 8.079826, -3261.4602, 399.62207, 51.360756, 678.1555)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_-10_-6" unique_id=1339098871]
+mesh = ExtResource("66_qrh5l")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_-10_-6" unique_id=151656189]
+cast_shadow = 0
+mesh = ExtResource("67_8mh2y")
+
+[node name="Chunk_-5_-1" type="Node3D" parent="." unique_id=996098152]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2115.9063, 42.37204, 10.745422)
+visible = false
+metadata/cells = "[(-5, -1), (-5, 0)]"
+metadata/tree_count = 9
+metadata/source_bounds = AABB(-2250.8076, 16.447683, -380.10803, 269.80273, 51.84871, 781.7069)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_-5_-1" unique_id=76850459]
+mesh = ExtResource("68_2bqil")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_-5_-1" unique_id=717475734]
+cast_shadow = 0
+mesh = ExtResource("69_uvtdt")
+
+[node name="Chunk_-5_1" type="Node3D" parent="." unique_id=1879256321]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2074.869, 24.329433, 765.84045)
+visible = false
+metadata/cells = "[(-5, 1), (-4, 1)]"
+metadata/tree_count = 8
+metadata/source_bounds = AABB(-2500.3877, 1.625013, 527.2224, 851.0376, 45.40884, 477.23615)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_-5_1" unique_id=1158428153]
+mesh = ExtResource("70_bbmo2")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_-5_1" unique_id=1071676571]
+cast_shadow = 0
+mesh = ExtResource("71_pft71")
+
+[node name="Chunk_5_-6" type="Node3D" parent="." unique_id=486722692]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2757.459, 49.34004, -2399.0642)
+visible = false
+metadata/cells = "[(5, -6), (5, -5)]"
+metadata/tree_count = 16
+metadata/source_bounds = AABB(2508.0925, 23.136177, -2780.1157, 498.73315, 52.407722, 762.103)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_5_-6" unique_id=916854039]
+mesh = ExtResource("72_0hbhs")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_5_-6" unique_id=137120355]
+cast_shadow = 0
+mesh = ExtResource("73_eb3kv")
+
+[node name="Chunk_5_-2" type="Node3D" parent="." unique_id=650714420]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2997.6755, 34.146248, -723.6483)
+visible = false
+metadata/cells = "[(5, -2), (6, -2)]"
+metadata/tree_count = 13
+metadata/source_bounds = AABB(2492.778, 2.9797292, -918.6227, 1009.7949, 62.33304, 389.9488)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_5_-2" unique_id=715598934]
+mesh = ExtResource("74_0jpkv")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_5_-2" unique_id=515144359]
+cast_shadow = 0
+mesh = ExtResource("75_4048r")
+
+[node name="Chunk_9_-1" type="Node3D" parent="." unique_id=1102723291]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4468.3477, 39.583366, -280.009)
+visible = false
+metadata/cells = "[(9, -1), (8, -1)]"
+metadata/tree_count = 9
+metadata/source_bounds = AABB(4146.46, 19.03092, -415.47833, 643.7759, 41.104897, 270.93866)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_9_-1" unique_id=280342929]
+mesh = ExtResource("76_27cxp")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_9_-1" unique_id=1570616898]
+cast_shadow = 0
+mesh = ExtResource("77_j1thp")
+
+[node name="Chunk_-12_-1" type="Node3D" parent="." unique_id=437193156]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5737.8438, 51.48488, 11.8281555)
+visible = false
+metadata/cells = "[(-12, -1), (-12, 0)]"
+metadata/tree_count = 15
+metadata/source_bounds = AABB(-5965.1563, 23.716291, -481.07773, 454.625, 55.53717, 985.81177)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_-12_-1" unique_id=810865481]
+mesh = ExtResource("78_1s76h")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_-12_-1" unique_id=1522047462]
+cast_shadow = 0
+mesh = ExtResource("79_fl2as")
+
+[node name="Chunk_-11_0" type="Node3D" parent="." unique_id=1343773461]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5234.5654, 42.75447, 358.13647)
+visible = false
+metadata/cells = "[(-11, 0)]"
+metadata/tree_count = 5
+metadata/source_bounds = AABB(-5464.925, 16.252834, 275.81235, 460.71826, 53.003277, 164.64828)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_-11_0" unique_id=1771301680]
+mesh = ExtResource("80_3wln5")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_-11_0" unique_id=1863022860]
+cast_shadow = 0
+mesh = ExtResource("81_jm2rw")
+
+[node name="Chunk_4_-5" type="Node3D" parent="." unique_id=1550558492]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2374.6445, 36.885143, -2001.7544)
+visible = false
+metadata/cells = "[(4, -5), (4, -4)]"
+metadata/tree_count = 11
+metadata/source_bounds = AABB(2278.3223, 4.661491, -2410.0525, 192.64429, 64.4473, 816.5963)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_4_-5" unique_id=211885476]
+mesh = ExtResource("82_coar0")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_4_-5" unique_id=1031346940]
+cast_shadow = 0
+mesh = ExtResource("83_gl68x")
+
+[node name="Chunk_7_-1" type="Node3D" parent="." unique_id=842885155]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3654.3833, 42.06306, -23.147766)
+visible = false
+metadata/cells = "[(7, -1), (7, 0)]"
+metadata/tree_count = 12
+metadata/source_bounds = AABB(3526.691, 17.858086, -510.87125, 255.38501, 48.40995, 975.44696)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_7_-1" unique_id=1665964981]
+mesh = ExtResource("84_o5rw1")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_7_-1" unique_id=1366532254]
+cast_shadow = 0
+mesh = ExtResource("85_w657u")
+
+[node name="Chunk_-8_2" type="Node3D" parent="." unique_id=260320795]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3683.3062, 32.378136, 1327.0662)
+visible = false
+metadata/cells = "[(-8, 2)]"
+metadata/tree_count = 6
+metadata/source_bounds = AABB(-3864.7695, 12.278438, 1147.0656, 362.927, 40.199398, 360.0011)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_-8_2" unique_id=1491853904]
+mesh = ExtResource("86_j5fy4")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_-8_2" unique_id=931990866]
+cast_shadow = 0
+mesh = ExtResource("87_5th35")
+
+[node name="Chunk_-7_-2" type="Node3D" parent="." unique_id=1129863490]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3290.4275, 25.781221, -845.6712)
+visible = false
+metadata/cells = "[(-7, -2)]"
+metadata/tree_count = 6
+metadata/source_bounds = AABB(-3469.1165, 4.0937877, -922.0397, 357.37793, 43.374866, 152.73694)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_-7_-2" unique_id=271856817]
+mesh = ExtResource("88_fp8bk")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_-7_-2" unique_id=11269178]
+cast_shadow = 0
+mesh = ExtResource("89_4l53b")
+
+[node name="Chunk_-6_-2" type="Node3D" parent="." unique_id=2137946573]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2758.2627, 25.050499, -795.28503)
+visible = false
+metadata/cells = "[(-6, -2)]"
+metadata/tree_count = 6
+metadata/source_bounds = AABB(-2979.3315, 4.5920835, -852.7207, 442.13745, 40.916832, 114.87134)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_-6_-2" unique_id=2083729562]
+mesh = ExtResource("90_dmy77")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_-6_-2" unique_id=737378560]
+cast_shadow = 0
+mesh = ExtResource("91_hs21r")
+
+[node name="Chunk_-9_2" type="Node3D" parent="." unique_id=159387636]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4290.426, 41.585308, 1337.0432)
+visible = false
+metadata/cells = "[(-9, 2)]"
+metadata/tree_count = 7
+metadata/source_bounds = AABB(-4511.4673, 15.119317, 1178.4968, 442.08276, 52.931984, 317.0929)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_-9_2" unique_id=1565596821]
+mesh = ExtResource("92_8d4fy")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_-9_2" unique_id=1871671407]
+cast_shadow = 0
+mesh = ExtResource("93_r6xrc")
+
+[node name="Chunk_-6_1" type="Node3D" parent="." unique_id=899013128]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2763.0415, 41.063652, 909.57776)
+visible = false
+metadata/cells = "[(-6, 1)]"
+metadata/tree_count = 7
+metadata/source_bounds = AABB(-2971.7822, 16.704649, 805.87134, 417.4812, 48.718002, 207.41278)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_-6_1" unique_id=616875795]
+mesh = ExtResource("94_4hbbl")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_-6_1" unique_id=1876464063]
+cast_shadow = 0
+mesh = ExtResource("95_w2fg2")
+
+[node name="Chunk_4_-2" type="Node3D" parent="." unique_id=2062363390]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2171.063, 30.607471, -728.6321)
+visible = false
+metadata/cells = "[(4, -2)]"
+metadata/tree_count = 7
+metadata/source_bounds = AABB(1995.5518, 7.9935026, -862.5952, 351.02222, 45.227936, 267.92627)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_4_-2" unique_id=919476049]
+mesh = ExtResource("96_egf21")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_4_-2" unique_id=611332476]
+cast_shadow = 0
+mesh = ExtResource("97_yau21")
+
+[node name="Chunk_6_3" type="Node3D" parent="." unique_id=115651958]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3299.4058, 21.215513, 1575.169)
+visible = false
+metadata/cells = "[(6, 3)]"
+metadata/tree_count = 7
+metadata/source_bounds = AABB(3153.5059, 0.33706397, 1493.9615, 291.7998, 41.756897, 162.41467)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_6_3" unique_id=1787426042]
+mesh = ExtResource("98_4x32l")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_6_3" unique_id=654936468]
+cast_shadow = 0
+mesh = ExtResource("99_eoahe")
+
+[node name="Chunk_-12_-4" type="Node3D" parent="." unique_id=1248137695]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5751.47, 25.398823, -1746.8854)
+visible = false
+metadata/cells = "[(-12, -4)]"
+metadata/tree_count = 8
+metadata/source_bounds = AABB(-6003.3145, 2, -1972.7562, 503.68848, 46.797646, 451.7417)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_-12_-4" unique_id=1503284719]
+mesh = ExtResource("100_jp37h")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_-12_-4" unique_id=741201888]
+cast_shadow = 0
+mesh = ExtResource("101_qmsmf")
+
+[node name="Chunk_-10_-2" type="Node3D" parent="." unique_id=1086318460]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4796.4775, 40.109394, -814.43774)
+visible = false
+metadata/cells = "[(-10, -2)]"
+metadata/tree_count = 8
+metadata/source_bounds = AABB(-4989.855, 15.860959, -1009.9185, 386.75488, 48.49687, 390.9616)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_-10_-2" unique_id=387849532]
+mesh = ExtResource("102_pqrgt")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_-10_-2" unique_id=811990887]
+cast_shadow = 0
+mesh = ExtResource("103_ihpdq")
+
+[node name="Chunk_-10_2" type="Node3D" parent="." unique_id=1761985888]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4771.104, 38.699097, 1235.8462)
+visible = false
+metadata/cells = "[(-10, 2)]"
+metadata/tree_count = 8
+metadata/source_bounds = AABB(-4969.5605, 15.12209, 1065.8429, 396.9131, 47.15401, 340.0066)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_-10_2" unique_id=318347194]
+mesh = ExtResource("104_02rs8")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_-10_2" unique_id=414702113]
+cast_shadow = 0
+mesh = ExtResource("105_3abl1")
+
+[node name="Chunk_6_-4" type="Node3D" parent="." unique_id=1575548677]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3209.6738, 31.884188, -1749.2253)
+visible = false
+metadata/cells = "[(6, -4)]"
+metadata/tree_count = 8
+metadata/source_bounds = AABB(3009.3757, 5.31867, -1942.7186, 400.5962, 53.131035, 386.98645)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_6_-4" unique_id=99315389]
+mesh = ExtResource("106_4gpul")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_6_-4" unique_id=8754962]
+cast_shadow = 0
+mesh = ExtResource("107_ide1s")
+
+[node name="Chunk_-9_-5" type="Node3D" parent="." unique_id=1805827824]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4363.6953, 29.8105, -2267.2256)
+visible = false
+metadata/cells = "[(-9, -5)]"
+metadata/tree_count = 10
+metadata/source_bounds = AABB(-4458.24, 4.3319736, -2471.9497, 189.09033, 50.95705, 409.4485)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_-9_-5" unique_id=155789397]
+mesh = ExtResource("108_akevy")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_-9_-5" unique_id=820600023]
+cast_shadow = 0
+mesh = ExtResource("109_jh5sb")
+
+[node name="Chunk_3_-2" type="Node3D" parent="." unique_id=933344830]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1794.9497, 25.0785, -713.4844)
+visible = false
+metadata/cells = "[(3, -2)]"
+metadata/tree_count = 10
+metadata/source_bounds = AABB(1587.6409, 0.031330395, -935.93774, 414.61768, 50.09434, 444.90674)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_3_-2" unique_id=543449620]
+mesh = ExtResource("110_k6rs8")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_3_-2" unique_id=1954619837]
+cast_shadow = 0
+mesh = ExtResource("111_ci6k4")
+
+[node name="Chunk_8_1" type="Node3D" parent="." unique_id=1058565443]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4250.134, 42.3758, 753.5372)
+visible = false
+metadata/cells = "[(8, 1)]"
+metadata/tree_count = 10
+metadata/source_bounds = AABB(4018.6152, 24.76224, 505.02246, 463.03662, 35.22712, 497.02942)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_8_1" unique_id=1311192507]
+mesh = ExtResource("112_81ya4")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_8_1" unique_id=1091606205]
+cast_shadow = 0
+mesh = ExtResource("113_wl6ne")
+
+[node name="Chunk_6_-1" type="Node3D" parent="." unique_id=994820887]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3253.962, 44.365715, -262.18588)
+visible = false
+metadata/cells = "[(6, -1)]"
+metadata/tree_count = 11
+metadata/source_bounds = AABB(3008.49, 16.04165, -445.4335, 490.94385, 56.648132, 366.49524)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_6_-1" unique_id=1366987702]
+mesh = ExtResource("114_cywa8")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_6_-1" unique_id=147331902]
+cast_shadow = 0
+mesh = ExtResource("115_m36am")
+
+[node name="Chunk_6_2" type="Node3D" parent="." unique_id=1599811512]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3261.9023, 24.334862, 1236.581)
+visible = false
+metadata/cells = "[(6, 2)]"
+metadata/tree_count = 11
+metadata/source_bounds = AABB(3035.7275, 4.4589777, 1030.866, 452.34937, 39.75177, 411.43005)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_6_2" unique_id=1181553479]
+mesh = ExtResource("116_5reqk")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_6_2" unique_id=114156006]
+cast_shadow = 0
+mesh = ExtResource("117_8wieb")
+
+[node name="Chunk_-4_0" type="Node3D" parent="." unique_id=1834850759]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1818.1685, 30.700813, 274.38165)
+visible = false
+metadata/cells = "[(-4, 0)]"
+metadata/tree_count = 12
+metadata/source_bounds = AABB(-1986.5612, 3.7981482, 35.271626, 336.78552, 53.80533, 478.22006)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_-4_0" unique_id=1385719273]
+mesh = ExtResource("118_lk8ww")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_-4_0" unique_id=1879361176]
+cast_shadow = 0
+mesh = ExtResource("119_ucm3y")
+
+[node name="Chunk_4_0" type="Node3D" parent="." unique_id=1333741803]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2272.5718, 22.008595, 239.99237)
+visible = false
+metadata/cells = "[(4, 0)]"
+metadata/tree_count = 12
+metadata/source_bounds = AABB(2048.8792, 2, -1.2744803, 447.38525, 40.01719, 482.5337)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_4_0" unique_id=1054414867]
+mesh = ExtResource("120_tdo7e")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_4_0" unique_id=306580561]
+cast_shadow = 0
+mesh = ExtResource("121_12oxl")
+
+[node name="Chunk_-13_-4" type="Node3D" parent="." unique_id=91327596]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6213.5938, 34.772575, -1748.0815)
+visible = false
+metadata/cells = "[(-13, -4)]"
+metadata/tree_count = 13
+metadata/source_bounds = AABB(-6432.963, 16.415321, -1939.5481, 438.73828, 36.714508, 382.9331)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_-13_-4" unique_id=449340776]
+mesh = ExtResource("122_g2036")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_-13_-4" unique_id=1237672441]
+cast_shadow = 0
+mesh = ExtResource("123_46ofm")
+
+[node name="Chunk_-13_-1" type="Node3D" parent="." unique_id=413003615]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6270.64, 39.217606, -239.70418)
+visible = false
+metadata/cells = "[(-13, -1)]"
+metadata/tree_count = 13
+metadata/source_bounds = AABB(-6484.8423, 14.2688465, -488.2617, 428.4043, 49.897514, 497.11502)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_-13_-1" unique_id=564494605]
+mesh = ExtResource("124_qu3hq")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_-13_-1" unique_id=1203690295]
+cast_shadow = 0
+mesh = ExtResource("125_oc1mp")
+
+[node name="Chunk_-12_-2" type="Node3D" parent="." unique_id=595765803]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5732.047, 34.29192, -780.94763)
+visible = false
+metadata/cells = "[(-12, -2)]"
+metadata/tree_count = 14
+metadata/source_bounds = AABB(-5984.613, 10.730094, -997.26526, 505.13135, 47.12365, 432.6352)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_-12_-2" unique_id=1267542653]
+mesh = ExtResource("126_p6v28")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_-12_-2" unique_id=1016862690]
+cast_shadow = 0
+mesh = ExtResource("127_5s7wu")
+
+[node name="Chunk_-11_-6" type="Node3D" parent="." unique_id=1768122476]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5255.2583, 33.625435, -2737.8452)
+visible = false
+metadata/cells = "[(-11, -6)]"
+metadata/tree_count = 14
+metadata/source_bounds = AABB(-5492.4624, 9.165664, -2930.5916, 474.4082, 48.91954, 385.49292)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_-11_-6" unique_id=561963327]
+mesh = ExtResource("128_h72xs")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_-11_-6" unique_id=1512967020]
+cast_shadow = 0
+mesh = ExtResource("129_w42a1")
+
+[node name="Chunk_-10_-3" type="Node3D" parent="." unique_id=1920327376]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4799.052, 44.119354, -1249.5974)
+visible = false
+metadata/cells = "[(-10, -3)]"
+metadata/tree_count = 14
+metadata/source_bounds = AABB(-4997.5186, 20.263575, -1509.5477, 396.9331, 47.711555, 519.9005)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_-10_-3" unique_id=954699021]
+mesh = ExtResource("130_0bxfw")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_-10_-3" unique_id=784029044]
+cast_shadow = 0
+mesh = ExtResource("131_00fhw")
+
+[node name="Chunk_-7_2" type="Node3D" parent="." unique_id=734745973]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3238.3804, 38.436394, 1285.5935)
+visible = false
+metadata/cells = "[(-7, 2)]"
+metadata/tree_count = 14
+metadata/source_bounds = AABB(-3487.6829, 11.464415, 1085.3044, 498.60474, 53.943954, 400.57813)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_-7_2" unique_id=630469467]
+mesh = ExtResource("132_65s4i")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_-7_2" unique_id=1697926886]
+cast_shadow = 0
+mesh = ExtResource("133_4ubm7")
+
+[node name="Chunk_-4_-1" type="Node3D" parent="." unique_id=367897308]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1811.3286, 30.04784, -277.07202)
+visible = false
+metadata/cells = "[(-4, -1)]"
+metadata/tree_count = 14
+metadata/source_bounds = AABB(-2010.3475, 1.4795203, -453.2913, 398.03772, 57.13664, 352.43854)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_-4_-1" unique_id=1290039265]
+mesh = ExtResource("134_oe33l")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_-4_-1" unique_id=365053111]
+cast_shadow = 0
+mesh = ExtResource("135_uwr4p")
+
+[node name="Chunk_5_-4" type="Node3D" parent="." unique_id=321697265]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2717.3823, 53.681168, -1778.5684)
+visible = false
+metadata/cells = "[(5, -4)]"
+metadata/tree_count = 14
+metadata/source_bounds = AABB(2497.9336, 27.829762, -1999.925, 438.89746, 51.70281, 442.71326)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_5_-4" unique_id=609967229]
+mesh = ExtResource("136_jmwph")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_5_-4" unique_id=1205995875]
+cast_shadow = 0
+mesh = ExtResource("137_sbbdv")
+
+[node name="Chunk_5_-1" type="Node3D" parent="." unique_id=1646382973]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2744.213, 27.055555, -250.43932)
+visible = false
+metadata/cells = "[(5, -1)]"
+metadata/tree_count = 14
+metadata/source_bounds = AABB(2483.7449, 2, -501.8021, 520.9363, 50.11111, 502.72556)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_5_-1" unique_id=1505984410]
+mesh = ExtResource("138_q7up0")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_5_-1" unique_id=900640632]
+cast_shadow = 0
+mesh = ExtResource("139_g5mee")
+
+[node name="Chunk_7_1" type="Node3D" parent="." unique_id=1002247853]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3731.1758, 31.187712, 760.9437)
+visible = false
+metadata/cells = "[(7, 1)]"
+metadata/tree_count = 14
+metadata/source_bounds = AABB(3533.6313, 9.822737, 518.24536, 395.08862, 42.72995, 485.3968)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_7_1" unique_id=1732053419]
+mesh = ExtResource("140_x1kgw")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_7_1" unique_id=1371752383]
+cast_shadow = 0
+mesh = ExtResource("141_fus6v")
+
+[node name="Chunk_-11_-3" type="Node3D" parent="." unique_id=1808867580]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5260.5747, 34.34138, -1201.0623)
+visible = false
+metadata/cells = "[(-11, -3)]"
+metadata/tree_count = 15
+metadata/source_bounds = AABB(-5479.982, 3.7042205, -1408.0626, 438.81445, 61.27432, 414.0008)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_-11_-3" unique_id=1463052809]
+mesh = ExtResource("142_887gb")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_-11_-3" unique_id=1620697186]
+cast_shadow = 0
+mesh = ExtResource("143_rqdob")
+
+[node name="Chunk_-11_-2" type="Node3D" parent="." unique_id=708121383]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5253.9316, 34.21251, -796.1942)
+visible = false
+metadata/cells = "[(-11, -2)]"
+metadata/tree_count = 15
+metadata/source_bounds = AABB(-5492.5996, 15.639162, -997.6223, 477.33594, 37.14669, 402.85614)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_-11_-2" unique_id=1001087683]
+mesh = ExtResource("144_1gtuk")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_-11_-2" unique_id=1696917349]
+cast_shadow = 0
+mesh = ExtResource("145_tkwkl")
+
+[node name="Chunk_4_-1" type="Node3D" parent="." unique_id=1128843893]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2279.418, 24.195261, -248.37473)
+visible = false
+metadata/cells = "[(4, -1)]"
+metadata/tree_count = 15
+metadata/source_bounds = AABB(2055.4185, 2, -490.23727, 447.99902, 44.390522, 483.7251)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_4_-1" unique_id=732397659]
+mesh = ExtResource("146_x1s4l")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_4_-1" unique_id=241002006]
+cast_shadow = 0
+mesh = ExtResource("147_3kxam")
+
+[node name="Chunk_7_2" type="Node3D" parent="." unique_id=1819093099]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3745.2417, 34.530735, 1261.1018)
+visible = false
+metadata/cells = "[(7, 2)]"
+metadata/tree_count = 15
+metadata/source_bounds = AABB(3496.1511, 6.470697, 1045.119, 498.1809, 56.12008, 431.9657)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_7_2" unique_id=1910151529]
+mesh = ExtResource("148_v4jcq")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_7_2" unique_id=1480359182]
+cast_shadow = 0
+mesh = ExtResource("149_cvyn2")
+
+[node name="Chunk_-13_0" type="Node3D" parent="." unique_id=1556887945]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6265.8633, 31.748655, 247.1973)
+visible = false
+metadata/cells = "[(-13, 0)]"
+metadata/tree_count = 16
+metadata/source_bounds = AABB(-6458.2217, 10.537069, 10.886787, 384.7163, 42.423172, 472.62103)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_-13_0" unique_id=231119654]
+mesh = ExtResource("150_v1o0q")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_-13_0" unique_id=217909300]
+cast_shadow = 0
+mesh = ExtResource("151_mog7x")
+
+[node name="Chunk_8_2" type="Node3D" parent="." unique_id=970804849]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4248.458, 35.102222, 1264.6598)
+visible = false
+metadata/cells = "[(8, 2)]"
+metadata/tree_count = 16
+metadata/source_bounds = AABB(4026.7832, 7.478069, 1050.4368, 443.3501, 55.24831, 428.44604)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_8_2" unique_id=1449018071]
+mesh = ExtResource("152_j1dmy")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_8_2" unique_id=71481262]
+cast_shadow = 0
+mesh = ExtResource("153_nuld6")
+
+[node name="Chunk_6_0" type="Node3D" parent="." unique_id=2044852697]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3284.042, 41.485725, 245.98196)
+visible = false
+metadata/cells = "[(6, 0)]"
+metadata/tree_count = 17
+metadata/source_bounds = AABB(3068.1013, 19.498016, -2.770084, 431.88135, 43.975418, 497.5041)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_6_0" unique_id=2138209625]
+mesh = ExtResource("154_xdgto")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_6_0" unique_id=422864798]
+cast_shadow = 0
+mesh = ExtResource("155_frakd")
+
+[node name="Chunk_8_-3" type="Node3D" parent="." unique_id=460471293]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4247.8633, 29.983582, -1219.4849)
+visible = false
+metadata/cells = "[(8, -3)]"
+metadata/tree_count = 17
+metadata/source_bounds = AABB(3994.5464, 6.707072, -1422.7505, 506.6333, 46.55302, 406.53137)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_8_-3" unique_id=909143446]
+mesh = ExtResource("156_3w2p7")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_8_-3" unique_id=1320555667]
+cast_shadow = 0
+mesh = ExtResource("157_uekv3")
+
+[node name="Chunk_8_-2" type="Node3D" parent="." unique_id=1281896897]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4259.6006, 35.282055, -754.1402)
+visible = false
+metadata/cells = "[(8, -2)]"
+metadata/tree_count = 18
+metadata/source_bounds = AABB(4010.5393, 10.73268, -1010.6621, 498.1223, 49.09875, 513.0438)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_8_-2" unique_id=574821687]
+mesh = ExtResource("158_gmwfh")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_8_-2" unique_id=2047066599]
+cast_shadow = 0
+mesh = ExtResource("159_5jjqi")
+
+[node name="Chunk_5_0" type="Node3D" parent="." unique_id=1124254772]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2727.041, 32.064045, 265.20026)
+visible = false
+metadata/cells = "[(5, 0)]"
+metadata/tree_count = 20
+metadata/source_bounds = AABB(2490.4312, 2, 43.33927, 473.21948, 60.12809, 443.72195)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_5_0" unique_id=1376852281]
+mesh = ExtResource("160_p33xh")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_5_0" unique_id=1024422458]
+cast_shadow = 0
+mesh = ExtResource("161_b7saa")
+
+[node name="Chunk_-11_1" type="Node3D" parent="." unique_id=890203782]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5236.6494, 38.32011, 751.073)
+visible = false
+metadata/cells = "[(-11, 1)]"
+metadata/tree_count = 22
+metadata/source_bounds = AABB(-5480.953, 9.974343, 491.13052, 488.6079, 56.691536, 519.885)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_-11_1" unique_id=1958640982]
+mesh = ExtResource("162_rtj6i")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_-11_1" unique_id=404938434]
+cast_shadow = 0
+mesh = ExtResource("163_aql7m")
+
+[node name="Chunk_-11_2" type="Node3D" parent="." unique_id=1499375911]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5239.164, 25.375277, 1251.0112)
+visible = false
+metadata/cells = "[(-11, 2)]"
+metadata/tree_count = 22
+metadata/source_bounds = AABB(-5485.923, 1.8969078, 994.2699, 493.5171, 46.956738, 513.48254)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_-11_2" unique_id=1269845810]
+mesh = ExtResource("164_r4xof")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_-11_2" unique_id=1754146760]
+cast_shadow = 0
+mesh = ExtResource("165_iv5bb")
+
+[node name="Chunk_7_-2" type="Node3D" parent="." unique_id=2048324409]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3751.2026, 46.29165, -812.44604)
+visible = false
+metadata/cells = "[(7, -2)]"
+metadata/tree_count = 23
+metadata/source_bounds = AABB(3495.0752, 22.166622, -1005.5949, 512.2551, 48.25005, 386.29773)
+
+[node name="FullDetail" type="MeshInstance3D" parent="Chunk_7_-2" unique_id=1814452205]
+mesh = ExtResource("166_mnr2v")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Chunk_7_-2" unique_id=992794683]
+cast_shadow = 0
+mesh = ExtResource("167_5yffj")

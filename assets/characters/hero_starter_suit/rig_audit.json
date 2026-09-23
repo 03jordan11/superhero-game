@@ -1,0 +1,26 @@
+{
+  "source_sha256": "236ffd15e73a5900da905859a3fa1eece75ccad0b2aaa938dc0aad655eb99e1f",
+  "triangles": 2172,
+  "joints": 65,
+  "max_influences": 4,
+  "uvs_and_lip_colors_unchanged": true,
+  "added_triangles": 0,
+  "method": "Existing gameplay armature, fitted stance/arms, transferred weights, tapered collar/shoulder blend, rigid face/upper hood, coherent mitten and thumb weights",
+  "shoulder_blend": {
+    "collar_half_width_m": [
+      0.105,
+      0.185
+    ],
+    "upper_hood_height_m": [
+      1.525,
+      1.54
+    ]
+  },
+  "exported_vertices": 2269,
+  "normalized_weights": true,
+  "matching_seam_weights": true,
+  "rigid_face_and_upper_hood": true,
+  "shoulder_caps_follow_body_not_head": true,
+  "degenerate_triangles": 0,
+  "all_three_texture_images_byte_identical": true
+}

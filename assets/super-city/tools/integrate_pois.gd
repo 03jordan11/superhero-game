@@ -118,6 +118,7 @@ func integrate() -> void:
 	# scenery and controls. Surface graph validation includes their remaining bodies.
 	var life: Node3D=source.get_node("CityLife")
 	for name in ["Diners","HotdogStands","Benches","BusStops","Hydrants","Grates"]:
+		if not life.has_node(name): continue
 		for prop in life.get_node(name).get_children():
 			var b:=visual_bounds(prop)
 			if b.size==Vector3.ZERO: continue

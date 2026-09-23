@@ -1,0 +1,21 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/ring_steps_Ivory.res" id="1_sf6fh"]
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/ring_steps_Steel.res" id="2_nec6f"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_mky66"]
+points = PackedVector3Array(-0.75, 0, 1.5, 0.75, 0, 1.5, -0.75, 0, 0, 0.75, 0, 0, -0.75, 1, 0, 0.75, 1, 0)
+
+[node name="RingSteps" type="Node3D" unique_id=42824919]
+metadata/rendered_triangles = 120
+
+[node name="ring_steps_Ivory" type="MeshInstance3D" parent="." unique_id=1647366462]
+mesh = ExtResource("1_sf6fh")
+
+[node name="ring_steps_Steel" type="MeshInstance3D" parent="." unique_id=1867341140]
+mesh = ExtResource("2_nec6f")
+
+[node name="Collision" type="StaticBody3D" parent="." unique_id=1065960849]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision" unique_id=1003090820]
+shape = SubResource("ConvexPolygonShape3D_mky66")

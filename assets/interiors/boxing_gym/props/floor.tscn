@@ -1,0 +1,22 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/floor_CanvasEdge.res" id="1_k1fm8"]
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/floor_Concrete.res" id="2_el3cv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g1r1d"]
+size = Vector3(24.6, 0.32, 22.6)
+
+[node name="Floor" type="Node3D" unique_id=1535679952]
+metadata/rendered_triangles = 132
+
+[node name="floor_CanvasEdge" type="MeshInstance3D" parent="." unique_id=94608516]
+mesh = ExtResource("1_k1fm8")
+
+[node name="floor_Concrete" type="MeshInstance3D" parent="." unique_id=1429929463]
+mesh = ExtResource("2_el3cv")
+
+[node name="Collision" type="StaticBody3D" parent="." unique_id=1526849850]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision" unique_id=1463153306]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.16, 0)
+shape = SubResource("BoxShape3D_g1r1d")

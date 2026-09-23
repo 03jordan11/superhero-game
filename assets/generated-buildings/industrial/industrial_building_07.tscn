@@ -1,24 +1,17 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://bgcfgm4eil87m"]
 
-[ext_resource type="Script" path="res://assets/generated-buildings/industrial/industrial_building.gd" id="1_kxyuf"]
-[ext_resource type="ArrayMesh" path="res://assets/generated-buildings/industrial/meshes/industrial_building_07.res" id="2_3kd4u"]
+[ext_resource type="Script" uid="uid://bc2vomxnaah7f" path="res://assets/generated-buildings/industrial/industrial_building.gd" id="1_kxyuf"]
+[ext_resource type="ArrayMesh" uid="uid://b71wnhndh3ccv" path="res://assets/generated-buildings/industrial/meshes/industrial_building_07.res" id="2_3kd4u"]
 [ext_resource type="PackedScene" path="res://assets/effects/stack_smoke/stack_smoke.tscn" id="3_ec8rk"]
-[ext_resource type="Script" path="res://assets/effects/stack_smoke/stack_smoke.gd" id="4_qj7n4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q5dpr"]
 size = Vector3(30, 13.28, 24)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_k7pqi"]
-points = PackedVector3Array(-6.2, 13.28, 5, -6.7272077, 13.28, 6.2727923, -8, 13.28, 6.8, -9.272792, 13.28, 6.2727923, -9.8, 13.28, 5, -9.272792, 13.28, 3.727208, -8, 13.28, 3.2, -6.7272077, 13.28, 3.727208, -6.668, 28, 5, -7.0581336, 28, 5.9418664, -8, 28, 6.332, -8.941866, 28, 5.9418664, -9.332, 28, 5, -8.941866, 28, 4.0581336, -8, 28, 3.668, -7.0581336, 28, 4.0581336)
+[sub_resource type="BoxShape3D" id="BoxShape3D_tl0b3"]
+size = Vector3(3.4885712, 16.452393, 3.4002576)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_838oh"]
-points = PackedVector3Array(-6.56, 28, 5, -6.981766, 28, 6.018234, -8, 28, 6.44, -9.018233, 28, 6.018234, -9.44, 28, 5, -9.018233, 28, 3.9817662, -8, 28, 3.56, -6.981766, 28, 3.9817662, -6.56, 28.6, 5, -6.981766, 28.6, 6.018234, -8, 28.6, 6.44, -9.018233, 28.6, 6.018234, -9.44, 28.6, 5, -9.018233, 28.6, 3.9817662, -8, 28.6, 3.56, -6.981766, 28.6, 3.9817662)
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6o2tw"]
-points = PackedVector3Array(9.8, 13.28, 5, 9.272792, 13.28, 6.2727923, 8, 13.28, 6.8, 6.7272077, 13.28, 6.2727923, 6.2, 13.28, 5, 6.7272077, 13.28, 3.727208, 8, 13.28, 3.2, 9.272792, 13.28, 3.727208, 9.332, 28, 5, 8.941866, 28, 5.9418664, 8, 28, 6.332, 7.0581336, 28, 5.9418664, 6.668, 28, 5, 7.0581336, 28, 4.0581336, 8, 28, 3.668, 8.941866, 28, 4.0581336)
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4ixq5"]
-points = PackedVector3Array(9.44, 28, 5, 9.018233, 28, 6.018234, 8, 28, 6.44, 6.981766, 28, 6.018234, 6.56, 28, 5, 6.981766, 28, 3.9817662, 8, 28, 3.56, 9.018233, 28, 3.9817662, 9.44, 28.6, 5, 9.018233, 28.6, 6.018234, 8, 28.6, 6.44, 6.981766, 28.6, 6.018234, 6.56, 28.6, 5, 6.981766, 28.6, 3.9817662, 8, 28.6, 3.56, 9.018233, 28.6, 3.9817662)
+[sub_resource type="BoxShape3D" id="BoxShape3D_loisc"]
+size = Vector3(3.4885712, 16.452393, 3.5182884)
 
 [sub_resource type="Gradient" id="Gradient_5v4fb"]
 offsets = PackedFloat32Array(0, 0.15, 0.55, 1)
@@ -83,26 +76,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.64, 0)
 shape = SubResource("BoxShape3D_q5dpr")
 
 [node name="SolidCollision1" type="CollisionShape3D" parent="." unique_id=2137122012]
-shape = SubResource("ConvexPolygonShape3D_k7pqi")
-
-[node name="SolidCollision2" type="CollisionShape3D" parent="." unique_id=1036323015]
-shape = SubResource("ConvexPolygonShape3D_838oh")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.000991, 20.473078, 4.9731493)
+shape = SubResource("BoxShape3D_tl0b3")
 
 [node name="SolidCollision3" type="CollisionShape3D" parent="." unique_id=936002932]
-shape = SubResource("ConvexPolygonShape3D_6o2tw")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.989396, 20.375174, 5.018932)
+shape = SubResource("BoxShape3D_loisc")
 
-[node name="SolidCollision4" type="CollisionShape3D" parent="." unique_id=992601864]
-shape = SubResource("ConvexPolygonShape3D_4ixq5")
-
-[node name="StackSmoke" type="GPUParticles3D" parent="." unique_id=1044517333 instance=ExtResource("3_ec8rk")]
+[node name="StackSmoke" parent="." unique_id=1044517333 instance=ExtResource("3_ec8rk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 28.7, 5)
-cast_shadow = 0
-emitting = false
-amount = 18
-lifetime = 8.0
-preprocess = 4.0
-fixed_fps = 15
-visibility_aabb = AABB(-12, -2, -12, 24, 30, 24)
 process_material = SubResource("ParticleProcessMaterial_oavgv")
 draw_pass_1 = SubResource("QuadMesh_2kc8g")
-script = ExtResource("4_qj7n4")

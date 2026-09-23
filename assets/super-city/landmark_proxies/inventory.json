@@ -1,0 +1,311 @@
+{
+	"description": "Static geometry counts, not frame draw-call or FPS measurements.",
+	"landmarks": [
+		{
+			"bounds_position": [
+				-12.5600004196167,
+				0.0,
+				-11.695987701416
+			],
+			"bounds_size": [
+				25.1200008392334,
+				9.35000038146973,
+				24.5259666442871
+			],
+			"mesh": "res://assets/super-city/landmark_proxies/BoxingGymExterior.res",
+			"path": "BoxingGymExterior",
+			"proxy_surfaces": 1.0,
+			"proxy_triangles": 10.0,
+			"source_surfaces": 57.0,
+			"source_triangles": 4128.0
+		},
+		{
+			"bounds_position": [
+				-52.2750015258789,
+				-0.0450000464916229,
+				-30.8299999237061
+			],
+			"bounds_size": [
+				104.550003051758,
+				131.845001220703,
+				72.3300018310547
+			],
+			"mesh": "res://assets/super-city/landmark_proxies/Hospital.res",
+			"path": "Hospital",
+			"proxy_surfaces": 1.0,
+			"proxy_triangles": 110.0,
+			"source_surfaces": 37.0,
+			"source_triangles": 5868.0
+		},
+		{
+			"bounds_position": [
+				-28.0,
+				-0.319999992847443,
+				-34.1000061035156
+			],
+			"bounds_size": [
+				56.0,
+				19.4799995422363,
+				61.1000061035156
+			],
+			"mesh": "res://assets/super-city/landmark_proxies/ParkingGarage.res",
+			"path": "ParkingGarage",
+			"proxy_surfaces": 1.0,
+			"proxy_triangles": 20.0,
+			"source_surfaces": 7.0,
+			"source_triangles": 2688.0
+		},
+		{
+			"bounds_position": [
+				-28.0,
+				-0.319999992847443,
+				-37.0000038146973
+			],
+			"bounds_size": [
+				56.0,
+				33.8800010681152,
+				64.0
+			],
+			"mesh": "res://assets/super-city/landmark_proxies/ParkingGarage2.res",
+			"path": "ParkingGarage2",
+			"proxy_surfaces": 1.0,
+			"proxy_triangles": 20.0,
+			"source_surfaces": 7.0,
+			"source_triangles": 4216.0
+		},
+		{
+			"bounds_position": [
+				-16.0,
+				-0.319999992847443,
+				-76.9999847412109
+			],
+			"bounds_size": [
+				32.0,
+				15.8800001144409,
+				103.999984741211
+			],
+			"mesh": "res://assets/super-city/landmark_proxies/ParkingGarage3.res",
+			"path": "ParkingGarage3",
+			"proxy_surfaces": 1.0,
+			"proxy_triangles": 20.0,
+			"source_surfaces": 7.0,
+			"source_triangles": 1494.0
+		},
+		{
+			"bounds_position": [
+				-16.0,
+				-0.319999992847443,
+				-57.5999755859375
+			],
+			"bounds_size": [
+				32.0,
+				8.67999935150146,
+				84.5999755859375
+			],
+			"mesh": "res://assets/super-city/landmark_proxies/ParkingGarage4.res",
+			"path": "ParkingGarage4",
+			"proxy_surfaces": 1.0,
+			"proxy_triangles": 20.0,
+			"source_surfaces": 7.0,
+			"source_triangles": 978.0
+		},
+		{
+			"bounds_position": [
+				-28.0,
+				-0.319999992847443,
+				-36.4000015258789
+			],
+			"bounds_size": [
+				56.0,
+				19.4799995422363,
+				63.4000015258789
+			],
+			"mesh": "res://assets/super-city/landmark_proxies/ParkingGarage5.res",
+			"path": "ParkingGarage5",
+			"proxy_surfaces": 1.0,
+			"proxy_triangles": 20.0,
+			"source_surfaces": 7.0,
+			"source_triangles": 2688.0
+		},
+		{
+			"bounds_position": [
+				-28.0,
+				-0.319999992847443,
+				-56.200023651123
+			],
+			"bounds_size": [
+				56.0,
+				33.8800010681152,
+				83.2000274658203
+			],
+			"mesh": "res://assets/super-city/landmark_proxies/ParkingGarage6.res",
+			"path": "ParkingGarage6",
+			"proxy_surfaces": 1.0,
+			"proxy_triangles": 20.0,
+			"source_surfaces": 7.0,
+			"source_triangles": 4216.0
+		},
+		{
+			"bounds_position": [
+				-22.0,
+				-0.319999992847443,
+				-61.0999755859375
+			],
+			"bounds_size": [
+				44.0,
+				12.2799997329712,
+				88.0999755859375
+			],
+			"mesh": "res://assets/super-city/landmark_proxies/ParkingGarage7.res",
+			"path": "ParkingGarage7",
+			"proxy_surfaces": 1.0,
+			"proxy_triangles": 20.0,
+			"source_surfaces": 7.0,
+			"source_triangles": 1580.0
+		},
+		{
+			"bounds_position": [
+				-16.0,
+				-0.319999992847443,
+				-67.5000457763672
+			],
+			"bounds_size": [
+				32.0,
+				15.8800001144409,
+				94.5000457763672
+			],
+			"mesh": "res://assets/super-city/landmark_proxies/ParkingGarage8.res",
+			"path": "ParkingGarage8",
+			"proxy_surfaces": 1.0,
+			"proxy_triangles": 20.0,
+			"source_surfaces": 7.0,
+			"source_triangles": 1494.0
+		},
+		{
+			"bounds_position": [
+				-13.75,
+				0.0,
+				-11.5
+			],
+			"bounds_size": [
+				27.5,
+				6.75229215621948,
+				25.0
+			],
+			"mesh": "res://assets/super-city/landmark_proxies/GasStationHideout.res",
+			"path": "Sidewalks/GasStationHideout",
+			"proxy_surfaces": 1.0,
+			"proxy_triangles": 60.0,
+			"source_surfaces": 7.0,
+			"source_triangles": 2200.0
+		},
+		{
+			"bounds_position": [
+				-17.5,
+				0.0,
+				-13.4449996948242
+			],
+			"bounds_size": [
+				35.0,
+				25.6499996185303,
+				31.5949974060059
+			],
+			"mesh": "res://assets/super-city/landmark_proxies/Bank1.res",
+			"path": "Bank1",
+			"proxy_surfaces": 1,
+			"proxy_triangles": 50,
+			"source_surfaces": 38,
+			"source_triangles": 1010
+		},
+		{
+			"bounds_position": [
+				-20.1499996185303,
+				0.0,
+				-15.2700004577637
+			],
+			"bounds_size": [
+				40.2999992370605,
+				128.0,
+				33.5600051879883
+			],
+			"mesh": "res://assets/super-city/landmark_proxies/Bank2.res",
+			"path": "Bank2",
+			"proxy_surfaces": 1,
+			"proxy_triangles": 70,
+			"source_surfaces": 32,
+			"source_triangles": 1824
+		},
+		{
+			"bounds_position": [
+				-92.3249969482422,
+				-0.109999999403954,
+				-65.3249969482422
+			],
+			"bounds_size": [
+				184.649993896484,
+				78.1100006103516,
+				133.32502746582
+			],
+			"mesh": "res://assets/super-city/landmark_proxies/CityHall.res",
+			"path": "CityHall",
+			"proxy_surfaces": 1,
+			"proxy_triangles": 684,
+			"source_surfaces": 75,
+			"source_triangles": 5298
+		},
+		{
+			"bounds_position": [
+				-17.3999996185303,
+				0.0,
+				-11.3050003051758
+			],
+			"bounds_size": [
+				34.6500015258789,
+				26.875,
+				23.0849990844727
+			],
+			"mesh": "res://assets/super-city/landmark_proxies/Firehouse.res",
+			"path": "Firehouse",
+			"proxy_surfaces": 1,
+			"proxy_triangles": 40,
+			"source_surfaces": 48,
+			"source_triangles": 1448
+		},
+		{
+			"bounds_position": [
+				-18.125,
+				0.0,
+				-12.4499998092651
+			],
+			"bounds_size": [
+				36.25,
+				27.2000007629395,
+				29.9500007629395
+			],
+			"mesh": "res://assets/super-city/landmark_proxies/PoliceStation.res",
+			"path": "PoliceStation",
+			"proxy_surfaces": 1,
+			"proxy_triangles": 40,
+			"source_surfaces": 42,
+			"source_triangles": 1075
+		},
+		{
+			"bounds_position": [
+				-254.0,
+				-3.5,
+				-302.0
+			],
+			"bounds_size": [
+				508.0,
+				6.42444801330566,
+				604.0
+			],
+			"mesh": "res://assets/super-city/landmark_proxies/CentralPark.res",
+			"path": "Landmarks/CentralPark",
+			"proxy_surfaces": 1,
+			"proxy_triangles": 2,
+			"source_surfaces": 452,
+			"source_triangles": 58469
+		}
+	]
+}

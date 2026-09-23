@@ -1,0 +1,79 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="PackedScene" path="res://assets/buildings/parking_garage/parking_garage.tscn" id="1"]
+[ext_resource type="Script" path="res://assets/buildings/parking_garage/parking_garage_test.gd" id="2"]
+
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat"]
+sky_top_color = Color(0.20, 0.38, 0.55, 1)
+sky_horizon_color = Color(0.72, 0.79, 0.83, 1)
+ground_bottom_color = Color(0.24, 0.27, 0.29, 1)
+ground_horizon_color = Color(0.72, 0.79, 0.83, 1)
+
+[sub_resource type="Sky" id="Sky"]
+sky_material = SubResource("SkyMat")
+
+[sub_resource type="Environment" id="Env"]
+background_mode = 2
+sky = SubResource("Sky")
+ambient_light_source = 3
+ambient_light_color = Color(0.73, 0.79, 0.87, 1)
+ambient_light_energy = 0.65
+tonemap_mode = 2
+ssao_enabled = true
+ssao_radius = 2.0
+ssao_intensity = 1.3
+
+[sub_resource type="StandardMaterial3D" id="GroundMat"]
+albedo_color = Color(0.28, 0.32, 0.32, 1)
+roughness = 1.0
+
+[sub_resource type="PlaneMesh" id="GroundMesh"]
+material = SubResource("GroundMat")
+size = Vector2(420, 300)
+
+[sub_resource type="BoxShape3D" id="GroundShape"]
+size = Vector3(420, 1, 300)
+
+[node name="ParkingGarageTest" type="Node3D"]
+script = ExtResource("2")
+
+[node name="Small" parent="." instance=ExtResource("1")]
+position = Vector3(60, 0, 0)
+width_preset = 0
+floors = 3
+
+[node name="Medium" parent="." instance=ExtResource("1")]
+width_preset = 1
+floors = 6
+
+[node name="Large" parent="." instance=ExtResource("1")]
+position = Vector3(-72, 0, 0)
+width_preset = 2
+floors = 10
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Env")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+rotation_degrees = Vector3(-48, 145, 0)
+light_color = Color(1, 0.94, 0.85, 1)
+light_energy = 1.4
+shadow_enabled = true
+directional_shadow_max_distance = 330.0
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+position = Vector3(0, -0.04, 0)
+mesh = SubResource("GroundMesh")
+
+[node name="GroundCollision" type="StaticBody3D" parent="."]
+
+[node name="Shape" type="CollisionShape3D" parent="GroundCollision"]
+position = Vector3(0, -0.54, 0)
+shape = SubResource("GroundShape")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+position = Vector3(100, 90, -170)
+current = true
+fov = 55.0
+near = 0.08
+far = 1000.0

@@ -1,0 +1,17 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="res://assets/buildings/boxing_gym/meshes/upper_window_Glass.res" id="1_agkhy"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/boxing_gym/meshes/upper_window_Steel.res" id="2_3s6ud"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/boxing_gym/meshes/upper_window_Wood.res" id="3_gretn"]
+
+[node name="UpperWindow" type="Node3D" unique_id=832746187]
+metadata/rendered_triangles = 168
+
+[node name="upper_window_Glass" type="MeshInstance3D" parent="." unique_id=1950172745]
+mesh = ExtResource("1_agkhy")
+
+[node name="upper_window_Steel" type="MeshInstance3D" parent="." unique_id=800968449]
+mesh = ExtResource("2_3s6ud")
+
+[node name="upper_window_Wood" type="MeshInstance3D" parent="." unique_id=1978424305]
+mesh = ExtResource("3_gretn")

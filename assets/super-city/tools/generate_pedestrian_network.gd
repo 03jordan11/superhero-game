@@ -1,5 +1,7 @@
 extends "res://assets/super-city/tools/generate_super_city.gd"
 ## Offline pedestrian authoring only. Never repacks a city or its geometry.
+## Legacy layout generator/base utilities. For the current saved city, run
+## bake_authored_pedestrians.gd instead; layout.json no longer matches its roads.
 const DEST = "res://assets/super-city/pedestrians/"
 var surfaces: Array[Rect2] = []
 var kinds: Array[String] = []

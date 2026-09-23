@@ -1,0 +1,33 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/catwalk_stairs_Steel.res" id="1_u2msh"]
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/catwalk_stairs_SteelEdge.res" id="2_nxfcp"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_blflo"]
+points = PackedVector3Array(-11, 0, -1.2, -9.2, 0, -1.2, -11, 0, -7.5, -9.2, 0, -7.5, -11, 3.6, -7.5, -9.2, 3.6, -7.5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fah1g"]
+points = PackedVector3Array(-11.12, 0, -1.2, -11.12, 1.1, -1.2, -11.12, 3.6, -7.5, -11.12, 4.7, -7.5, -10.98, 0, -1.2, -10.98, 1.1, -1.2, -10.98, 3.6, -7.5, -10.98, 4.7, -7.5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xp8yy"]
+points = PackedVector3Array(-9.22, 0, -1.2, -9.22, 1.1, -1.2, -9.22, 3.6, -7.5, -9.22, 4.7, -7.5, -9.08, 0, -1.2, -9.08, 1.1, -1.2, -9.08, 3.6, -7.5, -9.08, 4.7, -7.5)
+
+[node name="CatwalkStairs" type="Node3D" unique_id=1638180319]
+metadata/rendered_triangles = 1120
+
+[node name="catwalk_stairs_Steel" type="MeshInstance3D" parent="." unique_id=700743753]
+mesh = ExtResource("1_u2msh")
+
+[node name="catwalk_stairs_SteelEdge" type="MeshInstance3D" parent="." unique_id=1314109123]
+mesh = ExtResource("2_nxfcp")
+
+[node name="Collision" type="StaticBody3D" parent="." unique_id=1596869538]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision" unique_id=100470290]
+shape = SubResource("ConvexPolygonShape3D_blflo")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Collision" unique_id=362610909]
+shape = SubResource("ConvexPolygonShape3D_fah1g")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Collision" unique_id=139105133]
+shape = SubResource("ConvexPolygonShape3D_xp8yy")

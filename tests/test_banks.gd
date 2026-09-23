@@ -28,30 +28,31 @@ func run() -> void:
 				assert(mesh.get_active_material(surface) != null)
 				triangles += mesh.mesh.surface_get_array_index_len(surface) / 3
 		assert(triangles < 10000, "Complete bank exceeds hard POI budget")
-		assert(triangles == int(manifest.total_triangles), "Imported geometry disagrees with manifest")
+		assert(triangles == int(manifest.base_triangles), "Building geometry preserved after removing bench props")
 		var lo: Array = manifest.bounds_min_blender
 		var hi: Array = manifest.bounds_max_blender
 		assert(absf(bounds.size.x - (hi[0] - lo[0])) < .05)
-		assert(absf(bounds.size.z - (hi[1] - lo[1])) < .05)
+		# Original manifest depth included the now-removed sidewalk benches.
+		assert(absf(bounds.size.z - (31.595 if bank_name == "bank1" else 33.56)) < .05)
 		assert(absf(bounds.end.y - hi[2]) < .05)
 		assert(hall._night_materials.size() == (2 if bank_name == "bank1" else 1))
 		var clock: Node = preview.get_node("DayNightCycle")
 		clock.set_time(0)
 		for i in hall._night_materials.size():
-			assert(hall._night_materials[i].emission_energy_multiplier > 0)
-			assert(is_zero_approx(independent._night_materials[i].emission_energy_multiplier))
+			assert(_energy(hall._night_materials[i]) > 0)
+			assert(is_zero_approx(_energy(independent._night_materials[i])))
 			assert(hall._night_materials[i] != independent._night_materials[i])
 		var late: Node3D = load(folder + bank_name + ".tscn").instantiate()
 		late.position.x = 1000
 		root.add_child(late)
 		await process_frame
 		await process_frame
-		for mat: StandardMaterial3D in late._night_materials:
-			assert(mat.emission_energy_multiplier > 0, "Night spawn did not synchronize")
+		for mat: Material in late._night_materials:
+			assert(_energy(mat) > 0, "Night spawn did not synchronize")
 		clock.set_time(13)
 		for i in hall._night_materials.size():
-			assert(is_zero_approx(hall._night_materials[i].emission_energy_multiplier))
-			assert(is_zero_approx(late._night_materials[i].emission_energy_multiplier))
+			assert(is_zero_approx(_energy(hall._night_materials[i])))
+			assert(is_zero_approx(_energy(late._night_materials[i])))
 		var mask := (load(folder + bank_name + "_windows_emission.png") as Texture2D).get_image()
 		for row in 8:
 			for col in 8:
@@ -68,15 +69,7 @@ func run() -> void:
 		assert(not ray(space, Vector3(0, 1.5, door_z + 3), Vector3(0, 1.5, door_z - 1)).is_empty(), "Closed entry lacks collision")
 		assert(ray(space, Vector3(0, 4, 25), Vector3(0, -1, 25)).is_empty(), "POI includes unwanted outer ground")
 		var props := hall.get_node("Props")
-		assert(props.get_child_count() == 2)
-		var bench: Node3D = props.get_child(0)
-		assert(bench.scene_file_path == folder + "props/bench.tscn")
-		var position := bench.global_position
-		assert(ray(space, position + Vector3.UP * 2, position - Vector3.UP).get("collider") == bench.get_node("Collision"))
-		bench.position.x += 70
-		await physics_frame
-		await physics_frame
-		assert(ray(space, position + Vector3.UP * 2, position - Vector3.UP).is_empty(), "Moving bench left ghost collision")
+		assert(props.get_child_count() == 0, "Removed benches leave no mesh or collision nodes")
 		print("BANK_TEST_PASS: %s = %d triangles; scale, materials, textured sills, collision, props and day/night lighting" % [bank_name, triangles])
 		late.free()
 		independent.free()
@@ -85,3 +78,6 @@ func run() -> void:
 
 func ray(space: PhysicsDirectSpaceState3D, start: Vector3, finish: Vector3) -> Dictionary:
 	return space.intersect_ray(PhysicsRayQueryParameters3D.create(start, finish))
+
+func _energy(material: Material) -> float:
+	return material.get_shader_parameter("emission_energy") if material is ShaderMaterial else material.emission_energy_multiplier

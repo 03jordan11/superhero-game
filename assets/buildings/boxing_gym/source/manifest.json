@@ -1,0 +1,423 @@
+{
+  "materials": {
+    "Brick": {
+      "color": "FFFFFF",
+      "texture": "textures/muted_brick.png",
+      "metallic": 0,
+      "roughness": 0.85,
+      "emission": 0
+    },
+    "Concrete": {
+      "color": "FFFFFF",
+      "texture": "textures/weathered_concrete.png",
+      "metallic": 0,
+      "roughness": 0.85,
+      "emission": 0
+    },
+    "Roof": {
+      "color": "FFFFFF",
+      "texture": "textures/roof_membrane.png",
+      "metallic": 0,
+      "roughness": 0.85,
+      "emission": 0
+    },
+    "Wood": {
+      "color": "FFFFFF",
+      "texture": "textures/aged_boards.png",
+      "metallic": 0,
+      "roughness": 0.85,
+      "emission": 0
+    },
+    "Plinth": {
+      "color": "465B54",
+      "texture": "",
+      "metallic": 0,
+      "roughness": 0.85,
+      "emission": 0
+    },
+    "Steel": {
+      "color": "303946",
+      "texture": "",
+      "metallic": 0.5,
+      "roughness": 0.6,
+      "emission": 0
+    },
+    "Trim": {
+      "color": "677477",
+      "texture": "",
+      "metallic": 0.25,
+      "roughness": 0.65,
+      "emission": 0
+    },
+    "Glass": {
+      "color": "263644",
+      "texture": "",
+      "metallic": 0.25,
+      "roughness": 0.3,
+      "emission": 0
+    },
+    "GlassHighlight": {
+      "color": "415462",
+      "texture": "",
+      "metallic": 0.25,
+      "roughness": 0.34,
+      "emission": 0
+    },
+    "Sign": {
+      "color": "4B5867",
+      "texture": "",
+      "metallic": 0,
+      "roughness": 0.85,
+      "emission": 0
+    },
+    "Bronze": {
+      "color": "B68B59",
+      "texture": "",
+      "metallic": 0.15,
+      "roughness": 0.7,
+      "emission": 0
+    },
+    "Lamp": {
+      "color": "E4C58A",
+      "texture": "",
+      "metallic": 0,
+      "roughness": 0.5,
+      "emission": 1.3
+    }
+  },
+  "parts": {
+    "shell": {
+      "collision": [
+        {
+          "center": [
+            0,
+            4.1,
+            0
+          ],
+          "size": [
+            24.8,
+            8.2,
+            22.8
+          ]
+        },
+        {
+          "center": [
+            -12.29,
+            8.5,
+            0
+          ],
+          "size": [
+            0.22,
+            0.6,
+            22.8
+          ]
+        },
+        {
+          "center": [
+            12.29,
+            8.5,
+            0
+          ],
+          "size": [
+            0.22,
+            0.6,
+            22.8
+          ]
+        },
+        {
+          "center": [
+            0,
+            8.5,
+            -11.29
+          ],
+          "size": [
+            24.8,
+            0.6,
+            0.22
+          ]
+        },
+        {
+          "center": [
+            0,
+            8.5,
+            11.29
+          ],
+          "size": [
+            24.8,
+            0.6,
+            0.22
+          ]
+        }
+      ]
+    },
+    "entrance": {
+      "collision": [
+        {
+          "center": [
+            0,
+            0.035,
+            0.17
+          ],
+          "size": [
+            3.65,
+            0.07,
+            0.5
+          ]
+        }
+      ]
+    },
+    "front_window": {
+      "collision": []
+    },
+    "upper_window": {
+      "collision": []
+    },
+    "sign_panel": {
+      "collision": []
+    },
+    "canopy": {
+      "collision": [
+        {
+          "center": [
+            0,
+            0,
+            0.6
+          ],
+          "size": [
+            4.25,
+            0.14,
+            1.45
+          ]
+        }
+      ]
+    },
+    "rear_door": {
+      "collision": []
+    },
+    "roof_unit": {
+      "collision": [
+        {
+          "center": [
+            -0.9,
+            0.13,
+            0
+          ],
+          "size": [
+            0.14,
+            0.26,
+            1.9
+          ]
+        },
+        {
+          "center": [
+            0.9,
+            0.13,
+            0
+          ],
+          "size": [
+            0.14,
+            0.26,
+            1.9
+          ]
+        },
+        {
+          "center": [
+            0,
+            0.63,
+            0
+          ],
+          "size": [
+            2.3,
+            0.8,
+            1.7
+          ]
+        }
+      ]
+    },
+    "wall_lamp": {
+      "collision": []
+    }
+  },
+  "placements": [
+    {
+      "kind": "shell",
+      "name": "BuildingShell",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "yaw": 0
+    },
+    {
+      "kind": "entrance",
+      "name": "FrontDoor",
+      "position": [
+        0,
+        0,
+        11.48
+      ],
+      "yaw": 0
+    },
+    {
+      "kind": "front_window",
+      "name": "FrontWindowLeft",
+      "position": [
+        -6.9,
+        1.82,
+        11.47
+      ],
+      "yaw": 0
+    },
+    {
+      "kind": "front_window",
+      "name": "FrontWindowRight",
+      "position": [
+        6.9,
+        1.82,
+        11.47
+      ],
+      "yaw": 0
+    },
+    {
+      "kind": "sign_panel",
+      "name": "BlankGymSign",
+      "position": [
+        0,
+        5.03,
+        11.65
+      ],
+      "yaw": 0
+    },
+    {
+      "kind": "canopy",
+      "name": "EntryCanopy",
+      "position": [
+        0,
+        3.46,
+        11.48
+      ],
+      "yaw": 0
+    },
+    {
+      "kind": "upper_window",
+      "name": "UpperWindow_-1_0",
+      "position": [
+        -12.43,
+        5.2,
+        -6
+      ],
+      "yaw": -1.5707963267948966
+    },
+    {
+      "kind": "upper_window",
+      "name": "UpperWindow_-1_1",
+      "position": [
+        -12.43,
+        5.2,
+        0
+      ],
+      "yaw": -1.5707963267948966
+    },
+    {
+      "kind": "upper_window",
+      "name": "UpperWindow_-1_2",
+      "position": [
+        -12.43,
+        5.2,
+        6
+      ],
+      "yaw": -1.5707963267948966
+    },
+    {
+      "kind": "upper_window",
+      "name": "UpperWindow_1_0",
+      "position": [
+        12.43,
+        5.2,
+        -6
+      ],
+      "yaw": 1.5707963267948966
+    },
+    {
+      "kind": "upper_window",
+      "name": "UpperWindow_1_1",
+      "position": [
+        12.43,
+        5.2,
+        0
+      ],
+      "yaw": 1.5707963267948966
+    },
+    {
+      "kind": "upper_window",
+      "name": "UpperWindow_1_2",
+      "position": [
+        12.43,
+        5.2,
+        6
+      ],
+      "yaw": 1.5707963267948966
+    },
+    {
+      "kind": "rear_door",
+      "name": "RearDoor",
+      "position": [
+        -8.65,
+        0,
+        -11.47
+      ],
+      "yaw": 3.141592653589793
+    },
+    {
+      "kind": "roof_unit",
+      "name": "RoofUnit1",
+      "position": [
+        -5,
+        8.21,
+        -4
+      ],
+      "yaw": 0
+    },
+    {
+      "kind": "roof_unit",
+      "name": "RoofUnit2",
+      "position": [
+        5,
+        8.21,
+        -4
+      ],
+      "yaw": 0
+    },
+    {
+      "kind": "wall_lamp",
+      "name": "EntranceLamp1",
+      "position": [
+        -2.08,
+        2.37,
+        11.65
+      ],
+      "yaw": 0
+    },
+    {
+      "kind": "wall_lamp",
+      "name": "EntranceLamp2",
+      "position": [
+        2.08,
+        2.37,
+        11.65
+      ],
+      "yaw": 0
+    },
+    {
+      "kind": "wall_lamp",
+      "name": "RearLamp",
+      "position": [
+        -8.65,
+        3.18,
+        -11.55
+      ],
+      "yaw": 3.141592653589793
+    }
+  ]
+}

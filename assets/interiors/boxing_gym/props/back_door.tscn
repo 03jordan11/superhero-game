@@ -1,0 +1,30 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/back_door_Blue.res" id="1_26v5v"]
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/back_door_Steel.res" id="2_rw6hj"]
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/back_door_SteelEdge.res" id="3_cipsr"]
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/back_door_WindowGlass.res" id="4_658a5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cvhbb"]
+size = Vector3(1.35, 2.64, 0.12)
+
+[node name="BackDoor" type="Node3D" unique_id=430766795]
+metadata/rendered_triangles = 96
+
+[node name="back_door_Blue" type="MeshInstance3D" parent="." unique_id=205683578]
+mesh = ExtResource("1_26v5v")
+
+[node name="back_door_Steel" type="MeshInstance3D" parent="." unique_id=867185983]
+mesh = ExtResource("2_rw6hj")
+
+[node name="back_door_SteelEdge" type="MeshInstance3D" parent="." unique_id=456906145]
+mesh = ExtResource("3_cipsr")
+
+[node name="back_door_WindowGlass" type="MeshInstance3D" parent="." unique_id=2131837360]
+mesh = ExtResource("4_658a5")
+
+[node name="Collision" type="StaticBody3D" parent="." unique_id=555334181]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision" unique_id=806486552]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.32, 0)
+shape = SubResource("BoxShape3D_cvhbb")

@@ -9,8 +9,7 @@ size = Vector3(9.399757, 2.615361, 6.4000607)
 metadata/source = "Blender budget variant of the stock hospital HVAC: hidden caps removed, top panels flattened"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=104091257]
-visibility_range_end = 1500.0
-visibility_range_end_margin = 60.0
+visibility_range_end = 100.0
 mesh = ExtResource("1_buqp6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=682508889]

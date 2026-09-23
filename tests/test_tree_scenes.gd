@@ -12,19 +12,30 @@ func _initialize() -> void:
 
 func run() -> void:
 	var baseline: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://artifacts/central_park/tree_conversion_baseline.json"))
+	# Optional scene names allow regional authoring checks without unrelated park fixtures.
+	var selected := OS.get_cmdline_user_args()
+	if not selected.is_empty():
+		for file in baseline.keys():
+			if file not in selected: baseline.erase(file)
+		assert(not baseline.is_empty(), "No matching tree scenes selected")
 	var pruning: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://assets/mountain-river/report.json"))
+	var boundary: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://assets/trees/forest_boundary_report.json"))
 	var total := 0
 	var saved_counts := {}
 	for file in baseline:
 		var scene: Node = load("res://scenes/%s.tscn" % file).instantiate()
 		var found := TREES.trees(scene)
 		var removed: Array = pruning.removed_trees.get(file,[]).duplicate()
+		removed.append_array(boundary.removed_trees.get(file,[]))
 		if file == "city_life":
 			var thinning: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://assets/trees/highway_thinning.json"))
 			removed.append_array(thinning.removed)
+			var transition: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://assets/trees/forest_transition.json"))
+			removed.append_array(transition.removed)
 		# Include manual deletions made after the original tree conversion, before this task.
 		var before_count: int = pruning.before_tree_counts[file]
 		saved_counts[file]=before_count-removed.size()
+		if boundary.tree_counts.has(file): saved_counts[file]=int(boundary.tree_counts[file].after)
 		check(found.size()==saved_counts[file],"Tree count matches saved edits and mountain clearing: "+file)
 		for row in removed: check(not scene.has_node(row.path),"Pruned mountain tree remains deleted")
 		var expected := {}

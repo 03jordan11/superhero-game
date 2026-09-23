@@ -1,0 +1,22 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/ceiling_Concrete.res" id="1_dqg2g"]
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/ceiling_SteelEdge.res" id="2_6drjb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hbk7i"]
+size = Vector3(24.7, 0.2, 22.7)
+
+[node name="Ceiling" type="Node3D" unique_id=143858859]
+metadata/rendered_triangles = 156
+
+[node name="ceiling_Concrete" type="MeshInstance3D" parent="." unique_id=1789048451]
+mesh = ExtResource("1_dqg2g")
+
+[node name="ceiling_SteelEdge" type="MeshInstance3D" parent="." unique_id=1245131364]
+mesh = ExtResource("2_6drjb")
+
+[node name="Collision" type="StaticBody3D" parent="." unique_id=257181030]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision" unique_id=930230921]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.1, 0)
+shape = SubResource("BoxShape3D_hbk7i")

@@ -75,12 +75,7 @@ func run() -> void:
 			for p in connection.curve.get_baked_points():
 				for poi in layout.landmarks: check(not rect_of(poi.rect).has_point(Vector2(p.x,p.z)),"Vehicle turn enters "+poi.node)
 	check(connection_count>500,"Traffic junction network remains populated")
-	var junctions: Array=[]
-	for road in layout.roads:
-		if road.kind=="junction":junctions.append(road)
-	for control in city.get_node("CityLife/TrafficControls").get_children():
-		var id:=int(control.get_meta("junction"))
-		check(id>=0 and id<junctions.size(),"Traffic control retains valid junction ID")
+	check(not city.has_node("CityLife/TrafficControls"),"Removed traffic-control props stay absent")
 	# Only the integrated hospital should own a rescue drop-off in the live city.
 	check(get_nodes_in_group(&"hospital_rescue_zone").size()==1,"Exactly one active hospital rescue destination")
 	var main: Node3D=load("res://scenes/main.tscn").instantiate()

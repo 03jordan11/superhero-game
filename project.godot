@@ -25,6 +25,7 @@ DebugManager="*uid://dvrevw5sttcbg"
 SaveManager="*res://scripts/save_manager.gd"
 GameSettings="*res://scripts/game_settings.gd"
 CityWindows="*res://scripts/city_window_lighting.gd"
+LoadingScreen="*res://scenes/ui/loading_screen.tscn"
 
 [display]
 

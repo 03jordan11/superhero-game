@@ -1,25 +1,18 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://74t73m8jns6l"]
 
-[ext_resource type="Script" path="res://scripts/mountain_river.gd" id="1_4vgpp"]
-[ext_resource type="Shader" path="res://assets/waterfront/water.gdshader" id="2_d5ev2"]
+[ext_resource type="Script" uid="uid://c1oflr7j3r6bj" path="res://scripts/mountain_river.gd" id="1_4vgpp"]
+[ext_resource type="Shader" uid="uid://bh7x1r2ojsm1g" path="res://assets/waterfront/water.gdshader" id="2_d5ev2"]
 [ext_resource type="ArrayMesh" path="res://assets/mountain-river/terminated/Water.res" id="3_cmpfa"]
-[ext_resource type="ArrayMesh" path="res://assets/mountain-river/terminated/Rock.res" id="4_436v4"]
-[ext_resource type="Shape3D" path="res://assets/mountain-river/terminated/Rock_collision.res" id="5_a0dmr"]
 [ext_resource type="ArrayMesh" path="res://assets/mountain-river/terminated/Bed.res" id="6_2qrxt"]
 [ext_resource type="Shape3D" path="res://assets/mountain-river/terminated/Bed_collision.res" id="7_ybymn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uacrf"]
 render_priority = 0
 shader = ExtResource("2_d5ev2")
-shader_parameter/elapsed = null
-shader_parameter/night_amount = null
-shader_parameter/wave_strength = null
+shader_parameter/elapsed = 0.0
+shader_parameter/night_amount = 0.0
+shader_parameter/wave_strength = 1.0
 shader_parameter/river = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ybymn"]
-vertex_color_use_as_albedo = true
-vertex_color_is_srgb = true
-roughness = 0.87
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3r5jo"]
 albedo_color = Color(0.2627451, 0.3019608, 0.25882354, 1)
@@ -31,15 +24,6 @@ script = ExtResource("1_4vgpp")
 [node name="Water" type="MeshInstance3D" parent="." unique_id=1907044209]
 material_override = SubResource("ShaderMaterial_uacrf")
 mesh = ExtResource("3_cmpfa")
-
-[node name="Rock" type="MeshInstance3D" parent="." unique_id=1156739770]
-material_override = SubResource("StandardMaterial3D_ybymn")
-mesh = ExtResource("4_436v4")
-
-[node name="Solid" type="StaticBody3D" parent="Rock" unique_id=1630661852]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Rock/Solid" unique_id=870579107]
-shape = ExtResource("5_a0dmr")
 
 [node name="Bed" type="MeshInstance3D" parent="." unique_id=233661225]
 material_override = SubResource("StandardMaterial3D_3r5jo")

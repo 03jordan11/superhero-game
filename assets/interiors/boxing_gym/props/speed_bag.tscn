@@ -1,0 +1,41 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/speed_bag_Leather.res" id="1_ihqcj"]
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/speed_bag_Steel.res" id="2_nvj6x"]
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/speed_bag_SteelEdge.res" id="3_cswnu"]
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/speed_bag_Wood.res" id="4_i7gjv"]
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/speed_bag_WoodLight.res" id="5_xo3au"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_th1mq"]
+size = Vector3(0.9, 0.85, 0.12)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_drpnj"]
+size = Vector3(1, 0.45, 0.95)
+
+[node name="SpeedBag" type="Node3D" unique_id=272468509]
+metadata/rendered_triangles = 636
+
+[node name="speed_bag_Leather" type="MeshInstance3D" parent="." unique_id=1561569222]
+mesh = ExtResource("1_ihqcj")
+
+[node name="speed_bag_Steel" type="MeshInstance3D" parent="." unique_id=573408774]
+mesh = ExtResource("2_nvj6x")
+
+[node name="speed_bag_SteelEdge" type="MeshInstance3D" parent="." unique_id=887591358]
+mesh = ExtResource("3_cswnu")
+
+[node name="speed_bag_Wood" type="MeshInstance3D" parent="." unique_id=1765283292]
+mesh = ExtResource("4_i7gjv")
+
+[node name="speed_bag_WoodLight" type="MeshInstance3D" parent="." unique_id=1049173921]
+mesh = ExtResource("5_xo3au")
+
+[node name="Collision" type="StaticBody3D" parent="." unique_id=2060873885]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision" unique_id=149910887]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, -0.42)
+shape = SubResource("BoxShape3D_th1mq")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Collision" unique_id=1182434216]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4, 0.05)
+shape = SubResource("BoxShape3D_drpnj")

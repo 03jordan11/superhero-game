@@ -1,0 +1,36 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/front_wall_Plaster.res" id="1_l38y7"]
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/front_wall_Teal.res" id="2_xkl3a"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1sdhr"]
+size = Vector3(10.2, 8, 0.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sar4i"]
+size = Vector3(10.2, 8, 0.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_unm4s"]
+size = Vector3(3.6, 4.8, 0.4)
+
+[node name="FrontWall" type="Node3D" unique_id=1966695108]
+metadata/rendered_triangles = 60
+
+[node name="front_wall_Plaster" type="MeshInstance3D" parent="." unique_id=971873466]
+mesh = ExtResource("1_l38y7")
+
+[node name="front_wall_Teal" type="MeshInstance3D" parent="." unique_id=1578437387]
+mesh = ExtResource("2_xkl3a")
+
+[node name="Collision" type="StaticBody3D" parent="." unique_id=294713463]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision" unique_id=1770580637]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.9, 4, 11.2)
+shape = SubResource("BoxShape3D_1sdhr")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Collision" unique_id=1025333081]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.9, 4, 11.2)
+shape = SubResource("BoxShape3D_sar4i")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Collision" unique_id=1396340259]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.6, 11.2)
+shape = SubResource("BoxShape3D_unm4s")

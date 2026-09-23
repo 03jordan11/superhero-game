@@ -76,22 +76,29 @@ func start_saved_game() -> bool:
 	var save_data := _read_save_data()
 	if save_data.is_empty():
 		return false
-	return _start_game_in_hideout(save_data)
+	return await _start_game_in_hideout(save_data)
 
 
 func start_new_game() -> bool:
-	return _start_game_in_hideout({})
+	return await _start_game_in_hideout({})
 
 
 func _start_game_in_hideout(save_data: Dictionary) -> bool:
 	if _get_player() != null:
 		return false
-	var packed := load("res://scenes/main.tscn") as PackedScene
-	if packed == null: return false
+	var loading := get_node("/root/LoadingScreen")
+	if not loading.begin("STARTING NEW GAME" if save_data.is_empty() else "LOADING SAVED GAME"):
+		return false
+	var packed: PackedScene = await loading.load_scene("res://scenes/main.tscn", 0, 60)
+	if packed == null:
+		await loading.finish(false)
+		return false
+	await loading.checkpoint(65, "Preparing the city…")
 	var city := packed.instantiate()
 	var player := city.get_node_or_null("Player") as PlayerCharacter
 	if player == null:
 		city.free()
+		await loading.finish(false)
 		return false
 	var menu := get_tree().current_scene
 	# Restore the seed before the city initializes its window materials.
@@ -99,6 +106,7 @@ func _start_game_in_hideout(save_data: Dictionary) -> bool:
 		begin_new_game()
 	else:
 		get_node("/root/CityWindows").restore_data(_get_dictionary(_get_dictionary(save_data, "world"), "window_lighting"))
+	await loading.checkpoint(70, "Preparing your hero…")
 	get_tree().root.add_child(city)
 	get_tree().current_scene = city
 	if not save_data.is_empty():
@@ -109,14 +117,15 @@ func _start_game_in_hideout(save_data: Dictionary) -> bool:
 		travel = preload("res://scripts/hideout_travel.gd").new()
 		travel.name = "HideoutTravel"
 		get_tree().root.add_child(travel)
-	if not travel.start_in_hideout(player):
+	if not await travel.start_in_hideout(player):
 		get_tree().current_scene = menu
 		city.free()
 		if new_travel: travel.free()
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		await loading.finish(false)
 		return false
-	get_tree().paused = false
 	if menu != null: menu.queue_free()
+	await loading.finish(true)
 	return true
 
 

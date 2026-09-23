@@ -1,0 +1,790 @@
+{
+	"assignment": "Whole building by authored visible mesh-bounds centre; original paths preserved",
+	"cell_size_m": 250.0,
+	"chunks": [
+		{
+			"bounds_position": [
+				-1501.44,
+				0.0,
+				-729.4
+			],
+			"bounds_size": [
+				261.59,
+				26.4,
+				240.732
+			],
+			"cell": [
+				-1500.0,
+				-730.0,
+				250.0,
+				250.0
+			],
+			"centre": [
+				-1375.0,
+				0.0,
+				-605.0
+			],
+			"index": 1,
+			"members": [
+				"Districts/WestVillage/WestVillage_0028",
+				"Districts/WestVillage/WestVillage_0029",
+				"Districts/WestVillage/WestVillage_0030",
+				"Districts/WestVillage/WestVillage_0031",
+				"Districts/WestVillage/WestVillage_0032",
+				"Districts/WestVillage/WestVillage_0035",
+				"Districts/WestVillage/WestVillage_0038",
+				"Districts/WestVillage/WestVillage_0039",
+				"Districts/WestVillage/WestVillage_0041",
+				"Districts/WestVillage/WestVillage_0043",
+				"Districts/WestVillage/WestVillage_0044",
+				"Districts/WestVillage/WestVillage_0045",
+				"Districts/WestVillage/WestVillage_0046",
+				"Districts/WestVillage/WestVillage_0047",
+				"Districts/WestVillage/WestVillage_0048",
+				"Districts/WestVillage/WestVillage_0049",
+				"Districts/WestVillage/WestVillage_0050",
+				"Districts/WestVillage/WestVillage_0051",
+				"Districts/WestVillage/WestVillage_0052",
+				"Districts/WestVillage/WestVillage_0053",
+				"Districts/WestVillage/WestVillage_0054",
+				"Districts/WestVillage/WestVillage_0055",
+				"Districts/WestVillage/WestVillage_0056",
+				"Districts/WestVillage/WestVillage_0057",
+				"Districts/WestVillage/WestVillage_0058",
+				"Districts/WestVillage/WestVillage_0059",
+				"Districts/WestVillage/WestVillage_0060",
+				"Districts/WestVillage/WestVillage_0061",
+				"Districts/WestVillage/WestVillage_0062",
+				"Districts/WestVillage/WestVillage_0063",
+				"Districts/WestVillage/WestVillage_0064",
+				"Districts/WestVillage/WestVillage_0065",
+				"Districts/WestVillage/WestVillage_0066",
+				"Districts/WestVillage/WestVillage_0067",
+				"Districts/WestVillage/WestVillage_0068",
+				"Districts/WestVillage/WestVillage_0069",
+				"Districts/WestVillage/WestVillage_0070",
+				"Districts/WestVillage/WestVillage_0236",
+				"Districts/WestVillage/WestVillage_0245",
+				"Districts/WestVillage/WestVillage_0246",
+				"Districts/WestVillage/WestVillage_0257",
+				"Districts/WestVillage/WestVillage_0264",
+				"Districts/WestVillage/WestVillage_0270",
+				"Districts/WestVillage/WestVillage_0271",
+				"Districts/WestVillage/WestVillage_0272",
+				"Sidewalks/GasStationHideout"
+			],
+			"name": "Left_01",
+			"side": "Left"
+		},
+		{
+			"bounds_position": [
+				-1239.85,
+				0.0,
+				-736.45
+			],
+			"bounds_size": [
+				230.3,
+				23.45,
+				239.45
+			],
+			"cell": [
+				-1250.0,
+				-730.0,
+				250.0,
+				250.0
+			],
+			"centre": [
+				-1125.0,
+				0.0,
+				-605.0
+			],
+			"index": 2,
+			"members": [
+				"Districts/WestVillage/WestVillage_0237",
+				"Districts/WestVillage/WestVillage_0238",
+				"Districts/WestVillage/WestVillage_0239",
+				"Districts/WestVillage/WestVillage_0240",
+				"Districts/WestVillage/WestVillage_0241",
+				"Districts/WestVillage/WestVillage_0242",
+				"Districts/WestVillage/WestVillage_0252",
+				"Districts/WestVillage/WestVillage_0253",
+				"Districts/WestVillage/WestVillage_0258",
+				"Districts/WestVillage/WestVillage_0259",
+				"Districts/WestVillage/WestVillage_0260",
+				"Districts/WestVillage/WestVillage_0261",
+				"Districts/WestVillage/WestVillage_0262",
+				"Districts/WestVillage/WestVillage_0263",
+				"Districts/WestVillage/WestVillage_0265",
+				"Districts/WestVillage/WestVillage_0266",
+				"Districts/WestVillage/WestVillage_0267",
+				"Districts/WestVillage/WestVillage_0268",
+				"Districts/WestVillage/WestVillage_0269",
+				"Districts/WestVillage/WestVillage_0273",
+				"Districts/WestVillage/WestVillage_0274",
+				"Districts/WestVillage/WestVillage_0275",
+				"Districts/WestVillage/WestVillage_0443",
+				"Districts/WestVillage/WestVillage_0444",
+				"Districts/WestVillage/WestVillage_0445",
+				"Districts/WestVillage/WestVillage_0450",
+				"Districts/WestVillage/WestVillage_0451",
+				"Districts/WestVillage/WestVillage_0457",
+				"Districts/WestVillage/WestVillage_0458",
+				"Districts/WestVillage/WestVillage_0459",
+				"Districts/WestVillage/WestVillage_0462",
+				"Districts/WestVillage/WestVillage_0463",
+				"Districts/WestVillage/WestVillage_0464",
+				"Districts/WestVillage/WestVillage_0468",
+				"Districts/WestVillage/WestVillage_0469",
+				"Districts/WestVillage/WestVillage_0470",
+				"Districts/WestVillage/WestVillage_0471",
+				"Districts/WestVillage/WestVillage_0476",
+				"Districts/WestVillage/WestVillage_0477",
+				"Districts/WestVillage/WestVillage_0478"
+			],
+			"name": "Left_02",
+			"side": "Left"
+		},
+		{
+			"bounds_position": [
+				-1004.525,
+				0.0,
+				-731.7
+			],
+			"bounds_size": [
+				243.525,
+				69.45,
+				234.7
+			],
+			"cell": [
+				-1000.0,
+				-730.0,
+				250.0,
+				250.0
+			],
+			"centre": [
+				-875.0,
+				0.0,
+				-605.0
+			],
+			"index": 3,
+			"members": [
+				"Districts/NorthHeights/NorthHeights_0636",
+				"Districts/NorthHeights/NorthHeights_0637",
+				"Districts/NorthHeights/NorthHeights_0638",
+				"Districts/NorthHeights/NorthHeights_0640",
+				"Districts/NorthHeights/NorthHeights_0641",
+				"Districts/NorthHeights/NorthHeights_0643",
+				"Districts/NorthHeights/NorthHeights_0644",
+				"Districts/NorthHeights/NorthHeights_0646",
+				"Districts/NorthHeights/NorthHeights_0648",
+				"Districts/NorthHeights/NorthHeights_0649",
+				"Districts/NorthHeights/NorthHeights_0650",
+				"Districts/NorthHeights/NorthHeights_0651",
+				"Districts/NorthHeights/NorthHeights_0652",
+				"Districts/NorthHeights/NorthHeights_0653",
+				"Districts/NorthHeights/NorthHeights_0654",
+				"Districts/NorthHeights/NorthHeights_0655",
+				"Districts/NorthHeights/NorthHeights_0656",
+				"Districts/NorthHeights/NorthHeights_0657",
+				"Districts/NorthHeights/NorthHeights_0658",
+				"Districts/NorthHeights/NorthHeights_0659",
+				"Districts/NorthHeights/NorthHeights_0660",
+				"Districts/NorthHeights/NorthHeights_0661",
+				"Districts/NorthHeights/NorthHeights_0662",
+				"Districts/WestVillage/WestVillage_0446",
+				"Districts/WestVillage/WestVillage_0447",
+				"Districts/WestVillage/WestVillage_0448",
+				"Districts/WestVillage/WestVillage_0454",
+				"Districts/WestVillage/WestVillage_0455",
+				"Districts/WestVillage/WestVillage_0456",
+				"Districts/WestVillage/WestVillage_0460",
+				"Districts/WestVillage/WestVillage_0461",
+				"Districts/WestVillage/WestVillage_0465",
+				"Districts/WestVillage/WestVillage_0466",
+				"Districts/WestVillage/WestVillage_0467",
+				"Districts/WestVillage/WestVillage_0472",
+				"Districts/WestVillage/WestVillage_0473",
+				"Districts/WestVillage/WestVillage_0474",
+				"Districts/WestVillage/WestVillage_0475",
+				"Districts/WestVillage/WestVillage_0479",
+				"Districts/WestVillage/WestVillage_0480"
+			],
+			"name": "Left_03",
+			"side": "Left"
+		},
+		{
+			"bounds_position": [
+				-719.0,
+				0.0,
+				-736.2
+			],
+			"bounds_size": [
+				226.35,
+				69.45,
+				239.2
+			],
+			"cell": [
+				-750.0,
+				-730.0,
+				250.0,
+				250.0
+			],
+			"centre": [
+				-625.0,
+				0.0,
+				-605.0
+			],
+			"index": 4,
+			"members": [
+				"Districts/NorthHeights/NorthHeights_0763",
+				"Districts/NorthHeights/NorthHeights_0764",
+				"Districts/NorthHeights/NorthHeights_0765",
+				"Districts/NorthHeights/NorthHeights_0767",
+				"Districts/NorthHeights/NorthHeights_0769",
+				"Districts/NorthHeights/NorthHeights_0771",
+				"Districts/NorthHeights/NorthHeights_0773",
+				"Districts/NorthHeights/NorthHeights_0774",
+				"Districts/NorthHeights/NorthHeights_0775",
+				"Districts/NorthHeights/NorthHeights_0776",
+				"Districts/NorthHeights/NorthHeights_0777",
+				"Districts/NorthHeights/NorthHeights_0778",
+				"Districts/NorthHeights/NorthHeights_0779",
+				"Districts/NorthHeights/NorthHeights_0780",
+				"Districts/NorthHeights/NorthHeights_0781",
+				"Districts/NorthHeights/NorthHeights_0782",
+				"Districts/NorthHeights/NorthHeights_0783",
+				"Districts/NorthHeights/NorthHeights_0784",
+				"Districts/NorthHeights/NorthHeights_0785",
+				"Districts/NorthHeights/NorthHeights_0786",
+				"Districts/NorthHeights/NorthHeights_0895",
+				"Districts/NorthHeights/NorthHeights_0901",
+				"Districts/NorthHeights/NorthHeights_0902",
+				"Districts/NorthHeights/NorthHeights_0905",
+				"Districts/NorthHeights/NorthHeights_0906",
+				"Districts/NorthHeights/NorthHeights_0909",
+				"Districts/NorthHeights/NorthHeights_0912",
+				"Districts/NorthHeights/NorthHeights_0913"
+			],
+			"name": "Left_04",
+			"side": "Left"
+		},
+		{
+			"bounds_position": [
+				-510.85,
+				0.0,
+				-719.85
+			],
+			"bounds_size": [
+				267.45,
+				77.5,
+				222.85
+			],
+			"cell": [
+				-500.0,
+				-730.0,
+				250.0,
+				250.0
+			],
+			"centre": [
+				-375.0,
+				0.0,
+				-605.0
+			],
+			"index": 5,
+			"members": [
+				"Districts/NorthHeights/NorthHeights_0896",
+				"Districts/NorthHeights/NorthHeights_0897",
+				"Districts/NorthHeights/NorthHeights_0898",
+				"Districts/NorthHeights/NorthHeights_0899",
+				"Districts/NorthHeights/NorthHeights_0904",
+				"Districts/NorthHeights/NorthHeights_0907",
+				"Districts/NorthHeights/NorthHeights_0908",
+				"Districts/NorthHeights/NorthHeights_0910",
+				"Districts/NorthHeights/NorthHeights_0911",
+				"Districts/NorthHeights/NorthHeights_0914",
+				"Districts/NorthHeights/NorthHeights_0915",
+				"Districts/NorthHeights/NorthHeights_0916",
+				"Districts/NorthHeights/NorthHeights_0917",
+				"Districts/NorthHeights/NorthHeights_0918",
+				"Districts/NorthHeights/NorthHeights_0919",
+				"Districts/NorthHeights/NorthHeights_0920",
+				"Districts/NorthHeights/NorthHeights_0982",
+				"Districts/NorthHeights/NorthHeights_0983",
+				"Districts/NorthHeights/NorthHeights_0986",
+				"Districts/NorthHeights/NorthHeights_0991",
+				"Districts/NorthHeights/NorthHeights_0993",
+				"Districts/NorthHeights/NorthHeights_0994",
+				"Districts/NorthHeights/NorthHeights_0995",
+				"Districts/NorthHeights/NorthHeights_0997",
+				"Districts/NorthHeights/NorthHeights_0998",
+				"Districts/NorthHeights/NorthHeights_0999",
+				"Districts/NorthHeights/NorthHeights_1000",
+				"Districts/NorthHeights/NorthHeights_1001",
+				"Districts/NorthHeights/NorthHeights_1005",
+				"Districts/NorthHeights/NorthHeights_1006",
+				"Districts/NorthHeights/NorthHeights_1007",
+				"Districts/NorthHeights/NorthHeights_1008"
+			],
+			"name": "Left_05",
+			"side": "Left"
+		},
+		{
+			"bounds_position": [
+				-260.55,
+				0.0,
+				-730.45
+			],
+			"bounds_size": [
+				219.55,
+				69.45,
+				233.45
+			],
+			"cell": [
+				-250.0,
+				-730.0,
+				250.0,
+				250.0
+			],
+			"centre": [
+				-125.0,
+				0.0,
+				-605.0
+			],
+			"index": 6,
+			"members": [
+				"Districts/NorthHeights/NorthHeights_0984",
+				"Districts/NorthHeights/NorthHeights_0989",
+				"Districts/NorthHeights/NorthHeights_0996",
+				"Districts/NorthHeights/NorthHeights_1002",
+				"Districts/NorthHeights/NorthHeights_1003",
+				"Districts/NorthHeights/NorthHeights_1004",
+				"Districts/NorthHeights/NorthHeights_1071",
+				"Districts/NorthHeights/NorthHeights_1072",
+				"Districts/NorthHeights/NorthHeights_1073",
+				"Districts/NorthHeights/NorthHeights_1074",
+				"Districts/NorthHeights/NorthHeights_1076",
+				"Districts/NorthHeights/NorthHeights_1078",
+				"Districts/NorthHeights/NorthHeights_1079",
+				"Districts/NorthHeights/NorthHeights_1081",
+				"Districts/NorthHeights/NorthHeights_1083",
+				"Districts/NorthHeights/NorthHeights_1084",
+				"Districts/NorthHeights/NorthHeights_1085",
+				"Districts/NorthHeights/NorthHeights_1086",
+				"Districts/NorthHeights/NorthHeights_1087",
+				"Districts/NorthHeights/NorthHeights_1088",
+				"Districts/NorthHeights/NorthHeights_1089",
+				"Districts/NorthHeights/NorthHeights_1090",
+				"Districts/NorthHeights/NorthHeights_1091",
+				"Districts/NorthHeights/NorthHeights_1092",
+				"Districts/NorthHeights/NorthHeights_1093",
+				"Districts/NorthHeights/NorthHeights_1094",
+				"Districts/NorthHeights/NorthHeights_1095",
+				"Districts/NorthHeights/NorthHeights_1096",
+				"Districts/NorthHeights/NorthHeights_1097"
+			],
+			"name": "Left_06",
+			"side": "Left"
+		},
+		{
+			"bounds_position": [
+				1.0,
+				0.0,
+				-724.45
+			],
+			"bounds_size": [
+				63.0,
+				77.5,
+				226.47
+			],
+			"cell": [
+				0.0,
+				-730.0,
+				250.0,
+				250.0
+			],
+			"centre": [
+				125.0,
+				0.0,
+				-605.0
+			],
+			"index": 7,
+			"members": [
+				"Districts/NorthHeights/NorthHeights_1152",
+				"Districts/NorthHeights/NorthHeights_1153",
+				"Districts/NorthHeights/NorthHeights_1157",
+				"Districts/NorthHeights/NorthHeights_1160",
+				"Districts/NorthHeights/NorthHeights_1161",
+				"Districts/NorthHeights/NorthHeights_1163",
+				"Districts/NorthHeights/NorthHeights_1164",
+				"Districts/NorthHeights/NorthHeights_1165",
+				"Districts/NorthHeights/NorthHeights_1166",
+				"Districts/NorthHeights/NorthHeights_1167"
+			],
+			"name": "Left_07",
+			"side": "Left"
+		},
+		{
+			"bounds_position": [
+				-1443.0,
+				0.0,
+				-463.0
+			],
+			"bounds_size": [
+				200.15,
+				22.0,
+				239.45
+			],
+			"cell": [
+				-1500.0,
+				-480.0,
+				250.0,
+				250.0
+			],
+			"centre": [
+				-1375.0,
+				0.0,
+				-355.0
+			],
+			"index": 1,
+			"members": [
+				"Districts/WestVillage/WestVillage_0071",
+				"Districts/WestVillage/WestVillage_0072",
+				"Districts/WestVillage/WestVillage_0073",
+				"Districts/WestVillage/WestVillage_0074",
+				"Districts/WestVillage/WestVillage_0075",
+				"Districts/WestVillage/WestVillage_0076",
+				"Districts/WestVillage/WestVillage_0077",
+				"Districts/WestVillage/WestVillage_0078",
+				"Districts/WestVillage/WestVillage_0079",
+				"Districts/WestVillage/WestVillage_0080",
+				"Districts/WestVillage/WestVillage_0081",
+				"Districts/WestVillage/WestVillage_0082",
+				"Districts/WestVillage/WestVillage_0083",
+				"Districts/WestVillage/WestVillage_0084",
+				"Districts/WestVillage/WestVillage_0085",
+				"Districts/WestVillage/WestVillage_0086",
+				"Districts/WestVillage/WestVillage_0087",
+				"Districts/WestVillage/WestVillage_0088",
+				"Districts/WestVillage/WestVillage_0089",
+				"Districts/WestVillage/WestVillage_0090",
+				"Districts/WestVillage/WestVillage_0091",
+				"Districts/WestVillage/WestVillage_0092",
+				"Districts/WestVillage/WestVillage_0093",
+				"Districts/WestVillage/WestVillage_0094",
+				"Districts/WestVillage/WestVillage_0095",
+				"Districts/WestVillage/WestVillage_0102",
+				"Districts/WestVillage/WestVillage_0103",
+				"Districts/WestVillage/WestVillage_0106",
+				"Districts/WestVillage/WestVillage_0107",
+				"Districts/WestVillage/WestVillage_0109",
+				"Districts/WestVillage/WestVillage_0110",
+				"Districts/WestVillage/WestVillage_0112",
+				"Districts/WestVillage/WestVillage_0276",
+				"Districts/WestVillage/WestVillage_0281",
+				"Districts/WestVillage/WestVillage_0287",
+				"Districts/WestVillage/WestVillage_0288",
+				"Districts/WestVillage/WestVillage_0289",
+				"Districts/WestVillage/WestVillage_0290",
+				"Districts/WestVillage/WestVillage_0299",
+				"Districts/WestVillage/WestVillage_0308",
+				"Districts/WestVillage/WestVillage_0309"
+			],
+			"name": "Right_01",
+			"side": "Right"
+		},
+		{
+			"bounds_position": [
+				-1239.85,
+				0.0,
+				-463.0
+			],
+			"bounds_size": [
+				230.3,
+				23.45,
+				237.45
+			],
+			"cell": [
+				-1250.0,
+				-480.0,
+				250.0,
+				250.0
+			],
+			"centre": [
+				-1125.0,
+				0.0,
+				-355.0
+			],
+			"index": 2,
+			"members": [
+				"Districts/WestVillage/WestVillage_0277",
+				"Districts/WestVillage/WestVillage_0278",
+				"Districts/WestVillage/WestVillage_0279",
+				"Districts/WestVillage/WestVillage_0280",
+				"Districts/WestVillage/WestVillage_0282",
+				"Districts/WestVillage/WestVillage_0283",
+				"Districts/WestVillage/WestVillage_0284",
+				"Districts/WestVillage/WestVillage_0285",
+				"Districts/WestVillage/WestVillage_0286",
+				"Districts/WestVillage/WestVillage_0291",
+				"Districts/WestVillage/WestVillage_0292",
+				"Districts/WestVillage/WestVillage_0293",
+				"Districts/WestVillage/WestVillage_0294",
+				"Districts/WestVillage/WestVillage_0295",
+				"Districts/WestVillage/WestVillage_0296",
+				"Districts/WestVillage/WestVillage_0297",
+				"Districts/WestVillage/WestVillage_0298",
+				"Districts/WestVillage/WestVillage_0300",
+				"Districts/WestVillage/WestVillage_0301",
+				"Districts/WestVillage/WestVillage_0302",
+				"Districts/WestVillage/WestVillage_0311",
+				"Districts/WestVillage/WestVillage_0312",
+				"Districts/WestVillage/WestVillage_0315",
+				"Districts/WestVillage/WestVillage_0317",
+				"Districts/WestVillage/WestVillage_0481",
+				"Districts/WestVillage/WestVillage_0482",
+				"Districts/WestVillage/WestVillage_0483",
+				"Districts/WestVillage/WestVillage_0486",
+				"Districts/WestVillage/WestVillage_0487",
+				"Districts/WestVillage/WestVillage_0488",
+				"Districts/WestVillage/WestVillage_0491",
+				"Districts/WestVillage/WestVillage_0492",
+				"Districts/WestVillage/WestVillage_0493",
+				"Districts/WestVillage/WestVillage_0498",
+				"Districts/WestVillage/WestVillage_0499",
+				"Districts/WestVillage/WestVillage_0500",
+				"Districts/WestVillage/WestVillage_0503",
+				"Districts/WestVillage/WestVillage_0504",
+				"Districts/WestVillage/WestVillage_0505",
+				"Districts/WestVillage/WestVillage_0514",
+				"Districts/WestVillage/WestVillage_0515"
+			],
+			"name": "Right_02",
+			"side": "Right"
+		},
+		{
+			"bounds_position": [
+				-1004.55,
+				0.0,
+				-463.0
+			],
+			"bounds_size": [
+				243.55,
+				148.0,
+				232.0
+			],
+			"cell": [
+				-1000.0,
+				-480.0,
+				250.0,
+				250.0
+			],
+			"centre": [
+				-875.0,
+				0.0,
+				-355.0
+			],
+			"index": 3,
+			"members": [
+				"Districts/CivicCenter/CivicCenter_0663",
+				"Districts/CivicCenter/CivicCenter_0664",
+				"Districts/CivicCenter/CivicCenter_0665",
+				"Districts/CivicCenter/CivicCenter_0666",
+				"Districts/CivicCenter/CivicCenter_0667",
+				"Districts/CivicCenter/CivicCenter_0668",
+				"Districts/CivicCenter/CivicCenter_0669",
+				"Districts/CivicCenter/CivicCenter_0670",
+				"Districts/CivicCenter/CivicCenter_0671",
+				"Districts/CivicCenter/CivicCenter_0672",
+				"Districts/CivicCenter/CivicCenter_0673",
+				"Districts/CivicCenter/CivicCenter_0674",
+				"Districts/CivicCenter/CivicCenter_0678",
+				"Districts/CivicCenter/CivicCenter_0680",
+				"Districts/CivicCenter/CivicCenter_0681",
+				"Districts/CivicCenter/CivicCenter_0683",
+				"Districts/CivicCenter/CivicCenter_0684",
+				"Districts/WestVillage/WestVillage_0484",
+				"Districts/WestVillage/WestVillage_0485",
+				"Districts/WestVillage/WestVillage_0489",
+				"Districts/WestVillage/WestVillage_0490",
+				"Districts/WestVillage/WestVillage_0494",
+				"Districts/WestVillage/WestVillage_0495",
+				"Districts/WestVillage/WestVillage_0496",
+				"Districts/WestVillage/WestVillage_0497",
+				"Districts/WestVillage/WestVillage_0501",
+				"Districts/WestVillage/WestVillage_0502",
+				"Districts/WestVillage/WestVillage_0506",
+				"Districts/WestVillage/WestVillage_0507",
+				"Districts/WestVillage/WestVillage_0517",
+				"Districts/WestVillage/WestVillage_0518",
+				"Districts/WestVillage/WestVillage_0519",
+				"Districts/WestVillage/WestVillage_0520"
+			],
+			"name": "Right_03",
+			"side": "Right"
+		},
+		{
+			"bounds_position": [
+				-719.0,
+				0.0,
+				-463.0
+			],
+			"bounds_size": [
+				224.3,
+				128.0,
+				240.5
+			],
+			"cell": [
+				-750.0,
+				-480.0,
+				250.0,
+				250.0
+			],
+			"centre": [
+				-625.0,
+				0.0,
+				-355.0
+			],
+			"index": 4,
+			"members": [
+				"Districts/Parkside/Parkside_0787",
+				"Districts/Parkside/Parkside_0788",
+				"Districts/Parkside/Parkside_0789",
+				"Districts/Parkside/Parkside_0790",
+				"Districts/Parkside/Parkside_0791",
+				"Districts/Parkside/Parkside_0792",
+				"Districts/Parkside/Parkside_0793",
+				"Districts/Parkside/Parkside_0794",
+				"Districts/Parkside/Parkside_0795",
+				"Districts/Parkside/Parkside_0796",
+				"Districts/Parkside/Parkside_0797",
+				"Districts/Parkside/Parkside_0798",
+				"Districts/Parkside/Parkside_0799",
+				"Districts/Parkside/Parkside_0800",
+				"Districts/Parkside/Parkside_0801",
+				"Districts/Parkside/Parkside_0804",
+				"Districts/Parkside/Parkside_0805",
+				"Districts/Parkside/Parkside_0806",
+				"Districts/Parkside/Parkside_0808",
+				"Districts/Parkside/Parkside_0809",
+				"Districts/Parkside/Parkside_0921",
+				"Districts/Parkside/Parkside_0922",
+				"Districts/Parkside/Parkside_0925",
+				"Districts/Parkside/Parkside_0928"
+			],
+			"name": "Right_04",
+			"side": "Right"
+		},
+		{
+			"bounds_position": [
+				-504.85,
+				0.0,
+				-463.0
+			],
+			"bounds_size": [
+				88.975,
+				113.9,
+				124.5
+			],
+			"cell": [
+				-500.0,
+				-480.0,
+				250.0,
+				250.0
+			],
+			"centre": [
+				-375.0,
+				0.0,
+				-355.0
+			],
+			"index": 5,
+			"members": [
+				"Districts/Parkside/Parkside_0923",
+				"Districts/Parkside/Parkside_0926",
+				"Districts/Parkside/Parkside_0931",
+				"Districts/Parkside/Parkside_0932",
+				"PoliceStation"
+			],
+			"name": "Right_05",
+			"side": "Right"
+		},
+		{
+			"bounds_position": [
+				-148.85,
+				0.0,
+				-463.0
+			],
+			"bounds_size": [
+				107.85,
+				113.9,
+				122.0
+			],
+			"cell": [
+				-250.0,
+				-480.0,
+				250.0,
+				250.0
+			],
+			"centre": [
+				-125.0,
+				0.0,
+				-355.0
+			],
+			"index": 6,
+			"members": [
+				"Districts/Parkside/Parkside_1099",
+				"Districts/Parkside/Parkside_1100",
+				"Districts/Parkside/Parkside_1102",
+				"Districts/Parkside/Parkside_1103",
+				"Districts/Parkside/Parkside_1106",
+				"Districts/Parkside/Parkside_1107",
+				"Districts/Parkside/Parkside_1108",
+				"Districts/Parkside/Parkside_1109",
+				"Districts/Parkside/Parkside_1110"
+			],
+			"name": "Right_06",
+			"side": "Right"
+		},
+		{
+			"bounds_position": [
+				1.0,
+				0.0,
+				-463.0
+			],
+			"bounds_size": [
+				64.3,
+				113.9,
+				238.45
+			],
+			"cell": [
+				0.0,
+				-480.0,
+				250.0,
+				250.0
+			],
+			"centre": [
+				125.0,
+				0.0,
+				-355.0
+			],
+			"index": 7,
+			"members": [
+				"Districts/Parkside/Parkside_1170",
+				"Districts/Parkside/Parkside_1171",
+				"Districts/Parkside/Parkside_1172",
+				"Districts/Parkside/Parkside_1173",
+				"Districts/Parkside/Parkside_1178",
+				"Districts/Parkside/Parkside_1179",
+				"Districts/Parkside/Parkside_1182",
+				"Districts/Parkside/Parkside_1183"
+			],
+			"name": "Right_07",
+			"side": "Right"
+		}
+	],
+	"end_x": 100.0,
+	"excluded": [
+		"CityHall"
+	],
+	"road_z": -480.0,
+	"start_x": -1500.0
+}

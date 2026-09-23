@@ -1,0 +1,54 @@
+{
+  "source": "assets\\characters\\hero_meshy\\source\\meshy_reference_fro.glb",
+  "source_sha256": "29aded81c4d52daaeb933439c958298ddaa2bfcefac740d7e360ffa8a99d5827",
+  "lip_cleanup": {
+    "unique_vertices_adjusted": 5,
+    "maximum_depth_retraction_m": 0.00406164675951004,
+    "maximum_recess_fill_m": -0.0,
+    "mouth_width_height_unchanged": true,
+    "local_lip_vertex_tint": true
+  },
+  "triangles": 1552,
+  "joints": 65,
+  "max_influences": 4,
+  "authoring_vertices": 1689,
+  "added_triangles": 0,
+  "uvs_unchanged": true,
+  "method": "Landmark fit to unchanged player rest skeleton; transferred weights; rigid head and coherent mitten/thumb weights",
+  "chin_chest_cleanup": {
+    "rigid_head_min_height": 1.54,
+    "neck_blend_height": [
+      1.5,
+      1.54
+    ],
+    "chest_unique_vertices_retracted": 10,
+    "maximum_chest_retraction": 0.033265307545661926,
+    "chest_width_height_unchanged": true
+  },
+  "bounds": [
+    [
+      -0.9156627058982849,
+      -0.11317120492458344,
+      0.0
+    ],
+    [
+      0.9197390675544739,
+      0.19614379107952118,
+      1.8131932020187378
+    ]
+  ],
+  "exported_vertices": 1689,
+  "unique_geometric_vertices": 778,
+  "normalized_weights": true,
+  "matching_seam_weights": true,
+  "degenerate_triangles": 0,
+  "maximum_seam_weight_difference": 7.450580596923828e-09,
+  "all_three_embedded_texture_images_byte_identical": true,
+  "complete_lower_face_rigid_to_head": true,
+  "rigid_head_exported_vertices": 446,
+  "original_texture_sha256": [
+    "9cf962e01dfbfa07e808b0a7d4251e75c801687490aaf32f6456462cbebea232",
+    "b1a3ef4d9428b7d004ca497a920cc9228c2e389f5b8bef27ecbf0b65b87fdaa7",
+    "f3ef42f264dd33d2e4c1b2f46617d060541f6d2fc1b6ccea17f9ccc5e832b4f5"
+  ]
+}

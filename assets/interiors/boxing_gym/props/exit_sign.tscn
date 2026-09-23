@@ -1,0 +1,17 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/exit_sign_ExitGreen.res" id="1_mvn1c"]
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/exit_sign_Lamp.res" id="2_684ns"]
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/exit_sign_Steel.res" id="3_4tty4"]
+
+[node name="ExitSign" type="Node3D" unique_id=398867291]
+metadata/rendered_triangles = 152
+
+[node name="exit_sign_ExitGreen" type="MeshInstance3D" parent="." unique_id=1505139788]
+mesh = ExtResource("1_mvn1c")
+
+[node name="exit_sign_Lamp" type="MeshInstance3D" parent="." unique_id=1073810751]
+mesh = ExtResource("2_684ns")
+
+[node name="exit_sign_Steel" type="MeshInstance3D" parent="." unique_id=1094492404]
+mesh = ExtResource("3_4tty4")

@@ -1,0 +1,28 @@
+extends RefCounted
+# Explicit dependencies keep every supported bake in exported builds.
+const SCENES := [
+    preload("res://assets/buildings/parking_garage/baked/small_03.tscn"),
+    preload("res://assets/buildings/parking_garage/baked/small_04.tscn"),
+    preload("res://assets/buildings/parking_garage/baked/small_05.tscn"),
+    preload("res://assets/buildings/parking_garage/baked/small_06.tscn"),
+    preload("res://assets/buildings/parking_garage/baked/small_07.tscn"),
+    preload("res://assets/buildings/parking_garage/baked/small_08.tscn"),
+    preload("res://assets/buildings/parking_garage/baked/small_09.tscn"),
+    preload("res://assets/buildings/parking_garage/baked/small_10.tscn"),
+    preload("res://assets/buildings/parking_garage/baked/medium_03.tscn"),
+    preload("res://assets/buildings/parking_garage/baked/medium_04.tscn"),
+    preload("res://assets/buildings/parking_garage/baked/medium_05.tscn"),
+    preload("res://assets/buildings/parking_garage/baked/medium_06.tscn"),
+    preload("res://assets/buildings/parking_garage/baked/medium_07.tscn"),
+    preload("res://assets/buildings/parking_garage/baked/medium_08.tscn"),
+    preload("res://assets/buildings/parking_garage/baked/medium_09.tscn"),
+    preload("res://assets/buildings/parking_garage/baked/medium_10.tscn"),
+    preload("res://assets/buildings/parking_garage/baked/large_03.tscn"),
+    preload("res://assets/buildings/parking_garage/baked/large_04.tscn"),
+    preload("res://assets/buildings/parking_garage/baked/large_05.tscn"),
+    preload("res://assets/buildings/parking_garage/baked/large_06.tscn"),
+    preload("res://assets/buildings/parking_garage/baked/large_07.tscn"),
+    preload("res://assets/buildings/parking_garage/baked/large_08.tscn"),
+    preload("res://assets/buildings/parking_garage/baked/large_09.tscn"),
+    preload("res://assets/buildings/parking_garage/baked/large_10.tscn"),
+]

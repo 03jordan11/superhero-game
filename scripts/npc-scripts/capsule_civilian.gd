@@ -87,6 +87,7 @@ func _profiled_process(delta: float) -> void:
 		offset.y = 0.0
 		var distance := offset.length()
 		if distance <= waypoint_arrival_distance:
+			global_position.y = target.y
 			_current_id = _path[_path_index]
 			_path_index += 1
 			continue
@@ -94,7 +95,10 @@ func _profiled_process(delta: float) -> void:
 		var speed := maxf(minf(walk_speed,spacing_speed_limit),0.0)
 		if speed <= 0.0: return
 		var travel := minf(distance,speed*remaining)
-		global_position += direction*travel
+		var next_position := global_position+direction*travel
+		# Lightweight walkers have no gravity; follow the authored bridge grade.
+		next_position.y = lerpf(global_position.y,target.y,travel/distance)
+		global_position = next_position
 		look_at(global_position+direction,Vector3.UP)
 		remaining -= travel/speed
 		if travel < distance: return

@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/interiors/boxing_gym/textures/concrete.png" id="1_nj12s"]
+
+[resource]
+resource_name = "Concrete"
+albedo_color = Color(0.4, 0.41, 0.39, 1)
+albedo_texture = ExtResource("1_nj12s")
+roughness = 0.85
+texture_filter = 5

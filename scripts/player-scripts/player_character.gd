@@ -231,6 +231,51 @@ func _get_flight_hit_knockdown_chance() -> float:
 	)
 
 
+func revive_for_respawn() -> void:
+	# Explicit restart of the terminal life state; ordinary healing cannot revive.
+	drop_everything()
+	ship_interaction.release()
+	target_lock.release()
+	combat_controller.cancel_punch()
+	input_controller.reset()
+	bounding_controller.reset()
+	flying_state.cancel_charge()
+	flying_state.surge_remaining = 0.0
+	flying_state.is_boosting = false
+	laser_eyes.cancel_input()
+	laser_eyes.heat = 0.0
+	laser_eyes.overheated = false
+	laser_eyes.heat_changed.emit(0.0, false)
+	for field in ["is_dead", "is_knocked_out", "is_flying", "is_ground_slamming", "is_wall_running", "wall_run_has_left_ground", "has_knockout_landed", "is_charging_jump", "is_jump_active", "air_jump_used", "ground_slam_impact_pending"]:
+		set(field, false)
+	velocity = Vector3.ZERO
+	current_flight_speed = 0.0
+	current_ground_speed = _get_walk_speed()
+	jump_charge = 0.0
+	jump_hold_time = 0.0
+	knockout_stun_remaining = 0.0
+	status_effects.hit_slowdown_remaining = 0.0
+	stamina.restore_full()
+	var health = damage_receiver.health_component
+	health.current_health = health.max_health
+	health.health_changed.emit(health.current_health, health.max_health)
+	animation_controller.is_playing_death = false
+	animation_controller.is_knocked_down = false
+	animation_controller.is_hit_reacting = false
+	animation_controller.is_playing_landing_animation = false
+	character_animation_player.stop()
+	superhero_character.rotation = superhero_character_default_rotation
+	ground_facing_yaw = global_rotation.y
+	landing_impact_controller.reset_normal_landing_tracking()
+	landing_impact_controller.max_effect_downward_speed = 0.0
+	camera_effects.shake_time_remaining = 0.0
+	camera_effects.impact_kick_offset = 0.0
+	state_machine.initialize(self, grounded_state)
+	animation_controller._play_animation("Idle")
+	flight_speed_changed.emit(0.0, stats.get_run_speed(minimum_run_speed, run_speed_per_attribute_point), false)
+	reset_physics_interpolation()
+
+
 func _input(event: InputEvent) -> void:
 	var perf_started := PLAYER_PERF.begin(self)
 	_profiled_input(event)
@@ -288,6 +333,10 @@ func _profiled_physics_process(delta: float) -> void:
 	status_effects.update(delta)
 	target_lock.update_lock(delta, input_snapshot)
 	if input_snapshot.vehicle_interact_just_pressed:
+		for ring_access in get_tree().get_nodes_in_group(&"boxing_ring_access"):
+			if ring_access.try_interact(self):
+				stamina.finish_tick(delta, Vector3.ZERO, is_on_floor())
+				return
 		for door in get_tree().get_nodes_in_group(&"hideout_doors"):
 			if door.try_interact(self):
 				stamina.finish_tick(delta, Vector3.ZERO, is_on_floor())

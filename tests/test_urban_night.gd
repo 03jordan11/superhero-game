@@ -15,12 +15,12 @@ func run() -> void:
 	await process_frame
 	await process_frame
 	for material in building._night_materials:
-		assert(material is StandardMaterial3D and material.emission_on_uv2)
-		assert(is_equal_approx(material.emission_energy_multiplier,2.0),"Late spawn must use original emission")
+		assert(material is ShaderMaterial)
+		assert(is_equal_approx(material.get_shader_parameter("emission_energy"),2.0),"Late spawn must use original emission")
 	clock.set_time(12)
-	for material in building._night_materials: assert(material.emission_energy_multiplier==0)
+	for material in building._night_materials: assert(material.get_shader_parameter("emission_energy")==0)
 	clock.set_time(0)
-	for material in building._night_materials: assert(material.emission_energy_multiplier==2)
+	for material in building._night_materials: assert(material.get_shader_parameter("emission_energy")==2)
 	world.free()
 	# Inspect nearby pools against actual layout, without unrelated city simulation.
 	world=Node3D.new(); root.add_child(world)

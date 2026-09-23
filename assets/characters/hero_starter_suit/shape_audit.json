@@ -1,0 +1,23 @@
+{
+  "source_sha256": "83fb11192abee9bc1a8d3b82bf3bbfef84ba4d743a13c1cdc97a706d38baca1d",
+  "triangles": 2172,
+  "added_triangles": 0,
+  "uvs_unchanged": true,
+  "lip_cleanup": {
+    "unique_vertices_adjusted": 7,
+    "maximum_depth_retraction_m": 0.0065757110714912415,
+    "maximum_recess_fill_m": -0.0,
+    "mouth_width_height_unchanged": true,
+    "local_lip_vertex_tint": true
+  },
+  "hand_cleanup": {
+    "unique_vertices_adjusted": 149,
+    "maximum_vertex_motion_m": 0.027180088499895703,
+    "reference": "hero_meshy.glb",
+    "thumbs_retained": true,
+    "no_inverted_hand_faces": true
+  },
+  "all_three_texture_images_byte_identical": true,
+  "degenerate_triangles": 0,
+  "exported_vertices": 2269
+}

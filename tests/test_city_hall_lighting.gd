@@ -18,26 +18,26 @@ func run() -> void:
 	await process_frame
 	assert(hall._night_materials.size() == 1, "Window emission was not imported")
 	assert(independent._night_materials.size() == 1)
-	var lit: StandardMaterial3D = hall._night_materials[0]
-	var unlit: StandardMaterial3D = independent._night_materials[0]
+	var lit: ShaderMaterial = hall._night_materials[0]
+	var unlit: ShaderMaterial = independent._night_materials[0]
 	assert(lit != unlit, "Lighting material leaked across instances")
-	assert(lit.emission_texture != null)
+	assert(lit.get_shader_parameter("window_mask") != null)
 	clock.set_time(13)
-	assert(is_zero_approx(lit.emission_energy_multiplier), "Windows glow during the day")
+	assert(is_zero_approx(_energy(lit)), "Windows glow during the day")
 	clock.set_time(0)
-	assert(is_equal_approx(lit.emission_energy_multiplier, hall.window_emission_energy))
-	assert(is_zero_approx(unlit.emission_energy_multiplier), "Independent building changed with clock")
+	assert(is_equal_approx(_energy(lit), hall.window_emission_energy))
+	assert(is_zero_approx(_energy(unlit)), "Independent building changed with clock")
 	var late: Node3D = load(HALL).instantiate()
 	late.position.x = 1000
 	root.add_child(late)
 	await process_frame
 	await process_frame
-	assert(late._night_materials[0].emission_energy_multiplier > 0, "Night spawn did not synchronize")
+	assert(_energy(late._night_materials[0]) > 0, "Night spawn did not synchronize")
 	clock.set_time(13)
-	assert(is_zero_approx(lit.emission_energy_multiplier))
-	assert(is_zero_approx(late._night_materials[0].emission_energy_multiplier), "Windows stayed lit after daylight")
+	assert(is_zero_approx(_energy(lit)))
+	assert(is_zero_approx(_energy(late._night_materials[0])), "Windows stayed lit after daylight")
 	hall.apply_night(.5)
-	assert(is_equal_approx(lit.emission_energy_multiplier, hall.window_emission_energy * .5))
+	assert(is_equal_approx(_energy(lit), hall.window_emission_energy * .5))
 	# Inspect every cell: frames and mullions stay black, with both lit and dark rooms.
 	var mask := Image.load_from_file("res://assets/buildings/city_hall/city_hall_windows_emission.png")
 	assert(mask.get_size() == Vector2i(1024, 1024))
@@ -57,6 +57,9 @@ func run() -> void:
 	for mesh: MeshInstance3D in hall.get_node("Model").find_children("*", "MeshInstance3D", true, false):
 		for surface in mesh.mesh.get_surface_count():
 			var source := mesh.mesh.surface_get_material(surface) as StandardMaterial3D
+			if source == null:
+				assert(mesh.get_active_material(surface) == load("res://assets/super-city/modular-sidewalks/sidewalk.tres"), "Unexpected non-window shader material")
+				continue
 			if source.emission_enabled:
 				assert(source != lit and source != unlit)
 			else:
@@ -66,3 +69,6 @@ func run() -> void:
 	preview.free()
 	print("CITY_HALL_LIGHTING_PASS: clock night/day transitions, night spawn, isolated materials, glass-only emission, lit/dark atlas cells")
 	quit()
+
+func _energy(material: Material) -> float:
+	return material.get_shader_parameter("emission_energy") if material is ShaderMaterial else material.emission_energy_multiplier

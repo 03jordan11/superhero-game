@@ -1,0 +1,97 @@
+{
+	"complete_exterior_triangles": 4128,
+	"limit": 10000,
+	"method": "actual imported mesh faces, every placed instance counted",
+	"placements": [
+		{
+			"name": "BuildingShell",
+			"scene": "res://assets/buildings/boxing_gym/props/shell.tscn",
+			"triangles": 596
+		},
+		{
+			"name": "FrontDoor",
+			"scene": "res://assets/buildings/boxing_gym/props/entrance.tscn",
+			"triangles": 288
+		},
+		{
+			"name": "FrontWindowLeft",
+			"scene": "res://assets/buildings/boxing_gym/props/front_window.tscn",
+			"triangles": 216
+		},
+		{
+			"name": "FrontWindowRight",
+			"scene": "res://assets/buildings/boxing_gym/props/front_window.tscn",
+			"triangles": 216
+		},
+		{
+			"name": "BlankGymSign",
+			"scene": "res://assets/buildings/boxing_gym/props/sign_panel.tscn",
+			"triangles": 92
+		},
+		{
+			"name": "EntryCanopy",
+			"scene": "res://assets/buildings/boxing_gym/props/canopy.tscn",
+			"triangles": 92
+		},
+		{
+			"name": "UpperWindow_-1_0",
+			"scene": "res://assets/buildings/boxing_gym/props/upper_window.tscn",
+			"triangles": 168
+		},
+		{
+			"name": "UpperWindow_-1_1",
+			"scene": "res://assets/buildings/boxing_gym/props/upper_window.tscn",
+			"triangles": 168
+		},
+		{
+			"name": "UpperWindow_-1_2",
+			"scene": "res://assets/buildings/boxing_gym/props/upper_window.tscn",
+			"triangles": 168
+		},
+		{
+			"name": "UpperWindow_1_0",
+			"scene": "res://assets/buildings/boxing_gym/props/upper_window.tscn",
+			"triangles": 168
+		},
+		{
+			"name": "UpperWindow_1_1",
+			"scene": "res://assets/buildings/boxing_gym/props/upper_window.tscn",
+			"triangles": 168
+		},
+		{
+			"name": "UpperWindow_1_2",
+			"scene": "res://assets/buildings/boxing_gym/props/upper_window.tscn",
+			"triangles": 168
+		},
+		{
+			"name": "RearDoor",
+			"scene": "res://assets/buildings/boxing_gym/props/rear_door.tscn",
+			"triangles": 96
+		},
+		{
+			"name": "RoofUnit1",
+			"scene": "res://assets/buildings/boxing_gym/props/roof_unit.tscn",
+			"triangles": 672
+		},
+		{
+			"name": "RoofUnit2",
+			"scene": "res://assets/buildings/boxing_gym/props/roof_unit.tscn",
+			"triangles": 672
+		},
+		{
+			"name": "EntranceLamp1",
+			"scene": "res://assets/buildings/boxing_gym/props/wall_lamp.tscn",
+			"triangles": 60
+		},
+		{
+			"name": "EntranceLamp2",
+			"scene": "res://assets/buildings/boxing_gym/props/wall_lamp.tscn",
+			"triangles": 60
+		},
+		{
+			"name": "RearLamp",
+			"scene": "res://assets/buildings/boxing_gym/props/wall_lamp.tscn",
+			"triangles": 60
+		}
+	]
+}

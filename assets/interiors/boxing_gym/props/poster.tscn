@@ -1,0 +1,21 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/poster_Ink.res" id="1_fpv14"]
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/poster_Paper.res" id="2_1pagj"]
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/poster_Red.res" id="3_5wp42"]
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/poster_Steel.res" id="4_as04b"]
+
+[node name="Poster" type="Node3D" unique_id=1760028406]
+metadata/rendered_triangles = 728
+
+[node name="poster_Ink" type="MeshInstance3D" parent="." unique_id=1100431444]
+mesh = ExtResource("1_fpv14")
+
+[node name="poster_Paper" type="MeshInstance3D" parent="." unique_id=1873057064]
+mesh = ExtResource("2_1pagj")
+
+[node name="poster_Red" type="MeshInstance3D" parent="." unique_id=959346008]
+mesh = ExtResource("3_5wp42")
+
+[node name="poster_Steel" type="MeshInstance3D" parent="." unique_id=544390263]
+mesh = ExtResource("4_as04b")

@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://assets/buildings/police_station/police_station.gd" id="1_5aevg"]
 [ext_resource type="PackedScene" path="res://assets/buildings/police_station/police_station.glb" id="2_tfi0k"]
-[ext_resource type="PackedScene" path="res://assets/buildings/police_station/props/bench.tscn" id="3_1ns50"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_33oal"]
 size = Vector3(36, 20.8, 24)
@@ -117,9 +116,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 21.45, -4)
 shape = SubResource("BoxShape3D_sfglt")
 
 [node name="Props" type="Node3D" parent="." unique_id=1889361647]
-
-[node name="Bench_00" type="Node3D" parent="Props" unique_id=1156088170 instance=ExtResource("3_1ns50")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -12.8)
-
-[node name="Bench_01" type="Node3D" parent="Props" unique_id=1998138670 instance=ExtResource("3_1ns50")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -12.8)

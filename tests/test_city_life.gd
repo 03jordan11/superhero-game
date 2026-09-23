@@ -20,7 +20,7 @@ func run() -> void:
 	await physics_frame
 	var counts: Dictionary=life.get_meta("counts")
 	for key in counts: check(counts[key]>0,"Scenery category present: "+key)
-	for removed in ["Diners","HotdogStands","BusStops","Hydrants","Grates","Steam"]:
+	for removed in ["Benches","Diners","HotdogStands","BusStops","Hydrants","Grates","Steam","TrafficControls"]:
 		check(not life.has_node(removed),"Removed scenery stays absent: "+removed)
 	check(life.get_node("Blimp/Advertisement").stream.get_length()>5,"Recorded advertisement loads")
 	var places: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://assets/city-life/placements.json"))
@@ -54,9 +54,16 @@ func run() -> void:
 	life.elapsed=0
 	life.update_animation(0)
 	var pose: Transform3D=life.blimp.transform
-	var flash: float=life._blinks[0].material_override.emission_energy_multiplier
+	check(life._blinks.size()==5,"Five lightweight blimp beacon lights remain")
+	for light in life._blinks: check(light is OmniLight3D and not light.shadow_enabled,"Blimp beacons have no fixture mesh or shadow pass")
+	var blimp_triangles:=0
+	for mesh in life.blimp.find_children("*","MeshInstance3D",true,false):
+		check(not str(mesh.name).begins_with("Strobe"),"Blimp beacon fixture models removed")
+		blimp_triangles+=mesh.mesh.get_faces().size()/3
+	check(blimp_triangles==1340,"Blimp fixture removal eliminates 21120 triangles")
+	var flash: float=life._blinks[0].light_energy
 	life.update_animation(0.3)
-	check(life._blinks[0].material_override.emission_energy_multiplier!=flash,"Blimp beacons flash")
+	check(life._blinks[0].light_energy!=flash,"Blimp beacons flash")
 	life.elapsed=life.blimp_lap_seconds
 	life.update_animation(0)
 	check(life.blimp.transform.is_equal_approx(pose),"Blimp completes a seamless lap")
@@ -80,7 +87,7 @@ func run() -> void:
 	var elapsed: float=life.elapsed
 	await process_frame
 	await process_frame
-	check(life.elapsed==elapsed,"Pause freezes blimp and signal clock")
+	check(life.elapsed==elapsed,"Pause freezes blimp animation")
 	paused=false
 	print("City life: %d failures"%failures)
 	city.free()
@@ -93,4 +100,3 @@ func highway_point(z: float) -> Vector3:
 		if z>=knots[i+1].y:
 			return Vector3(lerpf(knots[i].x,knots[i+1].x,smoothstep(knots[i].y,knots[i+1].y,z)),0.055+13*smoothstep(-1000,-2000,z),z)
 	return Vector3(-1100,13.055,z)
-

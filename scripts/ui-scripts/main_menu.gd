@@ -29,7 +29,7 @@ func _on_load_pressed() -> void:
 	_load_saved_game.call_deferred()
 
 func _load_saved_game() -> void:
-	if get_node("/root/SaveManager").start_saved_game(): return
+	if await get_node("/root/SaveManager").start_saved_game(): return
 	_loading = false
 	for child in main_menu.get_children():
 		if child is Button: child.disabled = false
@@ -53,7 +53,7 @@ func _on_play_pressed() -> void:
 	_start_new_game.call_deferred()
 
 func _start_new_game() -> void:
-	if get_node("/root/SaveManager").start_new_game(): return
+	if await get_node("/root/SaveManager").start_new_game(): return
 	_loading = false
 	for child in main_menu.get_children():
 		if child is Button: child.disabled = false

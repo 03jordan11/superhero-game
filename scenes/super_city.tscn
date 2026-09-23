@@ -1,31 +1,39 @@
 [gd_scene format=3 uid="uid://ddfevxedvkv8l"]
 
-[ext_resource type="PackedScene" path="res://assets/generated-buildings/residential/residential_building_02.tscn" id="51_11nit"]
-[ext_resource type="PackedScene" path="res://assets/generated-buildings/residential/residential_building_03.tscn" id="53_trun2"]
-[ext_resource type="PackedScene" path="res://assets/generated-buildings/residential/residential_building_01.tscn" id="55_opnfn"]
-[ext_resource type="PackedScene" path="res://assets/generated-buildings/residential/residential_building_05.tscn" id="57_vxuub"]
-[ext_resource type="PackedScene" path="res://assets/generated-buildings/residential/residential_building_04.tscn" id="59_rjjq0"]
-[ext_resource type="PackedScene" path="res://assets/generated-buildings/residential/residential_building_07.tscn" id="61_u6el0"]
-[ext_resource type="PackedScene" path="res://assets/generated-buildings/residential/residential_building_11.tscn" id="63_6fdhn"]
-[ext_resource type="PackedScene" path="res://assets/generated-buildings/residential/residential_building_06.tscn" id="65_ti4rm"]
-[ext_resource type="PackedScene" path="res://assets/generated-buildings/residential/residential_building_19.tscn" id="67_5b06r"]
-[ext_resource type="PackedScene" path="res://assets/generated-buildings/commercial/commercial_skyscraper_13.tscn" id="69_453lh"]
+[ext_resource type="PackedScene" path="res://assets/super-city/pavement_chunks/pavement_chunks.tscn" id="pavement_chunks"]
+
+[ext_resource type="PackedScene" path="res://assets/trees/backdrop/forest_boundary_backdrop.tscn" id="forest_boundary_backdrop"]
+
+[ext_resource type="PackedScene" path="res://assets/parking_lots/parking_lot.tscn" id="5_8m327"]
+[ext_resource type="Material" path="res://assets/parking_lots/parking_lot_material.tres" id="6_gb5js"]
+[ext_resource type="PackedScene" path="res://assets/super-city/prefabs/alley_6m.tscn" id="25_3oj1f"]
+[ext_resource type="PackedScene" uid="uid://nl42hhy70xtv" path="res://assets/generated-buildings/residential/residential_building_02.tscn" id="51_11nit"]
+[ext_resource type="PackedScene" uid="uid://c3rg2h800ywhb" path="res://assets/generated-buildings/residential/residential_building_03.tscn" id="53_trun2"]
+[ext_resource type="PackedScene" uid="uid://bv3wfytu1qhk2" path="res://assets/generated-buildings/residential/residential_building_01.tscn" id="55_opnfn"]
+[ext_resource type="PackedScene" uid="uid://dswk21oy3ox1h" path="res://assets/generated-buildings/residential/residential_building_05.tscn" id="57_vxuub"]
+[ext_resource type="PackedScene" uid="uid://bdyygvuhq51j3" path="res://assets/generated-buildings/residential/residential_building_04.tscn" id="59_rjjq0"]
+[ext_resource type="PackedScene" uid="uid://ddawapxq4p82a" path="res://assets/generated-buildings/residential/residential_building_07.tscn" id="61_u6el0"]
+[ext_resource type="PackedScene" uid="uid://cnjiwgw8mdysx" path="res://assets/generated-buildings/residential/residential_building_11.tscn" id="63_6fdhn"]
+[ext_resource type="PackedScene" uid="uid://qpugval2hrdp" path="res://assets/generated-buildings/residential/residential_building_06.tscn" id="65_ti4rm"]
+[ext_resource type="PackedScene" uid="uid://dl6n8jua4psue" path="res://assets/generated-buildings/residential/residential_building_19.tscn" id="67_5b06r"]
+[ext_resource type="PackedScene" uid="uid://cu7qq4nc6644i" path="res://assets/generated-buildings/commercial/commercial_skyscraper_13.tscn" id="69_453lh"]
 [ext_resource type="PackedScene" path="res://assets/generated-buildings/commercial/commercial_skyscraper_02.tscn" id="71_3or8p"]
-[ext_resource type="PackedScene" path="res://assets/generated-buildings/commercial/commercial_skyscraper_05.tscn" id="73_7xoss"]
-[ext_resource type="PackedScene" path="res://assets/generated-buildings/commercial/commercial_skyscraper_16.tscn" id="75_g3pet"]
-[ext_resource type="PackedScene" path="res://assets/generated-buildings/residential/residential_building_20.tscn" id="77_l33d0"]
-[ext_resource type="PackedScene" path="res://assets/generated-buildings/commercial/commercial_skyscraper_11.tscn" id="79_fpte7"]
-[ext_resource type="PackedScene" path="res://assets/generated-buildings/commercial/commercial_skyscraper_06.tscn" id="81_0y4do"]
-[ext_resource type="PackedScene" path="res://assets/generated-buildings/commercial/commercial_skyscraper_15.tscn" id="83_1q5o7"]
-[ext_resource type="PackedScene" path="res://assets/generated-buildings/commercial/commercial_skyscraper_09.tscn" id="85_46dx2"]
+[ext_resource type="PackedScene" uid="uid://ikpkbaxxw85t" path="res://assets/generated-buildings/commercial/commercial_skyscraper_05.tscn" id="73_7xoss"]
+[ext_resource type="PackedScene" uid="uid://c5r6lsbk0515i" path="res://assets/generated-buildings/commercial/commercial_skyscraper_16.tscn" id="75_g3pet"]
+[ext_resource type="PackedScene" uid="uid://cbecskr7jknpa" path="res://assets/generated-buildings/residential/residential_building_20.tscn" id="77_l33d0"]
+[ext_resource type="PackedScene" uid="uid://djngd5f2l2pwi" path="res://assets/generated-buildings/commercial/commercial_skyscraper_11.tscn" id="79_fpte7"]
+[ext_resource type="PackedScene" uid="uid://caav7yompcp5t" path="res://assets/generated-buildings/commercial/commercial_skyscraper_06.tscn" id="81_0y4do"]
+[ext_resource type="PackedScene" uid="uid://ccsfy2fn7a517" path="res://assets/generated-buildings/commercial/commercial_skyscraper_15.tscn" id="83_1q5o7"]
+[ext_resource type="PackedScene" uid="uid://qexgggjnk4nt" path="res://assets/generated-buildings/commercial/commercial_skyscraper_09.tscn" id="85_46dx2"]
 [ext_resource type="PackedScene" path="res://assets/generated-buildings/residential/residential_building_18.tscn" id="87_coo5o"]
-[ext_resource type="PackedScene" path="res://assets/generated-buildings/commercial/commercial_skyscraper_01.tscn" id="89_7hk4n"]
-[ext_resource type="PackedScene" path="res://assets/generated-buildings/residential/residential_building_17.tscn" id="91_d2kjg"]
-[ext_resource type="PackedScene" path="res://assets/generated-buildings/commercial/commercial_skyscraper_08.tscn" id="93_s4a1v"]
-[ext_resource type="PackedScene" path="res://assets/generated-buildings/commercial/commercial_skyscraper_12.tscn" id="95_bdygx"]
-[ext_resource type="PackedScene" path="res://assets/generated-buildings/commercial/commercial_skyscraper_04.tscn" id="97_sn5x8"]
-[ext_resource type="PackedScene" path="res://assets/generated-buildings/residential/residential_building_10.tscn" id="99_qf6su"]
-[ext_resource type="PackedScene" path="res://assets/generated-buildings/residential/residential_building_12.tscn" id="101_mefli"]
+[ext_resource type="PackedScene" uid="uid://c0clgg27k4tla" path="res://assets/generated-buildings/commercial/commercial_skyscraper_01.tscn" id="89_7hk4n"]
+[ext_resource type="PackedScene" uid="uid://b4t83h2lwxl0w" path="res://assets/generated-buildings/residential/residential_building_17.tscn" id="91_d2kjg"]
+[ext_resource type="PackedScene" uid="uid://cnqe14mcq24fb" path="res://assets/generated-buildings/commercial/commercial_skyscraper_08.tscn" id="93_s4a1v"]
+[ext_resource type="PackedScene" uid="uid://d3chrclbsbjmg" path="res://assets/generated-buildings/commercial/commercial_skyscraper_12.tscn" id="95_bdygx"]
+[ext_resource type="PackedScene" uid="uid://bw4qyi0re5d25" path="res://assets/generated-buildings/commercial/commercial_skyscraper_04.tscn" id="97_sn5x8"]
+[ext_resource type="PackedScene" uid="uid://b20iduobbylo7" path="res://assets/generated-buildings/residential/residential_building_10.tscn" id="99_qf6su"]
+[ext_resource type="PackedScene" uid="uid://cbwwvwfkqcwuo" path="res://assets/generated-buildings/residential/residential_building_12.tscn" id="101_mefli"]
+[ext_resource type="PackedScene" path="res://assets/buildings/parking_garage/parking_garage.tscn" id="102_8d3pe"]
 [ext_resource type="Script" uid="uid://cc1f6cfx0plfo" path="res://scripts/city_preview_camera.gd" id="102_preview_camera"]
 [ext_resource type="PackedScene" path="res://assets/generated-buildings/residential/residential_building_14.tscn" id="103_bemax"]
 [ext_resource type="PackedScene" path="res://scenes/npcs/city_pedestrian_routes.tscn" id="103_route_pilot"]
@@ -33,23 +41,25 @@
 [ext_resource type="PackedScene" path="res://assets/generated-buildings/residential/residential_building_15.tscn" id="105_us4a1"]
 [ext_resource type="AudioStream" uid="uid://0341h1e5vfql" path="res://assets/audio/ambiance/city_ambiance.mp3" id="106_8m327"]
 [ext_resource type="Shader" uid="uid://b1rqdwwqewkv" path="res://assets/sky/hero_sky.gdshader" id="106_20yyw"]
-[ext_resource type="PackedScene" path="res://assets/generated-buildings/residential/residential_building_08.tscn" id="107_6tv7m"]
+[ext_resource type="PackedScene" uid="uid://b7n02xlhbsq2x" path="res://assets/generated-buildings/residential/residential_building_08.tscn" id="107_6tv7m"]
 [ext_resource type="Cubemap" path="res://assets/sky/custom_stars.res" id="107_cic4e"]
+[ext_resource type="PackedScene" path="res://assets/buildings/boxing_gym/boxing_gym_exterior.tscn" id="107_gb5js"]
+[ext_resource type="PackedScene" path="res://assets/props/subway_entrance/subway_entrance.tscn" id="108_3oj1f"]
 [ext_resource type="Cubemap" path="res://assets/sky/custom_galaxy.res" id="108_t6ywo"]
-[ext_resource type="PackedScene" path="res://assets/generated-buildings/residential/residential_building_13.tscn" id="109_wuqqh"]
-[ext_resource type="PackedScene" path="res://assets/generated-buildings/residential/residential_building_16.tscn" id="111_vsukp"]
+[ext_resource type="PackedScene" uid="uid://cloaivufmrdo0" path="res://assets/generated-buildings/residential/residential_building_13.tscn" id="109_wuqqh"]
+[ext_resource type="PackedScene" uid="uid://jo5l0auc3r4q" path="res://assets/generated-buildings/residential/residential_building_16.tscn" id="111_vsukp"]
 [ext_resource type="PackedScene" path="res://assets/generated-buildings/residential/residential_building_09.tscn" id="113_77fvo"]
-[ext_resource type="PackedScene" path="res://assets/generated-buildings/commercial/commercial_skyscraper_10.tscn" id="115_gij4b"]
-[ext_resource type="PackedScene" path="res://assets/generated-buildings/commercial/commercial_skyscraper_03.tscn" id="117_3m1ux"]
-[ext_resource type="PackedScene" path="res://assets/generated-buildings/commercial/commercial_skyscraper_17.tscn" id="119_i0qq7"]
-[ext_resource type="PackedScene" path="res://assets/buildings/city_hall/city_hall.tscn" id="120_0c1pg"]
+[ext_resource type="PackedScene" uid="uid://bbyuoxfq2tcaw" path="res://assets/generated-buildings/commercial/commercial_skyscraper_10.tscn" id="115_gij4b"]
+[ext_resource type="PackedScene" uid="uid://l3vn6p06heet" path="res://assets/generated-buildings/commercial/commercial_skyscraper_03.tscn" id="117_3m1ux"]
+[ext_resource type="PackedScene" uid="uid://di6wj5lyg8v36" path="res://assets/generated-buildings/commercial/commercial_skyscraper_17.tscn" id="119_i0qq7"]
+[ext_resource type="PackedScene" uid="uid://b28uo3md4ttpn" path="res://assets/buildings/city_hall/city_hall.tscn" id="120_0c1pg"]
 [ext_resource type="PackedScene" path="res://assets/generated-buildings/commercial/commercial_skyscraper_07.tscn" id="121_5jcb3"]
 [ext_resource type="PackedScene" path="res://assets/buildings/hospital/hospital.tscn" id="121_f2ny8"]
-[ext_resource type="PackedScene" path="res://assets/generated-buildings/commercial/commercial_skyscraper_14.tscn" id="123_n3hrb"]
-[ext_resource type="PackedScene" path="res://assets/generated-buildings/commercial/commercial_skyscraper_19.tscn" id="125_hnrvj"]
-[ext_resource type="PackedScene" path="res://assets/generated-buildings/commercial/commercial_skyscraper_18.tscn" id="127_opnag"]
-[ext_resource type="PackedScene" path="res://assets/generated-buildings/commercial/commercial_skyscraper_20.tscn" id="129_w2gu5"]
-[ext_resource type="PackedScene" path="res://assets/generated-buildings/industrial/industrial_building_03.tscn" id="131_g4o8c"]
+[ext_resource type="PackedScene" uid="uid://b7lbvbbvst2qb" path="res://assets/generated-buildings/commercial/commercial_skyscraper_14.tscn" id="123_n3hrb"]
+[ext_resource type="PackedScene" uid="uid://ccufg42aeao1" path="res://assets/generated-buildings/commercial/commercial_skyscraper_19.tscn" id="125_hnrvj"]
+[ext_resource type="PackedScene" uid="uid://7ykfscxyyyee" path="res://assets/generated-buildings/commercial/commercial_skyscraper_18.tscn" id="127_opnag"]
+[ext_resource type="PackedScene" uid="uid://eqnu4xcrdbkm" path="res://assets/generated-buildings/commercial/commercial_skyscraper_20.tscn" id="129_w2gu5"]
+[ext_resource type="PackedScene" uid="uid://l6w7nqbmc7c6" path="res://assets/generated-buildings/industrial/industrial_building_03.tscn" id="131_g4o8c"]
 [ext_resource type="PackedScene" path="res://assets/generated-buildings/industrial/industrial_building_01.tscn" id="133_lejnq"]
 [ext_resource type="PackedScene" path="res://assets/generated-buildings/industrial/industrial_building_06.tscn" id="135_ce8gx"]
 [ext_resource type="PackedScene" path="res://assets/generated-buildings/industrial/industrial_building_09.tscn" id="137_j36dl"]
@@ -58,16 +68,18 @@
 [ext_resource type="PackedScene" path="res://assets/generated-buildings/industrial/industrial_building_04.tscn" id="143_f4jy4"]
 [ext_resource type="PackedScene" path="res://assets/generated-buildings/industrial/industrial_building_02.tscn" id="145_mv5c3"]
 [ext_resource type="PackedScene" path="res://assets/generated-buildings/industrial/industrial_building_05.tscn" id="147_623hu"]
-[ext_resource type="PackedScene" path="res://assets/generated-buildings/industrial/industrial_building_07.tscn" id="149_po64i"]
+[ext_resource type="PackedScene" uid="uid://bgcfgm4eil87m" path="res://assets/generated-buildings/industrial/industrial_building_07.tscn" id="149_po64i"]
 [ext_resource type="Script" uid="uid://csv3u3pre04ad" path="res://scripts/sound_manager.gd" id="152_sound_manager"]
 [ext_resource type="Script" uid="uid://g1cppwvreouh" path="res://scripts/city_horn_ambience.gd" id="153_city_horns"]
 [ext_resource type="Script" uid="uid://cti2cb5wvco07" path="res://scripts/city_sky_wind.gd" id="154_sky_wind"]
 [ext_resource type="AudioStream" uid="uid://bnrbpjej7w6i8" path="res://assets/audio/ambiance/ambient_wind.wav" id="155_sky_wind_audio"]
 [ext_resource type="PackedScene" uid="uid://b8uj04omxmld5" path="res://scenes/central_park.tscn" id="central_park"]
 [ext_resource type="PackedScene" path="res://assets/bridges/city_hall_arch/city_hall_bridge.tscn" id="city_hall_bridge"]
-[ext_resource type="PackedScene" path="res://scenes/city_life.tscn" id="city_life"]
+[ext_resource type="PackedScene" uid="uid://dxt47mseacvdi" path="res://scenes/city_life.tscn" id="city_life"]
 [ext_resource type="Script" uid="uid://gxr4uqx3m1gx" path="res://scripts/city_occlusion.gd" id="city_occlusion"]
-[ext_resource type="PackedScene" path="res://scenes/coastal_region.tscn" id="coastal_region"]
+[ext_resource type="PackedScene" uid="uid://cpghoducokgvs" path="res://scenes/coastal_region.tscn" id="coastal_region"]
+[ext_resource type="PackedScene" path="res://scenes/planning/forest_boundary_marker.tscn" id="forest_boundary_marker"]
+[ext_resource type="Material" path="res://assets/buildings/parking_garage/materials/entrance_alley.tres" id="garage_entrance_asphalt"]
 [ext_resource type="PackedScene" path="res://assets/aircraft/helicopter/helicopter_patrol.tscn" id="helicopter_patrol"]
 [ext_resource type="PackedScene" path="res://assets/super-city/modular-sidewalks/city_ground_infill.tscn" id="modular_city_ground"]
 [ext_resource type="PackedScene" path="res://assets/super-city/modular-sidewalks/sidewalks_3_2_ground_infill.tscn" id="modular_ground_infill_3_2"]
@@ -83,6 +95,11 @@
 [ext_resource type="PackedScene" path="res://assets/buildings/bank1/bank1.tscn" id="poi_scene_3"]
 [ext_resource type="PackedScene" path="res://assets/buildings/bank2/bank2.tscn" id="poi_scene_4"]
 [ext_resource type="PackedScene" path="res://assets/buildings/firehouse/firehouse.tscn" id="poi_scene_5"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/boundary_terrain/city_coastal.res" id="river_CoastalTerrain"]
+[ext_resource type="Shape3D" path="res://assets/trees/boundary_terrain/city_coastal_collision.res" id="river_CoastalTerrain_collision"]
+[ext_resource type="ArrayMesh" path="res://assets/trees/boundary_terrain/city_northern.res" id="river_NorthernGround"]
+[ext_resource type="Shape3D" path="res://assets/trees/boundary_terrain/city_northern_collision.res" id="river_NorthernGround_collision"]
+[ext_resource type="PackedScene" uid="uid://74t73m8jns6l" path="res://scenes/mountain_river.tscn" id="river_scene"]
 [ext_resource type="PackedScene" path="res://assets/super-city/modular-roads/corner_90.tscn" id="road_city_corner_90"]
 [ext_resource type="PackedScene" path="res://assets/super-city/modular-roads/straight_12m.tscn" id="road_city_straight_12m"]
 [ext_resource type="PackedScene" path="res://assets/super-city/river-cleanup/road_ground_infill.tscn" id="road_ground_infill"]
@@ -94,14 +111,39 @@
 [ext_resource type="Script" uid="uid://dlbow4iwepvnm" path="res://scripts/city_rooftop_equipment.gd" id="rooftop_equipment"]
 [ext_resource type="Script" uid="uid://bayv02emwbrj" path="res://scripts/day_night_cycle.gd" id="sky_cycle"]
 [ext_resource type="PackedScene" path="res://assets/bridges/south_suspension/south_river_bridge.tscn" id="south_bridge"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/traffic/junction_guardrails.res" id="traffic_junction_guardrails"]
+[ext_resource type="Shape3D" path="res://assets/super-city/traffic/junction_guardrails_collision.res" id="traffic_junction_guardrails_collision"]
+[ext_resource type="BoxMesh" path="res://assets/super-city/traffic/junction_median.res" id="traffic_junction_median"]
+[ext_resource type="Shape3D" path="res://assets/super-city/traffic/junction_median_collision.res" id="traffic_junction_median_collision"]
 [ext_resource type="PackedScene" path="res://scenes/vehicles/traffic_manager.tscn" id="traffic_manager"]
-[ext_resource type="PackedScene" path="res://scenes/waterfront.tscn" id="waterfront"]
+[ext_resource type="PackedScene" uid="uid://cuwqhsumhn13t" path="res://scenes/waterfront.tscn" id="waterfront"]
+[ext_resource type="PackedScene" path="res://assets/waterfront/chunks/riverbank_chunks.tscn" id="riverbank_chunks"]
+[ext_resource type="PackedScene" path="res://assets/waterfront/harbor_chunks/harbor_chunks.tscn" id="harbor_chunks"]
+[ext_resource type="Script" path="res://scripts/streetlamp_chunks.gd" id="streetlamp_chunks"]
 
-[ext_resource type="ArrayMesh" path="res://assets/mountain-river/meshes/CoastalTerrain.res" id="river_CoastalTerrain"]
-[ext_resource type="Shape3D" path="res://assets/mountain-river/meshes/CoastalTerrain_collision.res" id="river_CoastalTerrain_collision"]
-[ext_resource type="ArrayMesh" path="res://assets/mountain-river/meshes/NorthernGround.res" id="river_NorthernGround"]
-[ext_resource type="Shape3D" path="res://assets/mountain-river/meshes/NorthernGround_collision.res" id="river_NorthernGround_collision"]
-[ext_resource type="PackedScene" path="res://scenes/mountain_river.tscn" id="river_scene"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_rlfdk"]
+material = ExtResource("6_gb5js")
+size = Vector2(30, 36)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lhr07"]
+material = ExtResource("6_gb5js")
+size = Vector2(30, 36)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_j2v34"]
+material = ExtResource("6_gb5js")
+size = Vector2(30, 36)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_toawi"]
+material = ExtResource("6_gb5js")
+size = Vector2(30, 36)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_5gsmm"]
+material = ExtResource("6_gb5js")
+size = Vector2(30, 36)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8smbp"]
+material = ExtResource("6_gb5js")
+size = Vector2(30, 36)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a1nhs"]
 size = Vector3(12.599999, 9, 13.2)
@@ -163,6 +205,10 @@ size = Vector3(20.2, 68, 20.2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_dbni8"]
 size = Vector3(21.15, 29.4, 16.195)
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_msnwe"]
+material = ExtResource("6_gb5js")
+size = Vector2(30, 36)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_wukaq"]
 size = Vector3(30.3, 25.6, 26.3)
 
@@ -193,19 +239,19 @@ size = Vector3(32, 8.8, 24.05)
 [sub_resource type="BoxShape3D" id="BoxShape3D_uyg1a"]
 size = Vector3(30.2, 28.6, 24.2)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_wpmjd"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_p8ph7"]
 seed = 8421
 frequency = 0.008
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_uwbwh"]
-noise = SubResource("FastNoiseLite_wpmjd")
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_20yyw"]
+noise = SubResource("FastNoiseLite_p8ph7")
 seamless = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_65hnp"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cic4e"]
 shader = ExtResource("106_20yyw")
 shader_parameter/milky_way = ExtResource("108_t6ywo")
 shader_parameter/bright_stars = ExtResource("107_cic4e")
-shader_parameter/cloud_noise = SubResource("NoiseTexture2D_uwbwh")
+shader_parameter/cloud_noise = SubResource("NoiseTexture2D_20yyw")
 shader_parameter/star_rotation = Basis(-0.00042547286, -0.79124016, -0.6115054, 0.34618863, 0.57357645, -0.74240386, 0.93816483, -0.2120121, 0.27367428)
 shader_parameter/sun_direction = Vector3(-0.5419717, 0.21225083, -0.81315213)
 shader_parameter/moon_direction = Vector3(0.5419717, -0.21225083, 0.81315213)
@@ -217,13 +263,13 @@ shader_parameter/cloud_coverage = 0.32
 shader_parameter/cloud_offset = Vector2(0, 0)
 shader_parameter/moon_size = 0.015009831567151233
 
-[sub_resource type="Sky" id="Sky_wn8wu"]
-sky_material = SubResource("ShaderMaterial_65hnp")
+[sub_resource type="Sky" id="Sky_t6ywo"]
+sky_material = SubResource("ShaderMaterial_cic4e")
 process_mode = 3
 
-[sub_resource type="Environment" id="Environment_tsfy1"]
+[sub_resource type="Environment" id="Environment_0c1pg"]
 background_mode = 2
-sky = SubResource("Sky_wn8wu")
+sky = SubResource("Sky_t6ywo")
 ambient_light_source = 2
 ambient_light_color = Color(0.75926334, 0.8393247, 0.99949354, 1)
 ambient_light_energy = 0.6494322
@@ -237,6 +283,54 @@ fog_light_color = Color(0.5502453, 0.63955045, 0.7818617, 1)
 fog_light_energy = 0.69946283
 fog_density = 0.0002504604
 fog_sky_affect = 0.0
+
+[sub_resource type="PlaneMesh" id="GarageEntranceAsphalt_1"]
+material = ExtResource("garage_entrance_asphalt")
+size = Vector2(8, 7.25)
+
+[sub_resource type="PlaneMesh" id="GarageEntranceAsphalt_2"]
+material = ExtResource("garage_entrance_asphalt")
+size = Vector2(8, 10.15)
+
+[sub_resource type="PlaneMesh" id="GarageEntranceAsphalt_3"]
+material = ExtResource("garage_entrance_asphalt")
+size = Vector2(8, 50.15)
+
+[sub_resource type="PlaneMesh" id="GarageEntranceAsphalt_4"]
+material = ExtResource("garage_entrance_asphalt")
+size = Vector2(8, 30.75)
+
+[sub_resource type="PlaneMesh" id="GarageEntranceAsphalt_5"]
+material = ExtResource("garage_entrance_asphalt")
+size = Vector2(8, 9.55)
+
+[sub_resource type="PlaneMesh" id="GarageEntranceAsphalt_6"]
+material = ExtResource("garage_entrance_asphalt")
+size = Vector2(8, 29.35)
+
+[sub_resource type="PlaneMesh" id="GarageEntranceAsphalt_7"]
+material = ExtResource("garage_entrance_asphalt")
+size = Vector2(8, 34.25)
+
+[sub_resource type="PlaneMesh" id="GarageEntranceAsphalt_8"]
+material = ExtResource("garage_entrance_asphalt")
+size = Vector2(8, 40.65)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_f2ny8"]
+material = ExtResource("6_gb5js")
+size = Vector2(30, 36)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mxu3w"]
+material = ExtResource("6_gb5js")
+size = Vector2(30, 36)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_nmdyg"]
+material = ExtResource("6_gb5js")
+size = Vector2(30, 36)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_in5lo"]
+material = ExtResource("6_gb5js")
+size = Vector2(30, 36)
 
 [node name="SuperCity" type="Node3D" unique_id=1139948486]
 metadata/city_size_m = Vector2(3000, 2000)
@@ -257,6 +351,38 @@ mesh = ExtResource("mouth_GroundMesh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/GroundMesh" unique_id=1304288961]
 shape = ExtResource("mouth_GroundMesh_collision")
+
+[node name="ParkingLot" parent="Ground/GroundMesh" unique_id=829432096 instance=ExtResource("5_8m327")]
+transform = Transform3D(-1, 0, 1.3113416e-07, 0, 1, 0, -8.742278e-08, 0, -1.5, 1347.7628, 0.045, -81.38419)
+instance_shader_parameters/aisle_width_m = 6.0
+instance_shader_parameters/lot_size_m = Vector2(30, 36)
+instance_shader_parameters/stall_depth_m = 5.2
+instance_shader_parameters/stall_width_m = 2.6
+mesh = SubResource("PlaneMesh_rlfdk")
+
+[node name="ParkingLot2" parent="Ground/GroundMesh" unique_id=92284228 instance=ExtResource("5_8m327")]
+transform = Transform3D(2.5948567, 0, 0, 0, 2.7214944, 0, 0, 0, 1.6839256, 968.74054, 0.045, -548.2883)
+instance_shader_parameters/aisle_width_m = 6.0
+instance_shader_parameters/lot_size_m = Vector2(30, 36)
+instance_shader_parameters/stall_depth_m = 5.2
+instance_shader_parameters/stall_width_m = 2.6
+mesh = SubResource("PlaneMesh_lhr07")
+
+[node name="ParkingLot3" parent="Ground/GroundMesh" unique_id=1455165306 instance=ExtResource("5_8m327")]
+transform = Transform3D(-4.371139e-08, 0, -2, 0, 1, 0, 1, 0, -8.742278e-08, -147.66817, 0.044984743, 550.57275)
+instance_shader_parameters/aisle_width_m = 6.0
+instance_shader_parameters/lot_size_m = Vector2(30, 36)
+instance_shader_parameters/stall_depth_m = 5.2
+instance_shader_parameters/stall_width_m = 2.6
+mesh = SubResource("PlaneMesh_j2v34")
+
+[node name="ParkingLot4" parent="Ground/GroundMesh" unique_id=29140360 instance=ExtResource("5_8m327")]
+transform = Transform3D(-2.6600003, 0, 1.8883318e-07, 0, 1, 0, -2.3254461e-07, 0, -2.1599998, -649.097, 0.045, -85.47025)
+instance_shader_parameters/aisle_width_m = 6.0
+instance_shader_parameters/lot_size_m = Vector2(30, 36)
+instance_shader_parameters/stall_depth_m = 5.2
+instance_shader_parameters/stall_width_m = 2.6
+mesh = SubResource("PlaneMesh_toawi")
 
 [node name="Sidewalks3_2GroundInfill" parent="Ground" unique_id=866358091 instance=ExtResource("modular_ground_infill_3_2")]
 
@@ -1385,9 +1511,114 @@ transform = Transform3D(0, 0, -0.70933336, 0, 1, 0, 1, 0, 0, 744, -5, 800)
 [node name="RiverFoam" parent="Waterfront/Riverbanks" parent_id_path=PackedInt32Array(42659947, 1428273561) index="203" unique_id=1921803792]
 visible = false
 
+[node name="Container" parent="Waterfront/Harbor" parent_id_path=PackedInt32Array(42659947, 385833039) index="5" unique_id=259876849]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1152, 1.5, 970)
+
+[node name="Container2" parent="Waterfront/Harbor" parent_id_path=PackedInt32Array(42659947, 385833039) index="6" unique_id=1861937605]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1152, 4.5, 970)
+
+[node name="Container3" parent="Waterfront/Harbor" parent_id_path=PackedInt32Array(42659947, 385833039) index="7" unique_id=1101979631]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1162, 1.5, 970)
+
+[node name="Container4" parent="Waterfront/Harbor" parent_id_path=PackedInt32Array(42659947, 385833039) index="8" unique_id=294728271]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1172, 1.5, 970)
+
+[node name="Container5" parent="Waterfront/Harbor" parent_id_path=PackedInt32Array(42659947, 385833039) index="9" unique_id=831387690]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1182, 1.5, 970)
+
+[node name="Container6" parent="Waterfront/Harbor" parent_id_path=PackedInt32Array(42659947, 385833039) index="10" unique_id=1637298075]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1182, 4.5, 970)
+
+[node name="Container7" parent="Waterfront/Harbor" parent_id_path=PackedInt32Array(42659947, 385833039) index="11" unique_id=1511130778]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1192, 1.5, 970)
+
+[node name="Container8" parent="Waterfront/Harbor" parent_id_path=PackedInt32Array(42659947, 385833039) index="12" unique_id=376824424]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1202, 1.5, 970)
+
+[node name="Container9" parent="Waterfront/Harbor" parent_id_path=PackedInt32Array(42659947, 385833039) index="13" unique_id=322071213]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1152, 1.5, 989)
+
+[node name="Container10" parent="Waterfront/Harbor" parent_id_path=PackedInt32Array(42659947, 385833039) index="14" unique_id=1945763395]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1152, 4.5, 989)
+
+[node name="Container11" parent="Waterfront/Harbor" parent_id_path=PackedInt32Array(42659947, 385833039) index="15" unique_id=652084255]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1162, 1.5, 989)
+
+[node name="Container12" parent="Waterfront/Harbor" parent_id_path=PackedInt32Array(42659947, 385833039) index="16" unique_id=2032156900]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1172, 1.5, 989)
+
+[node name="Container13" parent="Waterfront/Harbor" parent_id_path=PackedInt32Array(42659947, 385833039) index="17" unique_id=856379975]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1182, 1.5, 989)
+
+[node name="Container14" parent="Waterfront/Harbor" parent_id_path=PackedInt32Array(42659947, 385833039) index="18" unique_id=935445963]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1182, 4.5, 989)
+
+[node name="Container15" parent="Waterfront/Harbor" parent_id_path=PackedInt32Array(42659947, 385833039) index="19" unique_id=1955288237]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1192, 1.5, 989)
+
+[node name="Container16" parent="Waterfront/Harbor" parent_id_path=PackedInt32Array(42659947, 385833039) index="20" unique_id=1718023409]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1202, 1.5, 989)
+
+[node name="Container17" parent="Waterfront/Harbor" parent_id_path=PackedInt32Array(42659947, 385833039) index="21" unique_id=1672819025]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1152, 1.5, 1008)
+
+[node name="Container18" parent="Waterfront/Harbor" parent_id_path=PackedInt32Array(42659947, 385833039) index="22" unique_id=1255531547]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1152, 4.5, 1008)
+
+[node name="Container19" parent="Waterfront/Harbor" parent_id_path=PackedInt32Array(42659947, 385833039) index="23" unique_id=330249856]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1162, 1.5, 1008)
+
+[node name="Container20" parent="Waterfront/Harbor" parent_id_path=PackedInt32Array(42659947, 385833039) index="24" unique_id=120123191]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1172, 1.5, 1008)
+
+[node name="Container21" parent="Waterfront/Harbor" parent_id_path=PackedInt32Array(42659947, 385833039) index="25" unique_id=2054019938]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1182, 1.5, 1008)
+
+[node name="Container22" parent="Waterfront/Harbor" parent_id_path=PackedInt32Array(42659947, 385833039) index="26" unique_id=516880751]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1182, 4.5, 1008)
+
+[node name="Container23" parent="Waterfront/Harbor" parent_id_path=PackedInt32Array(42659947, 385833039) index="27" unique_id=486394348]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1192, 1.5, 1008)
+
+[node name="Container24" parent="Waterfront/Harbor" parent_id_path=PackedInt32Array(42659947, 385833039) index="28" unique_id=1679379661]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1202, 1.5, 1008)
+
 [node name="CityLife" parent="." unique_id=1157347002 instance=ExtResource("city_life")]
 
+[node name="NorthernGround" parent="CityLife/Highway" parent_id_path=PackedInt32Array(1157347002, 788556127) index="0" unique_id=998038697]
+mesh = ExtResource("river_NorthernGround")
+
+[node name="CollisionShape3D" parent="CityLife/Highway/NorthernGround/Solid" parent_id_path=PackedInt32Array(1157347002, 1814200421) index="0" unique_id=762208885]
+shape = ExtResource("river_NorthernGround_collision")
+
+[node name="GuardrailPost" parent="CityLife/Highway" parent_id_path=PackedInt32Array(1157347002, 788556127) index="1" unique_id=789144477]
+visible = false
+
+[node name="GuardrailPost2" parent="CityLife/Highway" parent_id_path=PackedInt32Array(1157347002, 788556127) index="2" unique_id=1765014026]
+visible = false
+
+[node name="MedianBarrier" parent="CityLife/Highway" parent_id_path=PackedInt32Array(1157347002, 788556127) index="3" unique_id=96643167]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -740, 0.455, -987.05)
+mesh = ExtResource("traffic_junction_median")
+
+[node name="CollisionShape3D" parent="CityLife/Highway/MedianBarrier/Solid" parent_id_path=PackedInt32Array(1157347002, 789242368) index="0" unique_id=113511131]
+shape = ExtResource("traffic_junction_median_collision")
+
+[node name="HighwayGuardrails" parent="CityLife/Highway" parent_id_path=PackedInt32Array(1157347002, 788556127) index="144" unique_id=1121682543]
+mesh = ExtResource("traffic_junction_guardrails")
+
+[node name="CollisionShape3D" parent="CityLife/Highway/HighwayGuardrails/Solid" parent_id_path=PackedInt32Array(1157347002, 1995446983) index="0" unique_id=471257620]
+shape = ExtResource("traffic_junction_guardrails_collision")
+
 [node name="CoastalRegion" parent="." unique_id=1745407771 instance=ExtResource("coastal_region")]
+
+[node name="CoastalTerrain" parent="CoastalRegion/Landscape" parent_id_path=PackedInt32Array(1745407771, 257426154) index="0" unique_id=1713723592]
+mesh = ExtResource("river_CoastalTerrain")
+
+[node name="CollisionShape3D" parent="CoastalRegion/Landscape/CoastalTerrain/Solid" parent_id_path=PackedInt32Array(1745407771, 1379323860) index="0" unique_id=1960191955]
+shape = ExtResource("river_CoastalTerrain_collision")
+
+[node name="PavementChunks" parent="." instance=ExtResource("pavement_chunks")]
 
 [node name="Roads" type="Node3D" parent="." unique_id=18169345]
 
@@ -2566,6 +2797,9 @@ trim_to_bounds = true
 trim_bounds = Rect2(-470, -278, 500, 500)
 keep_sockets_at_runtime = false
 
+[node name="alley_6m" parent="Roads/roads_4_0" unique_id=1463925238 instance=ExtResource("25_3oj1f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.43, -320.11234, 0.018320471, 788.4815)
+
 [node name="roads_5_0" type="Node3D" parent="Roads" unique_id=1909039854]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1250, 0, -750)
 
@@ -3461,7 +3695,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -250, 0, -250)
 
 [node name="Junction_425" parent="Roads/roads_2_1" unique_id=311951367 instance=ExtResource("road_trial_junction_t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -130, 0, -230)
-sidewalk_cutouts = Array[Rect2]([Rect2(-4.325012, 10.674988, 22.325012, 3.3250122)])
 trim_to_bounds = true
 trim_bounds = Rect2(-120, -20, 500, 500)
 keep_sockets_at_runtime = false
@@ -3471,14 +3704,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -130, 0, -70)
 cross_width_m = 28
 active_arms = 10
 crosswalk_arms = 10
-sidewalk_cutouts = Array[Rect2]([Rect2(-4.325012, -18, 22.325012, 2.25)])
 trim_to_bounds = true
 trim_bounds = Rect2(-120, -180, 500, 500)
 keep_sockets_at_runtime = false
 
 [node name="Junction_434" parent="Roads/roads_2_1" unique_id=1133340630 instance=ExtResource("road_trial_junction_t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, -230)
-sidewalk_cutouts = Array[Rect2]([Rect2(-18, 10.674988, 18.324997, 3.3250122)])
+active_arms = 15
+crosswalk_arms = 15
 trim_to_bounds = true
 trim_bounds = Rect2(-300, -20, 500, 500)
 keep_sockets_at_runtime = false
@@ -3486,9 +3719,6 @@ keep_sockets_at_runtime = false
 [node name="Junction_435" parent="Roads/roads_2_1" unique_id=553200965 instance=ExtResource("road_trial_junction_t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, -70)
 cross_width_m = 28
-active_arms = 10
-crosswalk_arms = 10
-sidewalk_cutouts = Array[Rect2]([Rect2(-18, -18, 18.324997, 2.25)])
 trim_to_bounds = true
 trim_bounds = Rect2(-300, -180, 500, 500)
 keep_sockets_at_runtime = false
@@ -3538,7 +3768,7 @@ keep_sockets_at_runtime = false
 [node name="Straight_054_0" parent="Roads/roads_2_1" unique_id=1552361398 instance=ExtResource("road_trial_straight_20m")]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -40, 0, -230)
 length_m = 144.0
-sidewalk_cutouts = Array[Rect2]([Rect2(-14, -72, 3.3250122, 144), Rect2(10, -3, 4, 6)])
+sidewalk_cutouts = Array[Rect2]([Rect2(10, -3, 4, 6)])
 trim_to_bounds = true
 trim_bounds = Rect2(-480, -210, 500, 500)
 keep_sockets_at_runtime = false
@@ -3562,7 +3792,6 @@ keep_sockets_at_runtime = false
 [node name="Straight_070_0" parent="Roads/roads_2_1" unique_id=1693898990 instance=ExtResource("road_trial_straight_28m")]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -40, 0, -70)
 length_m = 144.0
-sidewalk_cutouts = Array[Rect2]([Rect2(15.75, -72, 2.25, 144)])
 trim_to_bounds = true
 trim_bounds = Rect2(-320, -210, 500, 500)
 keep_sockets_at_runtime = false
@@ -3573,6 +3802,11 @@ length_m = 140.0
 sidewalk_cutouts = Array[Rect2]([Rect2(14, -1, 4, 6)])
 trim_to_bounds = true
 trim_bounds = Rect2(-320, -388, 500, 500)
+keep_sockets_at_runtime = false
+
+[node name="CityHallEastConnection" parent="Roads/roads_2_1" unique_id=84396167 instance=ExtResource("road_trial_straight_20m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, -152)
+length_m = 120.0
 keep_sockets_at_runtime = false
 
 [node name="Straight_251_0" parent="Roads/roads_2_1" unique_id=638248981 instance=ExtResource("road_trial_straight_20m")]
@@ -6941,6 +7175,14 @@ trim_to_bounds = true
 trim_bounds = Rect2(-330, -202, 500, 500)
 keep_sockets_at_runtime = false
 
+[node name="ParkingLot" parent="Roads/roads_5_3" unique_id=1093086426 instance=ExtResource("5_8m327")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.2, 62.031616, 0.044992372, -832.4763)
+instance_shader_parameters/aisle_width_m = 6.0
+instance_shader_parameters/lot_size_m = Vector2(30, 36)
+instance_shader_parameters/stall_depth_m = 5.2
+instance_shader_parameters/stall_width_m = 2.6
+mesh = SubResource("PlaneMesh_5gsmm")
+
 [node name="NorthBankLink" type="Node3D" parent="Roads" unique_id=1385470459]
 
 [node name="SouthCorner" parent="Roads/NorthBankLink" unique_id=847305027 instance=ExtResource("road_city_corner_90")]
@@ -7004,10 +7246,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -250, 0, -250)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -142, 0, -152)
 length_m = 128.0
 
-[node name="Straight_031_1_1" parent="Sidewalks/sidewalks_2_1" unique_id=1621189190 instance=ExtResource("modular_straight_3_2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62, 0, -152)
-length_m = 128.0
-
 [node name="Paving_046_1_1" parent="Sidewalks/sidewalks_2_1" unique_id=180072357 instance=ExtResource("modular_straight_3_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -154, 0, -152)
 length_m = 128.0
@@ -7017,11 +7255,6 @@ width_m = 20.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -137.1625, 0, -152)
 length_m = 128.0
 width_m = 5.67498779297
-
-[node name="Paving_049_1_1" parent="Sidewalks/sidewalks_2_1" unique_id=993580974 instance=ExtResource("modular_straight_3_2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.1625, 0, -152)
-length_m = 128.0
-width_m = 9.67500305176
 
 [node name="Paving_050_1_1" parent="Sidewalks/sidewalks_2_1" unique_id=1543759264 instance=ExtResource("modular_straight_3_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.5, 0, -152)
@@ -7314,6 +7547,36 @@ width_m = 40.0
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -88, 0, 140)
 length_m = 176.0
 width_m = 40.0
+
+[node name="ParkingLot" parent="Sidewalks/sidewalks_5_3" unique_id=953275508 instance=ExtResource("5_8m327")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.2, -214.05688, 0.07496826, 103.038025)
+instance_shader_parameters/aisle_width_m = 6.0
+instance_shader_parameters/lot_size_m = Vector2(30, 36)
+instance_shader_parameters/stall_depth_m = 5.2
+instance_shader_parameters/stall_width_m = 2.6
+mesh = SubResource("PlaneMesh_8smbp")
+
+[node name="CityHallSurrounds" type="Node3D" parent="Sidewalks" unique_id=525323774]
+
+[node name="FrontStairApron" parent="Sidewalks/CityHallSurrounds" unique_id=957379072 instance=ExtResource("modular_straight_3_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -301, 0, -340.4)
+length_m = 4.8
+width_m = 165.6
+
+[node name="RearRetainingWalk" parent="Sidewalks/CityHallSurrounds" unique_id=848281271 instance=ExtResource("modular_straight_3_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -301, 0, -464.25)
+length_m = 3.5
+width_m = 165.6
+
+[node name="EastRetainingWalk" parent="Sidewalks/CityHallSurrounds" unique_id=1964442754 instance=ExtResource("modular_straight_3_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -216.1, 0, -402)
+length_m = 128.0
+width_m = 4.2
+
+[node name="WestEdgeInfill" parent="Sidewalks/CityHallSurrounds" unique_id=1427060040 instance=ExtResource("modular_straight_3_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384.0625, 0, -402)
+length_m = 128.0
+width_m = 0.525
 
 [node name="Districts" type="Node3D" parent="." unique_id=204733609]
 
@@ -9519,36 +9782,6 @@ visibility_range_end_margin = 60.0
 [node name="CollisionShape3D" parent="Districts/WestVillage/WestVillage_0247" index="1" unique_id=418463531]
 shape = SubResource("BoxShape3D_uc81l")
 
-[node name="WestVillage_0248" parent="Districts/WestVillage" unique_id=1249279994 instance=ExtResource("61_u6el0")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1124.5875, 0, -734.975)
-
-[node name="MeshInstance3D" parent="Districts/WestVillage/WestVillage_0248" index="0" unique_id=411092890]
-visibility_range_end = 850.0
-visibility_range_end_margin = 60.0
-
-[node name="CollisionShape3D" parent="Districts/WestVillage/WestVillage_0248" index="1" unique_id=899390772]
-shape = SubResource("BoxShape3D_13kes")
-
-[node name="WestVillage_0249" parent="Districts/WestVillage" unique_id=233258671 instance=ExtResource("61_u6el0")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1124.5875, 0, -711.825)
-
-[node name="MeshInstance3D" parent="Districts/WestVillage/WestVillage_0249" index="0" unique_id=411092890]
-visibility_range_end = 850.0
-visibility_range_end_margin = 60.0
-
-[node name="CollisionShape3D" parent="Districts/WestVillage/WestVillage_0249" index="1" unique_id=899390772]
-shape = SubResource("BoxShape3D_13kes")
-
-[node name="WestVillage_0250" parent="Districts/WestVillage" unique_id=1799113021 instance=ExtResource("55_opnfn")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1124.6875, 0, -693.35)
-
-[node name="MeshInstance3D" parent="Districts/WestVillage/WestVillage_0250" index="0" unique_id=965385932]
-visibility_range_end = 850.0
-visibility_range_end_margin = 60.0
-
-[node name="CollisionShape3D" parent="Districts/WestVillage/WestVillage_0250" index="1" unique_id=1692755683]
-shape = SubResource("BoxShape3D_4ffjp")
-
 [node name="WestVillage_0251" parent="Districts/WestVillage" unique_id=911564040 instance=ExtResource("53_trun2")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1203.15, 0, -739.925)
 
@@ -9578,36 +9811,6 @@ visibility_range_end_margin = 60.0
 
 [node name="CollisionShape3D" parent="Districts/WestVillage/WestVillage_0253" index="1" unique_id=1692755683]
 shape = SubResource("BoxShape3D_4ffjp")
-
-[node name="WestVillage_0254" parent="Districts/WestVillage" unique_id=1621879143 instance=ExtResource("51_11nit")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1177.4, 0, -742.7)
-
-[node name="MeshInstance3D" parent="Districts/WestVillage/WestVillage_0254" index="0" unique_id=1645501746]
-visibility_range_end = 850.0
-visibility_range_end_margin = 60.0
-
-[node name="CollisionShape3D" parent="Districts/WestVillage/WestVillage_0254" index="1" unique_id=91178476]
-shape = SubResource("BoxShape3D_a1nhs")
-
-[node name="WestVillage_0255" parent="Districts/WestVillage" unique_id=1449432648 instance=ExtResource("61_u6el0")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1176.4125, 0, -720.325)
-
-[node name="MeshInstance3D" parent="Districts/WestVillage/WestVillage_0255" index="0" unique_id=411092890]
-visibility_range_end = 850.0
-visibility_range_end_margin = 60.0
-
-[node name="CollisionShape3D" parent="Districts/WestVillage/WestVillage_0255" index="1" unique_id=899390772]
-shape = SubResource("BoxShape3D_13kes")
-
-[node name="WestVillage_0256" parent="Districts/WestVillage" unique_id=1769319236 instance=ExtResource("51_11nit")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1177.4, 0, -697.95)
-
-[node name="MeshInstance3D" parent="Districts/WestVillage/WestVillage_0256" index="0" unique_id=1645501746]
-visibility_range_end = 850.0
-visibility_range_end_margin = 60.0
-
-[node name="CollisionShape3D" parent="Districts/WestVillage/WestVillage_0256" index="1" unique_id=91178476]
-shape = SubResource("BoxShape3D_a1nhs")
 
 [node name="WestVillage_0257" parent="Districts/WestVillage" unique_id=53572492 instance=ExtResource("61_u6el0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1253.925, 0, -615.4125)
@@ -10398,16 +10601,6 @@ visibility_range_end_margin = 60.0
 
 [node name="CollisionShape3D" parent="Districts/WestVillage/WestVillage_0335" index="1" unique_id=91178476]
 shape = SubResource("BoxShape3D_a1nhs")
-
-[node name="WestVillage_0336" parent="Districts/WestVillage" unique_id=725720747 instance=ExtResource("53_trun2")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1124.15, 0, -102.525)
-
-[node name="MeshInstance3D" parent="Districts/WestVillage/WestVillage_0336" index="0" unique_id=1160306684]
-visibility_range_end = 850.0
-visibility_range_end_margin = 60.0
-
-[node name="CollisionShape3D" parent="Districts/WestVillage/WestVillage_0336" index="1" unique_id=368996453]
-shape = SubResource("BoxShape3D_c2njn")
 
 [node name="WestVillage_0337" parent="Districts/WestVillage" unique_id=1077674254 instance=ExtResource("55_opnfn")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1124.6875, 0, -84.05)
@@ -16692,17 +16885,6 @@ visibility_range_end_margin = 60.0
 [node name="CollisionShape3D" parent="Districts/NorthHeights/NorthHeights_1143" index="1" unique_id=431599758]
 shape = SubResource("BoxShape3D_y88lo")
 
-[node name="NorthHeights_1145" parent="Districts/NorthHeights" unique_id=1141242340 instance=ExtResource("103_bemax")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 54.435, 0, -858.775)
-
-[node name="MeshInstance3D" parent="Districts/NorthHeights/NorthHeights_1145" index="0" unique_id=1001298001]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 32, 0, -16.999996)
-visibility_range_end = 850.0
-visibility_range_end_margin = 60.0
-
-[node name="CollisionShape3D" parent="Districts/NorthHeights/NorthHeights_1145" index="1" unique_id=1937090328]
-shape = SubResource("BoxShape3D_uwfmf")
-
 [node name="NorthHeights_1148" parent="Districts/NorthHeights" unique_id=1140387113 instance=ExtResource("107_6tv7m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.075, 0, -777.925)
 
@@ -18903,16 +19085,6 @@ visibility_range_end_margin = 60.0
 [node name="CollisionShape3D" parent="Districts/NorthHeights/NorthHeights_1840" index="1" unique_id=2087722231]
 shape = SubResource("BoxShape3D_dbni8")
 
-[node name="NorthHeights_1841" parent="Districts/NorthHeights" unique_id=1298632266 instance=ExtResource("107_6tv7m")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1184.525, 0, -666.075)
-
-[node name="MeshInstance3D" parent="Districts/NorthHeights/NorthHeights_1841" index="0" unique_id=603554277]
-visibility_range_end = 850.0
-visibility_range_end_margin = 60.0
-
-[node name="CollisionShape3D" parent="Districts/NorthHeights/NorthHeights_1841" index="1" unique_id=738621583]
-shape = SubResource("BoxShape3D_ekc0t")
-
 [node name="NorthHeights_1842" parent="Districts/NorthHeights" unique_id=1262687809 instance=ExtResource("99_qf6su")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1086.565, 0, -744.525)
 
@@ -20172,9 +20344,10 @@ visibility_range_end_margin = 60.0
 shape = SubResource("BoxShape3D_f75nc")
 
 [node name="Parkside_0923" parent="Districts/Parkside" unique_id=719377920 instance=ExtResource("67_5b06r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -448.475, 0, -451.925)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -452.475, 0, -451.925)
 
 [node name="MeshInstance3D" parent="Districts/Parkside/Parkside_0923" index="0" unique_id=327585879]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
 visibility_range_end = 1500.0
 visibility_range_end_margin = 60.0
 
@@ -20222,7 +20395,7 @@ visibility_range_end_margin = 60.0
 shape = SubResource("BoxShape3D_f75nc")
 
 [node name="Parkside_0932" parent="Districts/Parkside" unique_id=2066294432 instance=ExtResource("87_coo5o")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -454.925, 0, -415.925)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -454.925, 0, -419.925)
 
 [node name="MeshInstance3D" parent="Districts/Parkside/Parkside_0932" index="0" unique_id=158317843]
 visibility_range_end = 1500.0
@@ -20496,7 +20669,7 @@ visibility_range_end_margin = 60.0
 shape = SubResource("BoxShape3D_tfieu")
 
 [node name="Parkside_1195" parent="Districts/Parkside" unique_id=217896415 instance=ExtResource("101_mefli")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 111.525, 0, 134.435)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 79.525, 0, 134.435)
 
 [node name="MeshInstance3D" parent="Districts/Parkside/Parkside_1195" index="0" unique_id=1876286640]
 visibility_range_end = 850.0
@@ -20715,6 +20888,14 @@ visibility_range_end_margin = 60.0
 
 [node name="CollisionShape3D" parent="Districts/Parkside/Parkside_1269" index="1" unique_id=431599758]
 shape = SubResource("BoxShape3D_y88lo")
+
+[node name="ParkingLot" parent="Districts/Parkside" unique_id=820502988 instance=ExtResource("5_8m327")]
+transform = Transform3D(-4.371139e-08, 0, -0.7, 0, 1, 0, 1, 0, -3.059797e-08, -396.48578, 0.07499878, -357.2506)
+instance_shader_parameters/aisle_width_m = 6.0
+instance_shader_parameters/lot_size_m = Vector2(30, 36)
+instance_shader_parameters/stall_depth_m = 5.2
+instance_shader_parameters/stall_width_m = 2.6
+mesh = SubResource("PlaneMesh_msnwe")
 
 [node name="FinancialQuarter" type="Node3D" parent="Districts" unique_id=313266009]
 
@@ -21103,13 +21284,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 509.02)
 visibility_range_end = 2200.0
 visibility_range_end_margin = 60.0
 
-[node name="FinancialQuarter_1227" parent="Districts/FinancialQuarter" unique_id=1842541626 instance=ExtResource("123_n3hrb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95, 0, 510.02)
-
-[node name="MeshInstance3D" parent="Districts/FinancialQuarter/FinancialQuarter_1227" index="0" unique_id=1932594048]
-visibility_range_end = 2200.0
-visibility_range_end_margin = 60.0
-
 [node name="FinancialQuarter_1228" parent="Districts/FinancialQuarter" unique_id=852601670 instance=ExtResource("129_w2gu5")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 19, 0, 606.98)
 
@@ -21124,31 +21298,10 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 13.0
 visibility_range_end = 2200.0
 visibility_range_end_margin = 60.0
 
-[node name="FinancialQuarter_1232" parent="Districts/FinancialQuarter" unique_id=608421809 instance=ExtResource("123_n3hrb")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 129.98, 0, 515)
-
-[node name="MeshInstance3D" parent="Districts/FinancialQuarter/FinancialQuarter_1232" index="0" unique_id=1932594048]
-visibility_range_end = 2200.0
-visibility_range_end_margin = 60.0
-
-[node name="FinancialQuarter_1233" parent="Districts/FinancialQuarter" unique_id=837745712 instance=ExtResource("129_w2gu5")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 130.98, 0, 551)
-
-[node name="MeshInstance3D" parent="Districts/FinancialQuarter/FinancialQuarter_1233" index="0" unique_id=2066737794]
-visibility_range_end = 2200.0
-visibility_range_end_margin = 60.0
-
 [node name="FinancialQuarter_1234" parent="Districts/FinancialQuarter" unique_id=1841076978 instance=ExtResource("119_i0qq7")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 51.98, 0, 550)
 
 [node name="MeshInstance3D" parent="Districts/FinancialQuarter/FinancialQuarter_1234" index="0" unique_id=654770846]
-visibility_range_end = 2200.0
-visibility_range_end_margin = 60.0
-
-[node name="FinancialQuarter_1235" parent="Districts/FinancialQuarter" unique_id=346085911 instance=ExtResource("123_n3hrb")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 89.02, 0, 549)
-
-[node name="MeshInstance3D" parent="Districts/FinancialQuarter/FinancialQuarter_1235" index="0" unique_id=1932594048]
 visibility_range_end = 2200.0
 visibility_range_end_margin = 60.0
 
@@ -23987,16 +24140,6 @@ visibility_range_end_margin = 60.0
 [node name="CollisionShape3D" parent="Districts/Eastbank/Eastbank_1758" index="1" unique_id=738621583]
 shape = SubResource("BoxShape3D_ekc0t")
 
-[node name="Eastbank_1759" parent="Districts/Eastbank" unique_id=591397708 instance=ExtResource("107_6tv7m")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1031.725, 0, -26.075)
-
-[node name="MeshInstance3D" parent="Districts/Eastbank/Eastbank_1759" index="0" unique_id=603554277]
-visibility_range_end = 850.0
-visibility_range_end_margin = 60.0
-
-[node name="CollisionShape3D" parent="Districts/Eastbank/Eastbank_1759" index="1" unique_id=738621583]
-shape = SubResource("BoxShape3D_ekc0t")
-
 [node name="Eastbank_1760" parent="Districts/Eastbank" unique_id=1158050747 instance=ExtResource("101_mefli")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 905.565, 0, -99.775)
 
@@ -25606,16 +25749,6 @@ visibility_range_end_margin = 60.0
 [node name="CollisionShape3D" parent="Districts/FoundryWard/FoundryWard_1911" index="1" unique_id=2122222636]
 shape = SubResource("BoxShape3D_kimgu")
 
-[node name="FoundryWard_1912" parent="Districts/FoundryWard" unique_id=335967885 instance=ExtResource("139_ucnvk")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1089.025, 0, 239.2)
-
-[node name="MeshInstance3D" parent="Districts/FoundryWard/FoundryWard_1912" index="0" unique_id=1165230909]
-visibility_range_end = 850.0
-visibility_range_end_margin = 60.0
-
-[node name="CollisionShape3D" parent="Districts/FoundryWard/FoundryWard_1912" index="1" unique_id=700248855]
-shape = SubResource("BoxShape3D_d01cw")
-
 [node name="FoundryWard_1913" parent="Districts/FoundryWard" unique_id=738855984 instance=ExtResource("141_ljhjx")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1214.975, 0, 196)
 
@@ -26100,7 +26233,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 720, 1, 340)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 1, -320)
 
 [node name="Daylight" type="WorldEnvironment" parent="." unique_id=1402928504]
-environment = SubResource("Environment_tsfy1")
+environment = SubResource("Environment_0c1pg")
 metadata/day_night_environment = true
 
 [node name="DayNightCycle" type="Node" parent="." unique_id=79188708]
@@ -26108,6 +26241,9 @@ script = ExtResource("sky_cycle")
 
 [node name="NightLights" type="Node3D" parent="." unique_id=1760368937]
 script = ExtResource("night_lights")
+
+[node name="StreetlampChunks" type="Node3D" parent="NightLights"]
+script = ExtResource("streetlamp_chunks")
 
 [node name="Moon" type="DirectionalLight3D" parent="." unique_id=1369619562]
 transform = Transform3D(0.83211154, 0.11771607, 0.5419717, 0, 0.9772153, -0.21225083, -0.5546083, 0.17661637, 0.81315213, 0, 0, 0)
@@ -26147,6 +26283,7 @@ intersection_pause = 0.5
 minimum_intersection_speed = 4.0
 maximum_intersection_speed = 6.0
 straight_ahead_weight = 5.0
+layout_file = "res://assets/super-city/traffic/layout.json"
 
 [node name="CivilianCrowd" parent="." unique_id=691411788 instance=ExtResource("104_crowd")]
 max_civilians = 100
@@ -26201,112 +26338,112 @@ enabled_routes = {
 }
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_01_01" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1368, 0.03, -972)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1455.6669, 0.03, -972.50006)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_01_02" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1286, 0.03, -972)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1176.1666, 0.03, -972.50006)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_01_03" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1110, 0.03, -972)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1071.3334, 0.03, -972.50006)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_01_04" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -930, 0.03, -972)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -958.00006, 0.03, -971.66675)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_02_01" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1368, 0.03, -808)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1471.5001, 0.03, -832.66675)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_02_02" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1288, 0.03, -808)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1190.5, 0.03, -810.33344)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_02_03" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1148.5, 0.03, -808)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1112.1666, 0.03, -825.16675)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_02_04" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -968.5, 0.03, -808)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -908.66675, 0.03, -809.66675)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_03_01" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1411.5, 0.03, -652)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1369.3335, 0.03, -676.00006)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_03_02" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1326.5, 0.03, -652)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1189.3334, 0.03, -676.00006)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_03_03" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1148.5, 0.03, -652)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1112.1666, 0.03, -669.66675)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_03_04" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -932, 0.03, -652)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -931.50006, 0.03, -676.50006)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_04_01" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1411.5, 0.03, -492)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1369.1669, 0.03, -505.66666)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_04_02" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1326.5, 0.03, -492)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1288.0001, 0.03, -527.8333)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_04_03" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1112, 0.03, -492)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1112.3334, 0.03, -525.6667)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_04_04" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -968.5, 0.03, -492)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -932.33344, 0.03, -505.83334)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_05_01" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1368, 0.03, -336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1471.5001, 0.03, -359.33337)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_05_02" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1288, 0.03, -336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1287.5001, 0.03, -359.16672)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_05_03" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1148.5, 0.03, -336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1112.1666, 0.03, -354.16672)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_05_04" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -968.5, 0.03, -336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -931.50006, 0.03, -359.33337)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_06_01" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1411.5, 0.03, -168)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1379.5001, 0.03, -168.83336)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_06_02" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1326.5, 0.03, -168)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1287.8335, 0.03, -187.66669)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_06_03" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1148.5, 0.03, -168)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1088.1666, 0.03, -185.33336)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_06_04" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -932, 0.03, -168)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -931.50006, 0.03, -191.83336)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_07_01" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1411.5, 0.03, -12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1378.1669, 0.03, -12.833335)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_07_02" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1326.5, 0.03, -12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1288.5001, 0.03, -37.833336)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_07_03" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1112, 0.03, -12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1088.1666, 0.03, -30.000002)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_07_04" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -968.5, 0.03, -12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -931.50006, 0.03, -36.500004)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_08_01" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1368, 0.03, 148)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1448.1669, 0.03, 130.66667)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_08_02" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1288, 0.03, 148)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1287.3335, 0.03, 146.33333)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_08_03" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1148.5, 0.03, 148)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1111.5, 0.03, 124)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_08_04" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -968.5, 0.03, 148)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -908.66675, 0.03, 146.33333)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_09_01" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1411.5, 0.03, 304)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1383.8335, 0.03, 303.16666)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_09_02" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1326.5, 0.03, 304)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1271.8334, 0.03, 284.66666)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_09_03" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1148.5, 0.03, 304)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1087.5, 0.03, 279.83334)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_09_04" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -932, 0.03, 304)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -931.50006, 0.03, 280.83334)
 
 [node name="NorthHeights" parent="CityPedestrianRoutes" index="1"]
 enabled_routes = {
@@ -26369,172 +26506,172 @@ enabled_routes = {
 }
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_01_04" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -832, 0.03, -972)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -853.33344, 0.03, -972.33344)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_01_05" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -754, 0.03, -972)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -761.00006, 0.03, -971.66675)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_01_06" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -570, 0.03, -972)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -523.1667, 0.03, -971.66675)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_01_07" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -390, 0.03, -972)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -372.33337, 0.03, -971.66675)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_01_08" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -210, 0.03, -972)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.5, 0.03, -971.66675)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_01_09" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0.03, -972)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.50000006, 0.03, -971.66675)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_01_10" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 305, 0.03, -948)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 133.33334, 0.03, -972.33344)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_01_11" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 302, 0.03, -972)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 466.00003, 0.03, -971.66675)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_01_12" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 510, 0.03, -972)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 510.5, 0.03, -971.66675)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_01_13" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 686, 0.03, -972)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 796.66675, 0.03, -972.50006)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_01_14" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 870, 0.03, -972)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 843.16675, 0.03, -972.50006)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_01_15" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1050, 0.03, -972)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1031.3334, 0.03, -948.50006)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_01_16" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1234, 0.03, -972)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1242.5, 0.03, -971.66675)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_01_17" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1410, 0.03, -972)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1432.1669, 0.03, -971.66675)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_02_04" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -832, 0.03, -808)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -856.50006, 0.03, -807.66675)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_02_05" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -756, 0.03, -808)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -650.66675, 0.03, -831.83344)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_02_06" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -608.5, 0.03, -808)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -571.5, 0.03, -832.66675)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_02_07" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -428.5, 0.03, -808)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -392.50003, 0.03, -833.83344)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_02_08" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -212, 0.03, -808)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -211.83336, 0.03, -822.33344)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_02_09" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.5, 0.03, -808)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 0.03, -844.50006)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_02_10" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.5, 0.03, -808)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 189.33336, 0.03, -730.50006)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_02_11" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 320, 0.03, -808)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 305.33334, 0.03, -730.50006)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_02_12" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 471.5, 0.03, -808)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 511.16666, 0.03, -809.33344)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_02_13" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 649.5, 0.03, -808)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 715.33344, 0.03, -809.66675)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_02_14" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 868, 0.03, -808)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 969.33344, 0.03, -831.83344)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_02_15" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1011.5, 0.03, -808)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1031.1666, 0.03, -792.33344)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_02_16" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1193.5, 0.03, -808)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1232.5, 0.03, -832.66675)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_02_17" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1408, 0.03, -808)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1408.5001, 0.03, -832.50006)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_03_04" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -871.5, 0.03, -652)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -829.33344, 0.03, -676.00006)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_03_05" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -790.5, 0.03, -652)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -755.50006, 0.03, -676.50006)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_03_06" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -608.5, 0.03, -652)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -547.6667, 0.03, -531)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_03_07" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -392, 0.03, -652)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -289.33334, 0.03, -676.00006)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_03_08" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -248.5, 0.03, -652)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -109.33334, 0.03, -676.00006)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_03_09" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.5, 0.03, -652)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.5, 0.03, -676.66675)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_03_10" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 183.29788, 0.03, -680)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 148.83333, 0.03, -526.6667)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_03_11" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 325, 0.03, -652)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 430.66672, 0.03, -676.00006)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_03_12" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 471.5, 0.03, -652)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 511.16666, 0.03, -653.33344)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_03_13" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 684, 0.03, -652)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 716.33344, 0.03, -531)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_03_14" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 831.5, 0.03, -652)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 892.33344, 0.03, -531)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_03_15" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1011.5, 0.03, -652)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1031.1666, 0.03, -628.3333)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_03_16" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1232, 0.03, -652)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1247.5, 0.03, -676.50006)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_03_17" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1371.5, 0.03, -652)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1408.5001, 0.03, -676.50006)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_04_04" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -871.5, 0.03, -492)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -829.16675, 0.03, -505.66666)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_04_05" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -790.5, 0.03, -492)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -756.50006, 0.03, -505.66666)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_04_06" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -572, 0.03, -492)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -547.5, 0.03, -505.66666)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_04_07" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -428.5, 0.03, -492)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -367.66672, 0.03, -517.3333)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_04_08" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -248.5, 0.03, -492)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -212.50002, 0.03, -505.66666)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_04_09" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 0.03, -492)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.5, 0.03, -505.66666)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_04_10" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 305, 0.03, -492)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 148.83333, 0.03, -526.6667)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_04_11" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 305, 0.03, -492)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 328.50003, 0.03, -506)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_04_12" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 508, 0.03, -492)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 508.33337, 0.03, -506.16666)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_04_13" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 649.5, 0.03, -492)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 716.50006, 0.03, -505.66666)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_04_14" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 831.5, 0.03, -492)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 892.50006, 0.03, -505.66666)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_04_15" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1048, 0.03, -492)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1031.1666, 0.03, -468.33337)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_04_16" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1193.5, 0.03, -492)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1330.8335, 0.03, -505.66666)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_04_17" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1371.5, 0.03, -492)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1407.5001, 0.03, -505.66666)
 
 [node name="Parkside" parent="CityPedestrianRoutes" index="2"]
 enabled_routes = {
@@ -26543,20 +26680,29 @@ enabled_routes = {
 "Parkside_Block_04_07": true,
 "Parkside_Block_04_08": true,
 "Parkside_Block_04_09": true,
+"Parkside_Block_04_10": true,
 "Parkside_Block_05_05": true,
 "Parkside_Block_05_06": true,
 "Parkside_Block_05_07": true,
 "Parkside_Block_05_08": true,
 "Parkside_Block_05_09": true,
+"Parkside_Block_05_10": true,
 "Parkside_Block_06_05": true,
 "Parkside_Block_06_06": true,
+"Parkside_Block_06_07": true,
+"Parkside_Block_06_08": true,
 "Parkside_Block_06_09": true,
+"Parkside_Block_06_10": true,
 "Parkside_Block_07_05": true,
 "Parkside_Block_07_06": true,
+"Parkside_Block_07_07": true,
+"Parkside_Block_07_08": true,
 "Parkside_Block_07_09": true,
 "Parkside_Block_07_10": true,
 "Parkside_Block_08_05": true,
 "Parkside_Block_08_06": true,
+"Parkside_Block_08_07": true,
+"Parkside_Block_08_08": true,
 "Parkside_Block_08_09": true,
 "Parkside_Block_08_10": true,
 "Parkside_Block_09_05": true,
@@ -26568,91 +26714,115 @@ enabled_routes = {
 }
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_04_05" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -756, 0.03, -338)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -755.66675, 0.03, -423.33337)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_04_06" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -572, 0.03, -338)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -548.6667, 0.03, -382.83337)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_04_07" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -404, 0.03, -338)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -411.83337, 0.03, -428.50003)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_04_08" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -188, 0.03, -338)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -110.83334, 0.03, -380.33337)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_04_09" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 0.03, -338)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.333332, 0.03, -380.66672)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_04_10" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 130.38382, 0.03, -430)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.166664, 0.03, -406.83337)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_05_05" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -756, 0.03, -336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -755.50006, 0.03, -359.16672)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_05_06" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -608.5, 0.03, -336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -548.3333, 0.03, -349.16672)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_05_07" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -428.5, 0.03, -336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -405.00003, 0.03, -342.50003)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_05_08" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -210, 0.03, -334.875)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -109.33334, 0.03, -358.66672)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_05_09" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.5, 0.03, -336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.5, 0.03, -359.33337)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_06_05" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -790.5, 0.03, -168)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -755.50006, 0.03, -191.83336)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_06_06" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -608.5, 0.03, -168)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -571.5, 0.03, -192.00002)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_06_09" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0.03, -168)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.5, 0.03, -192.00002)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_06_10" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 119.5, 0.03, -70)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128.66667, 0.03, -43.666668)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_07_05" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -790.5, 0.03, -12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -672.50006, 0.03, -11.666668)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_07_06" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -572, 0.03, -12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -573.3333, 0.03, -3.5000002)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_07_09" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57, 0.03, -12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.5, 0.03, -36.666668)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_07_10" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 120, 0.03, -12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128.66667, 0.03, -43.666668)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_08_05" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -756, 0.03, 148)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -650.66675, 0.03, 124.833336)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_08_06" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -608.5, 0.03, 148)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -571.5, 0.03, 124)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_08_09" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.5, 0.03, 148)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0.03, 124)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_08_10" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.5, 0.03, 148)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 228.16669, 0.03, 168.66667)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_09_05" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -790.5, 0.03, 304)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -756.16675, 0.03, 285.83334)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_09_06" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -608.5, 0.03, 304)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -571.5, 0.03, 280.66666)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_09_07" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -390, 0.03, 304)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -292, 0.03, 303)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_09_08" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -210, 0.03, 304)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -243.66667, 0.03, 304.33334)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_09_09" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 0.03, 304)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.5, 0.03, 280.83334)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_09_10" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 148, 0.03, 304)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 298.5, 0.03, 322)
+
+[node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_06_08" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.66668, 0.8818463, -48.666668)
+
+[node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_06_07" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -241.66669, 0.5009847, -162.83336)
+
+[node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_07_07" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -397.66672, 1.0312762, -1.6666666)
+
+[node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_07_08" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90.03333, 0.42929217, -5.7333336)
+
+[node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_08_08" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -136.66667, 0.2028244, 167.33336)
+
+[node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_08_07" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -289, 1.6267952, 263.16666)
+
+[node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_05_10" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 135.66667, 8.179999, -336.33337)
+
+[node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_09_11" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 300.33334, 0.03, 313.66666)
 
 [node name="CivicCenter" parent="CityPedestrianRoutes" index="3"]
 enabled_routes = {
@@ -26687,104 +26857,111 @@ enabled_routes = {
 "CivicCenter_Block_12_03": true,
 "CivicCenter_Block_12_04": true,
 "CivicCenter_Block_12_05": true,
-"CivicCenter_Block_12_06": true
+"CivicCenter_Block_12_06": true,
+"CivicCenter_Waterfront": true
 }
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_05_04" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -832, 0.03, -336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -856.50006, 0.03, -335.66672)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_06_04" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -871.5, 0.03, -168)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -829.33344, 0.03, -191.33336)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_07_04" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -871.5, 0.03, -12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -829.33344, 0.03, -36.000004)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_08_04" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -832, 0.03, 148)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -856.50006, 0.03, 148.33333)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_09_01" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1448, 0.03, 338)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1370.8335, 0.03, 423.66672)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_09_02" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1288, 0.03, 338)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1287.6669, 0.03, 380.66672)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_09_03" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1112, 0.03, 338)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1111.6666, 0.03, 380.66672)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_09_04" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -932, 0.03, 338)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -829.33344, 0.03, 281.33334)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_09_05" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -790.5, 0.03, 336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -757.33344, 0.03, 325.1667)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_09_06" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -572, 0.03, 336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -546.3333, 0.03, 335.50003)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_09_07" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -428.5, 0.03, 336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -393.66672, 0.03, 335.50003)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_09_08" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -248.5, 0.03, 336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -212.83336, 0.03, 334.83337)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_09_09" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 0.03, 336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.333332, 0.03, 337.66672)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_09_10" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.5, 0.03, 336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 299.16666, 0.03, 335.33337)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_10_01" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1411.5, 0.03, 468)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1369.3335, 0.03, 445.33337)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_10_02" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1326.5, 0.03, 468)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1287.5001, 0.03, 444.83337)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_10_03" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1112, 0.03, 468)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1111.5, 0.03, 444.83337)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_10_04" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -968.5, 0.03, 468)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -931.50006, 0.03, 444.83337)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_10_05" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -790.5, 0.03, 468)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -723.83344, 0.03, 449.83337)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_10_06" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -572, 0.03, 468)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -571.5, 0.03, 444.83337)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_11_01" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1368, 0.03, 624)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1472.5001, 0.03, 599.8333)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_11_02" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1288, 0.03, 624)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1287.5001, 0.03, 603.6667)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_11_03" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1148.5, 0.03, 624)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1111.5, 0.03, 603.6667)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_11_04" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -968.5, 0.03, 624)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -931.50006, 0.03, 603.6667)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_11_05" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -756, 0.03, 624)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -724.66675, 0.03, 622.3333)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_11_06" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -608.5, 0.03, 624)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -571.5, 0.03, 603.6667)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_12_01" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1368, 0.03, 772)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1471.5001, 0.03, 763.16675)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_12_02" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1286, 0.03, 772)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1289.3335, 0.03, 763.83344)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_12_03" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1110, 0.03, 772)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1086.6666, 0.03, 763.83344)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_12_04" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -930, 0.03, 772)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -933.33344, 0.03, 763.83344)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_12_05" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -754, 0.03, 772)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -757.33344, 0.03, 763.83344)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_12_06" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -570, 0.03, 772)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -546.6667, 0.03, 763.83344)
+
+[node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Waterfront" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1459.6669, 0.03, 786.33344)
+
+[node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_09_11" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 301.33334, 0.03, 353.16672)
 
 [node name="FinancialQuarter" parent="CityPedestrianRoutes" index="4"]
 enabled_routes = {
@@ -26819,104 +26996,108 @@ enabled_routes = {
 "FinancialQuarter_Block_12_11": true,
 "FinancialQuarter_Block_12_12": true,
 "FinancialQuarter_Block_12_13": true,
+"FinancialQuarter_Pier": true,
 "FinancialQuarter_Waterfront": true
 }
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_09_07" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -392, 0.03, 466)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -368.16672, 0.03, 429.50003)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_09_08" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -212, 0.03, 466)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -188.50002, 0.03, 444.83337)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_09_09" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 0.03, 466)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.5, 0.03, 374.33337)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_09_10" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 148, 0.03, 466)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 282.83334, 0.03, 445.00003)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_09_11" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 407.9925, 0.03, 380)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 403.16672, 0.03, 421.00003)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_09_12" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 508, 0.03, 466)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 508.33337, 0.03, 375.83337)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_09_13" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 684, 0.03, 466)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 683.66675, 0.03, 423.33337)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_10_06" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -428.5, 0.03, 468)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -438.00003, 0.03, 467.66672)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_10_07" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -428.5, 0.03, 468)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -368.16672, 0.03, 445.16672)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_10_08" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -248.5, 0.03, 468)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -188.50002, 0.03, 444.83337)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_10_09" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 0.03, 468)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.5, 0.03, 443.83337)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_10_10" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.5, 0.03, 468)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 270.5, 0.03, 498.66666)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_10_11" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 465, 0.03, 468)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 392.00003, 0.03, 503.66666)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_10_12" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 465, 0.03, 468)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 511, 0.03, 493.83337)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_10_13" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 649.5, 0.03, 468)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 715.50006, 0.03, 493.33337)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_11_06" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -428.5, 0.03, 624)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -433.66672, 0.03, 655.66675)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_11_07" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -428.5, 0.03, 624)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -391.50003, 0.03, 603.6667)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_11_08" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -212, 0.03, 624)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -211.50002, 0.03, 603.6667)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_11_09" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.5, 0.03, 624)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.5, 0.03, 603.6667)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_11_10" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.5, 0.03, 624)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 148.5, 0.03, 603.6667)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_11_11" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 419.59094, 0.03, 624)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 463.16672, 0.03, 749.33344)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_11_12" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 471.5, 0.03, 624)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 511.16666, 0.03, 746.66675)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_11_13" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 649.5, 0.03, 624)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 684.50006, 0.03, 603.6667)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_12_06" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -470, 0.03, 772)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -432.00003, 0.03, 771.66675)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_12_07" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -390, 0.03, 772)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -393.33337, 0.03, 763.83344)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_12_08" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -210, 0.03, 772)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -213.33336, 0.03, 763.83344)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_12_09" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0.03, 772)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.666667, 0.03, 763.83344)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_12_10" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.833336, 0.03, 772)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 144.83333, 0.03, 763.66675)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_12_11" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 478.33008, 0.03, 772)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 477.50003, 0.03, 775.83344)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_12_12" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 497.16504, 0.03, 772)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 510.33334, 0.03, 771.50006)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_12_13" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 686, 0.03, 772)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 682.66675, 0.03, 763.83344)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Waterfront" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 477.99695, 0.03, 780)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.666668, 0.03, 783.66675)
+
+[node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Pier" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 595.5, 0.03, 786.33344)
 
 [node name="Eastbank" parent="CityPedestrianRoutes" index="5"]
 enabled_routes = {
@@ -26959,128 +27140,132 @@ enabled_routes = {
 "Eastbank_Block_11_13": true,
 "Eastbank_Block_11_14": true,
 "Eastbank_Block_12_13": true,
-"Eastbank_Block_12_14": true
+"Eastbank_Block_12_14": true,
+"Eastbank_Pier": true
 }
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_04_10" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 246.38382, 0.03, -430)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 240.16669, 0.03, -406.83337)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_04_11" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 328, 0.03, -338)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 429.16672, 0.03, -380.33337)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_04_12" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 508, 0.03, -338)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 508.33337, 0.03, -380.83337)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_04_13" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 684, 0.03, -338)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 684.33344, 0.03, -423.33337)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_04_14" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 868, 0.03, -338)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 969.33344, 0.03, -423.16672)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_04_15" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1048, 0.03, -338)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1149.1666, 0.03, -380.33337)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_04_16" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1232, 0.03, -338)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1247.3334, 0.03, -382.83337)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_04_17" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1408, 0.03, -338)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1407.6669, 0.03, -380.66672)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_05_10" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 290, 0.03, -336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 206.33336, 0.03, -196.33336)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_05_11" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 290, 0.03, -336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 430.66672, 0.03, -358.66672)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_05_12" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 471.5, 0.03, -336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 511.16666, 0.03, -337.33337)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_05_13" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 649.5, 0.03, -336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 684.50006, 0.03, -359.16672)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_05_14" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 868, 0.03, -336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 969.33344, 0.03, -358.50003)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_05_15" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1011.5, 0.03, -336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1031.5, 0.03, -336.33337)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_05_16" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1193.5, 0.03, -336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1247.6666, 0.03, -349.16672)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_05_17" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1408, 0.03, -336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1408.5001, 0.03, -359.33337)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_06_10" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 280, 0.03, -152)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200.50002, 0.03, -168.50002)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_06_11" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 277, 0.03, -168)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 329.00003, 0.03, -203.33336)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_06_12" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 471.5, 0.03, -168)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 511.16666, 0.03, -169.33336)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_06_13" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 684, 0.03, -168)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 684.50006, 0.03, -191.83336)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_06_14" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 831.5, 0.03, -168)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 969.33344, 0.03, -191.16669)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_07_10" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 300, 0.03, 12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 244.66667, 0.03, -43.666668)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_07_11" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 312, 0.03, -12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 328.50003, 0.03, -36.666668)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_07_12" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 508, 0.03, -12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 511.16666, 0.03, -13.333335)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_07_13" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 649.5, 0.03, -12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 684.50006, 0.03, -36.500004)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_07_14" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 831.5, 0.03, -12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 892.16675, 0.03, -31.166666)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_08_11" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 388.5, 0.03, 148)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 394.16672, 0.03, 268.66666)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_08_12" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 471.5, 0.03, 148)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 508.33337, 0.03, 121.166664)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_08_13" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 649.5, 0.03, 148)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 684.50006, 0.03, 124)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_08_14" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 868, 0.03, 148)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 969.33344, 0.03, 124.833336)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_09_11" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 475, 0.03, 336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 415.50003, 0.03, 332.16672)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_09_12" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 472, 0.03, 304)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 507.66672, 0.03, 350.00003)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_09_13" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 684, 0.03, 304)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 684.50006, 0.03, 280.83334)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_09_14" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 831.5, 0.03, 304)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 969.33344, 0.03, 281.5)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_10_13" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 750.5, 0.03, 468)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 790.66675, 0.03, 445.33337)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_10_14" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 831.5, 0.03, 468)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 868.50006, 0.03, 444.66672)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_11_13" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 792, 0.03, 624)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 767.50006, 0.03, 624.3333)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_11_14" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 868, 0.03, 624)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 868.50006, 0.03, 603.6667)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_12_13" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 792, 0.03, 772)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 759.50006, 0.03, 771.66675)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_12_14" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 870, 0.03, 772)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 866.66675, 0.03, 763.83344)
+
+[node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Pier" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 784.00006, 0.03, 786.33344)
 
 [node name="FoundryWard" parent="CityPedestrianRoutes" index="6"]
 enabled_routes = {
@@ -27106,61 +27291,61 @@ enabled_routes = {
 }
 
 [node name="StartHere" parent="CityPedestrianRoutes/FoundryWard/Block_05_15" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1048, 0.03, -170)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1047.6666, 0.03, -214.00002)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FoundryWard/Block_05_16" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1232, 0.03, -170)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1231.6666, 0.03, -214.16669)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FoundryWard/Block_05_17" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1408, 0.03, -170)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1407.6669, 0.03, -214.00002)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FoundryWard/Block_06_14" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1011.5, 0.03, -168)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1002.3333, 0.03, -152.33333)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FoundryWard/Block_06_15" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1011.5, 0.03, -168)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1031.1666, 0.03, -152.33333)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FoundryWard/Block_06_16" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1232, 0.03, -168)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1232.5, 0.03, -191.83336)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FoundryWard/Block_06_17" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1371.5, 0.03, -168)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1408.5001, 0.03, -192.00002)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FoundryWard/Block_07_14" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 970, 0.03, -12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1002.3333, 0.03, -11.666668)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FoundryWard/Block_07_15" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1048, 0.03, -12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1031.1666, 0.03, -11.666668)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FoundryWard/Block_07_16" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1193.5, 0.03, -12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1232.5, 0.03, -36.500004)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FoundryWard/Block_07_17" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1371.5, 0.03, -12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1408.5001, 0.03, -36.666668)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FoundryWard/Block_08_14" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1011.5, 0.03, 148)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 985, 0.03, 172.50002)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FoundryWard/Block_08_15" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1011.5, 0.03, 148)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1031.1666, 0.03, 171.66669)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FoundryWard/Block_08_16" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1193.5, 0.03, 148)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1232.5, 0.03, 124.166664)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FoundryWard/Block_08_17" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1408, 0.03, 148)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1408.5001, 0.03, 124.166664)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FoundryWard/Block_09_14" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1011.5, 0.03, 304)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1006.8333, 0.03, 303.66666)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FoundryWard/Block_09_15" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1011.5, 0.03, 304)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1031.5, 0.03, 303.66666)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FoundryWard/Block_09_16" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1232, 0.03, 304)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1232.5, 0.03, 280.83334)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FoundryWard/Block_09_17" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1371.5, 0.03, 304)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1408.5001, 0.03, 280.66666)
 
 [node name="Docklands" parent="CityPedestrianRoutes" index="7"]
 enabled_routes = {
@@ -27184,55 +27369,55 @@ enabled_routes = {
 }
 
 [node name="StartHere" parent="CityPedestrianRoutes/Docklands/Block_09_14" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 892, 0.03, 466)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 891.50006, 0.03, 428.66672)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Docklands/Block_09_15" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1048, 0.03, 466)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1149.1666, 0.03, 423.66672)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Docklands/Block_09_16" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1232, 0.03, 466)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1247.5, 0.03, 428.66672)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Docklands/Block_09_17" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1408, 0.03, 466)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1407.6669, 0.03, 423.33337)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Docklands/Block_10_14" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 970, 0.03, 468)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 892.16675, 0.03, 449.83337)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Docklands/Block_10_15" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1048, 0.03, 468)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1031.1666, 0.03, 491.66672)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Docklands/Block_10_16" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1193.5, 0.03, 468)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1248.1666, 0.03, 449.83337)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Docklands/Block_10_17" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1371.5, 0.03, 468)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1408.5001, 0.03, 444.66672)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Docklands/Block_11_14" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 928.5, 0.03, 624)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 892.50006, 0.03, 604)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Docklands/Block_11_15" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1011.5, 0.03, 624)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1031.5, 0.03, 623.6667)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Docklands/Block_11_16" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1193.5, 0.03, 624)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1232.5, 0.03, 603.6667)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Docklands/Block_11_17" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1408, 0.03, 624)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1408.5001, 0.03, 603.6667)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Docklands/Block_12_14" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 970, 0.03, 772)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 893.33344, 0.03, 763.83344)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Docklands/Block_12_15" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1048, 0.03, 772)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1031.1666, 0.03, 771.66675)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Docklands/Block_12_16" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1234, 0.03, 772)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1230.6666, 0.03, 763.83344)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Docklands/Block_12_17" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1410, 0.03, 772)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1431.5001, 0.03, 763.16675)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Docklands/Pier" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1048, 0.03, 774)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1015.3333, 0.029999971, 1004.3333)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Docklands/Waterfront" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1046, 0.03, 785)
@@ -27259,7 +27444,7 @@ bus = &"SFX"
 script = ExtResource("154_sky_wind")
 
 [node name="CityHall" parent="." unique_id=1153126323 instance=ExtResource("120_0c1pg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -292, 0.1, -404)
+transform = Transform3D(0.9, 0, 0, 0, 1, 0, 0, 0, 0.9, -301, 0.019211411, -404)
 
 [node name="Hospital" parent="." unique_id=1327881476 instance=ExtResource("121_f2ny8")]
 transform = Transform3D(-1, 0, -3.2310891e-15, 0, 1, 0, 3.2310891e-15, 0, -1, -292, 0.03, 387)
@@ -27269,7 +27454,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03, 36)
 script = ExtResource("poi_rescue_zone")
 
 [node name="PoliceStation" parent="." unique_id=668366585 instance=ExtResource("poi_scene_2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -435, 0.03, -356)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -434, 0.03, -356)
 
 [node name="Bank1" parent="." unique_id=2005239958 instance=ExtResource("poi_scene_3")]
 transform = Transform3D(-1, 0, -3.2310891e-15, 0, 1, 0, 3.2310891e-15, 0, -1, -139, 0.03, 516)
@@ -27294,26 +27479,207 @@ transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 162, 0, -320)
 [node name="NorthRiverBridge" parent="." unique_id=2089208089 instance=ExtResource("north_bridge")]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 195, 0, -960)
 
-[node name="NorthernGround" parent="CityLife/Highway" index="0" unique_id=998038697]
-mesh = ExtResource("river_NorthernGround")
-
-
-[node name="CollisionShape3D" parent="CityLife/Highway/NorthernGround/Solid" index="0" unique_id=762208885]
-shape = ExtResource("river_NorthernGround_collision")
-
-
-[node name="CoastalTerrain" parent="CoastalRegion/Landscape" index="0" unique_id=1713723592]
-mesh = ExtResource("river_CoastalTerrain")
-
-
-[node name="CollisionShape3D" parent="CoastalRegion/Landscape/CoastalTerrain/Solid" index="0" unique_id=1960191955]
-shape = ExtResource("river_CoastalTerrain_collision")
-
-
 [node name="MountainRiver" parent="." unique_id=790157662 instance=ExtResource("river_scene")]
 
+[node name="ParkingGarage" parent="." unique_id=535430243 instance=ExtResource("102_8d3pe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -412.58188, 0.02999878, -436.06055)
+width_preset = 2
+metadata/rendered_triangles = 2686
+
+[node name="EntranceAlley" type="MeshInstance3D" parent="ParkingGarage" unique_id=2094344716]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.333334, 0.01500122, -30.475)
+cast_shadow = 0
+mesh = SubResource("GarageEntranceAsphalt_1")
+metadata/connected_road = "Roads/roads_2_1/Straight_053_0"
+metadata/visual_only = true
+
+[node name="ParkingGarage2" parent="." unique_id=1588313986 instance=ExtResource("102_8d3pe")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 109.839905, -7.6293945e-06, 527.0701)
+width_preset = 2
+floors = 10
+metadata/rendered_triangles = 4214
+
+[node name="EntranceAlley" type="MeshInstance3D" parent="ParkingGarage2" unique_id=579960376]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.333334, 0.04500763, -31.925)
+cast_shadow = 0
+mesh = SubResource("GarageEntranceAsphalt_2")
+metadata/connected_road = "Roads/roads_3_3/Alley_597_0"
+metadata/visual_only = true
+
+[node name="ParkingGarage3" parent="." unique_id=2099781034 instance=ExtResource("102_8d3pe")]
+transform = Transform3D(1.1924881e-08, 0, 1, 0, 1, 0, -1, 0, 1.1924881e-08, -833.125, 0, 566.4805)
+width_preset = 0
+floors = 5
+metadata/rendered_triangles = 1492
+
+[node name="EntranceAlley" type="MeshInstance3D" parent="ParkingGarage3" unique_id=1632268875]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.045, -51.925)
+cast_shadow = 0
+mesh = SubResource("GarageEntranceAsphalt_3")
+metadata/connected_road = "Roads/roads_1_3/Straight_225_0"
+metadata/visual_only = true
+
+[node name="ParkingGarage4" parent="." unique_id=785430194 instance=ExtResource("102_8d3pe")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -1167.434, 0, -105.00042)
+width_preset = 0
+floors = 3
+metadata/rendered_triangles = 976
+
+[node name="EntranceAlley" type="MeshInstance3D" parent="ParkingGarage4" unique_id=1423975424]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.045, -42.225)
+cast_shadow = 0
+mesh = SubResource("GarageEntranceAsphalt_4")
+metadata/connected_road = "Roads/roads_0_1/Straight_210_0"
+metadata/visual_only = true
+
+[node name="ParkingGarage5" parent="." unique_id=908678446 instance=ExtResource("102_8d3pe")]
+transform = Transform3D(1.1924881e-08, 0, 1, 0, 1, 0, -1, 0, 1.1924881e-08, -1150.7542, 0, -713.11646)
+width_preset = 2
+metadata/rendered_triangles = 2686
+
+[node name="EntranceAlley" type="MeshInstance3D" parent="ParkingGarage5" unique_id=810751388]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.333334, 0.045, -31.625)
+cast_shadow = 0
+mesh = SubResource("GarageEntranceAsphalt_5")
+metadata/connected_road = "Roads/roads_0_0/Alley_550_0"
+metadata/visual_only = true
+
+[node name="ParkingGarage6" parent="." unique_id=685769080 instance=ExtResource("102_8d3pe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89, 0, -894)
+width_preset = 2
+floors = 10
+metadata/rendered_triangles = 4214
+
+[node name="EntranceAlley" type="MeshInstance3D" parent="ParkingGarage6" unique_id=1365070689]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.333334, 0.045, -41.525)
+cast_shadow = 0
+mesh = SubResource("GarageEntranceAsphalt_6")
+metadata/connected_road = "Roads/roads_3_0/Straight_008_0"
+metadata/visual_only = true
+
+[node name="ParkingGarage7" parent="." unique_id=49643721 instance=ExtResource("102_8d3pe")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 1176, 0, -711)
+floors = 4
+metadata/rendered_triangles = 1578
+
+[node name="EntranceAlley" type="MeshInstance3D" parent="ParkingGarage7" unique_id=883338964]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 0.045, -43.975)
+cast_shadow = 0
+mesh = SubResource("GarageEntranceAsphalt_7")
+metadata/connected_road = "Roads/roads_5_0/Straight_046_0"
+metadata/visual_only = true
+
+[node name="ParkingGarage8" parent="." unique_id=1752418020 instance=ExtResource("102_8d3pe")]
+transform = Transform3D(1.1924881e-08, 0, 1, 0, 1, 0, -1, 0, 1.1924881e-08, 1137.3657, 0, 237.86926)
+width_preset = 0
+floors = 5
+metadata/rendered_triangles = 1492
+
+[node name="EntranceAlley" type="MeshInstance3D" parent="ParkingGarage8" unique_id=1298410480]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.045, -47.175)
+cast_shadow = 0
+mesh = SubResource("GarageEntranceAsphalt_8")
+metadata/connected_road = "Roads/roads_5_2/Straight_324_0"
+metadata/visual_only = true
+
+[node name="ParkingLot" parent="." unique_id=278743167 instance=ExtResource("5_8m327")]
+transform = Transform3D(-3.3314295, 0, 1.2588104e-07, 0, 1, 0, -2.9124283e-07, 0, -1.4399114, 377.04254, 0.045000076, 40.834618)
+instance_shader_parameters/aisle_width_m = 6.0
+instance_shader_parameters/lot_size_m = Vector2(30, 36)
+instance_shader_parameters/stall_depth_m = 5.2
+instance_shader_parameters/stall_width_m = 2.6
+mesh = SubResource("PlaneMesh_f2ny8")
+
+[node name="ParkingLot2" parent="." unique_id=1865766748 instance=ExtResource("5_8m327")]
+transform = Transform3D(2.516029, 0, 0, 0, 1, 0, 0, 0, 0.97308654, -422.0584, 0.045, -389.57806)
+instance_shader_parameters/aisle_width_m = 6.0
+instance_shader_parameters/lot_size_m = Vector2(30, 36)
+instance_shader_parameters/stall_depth_m = 5.2
+instance_shader_parameters/stall_width_m = 2.6
+mesh = SubResource("PlaneMesh_mxu3w")
+
+[node name="ParkingLot3" parent="." unique_id=313864339 instance=ExtResource("5_8m327")]
+transform = Transform3D(1.788732e-08, 0, 2.1140997, 0, 1, 0, -1.4999999, 0, 2.521039e-08, 70.589035, 0.045, 8.808876)
+instance_shader_parameters/aisle_width_m = 6.0
+instance_shader_parameters/lot_size_m = Vector2(30, 36)
+instance_shader_parameters/stall_depth_m = 5.2
+instance_shader_parameters/stall_width_m = 2.6
+mesh = SubResource("PlaneMesh_nmdyg")
+
+[node name="ParkingLot4" parent="." unique_id=2059690142 instance=ExtResource("5_8m327")]
+transform = Transform3D(7.649493e-07, 0, 1.0987259, 0, 1, 0, -2.5, 0, 3.3618784e-07, 88.80084, 0.044992372, 68.497826)
+instance_shader_parameters/aisle_width_m = 6.0
+instance_shader_parameters/lot_size_m = Vector2(30, 36)
+instance_shader_parameters/stall_depth_m = 5.2
+instance_shader_parameters/stall_width_m = 2.6
+mesh = SubResource("PlaneMesh_in5lo")
+
+[node name="BoxingGymExterior" parent="." unique_id=1802684162 instance=ExtResource("107_gb5js")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1033.2231, 0.012841225, -30.361156)
+
+[node name="CityHallSubway" parent="." unique_id=858615986 instance=ExtResource("108_3oj1f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -167.22224, 0, -340.36438)
+
+[node name="BoxingGymSubway" parent="." unique_id=547297983 instance=ExtResource("108_3oj1f")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1043.6174, 0, -50.55252)
+
+[node name="DocksSubway" parent="." unique_id=338587276 instance=ExtResource("108_3oj1f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1044.1694, 0, 743.462)
+
+[node name="HospitalSubway" parent="." unique_id=641616794 instance=ExtResource("108_3oj1f")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -225.01749, 0.02999878, 346.2567)
+
+[node name="ForestBoundaryMarkers" type="Node3D" parent="." unique_id=1735701006]
+editor_description = "Planning only. Move/duplicate the points below to outline the proposed travel limits. Marker origins define the boundary; no collision or forest changes."
+
+[node name="Highway" type="Node3D" parent="ForestBoundaryMarkers" unique_id=2080867051]
+
+[node name="Highway_01" parent="ForestBoundaryMarkers/Highway" unique_id=1335375124 instance=ExtResource("forest_boundary_marker")]
+editor_description = "Placeholder position: move this whole point to the intended travel limit. Duplicate for more points. No invisible wall is created."
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2800, 0, -2200)
+
+[node name="Highway_02" parent="ForestBoundaryMarkers/Highway" unique_id=857152563 instance=ExtResource("forest_boundary_marker")]
+editor_description = "Placeholder position: move this whole point to the intended travel limit. Duplicate for more points. No invisible wall is created."
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1800, 0, -3117.9788)
+
+[node name="Highway_03" parent="ForestBoundaryMarkers/Highway" unique_id=870713103 instance=ExtResource("forest_boundary_marker")]
+editor_description = "Placeholder position: move this whole point to the intended travel limit. Duplicate for more points. No invisible wall is created."
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -900, 0, -2987.6382)
+
+[node name="Highway_04" parent="ForestBoundaryMarkers/Highway" unique_id=1488234210 instance=ExtResource("forest_boundary_marker")]
+editor_description = "Placeholder position: move this whole point to the intended travel limit. Duplicate for more points. No invisible wall is created."
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 600, 0, -2454.348)
+
+[node name="Coastal" type="Node3D" parent="ForestBoundaryMarkers" unique_id=358897665]
+
+[node name="Coastal_01" parent="ForestBoundaryMarkers/Coastal" unique_id=2063990690 instance=ExtResource("forest_boundary_marker")]
+editor_description = "Placeholder position: move this whole point to the intended travel limit. Duplicate for more points. No invisible wall is created."
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4600, 0, 500)
+
+[node name="Coastal_02" parent="ForestBoundaryMarkers/Coastal" unique_id=426615757 instance=ExtResource("forest_boundary_marker")]
+editor_description = "Placeholder position: move this whole point to the intended travel limit. Duplicate for more points. No invisible wall is created."
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4600, 0, -800)
+
+[node name="Coastal_03" parent="ForestBoundaryMarkers/Coastal" unique_id=1819886337 instance=ExtResource("forest_boundary_marker")]
+editor_description = "Placeholder position: move this whole point to the intended travel limit. Duplicate for more points. No invisible wall is created."
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2800.2205, 0, -800)
+
+[node name="Coastal_04" parent="ForestBoundaryMarkers/Coastal" unique_id=16231375 instance=ExtResource("forest_boundary_marker")]
+editor_description = "Placeholder position: move this whole point to the intended travel limit. Duplicate for more points. No invisible wall is created."
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2807.4294, 0, 500)
+
+[node name="ForestBoundaryBackdrop" parent="." instance=ExtResource("forest_boundary_backdrop")]
+
+[node name="RiverbankRailings" parent="Waterfront/Riverbanks"]
+visible = false
+
+[node name="RiverbankChunks" parent="Waterfront/Riverbanks" instance=ExtResource("riverbank_chunks")]
+
+[node name="HarborChunks" parent="Waterfront/Harbor" instance=ExtResource("harbor_chunks")]
 
 [editable path="Waterfront"]
+[editable path="CityLife"]
+[editable path="CoastalRegion"]
 [editable path="Districts/WestVillage/WestVillage_0001"]
 [editable path="Districts/WestVillage/WestVillage_0002"]
 [editable path="Districts/WestVillage/WestVillage_0003"]
@@ -27534,15 +27900,9 @@ shape = ExtResource("river_CoastalTerrain_collision")
 [editable path="Districts/WestVillage/WestVillage_0245"]
 [editable path="Districts/WestVillage/WestVillage_0246"]
 [editable path="Districts/WestVillage/WestVillage_0247"]
-[editable path="Districts/WestVillage/WestVillage_0248"]
-[editable path="Districts/WestVillage/WestVillage_0249"]
-[editable path="Districts/WestVillage/WestVillage_0250"]
 [editable path="Districts/WestVillage/WestVillage_0251"]
 [editable path="Districts/WestVillage/WestVillage_0252"]
 [editable path="Districts/WestVillage/WestVillage_0253"]
-[editable path="Districts/WestVillage/WestVillage_0254"]
-[editable path="Districts/WestVillage/WestVillage_0255"]
-[editable path="Districts/WestVillage/WestVillage_0256"]
 [editable path="Districts/WestVillage/WestVillage_0257"]
 [editable path="Districts/WestVillage/WestVillage_0258"]
 [editable path="Districts/WestVillage/WestVillage_0259"]
@@ -27622,7 +27982,6 @@ shape = ExtResource("river_CoastalTerrain_collision")
 [editable path="Districts/WestVillage/WestVillage_0333"]
 [editable path="Districts/WestVillage/WestVillage_0334"]
 [editable path="Districts/WestVillage/WestVillage_0335"]
-[editable path="Districts/WestVillage/WestVillage_0336"]
 [editable path="Districts/WestVillage/WestVillage_0337"]
 [editable path="Districts/WestVillage/WestVillage_0338"]
 [editable path="Districts/WestVillage/WestVillage_0339"]
@@ -28299,7 +28658,6 @@ shape = ExtResource("river_CoastalTerrain_collision")
 [editable path="Districts/NorthHeights/NorthHeights_1140"]
 [editable path="Districts/NorthHeights/NorthHeights_1142"]
 [editable path="Districts/NorthHeights/NorthHeights_1143"]
-[editable path="Districts/NorthHeights/NorthHeights_1145"]
 [editable path="Districts/NorthHeights/NorthHeights_1148"]
 [editable path="Districts/NorthHeights/NorthHeights_1149"]
 [editable path="Districts/NorthHeights/NorthHeights_1152"]
@@ -28520,7 +28878,6 @@ shape = ExtResource("river_CoastalTerrain_collision")
 [editable path="Districts/NorthHeights/NorthHeights_1838"]
 [editable path="Districts/NorthHeights/NorthHeights_1839"]
 [editable path="Districts/NorthHeights/NorthHeights_1840"]
-[editable path="Districts/NorthHeights/NorthHeights_1841"]
 [editable path="Districts/NorthHeights/NorthHeights_1842"]
 [editable path="Districts/NorthHeights/NorthHeights_1843"]
 [editable path="Districts/NorthHeights/NorthHeights_1844"]
@@ -28760,13 +29117,9 @@ shape = ExtResource("river_CoastalTerrain_collision")
 [editable path="Districts/FinancialQuarter/FinancialQuarter_1224"]
 [editable path="Districts/FinancialQuarter/FinancialQuarter_1225"]
 [editable path="Districts/FinancialQuarter/FinancialQuarter_1226"]
-[editable path="Districts/FinancialQuarter/FinancialQuarter_1227"]
 [editable path="Districts/FinancialQuarter/FinancialQuarter_1228"]
 [editable path="Districts/FinancialQuarter/FinancialQuarter_1231"]
-[editable path="Districts/FinancialQuarter/FinancialQuarter_1232"]
-[editable path="Districts/FinancialQuarter/FinancialQuarter_1233"]
 [editable path="Districts/FinancialQuarter/FinancialQuarter_1234"]
-[editable path="Districts/FinancialQuarter/FinancialQuarter_1235"]
 [editable path="Districts/FinancialQuarter/FinancialQuarter_1236"]
 [editable path="Districts/FinancialQuarter/FinancialQuarter_1237"]
 [editable path="Districts/FinancialQuarter/FinancialQuarter_1238"]
@@ -29077,7 +29430,6 @@ shape = ExtResource("river_CoastalTerrain_collision")
 [editable path="Districts/Eastbank/Eastbank_1756"]
 [editable path="Districts/Eastbank/Eastbank_1757"]
 [editable path="Districts/Eastbank/Eastbank_1758"]
-[editable path="Districts/Eastbank/Eastbank_1759"]
 [editable path="Districts/Eastbank/Eastbank_1760"]
 [editable path="Districts/Eastbank/Eastbank_1761"]
 [editable path="Districts/Eastbank/Eastbank_1762"]
@@ -29243,7 +29595,6 @@ shape = ExtResource("river_CoastalTerrain_collision")
 [editable path="Districts/FoundryWard/FoundryWard_1909"]
 [editable path="Districts/FoundryWard/FoundryWard_1910"]
 [editable path="Districts/FoundryWard/FoundryWard_1911"]
-[editable path="Districts/FoundryWard/FoundryWard_1912"]
 [editable path="Districts/FoundryWard/FoundryWard_1913"]
 [editable path="Districts/FoundryWard/FoundryWard_1914"]
 [editable path="Districts/FoundryWard/FoundryWard_1915"]
@@ -29290,11 +29641,3 @@ shape = ExtResource("river_CoastalTerrain_collision")
 [editable path="Districts/FoundryWard/FoundryWard_2043"]
 [editable path="CivilianCrowd"]
 [editable path="CityPedestrianRoutes"]
-
-[editable path="CityLife"]
-
-[editable path="CityLife/Highway"]
-
-[editable path="CoastalRegion"]
-
-[editable path="CoastalRegion/Landscape"]

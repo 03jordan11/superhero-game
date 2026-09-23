@@ -15,6 +15,8 @@ static var _fitting_adjustments: Dictionary = {}
 const COLOR_NAMES := ["Blonde", "Black", "Brown", "Grey"]
 const COLORS := [Color("f5cc82"), Color("191714"), Color("704629"), Color("c6c9cc")]
 @export var model_path: NodePath
+## Models with integrated hair do not need a separate accessory shell.
+@export var enabled := true
 @export var female_npc := true
 @export_range(0, 3, 1) var player_color := 2
 static var _materials: Dictionary = {}
@@ -34,6 +36,7 @@ static func choose_for(actor: Node) -> void:
 	if actor.hair_color_index < 0: actor.hair_color_index = _random.randi_range(0, COLORS.size() - 1)
 
 func _ready() -> void:
+	if not enabled: return
 	_model = get_node(model_path) as Node3D
 	for skeleton in _model.find_children("*", "Skeleton3D", true, false):
 		if skeleton.find_bone("Head") >= 0:

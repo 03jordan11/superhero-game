@@ -17,54 +17,114 @@ var _spring_base_position := Vector3.ZERO
 var _busy := false
 var _cooldown_until := 0
 var _inside := false
+var _outdoor_movement := {}
+var _primary_hideout_path := "res://assets/buildings/gas_station_hideout/gas_station_interior.tscn"
 
 func _enter_tree() -> void:
 	add_to_group(&"hideout_travel")
 
 func request_transition(door: Node3D, target: PlayerCharacter) -> bool:
-	if _busy or Time.get_ticks_msec() < _cooldown_until: return true
+	if _busy or get_node("/root/LoadingScreen").active or Time.get_ticks_msec() < _cooldown_until: return true
 	if door.is_exit != _inside: return false
 	if not door.is_exit and get_tree().current_scene.scene_file_path.is_empty():
 		push_warning("Hideout entrance requires a saved city scene to return to.")
 		return false
 	_busy = true
 	player = target
-	if door.is_exit: _leave.call_deferred()
-	else: _enter.call_deferred(door)
+	_transition.call_deferred(door)
 	return true
+
+func _transition(door: Node3D) -> void:
+	var loading := get_node("/root/LoadingScreen")
+	if not loading.begin("RETURNING TO CITY" if door.is_exit else "ENTERING " + door.destination_name):
+		_busy = false
+		return
+	var succeeded: bool
+	if door.is_exit: succeeded = await _leave()
+	else: succeeded = await _enter(door)
+	await loading.finish(succeeded)
+	_busy = false
+	_cooldown_until = Time.get_ticks_msec() + 650
 
 func start_in_hideout(target: PlayerCharacter) -> bool:
 	# Loading bypasses interaction distance; the normal entrance still determines
 	# the interior and the safe return position outside the station.
 	for door in get_tree().get_nodes_in_group(&"hideout_doors"):
-		if not door.is_exit and get_tree().current_scene.is_ancestor_of(door):
+		if not door.is_exit and door.new_game_destination and get_tree().current_scene.is_ancestor_of(door):
 			player = target
 			_busy = true
-			return _enter(door)
+			return await _enter(door, 70)
 	return false
 
-func _enter(door: Node3D) -> bool:
-	var packed := load(door.interior_scene) as PackedScene
+func respawn_in_hideout(target: PlayerCharacter) -> bool:
+	var loading := get_node("/root/LoadingScreen")
+	if _busy or loading.active or not is_instance_valid(target) or not target.is_dead: return false
+	if not loading.begin("RESPAWNING AT HIDEOUT"): return false
+	_busy = true
+	player = target
+	var scene := get_tree().current_scene
+	var succeeded := false
+	# A death indoors must not overwrite the saved outdoor camera/return pose.
+	if scene != null and scene.scene_file_path == _primary_hideout_path and scene.has_node("PlayerSpawn"):
+		await loading.checkpoint(50, "Returning to your hideout…")
+		_reset_player()
+		player.global_transform = scene.get_node("PlayerSpawn").global_transform
+		_finish()
+		succeeded = true
+	else:
+		# Other interiors use the existing travel path to retain the correct city
+		# and primary hideout entrance, under one uninterrupted loading screen.
+		var can_enter := not _inside or await _leave(45.0)
+		if can_enter and get_tree().current_scene != null:
+			succeeded = await start_in_hideout(player)
+	if succeeded:
+		await loading.checkpoint(97, "Restoring your hero…")
+		player.revive_for_respawn()
+	else:
+		player.animation_controller.play_death()
+	await loading.finish(succeeded)
+	_busy = false
+	_cooldown_until = Time.get_ticks_msec() + 650
+	return succeeded
+
+func _enter(door: Node3D, from_percent: float = 0) -> bool:
+	var loading := get_node("/root/LoadingScreen")
+	var packed: PackedScene = await loading.load_scene(door.interior_scene, from_percent, 85)
 	if packed == null:
 		push_error("Could not load hideout interior: " + door.interior_scene)
 		_busy = false
 		return false
-	var room := packed.instantiate() as Node3D
+	await loading.checkpoint(90, "Preparing the interior…")
+	var instance := packed.instantiate()
+	var room := instance as Node3D
 	if room == null or not room.has_node("PlayerSpawn"):
-		if room != null: room.free()
+		instance.free()
 		push_error("Hideout interior needs a PlayerSpawn marker.")
 		_busy = false
 		return false
+	await loading.checkpoint(95, "Entering the building…")
 	var city := get_tree().current_scene
+	for entrance in get_tree().get_nodes_in_group(&"hideout_doors"):
+		if not entrance.is_exit and entrance.new_game_destination and city.is_ancestor_of(entrance):
+			_primary_hideout_path = entrance.interior_scene
+			break
 	_copy_clock(city, room)
 	_city_path = city.scene_file_path
 	_player_path = city.get_path_to(player)
 	_return_transform = Transform3D(door.global_basis.orthonormalized() * Basis(Vector3.UP, PI), door.to_global(Vector3(0, 0.4, 1.4)))
+	var return_marker := door.get_node_or_null(door.return_marker) as Marker3D if not door.return_marker.is_empty() else null
+	if return_marker != null: _return_transform = return_marker.global_transform
 	_spring_length = player.spring_arm.spring_length
 	_spring_margin = player.spring_arm.margin
 	_spring_shape = player.spring_arm.shape
 	_spring_rotation = player.spring_arm.rotation
 	_spring_base_position = player.camera_effects.base_spring_arm_position
+	_outdoor_movement = {
+		"minimum_run_speed": player.minimum_run_speed,
+		"run_speed_per_attribute_point": player.run_speed_per_attribute_point,
+		"walk_speed_ratio": player.walk_speed_ratio,
+		"floor_snap_length": player.floor_snap_length,
+	}
 	_reset_player()
 	player.reparent(self)
 	# Keep working menus indoors; discard them when the city reloads.
@@ -72,6 +132,13 @@ func _enter(door: Node3D) -> bool:
 		if child is CanvasLayer: child.reparent(self)
 	get_tree().current_scene = null
 	city.free()
+	# Replace the standalone player before the room configures the existing hero.
+	var room_player := room.get_node_or_null("Player")
+	if room_player != null:
+		room_player.free()
+		player.get_parent().remove_child(player)
+		player.name = "Player"
+		room.add_child(player)
 	get_tree().root.add_child(room)
 	get_tree().current_scene = room
 	for child in get_children(): child.reparent(room)
@@ -90,12 +157,14 @@ func _enter(door: Node3D) -> bool:
 	_finish()
 	return true
 
-func _leave() -> void:
-	var packed := load(_city_path) as PackedScene
+func _leave(progress_end: float = 95.0) -> bool:
+	var loading := get_node("/root/LoadingScreen")
+	var packed: PackedScene = await loading.load_scene(_city_path, 0, progress_end * 85.0 / 95.0)
 	if packed == null:
 		push_error("Could not reload city: " + _city_path)
 		_busy = false
-		return
+		return false
+	await loading.checkpoint(progress_end * 90.0 / 95.0, "Preparing the city…")
 	var city := packed.instantiate()
 	_copy_clock(get_tree().current_scene, city)
 	var placeholder := city.get_node_or_null(_player_path)
@@ -103,7 +172,8 @@ func _leave() -> void:
 		city.free()
 		push_error("Reloaded city is missing its player spawn.")
 		_busy = false
-		return
+		return false
+	await loading.checkpoint(progress_end, "Returning to the street…")
 	var destination_parent := placeholder.get_parent()
 	var player_name := placeholder.name
 	var player_index := placeholder.get_index()
@@ -135,8 +205,10 @@ func _leave() -> void:
 	player.spring_arm.rotation = _spring_rotation
 	player.camera_effects.base_spring_arm_position = _spring_base_position
 	player.spring_arm.position = _spring_base_position
+	for property: String in _outdoor_movement: player.set(property, _outdoor_movement[property])
 	_inside = false
 	_finish()
+	return true
 
 func _find_clock(scene: Node) -> Node:
 	if scene is CLOCK: return scene

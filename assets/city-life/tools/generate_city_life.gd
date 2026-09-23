@@ -1,6 +1,7 @@
 extends "res://assets/waterfront/tools/generate_waterfront.gd"
 ## Reuses only the offline primitive/mesh authoring helpers; runtime is independent.
 const TREES = preload("res://assets/trees/tools/tree_instances.gd")
+const FOREST_BOUNDARY = preload("res://assets/trees/tools/forest_boundary_clip.gd")
 const LIFE_OUT := "res://assets/city-life/"
 const NIGHT_LAYOUT = preload("res://scripts/city_night_lights.gd")
 var locations: Dictionary
@@ -21,7 +22,7 @@ func generate() -> void:
 	scene=Node3D.new()
 	scene.name="CityLife"
 	scene.set_script(load("res://scripts/city_life.gd"))
-	for group in ["Benches","TrafficControls","Baseball","Highway","Blimp"]: add(Node3D.new(),scene,group)
+	for group in ["Baseball","Highway","Blimp"]: add(Node3D.new(),scene,group)
 	for pair in [["red","b92d2c"],["cream","e3dfbd"],["iron","293135"],["chrome","a5b4b5"],["glass","416374"],["wood","786045"],["white","e5e4d9"],["yellow","eab93d"],["asphalt","373d40"],["green","385348"],["soil","a77751"],["grass","526e41"],["black","101a20"]]: mats[pair[0]]=material(Color(pair[1]))
 	mats.chrome.metallic=0.75
 	mats.chrome.roughness=0.28
@@ -38,13 +39,15 @@ func generate() -> void:
 	for row in layout.sidewalks: walkways.append(rect(row))
 	fixtures=NIGHT_LAYOUT.build_fixture_layout(layout,72.0)
 	make_baseball()
-	make_street_furniture()
-	make_traffic_controls()
+	advance_former_furniture_rng()
 	make_blimp()
 	make_highway()
 	for node in scene.find_children("*","MultiMeshInstance3D",true,false): assert(not node.multimesh.buffer.is_empty(),"Empty batch: "+node.name)
 	var restored := TREES.restore_saved_layout(scene,"res://scenes/city_life.tscn")
 	if restored >= 0: counts.background_trees = restored
+	var forest_chunks: Node3D = load("res://assets/trees/chunks/northern.tscn").instantiate()
+	scene.get_node("Highway").add_child(forest_chunks)
+	forest_chunks.owner = scene
 	scene.set_meta("counts",counts)
 	var packed:=PackedScene.new()
 	assert(packed.pack(scene)==OK)
@@ -59,6 +62,8 @@ func rect(row: Array) -> Rect2: return Rect2(row[0],row[1],row[2],row[3])
 
 func surface(label_name: String, tool: SurfaceTool, parent: Node, mat: Material, solid := false) -> MeshInstance3D:
 	var mesh:=tool.commit()
+	if label_name == "NorthernGround" and FileAccess.file_exists(FOREST_BOUNDARY.CONFIG):
+		mesh = FOREST_BOUNDARY.clip_mesh(mesh, FOREST_BOUNDARY.saved_planes())
 	var path:=LIFE_OUT+"meshes/"+label_name.to_snake_case()+".res"
 	assert(ResourceSaver.save(mesh,path)==OK)
 	mesh.take_over_path(path)
@@ -105,12 +110,8 @@ func wall_quad(tool: SurfaceTool,a:Vector3,b:Vector3,height:float) -> void:
 	tri(tool,a,b,b+Vector3.UP*height)
 	tri(tool,a,b+Vector3.UP*height,a+Vector3.UP*height)
 
-func bench_prop(parent: Node) -> void:
-	box(parent,"Seat",Vector3(2.8,0.14,0.65),Vector3(0,0.6,0),mats.wood,true)
-	box(parent,"Back",Vector3(2.8,0.65,0.12),Vector3(0,0.98,-0.32),mats.wood)
-	for x in [-1.0,1.0]: box(parent,"Leg",Vector3(0.13,0.58,0.5),Vector3(x,0.29,0),mats.iron)
-
-func make_street_furniture() -> void:
+func advance_former_furniture_rng() -> void:
+	# Keep terrain colors and subsequent procedural placements stable after bench removal.
 	var candidates: Array[Dictionary]=[]
 	for road in layout.roads:
 		if road.kind!="street" or road.crossing_corridor: continue
@@ -129,77 +130,6 @@ func make_street_furniture() -> void:
 		var hold: Dictionary=candidates[i]
 		candidates[i]=candidates[j]
 		candidates[j]=hold
-	for spec in [["Benches",85,Vector2(3,0.85)]]:
-		var made:=0
-		for option in candidates:
-			if made>=int(spec[1]): break
-			var area:=footprint(option.p,spec[2],option.yaw)
-			if not free_space(area): continue
-			var node:=group_at(scene.get_node(spec[0]),str(spec[0])+str(made),Vector3(option.p.x,0.04,option.p.y),option.yaw)
-			match str(spec[0]):
-				"Benches": bench_prop(node)
-			occupied.append(area.grow(1.5))
-			placement_rows.append({"kind":spec[0],"rect":[area.position.x,area.position.y,area.size.x,area.size.y]})
-			made+=1
-		counts[spec[0]]=made
-
-func make_traffic_controls() -> void:
-	var junction_id:=0
-	var signals:=0
-	var stops:=0
-	for road in layout.roads:
-		if road.kind!="junction": continue
-		var id:=junction_id
-		junction_id+=1
-		if int(road.arms)!=15 or road.crossing_corridor: continue
-		var is_signal:=id%4==0 and signals<30
-		if not is_signal and (id%7!=1 or stops>=28): continue
-		var area:=rect(road.rect)
-		var poses: Array=[
-			[Vector2(area.end.x+1.3,area.end.y+1.3),0.0,1],
-			[Vector2(area.position.x-1.3,area.position.y-1.3),PI,1],
-			[Vector2(area.position.x-1.3,area.end.y+1.3),-PI*0.5,0],
-			[Vector2(area.end.x+1.3,area.position.y-1.3),PI*0.5,0]]
-		var clear:=true
-		for pose in poses:
-			if not free_space(Rect2(pose[0]-Vector2.ONE*0.35,Vector2.ONE*0.7)): clear=false
-		if not clear: continue
-		var control:=group_at(scene.get_node("TrafficControls"),"Junction%d"%id,Vector3.ZERO)
-		control.set_meta("junction",id)
-		control.set_meta("kind","signal" if is_signal else "stop")
-		control.set_meta("offset",float(id*3%46))
-		for pose in poses:
-			var pole:=group_at(control,"SignalPole" if is_signal else "StopSign",Vector3(pose[0].x,0.04,pose[0].y),pose[1])
-			if is_signal:
-				visual(cylinder(0.095,6.6),pole,"Post",Vector3(0,3.3,0),mats.iron)
-				rod(pole,"MastArm",Vector3(0,6.5,0),Vector3(-6,6.5,0),0.095,mats.iron)
-				box(pole,"SignalHousing",Vector3(0.67,1.7,0.4),Vector3(-5.3,5.7,0),mats.yellow)
-				box(pole,"BlackFace",Vector3(0.57,1.58,0.04),Vector3(-5.3,5.7,0.23),mats.black)
-				for color_id in 3:
-					var color: Color=[Color("f53b30"),Color("ffb52e"),Color("46f08b")][color_id]
-					var mat:=glowing(color,3.2)
-					var lens:=visual(cylinder(0.19,0.06),pole,"SignalLens",Vector3(-5.3,6.18-color_id*0.48,0.28),mat)
-					lens.rotation.x=PI*0.5
-					lens.set_meta("signal_color",color_id)
-					lens.set_meta("junction",id)
-					lens.set_meta("axis",pose[2])
-					lens.set_meta("lens_color",color*0.25)
-			else:
-				visual(cylinder(0.055,2.6),pole,"Post",Vector3(0,1.3,0),mats.chrome)
-				for entry in [[0.61,0.0,mats.white],[0.55,0.06,mats.red]]:
-					var disc:=cylinder(entry[0],0.05)
-					disc.radial_segments=8
-					var face:=visual(disc,pole,"Octagon",Vector3(0,2.25,entry[1]),entry[2])
-					face.basis=Basis(Vector3.RIGHT,PI*0.5)*Basis(Vector3.UP,PI/8)
-				label(pole,"STOP",Vector3(0,2.26,0.11),0.006,0)
-				pole.get_child(pole.get_child_count()-1).double_sided=false
-				label(pole,"ALL WAY",Vector3(0,1.47,0.06),0.0035,0)
-				pole.get_child(pole.get_child_count()-1).double_sided=false
-			occupied.append(Rect2(pose[0]-Vector2.ONE*0.45,Vector2.ONE*0.9))
-		if is_signal: signals+=1
-		else: stops+=1
-	counts.signal_intersections=signals
-	counts.stop_intersections=stops
 
 func make_baseball() -> void:
 	var area:=rect(locations.field.rect)
@@ -284,7 +214,7 @@ func make_blimp() -> void:
 		sign.position=Vector3(side*15.4,1.1,0)
 		sign.rotation.y=side*PI*0.5
 		add(sign,blimp,"AdText")
-		label(blimp,"ROADSTAR  •  LEGENDARY GRIP",Vector3(side*15.4,-3.1,0),0.031,side*PI*0.5)
+		label(blimp,"ROADSTAR  â€¢  LEGENDARY GRIP",Vector3(side*15.4,-3.1,0),0.031,side*PI*0.5)
 		var fin:=box(blimp,"TailFin",Vector3(18,0.5,14),Vector3(side*9,0,-43),mats.red)
 		fin.rotation.y=side*0.18
 		var engine:=visual(cylinder(1.5,5),blimp,"Engine",Vector3(side*10,-12,-15),mats.chrome)
@@ -296,11 +226,16 @@ func make_blimp() -> void:
 	box(blimp,"Gondola",Vector3(7,4,18),Vector3(0,-14,4),mats.cream)
 	box(blimp,"CockpitGlass",Vector3(6,2,0.3),Vector3(0,-13.5,13.2),mats.glass)
 	for entry in [[Vector3(0,0,51),0.0],[Vector3(0,13,0),0.0],[Vector3(0,-16,0),0.8],[Vector3(-17,0,-43),0.8],[Vector3(17,0,-43),0.0]]:
-		var light_mesh:=SphereMesh.new()
-		light_mesh.radius=1.1
-		light_mesh.height=2.2
-		var mat:=glowing(Color("ffe6bd"),12)
-		var lens:=visual(light_mesh,blimp,"Strobe",entry[0],mat)
+		var lens:=OmniLight3D.new()
+		lens.position=entry[0]
+		lens.light_color=Color("ffe6bd")
+		lens.light_energy=3.0
+		lens.omni_range=8.0
+		lens.shadow_enabled=false
+		lens.distance_fade_enabled=true
+		lens.distance_fade_begin=300.0
+		lens.distance_fade_length=100.0
+		add(lens,blimp,"Strobe")
 		lens.set_meta("blink",entry[1])
 	var audio_player:=AudioStreamPlayer3D.new()
 	var stream:=AudioStreamWAV.load_from_file(LIFE_OUT+"audio/roadstar_ad.wav")
@@ -464,4 +399,3 @@ func make_tunnel(parent: Node) -> void:
 		for side in [-1,1]:
 			box(tunnel,"TunnelLamp",Vector3(0.2,0.3,2),Vector3(side*14.7,3.5,z),mats.warm)
 			glow_lamp(tunnel,Vector3(side*14,3,z),Color("ffc57e"),1.8,12)
-

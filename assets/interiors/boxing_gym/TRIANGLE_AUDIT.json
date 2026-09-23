@@ -1,0 +1,318 @@
+{
+	"complete_interior_triangles": 16940,
+	"counts_each_placed_instance": true,
+	"excludes": "player character, interaction UI and non-rendered collision",
+	"limit": 50000,
+	"placements": [
+		{
+			"node": "Architecture/Floor",
+			"scene": "res://assets/interiors/boxing_gym/props/floor.tscn",
+			"triangles": 132
+		},
+		{
+			"node": "Architecture/Walls",
+			"scene": "res://assets/interiors/boxing_gym/props/walls.tscn",
+			"triangles": 344
+		},
+		{
+			"node": "Architecture/FrontWall",
+			"scene": "res://assets/interiors/boxing_gym/props/front_wall.tscn",
+			"triangles": 60
+		},
+		{
+			"node": "Architecture/Ceiling",
+			"scene": "res://assets/interiors/boxing_gym/props/ceiling.tscn",
+			"triangles": 156
+		},
+		{
+			"node": "Architecture/Catwalk",
+			"scene": "res://assets/interiors/boxing_gym/props/catwalk.tscn",
+			"triangles": 856
+		},
+		{
+			"node": "Architecture/CatwalkStairs",
+			"scene": "res://assets/interiors/boxing_gym/props/catwalk_stairs.tscn",
+			"triangles": 1120
+		},
+		{
+			"node": "Architecture/BathroomExterior",
+			"scene": "res://assets/interiors/boxing_gym/props/bathroom_exterior.tscn",
+			"triangles": 416
+		},
+		{
+			"node": "Training/BoxingRing",
+			"scene": "res://assets/interiors/boxing_gym/props/boxing_ring.tscn",
+			"triangles": 1400
+		},
+		{
+			"node": "Training/RingSteps",
+			"scene": "res://assets/interiors/boxing_gym/props/ring_steps.tscn",
+			"triangles": 120
+		},
+		{
+			"node": "Training/HeavyBag1",
+			"scene": "res://assets/interiors/boxing_gym/props/heavy_bag.tscn",
+			"triangles": 732
+		},
+		{
+			"node": "Training/HeavyBag2",
+			"scene": "res://assets/interiors/boxing_gym/props/heavy_bag.tscn",
+			"triangles": 732
+		},
+		{
+			"node": "Training/SpeedBag",
+			"scene": "res://assets/interiors/boxing_gym/props/speed_bag.tscn",
+			"triangles": 636
+		},
+		{
+			"node": "Training/WeightRack",
+			"scene": "res://assets/interiors/boxing_gym/props/weight_rack.tscn",
+			"triangles": 1272
+		},
+		{
+			"node": "Props/EntranceDoor",
+			"scene": "res://assets/interiors/boxing_gym/props/entrance_door.tscn",
+			"triangles": 132
+		},
+		{
+			"node": "Props/Locker1",
+			"scene": "res://assets/interiors/boxing_gym/props/locker.tscn",
+			"triangles": 96
+		},
+		{
+			"node": "Props/Locker2",
+			"scene": "res://assets/interiors/boxing_gym/props/locker.tscn",
+			"triangles": 96
+		},
+		{
+			"node": "Props/Locker3",
+			"scene": "res://assets/interiors/boxing_gym/props/locker.tscn",
+			"triangles": 96
+		},
+		{
+			"node": "Props/Locker4",
+			"scene": "res://assets/interiors/boxing_gym/props/locker.tscn",
+			"triangles": 96
+		},
+		{
+			"node": "Props/Locker5",
+			"scene": "res://assets/interiors/boxing_gym/props/locker.tscn",
+			"triangles": 96
+		},
+		{
+			"node": "Props/Locker6",
+			"scene": "res://assets/interiors/boxing_gym/props/locker.tscn",
+			"triangles": 96
+		},
+		{
+			"node": "Props/Locker7",
+			"scene": "res://assets/interiors/boxing_gym/props/locker.tscn",
+			"triangles": 96
+		},
+		{
+			"node": "Props/Locker8",
+			"scene": "res://assets/interiors/boxing_gym/props/locker.tscn",
+			"triangles": 96
+		},
+		{
+			"node": "Props/Bench1",
+			"scene": "res://assets/interiors/boxing_gym/props/bench.tscn",
+			"triangles": 60
+		},
+		{
+			"node": "Props/Bench2",
+			"scene": "res://assets/interiors/boxing_gym/props/bench.tscn",
+			"triangles": 60
+		},
+		{
+			"node": "Props/Bench3",
+			"scene": "res://assets/interiors/boxing_gym/props/bench.tscn",
+			"triangles": 60
+		},
+		{
+			"node": "Props/TrainingMat1",
+			"scene": "res://assets/interiors/boxing_gym/props/mat.tscn",
+			"triangles": 144
+		},
+		{
+			"node": "Props/TrainingMat2",
+			"scene": "res://assets/interiors/boxing_gym/props/mat.tscn",
+			"triangles": 144
+		},
+		{
+			"node": "Props/TrainingMat3",
+			"scene": "res://assets/interiors/boxing_gym/props/mat.tscn",
+			"triangles": 144
+		},
+		{
+			"node": "Props/TrainingMat4",
+			"scene": "res://assets/interiors/boxing_gym/props/mat.tscn",
+			"triangles": 144
+		},
+		{
+			"node": "Props/TrainingMat5",
+			"scene": "res://assets/interiors/boxing_gym/props/mat.tscn",
+			"triangles": 144
+		},
+		{
+			"node": "Props/Window0_-1",
+			"scene": "res://assets/interiors/boxing_gym/props/boarded_window.tscn",
+			"triangles": 360
+		},
+		{
+			"node": "Props/Window0_1",
+			"scene": "res://assets/interiors/boxing_gym/props/boarded_window.tscn",
+			"triangles": 360
+		},
+		{
+			"node": "Props/Window1_-1",
+			"scene": "res://assets/interiors/boxing_gym/props/boarded_window.tscn",
+			"triangles": 360
+		},
+		{
+			"node": "Props/Window1_1",
+			"scene": "res://assets/interiors/boxing_gym/props/boarded_window.tscn",
+			"triangles": 360
+		},
+		{
+			"node": "Props/Window2_-1",
+			"scene": "res://assets/interiors/boxing_gym/props/boarded_window.tscn",
+			"triangles": 360
+		},
+		{
+			"node": "Props/Window2_1",
+			"scene": "res://assets/interiors/boxing_gym/props/boarded_window.tscn",
+			"triangles": 360
+		},
+		{
+			"node": "Props/Poster1",
+			"scene": "res://assets/interiors/boxing_gym/props/poster.tscn",
+			"triangles": 728
+		},
+		{
+			"node": "Props/Poster2",
+			"scene": "res://assets/interiors/boxing_gym/props/poster.tscn",
+			"triangles": 728
+		},
+		{
+			"node": "Props/Poster3",
+			"scene": "res://assets/interiors/boxing_gym/props/poster.tscn",
+			"triangles": 728
+		},
+		{
+			"node": "Props/OfficeDesk",
+			"scene": "res://assets/interiors/boxing_gym/props/desk.tscn",
+			"triangles": 60
+		},
+		{
+			"node": "Props/OfficeChair",
+			"scene": "res://assets/interiors/boxing_gym/props/chair.tscn",
+			"triangles": 72
+		},
+		{
+			"node": "Props/OfficeBottle",
+			"scene": "res://assets/interiors/boxing_gym/props/bottle.tscn",
+			"triangles": 88
+		},
+		{
+			"node": "Props/OfficePapers",
+			"scene": "res://assets/interiors/boxing_gym/props/towel.tscn",
+			"triangles": 36
+		},
+		{
+			"node": "Props/StorageCrate1",
+			"scene": "res://assets/interiors/boxing_gym/props/crate.tscn",
+			"triangles": 96
+		},
+		{
+			"node": "Props/StorageCrate2",
+			"scene": "res://assets/interiors/boxing_gym/props/crate.tscn",
+			"triangles": 96
+		},
+		{
+			"node": "Props/KitBag",
+			"scene": "res://assets/interiors/boxing_gym/props/duffel.tscn",
+			"triangles": 336
+		},
+		{
+			"node": "Props/BenchTowel",
+			"scene": "res://assets/interiors/boxing_gym/props/towel.tscn",
+			"triangles": 36
+		},
+		{
+			"node": "Props/WaterBottle",
+			"scene": "res://assets/interiors/boxing_gym/props/bottle.tscn",
+			"triangles": 88
+		},
+		{
+			"node": "Props/FrontWindowLeft",
+			"scene": "res://assets/interiors/boxing_gym/props/front_window.tscn",
+			"triangles": 168
+		},
+		{
+			"node": "Props/FrontWindowRight",
+			"scene": "res://assets/interiors/boxing_gym/props/front_window.tscn",
+			"triangles": 168
+		},
+		{
+			"node": "Props/BackDoor",
+			"scene": "res://assets/interiors/boxing_gym/props/back_door.tscn",
+			"triangles": 96
+		},
+		{
+			"node": "Props/RearExitSign",
+			"scene": "res://assets/interiors/boxing_gym/props/exit_sign.tscn",
+			"triangles": 152
+		},
+		{
+			"node": "Props/StorageShelvesLeft",
+			"scene": "res://assets/interiors/boxing_gym/props/hideout_storage_rack.tscn",
+			"triangles": 144
+		},
+		{
+			"node": "Props/StorageShelvesRight",
+			"scene": "res://assets/interiors/boxing_gym/props/hideout_storage_rack.tscn",
+			"triangles": 144
+		},
+		{
+			"node": "Lighting/Pendant1",
+			"scene": "res://assets/interiors/boxing_gym/props/pendant.tscn",
+			"triangles": 172
+		},
+		{
+			"node": "Lighting/Pendant2",
+			"scene": "res://assets/interiors/boxing_gym/props/pendant.tscn",
+			"triangles": 172
+		},
+		{
+			"node": "Lighting/Pendant3",
+			"scene": "res://assets/interiors/boxing_gym/props/pendant.tscn",
+			"triangles": 172
+		},
+		{
+			"node": "Lighting/Pendant4",
+			"scene": "res://assets/interiors/boxing_gym/props/pendant.tscn",
+			"triangles": 172
+		},
+		{
+			"node": "Lighting/Pendant5",
+			"scene": "res://assets/interiors/boxing_gym/props/pendant.tscn",
+			"triangles": 172
+		},
+		{
+			"node": "Lighting/WallLight1",
+			"scene": "res://assets/interiors/boxing_gym/props/wall_light.tscn",
+			"triangles": 60
+		},
+		{
+			"node": "Lighting/WallLight2",
+			"scene": "res://assets/interiors/boxing_gym/props/wall_light.tscn",
+			"triangles": 60
+		},
+		{
+			"node": "Lighting/WallLight3",
+			"scene": "res://assets/interiors/boxing_gym/props/wall_light.tscn",
+			"triangles": 60
+		}
+	]
+}

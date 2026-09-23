@@ -1,0 +1,13 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/mat_Rubber.res" id="1_a86y7"]
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/mat_Steel.res" id="2_b6xma"]
+
+[node name="Mat" type="Node3D" unique_id=1829398168]
+metadata/rendered_triangles = 144
+
+[node name="mat_Rubber" type="MeshInstance3D" parent="." unique_id=506589609]
+mesh = ExtResource("1_a86y7")
+
+[node name="mat_Steel" type="MeshInstance3D" parent="." unique_id=129104400]
+mesh = ExtResource("2_b6xma")

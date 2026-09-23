@@ -1,0 +1,26 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="res://assets/buildings/boxing_gym/meshes/canopy_Roof.res" id="1_ukvx2"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/boxing_gym/meshes/canopy_Steel.res" id="2_u0cb4"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/boxing_gym/meshes/canopy_Trim.res" id="3_w3mhm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wpxg6"]
+size = Vector3(4.25, 0.14, 1.45)
+
+[node name="Canopy" type="Node3D" unique_id=1074750049]
+metadata/rendered_triangles = 92
+
+[node name="canopy_Roof" type="MeshInstance3D" parent="." unique_id=1958972572]
+mesh = ExtResource("1_ukvx2")
+
+[node name="canopy_Steel" type="MeshInstance3D" parent="." unique_id=1524742648]
+mesh = ExtResource("2_u0cb4")
+
+[node name="canopy_Trim" type="MeshInstance3D" parent="." unique_id=1246413272]
+mesh = ExtResource("3_w3mhm")
+
+[node name="Collision" type="StaticBody3D" parent="." unique_id=1827341178]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision" unique_id=1825153637]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.6)
+shape = SubResource("BoxShape3D_wpxg6")

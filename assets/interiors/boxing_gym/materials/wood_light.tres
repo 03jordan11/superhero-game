@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/interiors/boxing_gym/textures/wood.png" id="1_1mmup"]
+
+[resource]
+resource_name = "WoodLight"
+albedo_color = Color(0.42, 0.3, 0.17, 1)
+albedo_texture = ExtResource("1_1mmup")
+roughness = 0.85
+texture_filter = 5

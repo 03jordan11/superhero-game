@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://assets/buildings/bank1/bank1.gd" id="1_mk5ed"]
 [ext_resource type="PackedScene" path="res://assets/buildings/bank1/bank1.glb" id="2_4y57p"]
-[ext_resource type="PackedScene" path="res://assets/buildings/bank1/props/bench.tscn" id="3_vco2c"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xfx1o"]
 size = Vector3(34, 20, 26)
@@ -136,9 +135,3 @@ shape = SubResource("ConvexPolygonShape3D_51gdf")
 shape = SubResource("ConvexPolygonShape3D_uejuf")
 
 [node name="Props" type="Node3D" parent="." unique_id=1507192404]
-
-[node name="Bench_00" type="Node3D" parent="Props" unique_id=800247442 instance=ExtResource("3_vco2c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -13.7)
-
-[node name="Bench_01" type="Node3D" parent="Props" unique_id=2121944255 instance=ExtResource("3_vco2c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -13.7)

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" path="res://scenes/npcs/npc_base.tscn" id="1_npc_base"]
 [ext_resource type="Script" uid="uid://dpbj4c6jc3hao" path="res://scripts/npc-scripts/civilian.gd" id="2_civilian"]
-[ext_resource type="PackedScene" uid="uid://804s6wflbiti" path="res://assets/characters/Superhero-female/Superhero_Female_FullBody.gltf" id="3_model"]
+[ext_resource type="PackedScene" path="res://assets/characters/hero_meshy/hero_meshy.glb" id="3_model"]
 [ext_resource type="Script" uid="uid://cycqnjthd7pvm" path="res://scripts/npc-scripts/civilian_animation_controller.gd" id="4_animation_controller"]
 [ext_resource type="Script" path="res://scripts/character_hair.gd" id="5_hair"]
 
@@ -22,4 +22,5 @@ script = ExtResource("4_animation_controller")
 
 [node name="CharacterHair" type="Node" parent="."]
 script = ExtResource("5_hair")
+enabled = false
 model_path = NodePath("../Superhero_Female_FullBody")

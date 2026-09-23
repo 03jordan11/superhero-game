@@ -94,7 +94,7 @@ func make_hvac() -> void:
 	assert(total==48,"Extract the complete hospital unit without other roof equipment")
 	save(mesh,PROP+"rooftop_hvac.res")
 	var body:=StaticBody3D.new();body.name="RooftopHVAC";body.set_meta("source","hospital / Roof equipment / unit at (-13, 129, -18)")
-	var visual:=MeshInstance3D.new();visual.name="MeshInstance3D";visual.mesh=mesh;visual.visibility_range_end=1500;visual.visibility_range_end_margin=60;body.add_child(visual);visual.owner=body
+	var visual:=MeshInstance3D.new();visual.name="MeshInstance3D";visual.mesh=mesh;visual.visibility_range_end=100;body.add_child(visual);visual.owner=body
 	var bounds:=mesh.get_aabb();shape(body,"CollisionShape3D",bounds.size,bounds.get_center())
 	var packed:=PackedScene.new();assert(packed.pack(body)==OK);save(packed,PROP+"rooftop_hvac.tscn")
 	body.free();hospital.free()

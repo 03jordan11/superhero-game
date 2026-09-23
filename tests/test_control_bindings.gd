@@ -114,6 +114,15 @@ func run() -> void:
 	check(menu.settings_menu.tabs.current_tab == 3, "RB cycles to Controls tab")
 	await process_frame
 	var panel = menu.settings_menu.controls_panel
+	root.push_input(button(JOY_BUTTON_DPAD_DOWN))
+	root.push_input(button(JOY_BUTTON_DPAD_DOWN, false))
+	check(root.gui_get_focus_owner() == menu.settings_menu.sensitivity_slider, "D-pad reaches sensitivity first")
+	var previous_sensitivity: float = settings.look_sensitivity
+	input(button(JOY_BUTTON_DPAD_RIGHT))
+	await process_frame
+	await process_frame
+	input(button(JOY_BUTTON_DPAD_RIGHT, false))
+	check(settings.look_sensitivity > previous_sensitivity, "Controller can adjust sensitivity")
 	for i in range(5):
 		root.push_input(button(JOY_BUTTON_DPAD_DOWN))
 		root.push_input(button(JOY_BUTTON_DPAD_DOWN, false))
@@ -170,14 +179,32 @@ func run() -> void:
 	check(is_equal_approx(player.velocity.length(), player._get_walk_speed() * 0.5), "Partial stick produces partial flight speed")
 	input(axis(JOY_AXIS_LEFT_Y, 0.0))
 	input(axis(JOY_AXIS_RIGHT_X, 0.6))
+	settings.set_look_sensitivity(1.0, false)
 	var yaw := player.rotation.y
 	player.input_controller.update_controller_look(0.1)
 	check(is_equal_approx(player.rotation.y - yaw, -deg_to_rad(150.0) * 0.05), "Right stick rotates camera at delta-scaled analog speed")
+	settings.set_look_sensitivity(2.0, false)
+	yaw = player.rotation.y
+	player.input_controller.update_controller_look(0.1)
+	check(is_equal_approx(player.rotation.y - yaw, -deg_to_rad(150.0) * 0.1), "Sensitivity doubles controller yaw immediately")
 	input(axis(JOY_AXIS_RIGHT_X, 0.0))
 	input(axis(JOY_AXIS_RIGHT_Y, 1.0))
+	player.spring_arm.rotation.x = 0.0
+	player.input_controller.update_controller_look(0.1)
+	check(is_equal_approx(player.spring_arm.rotation.x, -deg_to_rad(150.0) * 0.2), "Sensitivity also scales controller pitch")
 	player.input_controller.update_controller_look(10.0)
 	check(is_equal_approx(player.spring_arm.rotation.x, deg_to_rad(player.min_camera_angle)), "Controller camera respects pitch clamp")
 	input(axis(JOY_AXIS_RIGHT_Y, 0.0))
+	var motion := InputEventMouseMotion.new()
+	motion.screen_relative = Vector2(20.0, 10.0)
+	for sensitivity in [0.5, 1.0, 2.0]:
+		settings.set_look_sensitivity(sensitivity, false)
+		yaw = player.rotation.y
+		player.spring_arm.rotation.x = 0.0
+		player._profiled_input(motion)
+		check(is_equal_approx(player.rotation.y - yaw, -20.0 * player.mouse_sensitivity * sensitivity), "Sensitivity scales mouse yaw")
+		check(is_equal_approx(player.spring_arm.rotation.x, -10.0 * player.mouse_sensitivity * sensitivity), "Sensitivity scales mouse pitch")
+	settings.set_look_sensitivity(1.0, false)
 	settings.set_accessibility(true, false, false)
 	input(button(JOY_BUTTON_LEFT_STICK))
 	input(button(JOY_BUTTON_LEFT_STICK, false))

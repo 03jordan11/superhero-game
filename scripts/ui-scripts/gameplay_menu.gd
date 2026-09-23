@@ -78,6 +78,7 @@ func _ready() -> void:
 	hide()
 
 func _input(event: InputEvent) -> void:
+	if is_instance_valid(player) and player.is_dead: return
 	var bindings: Node = get_node("/root/GameSettings").input_bindings
 	if bindings.is_capturing or DebugManager.developer_menu_open: return
 	if not visible and get_tree().paused: return
@@ -97,6 +98,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 func open_menu(selected_tab: int = -1) -> void:
+	if is_instance_valid(player) and player.is_dead: return
 	if visible or get_tree().paused: return
 	if selected_tab >= 0: tabs.current_tab = clampi(selected_tab, 0, TAB_IDS.size() - 1)
 	_owns_pause = true

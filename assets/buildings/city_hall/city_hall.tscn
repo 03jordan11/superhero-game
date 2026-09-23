@@ -1,10 +1,13 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://b28uo3md4ttpn"]
 
-[ext_resource type="Script" path="res://assets/buildings/city_hall/city_hall.gd" id="1_jqcuv"]
-[ext_resource type="PackedScene" path="res://assets/buildings/city_hall/city_hall.glb" id="2_gqtw0"]
+[ext_resource type="Script" uid="uid://62n8qumyvdli" path="res://assets/buildings/city_hall/city_hall.gd" id="1_jqcuv"]
+[ext_resource type="PackedScene" uid="uid://v062bkitpbbq" path="res://assets/buildings/city_hall/city_hall.glb" id="2_gqtw0"]
 [ext_resource type="PackedScene" path="res://assets/buildings/city_hall/props/table.tscn" id="3_gf538"]
-[ext_resource type="PackedScene" path="res://assets/buildings/city_hall/props/bench.tscn" id="4_sebl0"]
 [ext_resource type="PackedScene" path="res://assets/buildings/city_hall/props/hedge.tscn" id="5_n3rhb"]
+
+[ext_resource type="Shape3D" path="res://assets/buildings/city_hall/stair_side_left_collision.res" id="stair_side_Left"]
+
+[ext_resource type="Shape3D" path="res://assets/buildings/city_hall/stair_side_right_collision.res" id="stair_side_Right"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dyw6u"]
 size = Vector3(184, 8, 94)
@@ -30,24 +33,6 @@ size = Vector3(6, 0.12, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_nn11f"]
 size = Vector3(184.65, 0.24, 0.65)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_qkg0j"]
-size = Vector3(70.5, 2, 7.4)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_4brlf"]
-size = Vector3(70.5, 0.24, 0.5)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_fityh"]
-size = Vector3(0.65, 0.24, 7.4)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_5e31l"]
-size = Vector3(70.5, 2, 7.4)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_8i57h"]
-size = Vector3(70.5, 0.24, 0.5)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_23dik"]
-size = Vector3(0.65, 0.24, 7.4)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_joknq"]
 size = Vector3(42, 2, 3)
 
@@ -56,24 +41,6 @@ size = Vector3(1, 1.2, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k53hp"]
 size = Vector3(1, 1.2, 3)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_axflq"]
-size = Vector3(70.5, 4, 7.4)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_qewof"]
-size = Vector3(70.5, 0.24, 0.5)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_exq0v"]
-size = Vector3(0.65, 0.24, 7.4)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_15as4"]
-size = Vector3(70.5, 4, 7.4)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_5s1wa"]
-size = Vector3(70.5, 0.24, 0.5)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_gjs83"]
-size = Vector3(0.65, 0.24, 7.4)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xon1v"]
 size = Vector3(42, 4, 3)
@@ -84,24 +51,6 @@ size = Vector3(1, 1.2, 3)
 [sub_resource type="BoxShape3D" id="BoxShape3D_j8d8x"]
 size = Vector3(1, 1.2, 3)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_nqosc"]
-size = Vector3(70.5, 6, 7.4)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_te2xp"]
-size = Vector3(70.5, 0.24, 0.5)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_xirn5"]
-size = Vector3(0.65, 0.24, 7.4)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_e45hw"]
-size = Vector3(70.5, 6, 7.4)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_8dcde"]
-size = Vector3(70.5, 0.24, 0.5)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_dni66"]
-size = Vector3(0.65, 0.24, 7.4)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_0bvu7"]
 size = Vector3(42, 6, 3)
 
@@ -110,24 +59,6 @@ size = Vector3(1, 1.2, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m1s1x"]
 size = Vector3(1, 1.2, 3)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_dgkl0"]
-size = Vector3(70.5, 8, 4.4)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ftqk2"]
-size = Vector3(70.5, 0.24, 0.5)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_kuljb"]
-size = Vector3(0.65, 0.24, 4.4)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_bb4yc"]
-size = Vector3(70.5, 8, 4.4)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_0ly3j"]
-size = Vector3(70.5, 0.24, 0.5)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_bb5ri"]
-size = Vector3(0.65, 0.24, 4.4)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n5r40"]
 size = Vector3(184, 8, 12.4)
@@ -312,10 +243,28 @@ points = PackedVector3Array(2, 73.4, 3, 1.7320508, 73.4, 2, 1, 73.4, 1.2679492, 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_nsqq4"]
 points = PackedVector3Array(2.8, 76.8, 3, 2.4248712, 76.8, 1.6, 1.4, 76.8, 0.57512885, 1.7145055e-16, 76.8, 0.2, -1.4, 76.8, 0.57512885, -2.4248712, 76.8, 1.6, -2.8, 76.8, 3, -2.4248712, 76.8, 4.4, -1.4, 76.8, 5.424871, -5.1435165e-16, 76.8, 5.8, 1.4, 76.8, 5.424871, 2.4248712, 76.8, 4.4, 2, 77.4, 3, 1.7320508, 77.4, 2, 1, 77.4, 1.2679492, 1.2246469e-16, 77.4, 1, -1, 77.4, 1.2679492, -1.7320508, 77.4, 2, -2, 77.4, 3, -1.7320508, 77.4, 4, -1, 77.4, 4.732051, -3.6739403e-16, 77.4, 5, 1, 77.4, 4.732051, 1.7320508, 77.4, 4, 0.35, 78, 3, 0.3031089, 78, 2.825, 0.175, 78, 2.696891, 2.1431318e-17, 78, 2.65, -0.175, 78, 2.696891, -0.3031089, 78, 2.825, -0.35, 78, 3, -0.3031089, 78, 3.175, -0.175, 78, 3.303109, -6.4293956e-17, 78, 3.35, 0.175, 78, 3.303109, 0.3031089, 78, 3.175)
 
+[sub_resource type="BoxShape3D" id="FrontSetbackShape_0"]
+size = Vector3(70.5, 8, 0.4)
+
+[sub_resource type="BoxShape3D" id="FrontSetbackShape_1"]
+size = Vector3(70.5, 0.24, 0.65)
+
+[sub_resource type="BoxShape3D" id="FrontSetbackShape_2"]
+size = Vector3(70.5, 0.14, 26.2)
+
+[sub_resource type="BoxShape3D" id="FrontSetbackShape_3"]
+size = Vector3(70.5, 8, 0.4)
+
+[sub_resource type="BoxShape3D" id="FrontSetbackShape_4"]
+size = Vector3(70.5, 0.24, 0.65)
+
+[sub_resource type="BoxShape3D" id="FrontSetbackShape_5"]
+size = Vector3(70.5, 0.14, 26.2)
+
 [node name="CityHall" type="Node3D" unique_id=1153126323]
 script = ExtResource("1_jqcuv")
 
-[node name="Model" type="Node3D" parent="." unique_id=1647865585 instance=ExtResource("2_gqtw0")]
+[node name="Model" parent="." unique_id=1647865585 instance=ExtResource("2_gqtw0")]
 
 [node name="ExteriorCollision" type="StaticBody3D" parent="." unique_id=1468663834]
 
@@ -351,137 +300,17 @@ shape = SubResource("BoxShape3D_ivn3k")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.12, -65)
 shape = SubResource("BoxShape3D_nn11f")
 
-[node name="Gardenretainingwalls" type="CollisionShape3D" parent="ExteriorCollision" unique_id=45199447]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.75, 1, 64.3)
-shape = SubResource("BoxShape3D_qkg0j")
-
-[node name="Gardencoping" type="CollisionShape3D" parent="ExteriorCollision" unique_id=246266802]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.75, 2.12, 68)
-shape = SubResource("BoxShape3D_4brlf")
-
-[node name="Gardencoping2" type="CollisionShape3D" parent="ExteriorCollision" unique_id=516967360]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92, 2.12, 64.3)
-shape = SubResource("BoxShape3D_fityh")
-
-[node name="Gardenretainingwalls2" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1337185271]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.75, 1, 64.3)
-shape = SubResource("BoxShape3D_5e31l")
-
-[node name="Gardencoping3" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1674832885]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.75, 2.12, 68)
-shape = SubResource("BoxShape3D_8i57h")
-
-[node name="Gardencoping4" type="CollisionShape3D" parent="ExteriorCollision" unique_id=959608813]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92, 2.12, 64.3)
-shape = SubResource("BoxShape3D_23dik")
-
 [node name="Stairlandings" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1975557637]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 62.1)
 shape = SubResource("BoxShape3D_joknq")
-
-[node name="Landingpiers" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1674408706]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 2.6, 62.1)
-shape = SubResource("BoxShape3D_pxg2u")
-
-[node name="Landingpiers2" type="CollisionShape3D" parent="ExteriorCollision" unique_id=2037377250]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 2.6, 62.1)
-shape = SubResource("BoxShape3D_k53hp")
-
-[node name="Gardenretainingwalls3" type="CollisionShape3D" parent="ExteriorCollision" unique_id=261409399]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.75, 2, 56.9)
-shape = SubResource("BoxShape3D_axflq")
-
-[node name="Gardencoping5" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1903534483]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.75, 4.12, 60.6)
-shape = SubResource("BoxShape3D_qewof")
-
-[node name="Gardencoping6" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1511319729]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92, 4.12, 56.9)
-shape = SubResource("BoxShape3D_exq0v")
-
-[node name="Gardenretainingwalls4" type="CollisionShape3D" parent="ExteriorCollision" unique_id=792291299]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.75, 2, 56.9)
-shape = SubResource("BoxShape3D_15as4")
-
-[node name="Gardencoping7" type="CollisionShape3D" parent="ExteriorCollision" unique_id=755673577]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.75, 4.12, 60.6)
-shape = SubResource("BoxShape3D_5s1wa")
-
-[node name="Gardencoping8" type="CollisionShape3D" parent="ExteriorCollision" unique_id=975834305]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92, 4.12, 56.9)
-shape = SubResource("BoxShape3D_gjs83")
 
 [node name="Stairlandings2" type="CollisionShape3D" parent="ExteriorCollision" unique_id=749207068]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 54.7)
 shape = SubResource("BoxShape3D_xon1v")
 
-[node name="Landingpiers3" type="CollisionShape3D" parent="ExteriorCollision" unique_id=255469116]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 4.6, 54.7)
-shape = SubResource("BoxShape3D_6grh7")
-
-[node name="Landingpiers4" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1052429479]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 4.6, 54.7)
-shape = SubResource("BoxShape3D_j8d8x")
-
-[node name="Gardenretainingwalls5" type="CollisionShape3D" parent="ExteriorCollision" unique_id=930917185]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.75, 3, 49.5)
-shape = SubResource("BoxShape3D_nqosc")
-
-[node name="Gardencoping9" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1281390689]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.75, 6.12, 53.2)
-shape = SubResource("BoxShape3D_te2xp")
-
-[node name="Gardencoping10" type="CollisionShape3D" parent="ExteriorCollision" unique_id=399825015]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92, 6.12, 49.5)
-shape = SubResource("BoxShape3D_xirn5")
-
-[node name="Gardenretainingwalls6" type="CollisionShape3D" parent="ExteriorCollision" unique_id=365019616]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.75, 3, 49.5)
-shape = SubResource("BoxShape3D_e45hw")
-
-[node name="Gardencoping11" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1158717596]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.75, 6.12, 53.2)
-shape = SubResource("BoxShape3D_8dcde")
-
-[node name="Gardencoping12" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1496360184]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92, 6.12, 49.5)
-shape = SubResource("BoxShape3D_dni66")
-
 [node name="Stairlandings3" type="CollisionShape3D" parent="ExteriorCollision" unique_id=290477189]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 47.3)
 shape = SubResource("BoxShape3D_0bvu7")
-
-[node name="Landingpiers5" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1551280466]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 6.6, 47.3)
-shape = SubResource("BoxShape3D_3s03u")
-
-[node name="Landingpiers6" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1757992905]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 6.6, 47.3)
-shape = SubResource("BoxShape3D_m1s1x")
-
-[node name="Gardenretainingwalls7" type="CollisionShape3D" parent="ExteriorCollision" unique_id=287451547]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.75, 4, 43.6)
-shape = SubResource("BoxShape3D_dgkl0")
-
-[node name="Gardencoping13" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1957401805]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.75, 8.12, 45.8)
-shape = SubResource("BoxShape3D_ftqk2")
-
-[node name="Gardencoping14" type="CollisionShape3D" parent="ExteriorCollision" unique_id=358783125]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92, 8.12, 43.6)
-shape = SubResource("BoxShape3D_kuljb")
-
-[node name="Gardenretainingwalls8" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1851081483]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.75, 4, 43.6)
-shape = SubResource("BoxShape3D_bb4yc")
-
-[node name="Gardencoping15" type="CollisionShape3D" parent="ExteriorCollision" unique_id=155446397]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.75, 8.12, 45.8)
-shape = SubResource("BoxShape3D_0ly3j")
-
-[node name="Gardencoping16" type="CollisionShape3D" parent="ExteriorCollision" unique_id=541695913]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92, 8.12, 43.6)
-shape = SubResource("BoxShape3D_bb5ri")
 
 [node name="Entranceesplanade" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1005454016]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 35.2)
@@ -586,38 +415,14 @@ shape = SubResource("BoxShape3D_ydtvu")
 [node name="StairRamp0" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1709914064]
 shape = SubResource("ConvexPolygonShape3D_pg7fq")
 
-[node name="Staircheekwalls" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1289209000]
-shape = SubResource("ConvexPolygonShape3D_cdf42")
-
-[node name="Staircheekwalls2" type="CollisionShape3D" parent="ExteriorCollision" unique_id=338756328]
-shape = SubResource("ConvexPolygonShape3D_xqaqj")
-
 [node name="StairRamp1" type="CollisionShape3D" parent="ExteriorCollision" unique_id=342536539]
 shape = SubResource("ConvexPolygonShape3D_16fjt")
-
-[node name="Staircheekwalls3" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1528056995]
-shape = SubResource("ConvexPolygonShape3D_chiuc")
-
-[node name="Staircheekwalls4" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1557283083]
-shape = SubResource("ConvexPolygonShape3D_kr236")
 
 [node name="StairRamp2" type="CollisionShape3D" parent="ExteriorCollision" unique_id=37425744]
 shape = SubResource("ConvexPolygonShape3D_ncsnd")
 
-[node name="Staircheekwalls5" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1308862143]
-shape = SubResource("ConvexPolygonShape3D_uwbvc")
-
-[node name="Staircheekwalls6" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1518884722]
-shape = SubResource("ConvexPolygonShape3D_8i0ip")
-
 [node name="StairRamp3" type="CollisionShape3D" parent="ExteriorCollision" unique_id=543001811]
 shape = SubResource("ConvexPolygonShape3D_tmnuk")
-
-[node name="Staircheekwalls7" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1892153313]
-shape = SubResource("ConvexPolygonShape3D_v8fvu")
-
-[node name="Staircheekwalls8" type="CollisionShape3D" parent="ExteriorCollision" unique_id=756455186]
-shape = SubResource("ConvexPolygonShape3D_y47jr")
 
 [node name="Greenroofs" type="CollisionShape3D" parent="ExteriorCollision" unique_id=508702626]
 shape = SubResource("ConvexPolygonShape3D_q8ru0")
@@ -691,136 +496,64 @@ shape = SubResource("ConvexPolygonShape3D_rvb8s")
 [node name="Lanternroof" type="CollisionShape3D" parent="ExteriorCollision" unique_id=1156255391]
 shape = SubResource("ConvexPolygonShape3D_nsqq4")
 
+[node name="FrontSetback_0" type="CollisionShape3D" parent="ExteriorCollision"]
+position = Vector3(-56.75, 4, 41.6)
+shape = SubResource("FrontSetbackShape_0")
+
+[node name="FrontSetback_1" type="CollisionShape3D" parent="ExteriorCollision"]
+position = Vector3(-56.75, 8.12, 41.6)
+shape = SubResource("FrontSetbackShape_1")
+
+[node name="FrontSetback_2" type="CollisionShape3D" parent="ExteriorCollision"]
+position = Vector3(-56.75, -0.04, 54.9)
+shape = SubResource("FrontSetbackShape_2")
+
+[node name="FrontSetback_3" type="CollisionShape3D" parent="ExteriorCollision"]
+position = Vector3(56.75, 4, 41.6)
+shape = SubResource("FrontSetbackShape_3")
+
+[node name="FrontSetback_4" type="CollisionShape3D" parent="ExteriorCollision"]
+position = Vector3(56.75, 8.12, 41.6)
+shape = SubResource("FrontSetbackShape_4")
+
+[node name="FrontSetback_5" type="CollisionShape3D" parent="ExteriorCollision"]
+position = Vector3(56.75, -0.04, 54.9)
+shape = SubResource("FrontSetbackShape_5")
+
+[node name="ContinuousStairSideLeft" type="CollisionShape3D" parent="ExteriorCollision"]
+shape = ExtResource("stair_side_Left")
+
+[node name="ContinuousStairSideRight" type="CollisionShape3D" parent="ExteriorCollision"]
+shape = ExtResource("stair_side_Right")
+
 [node name="GardenProps" type="Node3D" parent="." unique_id=710570438]
 
-[node name="Table_00" type="Node3D" parent="GardenProps" unique_id=888510264 instance=ExtResource("3_gf538")]
+[node name="Table_00" parent="GardenProps" unique_id=888510264 instance=ExtResource("3_gf538")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 8.15, -25)
 
-[node name="Bench_00" type="Node3D" parent="GardenProps" unique_id=632387418 instance=ExtResource("4_sebl0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 8.15, -23.9)
-
-[node name="Bench_01" type="Node3D" parent="GardenProps" unique_id=377179634 instance=ExtResource("4_sebl0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 8.15, -26.1)
-
-[node name="Table_01" type="Node3D" parent="GardenProps" unique_id=837885133 instance=ExtResource("3_gf538")]
+[node name="Table_01" parent="GardenProps" unique_id=837885133 instance=ExtResource("3_gf538")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 8.15, -36)
 
-[node name="Bench_02" type="Node3D" parent="GardenProps" unique_id=478744623 instance=ExtResource("4_sebl0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 8.15, -34.9)
-
-[node name="Bench_03" type="Node3D" parent="GardenProps" unique_id=952731053 instance=ExtResource("4_sebl0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 8.15, -37.1)
-
-[node name="Table_02" type="Node3D" parent="GardenProps" unique_id=1803876888 instance=ExtResource("3_gf538")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 8.15, -47)
-
-[node name="Bench_04" type="Node3D" parent="GardenProps" unique_id=10649747 instance=ExtResource("4_sebl0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 8.15, -45.9)
-
-[node name="Bench_05" type="Node3D" parent="GardenProps" unique_id=603067405 instance=ExtResource("4_sebl0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 8.15, -48.1)
-
-[node name="Table_03" type="Node3D" parent="GardenProps" unique_id=1257396063 instance=ExtResource("3_gf538")]
+[node name="Table_03" parent="GardenProps" unique_id=1257396063 instance=ExtResource("3_gf538")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 8.15, -25)
 
-[node name="Bench_06" type="Node3D" parent="GardenProps" unique_id=1247057457 instance=ExtResource("4_sebl0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 8.15, -23.9)
-
-[node name="Bench_07" type="Node3D" parent="GardenProps" unique_id=483720791 instance=ExtResource("4_sebl0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 8.15, -26.1)
-
-[node name="Table_04" type="Node3D" parent="GardenProps" unique_id=294841722 instance=ExtResource("3_gf538")]
+[node name="Table_04" parent="GardenProps" unique_id=294841722 instance=ExtResource("3_gf538")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 8.15, -36)
 
-[node name="Bench_08" type="Node3D" parent="GardenProps" unique_id=1316679927 instance=ExtResource("4_sebl0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 8.15, -34.9)
+[node name="Hedge_04" parent="GardenProps" unique_id=1151495356 instance=ExtResource("5_n3rhb")]
+transform = Transform3D(4.1499734, 0, 0, 0, 1, 0, 0, 0, 1, -33.02504, 8, 16.680412)
 
-[node name="Bench_09" type="Node3D" parent="GardenProps" unique_id=9292051 instance=ExtResource("4_sebl0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 8.15, -37.1)
+[node name="Hedge_05" parent="GardenProps" unique_id=1825949719 instance=ExtResource("5_n3rhb")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -49.596313, 8, 18.263569)
 
-[node name="Table_05" type="Node3D" parent="GardenProps" unique_id=695603903 instance=ExtResource("3_gf538")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 8.15, -47)
+[node name="Hedge_06" parent="GardenProps" unique_id=448673340 instance=ExtResource("5_n3rhb")]
+transform = Transform3D(3.5200002, 0, 0, 0, 1, 0, 0, 0, 1, -64, 8, 21.66169)
 
-[node name="Bench_10" type="Node3D" parent="GardenProps" unique_id=648700751 instance=ExtResource("4_sebl0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 8.15, -45.9)
+[node name="Hedge_11" parent="GardenProps" unique_id=1903183847 instance=ExtResource("5_n3rhb")]
+transform = Transform3D(4.1499734, 0, 0, 0, 1, 0, 0, 0, 1, 33.025, 8, 16.670189)
 
-[node name="Bench_11" type="Node3D" parent="GardenProps" unique_id=1887987548 instance=ExtResource("4_sebl0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 8.15, -48.1)
+[node name="Hedge_12" parent="GardenProps" unique_id=1001850565 instance=ExtResource("5_n3rhb")]
+transform = Transform3D(3.5200002, 0, 0, 0, 1, 0, 0, 0, 1, 64, 8, 21.77198)
 
-[node name="Bench_12" type="Node3D" parent="GardenProps" unique_id=1165691601 instance=ExtResource("4_sebl0")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -24, 8.15, -24)
-
-[node name="Bench_13" type="Node3D" parent="GardenProps" unique_id=2111804753 instance=ExtResource("4_sebl0")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -24, 8.15, -35)
-
-[node name="Bench_14" type="Node3D" parent="GardenProps" unique_id=254312052 instance=ExtResource("4_sebl0")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -24, 8.15, -46)
-
-[node name="Bench_15" type="Node3D" parent="GardenProps" unique_id=379974456 instance=ExtResource("4_sebl0")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -88, 8.15, 8)
-
-[node name="Bench_16" type="Node3D" parent="GardenProps" unique_id=107729226 instance=ExtResource("4_sebl0")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -88, 8.15, -20)
-
-[node name="Bench_17" type="Node3D" parent="GardenProps" unique_id=329263104 instance=ExtResource("4_sebl0")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -88, 8.15, -48)
-
-[node name="Hedge_00" type="Node3D" parent="GardenProps" unique_id=841318360 instance=ExtResource("5_n3rhb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 8.15, -16)
-
-[node name="Hedge_01" type="Node3D" parent="GardenProps" unique_id=1909567081 instance=ExtResource("5_n3rhb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 8.15, -54)
-
-[node name="Hedge_02" type="Node3D" parent="GardenProps" unique_id=1874765507 instance=ExtResource("5_n3rhb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46, 8.15, -16)
-
-[node name="Hedge_03" type="Node3D" parent="GardenProps" unique_id=1022335247 instance=ExtResource("5_n3rhb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46, 8.15, -54)
-
-[node name="Hedge_04" type="Node3D" parent="GardenProps" unique_id=1151495356 instance=ExtResource("5_n3rhb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 8, 33)
-
-[node name="Hedge_05" type="Node3D" parent="GardenProps" unique_id=1825949719 instance=ExtResource("5_n3rhb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 8, 33)
-
-[node name="Hedge_06" type="Node3D" parent="GardenProps" unique_id=448673340 instance=ExtResource("5_n3rhb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74, 8, 33)
-
-[node name="Bench_18" type="Node3D" parent="GardenProps" unique_id=1315846079 instance=ExtResource("4_sebl0")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 24, 8.15, -24)
-
-[node name="Bench_19" type="Node3D" parent="GardenProps" unique_id=1861726318 instance=ExtResource("4_sebl0")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 24, 8.15, -35)
-
-[node name="Bench_20" type="Node3D" parent="GardenProps" unique_id=71229800 instance=ExtResource("4_sebl0")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 24, 8.15, -46)
-
-[node name="Bench_21" type="Node3D" parent="GardenProps" unique_id=430919971 instance=ExtResource("4_sebl0")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 88, 8.15, 8)
-
-[node name="Bench_22" type="Node3D" parent="GardenProps" unique_id=1242745279 instance=ExtResource("4_sebl0")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 88, 8.15, -20)
-
-[node name="Bench_23" type="Node3D" parent="GardenProps" unique_id=193390811 instance=ExtResource("4_sebl0")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 88, 8.15, -48)
-
-[node name="Hedge_07" type="Node3D" parent="GardenProps" unique_id=1932225013 instance=ExtResource("5_n3rhb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 8.15, -16)
-
-[node name="Hedge_08" type="Node3D" parent="GardenProps" unique_id=1810466191 instance=ExtResource("5_n3rhb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 8.15, -54)
-
-[node name="Hedge_09" type="Node3D" parent="GardenProps" unique_id=181758378 instance=ExtResource("5_n3rhb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46, 8.15, -16)
-
-[node name="Hedge_10" type="Node3D" parent="GardenProps" unique_id=1198089303 instance=ExtResource("5_n3rhb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46, 8.15, -54)
-
-[node name="Hedge_11" type="Node3D" parent="GardenProps" unique_id=1903183847 instance=ExtResource("5_n3rhb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 8, 33)
-
-[node name="Hedge_12" type="Node3D" parent="GardenProps" unique_id=1001850565 instance=ExtResource("5_n3rhb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 8, 33)
-
-[node name="Hedge_13" type="Node3D" parent="GardenProps" unique_id=809354381 instance=ExtResource("5_n3rhb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74, 8, 33)
+[node name="Hedge_13" parent="GardenProps" unique_id=809354381 instance=ExtResource("5_n3rhb")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 49.375195, 8, 18.374865)

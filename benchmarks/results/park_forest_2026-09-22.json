@@ -1,0 +1,3055 @@
+{
+  "date": "2026-09-22",
+  "engine": "4.7.2-stable (steam)",
+  "gpu": "NVIDIA GeForce RTX 4090",
+  "viewport": [
+    1600,
+    900
+  ],
+  "method": "Fixed 1600x900 cameras, full render scale, High graphics, uncapped, VSync off. Static A/B: current code, actors removed, world frozen, identical seed 8421. Run order current/before/before/current; two 4-second trials per view per run. Historical: live simulation, 12-second settle then 5-second sample per camera. Historical comparisons include all intervening project changes.",
+  "before_source": "Park from git 7679e234789e272071d1008f692b2f238cee5a42; CityLife tree containers from the same commit with the 596 prior automated forest-transition deletions applied. Current uses the user-saved scenes.",
+  "source_counts": {
+    "central_park": {
+      "before": {
+        "trees": 366,
+        "lights": 54,
+        "nodes": 1242
+      },
+      "after": {
+        "trees": 294,
+        "lights": 26,
+        "nodes": 789
+      }
+    },
+    "city_life": {
+      "before": {
+        "trees": 1710,
+        "lights": 10,
+        "nodes": 3981
+      },
+      "after": {
+        "trees": 973,
+        "lights": 10,
+        "nodes": 3231
+      }
+    }
+  },
+  "source_hashes": {
+    "city_life": "6eec2db1afbfc2aac803470b1286bc197d6bbcdda8be666a60acc12fce87622e",
+    "park": "a12b5db7d0228a47155ef30137ab1946db379b74868c1faeeb98a95306420da1"
+  },
+  "comparisons": [
+    {
+      "view": "park_day",
+      "before": {
+        "median_frame_ms": 5.35,
+        "trial_frame_ms": [
+          5.362,
+          5.298,
+          5.393,
+          5.338
+        ],
+        "median_trial_p95_ms": 6.031000000000001,
+        "render_cpu_ms": 2.76549994945526,
+        "gpu_ms": 0.7324999868869779,
+        "draw_calls": 3622,
+        "primitives": 920872,
+        "rendered_objects": 7434
+      },
+      "after": {
+        "median_frame_ms": 5.0835,
+        "trial_frame_ms": [
+          5.508,
+          5.223,
+          4.944,
+          4.937
+        ],
+        "median_trial_p95_ms": 6.0285,
+        "render_cpu_ms": 2.596500039100645,
+        "gpu_ms": 0.7269999980926515,
+        "draw_calls": 3345,
+        "primitives": 855452,
+        "rendered_objects": 6517
+      },
+      "frame_time_change_percent": -4.981308411214947,
+      "draw_call_change_percent": -7.6477084483710716
+    },
+    {
+      "view": "park_night",
+      "before": {
+        "median_frame_ms": 5.1645,
+        "trial_frame_ms": [
+          5.178,
+          5.142,
+          5.151,
+          5.211
+        ],
+        "median_trial_p95_ms": 5.8075,
+        "render_cpu_ms": 2.67299997806549,
+        "gpu_ms": 0.739999979734421,
+        "draw_calls": 3250,
+        "primitives": 905655,
+        "rendered_objects": 6940
+      },
+      "after": {
+        "median_frame_ms": 4.855,
+        "trial_frame_ms": [
+          4.822,
+          4.888,
+          4.818,
+          4.892
+        ],
+        "median_trial_p95_ms": 5.6015,
+        "render_cpu_ms": 2.50150001049042,
+        "gpu_ms": 0.699999988079071,
+        "draw_calls": 3034,
+        "primitives": 842890,
+        "rendered_objects": 6101
+      },
+      "frame_time_change_percent": -5.992835705295763,
+      "draw_call_change_percent": -6.646153846153846
+    },
+    {
+      "view": "forest_day",
+      "before": {
+        "median_frame_ms": 2.448,
+        "trial_frame_ms": [
+          2.473,
+          2.445,
+          2.435,
+          2.451
+        ],
+        "median_trial_p95_ms": 3.1425,
+        "render_cpu_ms": 1.31800001859665,
+        "gpu_ms": 0.407499998807907,
+        "draw_calls": 1232,
+        "primitives": 668229,
+        "rendered_objects": 3815
+      },
+      "after": {
+        "median_frame_ms": 2.3785,
+        "trial_frame_ms": [
+          2.472,
+          2.38,
+          2.377,
+          2.362
+        ],
+        "median_trial_p95_ms": 2.895,
+        "render_cpu_ms": 1.2649999856948848,
+        "gpu_ms": 0.3745000064373015,
+        "draw_calls": 1232,
+        "primitives": 612669,
+        "rendered_objects": 3099
+      },
+      "frame_time_change_percent": -2.8390522875817004,
+      "draw_call_change_percent": 0
+    }
+  ],
+  "historical": [
+    {
+      "view": "clear_skyline_baseline",
+      "old_median_ms": 14.776,
+      "current_median_ms": 8.926,
+      "old_p95_ms": 19.971,
+      "current_p95_ms": 12.802,
+      "old_draws": 4646,
+      "current_draws": 3839,
+      "current_median_fps_equivalent": 112.0322652924042
+    },
+    {
+      "view": "clear_street_baseline",
+      "old_median_ms": 12.384,
+      "current_median_ms": 5.756,
+      "old_p95_ms": 18.748,
+      "current_p95_ms": 11.155,
+      "old_draws": 2348,
+      "current_draws": 1853,
+      "current_median_fps_equivalent": 173.73175816539262
+    },
+    {
+      "view": "park_live",
+      "old_median_ms": 4.93,
+      "current_median_ms": 8.917,
+      "old_p95_ms": 8.166,
+      "current_p95_ms": 15.502,
+      "old_draws": 2329,
+      "current_draws": 3422,
+      "current_median_fps_equivalent": 112.145340361108
+    },
+    {
+      "view": "aerial_live",
+      "old_median_ms": 3.477,
+      "current_median_ms": 7.584,
+      "old_p95_ms": 5.341,
+      "current_p95_ms": 9.625,
+      "old_draws": 1295,
+      "current_draws": 3633,
+      "current_median_fps_equivalent": 131.8565400843882
+    }
+  ],
+  "inventories": {
+    "before": {
+      "park": {
+        "bodies": 446,
+        "classes": {
+          "CollisionShape3D": 485,
+          "Marker3D": 7,
+          "MeshInstance3D": 761,
+          "MultiMeshInstance3D": 2,
+          "Node3D": 219,
+          "OmniLight3D": 54,
+          "StaticBody3D": 446
+        },
+        "instances": 840,
+        "lights": 54,
+        "meshes": 761,
+        "multimeshes": 2,
+        "nodes": 1974,
+        "occluders": 0,
+        "physics_processing": 0,
+        "processing": 1,
+        "range_limited_meshes": 366,
+        "scripts": {
+          "res://assets/trees/tree.gd": 366,
+          "res://scripts/central_park.gd": 1
+        },
+        "shadow_lights": 3,
+        "shapes": 485,
+        "surfaces": 763,
+        "triangles": 72598,
+        "unique_materials": 56,
+        "unique_meshes": 401
+      },
+      "forest": {
+        "bodies": 59,
+        "classes": {
+          "CollisionShape3D": 59,
+          "Label3D": 7,
+          "MeshInstance3D": 2351,
+          "Node3D": 357,
+          "OmniLight3D": 6,
+          "StaticBody3D": 59
+        },
+        "instances": 0,
+        "lights": 6,
+        "meshes": 2351,
+        "multimeshes": 0,
+        "nodes": 2839,
+        "occluders": 0,
+        "physics_processing": 0,
+        "processing": 0,
+        "range_limited_meshes": 1710,
+        "scripts": {
+          "res://assets/trees/tree.gd": 1710
+        },
+        "shadow_lights": 0,
+        "shapes": 59,
+        "surfaces": 2349,
+        "triangles": 159805,
+        "unique_materials": 9,
+        "unique_meshes": 641
+      },
+      "total_nodes": 34288
+    },
+    "after": {
+      "park": {
+        "bodies": 325,
+        "classes": {
+          "CollisionShape3D": 364,
+          "Marker3D": 7,
+          "MeshInstance3D": 468,
+          "MultiMeshInstance3D": 1,
+          "Node3D": 186,
+          "OmniLight3D": 26,
+          "StaticBody3D": 325
+        },
+        "instances": 700,
+        "lights": 26,
+        "meshes": 468,
+        "multimeshes": 1,
+        "nodes": 1377,
+        "occluders": 0,
+        "physics_processing": 0,
+        "processing": 1,
+        "range_limited_meshes": 294,
+        "scripts": {
+          "res://assets/trees/tree.gd": 294,
+          "res://scripts/central_park.gd": 1
+        },
+        "shadow_lights": 0,
+        "shapes": 364,
+        "surfaces": 469,
+        "triangles": 60061,
+        "unique_materials": 27,
+        "unique_meshes": 179
+      },
+      "forest": {
+        "bodies": 59,
+        "classes": {
+          "CollisionShape3D": 59,
+          "Label3D": 7,
+          "MeshInstance3D": 1614,
+          "Node3D": 349,
+          "OmniLight3D": 6,
+          "StaticBody3D": 59
+        },
+        "instances": 0,
+        "lights": 6,
+        "meshes": 1614,
+        "multimeshes": 0,
+        "nodes": 2094,
+        "occluders": 0,
+        "physics_processing": 0,
+        "processing": 0,
+        "range_limited_meshes": 973,
+        "scripts": {
+          "res://assets/trees/tree.gd": 973
+        },
+        "shadow_lights": 0,
+        "shapes": 59,
+        "surfaces": 1612,
+        "triangles": 102685,
+        "unique_materials": 9,
+        "unique_meshes": 641
+      },
+      "total_nodes": 32946
+    }
+  },
+  "trials": {
+    "before": [
+      {
+        "run": "1",
+        "scenarios": [
+          {
+            "frames": 736,
+            "name": "park_day_trial1",
+            "nodes": 34288,
+            "stats": {
+              "draw_calls": {
+                "mean": 3622,
+                "median": 3622,
+                "p95": 3622
+              },
+              "gpu_ms": {
+                "mean": 0.745177988570345,
+                "median": 0.722000002861023,
+                "p95": 1.14600002765656
+              },
+              "objects": {
+                "mean": 7434,
+                "median": 7434,
+                "p95": 7434
+              },
+              "physics_ms": {
+                "mean": 0.0398328804347832,
+                "median": 0.036,
+                "p95": 0.058
+              },
+              "primitives": {
+                "mean": 920872,
+                "median": 920872,
+                "p95": 920872
+              },
+              "process_ms": {
+                "mean": 7.86010190217397,
+                "median": 6.393,
+                "p95": 10.723
+              },
+              "render_cpu_ms": {
+                "mean": 2.7880407617144,
+                "median": 2.77300000190735,
+                "p95": 3.21600008010864
+              },
+              "render_setup_ms": {
+                "mean": 0.023453804347826,
+                "median": 0.023,
+                "p95": 0.027
+              },
+              "wall_ms": {
+                "mean": 5.43895652173913,
+                "median": 5.362,
+                "p95": 6.112
+              }
+            }
+          },
+          {
+            "frames": 745,
+            "name": "park_day_trial2",
+            "nodes": 34288,
+            "stats": {
+              "draw_calls": {
+                "mean": 3622,
+                "median": 3622,
+                "p95": 3622
+              },
+              "gpu_ms": {
+                "mean": 0.827810739190787,
+                "median": 0.744000017642975,
+                "p95": 1.1139999628067
+              },
+              "objects": {
+                "mean": 7434,
+                "median": 7434,
+                "p95": 7434
+              },
+              "physics_ms": {
+                "mean": 0.0451530201342279,
+                "median": 0.044,
+                "p95": 0.068
+              },
+              "primitives": {
+                "mean": 920872,
+                "median": 920872,
+                "p95": 920872
+              },
+              "process_ms": {
+                "mean": 16.0811261744966,
+                "median": 6.496,
+                "p95": 42.419
+              },
+              "render_cpu_ms": {
+                "mean": 2.80167113854581,
+                "median": 2.73799991607666,
+                "p95": 3.17600011825562
+              },
+              "render_setup_ms": {
+                "mean": 0.0233060402684563,
+                "median": 0.023,
+                "p95": 0.029
+              },
+              "wall_ms": {
+                "mean": 5.37490469798658,
+                "median": 5.298,
+                "p95": 5.95
+              }
+            }
+          },
+          {
+            "frames": 767,
+            "name": "park_night_trial1",
+            "nodes": 34288,
+            "stats": {
+              "draw_calls": {
+                "mean": 3250,
+                "median": 3250,
+                "p95": 3250
+              },
+              "gpu_ms": {
+                "mean": 0.918657105314063,
+                "median": 0.806999981403351,
+                "p95": 1.22099995613098
+              },
+              "objects": {
+                "mean": 6940,
+                "median": 6940,
+                "p95": 6940
+              },
+              "physics_ms": {
+                "mean": 0.0325045632333769,
+                "median": 0.031,
+                "p95": 0.035
+              },
+              "primitives": {
+                "mean": 905655,
+                "median": 905655,
+                "p95": 905655
+              },
+              "process_ms": {
+                "mean": 6.07885267275108,
+                "median": 6.055,
+                "p95": 6.368
+              },
+              "render_cpu_ms": {
+                "mean": 2.6723520177595,
+                "median": 2.67799997329712,
+                "p95": 3.05399990081787
+              },
+              "render_setup_ms": {
+                "mean": 0.0139947848761408,
+                "median": 0.014,
+                "p95": 0.018
+              },
+              "wall_ms": {
+                "mean": 5.21855671447197,
+                "median": 5.178,
+                "p95": 5.796
+              }
+            }
+          },
+          {
+            "frames": 760,
+            "name": "park_night_trial2",
+            "nodes": 34288,
+            "stats": {
+              "draw_calls": {
+                "mean": 3250,
+                "median": 3250,
+                "p95": 3250
+              },
+              "gpu_ms": {
+                "mean": 0.700939473313721,
+                "median": 0.672999978065491,
+                "p95": 1.04700005054474
+              },
+              "objects": {
+                "mean": 6940,
+                "median": 6940,
+                "p95": 6940
+              },
+              "physics_ms": {
+                "mean": 0.0324644736842106,
+                "median": 0.032,
+                "p95": 0.036
+              },
+              "primitives": {
+                "mean": 905655,
+                "median": 905655,
+                "p95": 905655
+              },
+              "process_ms": {
+                "mean": 23.6219486842103,
+                "median": 6.028,
+                "p95": 71.33
+              },
+              "render_cpu_ms": {
+                "mean": 2.76881972802313,
+                "median": 2.66799998283386,
+                "p95": 3.11899995803833
+              },
+              "render_setup_ms": {
+                "mean": 0.0139618421052631,
+                "median": 0.014,
+                "p95": 0.018
+              },
+              "wall_ms": {
+                "mean": 5.26964210526316,
+                "median": 5.142,
+                "p95": 5.734
+              }
+            }
+          },
+          {
+            "frames": 1527,
+            "name": "forest_day_trial1",
+            "nodes": 34288,
+            "stats": {
+              "draw_calls": {
+                "mean": 1232,
+                "median": 1232,
+                "p95": 1232
+              },
+              "gpu_ms": {
+                "mean": 0.42456712590844,
+                "median": 0.407000005245209,
+                "p95": 0.499000012874603
+              },
+              "objects": {
+                "mean": 3815,
+                "median": 3815,
+                "p95": 3815
+              },
+              "physics_ms": {
+                "mean": 0.0295036018336608,
+                "median": 0.029,
+                "p95": 0.032
+              },
+              "primitives": {
+                "mean": 668229,
+                "median": 668229,
+                "p95": 668229
+              },
+              "process_ms": {
+                "mean": 6.65885527177475,
+                "median": 4.733,
+                "p95": 9.148
+              },
+              "render_cpu_ms": {
+                "mean": 1.34533922541118,
+                "median": 1.32599997520447,
+                "p95": 1.52999997138977
+              },
+              "render_setup_ms": {
+                "mean": 0.00955271774721666,
+                "median": 0.009,
+                "p95": 0.013
+              },
+              "wall_ms": {
+                "mean": 2.61954747871644,
+                "median": 2.473,
+                "p95": 3.218
+              }
+            }
+          },
+          {
+            "frames": 1533,
+            "name": "forest_day_trial2",
+            "nodes": 34288,
+            "stats": {
+              "draw_calls": {
+                "mean": 1232,
+                "median": 1232,
+                "p95": 1232
+              },
+              "gpu_ms": {
+                "mean": 0.431903457493854,
+                "median": 0.407999992370605,
+                "p95": 0.500999987125397
+              },
+              "objects": {
+                "mean": 3815,
+                "median": 3815,
+                "p95": 3815
+              },
+              "physics_ms": {
+                "mean": 0.028544031311155,
+                "median": 0.028,
+                "p95": 0.03
+              },
+              "primitives": {
+                "mean": 668229,
+                "median": 668229,
+                "p95": 668229
+              },
+              "process_ms": {
+                "mean": 6.5764318330072,
+                "median": 6.45,
+                "p95": 9.474
+              },
+              "render_cpu_ms": {
+                "mean": 1.33685453351774,
+                "median": 1.31700003147125,
+                "p95": 1.51400005817413
+              },
+              "render_setup_ms": {
+                "mean": 0.00898564905414207,
+                "median": 0.009,
+                "p95": 0.012
+              },
+              "wall_ms": {
+                "mean": 2.61008349641227,
+                "median": 2.445,
+                "p95": 3.062
+              }
+            }
+          }
+        ]
+      },
+      {
+        "run": "2",
+        "scenarios": [
+          {
+            "frames": 730,
+            "name": "park_day_trial1",
+            "nodes": 34288,
+            "stats": {
+              "draw_calls": {
+                "mean": 3622,
+                "median": 3622,
+                "p95": 3622
+              },
+              "gpu_ms": {
+                "mean": 0.752108218041185,
+                "median": 0.720000028610229,
+                "p95": 1.13800001144409
+              },
+              "objects": {
+                "mean": 7434,
+                "median": 7434,
+                "p95": 7434
+              },
+              "physics_ms": {
+                "mean": 0.035682191780822,
+                "median": 0.036,
+                "p95": 0.038
+              },
+              "primitives": {
+                "mean": 920872,
+                "median": 920872,
+                "p95": 920872
+              },
+              "process_ms": {
+                "mean": 8.47526164383546,
+                "median": 6.543,
+                "p95": 11.346
+              },
+              "render_cpu_ms": {
+                "mean": 2.81370684806615,
+                "median": 2.7960000038147,
+                "p95": 3.26399993896484
+              },
+              "render_setup_ms": {
+                "mean": 0.0234643835616437,
+                "median": 0.023,
+                "p95": 0.028
+              },
+              "wall_ms": {
+                "mean": 5.47967671232877,
+                "median": 5.393,
+                "p95": 6.186
+              }
+            }
+          },
+          {
+            "frames": 748,
+            "name": "park_day_trial2",
+            "nodes": 34288,
+            "stats": {
+              "draw_calls": {
+                "mean": 3622,
+                "median": 3622,
+                "p95": 3622
+              },
+              "gpu_ms": {
+                "mean": 0.80199598979185,
+                "median": 0.742999970912933,
+                "p95": 1.09300005435944
+              },
+              "objects": {
+                "mean": 7434,
+                "median": 7434,
+                "p95": 7434
+              },
+              "physics_ms": {
+                "mean": 0.0322713903743314,
+                "median": 0.033,
+                "p95": 0.033
+              },
+              "primitives": {
+                "mean": 920872,
+                "median": 920872,
+                "p95": 920872
+              },
+              "process_ms": {
+                "mean": 6.89124331550797,
+                "median": 6.594,
+                "p95": 8.554
+              },
+              "render_cpu_ms": {
+                "mean": 2.77660427724614,
+                "median": 2.75799989700317,
+                "p95": 3.16499996185303
+              },
+              "render_setup_ms": {
+                "mean": 0.0233622994652406,
+                "median": 0.023,
+                "p95": 0.028
+              },
+              "wall_ms": {
+                "mean": 5.35382887700535,
+                "median": 5.338,
+                "p95": 5.91
+              }
+            }
+          },
+          {
+            "frames": 767,
+            "name": "park_night_trial1",
+            "nodes": 34288,
+            "stats": {
+              "draw_calls": {
+                "mean": 3250,
+                "median": 3250,
+                "p95": 3250
+              },
+              "gpu_ms": {
+                "mean": 0.921977835031034,
+                "median": 0.810999989509583,
+                "p95": 1.24100005626678
+              },
+              "objects": {
+                "mean": 6940,
+                "median": 6940,
+                "p95": 6940
+              },
+              "physics_ms": {
+                "mean": 0.0323767926988266,
+                "median": 0.032,
+                "p95": 0.035
+              },
+              "primitives": {
+                "mean": 905655,
+                "median": 905655,
+                "p95": 905655
+              },
+              "process_ms": {
+                "mean": 9.61111342894385,
+                "median": 6.14,
+                "p95": 32.999
+              },
+              "render_cpu_ms": {
+                "mean": 2.69641069172259,
+                "median": 2.66300010681152,
+                "p95": 3.05599999427795
+              },
+              "render_setup_ms": {
+                "mean": 0.0139009126466753,
+                "median": 0.013,
+                "p95": 0.018
+              },
+              "wall_ms": {
+                "mean": 5.21939243807041,
+                "median": 5.151,
+                "p95": 5.83
+              }
+            }
+          },
+          {
+            "frames": 753,
+            "name": "park_night_trial2",
+            "nodes": 34288,
+            "stats": {
+              "draw_calls": {
+                "mean": 3250,
+                "median": 3250,
+                "p95": 3250
+              },
+              "gpu_ms": {
+                "mean": 0.762369189248142,
+                "median": 0.672999978065491,
+                "p95": 1.08700001239777
+              },
+              "objects": {
+                "mean": 6940,
+                "median": 6940,
+                "p95": 6940
+              },
+              "physics_ms": {
+                "mean": 0.0510929614873827,
+                "median": 0.033,
+                "p95": 0.098
+              },
+              "primitives": {
+                "mean": 905655,
+                "median": 905655,
+                "p95": 905655
+              },
+              "process_ms": {
+                "mean": 9.49325896414341,
+                "median": 9.354,
+                "p95": 11.248
+              },
+              "render_cpu_ms": {
+                "mean": 2.78111287258852,
+                "median": 2.71099996566772,
+                "p95": 3.13199996948242
+              },
+              "render_setup_ms": {
+                "mean": 0.0139614873837981,
+                "median": 0.014,
+                "p95": 0.018
+              },
+              "wall_ms": {
+                "mean": 5.31570650730411,
+                "median": 5.211,
+                "p95": 5.819
+              }
+            }
+          },
+          {
+            "frames": 1534,
+            "name": "forest_day_trial1",
+            "nodes": 34288,
+            "stats": {
+              "draw_calls": {
+                "mean": 1232,
+                "median": 1232,
+                "p95": 1232
+              },
+              "gpu_ms": {
+                "mean": 0.471632334582187,
+                "median": 0.419999986886978,
+                "p95": 0.634999990463257
+              },
+              "objects": {
+                "mean": 3815,
+                "median": 3815,
+                "p95": 3815
+              },
+              "physics_ms": {
+                "mean": 0.0328024771838317,
+                "median": 0.031,
+                "p95": 0.062
+              },
+              "primitives": {
+                "mean": 668229,
+                "median": 668229,
+                "p95": 668229
+              },
+              "process_ms": {
+                "mean": 4.55997457627128,
+                "median": 4.576,
+                "p95": 5.015
+              },
+              "render_cpu_ms": {
+                "mean": 1.32181355827324,
+                "median": 1.30499994754791,
+                "p95": 1.49000000953674
+              },
+              "render_setup_ms": {
+                "mean": 0.00946805736636234,
+                "median": 0.009,
+                "p95": 0.013
+              },
+              "wall_ms": {
+                "mean": 2.60812255541069,
+                "median": 2.435,
+                "p95": 3.669
+              }
+            }
+          },
+          {
+            "frames": 1575,
+            "name": "forest_day_trial2",
+            "nodes": 34288,
+            "stats": {
+              "draw_calls": {
+                "mean": 1232,
+                "median": 1232,
+                "p95": 1232
+              },
+              "gpu_ms": {
+                "mean": 0.381489524879153,
+                "median": 0.395000010728836,
+                "p95": 0.435000002384186
+              },
+              "objects": {
+                "mean": 3815,
+                "median": 3815,
+                "p95": 3815
+              },
+              "physics_ms": {
+                "mean": 0.0400044444444435,
+                "median": 0.032,
+                "p95": 0.063
+              },
+              "primitives": {
+                "mean": 668229,
+                "median": 668229,
+                "p95": 668229
+              },
+              "process_ms": {
+                "mean": 5.04540317460306,
+                "median": 4.079,
+                "p95": 10.225
+              },
+              "render_cpu_ms": {
+                "mean": 1.33961587338221,
+                "median": 1.31900000572205,
+                "p95": 1.51499998569489
+              },
+              "render_setup_ms": {
+                "mean": 0.00914984126984116,
+                "median": 0.009,
+                "p95": 0.013
+              },
+              "wall_ms": {
+                "mean": 2.54073206349206,
+                "median": 2.451,
+                "p95": 3.067
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "after": [
+      {
+        "run": "1",
+        "scenarios": [
+          {
+            "frames": 716,
+            "name": "park_day_trial1",
+            "nodes": 32946,
+            "stats": {
+              "draw_calls": {
+                "mean": 3345,
+                "median": 3345,
+                "p95": 3345
+              },
+              "gpu_ms": {
+                "mean": 0.975557262837554,
+                "median": 0.790000021457672,
+                "p95": 1.22699999809265
+              },
+              "objects": {
+                "mean": 6517,
+                "median": 6517,
+                "p95": 6517
+              },
+              "physics_ms": {
+                "mean": 0.0354497206703913,
+                "median": 0.034,
+                "p95": 0.041
+              },
+              "primitives": {
+                "mean": 855452,
+                "median": 855452,
+                "p95": 855452
+              },
+              "process_ms": {
+                "mean": 6.42137150837986,
+                "median": 6.563,
+                "p95": 6.596
+              },
+              "render_cpu_ms": {
+                "mean": 2.82042038973483,
+                "median": 2.82399988174438,
+                "p95": 3.17600011825562
+              },
+              "render_setup_ms": {
+                "mean": 0.0245460893854748,
+                "median": 0.024,
+                "p95": 0.029
+              },
+              "wall_ms": {
+                "mean": 5.59116340782123,
+                "median": 5.508,
+                "p95": 6.299
+              }
+            }
+          },
+          {
+            "frames": 757,
+            "name": "park_day_trial2",
+            "nodes": 32946,
+            "stats": {
+              "draw_calls": {
+                "mean": 3345,
+                "median": 3345,
+                "p95": 3345
+              },
+              "gpu_ms": {
+                "mean": 0.714368560000801,
+                "median": 0.684000015258789,
+                "p95": 1.03600001335144
+              },
+              "objects": {
+                "mean": 6517,
+                "median": 6517,
+                "p95": 6517
+              },
+              "physics_ms": {
+                "mean": 0.0354702774108319,
+                "median": 0.036,
+                "p95": 0.038
+              },
+              "primitives": {
+                "mean": 855452,
+                "median": 855452,
+                "p95": 855452
+              },
+              "process_ms": {
+                "mean": 7.80896169088509,
+                "median": 7.51,
+                "p95": 11.95
+              },
+              "render_cpu_ms": {
+                "mean": 2.68527477105669,
+                "median": 2.65100002288818,
+                "p95": 3.20700001716614
+              },
+              "render_setup_ms": {
+                "mean": 0.0242021136063407,
+                "median": 0.024,
+                "p95": 0.031
+              },
+              "wall_ms": {
+                "mean": 5.28832364597094,
+                "median": 5.223,
+                "p95": 6.433
+              }
+            }
+          },
+          {
+            "frames": 822,
+            "name": "park_night_trial1",
+            "nodes": 32946,
+            "stats": {
+              "draw_calls": {
+                "mean": 3034,
+                "median": 3034,
+                "p95": 3034
+              },
+              "gpu_ms": {
+                "mean": 0.773854013958407,
+                "median": 0.690999984741211,
+                "p95": 1.07799994945526
+              },
+              "objects": {
+                "mean": 6101,
+                "median": 6101,
+                "p95": 6101
+              },
+              "physics_ms": {
+                "mean": 0.047659367396593,
+                "median": 0.052,
+                "p95": 0.075
+              },
+              "primitives": {
+                "mean": 842890,
+                "median": 842890,
+                "p95": 842890
+              },
+              "process_ms": {
+                "mean": 5.75035158150853,
+                "median": 5.77,
+                "p95": 6.037
+              },
+              "render_cpu_ms": {
+                "mean": 2.50405474329807,
+                "median": 2.48000001907349,
+                "p95": 2.89100003242493
+              },
+              "render_setup_ms": {
+                "mean": 0.0130729927007299,
+                "median": 0.013,
+                "p95": 0.016
+              },
+              "wall_ms": {
+                "mean": 4.8680608272506,
+                "median": 4.822,
+                "p95": 5.496
+              }
+            }
+          },
+          {
+            "frames": 792,
+            "name": "park_night_trial2",
+            "nodes": 32946,
+            "stats": {
+              "draw_calls": {
+                "mean": 3034,
+                "median": 3034,
+                "p95": 3034
+              },
+              "gpu_ms": {
+                "mean": 0.85946717226144,
+                "median": 0.785000026226044,
+                "p95": 1.20899999141693
+              },
+              "objects": {
+                "mean": 6101,
+                "median": 6101,
+                "p95": 6101
+              },
+              "physics_ms": {
+                "mean": 0.0429457070707065,
+                "median": 0.032,
+                "p95": 0.072
+              },
+              "primitives": {
+                "mean": 842890,
+                "median": 842890,
+                "p95": 842890
+              },
+              "process_ms": {
+                "mean": 8.74113510100999,
+                "median": 8.05,
+                "p95": 10.36
+              },
+              "render_cpu_ms": {
+                "mean": 2.54236110984677,
+                "median": 2.52300000190735,
+                "p95": 2.93499994277954
+              },
+              "render_setup_ms": {
+                "mean": 0.0130012626262626,
+                "median": 0.013,
+                "p95": 0.016
+              },
+              "wall_ms": {
+                "mean": 5.05127777777778,
+                "median": 4.888,
+                "p95": 6.207
+              }
+            }
+          },
+          {
+            "frames": 1537,
+            "name": "forest_day_trial1",
+            "nodes": 32946,
+            "stats": {
+              "draw_calls": {
+                "mean": 1232,
+                "median": 1232,
+                "p95": 1232
+              },
+              "gpu_ms": {
+                "mean": 0.359256994127064,
+                "median": 0.372000008821487,
+                "p95": 0.407000005245209
+              },
+              "objects": {
+                "mean": 3099,
+                "median": 3099,
+                "p95": 3099
+              },
+              "physics_ms": {
+                "mean": 0.0310527000650626,
+                "median": 0.031,
+                "p95": 0.035
+              },
+              "primitives": {
+                "mean": 612669,
+                "median": 612669,
+                "p95": 612669
+              },
+              "process_ms": {
+                "mean": 5.900178919974,
+                "median": 4.237,
+                "p95": 10.392
+              },
+              "render_cpu_ms": {
+                "mean": 1.32210214648374,
+                "median": 1.29799997806549,
+                "p95": 1.52400004863739
+              },
+              "render_setup_ms": {
+                "mean": 0.00961613532856199,
+                "median": 0.009,
+                "p95": 0.013
+              },
+              "wall_ms": {
+                "mean": 2.6028932986337,
+                "median": 2.472,
+                "p95": 3.183
+              }
+            }
+          },
+          {
+            "frames": 1587,
+            "name": "forest_day_trial2",
+            "nodes": 32946,
+            "stats": {
+              "draw_calls": {
+                "mean": 1232,
+                "median": 1232,
+                "p95": 1232
+              },
+              "gpu_ms": {
+                "mean": 0.390907372084517,
+                "median": 0.363000005483627,
+                "p95": 0.493000000715256
+              },
+              "objects": {
+                "mean": 3099,
+                "median": 3099,
+                "p95": 3099
+              },
+              "physics_ms": {
+                "mean": 0.0331783238815377,
+                "median": 0.03,
+                "p95": 0.043
+              },
+              "primitives": {
+                "mean": 612669,
+                "median": 612669,
+                "p95": 612669
+              },
+              "process_ms": {
+                "mean": 6.11879458097027,
+                "median": 5.168,
+                "p95": 9.516
+              },
+              "render_cpu_ms": {
+                "mean": 1.28604788793733,
+                "median": 1.26999998092651,
+                "p95": 1.45200002193451
+              },
+              "render_setup_ms": {
+                "mean": 0.00853056080655313,
+                "median": 0.008,
+                "p95": 0.011
+              },
+              "wall_ms": {
+                "mean": 2.52048330182734,
+                "median": 2.38,
+                "p95": 2.845
+              }
+            }
+          }
+        ]
+      },
+      {
+        "run": "2",
+        "scenarios": [
+          {
+            "frames": 786,
+            "name": "park_day_trial1",
+            "nodes": 32946,
+            "stats": {
+              "draw_calls": {
+                "mean": 3345,
+                "median": 3345,
+                "p95": 3345
+              },
+              "gpu_ms": {
+                "mean": 0.964734094933092,
+                "median": 0.769999980926514,
+                "p95": 1.14199995994568
+              },
+              "objects": {
+                "mean": 6517,
+                "median": 6517,
+                "p95": 6517
+              },
+              "physics_ms": {
+                "mean": 0.0359847328244276,
+                "median": 0.033,
+                "p95": 0.043
+              },
+              "primitives": {
+                "mean": 855452,
+                "median": 855452,
+                "p95": 855452
+              },
+              "process_ms": {
+                "mean": 6.19980025445285,
+                "median": 6.245,
+                "p95": 6.373
+              },
+              "render_cpu_ms": {
+                "mean": 2.54134350878592,
+                "median": 2.53699994087219,
+                "p95": 2.89000010490417
+              },
+              "render_setup_ms": {
+                "mean": 0.0233180661577607,
+                "median": 0.023,
+                "p95": 0.028
+              },
+              "wall_ms": {
+                "mean": 5.09084223918575,
+                "median": 4.944,
+                "p95": 5.758
+              }
+            }
+          },
+          {
+            "frames": 803,
+            "name": "park_day_trial2",
+            "nodes": 32946,
+            "stats": {
+              "draw_calls": {
+                "mean": 3345,
+                "median": 3345,
+                "p95": 3345
+              },
+              "gpu_ms": {
+                "mean": 0.709367372735797,
+                "median": 0.669000029563904,
+                "p95": 1.00499999523163
+              },
+              "objects": {
+                "mean": 6517,
+                "median": 6517,
+                "p95": 6517
+              },
+              "physics_ms": {
+                "mean": 0.0407148194271481,
+                "median": 0.034,
+                "p95": 0.06
+              },
+              "primitives": {
+                "mean": 855452,
+                "median": 855452,
+                "p95": 855452
+              },
+              "process_ms": {
+                "mean": 6.9243412204235,
+                "median": 5.867,
+                "p95": 11.15
+              },
+              "render_cpu_ms": {
+                "mean": 2.56094893987568,
+                "median": 2.54200005531311,
+                "p95": 2.96600008010864
+              },
+              "render_setup_ms": {
+                "mean": 0.020280199252802,
+                "median": 0.02,
+                "p95": 0.027
+              },
+              "wall_ms": {
+                "mean": 4.98453424657534,
+                "median": 4.937,
+                "p95": 5.559
+              }
+            }
+          },
+          {
+            "frames": 821,
+            "name": "park_night_trial1",
+            "nodes": 32946,
+            "stats": {
+              "draw_calls": {
+                "mean": 3034,
+                "median": 3034,
+                "p95": 3034
+              },
+              "gpu_ms": {
+                "mean": 0.798589525683063,
+                "median": 0.708999991416931,
+                "p95": 1.11099994182587
+              },
+              "objects": {
+                "mean": 6101,
+                "median": 6101,
+                "p95": 6101
+              },
+              "physics_ms": {
+                "mean": 0.0346626065773449,
+                "median": 0.033,
+                "p95": 0.043
+              },
+              "primitives": {
+                "mean": 842890,
+                "median": 842890,
+                "p95": 842890
+              },
+              "process_ms": {
+                "mean": 6.08889890377592,
+                "median": 5.725,
+                "p95": 7.116
+              },
+              "render_cpu_ms": {
+                "mean": 2.49332156076791,
+                "median": 2.46600008010864,
+                "p95": 2.88199996948242
+              },
+              "render_setup_ms": {
+                "mean": 0.0137771010962241,
+                "median": 0.014,
+                "p95": 0.017
+              },
+              "wall_ms": {
+                "mean": 4.87411936662606,
+                "median": 4.818,
+                "p95": 5.59
+              }
+            }
+          },
+          {
+            "frames": 798,
+            "name": "park_night_trial2",
+            "nodes": 32946,
+            "stats": {
+              "draw_calls": {
+                "mean": 3034,
+                "median": 3034,
+                "p95": 3034
+              },
+              "gpu_ms": {
+                "mean": 0.751829573273061,
+                "median": 0.642000019550323,
+                "p95": 1.12699997425079
+              },
+              "objects": {
+                "mean": 6101,
+                "median": 6101,
+                "p95": 6101
+              },
+              "physics_ms": {
+                "mean": 0.0379561403508766,
+                "median": 0.034,
+                "p95": 0.055
+              },
+              "primitives": {
+                "mean": 842890,
+                "median": 842890,
+                "p95": 842890
+              },
+              "process_ms": {
+                "mean": 8.49174185463656,
+                "median": 9.571,
+                "p95": 10.969
+              },
+              "render_cpu_ms": {
+                "mean": 2.54294486033887,
+                "median": 2.52800011634827,
+                "p95": 2.9449999332428
+              },
+              "render_setup_ms": {
+                "mean": 0.013781954887218,
+                "median": 0.014,
+                "p95": 0.017
+              },
+              "wall_ms": {
+                "mean": 5.01427192982456,
+                "median": 4.892,
+                "p95": 5.613
+              }
+            }
+          },
+          {
+            "frames": 1612,
+            "name": "forest_day_trial1",
+            "nodes": 32946,
+            "stats": {
+              "draw_calls": {
+                "mean": 1232,
+                "median": 1232,
+                "p95": 1232
+              },
+              "gpu_ms": {
+                "mean": 0.362404466914036,
+                "median": 0.377999991178513,
+                "p95": 0.416000008583069
+              },
+              "objects": {
+                "mean": 3099,
+                "median": 3099,
+                "p95": 3099
+              },
+              "physics_ms": {
+                "mean": 0.0323765508684857,
+                "median": 0.034,
+                "p95": 0.036
+              },
+              "primitives": {
+                "mean": 612669,
+                "median": 612669,
+                "p95": 612669
+              },
+              "process_ms": {
+                "mean": 13.736083746898,
+                "median": 4.745,
+                "p95": 35.52
+              },
+              "render_cpu_ms": {
+                "mean": 1.29838399481833,
+                "median": 1.25999999046326,
+                "p95": 1.44500005245209
+              },
+              "render_setup_ms": {
+                "mean": 0.00884057071960285,
+                "median": 0.009,
+                "p95": 0.012
+              },
+              "wall_ms": {
+                "mean": 2.48286104218362,
+                "median": 2.377,
+                "p95": 2.87
+              }
+            }
+          },
+          {
+            "frames": 1611,
+            "name": "forest_day_trial2",
+            "nodes": 32946,
+            "stats": {
+              "draw_calls": {
+                "mean": 1232,
+                "median": 1232,
+                "p95": 1232
+              },
+              "gpu_ms": {
+                "mean": 0.362391682532469,
+                "median": 0.377000004053116,
+                "p95": 0.41100001335144
+              },
+              "objects": {
+                "mean": 3099,
+                "median": 3099,
+                "p95": 3099
+              },
+              "physics_ms": {
+                "mean": 0.0290167597765373,
+                "median": 0.029,
+                "p95": 0.029
+              },
+              "primitives": {
+                "mean": 612669,
+                "median": 612669,
+                "p95": 612669
+              },
+              "process_ms": {
+                "mean": 6.2345915580387,
+                "median": 4.805,
+                "p95": 8.698
+              },
+              "render_cpu_ms": {
+                "mean": 1.27403289926933,
+                "median": 1.25100004673004,
+                "p95": 1.45299994945526
+              },
+              "render_setup_ms": {
+                "mean": 0.00875046554934811,
+                "median": 0.009,
+                "p95": 0.012
+              },
+              "wall_ms": {
+                "mean": 2.48400434512725,
+                "median": 2.362,
+                "p95": 2.92
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "historical_run": {
+    "engine": {
+      "build": "steam",
+      "hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+      "hex": 263938,
+      "major": 4,
+      "minor": 7,
+      "patch": 2,
+      "status": "stable",
+      "string": "4.7.2-stable (steam)",
+      "timestamp": 0
+    },
+    "forest": {
+      "bodies": 59,
+      "classes": {
+        "CollisionShape3D": 59,
+        "Label3D": 7,
+        "MeshInstance3D": 1614,
+        "Node3D": 349,
+        "OmniLight3D": 6,
+        "StaticBody3D": 59
+      },
+      "instances": 0,
+      "lights": 6,
+      "meshes": 1614,
+      "multimeshes": 0,
+      "nodes": 2094,
+      "occluders": 0,
+      "physics_processing": 0,
+      "processing": 0,
+      "range_limited_meshes": 973,
+      "scripts": {
+        "res://assets/trees/tree.gd": 973
+      },
+      "shadow_lights": 0,
+      "shapes": 59,
+      "surfaces": 1612,
+      "triangles": 102685,
+      "unique_materials": 9,
+      "unique_meshes": 641
+    },
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "park": {
+      "bodies": 325,
+      "classes": {
+        "CollisionShape3D": 364,
+        "Marker3D": 7,
+        "MeshInstance3D": 468,
+        "MultiMeshInstance3D": 1,
+        "Node3D": 186,
+        "OmniLight3D": 26,
+        "StaticBody3D": 325
+      },
+      "instances": 700,
+      "lights": 26,
+      "meshes": 468,
+      "multimeshes": 1,
+      "nodes": 1377,
+      "occluders": 0,
+      "physics_processing": 0,
+      "processing": 1,
+      "range_limited_meshes": 294,
+      "scripts": {
+        "res://assets/trees/tree.gd": 294,
+        "res://scripts/central_park.gd": 1
+      },
+      "shadow_lights": 0,
+      "shapes": 364,
+      "surfaces": 469,
+      "triangles": 60061,
+      "unique_materials": 27,
+      "unique_meshes": 179
+    },
+    "render_scale": 1,
+    "run": "1",
+    "scenarios": [
+      {
+        "CityPerformanceMonitor": {
+          "city_cpu_timings": {
+            "network_rebuild": {
+              "avg_call_ms": 122.157,
+              "calls": 1,
+              "failures": 0,
+              "ms_per_tick": 0.1105,
+              "peak_call_ms": 122.157
+            },
+            "walkable_area_check": {
+              "avg_call_ms": 0.0561,
+              "calls": 23551,
+              "failures": 595,
+              "ms_per_tick": 1.1947,
+              "peak_call_ms": 0.616
+            }
+          },
+          "city_present": true,
+          "engine": {
+            "draw_calls": 3841,
+            "fps": 101,
+            "nodes": 34169,
+            "orphans": 0,
+            "physics_ms_latest": 9.47,
+            "physics_ticks_per_render_frame": 0.615256124721604,
+            "render_memory_mib": 2359.30859375,
+            "rendered_objects": 7603,
+            "rendered_primitives": 897106,
+            "resources": 12258,
+            "static_memory_mib": 633.43556022644
+          },
+          "player_position": [
+            -350,
+            140,
+            260
+          ],
+          "routes": {
+            "directed_edges": 40076,
+            "points": 19246,
+            "valid": true,
+            "walkable_surfaces": 0
+          },
+          "timings_overlap": true,
+          "uptime_s": 31.7,
+          "window_s": 23.944958
+        },
+        "CivilianCrowdPerformanceMonitor": {
+          "blocked_promotions_total": 0,
+          "capsules": 68,
+          "cpu_timings": {
+            "capsule_movement": {
+              "avg_call_ms": 0.007,
+              "calls": 117712,
+              "failures": 0,
+              "ms_per_tick": 0.7456,
+              "peak_call_ms": 18.855
+            },
+            "lane_spacing": {
+              "avg_call_ms": 0.1598,
+              "calls": 85,
+              "failures": 0,
+              "ms_per_tick": 0.0123,
+              "peak_call_ms": 0.23
+            },
+            "lod_update": {
+              "avg_call_ms": 0.0545,
+              "calls": 1105,
+              "failures": 0,
+              "ms_per_tick": 0.0545,
+              "peak_call_ms": 0.492
+            },
+            "population_manager": {
+              "avg_call_ms": 1.7123,
+              "calls": 1105,
+              "failures": 0,
+              "ms_per_tick": 1.7123,
+              "peak_call_ms": 74.542
+            },
+            "population_update": {
+              "avg_call_ms": 7.1371,
+              "calls": 70,
+              "failures": 0,
+              "ms_per_tick": 0.4521,
+              "peak_call_ms": 7.563
+            },
+            "route_step": {
+              "avg_call_ms": 0.0355,
+              "calls": 693,
+              "failures": 0,
+              "ms_per_tick": 0.0223,
+              "peak_call_ms": 0.184
+            },
+            "spawn_attempt": {
+              "avg_call_ms": 5.1535,
+              "calls": 253,
+              "failures": 150,
+              "ms_per_tick": 1.1799,
+              "peak_call_ms": 32.196
+            },
+            "walker_physics": {
+              "avg_call_ms": 0.0579,
+              "calls": 693,
+              "failures": 0,
+              "ms_per_tick": 0.0363,
+              "peak_call_ms": 0.247
+            }
+          },
+          "crowd_enabled": true,
+          "dead": 0,
+          "demotions_total": 0,
+          "following": 0,
+          "fps": 101,
+          "full": 0,
+          "live_walker_recoveries": 0,
+          "pending_damage": 0,
+          "present": true,
+          "promotions_total": 0,
+          "rejected_spawns_total": 150,
+          "retiring": 0,
+          "route_statuses": {},
+          "target": 68,
+          "timings_overlap": true,
+          "uptime_s": 31.7,
+          "window_s": 23.944978
+        },
+        "CombatPerformanceMonitor": {
+          "active_physics_objects": 0,
+          "civilians": 0,
+          "collision_pairs": 0,
+          "draw_calls": 3841,
+          "explosion_effects": 0,
+          "fps": 101,
+          "hostile_ms_per_tick": 0,
+          "hostile_peak_call_ms": 0,
+          "hostile_reacting": 0,
+          "hostile_relocating": 0,
+          "hostile_states": {},
+          "landing_effects": 0,
+          "nodes": 34169,
+          "objects": 58528,
+          "orphans": 0,
+          "physics_ms_latest": 9.47,
+          "render_memory_mib": 2359.30859375,
+          "resources": 12258,
+          "static_memory_mib": 633.44578742981,
+          "target_ground_ms_per_tick": 0,
+          "uptime_s": 31.7,
+          "window_s": 23.95
+        },
+        "PlayerPerformanceMonitor": {
+          "cpu_timings": {
+            "camera_effects": {
+              "avg_call_ms": 0.00353619153674833,
+              "calls": 1796,
+              "ms_per_physics_tick": 0.00574751131221719,
+              "ms_per_render_frame": 0.00353619153674833,
+              "peak_call_ms": 0.033,
+              "total_ms": 6.351
+            },
+            "encounter_indicator": {
+              "avg_call_ms": 0.00796826280623608,
+              "calls": 1796,
+              "ms_per_physics_tick": 0.0129511312217195,
+              "ms_per_render_frame": 0.00796826280623608,
+              "peak_call_ms": 0.023,
+              "total_ms": 14.311
+            },
+            "landing_indicator": {
+              "avg_call_ms": 0.00462714932126697,
+              "calls": 1105,
+              "ms_per_physics_tick": 0.00462714932126697,
+              "ms_per_render_frame": 0.00284688195991091,
+              "peak_call_ms": 0.035,
+              "total_ms": 5.113
+            },
+            "pause_menu_input": {
+              "avg_call_ms": 0.006,
+              "calls": 1,
+              "ms_per_physics_tick": 0.00000542986425339367,
+              "ms_per_render_frame": 0.00000334075723830735,
+              "peak_call_ms": 0.006,
+              "total_ms": 0.006
+            },
+            "player_input": {
+              "avg_call_ms": 0.06,
+              "calls": 1,
+              "ms_per_physics_tick": 0.0000542986425339367,
+              "ms_per_render_frame": 0.0000334075723830735,
+              "peak_call_ms": 0.06,
+              "total_ms": 0.06
+            }
+          },
+          "fps": 101,
+          "hud": {
+            "DeveloperMenu": {
+              "controls": 74,
+              "visible_controls": 0
+            },
+            "GameplayHUD": {
+              "controls": 43,
+              "visible_controls": 24
+            },
+            "PauseMenu": {
+              "controls": 311,
+              "visible_controls": 0
+            },
+            "PerformanceHUD": {
+              "controls": 3,
+              "visible_controls": 0
+            }
+          },
+          "player": {
+            "animation": "Idle",
+            "health": 1000,
+            "hit_reacting": false,
+            "nodes": 133,
+            "present": true,
+            "speed": 0,
+            "state": "GroundedState"
+          },
+          "timings_overlap": true,
+          "uptime_s": 31.708447,
+          "window_s": 23.945019
+        },
+        "VehiclePerformanceMonitor": {
+          "armed_for_impact": 0,
+          "awake_unfrozen": 0,
+          "carried": 0,
+          "contact_monitors": 0,
+          "cpu_timings": {
+            "traffic_box_render_update": {
+              "avg_call_ms": 0.3417,
+              "calls": 1105,
+              "failures": 0,
+              "ms_per_tick": 0.3417,
+              "peak_call_ms": 0.582
+            },
+            "traffic_box_simulation": {
+              "avg_call_ms": 0.3499,
+              "calls": 1105,
+              "failures": 0,
+              "ms_per_tick": 0.3499,
+              "peak_call_ms": 1.678
+            },
+            "traffic_manager": {
+              "avg_call_ms": 0.7671,
+              "calls": 1105,
+              "failures": 0,
+              "ms_per_tick": 0.7671,
+              "peak_call_ms": 21.527
+            },
+            "traffic_obstacle_sweep": {
+              "avg_call_ms": 0.0222,
+              "calls": 265,
+              "failures": 0,
+              "ms_per_tick": 0.0053,
+              "peak_call_ms": 0.187
+            },
+            "vehicle_health_label": {
+              "avg_call_ms": 0.0037,
+              "calls": 3,
+              "failures": 0,
+              "ms_per_tick": 0,
+              "peak_call_ms": 0.004
+            },
+            "vehicle_physics": {
+              "avg_call_ms": 0.0007,
+              "calls": 268,
+              "failures": 0,
+              "ms_per_tick": 0.0002,
+              "peak_call_ms": 0.004
+            }
+          },
+          "explosion_effects": 0,
+          "fps": 101,
+          "frozen": 0,
+          "moving": 0,
+          "sleeping_unfrozen": 0,
+          "timings_overlap": true,
+          "traffic": [
+            {
+              "abandoned_cleaned": 0,
+              "active": 0,
+              "at_junction": 0,
+              "blocked_box_promotions": 0,
+              "box_demotions": 3,
+              "box_promotions": 0,
+              "box_regions": 33,
+              "boxes": 40,
+              "crossings_completed": 0,
+              "hidden_nearby_boxes": 0,
+              "lanes": 684,
+              "occupied_junctions": 0,
+              "rectangle_to_silhouette": 1,
+              "rectangles": 16,
+              "retained": 0,
+              "silhouette_to_rectangle": 6,
+              "silhouettes": 24,
+              "stopped": 0
+            }
+          ],
+          "uptime_s": 31.7,
+          "vehicles": 0,
+          "visible_health_labels": 0,
+          "window_s": 23.94492
+        },
+        "frames": 531,
+        "name": "clear_skyline_baseline",
+        "nodes": 34169,
+        "stats": {
+          "draw_calls": {
+            "mean": 3839.4802259887,
+            "median": 3839,
+            "p95": 3842
+          },
+          "gpu_ms": {
+            "mean": 1.3828813539162,
+            "median": 1.02699995040894,
+            "p95": 2.57500004768372
+          },
+          "objects": {
+            "mean": 7603.77589453861,
+            "median": 7604,
+            "p95": 7608
+          },
+          "physics_ms": {
+            "mean": 14.1392580037666,
+            "median": 9.372,
+            "p95": 33.091
+          },
+          "primitives": {
+            "mean": 898038.903954802,
+            "median": 897494,
+            "p95": 900482
+          },
+          "process_ms": {
+            "mean": 16.989713747646,
+            "median": 15.853,
+            "p95": 28.333
+          },
+          "render_cpu_ms": {
+            "mean": 3.68567985734024,
+            "median": 3.66599988937378,
+            "p95": 4.30200004577637
+          },
+          "render_setup_ms": {
+            "mean": 0.21186252354049,
+            "median": 0.241,
+            "p95": 0.459
+          },
+          "wall_ms": {
+            "mean": 9.43268549905838,
+            "median": 8.926,
+            "p95": 12.802
+          }
+        }
+      },
+      {
+        "CityPerformanceMonitor": {
+          "city_cpu_timings": {
+            "walkable_area_check": {
+              "avg_call_ms": 0.0232,
+              "calls": 38370,
+              "failures": 523,
+              "ms_per_tick": 0.8426,
+              "peak_call_ms": 0.459
+            }
+          },
+          "city_present": true,
+          "engine": {
+            "draw_calls": 1812,
+            "fps": 148,
+            "nodes": 34567,
+            "orphans": 0,
+            "physics_ms_latest": 12.094,
+            "physics_ticks_per_render_frame": 0.412085769980507,
+            "render_memory_mib": 2430.18359375,
+            "rendered_objects": 3537,
+            "rendered_primitives": 643398,
+            "resources": 12258,
+            "static_memory_mib": 657.589694976807
+          },
+          "player_position": [
+            100,
+            3,
+            -320
+          ],
+          "routes": {
+            "directed_edges": 40076,
+            "points": 19246,
+            "valid": true,
+            "walkable_surfaces": 0
+          },
+          "timings_overlap": true,
+          "uptime_s": 49.3,
+          "window_s": 17.613051
+        },
+        "CivilianCrowdPerformanceMonitor": {
+          "blocked_promotions_total": 0,
+          "capsules": 82,
+          "cpu_timings": {
+            "capsule_movement": {
+              "avg_call_ms": 0.0059,
+              "calls": 202964,
+              "failures": 0,
+              "ms_per_tick": 1.1405,
+              "peak_call_ms": 15.284
+            },
+            "demote": {
+              "avg_call_ms": 0.461,
+              "calls": 1,
+              "failures": 0,
+              "ms_per_tick": 0.0004,
+              "peak_call_ms": 0.461
+            },
+            "lane_spacing": {
+              "avg_call_ms": 0.2166,
+              "calls": 82,
+              "failures": 0,
+              "ms_per_tick": 0.0168,
+              "peak_call_ms": 0.306
+            },
+            "lod_update": {
+              "avg_call_ms": 0.076,
+              "calls": 1057,
+              "failures": 0,
+              "ms_per_tick": 0.076,
+              "peak_call_ms": 1.42
+            },
+            "population_manager": {
+              "avg_call_ms": 1.0207,
+              "calls": 1057,
+              "failures": 0,
+              "ms_per_tick": 1.0207,
+              "peak_call_ms": 31.542
+            },
+            "population_update": {
+              "avg_call_ms": 5.611,
+              "calls": 66,
+              "failures": 0,
+              "ms_per_tick": 0.3504,
+              "peak_call_ms": 5.824
+            },
+            "promote": {
+              "avg_call_ms": 0.811,
+              "calls": 1,
+              "failures": 0,
+              "ms_per_tick": 0.0008,
+              "peak_call_ms": 0.811
+            },
+            "route_step": {
+              "avg_call_ms": 0.0343,
+              "calls": 12619,
+              "failures": 0,
+              "ms_per_tick": 0.4096,
+              "peak_call_ms": 0.152
+            },
+            "spawn_attempt": {
+              "avg_call_ms": 2.5853,
+              "calls": 230,
+              "failures": 135,
+              "ms_per_tick": 0.5626,
+              "peak_call_ms": 13.734
+            },
+            "walker_physics": {
+              "avg_call_ms": 0.0593,
+              "calls": 12619,
+              "failures": 0,
+              "ms_per_tick": 0.7083,
+              "peak_call_ms": 0.199
+            }
+          },
+          "crowd_enabled": true,
+          "dead": 0,
+          "demotions_total": 1,
+          "following": 5,
+          "fps": 148,
+          "full": 13,
+          "live_walker_recoveries": 0,
+          "pending_damage": 0,
+          "present": true,
+          "promotions_total": 1,
+          "rejected_spawns_total": 285,
+          "retiring": 0,
+          "route_statuses": {
+            "Following": 1,
+            "Sidewalk": 12
+          },
+          "target": 95,
+          "timings_overlap": true,
+          "uptime_s": 49.3,
+          "window_s": 17.613019
+        },
+        "CombatPerformanceMonitor": {
+          "active_physics_objects": 0,
+          "civilians": 13,
+          "collision_pairs": 0,
+          "draw_calls": 1812,
+          "explosion_effects": 0,
+          "fps": 148,
+          "hostile_ms_per_tick": 0,
+          "hostile_peak_call_ms": 0,
+          "hostile_reacting": 0,
+          "hostile_relocating": 0,
+          "hostile_states": {},
+          "landing_effects": 0,
+          "nodes": 34567,
+          "objects": 59285,
+          "orphans": 0,
+          "physics_ms_latest": 12.094,
+          "render_memory_mib": 2430.18359375,
+          "resources": 12258,
+          "static_memory_mib": 657.601081848145,
+          "target_ground_ms_per_tick": 0,
+          "uptime_s": 49.3,
+          "window_s": 17.61
+        },
+        "PlayerPerformanceMonitor": {
+          "cpu_timings": {
+            "camera_effects": {
+              "avg_call_ms": 0.00283430799220273,
+              "calls": 2565,
+              "ms_per_physics_tick": 0.00687795648060549,
+              "ms_per_render_frame": 0.00283430799220273,
+              "peak_call_ms": 0.086,
+              "total_ms": 7.27
+            },
+            "encounter_indicator": {
+              "avg_call_ms": 0.00628849902534113,
+              "calls": 2565,
+              "ms_per_physics_tick": 0.0152601702932829,
+              "ms_per_render_frame": 0.00628849902534113,
+              "peak_call_ms": 0.017,
+              "total_ms": 16.13
+            },
+            "landing_indicator": {
+              "avg_call_ms": 0.00372280037842952,
+              "calls": 1057,
+              "ms_per_physics_tick": 0.00372280037842952,
+              "ms_per_render_frame": 0.00153411306042885,
+              "peak_call_ms": 0.011,
+              "total_ms": 3.935
+            }
+          },
+          "fps": 148,
+          "hud": {
+            "DeveloperMenu": {
+              "controls": 74,
+              "visible_controls": 0
+            },
+            "GameplayHUD": {
+              "controls": 43,
+              "visible_controls": 24
+            },
+            "PauseMenu": {
+              "controls": 311,
+              "visible_controls": 0
+            },
+            "PerformanceHUD": {
+              "controls": 3,
+              "visible_controls": 0
+            }
+          },
+          "player": {
+            "animation": "Idle",
+            "health": 1000,
+            "hit_reacting": false,
+            "nodes": 133,
+            "present": true,
+            "speed": 0,
+            "state": "GroundedState"
+          },
+          "timings_overlap": true,
+          "uptime_s": 49.321542,
+          "window_s": 17.612598
+        },
+        "VehiclePerformanceMonitor": {
+          "armed_for_impact": 0,
+          "awake_unfrozen": 0,
+          "carried": 0,
+          "contact_monitors": 0,
+          "cpu_timings": {
+            "traffic_box_render_update": {
+              "avg_call_ms": 0.3606,
+              "calls": 1057,
+              "failures": 0,
+              "ms_per_tick": 0.3606,
+              "peak_call_ms": 0.578
+            },
+            "traffic_box_simulation": {
+              "avg_call_ms": 0.3719,
+              "calls": 1057,
+              "failures": 0,
+              "ms_per_tick": 0.3719,
+              "peak_call_ms": 1.844
+            },
+            "traffic_junction_movement": {
+              "avg_call_ms": 0.0167,
+              "calls": 1012,
+              "failures": 0,
+              "ms_per_tick": 0.016,
+              "peak_call_ms": 0.077
+            },
+            "traffic_manager": {
+              "avg_call_ms": 1.8555,
+              "calls": 1057,
+              "failures": 0,
+              "ms_per_tick": 1.8555,
+              "peak_call_ms": 6.3
+            },
+            "traffic_obstacle_sweep": {
+              "avg_call_ms": 0.0473,
+              "calls": 15072,
+              "failures": 0,
+              "ms_per_tick": 0.6747,
+              "peak_call_ms": 0.316
+            },
+            "vehicle_health_label": {
+              "avg_call_ms": 0.0038,
+              "calls": 20,
+              "failures": 0,
+              "ms_per_tick": 0.0001,
+              "peak_call_ms": 0.005
+            },
+            "vehicle_physics": {
+              "avg_call_ms": 0.0004,
+              "calls": 16085,
+              "failures": 0,
+              "ms_per_tick": 0.0065,
+              "peak_call_ms": 0.056
+            }
+          },
+          "explosion_effects": 0,
+          "fps": 148,
+          "frozen": 19,
+          "moving": 14,
+          "sleeping_unfrozen": 0,
+          "timings_overlap": true,
+          "traffic": [
+            {
+              "abandoned_cleaned": 0,
+              "active": 19,
+              "at_junction": 2,
+              "blocked_box_promotions": 39,
+              "box_demotions": 4,
+              "box_promotions": 0,
+              "box_regions": 32,
+              "boxes": 40,
+              "crossings_completed": 1,
+              "hidden_nearby_boxes": 0,
+              "lanes": 684,
+              "occupied_junctions": 3,
+              "rectangle_to_silhouette": 6,
+              "rectangles": 14,
+              "retained": 19,
+              "silhouette_to_rectangle": 12,
+              "silhouettes": 26,
+              "stopped": 5
+            }
+          ],
+          "uptime_s": 49.3,
+          "vehicles": 19,
+          "visible_health_labels": 0,
+          "window_s": 17.613036
+        },
+        "frames": 725,
+        "name": "clear_street_baseline",
+        "nodes": 34567,
+        "stats": {
+          "draw_calls": {
+            "mean": 1851.72275862069,
+            "median": 1853,
+            "p95": 1890
+          },
+          "gpu_ms": {
+            "mean": 1.01488275786926,
+            "median": 0.90200001001358,
+            "p95": 1.66499996185303
+          },
+          "objects": {
+            "mean": 3568.24689655172,
+            "median": 3568,
+            "p95": 3616
+          },
+          "physics_ms": {
+            "mean": 10.4057917241378,
+            "median": 10.247,
+            "p95": 12.094
+          },
+          "primitives": {
+            "mean": 655028.548965517,
+            "median": 655354,
+            "p95": 671680
+          },
+          "process_ms": {
+            "mean": 10.4282468965517,
+            "median": 10.963,
+            "p95": 13.723
+          },
+          "render_cpu_ms": {
+            "mean": 1.91870482642075,
+            "median": 1.89199995994568,
+            "p95": 2.25300002098084
+          },
+          "render_setup_ms": {
+            "mean": 0.299914482758621,
+            "median": 0.122,
+            "p95": 0.605
+          },
+          "wall_ms": {
+            "mean": 6.89724827586207,
+            "median": 5.756,
+            "p95": 11.155
+          }
+        }
+      },
+      {
+        "CityPerformanceMonitor": {
+          "city_cpu_timings": {
+            "walkable_area_check": {
+              "avg_call_ms": 0.1095,
+              "calls": 18032,
+              "failures": 452,
+              "ms_per_tick": 1.8689,
+              "peak_call_ms": 0.513
+            }
+          },
+          "city_present": true,
+          "engine": {
+            "draw_calls": 3426,
+            "fps": 106,
+            "nodes": 34223,
+            "orphans": 0,
+            "physics_ms_latest": 9.933,
+            "physics_ticks_per_render_frame": 0.570502431118314,
+            "render_memory_mib": 2399.68359375,
+            "rendered_objects": 6899,
+            "rendered_primitives": 880060,
+            "resources": 12258,
+            "static_memory_mib": 646.12243270874
+          },
+          "player_position": [
+            -180,
+            50,
+            100
+          ],
+          "routes": {
+            "directed_edges": 40076,
+            "points": 19246,
+            "valid": true,
+            "walkable_surfaces": 0
+          },
+          "timings_overlap": true,
+          "uptime_s": 67.1,
+          "window_s": 17.82289
+        },
+        "CivilianCrowdPerformanceMonitor": {
+          "blocked_promotions_total": 0,
+          "capsules": 63,
+          "cpu_timings": {
+            "capsule_movement": {
+              "avg_call_ms": 0.0076,
+              "calls": 115230,
+              "failures": 0,
+              "ms_per_tick": 0.829,
+              "peak_call_ms": 15.805
+            },
+            "lane_spacing": {
+              "avg_call_ms": 0.1707,
+              "calls": 81,
+              "failures": 0,
+              "ms_per_tick": 0.0131,
+              "peak_call_ms": 0.265
+            },
+            "lod_update": {
+              "avg_call_ms": 0.0583,
+              "calls": 1056,
+              "failures": 0,
+              "ms_per_tick": 0.0583,
+              "peak_call_ms": 1.177
+            },
+            "population_manager": {
+              "avg_call_ms": 1.5268,
+              "calls": 1056,
+              "failures": 0,
+              "ms_per_tick": 1.5268,
+              "peak_call_ms": 56.211
+            },
+            "population_update": {
+              "avg_call_ms": 6.3663,
+              "calls": 66,
+              "failures": 0,
+              "ms_per_tick": 0.3979,
+              "peak_call_ms": 6.685
+            },
+            "promote": {
+              "avg_call_ms": 0.691,
+              "calls": 2,
+              "failures": 0,
+              "ms_per_tick": 0.0013,
+              "peak_call_ms": 0.717
+            },
+            "route_step": {
+              "avg_call_ms": 0.129,
+              "calls": 6501,
+              "failures": 0,
+              "ms_per_tick": 0.7944,
+              "peak_call_ms": 9.535
+            },
+            "spawn_attempt": {
+              "avg_call_ms": 6.2606,
+              "calls": 175,
+              "failures": 106,
+              "ms_per_tick": 1.0375,
+              "peak_call_ms": 27.615
+            },
+            "walker_physics": {
+              "avg_call_ms": 0.1547,
+              "calls": 6501,
+              "failures": 0,
+              "ms_per_tick": 0.9526,
+              "peak_call_ms": 9.568
+            }
+          },
+          "crowd_enabled": true,
+          "dead": 0,
+          "demotions_total": 1,
+          "following": 3,
+          "fps": 106,
+          "full": 6,
+          "live_walker_recoveries": 0,
+          "pending_damage": 0,
+          "present": true,
+          "promotions_total": 3,
+          "rejected_spawns_total": 391,
+          "retiring": 0,
+          "route_statuses": {
+            "Sidewalk": 6
+          },
+          "target": 69,
+          "timings_overlap": true,
+          "uptime_s": 67.1,
+          "window_s": 17.822834
+        },
+        "CombatPerformanceMonitor": {
+          "active_physics_objects": 0,
+          "civilians": 6,
+          "collision_pairs": 0,
+          "draw_calls": 3426,
+          "explosion_effects": 0,
+          "fps": 106,
+          "hostile_ms_per_tick": 0,
+          "hostile_peak_call_ms": 0,
+          "hostile_reacting": 0,
+          "hostile_relocating": 0,
+          "hostile_states": {},
+          "landing_effects": 0,
+          "nodes": 34223,
+          "objects": 58626,
+          "orphans": 0,
+          "physics_ms_latest": 9.933,
+          "render_memory_mib": 2399.68359375,
+          "resources": 12258,
+          "static_memory_mib": 646.13353729248,
+          "target_ground_ms_per_tick": 0,
+          "uptime_s": 67.1,
+          "window_s": 17.82
+        },
+        "PlayerPerformanceMonitor": {
+          "cpu_timings": {
+            "camera_effects": {
+              "avg_call_ms": 0.00329173419773096,
+              "calls": 1851,
+              "ms_per_physics_tick": 0.00576988636363636,
+              "ms_per_render_frame": 0.00329173419773096,
+              "peak_call_ms": 0.012,
+              "total_ms": 6.093
+            },
+            "encounter_indicator": {
+              "avg_call_ms": 0.00769962182603998,
+              "calls": 1851,
+              "ms_per_physics_tick": 0.0134962121212121,
+              "ms_per_render_frame": 0.00769962182603998,
+              "peak_call_ms": 0.05,
+              "total_ms": 14.252
+            },
+            "landing_indicator": {
+              "avg_call_ms": 0.00439772727272727,
+              "calls": 1056,
+              "ms_per_physics_tick": 0.00439772727272727,
+              "ms_per_render_frame": 0.00250891410048622,
+              "peak_call_ms": 0.034,
+              "total_ms": 4.644
+            }
+          },
+          "fps": 106,
+          "hud": {
+            "DeveloperMenu": {
+              "controls": 74,
+              "visible_controls": 0
+            },
+            "GameplayHUD": {
+              "controls": 43,
+              "visible_controls": 24
+            },
+            "PauseMenu": {
+              "controls": 311,
+              "visible_controls": 0
+            },
+            "PerformanceHUD": {
+              "controls": 3,
+              "visible_controls": 0
+            }
+          },
+          "player": {
+            "animation": "Idle",
+            "health": 1000,
+            "hit_reacting": false,
+            "nodes": 133,
+            "present": true,
+            "speed": 0,
+            "state": "GroundedState"
+          },
+          "timings_overlap": true,
+          "uptime_s": 67.144446,
+          "window_s": 17.82242
+        },
+        "VehiclePerformanceMonitor": {
+          "armed_for_impact": 0,
+          "awake_unfrozen": 0,
+          "carried": 0,
+          "contact_monitors": 0,
+          "cpu_timings": {
+            "traffic_box_render_update": {
+              "avg_call_ms": 0.3624,
+              "calls": 1056,
+              "failures": 0,
+              "ms_per_tick": 0.3624,
+              "peak_call_ms": 0.566
+            },
+            "traffic_box_simulation": {
+              "avg_call_ms": 0.3833,
+              "calls": 1056,
+              "failures": 0,
+              "ms_per_tick": 0.3833,
+              "peak_call_ms": 2.273
+            },
+            "traffic_junction_movement": {
+              "avg_call_ms": 0.0199,
+              "calls": 804,
+              "failures": 0,
+              "ms_per_tick": 0.0152,
+              "peak_call_ms": 0.074
+            },
+            "traffic_manager": {
+              "avg_call_ms": 0.9711,
+              "calls": 1056,
+              "failures": 0,
+              "ms_per_tick": 0.9711,
+              "peak_call_ms": 4.745
+            },
+            "traffic_obstacle_sweep": {
+              "avg_call_ms": 0.0532,
+              "calls": 2040,
+              "failures": 0,
+              "ms_per_tick": 0.1028,
+              "peak_call_ms": 0.335
+            },
+            "vehicle_physics": {
+              "avg_call_ms": 0.0005,
+              "calls": 2863,
+              "failures": 0,
+              "ms_per_tick": 0.0012,
+              "peak_call_ms": 0.013
+            }
+          },
+          "explosion_effects": 0,
+          "fps": 106,
+          "frozen": 0,
+          "moving": 0,
+          "sleeping_unfrozen": 0,
+          "timings_overlap": true,
+          "traffic": [
+            {
+              "abandoned_cleaned": 0,
+              "active": 0,
+              "at_junction": 0,
+              "blocked_box_promotions": 39,
+              "box_demotions": 4,
+              "box_promotions": 0,
+              "box_regions": 31,
+              "boxes": 40,
+              "crossings_completed": 4,
+              "hidden_nearby_boxes": 0,
+              "lanes": 684,
+              "occupied_junctions": 0,
+              "rectangle_to_silhouette": 10,
+              "rectangles": 13,
+              "retained": 0,
+              "silhouette_to_rectangle": 16,
+              "silhouettes": 27,
+              "stopped": 0
+            }
+          ],
+          "uptime_s": 67.1,
+          "vehicles": 0,
+          "visible_health_labels": 0,
+          "window_s": 17.822872
+        },
+        "frames": 550,
+        "name": "park_live",
+        "nodes": 34223,
+        "stats": {
+          "draw_calls": {
+            "mean": 3422.89454545455,
+            "median": 3422,
+            "p95": 3426
+          },
+          "gpu_ms": {
+            "mean": 0.94184727343646,
+            "median": 0.850000023841858,
+            "p95": 1.51600003242493
+          },
+          "objects": {
+            "mean": 6895.89454545455,
+            "median": 6895,
+            "p95": 6899
+          },
+          "physics_ms": {
+            "mean": 9.98293636363635,
+            "median": 9.603,
+            "p95": 11.788
+          },
+          "primitives": {
+            "mean": 876576.545454545,
+            "median": 875424,
+            "p95": 880082
+          },
+          "process_ms": {
+            "mean": 23.2050218181816,
+            "median": 22.836,
+            "p95": 24.253
+          },
+          "render_cpu_ms": {
+            "mean": 3.29871454065496,
+            "median": 3.20300006866455,
+            "p95": 3.80800008773804
+          },
+          "render_setup_ms": {
+            "mean": 0.165818181818182,
+            "median": 0.189,
+            "p95": 0.332
+          },
+          "wall_ms": {
+            "mean": 9.10444909090908,
+            "median": 8.917,
+            "p95": 15.502
+          }
+        }
+      },
+      {
+        "CityPerformanceMonitor": {
+          "city_cpu_timings": {
+            "walkable_area_check": {
+              "avg_call_ms": 0.0362,
+              "calls": 9050,
+              "failures": 189,
+              "ms_per_tick": 0.3098,
+              "peak_call_ms": 0.546
+            }
+          },
+          "city_present": true,
+          "engine": {
+            "draw_calls": 3618,
+            "fps": 129,
+            "nodes": 34110,
+            "orphans": 0,
+            "physics_ms_latest": 8.903,
+            "physics_ticks_per_render_frame": 0.479128856624319,
+            "render_memory_mib": 2395.87109375,
+            "rendered_objects": 5857,
+            "rendered_primitives": 617094,
+            "resources": 12258,
+            "static_memory_mib": 648.593013763428
+          },
+          "player_position": [
+            -150,
+            180,
+            370
+          ],
+          "routes": {
+            "directed_edges": 40076,
+            "points": 19246,
+            "valid": true,
+            "walkable_surfaces": 0
+          },
+          "timings_overlap": true,
+          "uptime_s": 84.8,
+          "window_s": 17.606879
+        },
+        "CivilianCrowdPerformanceMonitor": {
+          "blocked_promotions_total": 0,
+          "capsules": 40,
+          "cpu_timings": {
+            "capsule_movement": {
+              "avg_call_ms": 0.007,
+              "calls": 88411,
+              "failures": 0,
+              "ms_per_tick": 0.5844,
+              "peak_call_ms": 13.601
+            },
+            "lane_spacing": {
+              "avg_call_ms": 0.1131,
+              "calls": 81,
+              "failures": 0,
+              "ms_per_tick": 0.0087,
+              "peak_call_ms": 0.216
+            },
+            "lod_update": {
+              "avg_call_ms": 0.0348,
+              "calls": 1056,
+              "failures": 0,
+              "ms_per_tick": 0.0348,
+              "peak_call_ms": 0.406
+            },
+            "population_manager": {
+              "avg_call_ms": 0.6969,
+              "calls": 1056,
+              "failures": 0,
+              "ms_per_tick": 0.6969,
+              "peak_call_ms": 16.529
+            },
+            "population_update": {
+              "avg_call_ms": 7.1863,
+              "calls": 66,
+              "failures": 0,
+              "ms_per_tick": 0.4491,
+              "peak_call_ms": 7.464
+            },
+            "route_step": {
+              "avg_call_ms": 0.2012,
+              "calls": 556,
+              "failures": 0,
+              "ms_per_tick": 0.1059,
+              "peak_call_ms": 15.252
+            },
+            "spawn_attempt": {
+              "avg_call_ms": 2.5357,
+              "calls": 79,
+              "failures": 39,
+              "ms_per_tick": 0.1897,
+              "peak_call_ms": 8.44
+            },
+            "walker_physics": {
+              "avg_call_ms": 0.2294,
+              "calls": 556,
+              "failures": 0,
+              "ms_per_tick": 0.1208,
+              "peak_call_ms": 15.318
+            }
+          },
+          "crowd_enabled": true,
+          "dead": 0,
+          "demotions_total": 1,
+          "following": 1,
+          "fps": 129,
+          "full": 0,
+          "live_walker_recoveries": 0,
+          "pending_damage": 0,
+          "present": true,
+          "promotions_total": 3,
+          "rejected_spawns_total": 430,
+          "retiring": 0,
+          "route_statuses": {},
+          "target": 40,
+          "timings_overlap": true,
+          "uptime_s": 84.8,
+          "window_s": 17.606833
+        },
+        "CombatPerformanceMonitor": {
+          "active_physics_objects": 0,
+          "civilians": 0,
+          "collision_pairs": 0,
+          "draw_calls": 3618,
+          "explosion_effects": 0,
+          "fps": 129,
+          "hostile_ms_per_tick": 0,
+          "hostile_peak_call_ms": 0,
+          "hostile_reacting": 0,
+          "hostile_relocating": 0,
+          "hostile_states": {},
+          "landing_effects": 0,
+          "nodes": 34110,
+          "objects": 58482,
+          "orphans": 0,
+          "physics_ms_latest": 8.903,
+          "render_memory_mib": 2395.87109375,
+          "resources": 12258,
+          "static_memory_mib": 648.603565216064,
+          "target_ground_ms_per_tick": 0,
+          "uptime_s": 84.8,
+          "window_s": 17.61
+        },
+        "PlayerPerformanceMonitor": {
+          "cpu_timings": {
+            "camera_effects": {
+              "avg_call_ms": 0.00333529945553539,
+              "calls": 2204,
+              "ms_per_physics_tick": 0.00696117424242424,
+              "ms_per_render_frame": 0.00333529945553539,
+              "peak_call_ms": 0.011,
+              "total_ms": 7.351
+            },
+            "encounter_indicator": {
+              "avg_call_ms": 0.00775362976406534,
+              "calls": 2204,
+              "ms_per_physics_tick": 0.0161827651515152,
+              "ms_per_render_frame": 0.00775362976406534,
+              "peak_call_ms": 0.101,
+              "total_ms": 17.089
+            },
+            "landing_indicator": {
+              "avg_call_ms": 0.00447443181818182,
+              "calls": 1056,
+              "ms_per_physics_tick": 0.00447443181818182,
+              "ms_per_render_frame": 0.00214382940108893,
+              "peak_call_ms": 0.037,
+              "total_ms": 4.725
+            }
+          },
+          "fps": 129,
+          "hud": {
+            "DeveloperMenu": {
+              "controls": 74,
+              "visible_controls": 0
+            },
+            "GameplayHUD": {
+              "controls": 43,
+              "visible_controls": 24
+            },
+            "PauseMenu": {
+              "controls": 311,
+              "visible_controls": 0
+            },
+            "PerformanceHUD": {
+              "controls": 3,
+              "visible_controls": 0
+            }
+          },
+          "player": {
+            "animation": "Idle",
+            "health": 1000,
+            "hit_reacting": false,
+            "nodes": 133,
+            "present": true,
+            "speed": 0,
+            "state": "GroundedState"
+          },
+          "timings_overlap": true,
+          "uptime_s": 84.751326,
+          "window_s": 17.606363
+        },
+        "VehiclePerformanceMonitor": {
+          "armed_for_impact": 0,
+          "awake_unfrozen": 0,
+          "carried": 0,
+          "contact_monitors": 0,
+          "cpu_timings": {
+            "traffic_box_render_update": {
+              "avg_call_ms": 0.3658,
+              "calls": 1056,
+              "failures": 0,
+              "ms_per_tick": 0.3658,
+              "peak_call_ms": 0.571
+            },
+            "traffic_box_simulation": {
+              "avg_call_ms": 0.376,
+              "calls": 1056,
+              "failures": 0,
+              "ms_per_tick": 0.376,
+              "peak_call_ms": 2.58
+            },
+            "traffic_manager": {
+              "avg_call_ms": 0.7865,
+              "calls": 1056,
+              "failures": 0,
+              "ms_per_tick": 0.7865,
+              "peak_call_ms": 3.12
+            }
+          },
+          "explosion_effects": 0,
+          "fps": 129,
+          "frozen": 0,
+          "moving": 0,
+          "sleeping_unfrozen": 0,
+          "timings_overlap": true,
+          "traffic": [
+            {
+              "abandoned_cleaned": 0,
+              "active": 0,
+              "at_junction": 0,
+              "blocked_box_promotions": 39,
+              "box_demotions": 4,
+              "box_promotions": 0,
+              "box_regions": 30,
+              "boxes": 40,
+              "crossings_completed": 4,
+              "hidden_nearby_boxes": 0,
+              "lanes": 684,
+              "occupied_junctions": 0,
+              "rectangle_to_silhouette": 11,
+              "rectangles": 13,
+              "retained": 0,
+              "silhouette_to_rectangle": 27,
+              "silhouettes": 27,
+              "stopped": 0
+            }
+          ],
+          "uptime_s": 84.8,
+          "vehicles": 0,
+          "visible_health_labels": 0,
+          "window_s": 17.606867
+        },
+        "frames": 637,
+        "name": "aerial_live",
+        "nodes": 34110,
+        "stats": {
+          "draw_calls": {
+            "mean": 3630.70643642072,
+            "median": 3633,
+            "p95": 3635
+          },
+          "gpu_ms": {
+            "mean": 0.87789952932759,
+            "median": 0.614000022411346,
+            "p95": 2.79200005531311
+          },
+          "objects": {
+            "mean": 5869.35478806907,
+            "median": 5872,
+            "p95": 5873
+          },
+          "physics_ms": {
+            "mean": 9.09799686028255,
+            "median": 9.124,
+            "p95": 9.369
+          },
+          "primitives": {
+            "mean": 630082.540031397,
+            "median": 629994,
+            "p95": 638298
+          },
+          "process_ms": {
+            "mean": 12.2144144427001,
+            "median": 11.119,
+            "p95": 18.183
+          },
+          "render_cpu_ms": {
+            "mean": 3.15203924418619,
+            "median": 3.12100005149841,
+            "p95": 3.75699996948242
+          },
+          "render_setup_ms": {
+            "mean": 0.124274725274725,
+            "median": 0.14,
+            "p95": 0.259
+          },
+          "wall_ms": {
+            "mean": 7.85905651491365,
+            "median": 7.584,
+            "p95": 9.625
+          }
+        }
+      }
+    ],
+    "source_hashes": {
+      "city_life": "6eec2db1afbfc2aac803470b1286bc197d6bbcdda8be666a60acc12fce87622e",
+      "park": "a12b5db7d0228a47155ef30137ab1946db379b74868c1faeeb98a95306420da1"
+    },
+    "total_nodes": 34191,
+    "variant": "historical",
+    "viewport": [
+      1600,
+      900
+    ]
+  }
+}

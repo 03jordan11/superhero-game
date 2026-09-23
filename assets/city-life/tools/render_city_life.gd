@@ -31,17 +31,6 @@ func run() -> void:
 		["mountain_pass",15.0,Vector3(-1035,54,-2420),Vector3(-1100,45,-2780)],
 		["highway_night",0.0,Vector3(-1092,18,-2560),Vector3(-1100,28,-2800)]
 	]
-	for kind in ["Benches"]:
-		var best: Node3D=life.get_node(kind).get_child(0)
-		for prop in life.get_node(kind).get_children():
-			if prop.position.length_squared()<best.position.length_squared(): best=prop
-		views.append([kind.to_snake_case(),15.0,best.to_global(Vector3(7,4,10)),best.to_global(Vector3(0,1.5,0))])
-	for kind in ["signal","stop"]:
-		for junction in life.get_node("TrafficControls").get_children():
-			if junction.get_meta("kind")!=kind: continue
-			var pole: Node3D=junction.get_child(0)
-			views.append([kind,15.0,pole.to_global(Vector3(-3,4,15)),pole.to_global(Vector3(-3,3,0))])
-			break
 	var selected:=OS.get_cmdline_user_args()
 	for entry in views:
 		if not selected.is_empty() and str(entry[0]) not in selected: continue

@@ -1,7 +1,7 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://nl42hhy70xtv"]
 
-[ext_resource type="Script" path="res://assets/generated-buildings/residential/residential_building.gd" id="1_58a3o"]
-[ext_resource type="ArrayMesh" path="res://assets/generated-buildings/residential/meshes/residential_building_02.res" id="2_doauy"]
+[ext_resource type="Script" uid="uid://bwal7b74myct7" path="res://assets/generated-buildings/residential/residential_building.gd" id="1_58a3o"]
+[ext_resource type="ArrayMesh" uid="uid://cce3mfgmlceet" path="res://assets/generated-buildings/residential/meshes/residential_building_02.res" id="2_doauy"]
 [ext_resource type="PackedScene" path="res://assets/props/rooftop_hvac/rooftop_hvac_lowpoly.tscn" id="3_72g2l"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1i4en"]
@@ -17,6 +17,8 @@ mesh = ExtResource("2_doauy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2, 0)
 shape = SubResource("BoxShape3D_1i4en")
 
-[node name="RooftopHVAC" type="StaticBody3D" parent="." unique_id=661342222 instance=ExtResource("3_72g2l")]
-transform = Transform3D(0.40531915, 0, 0, 0, 0.40531915, 0, 0, 0, 0.40531915, -3.1, 6.4, 0)
-metadata/source = "Blender budget variant of the stock hospital HVAC: hidden caps removed, top panels flattened"
+[node name="RooftopHVAC" parent="." unique_id=661342222 instance=ExtResource("3_72g2l")]
+transform = Transform3D(0.40531915, 0, 0, 0, 0.40531915, 0, 0, 0, 0.40531915, -3.1, 6.4, 4.48316)
+
+[node name="RooftopHVAC2" parent="." unique_id=884520708 instance=ExtResource("3_72g2l")]
+transform = Transform3D(0.16428362, 0, 0, 0, 0.16428362, 0, 0, 0, 0.16428362, -5.0652843, 6.3878207, -5.302517)

@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/buildings/boxing_gym/textures/aged_boards.png" id="1_c80e3"]
+
+[resource]
+resource_name = "Wood"
+albedo_texture = ExtResource("1_c80e3")
+roughness = 0.85
+texture_filter = 5

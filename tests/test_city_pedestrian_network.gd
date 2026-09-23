@@ -33,11 +33,11 @@ func run() -> void:
 				child.enabled_routes[key] = true
 	network.schedule_rebuild()
 	await process_frame
-	if network.enabled_module_ids.size() != 262:
+	if network.enabled_module_ids.size() != network.inventory.modules.size():
 		fail("Full network selection failed")
 		return
-	if network.inventory.component_sizes.size() != 2 or network.inventory.river_crossings != 0:
-		fail("Expected two separate banks with no river crossings")
+	if network.inventory.version != 2 or network.inventory.river_crossings != 3:
+		fail("Expected authored pavement and three river bridges")
 		return
 	var visited: Dictionary = {}
 	var bank_count := 0
@@ -52,13 +52,13 @@ func run() -> void:
 				if not visited.has(neighbor):
 					visited[neighbor] = true
 					pending.append(neighbor)
-	if bank_count != 2:
-		fail("Actual enabled graph did not have exactly two connected banks")
+	if bank_count != network.inventory.component_sizes.size():
+		fail("Actual enabled components differ from the authored inventory")
 		return
 	if not network.find_children("*","CharacterBody3D",true,false).is_empty():
 		fail("The route graph should not spawn civilians")
 		return
-	print("PASS: district defaults, checkbox serialization, 262 modules / two disconnected riverbanks, and no test spawning.")
+	print("PASS: district defaults, checkbox serialization, authored module/component counts, and no test spawning.")
 	quit()
 
 func fail(message: String) -> void:

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://ni06hks1byv5"]
+
+[ext_resource type="Script" path="res://scripts/previews/male_civilian_preview.gd" id="1"]
+
+[node name="MaleCivilianPreview" type="Node3D" unique_id=853095976]
+script = ExtResource("1")

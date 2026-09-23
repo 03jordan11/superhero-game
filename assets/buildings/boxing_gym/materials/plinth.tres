@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[resource]
+resource_name = "Plinth"
+albedo_color = Color(0.27450982, 0.35686275, 0.32941177, 1)
+roughness = 0.85
+texture_filter = 5

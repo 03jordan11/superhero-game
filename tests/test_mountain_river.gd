@@ -4,6 +4,7 @@ func _initialize() -> void: run.call_deferred()
 func check(ok: bool,message: String) -> void:
 	if not ok: failures+=1; push_error(message)
 func run() -> void:
+	create_timer(60).timeout.connect(func(): push_error("Mountain river test timed out"); quit(1))
 	var original: Node = load("res://scenes/city_life.tscn").instantiate()
 	var original_mountain: MeshInstance3D = original.get_node("Highway/PinePassMountains")
 	var main: Node3D = load("res://scenes/main.tscn").instantiate()
@@ -19,12 +20,15 @@ func run() -> void:
 	await physics_frame
 	await physics_frame
 	var mountain: MeshInstance3D = city.get_node("CityLife/Highway/PinePassMountains")
-	check(mountain.mesh.get_faces() == original_mountain.mesh.get_faces(),"Standalone city preserves original mountain vertices")
+	var mountain_mesh: Mesh = mountain.get_meta("occlusion_source_mesh",mountain.mesh)
+	check(mountain_mesh.get_faces() == original_mountain.mesh.get_faces(),"Standalone city preserves original mountain vertices")
 	var solid: ConcavePolygonShape3D = mountain.get_node("Solid/CollisionShape3D").shape
 	var original_solid: ConcavePolygonShape3D = original_mountain.get_node("Solid/CollisionShape3D").shape
 	check(solid.get_faces() == original_solid.get_faces(),"Original solid mountain collision preserved")
 	for path in ["CityLife/Highway/NorthernGround","CoastalRegion/Landscape/CoastalTerrain"]:
-		check(city.get_node(path).mesh.resource_path.begins_with("res://assets/mountain-river/"),"Forest river remains open through flat ground")
+		var terrain: MeshInstance3D = city.get_node(path)
+		var source: Mesh = terrain.get_meta("occlusion_source_mesh",terrain.mesh)
+		check(source.resource_path.begins_with("res://assets/trees/boundary_terrain/"),"River-carved terrain uses boundary-clipped mesh")
 	var space := city.get_world_3d().direct_space_state
 	var report: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://assets/mountain-river/report.json"))
 	var mountain_hits := 0
@@ -45,8 +49,10 @@ func run() -> void:
 	var previous_layer := mountain_body.collision_layer
 	mountain_body.collision_layer=1<<19
 	var trimmed_probes := 0
-	for label in ["Water","Rock","Bed"]:
-		var part: MeshInstance3D = river.get_node(label)
+	for child in river.get_children():
+		if not child is MeshInstance3D: continue
+		var part: MeshInstance3D = child
+		var label := str(part.name)
 		var triangles := part.mesh.get_faces()
 		for i in range(0,triangles.size(),3):
 			var center := part.to_global((triangles[i]+triangles[i+1]+triangles[i+2])/3)

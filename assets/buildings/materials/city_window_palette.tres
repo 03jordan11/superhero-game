@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/window_light_palette.gd" id="1"]
+
+[resource]
+resource_name = "City window lights — amber, yellow and blue-white"
+script = ExtResource("1")
+warm_amber = Color(0.89411765, 0.71764706, 0.4, 1)
+soft_yellow = Color(0.94901961, 0.85882353, 0.65098039, 1)
+cool_white = Color(0.60392157, 0.78431373, 0.86274510, 1)

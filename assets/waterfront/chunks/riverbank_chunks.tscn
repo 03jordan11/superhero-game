@@ -1,0 +1,138 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/riverbank_chunks.gd" id="1_ufjts"]
+[ext_resource type="ArrayMesh" path="res://assets/waterfront/chunks/Seawall_QuayWall171_0_FullDetail.res" id="2_nwb2y"]
+[ext_resource type="ArrayMesh" path="res://assets/waterfront/chunks/Seawall_QuayWall171_0_DistantProxy.res" id="3_74kde"]
+[ext_resource type="ArrayMesh" path="res://assets/waterfront/chunks/Seawall_QuayWall171_1_FullDetail.res" id="4_srg8d"]
+[ext_resource type="ArrayMesh" path="res://assets/waterfront/chunks/Seawall_QuayWall171_1_DistantProxy.res" id="5_ybdjm"]
+[ext_resource type="ArrayMesh" path="res://assets/waterfront/chunks/Seawall_QuayWall171_2_FullDetail.res" id="6_pdrl7"]
+[ext_resource type="ArrayMesh" path="res://assets/waterfront/chunks/Seawall_QuayWall171_2_DistantProxy.res" id="7_h2vkr"]
+[ext_resource type="ArrayMesh" path="res://assets/waterfront/chunks/Seawall_QuayWall171_3_FullDetail.res" id="8_t66av"]
+[ext_resource type="ArrayMesh" path="res://assets/waterfront/chunks/Seawall_QuayWall171_3_DistantProxy.res" id="9_y2vm4"]
+[ext_resource type="ArrayMesh" path="res://assets/waterfront/chunks/Seawall_QuayWall172_0_FullDetail.res" id="10_i2h80"]
+[ext_resource type="ArrayMesh" path="res://assets/waterfront/chunks/Seawall_QuayWall172_0_DistantProxy.res" id="11_xkj3n"]
+[ext_resource type="ArrayMesh" path="res://assets/waterfront/chunks/Seawall_QuayWall172_1_FullDetail.res" id="12_bbdnc"]
+[ext_resource type="ArrayMesh" path="res://assets/waterfront/chunks/Seawall_QuayWall172_1_DistantProxy.res" id="13_504bx"]
+[ext_resource type="ArrayMesh" path="res://assets/waterfront/chunks/Seawall_QuayWall173_0_FullDetail.res" id="14_awgor"]
+[ext_resource type="ArrayMesh" path="res://assets/waterfront/chunks/Seawall_QuayWall173_0_DistantProxy.res" id="15_t2gjv"]
+[ext_resource type="ArrayMesh" path="res://assets/waterfront/chunks/Lamps_0_-2_FullDetail.res" id="16_u2l8b"]
+[ext_resource type="ArrayMesh" path="res://assets/waterfront/chunks/Lamps_0_-2_DistantProxy.res" id="17_x4od1"]
+[ext_resource type="ArrayMesh" path="res://assets/waterfront/chunks/Lamps_0_-1_FullDetail.res" id="18_xasup"]
+[ext_resource type="ArrayMesh" path="res://assets/waterfront/chunks/Lamps_0_-1_DistantProxy.res" id="19_01jy1"]
+[ext_resource type="ArrayMesh" path="res://assets/waterfront/chunks/Lamps_0_0_FullDetail.res" id="20_d7282"]
+[ext_resource type="ArrayMesh" path="res://assets/waterfront/chunks/Lamps_0_0_DistantProxy.res" id="21_7r1pl"]
+[ext_resource type="ArrayMesh" path="res://assets/waterfront/chunks/Lamps_0_1_FullDetail.res" id="22_jjreo"]
+[ext_resource type="ArrayMesh" path="res://assets/waterfront/chunks/Lamps_0_1_DistantProxy.res" id="23_k7c4h"]
+
+[node name="RiverbankChunks" type="Node3D" unique_id=1707666187]
+script = ExtResource("1_ufjts")
+
+[node name="Seawall_QuayWall171_0" type="Node3D" parent="." unique_id=339631971]
+visible = false
+
+[node name="FullDetail" type="MeshInstance3D" parent="Seawall_QuayWall171_0" unique_id=2007696616]
+mesh = ExtResource("2_nwb2y")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Seawall_QuayWall171_0" unique_id=910919007]
+cast_shadow = 0
+mesh = ExtResource("3_74kde")
+
+[node name="Seawall_QuayWall171_1" type="Node3D" parent="." unique_id=663926212]
+visible = false
+
+[node name="FullDetail" type="MeshInstance3D" parent="Seawall_QuayWall171_1" unique_id=1248291266]
+mesh = ExtResource("4_srg8d")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Seawall_QuayWall171_1" unique_id=1781111053]
+cast_shadow = 0
+mesh = ExtResource("5_ybdjm")
+
+[node name="Seawall_QuayWall171_2" type="Node3D" parent="." unique_id=652754128]
+visible = false
+
+[node name="FullDetail" type="MeshInstance3D" parent="Seawall_QuayWall171_2" unique_id=136929006]
+mesh = ExtResource("6_pdrl7")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Seawall_QuayWall171_2" unique_id=714668755]
+cast_shadow = 0
+mesh = ExtResource("7_h2vkr")
+
+[node name="Seawall_QuayWall171_3" type="Node3D" parent="." unique_id=186156054]
+visible = false
+
+[node name="FullDetail" type="MeshInstance3D" parent="Seawall_QuayWall171_3" unique_id=2022436273]
+mesh = ExtResource("8_t66av")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Seawall_QuayWall171_3" unique_id=1259276765]
+cast_shadow = 0
+mesh = ExtResource("9_y2vm4")
+
+[node name="Seawall_QuayWall172_0" type="Node3D" parent="." unique_id=245706552]
+visible = false
+
+[node name="FullDetail" type="MeshInstance3D" parent="Seawall_QuayWall172_0" unique_id=1910228357]
+mesh = ExtResource("10_i2h80")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Seawall_QuayWall172_0" unique_id=1343227380]
+cast_shadow = 0
+mesh = ExtResource("11_xkj3n")
+
+[node name="Seawall_QuayWall172_1" type="Node3D" parent="." unique_id=1041478928]
+visible = false
+
+[node name="FullDetail" type="MeshInstance3D" parent="Seawall_QuayWall172_1" unique_id=1305452441]
+mesh = ExtResource("12_bbdnc")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Seawall_QuayWall172_1" unique_id=630874225]
+cast_shadow = 0
+mesh = ExtResource("13_504bx")
+
+[node name="Seawall_QuayWall173_0" type="Node3D" parent="." unique_id=2054726699]
+visible = false
+
+[node name="FullDetail" type="MeshInstance3D" parent="Seawall_QuayWall173_0" unique_id=1817820652]
+mesh = ExtResource("14_awgor")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Seawall_QuayWall173_0" unique_id=743899267]
+cast_shadow = 0
+mesh = ExtResource("15_t2gjv")
+
+[node name="Lamps_0_-2" type="Node3D" parent="." unique_id=295541655]
+visible = false
+
+[node name="FullDetail" type="MeshInstance3D" parent="Lamps_0_-2" unique_id=1490923170]
+mesh = ExtResource("16_u2l8b")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Lamps_0_-2" unique_id=2029321471]
+cast_shadow = 0
+mesh = ExtResource("17_x4od1")
+
+[node name="Lamps_0_-1" type="Node3D" parent="." unique_id=787014950]
+visible = false
+
+[node name="FullDetail" type="MeshInstance3D" parent="Lamps_0_-1" unique_id=344506370]
+mesh = ExtResource("18_xasup")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Lamps_0_-1" unique_id=927146357]
+cast_shadow = 0
+mesh = ExtResource("19_01jy1")
+
+[node name="Lamps_0_0" type="Node3D" parent="." unique_id=316037080]
+visible = false
+
+[node name="FullDetail" type="MeshInstance3D" parent="Lamps_0_0" unique_id=218382072]
+mesh = ExtResource("20_d7282")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Lamps_0_0" unique_id=667570183]
+cast_shadow = 0
+mesh = ExtResource("21_7r1pl")
+
+[node name="Lamps_0_1" type="Node3D" parent="." unique_id=1302644346]
+visible = false
+
+[node name="FullDetail" type="MeshInstance3D" parent="Lamps_0_1" unique_id=89124762]
+mesh = ExtResource("22_jjreo")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Lamps_0_1" unique_id=314566674]
+cast_shadow = 0
+mesh = ExtResource("23_k7c4h")

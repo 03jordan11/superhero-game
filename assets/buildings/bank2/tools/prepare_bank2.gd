@@ -36,6 +36,7 @@ func _initialize() -> void:
 	var props := Node3D.new()
 	owned(hall, props, "Props")
 	for entry: Dictionary in manifest.props:
+		if str(entry.name).to_lower().contains("bench"): continue
 		var prop := bench_scene.instantiate() as Node3D
 		prop.name = entry.name
 		prop.position = vector(entry.position)

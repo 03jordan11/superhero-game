@@ -1,0 +1,13 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/bottle_Blue.res" id="1_jxwxq"]
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/bottle_SteelEdge.res" id="2_s6ro0"]
+
+[node name="Bottle" type="Node3D" unique_id=1838010182]
+metadata/rendered_triangles = 88
+
+[node name="bottle_Blue" type="MeshInstance3D" parent="." unique_id=604865768]
+mesh = ExtResource("1_jxwxq")
+
+[node name="bottle_SteelEdge" type="MeshInstance3D" parent="." unique_id=32233435]
+mesh = ExtResource("2_s6ro0")

@@ -22,6 +22,13 @@ func open_menu() -> Node:
 	current_scene = menu
 	return menu
 
+func wait_for_loading() -> void:
+	await process_frame
+	await process_frame
+	while root.get_node("LoadingScreen").active:
+		await process_frame
+	check(not root.get_node("LoadingScreen").visible and not root.is_input_disabled(), "Loading screen releases input after arrival")
+
 func run() -> void:
 	create_timer(90).timeout.connect(func(): push_error("Main menu load test timed out"); quit(1))
 	var saves := root.get_node("SaveManager")
@@ -67,8 +74,7 @@ func run() -> void:
 	check(not menu.load_button.disabled, "Saved game detected when menu opens")
 	menu.load_button.pressed.emit()
 	menu._on_load_pressed()
-	await process_frame
-	await process_frame
+	await wait_for_loading()
 	check(current_scene.name == &"GasStationInterior", "Load Game starts inside the hideout")
 	if current_scene.name != &"GasStationInterior":
 		saves.delete_save(); saves._save_path = original_path; quit(1); return
@@ -95,8 +101,7 @@ func run() -> void:
 	var exit_door: Node3D = current_scene.get_node("ExitDoor")
 	player.global_position = exit_door.to_global(Vector3(0, 0, 1.1))
 	check(exit_door.try_interact(player), "Loaded hideout exit can be used")
-	await process_frame
-	await process_frame
+	await wait_for_loading()
 	check(current_scene.name == &"Main", "Exit returns to city")
 	check(player.get_instance_id() == identity and player.stats.money == 4321, "Exit retains the loaded player and progress")
 	check(player.global_position.distance_to(expected_return) < 0.5, "Exit places hero safely outside the gas station")
@@ -105,8 +110,7 @@ func run() -> void:
 	# Play stays a fresh start even when a save exists.
 	menu = open_menu()
 	menu.get_node("Center/Menu/PlayButton").pressed.emit()
-	await process_frame
-	await process_frame
+	await wait_for_loading()
 	check(current_scene.name == &"GasStationInterior" and current_scene.get_node("Player").stats.money != 4321, "New Game starts in the hideout without restoring saved progress")
 	check(current_scene.get_node("Player").global_position.distance_to(current_scene.get_node("PlayerSpawn").global_position) < 0.3, "New Game uses the hideout spawn")
 	check(FileAccess.get_file_as_string(test_path) == saved_text, "Starting Play does not overwrite the save")

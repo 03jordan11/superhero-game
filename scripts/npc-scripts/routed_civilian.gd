@@ -198,6 +198,10 @@ func _profiled_step_route(delta: float) -> void:
 	var start := _waypoint(_path_index-1)
 	var target := _waypoint(_path_index)
 	var flat := Vector3(global_position.x, start.y, global_position.z)
+	var segment := Vector2(target.x-start.x,target.z-start.z)
+	if segment.length_squared()>0.001:
+		var progress := Vector2(flat.x-start.x,flat.z-start.z).dot(segment)/segment.length_squared()
+		flat.y = lerpf(start.y,target.y,clampf(progress,0.0,1.0))
 	var crossing: bool = graph.is_crossing(a,b)
 	if crossing and not _crossing_active:
 		_crossing_active = true
@@ -207,6 +211,7 @@ func _profiled_step_route(delta: float) -> void:
 	if not crossing:
 		_crossing_active = false
 	var displacement := target-flat
+	displacement.y = 0.0
 	var distance := displacement.length()
 	if distance < 0.001:
 		return

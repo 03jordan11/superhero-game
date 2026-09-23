@@ -1,5 +1,6 @@
 extends "res://assets/waterfront/tools/generate_waterfront.gd"
 const TREES = preload("res://assets/trees/tools/tree_instances.gd")
+const FOREST_BOUNDARY = preload("res://assets/trees/tools/forest_boundary_clip.gd")
 const REGION_OUT:="res://assets/coastal-airport/"
 const LAND=preload("res://scripts/coastal_landscape.gd")
 var airport: Node3D
@@ -30,14 +31,18 @@ func generate() -> void:
 	make_terminal()
 	make_airplanes()
 	make_access_road()
+	preload("res://assets/super-city/tools/regional_geometry.gd").airport(airport)
 	for batch in scene.find_children("*","MultiMeshInstance3D",true,false): assert(not batch.multimesh.buffer.is_empty(),"Empty batch: "+batch.name)
 	var restored := TREES.restore_saved_layout(scene,"res://scenes/coastal_region.tscn")
 	if restored >= 0: trees_total = restored
+	var forest_chunks: Node3D = load("res://assets/trees/chunks/coastal.tscn").instantiate()
+	scene.add_child(forest_chunks)
+	forest_chunks.owner = scene
 	scene.set_meta("tree_count",trees_total)
 	var packed:=PackedScene.new()
 	assert(packed.pack(scene)==OK)
 	assert(ResourceSaver.save(packed,"res://scenes/coastal_region.tscn")==OK)
-	print("Coastal region: airport, 2 scheduled flights, 2 parked jets, %d trees, 60 km terrain and panorama horizon."%trees_total)
+	print("Coastal region: airport, 2 scheduled flights, 2 parked jets, %d trees, boundary-clipped terrain and panorama horizon."%trees_total)
 	scene.free()
 	quit()
 
@@ -48,6 +53,8 @@ func group(parent: Node, node_name: String, p: Vector3) -> Node3D:
 
 func surface(node_name: String, tool: SurfaceTool, parent: Node, mat: Material, solid := false) -> MeshInstance3D:
 	var mesh:=tool.commit()
+	if node_name in ["CoastalTerrain", "BeachWash"] and FileAccess.file_exists(FOREST_BOUNDARY.CONFIG):
+		mesh = FOREST_BOUNDARY.clip_mesh(mesh, FOREST_BOUNDARY.saved_planes())
 	var path:=REGION_OUT+"meshes/"+node_name.to_snake_case()+".res"
 	assert(ResourceSaver.save(mesh,path)==OK)
 	mesh.take_over_path(path)

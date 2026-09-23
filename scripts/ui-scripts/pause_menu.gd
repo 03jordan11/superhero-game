@@ -21,6 +21,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _profiled_unhandled_input(event: InputEvent) -> void:
+	var player := get_tree().get_first_node_in_group(&"player") as PlayerCharacter
+	if player != null and player.is_dead: return
 	var bindings: Node = get_node("/root/GameSettings").input_bindings
 	if bindings.is_capturing: return
 	if bindings.is_action_press(event, "pause") or (get_tree().paused and event.is_action_pressed("ui_cancel") and not event.is_echo()):
@@ -35,6 +37,8 @@ func _profiled_unhandled_input(event: InputEvent) -> void:
 
 
 func pause_game() -> void:
+	var player := get_tree().get_first_node_in_group(&"player") as PlayerCharacter
+	if player != null and player.is_dead: return
 	visible = true
 	get_tree().paused = true
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

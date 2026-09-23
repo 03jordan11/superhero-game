@@ -1,0 +1,525 @@
+{
+	"categories": [
+		{
+			"geometry": {
+				"labels": 0,
+				"lights": 30,
+				"mesh_nodes": 957,
+				"surfaces": 957,
+				"triangles": 13576,
+				"visible_surfaces": 105,
+				"visible_triangles": 2700
+			},
+			"parts": {
+				"Coping": {
+					"meshes": 173,
+					"triangles": 2076
+				},
+				"Housing": {
+					"meshes": 30,
+					"triangles": 360
+				},
+				"Lens": {
+					"meshes": 30,
+					"triangles": 360
+				},
+				"Post": {
+					"meshes": 30,
+					"triangles": 1800
+				},
+				"QuayWall": {
+					"meshes": 173,
+					"triangles": 2076
+				},
+				"RiverFoam": {
+					"meshes": 1,
+					"triangles": 180
+				},
+				"RiverbankRailings": {
+					"meshes": 1,
+					"triangles": 496
+				},
+				"StoneCourse": {
+					"meshes": 519,
+					"triangles": 6228
+				}
+			},
+			"path": "Waterfront/Riverbanks"
+		},
+		{
+			"geometry": {
+				"labels": 2,
+				"lights": 3,
+				"mesh_nodes": 494,
+				"surfaces": 494,
+				"triangles": 7704,
+				"visible_surfaces": 494,
+				"visible_triangles": 7704
+			},
+			"parts": {
+				"Boom": {
+					"meshes": 2,
+					"triangles": 24
+				},
+				"Building": {
+					"meshes": 1,
+					"triangles": 12
+				},
+				"Cab": {
+					"meshes": 2,
+					"triangles": 24
+				},
+				"CabGlass": {
+					"meshes": 2,
+					"triangles": 24
+				},
+				"Cable": {
+					"meshes": 2,
+					"triangles": 120
+				},
+				"CargoCrate": {
+					"meshes": 12,
+					"triangles": 144
+				},
+				"ConcretePierExtension": {
+					"meshes": 1,
+					"triangles": 12
+				},
+				"Container": {
+					"meshes": 24,
+					"triangles": 288
+				},
+				"Coping": {
+					"meshes": 2,
+					"triangles": 24
+				},
+				"Corrugation": {
+					"meshes": 288,
+					"triangles": 3456
+				},
+				"DoorLock": {
+					"meshes": 48,
+					"triangles": 576
+				},
+				"Foot": {
+					"meshes": 2,
+					"triangles": 24
+				},
+				"Hook": {
+					"meshes": 2,
+					"triangles": 120
+				},
+				"Housing": {
+					"meshes": 3,
+					"triangles": 36
+				},
+				"Lattice": {
+					"meshes": 28,
+					"triangles": 1680
+				},
+				"Lens": {
+					"meshes": 3,
+					"triangles": 36
+				},
+				"OfficeWindow": {
+					"meshes": 5,
+					"triangles": 60
+				},
+				"PierSign": {
+					"meshes": 1,
+					"triangles": 12
+				},
+				"Post": {
+					"meshes": 3,
+					"triangles": 180
+				},
+				"QuayWall": {
+					"meshes": 2,
+					"triangles": 24
+				},
+				"Railing": {
+					"meshes": 2,
+					"triangles": 24
+				},
+				"RailingPost": {
+					"meshes": 44,
+					"triangles": 528
+				},
+				"Roof": {
+					"meshes": 1,
+					"triangles": 12
+				},
+				"SignPost": {
+					"meshes": 2,
+					"triangles": 24
+				},
+				"Stay": {
+					"meshes": 2,
+					"triangles": 120
+				},
+				"StoneCourse": {
+					"meshes": 6,
+					"triangles": 72
+				},
+				"Tower": {
+					"meshes": 4,
+					"triangles": 48
+				}
+			},
+			"path": "Waterfront/Harbor"
+		},
+		{
+			"geometry": {
+				"labels": 0,
+				"lights": 0,
+				"mesh_nodes": 113,
+				"surfaces": 113,
+				"triangles": 4960,
+				"visible_surfaces": 113,
+				"visible_triangles": 4960
+			},
+			"parts": {
+				"Antenna": {
+					"meshes": 3,
+					"triangles": 180
+				},
+				"Boom": {
+					"meshes": 2,
+					"triangles": 120
+				},
+				"Cabin": {
+					"meshes": 2,
+					"triangles": 24
+				},
+				"Deck": {
+					"meshes": 5,
+					"triangles": 60
+				},
+				"Exhaust": {
+					"meshes": 1,
+					"triangles": 60
+				},
+				"FishCrate": {
+					"meshes": 2,
+					"triangles": 24
+				},
+				"FishingRig": {
+					"meshes": 2,
+					"triangles": 120
+				},
+				"FrontGlass": {
+					"meshes": 3,
+					"triangles": 36
+				},
+				"Hull": {
+					"meshes": 5,
+					"triangles": 180
+				},
+				"Mast": {
+					"meshes": 2,
+					"triangles": 120
+				},
+				"NavigationLens": {
+					"meshes": 10,
+					"triangles": 120
+				},
+				"PassengerDeck": {
+					"meshes": 1,
+					"triangles": 12
+				},
+				"PassengerWindow": {
+					"meshes": 12,
+					"triangles": 144
+				},
+				"Rail": {
+					"meshes": 10,
+					"triangles": 600
+				},
+				"RigCrossbar": {
+					"meshes": 1,
+					"triangles": 60
+				},
+				"Roof": {
+					"meshes": 3,
+					"triangles": 36
+				},
+				"Sails": {
+					"meshes": 2,
+					"triangles": 4
+				},
+				"SideGlass": {
+					"meshes": 6,
+					"triangles": 72
+				},
+				"Stanchion": {
+					"meshes": 30,
+					"triangles": 1800
+				},
+				"TireFender": {
+					"meshes": 8,
+					"triangles": 1152
+				},
+				"Wheelhouse": {
+					"meshes": 3,
+					"triangles": 36
+				}
+			},
+			"path": "Waterfront/Boats"
+		},
+		{
+			"geometry": {
+				"labels": 0,
+				"lights": 0,
+				"mesh_nodes": 742,
+				"surfaces": 1372,
+				"triangles": 46162,
+				"visible_surfaces": 1372,
+				"visible_triangles": 46162
+			},
+			"parts": {
+				"Mesh": {
+					"meshes": 740,
+					"triangles": 46150
+				},
+				"MeshInstance3D": {
+					"meshes": 1,
+					"triangles": 10
+				},
+				"ParkingLot": {
+					"meshes": 1,
+					"triangles": 2
+				}
+			},
+			"path": "Roads"
+		},
+		{
+			"geometry": {
+				"labels": 1,
+				"lights": 4,
+				"mesh_nodes": 93,
+				"surfaces": 93,
+				"triangles": 3366,
+				"visible_surfaces": 93,
+				"visible_triangles": 3366
+			},
+			"parts": {
+				"Base": {
+					"meshes": 4,
+					"triangles": 48
+				},
+				"BleacherSeat": {
+					"meshes": 6,
+					"triangles": 72
+				},
+				"ChainLink": {
+					"meshes": 21,
+					"triangles": 42
+				},
+				"FencePost": {
+					"meshes": 21,
+					"triangles": 1260
+				},
+				"FenceRail": {
+					"meshes": 21,
+					"triangles": 1260
+				},
+				"Floodlight": {
+					"meshes": 4,
+					"triangles": 48
+				},
+				"FloodlightMast": {
+					"meshes": 4,
+					"triangles": 240
+				},
+				"FoulLine": {
+					"meshes": 2,
+					"triangles": 120
+				},
+				"FoulPole": {
+					"meshes": 2,
+					"triangles": 120
+				},
+				"InfieldGrassDiamond": {
+					"meshes": 1,
+					"triangles": 4
+				},
+				"PitchersMound": {
+					"meshes": 1,
+					"triangles": 60
+				},
+				"PitchersRubber": {
+					"meshes": 1,
+					"triangles": 12
+				},
+				"SandlotGrass": {
+					"meshes": 1,
+					"triangles": 12
+				},
+				"SandlotInfield": {
+					"meshes": 1,
+					"triangles": 32
+				},
+				"Scoreboard": {
+					"meshes": 1,
+					"triangles": 12
+				},
+				"ScoreboardPost": {
+					"meshes": 2,
+					"triangles": 24
+				}
+			},
+			"path": "CityLife/Baseball"
+		},
+		{
+			"geometry": {
+				"labels": 4,
+				"lights": 0,
+				"mesh_nodes": 19,
+				"surfaces": 19,
+				"triangles": 22460,
+				"visible_surfaces": 19,
+				"visible_triangles": 22460
+			},
+			"parts": {
+				"AdPanel": {
+					"meshes": 2,
+					"triangles": 24
+				},
+				"Blade": {
+					"meshes": 4,
+					"triangles": 48
+				},
+				"CockpitGlass": {
+					"meshes": 1,
+					"triangles": 12
+				},
+				"Engine": {
+					"meshes": 2,
+					"triangles": 120
+				},
+				"Envelope": {
+					"meshes": 1,
+					"triangles": 1088
+				},
+				"Gondola": {
+					"meshes": 1,
+					"triangles": 12
+				},
+				"Strobe": {
+					"meshes": 5,
+					"triangles": 21120
+				},
+				"TailFin": {
+					"meshes": 2,
+					"triangles": 24
+				},
+				"TailRudder": {
+					"meshes": 1,
+					"triangles": 12
+				}
+			},
+			"path": "CityLife/Blimp"
+		},
+		{
+			"geometry": {
+				"labels": 7,
+				"lights": 6,
+				"mesh_nodes": 172,
+				"surfaces": 172,
+				"triangles": 18995,
+				"visible_surfaces": 170,
+				"visible_triangles": 18875
+			},
+			"parts": {
+				"CountyHighway": {
+					"meshes": 1,
+					"triangles": 378
+				},
+				"GantryPost": {
+					"meshes": 5,
+					"triangles": 300
+				},
+				"GuardrailPost": {
+					"meshes": 92,
+					"triangles": 5520
+				},
+				"HighwayEmbankments": {
+					"meshes": 1,
+					"triangles": 756
+				},
+				"HighwayGuardrails": {
+					"meshes": 1,
+					"triangles": 1508
+				},
+				"HighwayMarkings": {
+					"meshes": 1,
+					"triangles": 1764
+				},
+				"HighwaySign": {
+					"meshes": 6,
+					"triangles": 72
+				},
+				"MedianBarrier": {
+					"meshes": 48,
+					"triangles": 576
+				},
+				"NorthernGround": {
+					"meshes": 1,
+					"triangles": 6895
+				},
+				"PinePassMountains": {
+					"meshes": 1,
+					"triangles": 756
+				},
+				"PortalPier": {
+					"meshes": 2,
+					"triangles": 24
+				},
+				"SignGantry": {
+					"meshes": 3,
+					"triangles": 180
+				},
+				"TunnelArch": {
+					"meshes": 1,
+					"triangles": 144
+				},
+				"TunnelDarkness": {
+					"meshes": 1,
+					"triangles": 26
+				},
+				"TunnelLamp": {
+					"meshes": 6,
+					"triangles": 72
+				},
+				"TunnelWall": {
+					"meshes": 2,
+					"triangles": 24
+				}
+			},
+			"path": "CityLife/Highway"
+		},
+		{
+			"geometry": {
+				"labels": 0,
+				"lights": 120,
+				"mesh_nodes": 4,
+				"surfaces": 4,
+				"triangles": 338124,
+				"visible_surfaces": 4,
+				"visible_triangles": 338124
+			},
+			"parts": {
+				"LampLenses": {
+					"meshes": 3,
+					"triangles": 17796
+				},
+				"LampPosts": {
+					"meshes": 1,
+					"triangles": 320328
+				}
+			},
+			"path": "NightLights"
+		}
+	],
+	"note": "Stored geometry includes hidden nodes and every MultiMesh instance. visible_* excludes nodes hidden in the scene tree at startup, but does not test camera/frustum/occlusion or distance; these are not frame draw calls. Forests omitted because they already have chunks."
+}

@@ -1,0 +1,95 @@
+{
+	"description": "Static geometry counts, not frame draw-call or FPS measurements.",
+	"landmarks": [
+		{
+			"bounds_position": [
+				-12.1500015258789,
+				-6.0,
+				-78.0836181640625
+			],
+			"bounds_size": [
+				24.3000030517578,
+				38.0,
+				156.433624267578
+			],
+			"mesh": "res://assets/super-city/regional_proxies/CargoShip.res",
+			"path": "Sidewalks/CargoShip",
+			"proxy_surfaces": 1.0,
+			"proxy_triangles": 262.0,
+			"source_surfaces": 13.0,
+			"source_triangles": 4204.0
+		},
+		{
+			"bounds_position": [
+				-4780.4501953125,
+				0.0500000007450581,
+				-500.0
+			],
+			"bounds_size": [
+				3320.4501953125,
+				50.25,
+				728.449951171875
+			],
+			"mesh": "res://assets/super-city/regional_proxies/Airport.res",
+			"path": "CoastalRegion/Airport",
+			"proxy_surfaces": 1.0,
+			"proxy_triangles": 1336.0,
+			"source_surfaces": 500.0,
+			"source_triangles": 6572.0
+		},
+		{
+			"bounds_position": [
+				-23.2598075866699,
+				-3.83315920829773,
+				-24.0
+			],
+			"bounds_size": [
+				46.5196151733398,
+				14.1331596374512,
+				48.0
+			],
+			"mesh": "res://assets/super-city/regional_proxies/Flight1.res",
+			"path": "CoastalRegion/Airport/AirTraffic/Flight1",
+			"proxy_surfaces": 1.0,
+			"proxy_triangles": 213.0,
+			"source_surfaces": 53.0,
+			"source_triangles": 829.0
+		},
+		{
+			"bounds_position": [
+				-23.2598075866699,
+				-3.83301281929016,
+				-24.0
+			],
+			"bounds_size": [
+				46.5196151733398,
+				14.1330137252808,
+				48.0
+			],
+			"mesh": "res://assets/super-city/regional_proxies/Flight2.res",
+			"path": "CoastalRegion/Airport/AirTraffic/Flight2",
+			"proxy_surfaces": 1.0,
+			"proxy_triangles": 213.0,
+			"source_surfaces": 53.0,
+			"source_triangles": 829.0
+		},
+		{
+			"bounds_position": [
+				-402.830078125,
+				-15.0,
+				-325.8125
+			],
+			"bounds_size": [
+				807.547546386719,
+				54.9000015258789,
+				646.882873535156
+			],
+			"mesh": "res://assets/super-city/regional_proxies/PrisonIsland.res",
+			"path": "Waterfront/PrisonIsland",
+			"proxy_surfaces": 1,
+			"proxy_triangles": 1280,
+			"source_surfaces": 343,
+			"source_triangles": 7108
+		}
+	]
+}

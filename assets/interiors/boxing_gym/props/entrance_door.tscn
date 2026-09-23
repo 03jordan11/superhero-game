@@ -1,0 +1,33 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/entrance_door_Blue.res" id="1_hv376"]
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/entrance_door_Steel.res" id="2_00xxl"]
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/entrance_door_SteelEdge.res" id="3_dq48s"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pntd3"]
+size = Vector3(1.55, 3.1, 0.13)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t2ieo"]
+size = Vector3(1.55, 3.1, 0.13)
+
+[node name="EntranceDoor" type="Node3D" unique_id=125166391]
+metadata/rendered_triangles = 132
+
+[node name="entrance_door_Blue" type="MeshInstance3D" parent="." unique_id=1512769743]
+mesh = ExtResource("1_hv376")
+
+[node name="entrance_door_Steel" type="MeshInstance3D" parent="." unique_id=1542367224]
+mesh = ExtResource("2_00xxl")
+
+[node name="entrance_door_SteelEdge" type="MeshInstance3D" parent="." unique_id=1872661213]
+mesh = ExtResource("3_dq48s")
+
+[node name="Collision" type="StaticBody3D" parent="." unique_id=493288407]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision" unique_id=367055911]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.79, 1.55, 0)
+shape = SubResource("BoxShape3D_pntd3")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Collision" unique_id=1790933964]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.79, 1.55, 0)
+shape = SubResource("BoxShape3D_t2ieo")

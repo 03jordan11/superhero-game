@@ -33,6 +33,7 @@ func _ready() -> void:
 	hide()
 
 func _build_ui() -> void:
+	add_child(preload("res://scripts/ui-scripts/window_lighting_controls.gd").new())
 	var panel := PanelContainer.new()
 	panel.name = "Console"
 	panel.set_anchors_and_offsets_preset(Control.PRESET_TOP_RIGHT)
@@ -107,6 +108,7 @@ func _input(event: InputEvent) -> void:
 func _set_menu_open(is_open: bool) -> void:
 	if is_open == visible: return
 	if is_open:
+		if is_instance_valid(commands.player) and commands.player.is_dead: return
 		if get_tree().paused: return
 		previous_mouse_mode = Input.mouse_mode
 		_owns_pause = true

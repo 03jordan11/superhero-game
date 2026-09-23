@@ -1,0 +1,42 @@
+{
+	"city_ground": {
+		"cell_metres": 256.0,
+		"chunks": 94,
+		"render_triangles": 21095,
+		"result_area": 3737210.17339454,
+		"sha256": "a0236b572dd178b9d2acd67a15c14e69332b5511702a774132b5eb5b4a7b0e8d",
+		"source": "res://assets/mountain-river/mouth/meshes/GroundMesh.res",
+		"source_area": 3737210.15652698,
+		"source_triangles": 14109
+	},
+	"coastal_terrain": {
+		"cell_metres": 2048.0,
+		"chunks": 24,
+		"render_triangles": 26539,
+		"result_area": 53220116.6315931,
+		"sha256": "aeb2633fe6e549bf5c0cc8f158fedeb280ef2058721730e0d8823c9179ed3335",
+		"source": "res://assets/trees/boundary_terrain/city_coastal.res",
+		"source_area": 53220116.6154204,
+		"source_triangles": 24203
+	},
+	"northern_ground": {
+		"cell_metres": 1024.0,
+		"chunks": 51,
+		"render_triangles": 8905,
+		"result_area": 31585869.3142648,
+		"sha256": "0d32acfaa4cee042fdec10b13c6d38f3b1b13bc8f8d18cd2a3214bc0a50c30a8",
+		"source": "res://assets/trees/boundary_terrain/city_northern.res",
+		"source_area": 31585868.9630191,
+		"source_triangles": 6895
+	},
+	"pine_pass_mountains": {
+		"cell_metres": 512.0,
+		"chunks": 85,
+		"render_triangles": 2374,
+		"result_area": 27627183.086204,
+		"sha256": "55cdda4277b90cdc88f2d7ac5beb30607b942698750ca0bb0799b257470fb77f",
+		"source": "res://assets/city-life/meshes/pine_pass_mountains.res",
+		"source_area": 27627182.7294922,
+		"source_triangles": 756
+	}
+}

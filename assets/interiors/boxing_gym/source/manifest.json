@@ -1,0 +1,1892 @@
+{
+  "materials": {
+    "Plaster": {
+      "color": [
+        0.6200000047683716,
+        0.5699999928474426,
+        0.4699999988079071,
+        1.0
+      ],
+      "metallic": 0.0,
+      "texture": "assets/interiors/boxing_gym/textures/plaster.png",
+      "emission": 0
+    },
+    "Concrete": {
+      "color": [
+        0.4000000059604645,
+        0.4099999964237213,
+        0.38999998569488525,
+        1.0
+      ],
+      "metallic": 0.0,
+      "texture": "assets/interiors/boxing_gym/textures/concrete.png",
+      "emission": 0
+    },
+    "Teal": {
+      "color": [
+        0.10000000149011612,
+        0.2199999988079071,
+        0.23000000417232513,
+        1.0
+      ],
+      "metallic": 0.0,
+      "texture": "assets/interiors/boxing_gym/textures/concrete.png",
+      "emission": 0
+    },
+    "Brick": {
+      "color": [
+        0.41999998688697815,
+        0.33000001311302185,
+        0.25,
+        1.0
+      ],
+      "metallic": 0.0,
+      "texture": "assets/interiors/boxing_gym/textures/concrete.png",
+      "emission": 0
+    },
+    "Steel": {
+      "color": [
+        0.07500000298023224,
+        0.0949999988079071,
+        0.10499999672174454,
+        1.0
+      ],
+      "metallic": 0.550000011920929,
+      "texture": "",
+      "emission": 0
+    },
+    "SteelEdge": {
+      "color": [
+        0.2800000011920929,
+        0.3100000023841858,
+        0.30000001192092896,
+        1.0
+      ],
+      "metallic": 0.6499999761581421,
+      "texture": "",
+      "emission": 0
+    },
+    "Canvas": {
+      "color": [
+        0.75,
+        0.7200000286102295,
+        0.6200000047683716,
+        1.0
+      ],
+      "metallic": 0.0,
+      "texture": "assets/interiors/boxing_gym/textures/canvas.png",
+      "emission": 0
+    },
+    "CanvasEdge": {
+      "color": [
+        0.4300000071525574,
+        0.4000000059604645,
+        0.3199999928474426,
+        1.0
+      ],
+      "metallic": 0.0,
+      "texture": "",
+      "emission": 0
+    },
+    "Apron": {
+      "color": [
+        0.08500000089406967,
+        0.17000000178813934,
+        0.2199999988079071,
+        1.0
+      ],
+      "metallic": 0.0,
+      "texture": "assets/interiors/boxing_gym/textures/canvas.png",
+      "emission": 0
+    },
+    "Red": {
+      "color": [
+        0.4300000071525574,
+        0.09000000357627869,
+        0.06499999761581421,
+        1.0
+      ],
+      "metallic": 0.0,
+      "texture": "",
+      "emission": 0
+    },
+    "Blue": {
+      "color": [
+        0.07999999821186066,
+        0.18000000715255737,
+        0.23999999463558197,
+        1.0
+      ],
+      "metallic": 0.0,
+      "texture": "",
+      "emission": 0
+    },
+    "Ivory": {
+      "color": [
+        0.7200000286102295,
+        0.6899999976158142,
+        0.5699999928474426,
+        1.0
+      ],
+      "metallic": 0.0,
+      "texture": "",
+      "emission": 0
+    },
+    "Rubber": {
+      "color": [
+        0.07000000029802322,
+        0.07999999821186066,
+        0.07999999821186066,
+        1.0
+      ],
+      "metallic": 0.0,
+      "texture": "assets/interiors/boxing_gym/textures/rubber.png",
+      "emission": 0
+    },
+    "Wood": {
+      "color": [
+        0.2800000011920929,
+        0.1899999976158142,
+        0.10499999672174454,
+        1.0
+      ],
+      "metallic": 0.0,
+      "texture": "assets/interiors/boxing_gym/textures/wood.png",
+      "emission": 0
+    },
+    "WoodLight": {
+      "color": [
+        0.41999998688697815,
+        0.30000001192092896,
+        0.17000000178813934,
+        1.0
+      ],
+      "metallic": 0.0,
+      "texture": "assets/interiors/boxing_gym/textures/wood.png",
+      "emission": 0
+    },
+    "Locker": {
+      "color": [
+        0.10999999940395355,
+        0.20000000298023224,
+        0.25,
+        1.0
+      ],
+      "metallic": 0.3499999940395355,
+      "texture": "",
+      "emission": 0
+    },
+    "Paper": {
+      "color": [
+        0.550000011920929,
+        0.47999998927116394,
+        0.3400000035762787,
+        1.0
+      ],
+      "metallic": 0.0,
+      "texture": "",
+      "emission": 0
+    },
+    "Ink": {
+      "color": [
+        0.07999999821186066,
+        0.10499999672174454,
+        0.10000000149011612,
+        1.0
+      ],
+      "metallic": 0.0,
+      "texture": "",
+      "emission": 0
+    },
+    "Leather": {
+      "color": [
+        0.23000000417232513,
+        0.06499999761581421,
+        0.041999999433755875,
+        1.0
+      ],
+      "metallic": 0.0,
+      "texture": "",
+      "emission": 0
+    },
+    "Lamp": {
+      "color": [
+        0.949999988079071,
+        0.7799999713897705,
+        0.47999998927116394,
+        1.0
+      ],
+      "metallic": 0.0,
+      "texture": "",
+      "emission": 3.0
+    },
+    "ExitGreen": {
+      "color": [
+        0.02500000037252903,
+        0.20000000298023224,
+        0.06499999761581421,
+        1.0
+      ],
+      "metallic": 0.0,
+      "texture": "",
+      "emission": 0.6000000238418579
+    },
+    "WindowGlass": {
+      "color": [
+        0.11999999731779099,
+        0.1899999976158142,
+        0.2199999988079071,
+        1.0
+      ],
+      "metallic": 0.25,
+      "texture": "",
+      "emission": 0
+    }
+  },
+  "assets": {
+    "floor": {
+      "collision": [
+        {
+          "center": [
+            0,
+            -0.16,
+            0
+          ],
+          "size": [
+            24.6,
+            0.32,
+            22.6
+          ]
+        }
+      ]
+    },
+    "walls": {
+      "collision": [
+        {
+          "center": [
+            0,
+            4,
+            -11.2
+          ],
+          "size": [
+            24.8,
+            8,
+            0.4
+          ]
+        },
+        {
+          "center": [
+            -12.2,
+            4,
+            0
+          ],
+          "size": [
+            0.4,
+            8,
+            22
+          ]
+        },
+        {
+          "center": [
+            12.2,
+            4,
+            0
+          ],
+          "size": [
+            0.4,
+            8,
+            22
+          ]
+        },
+        {
+          "center": [
+            -11.7,
+            4,
+            -10.77
+          ],
+          "size": [
+            0.36,
+            8,
+            0.4
+          ]
+        },
+        {
+          "center": [
+            -6,
+            4,
+            -10.77
+          ],
+          "size": [
+            0.36,
+            8,
+            0.4
+          ]
+        },
+        {
+          "center": [
+            6,
+            4,
+            -10.77
+          ],
+          "size": [
+            0.36,
+            8,
+            0.4
+          ]
+        },
+        {
+          "center": [
+            11.7,
+            4,
+            -10.77
+          ],
+          "size": [
+            0.36,
+            8,
+            0.4
+          ]
+        },
+        {
+          "center": [
+            -11.77,
+            4,
+            -5
+          ],
+          "size": [
+            0.45,
+            8,
+            0.4
+          ]
+        },
+        {
+          "center": [
+            -11.77,
+            4,
+            1
+          ],
+          "size": [
+            0.45,
+            8,
+            0.4
+          ]
+        },
+        {
+          "center": [
+            -11.77,
+            4,
+            7
+          ],
+          "size": [
+            0.45,
+            8,
+            0.4
+          ]
+        },
+        {
+          "center": [
+            11.77,
+            4,
+            -5
+          ],
+          "size": [
+            0.45,
+            8,
+            0.4
+          ]
+        },
+        {
+          "center": [
+            11.77,
+            4,
+            1
+          ],
+          "size": [
+            0.45,
+            8,
+            0.4
+          ]
+        },
+        {
+          "center": [
+            11.77,
+            4,
+            7
+          ],
+          "size": [
+            0.45,
+            8,
+            0.4
+          ]
+        }
+      ]
+    },
+    "front_wall": {
+      "collision": [
+        {
+          "center": [
+            -6.9,
+            4,
+            11.2
+          ],
+          "size": [
+            10.2,
+            8,
+            0.4
+          ]
+        },
+        {
+          "center": [
+            6.9,
+            4,
+            11.2
+          ],
+          "size": [
+            10.2,
+            8,
+            0.4
+          ]
+        },
+        {
+          "center": [
+            0,
+            5.6,
+            11.2
+          ],
+          "size": [
+            3.6,
+            4.8,
+            0.4
+          ]
+        }
+      ]
+    },
+    "ceiling": {
+      "collision": [
+        {
+          "center": [
+            0,
+            8.1,
+            0
+          ],
+          "size": [
+            24.7,
+            0.2,
+            22.7
+          ]
+        }
+      ]
+    },
+    "entrance_door": {
+      "collision": [
+        {
+          "center": [
+            -0.79,
+            1.55,
+            0
+          ],
+          "size": [
+            1.55,
+            3.1,
+            0.13
+          ]
+        },
+        {
+          "center": [
+            0.79,
+            1.55,
+            0
+          ],
+          "size": [
+            1.55,
+            3.1,
+            0.13
+          ]
+        }
+      ]
+    },
+    "catwalk": {
+      "collision": [
+        {
+          "center": [
+            0,
+            3.45,
+            -9.25
+          ],
+          "size": [
+            23.5,
+            0.3,
+            3.5
+          ]
+        },
+        {
+          "center": [
+            8.75,
+            3.45,
+            -6.35
+          ],
+          "size": [
+            6,
+            0.3,
+            2.3
+          ]
+        },
+        {
+          "center": [
+            -7,
+            1.65,
+            -8
+          ],
+          "size": [
+            0.18,
+            3.3,
+            0.18
+          ]
+        },
+        {
+          "center": [
+            -1,
+            1.65,
+            -8
+          ],
+          "size": [
+            0.18,
+            3.3,
+            0.18
+          ]
+        },
+        {
+          "center": [
+            5,
+            1.65,
+            -8
+          ],
+          "size": [
+            0.18,
+            3.3,
+            0.18
+          ]
+        },
+        {
+          "center": [
+            -1.5250000953674316,
+            4.150000095367432,
+            -7.5
+          ],
+          "size": [
+            14.550000190734863,
+            1.1,
+            0.09
+          ]
+        },
+        {
+          "center": [
+            5.75,
+            4.150000095367432,
+            -6.349999904632568
+          ],
+          "size": [
+            0.09,
+            1.1,
+            2.3000001907348633
+          ]
+        },
+        {
+          "center": [
+            8.75,
+            4.150000095367432,
+            -5.199999809265137
+          ],
+          "size": [
+            6.0,
+            1.1,
+            0.09
+          ]
+        }
+      ]
+    },
+    "catwalk_stairs": {
+      "collision": [
+        {
+          "points": [
+            [
+              -11.0,
+              0,
+              -1.2
+            ],
+            [
+              -9.2,
+              0,
+              -1.2
+            ],
+            [
+              -11.0,
+              0,
+              -7.5
+            ],
+            [
+              -9.2,
+              0,
+              -7.5
+            ],
+            [
+              -11.0,
+              3.6,
+              -7.5
+            ],
+            [
+              -9.2,
+              3.6,
+              -7.5
+            ]
+          ]
+        },
+        {
+          "points": [
+            [
+              -11.120000000000001,
+              0,
+              -1.2
+            ],
+            [
+              -11.120000000000001,
+              1.1,
+              -1.2
+            ],
+            [
+              -11.120000000000001,
+              3.6,
+              -7.5
+            ],
+            [
+              -11.120000000000001,
+              4.7,
+              -7.5
+            ],
+            [
+              -10.98,
+              0,
+              -1.2
+            ],
+            [
+              -10.98,
+              1.1,
+              -1.2
+            ],
+            [
+              -10.98,
+              3.6,
+              -7.5
+            ],
+            [
+              -10.98,
+              4.7,
+              -7.5
+            ]
+          ]
+        },
+        {
+          "points": [
+            [
+              -9.22,
+              0,
+              -1.2
+            ],
+            [
+              -9.22,
+              1.1,
+              -1.2
+            ],
+            [
+              -9.22,
+              3.6,
+              -7.5
+            ],
+            [
+              -9.22,
+              4.7,
+              -7.5
+            ],
+            [
+              -9.08,
+              0,
+              -1.2
+            ],
+            [
+              -9.08,
+              1.1,
+              -1.2
+            ],
+            [
+              -9.08,
+              3.6,
+              -7.5
+            ],
+            [
+              -9.08,
+              4.7,
+              -7.5
+            ]
+          ]
+        }
+      ]
+    },
+    "boxing_ring": {
+      "collision": [
+        {
+          "center": [
+            0,
+            0.46,
+            0
+          ],
+          "size": [
+            7.4,
+            0.92,
+            7.4
+          ]
+        },
+        {
+          "center": [
+            0,
+            0.96,
+            0
+          ],
+          "size": [
+            7.4,
+            0.08,
+            7.4
+          ]
+        },
+        {
+          "center": [
+            -3.37,
+            0.08,
+            -3.37
+          ],
+          "size": [
+            0.36,
+            0.16,
+            0.36
+          ]
+        },
+        {
+          "center": [
+            -3.37,
+            0.08,
+            3.37
+          ],
+          "size": [
+            0.36,
+            0.16,
+            0.36
+          ]
+        },
+        {
+          "center": [
+            3.37,
+            0.08,
+            -3.37
+          ],
+          "size": [
+            0.36,
+            0.16,
+            0.36
+          ]
+        },
+        {
+          "center": [
+            3.37,
+            0.08,
+            3.37
+          ],
+          "size": [
+            0.36,
+            0.16,
+            0.36
+          ]
+        },
+        {
+          "center": [
+            -3.08,
+            1.7,
+            0
+          ],
+          "size": [
+            0.07,
+            1.4,
+            6.16
+          ]
+        },
+        {
+          "center": [
+            3.08,
+            1.7,
+            0
+          ],
+          "size": [
+            0.07,
+            1.4,
+            6.16
+          ]
+        },
+        {
+          "center": [
+            0,
+            1.7,
+            -3.08
+          ],
+          "size": [
+            6.16,
+            1.4,
+            0.07
+          ]
+        },
+        {
+          "center": [
+            0,
+            1.7,
+            3.08
+          ],
+          "size": [
+            6.16,
+            1.4,
+            0.07
+          ]
+        }
+      ]
+    },
+    "ring_steps": {
+      "collision": [
+        {
+          "points": [
+            [
+              -0.75,
+              0,
+              1.5
+            ],
+            [
+              0.75,
+              0,
+              1.5
+            ],
+            [
+              -0.75,
+              0,
+              0
+            ],
+            [
+              0.75,
+              0,
+              0
+            ],
+            [
+              -0.75,
+              1,
+              0
+            ],
+            [
+              0.75,
+              1,
+              0
+            ]
+          ]
+        }
+      ]
+    },
+    "heavy_bag": {
+      "collision": [
+        {
+          "center": [
+            0,
+            2.7,
+            -0.75
+          ],
+          "size": [
+            0.18,
+            1.6,
+            0.16
+          ]
+        },
+        {
+          "center": [
+            0,
+            1.55,
+            0.32
+          ],
+          "size": [
+            0.62,
+            1.8,
+            0.62
+          ]
+        }
+      ]
+    },
+    "speed_bag": {
+      "collision": [
+        {
+          "center": [
+            0,
+            2.2,
+            -0.42
+          ],
+          "size": [
+            0.9,
+            0.85,
+            0.12
+          ]
+        },
+        {
+          "center": [
+            0,
+            2.4,
+            0.05
+          ],
+          "size": [
+            1,
+            0.45,
+            0.95
+          ]
+        }
+      ]
+    },
+    "weight_rack": {
+      "collision": [
+        {
+          "center": [
+            -1.35,
+            0.08,
+            0
+          ],
+          "size": [
+            0.16,
+            0.16,
+            1.05
+          ]
+        },
+        {
+          "center": [
+            1.35,
+            0.08,
+            0
+          ],
+          "size": [
+            0.16,
+            0.16,
+            1.05
+          ]
+        },
+        {
+          "center": [
+            0,
+            0.48,
+            0.02
+          ],
+          "size": [
+            3,
+            0.07,
+            0.58
+          ]
+        },
+        {
+          "center": [
+            0,
+            1.05,
+            0.02
+          ],
+          "size": [
+            3,
+            0.07,
+            0.58
+          ]
+        }
+      ]
+    },
+    "bench": {
+      "collision": [
+        {
+          "center": [
+            -0.85,
+            0.23,
+            0
+          ],
+          "size": [
+            0.09,
+            0.46,
+            0.48
+          ]
+        },
+        {
+          "center": [
+            0.85,
+            0.23,
+            0
+          ],
+          "size": [
+            0.09,
+            0.46,
+            0.48
+          ]
+        },
+        {
+          "center": [
+            0,
+            0.49,
+            -0.16
+          ],
+          "size": [
+            2.2,
+            0.1,
+            0.145
+          ]
+        },
+        {
+          "center": [
+            0,
+            0.49,
+            0
+          ],
+          "size": [
+            2.2,
+            0.1,
+            0.145
+          ]
+        },
+        {
+          "center": [
+            0,
+            0.49,
+            0.16
+          ],
+          "size": [
+            2.2,
+            0.1,
+            0.145
+          ]
+        }
+      ]
+    },
+    "locker": {
+      "collision": [
+        {
+          "center": [
+            0,
+            1.02,
+            0
+          ],
+          "size": [
+            0.66,
+            2.04,
+            0.55
+          ]
+        }
+      ]
+    },
+    "mat": {
+      "collision": []
+    },
+    "boarded_window": {
+      "collision": []
+    },
+    "poster": {
+      "collision": []
+    },
+    "desk": {
+      "collision": [
+        {
+          "center": [
+            0,
+            0.78,
+            0
+          ],
+          "size": [
+            1.9,
+            0.09,
+            0.82
+          ]
+        },
+        {
+          "center": [
+            -0.78,
+            0.36,
+            0
+          ],
+          "size": [
+            0.12,
+            0.72,
+            0.7
+          ]
+        },
+        {
+          "center": [
+            0.78,
+            0.36,
+            0
+          ],
+          "size": [
+            0.12,
+            0.72,
+            0.7
+          ]
+        }
+      ]
+    },
+    "chair": {
+      "collision": [
+        {
+          "center": [
+            0,
+            0.47,
+            0
+          ],
+          "size": [
+            0.58,
+            0.1,
+            0.55
+          ]
+        },
+        {
+          "center": [
+            0,
+            0.85,
+            -0.25
+          ],
+          "size": [
+            0.58,
+            0.62,
+            0.09
+          ]
+        }
+      ]
+    },
+    "crate": {
+      "collision": [
+        {
+          "center": [
+            0,
+            0.28,
+            0
+          ],
+          "size": [
+            0.7,
+            0.56,
+            0.55
+          ]
+        }
+      ]
+    },
+    "duffel": {
+      "collision": []
+    },
+    "towel": {
+      "collision": []
+    },
+    "bottle": {
+      "collision": []
+    },
+    "pendant": {
+      "collision": []
+    },
+    "wall_light": {
+      "collision": []
+    },
+    "front_window": {
+      "collision": []
+    },
+    "bathroom_exterior": {
+      "collision": [
+        {
+          "center": [
+            0,
+            1.62,
+            0
+          ],
+          "size": [
+            5.4,
+            3.24,
+            4.3
+          ]
+        }
+      ]
+    },
+    "back_door": {
+      "collision": [
+        {
+          "center": [
+            0,
+            1.32,
+            0
+          ],
+          "size": [
+            1.35,
+            2.64,
+            0.12
+          ]
+        }
+      ]
+    },
+    "exit_sign": {
+      "collision": []
+    }
+  },
+  "placements": [
+    {
+      "kind": "floor",
+      "name": "Floor",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "yaw": 0,
+      "category": "Architecture"
+    },
+    {
+      "kind": "walls",
+      "name": "Walls",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "yaw": 0,
+      "category": "Architecture"
+    },
+    {
+      "kind": "front_wall",
+      "name": "FrontWall",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "yaw": 0,
+      "category": "Architecture"
+    },
+    {
+      "kind": "ceiling",
+      "name": "Ceiling",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "yaw": 0,
+      "category": "Architecture"
+    },
+    {
+      "kind": "catwalk",
+      "name": "Catwalk",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "yaw": 0,
+      "category": "Architecture"
+    },
+    {
+      "kind": "catwalk_stairs",
+      "name": "CatwalkStairs",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "yaw": 0,
+      "category": "Architecture"
+    },
+    {
+      "kind": "entrance_door",
+      "name": "EntranceDoor",
+      "position": [
+        0,
+        0,
+        10.94
+      ],
+      "yaw": 3.141592653589793,
+      "category": "Props"
+    },
+    {
+      "kind": "boxing_ring",
+      "name": "BoxingRing",
+      "position": [
+        0,
+        0,
+        1
+      ],
+      "yaw": 0,
+      "category": "Training"
+    },
+    {
+      "kind": "ring_steps",
+      "name": "RingSteps",
+      "position": [
+        -2.2,
+        0,
+        4.7
+      ],
+      "yaw": 0,
+      "category": "Training"
+    },
+    {
+      "kind": "front_window",
+      "name": "FrontWindowLeft",
+      "position": [
+        -6.9,
+        1.82,
+        10.94
+      ],
+      "yaw": 3.141592653589793,
+      "category": "Props"
+    },
+    {
+      "kind": "front_window",
+      "name": "FrontWindowRight",
+      "position": [
+        6.9,
+        1.82,
+        10.94
+      ],
+      "yaw": 3.141592653589793,
+      "category": "Props"
+    },
+    {
+      "kind": "bathroom_exterior",
+      "name": "BathroomExterior",
+      "position": [
+        9,
+        0,
+        -8.6
+      ],
+      "yaw": 0,
+      "category": "Architecture"
+    },
+    {
+      "kind": "back_door",
+      "name": "BackDoor",
+      "position": [
+        -8.65,
+        0,
+        -10.93
+      ],
+      "yaw": 0,
+      "category": "Props"
+    },
+    {
+      "kind": "exit_sign",
+      "name": "RearExitSign",
+      "position": [
+        -8.65,
+        2.98,
+        -10.88
+      ],
+      "yaw": 0,
+      "category": "Props"
+    },
+    {
+      "kind": "heavy_bag",
+      "name": "HeavyBag1",
+      "position": [
+        -11.15,
+        0,
+        2.8
+      ],
+      "yaw": 1.5707963267948966,
+      "category": "Training"
+    },
+    {
+      "kind": "heavy_bag",
+      "name": "HeavyBag2",
+      "position": [
+        -11.15,
+        0,
+        6.3
+      ],
+      "yaw": 1.5707963267948966,
+      "category": "Training"
+    },
+    {
+      "kind": "speed_bag",
+      "name": "SpeedBag",
+      "position": [
+        11.4,
+        0,
+        5.4
+      ],
+      "yaw": -1.5707963267948966,
+      "category": "Training"
+    },
+    {
+      "kind": "weight_rack",
+      "name": "WeightRack",
+      "position": [
+        10.5,
+        0,
+        0.2
+      ],
+      "yaw": -1.5707963267948966,
+      "category": "Training"
+    },
+    {
+      "kind": "locker",
+      "name": "Locker1",
+      "position": [
+        -4.8,
+        0,
+        -10.35
+      ],
+      "yaw": 0,
+      "category": "Props"
+    },
+    {
+      "kind": "locker",
+      "name": "Locker2",
+      "position": [
+        -4.08,
+        0,
+        -10.35
+      ],
+      "yaw": 0,
+      "category": "Props"
+    },
+    {
+      "kind": "locker",
+      "name": "Locker3",
+      "position": [
+        -3.36,
+        0,
+        -10.35
+      ],
+      "yaw": 0,
+      "category": "Props"
+    },
+    {
+      "kind": "locker",
+      "name": "Locker4",
+      "position": [
+        -2.64,
+        0,
+        -10.35
+      ],
+      "yaw": 0,
+      "category": "Props"
+    },
+    {
+      "kind": "locker",
+      "name": "Locker5",
+      "position": [
+        -1.92,
+        0,
+        -10.35
+      ],
+      "yaw": 0,
+      "category": "Props"
+    },
+    {
+      "kind": "locker",
+      "name": "Locker6",
+      "position": [
+        1.7,
+        0,
+        -10.35
+      ],
+      "yaw": 0,
+      "category": "Props"
+    },
+    {
+      "kind": "locker",
+      "name": "Locker7",
+      "position": [
+        2.42,
+        0,
+        -10.35
+      ],
+      "yaw": 0,
+      "category": "Props"
+    },
+    {
+      "kind": "locker",
+      "name": "Locker8",
+      "position": [
+        3.14,
+        0,
+        -10.35
+      ],
+      "yaw": 0,
+      "category": "Props"
+    },
+    {
+      "kind": "bench",
+      "name": "Bench1",
+      "position": [
+        -3.4,
+        0,
+        -8.6
+      ],
+      "yaw": 0,
+      "category": "Props"
+    },
+    {
+      "kind": "bench",
+      "name": "Bench2",
+      "position": [
+        5.4,
+        0,
+        1
+      ],
+      "yaw": 1.5707963267948966,
+      "category": "Props"
+    },
+    {
+      "kind": "bench",
+      "name": "Bench3",
+      "position": [
+        -5.4,
+        0,
+        1
+      ],
+      "yaw": 1.5707963267948966,
+      "category": "Props"
+    },
+    {
+      "kind": "mat",
+      "name": "TrainingMat1",
+      "position": [
+        -10,
+        0,
+        2.8
+      ],
+      "yaw": 0,
+      "category": "Props"
+    },
+    {
+      "kind": "mat",
+      "name": "TrainingMat2",
+      "position": [
+        -10,
+        0,
+        6.3
+      ],
+      "yaw": 0,
+      "category": "Props"
+    },
+    {
+      "kind": "mat",
+      "name": "TrainingMat3",
+      "position": [
+        10.2,
+        0,
+        5.4
+      ],
+      "yaw": 0,
+      "category": "Props"
+    },
+    {
+      "kind": "mat",
+      "name": "TrainingMat4",
+      "position": [
+        9.8,
+        0,
+        0
+      ],
+      "yaw": 0,
+      "category": "Props"
+    },
+    {
+      "kind": "mat",
+      "name": "TrainingMat5",
+      "position": [
+        7.4,
+        0,
+        0
+      ],
+      "yaw": 0,
+      "category": "Props"
+    },
+    {
+      "kind": "boarded_window",
+      "name": "Window0_-1",
+      "position": [
+        -11.97,
+        5.2,
+        -6
+      ],
+      "yaw": 1.5707963267948966,
+      "category": "Props"
+    },
+    {
+      "kind": "boarded_window",
+      "name": "Window0_1",
+      "position": [
+        11.97,
+        5.2,
+        -6
+      ],
+      "yaw": -1.5707963267948966,
+      "category": "Props"
+    },
+    {
+      "kind": "boarded_window",
+      "name": "Window1_-1",
+      "position": [
+        -11.97,
+        5.2,
+        0
+      ],
+      "yaw": 1.5707963267948966,
+      "category": "Props"
+    },
+    {
+      "kind": "boarded_window",
+      "name": "Window1_1",
+      "position": [
+        11.97,
+        5.2,
+        0
+      ],
+      "yaw": -1.5707963267948966,
+      "category": "Props"
+    },
+    {
+      "kind": "boarded_window",
+      "name": "Window2_-1",
+      "position": [
+        -11.97,
+        5.2,
+        6
+      ],
+      "yaw": 1.5707963267948966,
+      "category": "Props"
+    },
+    {
+      "kind": "boarded_window",
+      "name": "Window2_1",
+      "position": [
+        11.97,
+        5.2,
+        6
+      ],
+      "yaw": -1.5707963267948966,
+      "category": "Props"
+    },
+    {
+      "kind": "poster",
+      "name": "Poster1",
+      "position": [
+        -4,
+        5.55,
+        -10.94
+      ],
+      "yaw": 0,
+      "category": "Props"
+    },
+    {
+      "kind": "poster",
+      "name": "Poster2",
+      "position": [
+        0,
+        5.55,
+        -10.94
+      ],
+      "yaw": 0,
+      "category": "Props"
+    },
+    {
+      "kind": "poster",
+      "name": "Poster3",
+      "position": [
+        4,
+        5.55,
+        -10.94
+      ],
+      "yaw": 0,
+      "category": "Props"
+    },
+    {
+      "kind": "desk",
+      "name": "OfficeDesk",
+      "position": [
+        8.6,
+        3.6,
+        -8.2
+      ],
+      "yaw": 0,
+      "category": "Props"
+    },
+    {
+      "kind": "chair",
+      "name": "OfficeChair",
+      "position": [
+        8.6,
+        3.6,
+        -9.2
+      ],
+      "yaw": 0,
+      "category": "Props"
+    },
+    {
+      "kind": "bottle",
+      "name": "OfficeBottle",
+      "position": [
+        8.1,
+        4.425,
+        -8.1
+      ],
+      "yaw": 0,
+      "category": "Props"
+    },
+    {
+      "kind": "towel",
+      "name": "OfficePapers",
+      "position": [
+        9,
+        4.425,
+        -8.2
+      ],
+      "yaw": 0,
+      "category": "Props"
+    },
+    {
+      "kind": "crate",
+      "name": "StorageCrate1",
+      "position": [
+        5,
+        0,
+        -10
+      ],
+      "yaw": 0,
+      "category": "Props"
+    },
+    {
+      "kind": "crate",
+      "name": "StorageCrate2",
+      "position": [
+        5.75,
+        0,
+        -10
+      ],
+      "yaw": 0,
+      "category": "Props"
+    },
+    {
+      "kind": "duffel",
+      "name": "KitBag",
+      "position": [
+        -4,
+        0,
+        -8
+      ],
+      "yaw": 0,
+      "category": "Props"
+    },
+    {
+      "kind": "towel",
+      "name": "BenchTowel",
+      "position": [
+        -3.6,
+        0.54,
+        -8.6
+      ],
+      "yaw": 0,
+      "category": "Props"
+    },
+    {
+      "kind": "bottle",
+      "name": "WaterBottle",
+      "position": [
+        -2.8,
+        0.54,
+        -8.6
+      ],
+      "yaw": 0,
+      "category": "Props"
+    },
+    {
+      "kind": "pendant",
+      "name": "Pendant1",
+      "position": [
+        -4,
+        7.6,
+        -3
+      ],
+      "yaw": 0,
+      "category": "Lighting"
+    },
+    {
+      "kind": "pendant",
+      "name": "Pendant2",
+      "position": [
+        4,
+        7.6,
+        -3
+      ],
+      "yaw": 0,
+      "category": "Lighting"
+    },
+    {
+      "kind": "pendant",
+      "name": "Pendant3",
+      "position": [
+        -4,
+        7.6,
+        4
+      ],
+      "yaw": 0,
+      "category": "Lighting"
+    },
+    {
+      "kind": "pendant",
+      "name": "Pendant4",
+      "position": [
+        4,
+        7.6,
+        4
+      ],
+      "yaw": 0,
+      "category": "Lighting"
+    },
+    {
+      "kind": "pendant",
+      "name": "Pendant5",
+      "position": [
+        0,
+        7.6,
+        8
+      ],
+      "yaw": 0,
+      "category": "Lighting"
+    },
+    {
+      "kind": "wall_light",
+      "name": "WallLight1",
+      "position": [
+        -8,
+        5.6,
+        -10.85
+      ],
+      "yaw": 0,
+      "category": "Lighting"
+    },
+    {
+      "kind": "wall_light",
+      "name": "WallLight2",
+      "position": [
+        2,
+        5.6,
+        -10.85
+      ],
+      "yaw": 0,
+      "category": "Lighting"
+    },
+    {
+      "kind": "wall_light",
+      "name": "WallLight3",
+      "position": [
+        8,
+        5.6,
+        -10.85
+      ],
+      "yaw": 0,
+      "category": "Lighting"
+    }
+  ]
+}

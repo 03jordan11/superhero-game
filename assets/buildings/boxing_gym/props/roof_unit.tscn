@@ -1,0 +1,43 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="res://assets/buildings/boxing_gym/meshes/roof_unit_Roof.res" id="1_qmfou"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/boxing_gym/meshes/roof_unit_Steel.res" id="2_yqjja"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/boxing_gym/meshes/roof_unit_Trim.res" id="3_3libu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_00p0g"]
+size = Vector3(0.14, 0.26, 1.9)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g8h0k"]
+size = Vector3(0.14, 0.26, 1.9)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8mhv6"]
+size = Vector3(2.3, 0.8, 1.7)
+
+[node name="RoofUnit" type="Node3D" unique_id=1570474255]
+metadata/rendered_triangles = 672
+
+[node name="roof_unit_Roof" type="MeshInstance3D" parent="." unique_id=2087711773]
+mesh = ExtResource("1_qmfou")
+visibility_range_end = 100.0
+
+[node name="roof_unit_Steel" type="MeshInstance3D" parent="." unique_id=94756275]
+mesh = ExtResource("2_yqjja")
+visibility_range_end = 100.0
+
+[node name="roof_unit_Trim" type="MeshInstance3D" parent="." unique_id=634541297]
+mesh = ExtResource("3_3libu")
+visibility_range_end = 100.0
+
+[node name="Collision" type="StaticBody3D" parent="." unique_id=1752658436]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision" unique_id=1573894382]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9, 0.13, 0)
+shape = SubResource("BoxShape3D_00p0g")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Collision" unique_id=1181164541]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, 0.13, 0)
+shape = SubResource("BoxShape3D_g8h0k")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Collision" unique_id=1436992739]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.63, 0)
+shape = SubResource("BoxShape3D_8mhv6")

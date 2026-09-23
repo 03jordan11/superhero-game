@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://assets/buildings/firehouse/firehouse.gd" id="1_2sb01"]
 [ext_resource type="PackedScene" path="res://assets/buildings/firehouse/firehouse.glb" id="2_gavhq"]
-[ext_resource type="PackedScene" path="res://assets/buildings/firehouse/props/bench.tscn" id="3_vkfm6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_53s1w"]
 size = Vector3(28, 13.6, 22)
@@ -96,9 +95,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 25.8, 3.65)
 shape = SubResource("BoxShape3D_3787a")
 
 [node name="Props" type="Node3D" parent="." unique_id=363133053]
-
-[node name="Bench_00" type="Node3D" parent="Props" unique_id=1462012096 instance=ExtResource("3_vkfm6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -11.65)
-
-[node name="Bench_01" type="Node3D" parent="Props" unique_id=63024960 instance=ExtResource("3_vkfm6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -11.65)

@@ -1,0 +1,21 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="res://assets/buildings/boxing_gym/meshes/rear_door_Concrete.res" id="1_i2koi"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/boxing_gym/meshes/rear_door_Glass.res" id="2_d67oy"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/boxing_gym/meshes/rear_door_Steel.res" id="3_reoaf"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/boxing_gym/meshes/rear_door_Trim.res" id="4_xmd0t"]
+
+[node name="RearDoor" type="Node3D" unique_id=13866309]
+metadata/rendered_triangles = 96
+
+[node name="rear_door_Concrete" type="MeshInstance3D" parent="." unique_id=325105325]
+mesh = ExtResource("1_i2koi")
+
+[node name="rear_door_Glass" type="MeshInstance3D" parent="." unique_id=1290838813]
+mesh = ExtResource("2_d67oy")
+
+[node name="rear_door_Steel" type="MeshInstance3D" parent="." unique_id=10594958]
+mesh = ExtResource("3_reoaf")
+
+[node name="rear_door_Trim" type="MeshInstance3D" parent="." unique_id=974822111]
+mesh = ExtResource("4_xmd0t")

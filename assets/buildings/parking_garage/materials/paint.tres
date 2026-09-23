@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bu7i5au7xmpux"]
+
+[resource]
+resource_name = "GaragePaint"
+albedo_color = Color(0.86, 0.85, 0.76, 1)
+roughness = 0.87
+texture_filter = 5

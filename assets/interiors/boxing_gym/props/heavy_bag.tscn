@@ -1,0 +1,41 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/heavy_bag_CanvasEdge.res" id="1_nnq6s"]
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/heavy_bag_Ink.res" id="2_87v84"]
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/heavy_bag_Leather.res" id="3_t4262"]
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/heavy_bag_Steel.res" id="4_ubml2"]
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/heavy_bag_SteelEdge.res" id="5_m27xx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sndi8"]
+size = Vector3(0.18, 1.6, 0.16)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g0wqh"]
+size = Vector3(0.62, 1.8, 0.62)
+
+[node name="HeavyBag" type="Node3D" unique_id=2117223443]
+metadata/rendered_triangles = 732
+
+[node name="heavy_bag_CanvasEdge" type="MeshInstance3D" parent="." unique_id=815489781]
+mesh = ExtResource("1_nnq6s")
+
+[node name="heavy_bag_Ink" type="MeshInstance3D" parent="." unique_id=346957462]
+mesh = ExtResource("2_87v84")
+
+[node name="heavy_bag_Leather" type="MeshInstance3D" parent="." unique_id=820493775]
+mesh = ExtResource("3_t4262")
+
+[node name="heavy_bag_Steel" type="MeshInstance3D" parent="." unique_id=2038003262]
+mesh = ExtResource("4_ubml2")
+
+[node name="heavy_bag_SteelEdge" type="MeshInstance3D" parent="." unique_id=882350011]
+mesh = ExtResource("5_m27xx")
+
+[node name="Collision" type="StaticBody3D" parent="." unique_id=1028674985]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision" unique_id=153152222]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7, -0.75)
+shape = SubResource("BoxShape3D_sndi8")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Collision" unique_id=1491332333]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.55, 0.32)
+shape = SubResource("BoxShape3D_g0wqh")

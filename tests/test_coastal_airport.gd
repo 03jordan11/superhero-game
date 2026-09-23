@@ -1,6 +1,7 @@
 extends SceneTree
 const LAND=preload("res://scripts/coastal_landscape.gd")
 const FLIGHTS=preload("res://scripts/coastal_airport.gd")
+const BOUNDARY=preload("res://assets/trees/tools/forest_boundary_clip.gd")
 var failures:=0
 func _initialize() -> void: run.call_deferred()
 func check(ok:bool,message:String) -> void:
@@ -24,13 +25,17 @@ func run() -> void:
 	for plane in region._planes:
 		check(plane.position.is_equal_approx(FLIGHTS.flight_position(float(plane.get_meta("phase")))),"Live aircraft transform matches its scheduled starting position")
 	check(region.has_node("Airport/ParkedJet0") and region.has_node("Airport/ParkedJet1"),"Two static gate aircraft")
-	var pruning: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://assets/mountain-river/report.json"))
-	check(region.get_meta("tree_count")==pruning.tree_counts.coastal_region.after,"Coastal tree metadata matches mountain clearing")
+	var pruning: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://assets/trees/forest_boundary_report.json"))
+	check(region.get_meta("tree_count")==pruning.tree_counts.coastal_region.after,"Coastal tree metadata matches boundary clearing")
+	var retained := BOUNDARY.saved_planes()
 	var space:=city.get_world_3d().direct_space_state
 	for x in [-22000,-9000,-5000,-1700,1700,5000,9000,22000]:
 		for z in [-8000,-900,300]:
 			var hit:=space.intersect_ray(PhysicsRayQueryParameters3D.create(Vector3(x,1500,z),Vector3(x,-10,z)))
-			check(not hit.is_empty() and hit.normal.y>0.5,"Solid extended land at "+str(Vector2(x,z)))
+			if BOUNDARY.contains(Vector3(x,0,z),retained):
+				check(not hit.is_empty() and hit.normal.y>0.5,"Solid retained land at "+str(Vector2(x,z)))
+			else:
+				check(hit.is_empty(),"No removed terrain collision at "+str(Vector2(x,z)))
 	# Existing bay and prison approaches stay open water, not covered by terrain.
 	for p in [Vector3(600,5,1600),Vector3(-1000,5,2300),Vector3(1000,5,2200)]:
 		var hit:=space.intersect_ray(PhysicsRayQueryParameters3D.create(p,p+Vector3.DOWN*50))

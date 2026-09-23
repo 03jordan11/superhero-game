@@ -272,7 +272,7 @@ func _spawn_near_focus() -> void:
 		var reach := sqrt(spawn_radius*spawn_radius-lateral*lateral)
 		var interval := Vector2(maxf(8.0,along-reach),minf(lane.length-15.0,along+reach))
 		if interval.y <= interval.x: continue
-		var midpoint: Vector3 = get_parent().to_global(lane.start+lane.forward*(interval.x+interval.y)*0.5)
+		var midpoint: Vector3 = get_parent().to_global(LANES.point(lane,(interval.x+interval.y)*0.5))
 		var offset: Vector3 = midpoint-_focus.global_position
 		offset.y = 0.0
 		var preference := 1.0
@@ -290,7 +290,7 @@ func _spawn_near_focus() -> void:
 		var lane_id: int = candidates[index]
 		var lane: Dictionary = lanes[lane_id]
 		var progress := randf_range(intervals[index].x,intervals[index].y)
-		var point: Vector3 = get_parent().to_global(lane.start+lane.forward*progress)
+		var point: Vector3 = get_parent().to_global(LANES.point(lane,progress))
 		var distance := _flat_distance(point,_focus.global_position)
 		if distance < minimum_spawn_distance or distance > spawn_radius: continue
 		if _lod != null and _lod.enabled and not _lod.wants_full(point): continue
@@ -334,10 +334,11 @@ func _spawn_vehicle(entry: Resource, lane_id: int, progress: float, transfer: Di
 		if other.lane == lane_id and absf(other.progress-progress) < half_length+other.half_length+required_gap:
 			car.free()
 			return null
-	var position_in_city: Vector3 = lane.start+lane.forward*progress
-	position_in_city.y += maxf(0.0,size.y*0.5-collision.position.y)+0.02
+	var position_in_city: Vector3 = LANES.vehicle_point(lane,progress,half_length)
+	var body_height := maxf(0.0,size.y*0.5-collision.position.y)+0.02
+	position_in_city.y += body_height
 	# +Z is the supplied meshes' nose direction. Allow other scene orientations.
-	var basis_in_city := Basis(Vector3.UP,atan2(lane.forward.x,lane.forward.z)+deg_to_rad(entry.heading_offset_degrees))
+	var basis_in_city := Basis.looking_at(LANES.direction(lane,progress,half_length),Vector3.UP,true)*Basis(Vector3.UP,deg_to_rad(entry.heading_offset_degrees))
 	var pose: Transform3D = get_parent().global_transform*Transform3D(basis_in_city,position_in_city)
 	if not crossing.is_empty():
 		position_in_city = _crossing_point(transfer,transfer.crossing_progress)
@@ -368,7 +369,7 @@ func _spawn_vehicle(entry: Resource, lane_id: int, progress: float, transfer: Di
 		"cruise":randf_range(minimum_speed,maxf(minimum_speed,maximum_speed)),
 		"following_gap":gap,"intersection_speed":randf_range(minimum_intersection_speed,maxf(minimum_intersection_speed,maximum_intersection_speed)),
 		"half_length":half_length,"stop_at":stop_at,"query":query,
-		"probe_offset":collision.position,"height":position_in_city.y,"basis":basis_in_city,
+		"probe_offset":collision.position,"height":road_height+body_height,"basis":basis_in_city,
 		"heading_offset":deg_to_rad(entry.heading_offset_degrees),"connection":{},"chosen_exit":{},
 		"crossing_progress":0.0,"wait_time":0.0,"arrival":-1,"reserved_junction":-1,
 		"id":car.get_instance_id(),"outside_time":0.0,"stopped_time":0.0})
@@ -402,27 +403,45 @@ func _drive(record: Dictionary, delta: float) -> void:
 		if other.car == car or other.lane != record.lane or other.progress <= record.progress: continue
 		if not is_instance_valid(other.car) or not other.car.traffic_controlled: continue
 		remaining = minf(remaining,maxf(0.0,other.progress-record.progress-record.half_length-other.half_length-record.following_gap))
-	# A single bounded sweep each physics tick; wait rather than search around obstacles.
-	var query: PhysicsShapeQueryParameters3D = record.query
-	query.transform = car.global_transform*Transform3D(Basis.IDENTITY,record.probe_offset)
+	# Follow the authored road grade while checking the braking distance.
 	var lookahead: float = record.following_gap+record.speed*delta+record.speed*record.speed/(2.0*maxf(braking,0.1))
-	var forward: Vector3 = (get_parent().global_basis*lane.forward).normalized()
-	query.motion = forward*lookahead
 	var started := PERF.begin(self)
-	var fractions := get_world_3d().direct_space_state.cast_motion(query)
-	# cast_motion ignores shapes already overlapping at the starting position.
-	if not get_world_3d().direct_space_state.intersect_shape(query,1).is_empty(): remaining = 0.0
+	var obstacle_distance := _obstacle_distance(record,lookahead)
 	PERF.finish(&"traffic_obstacle_sweep",started)
-	if fractions[0] < 1.0: remaining = minf(remaining,maxf(0.0,lookahead*fractions[0]-record.following_gap))
+	if obstacle_distance < lookahead: remaining = minf(remaining,maxf(0.0,obstacle_distance-record.following_gap))
 	var desired := minf(record.cruise,sqrt(2.0*maxf(braking,0.1)*remaining))
 	record.speed = move_toward(record.speed,desired,(acceleration if desired > record.speed else braking)*delta)
 	var travel := minf(record.speed*delta,remaining)
 	if travel <= 0.0001: record.speed = 0.0
 	record.progress += travel
-	var point: Vector3 = lane.start+lane.forward*record.progress
-	point.y = record.height
-	car.global_transform = get_parent().global_transform*Transform3D(record.basis,point)
+	var point: Vector3 = LANES.vehicle_point(lane,record.progress,record.half_length)
+	point.y += record.height-road_height
+	car.global_transform = _pose(point,LANES.direction(lane,record.progress,record.half_length),record.heading_offset)
 	car.traffic_speed = record.speed
+
+func _obstacle_distance(record: Dictionary, lookahead: float) -> float:
+	var lane: Dictionary = lanes[record.lane]
+	var query: PhysicsShapeQueryParameters3D = record.query
+	var space := get_world_3d().direct_space_state
+	# Flat streets retain one sweep. Bridge profiles need short sweeps that
+	# follow the deck instead of a chord cutting through the rising asphalt.
+	var count := maxi(1,ceili(lookahead/2.0)) if lane.get("height_profile",[]).size() > 2 else 1
+	for i in count:
+		var a := lookahead*float(i)/count
+		var b := lookahead*float(i+1)/count
+		var progress: float = record.progress+a
+		var point := LANES.vehicle_point(lane,progress,record.half_length)
+		point.y += record.height-road_height
+		var pose := _pose(point,LANES.direction(lane,progress,record.half_length),record.heading_offset)
+		query.transform = pose*Transform3D(Basis.IDENTITY,record.probe_offset)
+		var next := LANES.vehicle_point(lane,record.progress+b,record.half_length)
+		next.y += record.height-road_height
+		var next_pose := _pose(next,LANES.direction(lane,record.progress+b,record.half_length),record.heading_offset)
+		query.motion = (next_pose*record.probe_offset)-query.transform.origin
+		if not space.intersect_shape(query,1).is_empty(): return a
+		var fractions := space.cast_motion(query)
+		if fractions[0] < 1.0: return lerpf(a,b,fractions[0])
+	return lookahead
 
 func _wait_at_junction(record: Dictionary, delta: float) -> void:
 	var lane: Dictionary = lanes[record.lane]
@@ -471,9 +490,9 @@ func _exit_clear(record: Dictionary, connection: Dictionary) -> bool:
 		if other.lane == connection.to and other.progress < clearance+record.half_length+other.half_length+record.following_gap: return false
 	# Physical wrecks and other obstacles can also occupy the exit.
 	var lane: Dictionary = lanes[connection.to]
-	var point: Vector3 = lane.start+lane.forward*clearance
-	point.y = record.height
-	var pose := _pose(point,lane.forward,record.heading_offset)
+	var point: Vector3 = LANES.vehicle_point(lane,clearance,record.half_length)
+	point.y += record.height-road_height
+	var pose := _pose(point,LANES.direction(lane,clearance,record.half_length),record.heading_offset)
 	var query: PhysicsShapeQueryParameters3D = record.query
 	query.transform = pose*Transform3D(Basis.IDENTITY,record.probe_offset)
 	return get_world_3d().direct_space_state.intersect_shape(query,1).is_empty()
@@ -484,16 +503,16 @@ func _crossing_point(record: Dictionary, distance: float) -> Vector3:
 	var target: Dictionary = lanes[connection.to]
 	var point: Vector3
 	if distance < 0.0:
-		point = source.end+source.forward*distance
+		point = LANES.point(source,source.length+distance)
 	elif distance > connection.length:
-		point = target.start+target.forward*(distance-connection.length)
+		point = LANES.point(target,distance-connection.length)
 	else:
 		point = connection.curve.sample_baked(distance)
-	point.y = record.height
+	point.y += record.height-road_height
 	return point
 
 func _pose(point: Vector3, forward: Vector3, heading: float) -> Transform3D:
-	return get_parent().global_transform*Transform3D(Basis(Vector3.UP,atan2(forward.x,forward.z)+heading),point)
+	return get_parent().global_transform*Transform3D(Basis.looking_at(forward,Vector3.UP,true)*Basis(Vector3.UP,heading),point)
 
 func _drive_crossing(record: Dictionary, delta: float) -> void:
 	var car: Vehicle = record.car
@@ -557,8 +576,10 @@ func _draw_lanes() -> void:
 	material.albedo_color = Color("ffad32")
 	mesh.surface_begin(Mesh.PRIMITIVE_LINES,material)
 	for lane in lanes:
-		mesh.surface_add_vertex(to_local(get_parent().to_global(lane.start+Vector3.UP*0.12)))
-		mesh.surface_add_vertex(to_local(get_parent().to_global(lane.end+Vector3.UP*0.12)))
+		var segments := maxi(1,ceili(lane.length/5.0)) if lane.get("height_profile",[]).size() > 2 else 1
+		for i in segments:
+			mesh.surface_add_vertex(to_local(get_parent().to_global(LANES.point(lane,lane.length*i/segments)+Vector3.UP*0.12)))
+			mesh.surface_add_vertex(to_local(get_parent().to_global(LANES.point(lane,lane.length*(i+1)/segments)+Vector3.UP*0.12)))
 		for connection in lane.connections:
 			var points: PackedVector3Array = connection.curve.get_baked_points()
 			for i in range(1,points.size()):

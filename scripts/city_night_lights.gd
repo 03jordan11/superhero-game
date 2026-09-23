@@ -24,6 +24,8 @@ var frontages: Array[Dictionary] = []
 var _frontage_lights: Array[SpotLight3D] = []
 var _night := 0.0
 var _elapsed := 0.0
+var _original_fixtures: Node3D
+var _streetlamp_chunks: Node3D
 
 func _ready() -> void:
 	var layout = JSON.parse_string(FileAccess.get_file_as_string(layout_path))
@@ -125,6 +127,9 @@ static func build_frontage_layout(layout: Dictionary) -> Array[Dictionary]:
 	return result
 
 func _build_geometry() -> void:
+	_original_fixtures = Node3D.new()
+	_original_fixtures.name = "OriginalFixtures"
+	add_child(_original_fixtures)
 	var metal := StandardMaterial3D.new()
 	metal.albedo_color = Color(0.055, 0.065, 0.075)
 	metal.metallic = 0.65
@@ -167,6 +172,12 @@ func _build_geometry() -> void:
 			placement.origin = placement * Vector3(0, 8.73, 1.65)
 			rows.append({"transform": placement})
 		_add_batch("LampLenses%d" % style, bulb, rows)
+	_streetlamp_chunks = get_node_or_null("StreetlampChunks")
+	if _streetlamp_chunks == null:
+		_streetlamp_chunks = load("res://scripts/streetlamp_chunks.gd").new()
+		_streetlamp_chunks.name = "StreetlampChunks"
+		add_child(_streetlamp_chunks)
+	_streetlamp_chunks.setup(fixtures,mesh,_original_fixtures,COLORS)
 
 func _add_batch(label: String, mesh: Mesh, rows: Array[Dictionary]) -> void:
 	var batch := MultiMeshInstance3D.new()
@@ -177,7 +188,7 @@ func _add_batch(label: String, mesh: Mesh, rows: Array[Dictionary]) -> void:
 	batch.multimesh.instance_count = rows.size()
 	for i in rows.size(): batch.multimesh.set_instance_transform(i, rows[i].transform)
 	batch.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
-	add_child(batch)
+	_original_fixtures.add_child(batch)
 
 func _bind_clock() -> void:
 	var cycle := get_tree().get_first_node_in_group(&"day_night_cycle")
@@ -188,6 +199,7 @@ func _bind_clock() -> void:
 func _set_night(amount: float) -> void:
 	_night = amount
 	for material in _lens_materials: material.emission_energy_multiplier = 5.0 * _night
+	if _streetlamp_chunks != null: _streetlamp_chunks.set_night(amount)
 	_select_lights()
 
 func _process(delta: float) -> void:
@@ -206,8 +218,9 @@ func _select_lights() -> void:
 	_select_frontages(focus)
 	var candidates: Array[Dictionary] = []
 	for fixture in fixtures:
-		var point: Vector3 = fixture.transform.origin
-		var distance := Vector2(point.x - focus.x, point.z - focus.z).length_squared()
+		# Full 3D distance avoids allocating pavement lights far below high flight.
+		var emitter: Vector3 = fixture.transform * Vector3(0, 8.65, 1.65)
+		var distance := emitter.distance_squared_to(focus)
 		if distance < illumination_radius * illumination_radius:
 			candidates.append({"fixture": fixture, "distance": distance})
 	candidates.sort_custom(func(a: Dictionary, b: Dictionary) -> bool: return a.distance < b.distance)

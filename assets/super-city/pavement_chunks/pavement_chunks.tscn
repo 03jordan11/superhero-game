@@ -1,0 +1,341 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/pavement_chunks.gd" id="1_am5i2"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/pavement_chunks/Grid_-3_-2_FullDetail.res" id="2_yr2bg"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/pavement_chunks/Grid_-3_-2_DistantProxy.res" id="3_ms84i"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/pavement_chunks/Grid_-2_-2_FullDetail.res" id="4_r3547"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/pavement_chunks/Grid_-2_-2_DistantProxy.res" id="5_fae8r"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/pavement_chunks/Grid_-1_-2_FullDetail.res" id="6_0xvp7"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/pavement_chunks/Grid_-1_-2_DistantProxy.res" id="7_a3gp8"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/pavement_chunks/Grid_0_-2_FullDetail.res" id="8_kqh4p"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/pavement_chunks/Grid_0_-2_DistantProxy.res" id="9_vk6ay"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/pavement_chunks/Grid_1_-2_FullDetail.res" id="10_qwaxs"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/pavement_chunks/Grid_1_-2_DistantProxy.res" id="11_4ixut"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/pavement_chunks/Grid_0_0_FullDetail.res" id="12_5co81"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/pavement_chunks/Grid_0_0_DistantProxy.res" id="13_vakq2"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/pavement_chunks/Grid_2_-2_FullDetail.res" id="14_vai4n"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/pavement_chunks/Grid_2_-2_DistantProxy.res" id="15_uri56"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/pavement_chunks/Grid_-3_-1_FullDetail.res" id="16_oo1en"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/pavement_chunks/Grid_-3_-1_DistantProxy.res" id="17_pnju7"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/pavement_chunks/Grid_-2_-1_FullDetail.res" id="18_vkinq"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/pavement_chunks/Grid_-2_-1_DistantProxy.res" id="19_li0ju"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/pavement_chunks/Grid_-1_-1_FullDetail.res" id="20_c17qo"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/pavement_chunks/Grid_-1_-1_DistantProxy.res" id="21_bkf7b"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/pavement_chunks/Grid_0_-1_FullDetail.res" id="22_cfwq3"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/pavement_chunks/Grid_0_-1_DistantProxy.res" id="23_e381a"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/pavement_chunks/Grid_1_-1_FullDetail.res" id="24_vp5k4"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/pavement_chunks/Grid_1_-1_DistantProxy.res" id="25_i5ph5"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/pavement_chunks/Grid_2_-1_FullDetail.res" id="26_qfb62"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/pavement_chunks/Grid_2_-1_DistantProxy.res" id="27_0774n"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/pavement_chunks/Grid_-3_0_FullDetail.res" id="28_g7ca8"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/pavement_chunks/Grid_-3_0_DistantProxy.res" id="29_tenr1"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/pavement_chunks/Grid_-2_0_FullDetail.res" id="30_jm6r4"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/pavement_chunks/Grid_-2_0_DistantProxy.res" id="31_djq53"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/pavement_chunks/Grid_-1_0_FullDetail.res" id="32_kyr3l"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/pavement_chunks/Grid_-1_0_DistantProxy.res" id="33_d2int"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/pavement_chunks/Grid_1_0_FullDetail.res" id="34_6jlcj"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/pavement_chunks/Grid_1_0_DistantProxy.res" id="35_77a2d"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/pavement_chunks/Grid_2_0_FullDetail.res" id="36_fuiky"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/pavement_chunks/Grid_2_0_DistantProxy.res" id="37_l1y8k"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/pavement_chunks/Grid_-3_1_FullDetail.res" id="38_v2qlf"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/pavement_chunks/Grid_-3_1_DistantProxy.res" id="39_ak3h6"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/pavement_chunks/Grid_-2_1_FullDetail.res" id="40_e4p86"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/pavement_chunks/Grid_-2_1_DistantProxy.res" id="41_nsybd"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/pavement_chunks/Grid_-1_1_FullDetail.res" id="42_cmivh"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/pavement_chunks/Grid_-1_1_DistantProxy.res" id="43_v5q7s"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/pavement_chunks/Grid_0_1_FullDetail.res" id="44_c04pl"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/pavement_chunks/Grid_0_1_DistantProxy.res" id="45_y2g2p"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/pavement_chunks/Grid_1_1_FullDetail.res" id="46_bncwf"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/pavement_chunks/Grid_1_1_DistantProxy.res" id="47_u2mpd"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/pavement_chunks/Grid_2_1_FullDetail.res" id="48_kigfl"]
+[ext_resource type="ArrayMesh" path="res://assets/super-city/pavement_chunks/Grid_2_1_DistantProxy.res" id="49_y0cyd"]
+
+[node name="PavementChunks" type="Node3D" unique_id=360430002]
+script = ExtResource("1_am5i2")
+
+[node name="Grid_-3_-2" type="Node3D" parent="." unique_id=699625230]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1500, 0, -1000)
+visible = false
+
+[node name="FullDetail" type="MeshInstance3D" parent="Grid_-3_-2" unique_id=1252264078]
+cast_shadow = 0
+mesh = ExtResource("2_yr2bg")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Grid_-3_-2" unique_id=659975751]
+cast_shadow = 0
+mesh = ExtResource("3_ms84i")
+
+[node name="Grid_-2_-2" type="Node3D" parent="." unique_id=1896468517]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1000, 0, -1000)
+visible = false
+
+[node name="FullDetail" type="MeshInstance3D" parent="Grid_-2_-2" unique_id=176455258]
+cast_shadow = 0
+mesh = ExtResource("4_r3547")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Grid_-2_-2" unique_id=1576229955]
+cast_shadow = 0
+mesh = ExtResource("5_fae8r")
+
+[node name="Grid_-1_-2" type="Node3D" parent="." unique_id=652421544]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -500, 0, -1000)
+visible = false
+
+[node name="FullDetail" type="MeshInstance3D" parent="Grid_-1_-2" unique_id=1984701564]
+cast_shadow = 0
+mesh = ExtResource("6_0xvp7")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Grid_-1_-2" unique_id=958224247]
+cast_shadow = 0
+mesh = ExtResource("7_a3gp8")
+
+[node name="Grid_0_-2" type="Node3D" parent="." unique_id=190826204]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1000)
+visible = false
+
+[node name="FullDetail" type="MeshInstance3D" parent="Grid_0_-2" unique_id=1654448741]
+cast_shadow = 0
+mesh = ExtResource("8_kqh4p")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Grid_0_-2" unique_id=1516910811]
+cast_shadow = 0
+mesh = ExtResource("9_vk6ay")
+
+[node name="Grid_1_-2" type="Node3D" parent="." unique_id=680925001]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 500, 0, -1000)
+visible = false
+
+[node name="FullDetail" type="MeshInstance3D" parent="Grid_1_-2" unique_id=1518926851]
+cast_shadow = 0
+mesh = ExtResource("10_qwaxs")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Grid_1_-2" unique_id=447124205]
+cast_shadow = 0
+mesh = ExtResource("11_4ixut")
+
+[node name="Grid_0_0" type="Node3D" parent="." unique_id=181171430]
+visible = false
+
+[node name="FullDetail" type="MeshInstance3D" parent="Grid_0_0" unique_id=269241022]
+cast_shadow = 0
+mesh = ExtResource("12_5co81")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Grid_0_0" unique_id=1813852036]
+cast_shadow = 0
+mesh = ExtResource("13_vakq2")
+
+[node name="Grid_2_-2" type="Node3D" parent="." unique_id=1858146870]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1000, 0, -1000)
+visible = false
+
+[node name="FullDetail" type="MeshInstance3D" parent="Grid_2_-2" unique_id=958320470]
+cast_shadow = 0
+mesh = ExtResource("14_vai4n")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Grid_2_-2" unique_id=1691013653]
+cast_shadow = 0
+mesh = ExtResource("15_uri56")
+
+[node name="Grid_-3_-1" type="Node3D" parent="." unique_id=154472077]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1500, 0, -500)
+visible = false
+
+[node name="FullDetail" type="MeshInstance3D" parent="Grid_-3_-1" unique_id=1075214731]
+cast_shadow = 0
+mesh = ExtResource("16_oo1en")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Grid_-3_-1" unique_id=919854077]
+cast_shadow = 0
+mesh = ExtResource("17_pnju7")
+
+[node name="Grid_-2_-1" type="Node3D" parent="." unique_id=1116459160]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1000, 0, -500)
+visible = false
+
+[node name="FullDetail" type="MeshInstance3D" parent="Grid_-2_-1" unique_id=22539994]
+cast_shadow = 0
+mesh = ExtResource("18_vkinq")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Grid_-2_-1" unique_id=914608252]
+cast_shadow = 0
+mesh = ExtResource("19_li0ju")
+
+[node name="Grid_-1_-1" type="Node3D" parent="." unique_id=1454366883]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -500, 0, -500)
+visible = false
+
+[node name="FullDetail" type="MeshInstance3D" parent="Grid_-1_-1" unique_id=1501505290]
+cast_shadow = 0
+mesh = ExtResource("20_c17qo")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Grid_-1_-1" unique_id=1653697161]
+cast_shadow = 0
+mesh = ExtResource("21_bkf7b")
+
+[node name="Grid_0_-1" type="Node3D" parent="." unique_id=1339613443]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -500)
+visible = false
+
+[node name="FullDetail" type="MeshInstance3D" parent="Grid_0_-1" unique_id=1447063074]
+cast_shadow = 0
+mesh = ExtResource("22_cfwq3")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Grid_0_-1" unique_id=1918267934]
+cast_shadow = 0
+mesh = ExtResource("23_e381a")
+
+[node name="Grid_1_-1" type="Node3D" parent="." unique_id=1746759294]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 500, 0, -500)
+visible = false
+
+[node name="FullDetail" type="MeshInstance3D" parent="Grid_1_-1" unique_id=707919269]
+cast_shadow = 0
+mesh = ExtResource("24_vp5k4")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Grid_1_-1" unique_id=1641427636]
+cast_shadow = 0
+mesh = ExtResource("25_i5ph5")
+
+[node name="Grid_2_-1" type="Node3D" parent="." unique_id=1565911040]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1000, 0, -500)
+visible = false
+
+[node name="FullDetail" type="MeshInstance3D" parent="Grid_2_-1" unique_id=1243235511]
+cast_shadow = 0
+mesh = ExtResource("26_qfb62")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Grid_2_-1" unique_id=446447416]
+cast_shadow = 0
+mesh = ExtResource("27_0774n")
+
+[node name="Grid_-3_0" type="Node3D" parent="." unique_id=800263935]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1500, 0, 0)
+visible = false
+
+[node name="FullDetail" type="MeshInstance3D" parent="Grid_-3_0" unique_id=65339964]
+cast_shadow = 0
+mesh = ExtResource("28_g7ca8")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Grid_-3_0" unique_id=959802589]
+cast_shadow = 0
+mesh = ExtResource("29_tenr1")
+
+[node name="Grid_-2_0" type="Node3D" parent="." unique_id=656792169]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1000, 0, 0)
+visible = false
+
+[node name="FullDetail" type="MeshInstance3D" parent="Grid_-2_0" unique_id=86358307]
+cast_shadow = 0
+mesh = ExtResource("30_jm6r4")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Grid_-2_0" unique_id=1832302280]
+cast_shadow = 0
+mesh = ExtResource("31_djq53")
+
+[node name="Grid_-1_0" type="Node3D" parent="." unique_id=370348326]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -500, 0, 0)
+visible = false
+
+[node name="FullDetail" type="MeshInstance3D" parent="Grid_-1_0" unique_id=1843016862]
+cast_shadow = 0
+mesh = ExtResource("32_kyr3l")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Grid_-1_0" unique_id=1584366361]
+cast_shadow = 0
+mesh = ExtResource("33_d2int")
+
+[node name="Grid_1_0" type="Node3D" parent="." unique_id=1630787283]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 500, 0, 0)
+visible = false
+
+[node name="FullDetail" type="MeshInstance3D" parent="Grid_1_0" unique_id=1400339479]
+cast_shadow = 0
+mesh = ExtResource("34_6jlcj")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Grid_1_0" unique_id=2053491067]
+cast_shadow = 0
+mesh = ExtResource("35_77a2d")
+
+[node name="Grid_2_0" type="Node3D" parent="." unique_id=1125169566]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1000, 0, 0)
+visible = false
+
+[node name="FullDetail" type="MeshInstance3D" parent="Grid_2_0" unique_id=89062998]
+cast_shadow = 0
+mesh = ExtResource("36_fuiky")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Grid_2_0" unique_id=655146589]
+cast_shadow = 0
+mesh = ExtResource("37_l1y8k")
+
+[node name="Grid_-3_1" type="Node3D" parent="." unique_id=1683955551]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1500, 0, 500)
+visible = false
+
+[node name="FullDetail" type="MeshInstance3D" parent="Grid_-3_1" unique_id=311541761]
+cast_shadow = 0
+mesh = ExtResource("38_v2qlf")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Grid_-3_1" unique_id=959007196]
+cast_shadow = 0
+mesh = ExtResource("39_ak3h6")
+
+[node name="Grid_-2_1" type="Node3D" parent="." unique_id=255232596]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1000, 0, 500)
+visible = false
+
+[node name="FullDetail" type="MeshInstance3D" parent="Grid_-2_1" unique_id=1988931668]
+cast_shadow = 0
+mesh = ExtResource("40_e4p86")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Grid_-2_1" unique_id=706936300]
+cast_shadow = 0
+mesh = ExtResource("41_nsybd")
+
+[node name="Grid_-1_1" type="Node3D" parent="." unique_id=1184131042]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -500, 0, 500)
+visible = false
+
+[node name="FullDetail" type="MeshInstance3D" parent="Grid_-1_1" unique_id=742008275]
+cast_shadow = 0
+mesh = ExtResource("42_cmivh")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Grid_-1_1" unique_id=404135253]
+cast_shadow = 0
+mesh = ExtResource("43_v5q7s")
+
+[node name="Grid_0_1" type="Node3D" parent="." unique_id=36490457]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 500)
+visible = false
+
+[node name="FullDetail" type="MeshInstance3D" parent="Grid_0_1" unique_id=705683153]
+cast_shadow = 0
+mesh = ExtResource("44_c04pl")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Grid_0_1" unique_id=189218140]
+cast_shadow = 0
+mesh = ExtResource("45_y2g2p")
+
+[node name="Grid_1_1" type="Node3D" parent="." unique_id=106020210]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 500, 0, 500)
+visible = false
+
+[node name="FullDetail" type="MeshInstance3D" parent="Grid_1_1" unique_id=977797916]
+cast_shadow = 0
+mesh = ExtResource("46_bncwf")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Grid_1_1" unique_id=1558227888]
+cast_shadow = 0
+mesh = ExtResource("47_u2mpd")
+
+[node name="Grid_2_1" type="Node3D" parent="." unique_id=1616024053]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1000, 0, 500)
+visible = false
+
+[node name="FullDetail" type="MeshInstance3D" parent="Grid_2_1" unique_id=752476571]
+cast_shadow = 0
+mesh = ExtResource("48_kigfl")
+
+[node name="DistantProxy" type="MeshInstance3D" parent="Grid_2_1" unique_id=1226551615]
+cast_shadow = 0
+mesh = ExtResource("49_y0cyd")

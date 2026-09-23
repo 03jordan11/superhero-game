@@ -29,8 +29,11 @@ func run() -> void:
 	var actual_powers: Dictionary = player.abilities.unlocked_abilities.duplicate(true)
 	dev.commands.execute("add pp 5")
 	check(not manager.has_save(), "Console grant does not save implicitly")
+	windows.lit_window_percent = 37
+	windows.warm_window_percent = 65
 	dev.commands.execute("save")
 	var saved := read_save(test_path)
+	check(saved.world.window_lighting.lit_window_percent == 37 and saved.world.window_lighting.warm_window_percent == 65, "Save must persist window tuning")
 	check(saved.world.window_lighting.seed == 123456, "Save must persist city lighting seed")
 	manager.begin_new_game(654321)
 	manager._ready()
@@ -55,17 +58,18 @@ func run() -> void:
 	dev = main.get_node("DeveloperMenu")
 	check(page.progression.tokens == 0, "Fresh scene starts clean until Load Save")
 	dev.commands.execute("load")
+	check(windows.lit_window_percent == 37 and windows.warm_window_percent == 65, "Load must restore window tuning")
 	check(windows.city_seed == 123456, "Loading must restore the saved city seed")
 	var tower: Node
 	for candidate in main.find_children("*", "StaticBody3D", true, false):
 		if candidate.scene_file_path.ends_with("commercial_skyscraper_02.tscn"):
 			tower = candidate; break
 	check(tower != null, "Representative tower must exist in the city")
-	var restored_pixels: PackedByteArray = tower._night_materials[0].emission_texture.get_image().get_data()
+	var restored_pixels: PackedByteArray = tower._night_materials[0].get_shader_parameter("room_data").get_image().get_data()
 	manager.begin_new_game(654321)
-	check(tower._night_materials[0].emission_texture.get_image().get_data() != restored_pixels, "New seed must refresh live towers")
+	check(tower._night_materials[0].get_shader_parameter("room_data").get_image().get_data() != restored_pixels, "New seed must refresh live towers")
 	dev.commands.execute("load")
-	check(tower._night_materials[0].emission_texture.get_image().get_data() == restored_pixels, "Save reload must restore exact window pixels")
+	check(tower._night_materials[0].get_shader_parameter("room_data").get_image().get_data() == restored_pixels, "Save reload must restore exact window pixels")
 	check(page.progression.tokens == 8 and page.progression.level("ice") == 1, "Load must restore tokens and test upgrades in a fresh scene")
 	check(page.token_label.text == "8" and dev.commands.execute("status").contains("Power points 8"), "Both token displays must refresh on load")
 	check(read_save(test_path) == saved, "Loading must not trigger an autosave")

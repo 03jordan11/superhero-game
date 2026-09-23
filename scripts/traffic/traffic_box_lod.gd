@@ -185,8 +185,8 @@ func _update_tier(record: Dictionary, point: Vector3) -> void:
 func _raw_point(record: Dictionary) -> Vector3:
 	if not record.connection.is_empty(): return _manager._crossing_point(record,record.crossing_progress)
 	var lane: Dictionary = _manager.lanes[record.lane]
-	var point: Vector3 = lane.start+lane.forward*record.progress
-	point.y = record.height
+	var point: Vector3 = _manager.LANES.vehicle_point(lane,record.progress,record.half_length)
+	point.y += record.height-_manager.road_height
 	return point
 
 func _point(record: Dictionary) -> Vector3:
@@ -196,7 +196,11 @@ func _point(record: Dictionary) -> Vector3:
 	var travel := float(record.get("motion_elapsed",0.0)) * float(record.get("cruise",record.speed))
 	if record.connection.is_empty() and _straight[record.lane].is_empty():
 		travel = minf(travel,maxf(0.0,lane.length-record.half_length-_manager.junction_stop_margin-record.progress))
-	return _raw_point(record) + lane.forward * travel
+	if not record.connection.is_empty():
+		return _manager._crossing_point(record,record.crossing_progress+travel)
+	var point: Vector3 = _manager.LANES.vehicle_point(lane,record.progress+travel,record.half_length)
+	point.y += record.height-_manager.road_height
+	return point
 
 func _flush_motion(record: Dictionary) -> void:
 	var elapsed: float = record.get("motion_elapsed",0.0)
@@ -206,7 +210,7 @@ func _flush_motion(record: Dictionary) -> void:
 func _visible(record: Dictionary) -> bool:
 	var camera := get_viewport().get_camera_3d()
 	if camera == null: return true
-	var pose: Transform3D = _manager._pose(_point(record),_manager.lanes[record.lane].forward,record.heading_offset)
+	var pose: Transform3D = _manager._pose(_point(record),_manager.LANES.direction(_manager.lanes[record.lane],record.progress,record.half_length),record.heading_offset)
 	var data: Dictionary = _get_metadata(record.entry)
 	var bounds := AABB(data.center-data.size*0.5,data.size)
 	if camera.is_position_in_frustum(pose*bounds.get_center()): return true
@@ -385,7 +389,7 @@ func _seed_nearby(outer_band: bool = false) -> void:
 				break
 		var lane: Dictionary = _manager.lanes[candidate.lane]
 		var progress := randf_range(candidate.interval.x,candidate.interval.y)
-		var point: Vector3 = lane.start+lane.forward*progress
+		var point: Vector3 = _manager.LANES.point(lane,progress)
 		var world_point := _city.to_global(point)
 		var distance: float = _manager._flat_distance(world_point,_manager._focus.global_position)
 		if distance > radius or (outer_band and distance <= view_distance): continue
@@ -501,8 +505,9 @@ func draw_boxes() -> void:
 		for i in range(records.size()):
 			var record: Dictionary = records[i]
 			var data := _get_metadata(record.entry)
-			var forward: Vector3 = _manager.lanes[record.lane].forward
-			var basis := Basis(Vector3.UP,atan2(forward.x,forward.z)+record.heading_offset)
+			var predicted_progress: float = record.progress+float(record.get("motion_elapsed",0.0))*record.cruise
+			var forward: Vector3 = _manager.LANES.direction(_manager.lanes[record.lane],predicted_progress,record.half_length)
+			var basis := Basis.looking_at(forward,Vector3.UP,true)*Basis(Vector3.UP,record.heading_offset)
 			var box_transform := Transform3D(basis.scaled_local(data.size),record.render_point+basis*data.center-batch.position)
 			mm.set_instance_transform(i,box_transform)
 			if membership_changed: mm.set_instance_color(i,record.entry.distant_color)

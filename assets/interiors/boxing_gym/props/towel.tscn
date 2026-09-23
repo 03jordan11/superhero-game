@@ -1,0 +1,13 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/towel_Blue.res" id="1_82y5u"]
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/towel_Ivory.res" id="2_k0ead"]
+
+[node name="Towel" type="Node3D" unique_id=250628179]
+metadata/rendered_triangles = 36
+
+[node name="towel_Blue" type="MeshInstance3D" parent="." unique_id=2091854410]
+mesh = ExtResource("1_82y5u")
+
+[node name="towel_Ivory" type="MeshInstance3D" parent="." unique_id=366336842]
+mesh = ExtResource("2_k0ead")

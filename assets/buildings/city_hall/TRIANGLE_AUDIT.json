@@ -1,0 +1,11 @@
+{
+	"base_triangles": 5082,
+	"complete_poi_triangles": 5946,
+	"placed_prop_triangles": 864,
+	"prop_counts": {
+		"bench": 18,
+		"hedge": 6,
+		"table": 4
+	},
+	"source": "Actual Godot-imported highest-detail meshes, per placed instance"
+}

@@ -125,4 +125,9 @@ func _profiled_update_performance_label() -> void:
 			get_tree().get_nodes_in_group(&"explodable").size(),
 			distant_vehicles
 		]
+		+ "\nWindows: C %d%% | R %d%% | I %d%% (developer menu)" % [
+			CityWindows.percent_for("/commercial/"),
+			CityWindows.percent_for("/residential/"),
+			CityWindows.percent_for("/industrial/")
+		]
 	)

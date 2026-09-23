@@ -1,0 +1,17 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="res://assets/buildings/boxing_gym/meshes/front_window_Glass.res" id="1_cuanl"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/boxing_gym/meshes/front_window_GlassHighlight.res" id="2_hvvno"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/boxing_gym/meshes/front_window_Steel.res" id="3_6ih6q"]
+
+[node name="FrontWindow" type="Node3D" unique_id=2132167500]
+metadata/rendered_triangles = 216
+
+[node name="front_window_Glass" type="MeshInstance3D" parent="." unique_id=1347619665]
+mesh = ExtResource("1_cuanl")
+
+[node name="front_window_GlassHighlight" type="MeshInstance3D" parent="." unique_id=1410790629]
+mesh = ExtResource("2_hvvno")
+
+[node name="front_window_Steel" type="MeshInstance3D" parent="." unique_id=774838753]
+mesh = ExtResource("3_6ih6q")

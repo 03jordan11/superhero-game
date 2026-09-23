@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/interiors/boxing_gym/textures/concrete.png" id="1_bq2d3"]
+
+[resource]
+resource_name = "Teal"
+albedo_color = Color(0.1, 0.22, 0.23, 1)
+albedo_texture = ExtResource("1_bq2d3")
+roughness = 0.85
+texture_filter = 5

@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://scripts/ui-scripts/rescue_timer_hud.gd" id="rescue_timer"]
 
 [ext_resource type="Script" uid="uid://ckmvx8w0ymkt6" path="res://scripts/player-scripts/player_character.gd" id="1_player"]
-[ext_resource type="PackedScene" uid="uid://djuiolvewh3lx" path="res://assets/characters/Superhero-male/Superhero_Male_FullBody.gltf" id="2_superhero"]
+[ext_resource type="PackedScene" path="res://assets/characters/hero_starter_suit/hero_starter_suit_rigged.glb" id="2_superhero"]
 [ext_resource type="Script" uid="uid://bi8s7hwdcoono" path="res://scripts/player-scripts/player_animation_controller.gd" id="4_animation_controller"]
 [ext_resource type="Script" uid="uid://ciys3ckvpawm8" path="res://scripts/player-scripts/landing_target_indicator.gd" id="5_landing_target"]
 [ext_resource type="Script" uid="uid://bvglu4x7p24cx" path="res://scripts/player-scripts/player_camera_effects.gd" id="6_camera_effects"]
@@ -40,6 +40,7 @@
 [ext_resource type="Script" path="res://scripts/player-scripts/player_hostile_grab.gd" id="hostile_grab"]
 
 [ext_resource type="Script" path="res://scripts/player-scripts/player_electricity.gd" id="34_electricity"]
+[ext_resource type="PackedScene" path="res://scenes/ui/death_screen.tscn" id="death_screen"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_player"]
 
@@ -210,6 +211,7 @@ script = ExtResource("32_fire")
 
 [node name="CharacterHair" type="Node" parent="."]
 script = ExtResource("33_hair")
+enabled = false
 model_path = NodePath("../SuperheroCharacter")
 female_npc = false
 
@@ -230,3 +232,5 @@ script = ExtResource("hostile_grab")
 
 [node name="RescueTimerHUD" type="CanvasLayer" parent="."]
 script = ExtResource("rescue_timer")
+
+[node name="DeathScreen" parent="." instance=ExtResource("death_screen")]

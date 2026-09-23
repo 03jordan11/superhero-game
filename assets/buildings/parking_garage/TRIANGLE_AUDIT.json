@@ -1,0 +1,122 @@
+[
+	{
+		"collision_shapes": 55,
+		"configuration": "small_03",
+		"triangles": 976
+	},
+	{
+		"collision_shapes": 71,
+		"configuration": "small_04",
+		"triangles": 1234
+	},
+	{
+		"collision_shapes": 87,
+		"configuration": "small_05",
+		"triangles": 1492
+	},
+	{
+		"collision_shapes": 103,
+		"configuration": "small_06",
+		"triangles": 1750
+	},
+	{
+		"collision_shapes": 119,
+		"configuration": "small_07",
+		"triangles": 2008
+	},
+	{
+		"collision_shapes": 135,
+		"configuration": "small_08",
+		"triangles": 2266
+	},
+	{
+		"collision_shapes": 151,
+		"configuration": "small_09",
+		"triangles": 2524
+	},
+	{
+		"collision_shapes": 167,
+		"configuration": "small_10",
+		"triangles": 2782
+	},
+	{
+		"collision_shapes": 59,
+		"configuration": "medium_03",
+		"triangles": 1258
+	},
+	{
+		"collision_shapes": 75,
+		"configuration": "medium_04",
+		"triangles": 1578
+	},
+	{
+		"collision_shapes": 91,
+		"configuration": "medium_05",
+		"triangles": 1898
+	},
+	{
+		"collision_shapes": 107,
+		"configuration": "medium_06",
+		"triangles": 2218
+	},
+	{
+		"collision_shapes": 123,
+		"configuration": "medium_07",
+		"triangles": 2538
+	},
+	{
+		"collision_shapes": 139,
+		"configuration": "medium_08",
+		"triangles": 2858
+	},
+	{
+		"collision_shapes": 155,
+		"configuration": "medium_09",
+		"triangles": 3178
+	},
+	{
+		"collision_shapes": 171,
+		"configuration": "medium_10",
+		"triangles": 3498
+	},
+	{
+		"collision_shapes": 63,
+		"configuration": "large_03",
+		"triangles": 1540
+	},
+	{
+		"collision_shapes": 79,
+		"configuration": "large_04",
+		"triangles": 1922
+	},
+	{
+		"collision_shapes": 95,
+		"configuration": "large_05",
+		"triangles": 2304
+	},
+	{
+		"collision_shapes": 111,
+		"configuration": "large_06",
+		"triangles": 2686
+	},
+	{
+		"collision_shapes": 127,
+		"configuration": "large_07",
+		"triangles": 3068
+	},
+	{
+		"collision_shapes": 143,
+		"configuration": "large_08",
+		"triangles": 3450
+	},
+	{
+		"collision_shapes": 159,
+		"configuration": "large_09",
+		"triangles": 3832
+	},
+	{
+		"collision_shapes": 175,
+		"configuration": "large_10",
+		"triangles": 4214
+	}
+]

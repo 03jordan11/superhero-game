@@ -1,0 +1,25 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/boarded_window_Ink.res" id="1_kaygs"]
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/boarded_window_Steel.res" id="2_3hdpj"]
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/boarded_window_SteelEdge.res" id="3_ao7om"]
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/boarded_window_Wood.res" id="4_op5qc"]
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/boarded_window_WoodLight.res" id="5_x58h5"]
+
+[node name="BoardedWindow" type="Node3D" unique_id=777475223]
+metadata/rendered_triangles = 360
+
+[node name="boarded_window_Ink" type="MeshInstance3D" parent="." unique_id=1381414624]
+mesh = ExtResource("1_kaygs")
+
+[node name="boarded_window_Steel" type="MeshInstance3D" parent="." unique_id=1577471994]
+mesh = ExtResource("2_3hdpj")
+
+[node name="boarded_window_SteelEdge" type="MeshInstance3D" parent="." unique_id=2059506971]
+mesh = ExtResource("3_ao7om")
+
+[node name="boarded_window_Wood" type="MeshInstance3D" parent="." unique_id=875471624]
+mesh = ExtResource("4_op5qc")
+
+[node name="boarded_window_WoodLight" type="MeshInstance3D" parent="." unique_id=1553200099]
+mesh = ExtResource("5_x58h5")

@@ -7,6 +7,7 @@ signal audio_settings_changed
 signal gameplay_settings_changed
 signal accessibility_settings_changed
 signal graphics_settings_changed
+signal look_sensitivity_changed
 
 enum Quality { LOW, MEDIUM, HIGH }
 enum ShadowQuality { OFF, LOW, MEDIUM, HIGH }
@@ -17,6 +18,8 @@ const SHADOW_ATLAS_SIZES := [1024, 1024, 2048, 4096]
 const SETTINGS_FILE := "user://settings.cfg"
 const DENSITY_SCALES := [0.5, 0.75, 1.0]
 const DISTANCE_SCALES := [0.6, 0.8, 1.0]
+const MIN_LOOK_SENSITIVITY := 0.25
+const MAX_LOOK_SENSITIVITY := 3.0
 
 var crowd_density: int = Quality.HIGH
 var vehicle_density: int = Quality.HIGH
@@ -27,6 +30,7 @@ var always_show_stamina := true
 var always_show_experience := true
 var toggle_sprint := false
 var toggle_power_activation := false
+var look_sensitivity := 1.0
 var display_mode := 0
 var window_resolution := Vector2i(1920, 1080)
 var render_scale := 100
@@ -36,6 +40,8 @@ var fps_limit := 0
 var vsync_enabled := true
 var audio_volumes := {&"Master": 1.0, &"SFX": 1.0, &"Music": 1.0, &"Voice": 1.0}
 var _settings_file := SETTINGS_FILE
+var _display_revision := 0
+var _window_fit_callback: Callable
 var input_bindings = preload("res://scripts/input_bindings.gd").new()
 
 func _ready() -> void:
@@ -68,6 +74,7 @@ func save_settings(path := "") -> Error:
 	if path.is_empty(): path = _settings_file
 	var config := ConfigFile.new()
 	input_bindings.write_config(config)
+	config.set_value("controls", "look_sensitivity", look_sensitivity)
 	config.set_value("population", "crowd_density", crowd_density)
 	config.set_value("population", "vehicle_density", vehicle_density)
 	config.set_value("population", "view_distance", population_view_distance)
@@ -91,6 +98,9 @@ func load_settings(path := "") -> void:
 	if result != OK and result != ERR_FILE_NOT_FOUND:
 		push_warning("Could not read game settings; using defaults.")
 	input_bindings.load_config(config)
+	var sensitivity: Variant = config.get_value("controls", "look_sensitivity", 1.0)
+	var valid_sensitivity := (sensitivity is float or sensitivity is int) and is_finite(float(sensitivity))
+	set_look_sensitivity(float(sensitivity) if valid_sensitivity else 1.0, false)
 	set_population_settings(
 		_read_quality(config, "crowd_density"),
 		_read_quality(config, "vehicle_density"),
@@ -212,6 +222,14 @@ func set_accessibility(sprint_toggle: bool, power_toggle: bool, persist := true)
 	if changed: accessibility_settings_changed.emit()
 	return save_settings() if persist else OK
 
+func set_look_sensitivity(value: float, persist := true) -> Error:
+	if not is_finite(value): return ERR_INVALID_PARAMETER
+	var next := clampf(value, MIN_LOOK_SENSITIVITY, MAX_LOOK_SENSITIVITY)
+	if not is_equal_approx(look_sensitivity, next):
+		look_sensitivity = next
+		look_sensitivity_changed.emit()
+	return save_settings() if persist else OK
+
 func set_audio_volume(bus: StringName, volume: float, persist := true) -> Error:
 	if not audio_volumes.has(bus) or not is_finite(volume): return ERR_INVALID_PARAMETER
 	audio_volumes[bus] = clampf(volume, 0.0, 1.0)
@@ -232,11 +250,43 @@ func set_display_settings(mode: int, resolution: Vector2i, persist := true) -> E
 	return save_settings() if persist else OK
 
 func apply_display_settings() -> void:
+	_display_revision += 1
+	if _window_fit_callback.is_valid() and get_tree().process_frame.is_connected(_window_fit_callback):
+		get_tree().process_frame.disconnect(_window_fit_callback)
 	if DisplayServer.get_name() == "headless": return
 	var window := get_window()
+	# Remember the monitor before fullscreen/window decorations alter the bounds.
+	var screen := window.current_screen
 	if display_mode == 2:
 		window.mode = Window.MODE_FULLSCREEN
 	else:
 		window.mode = Window.MODE_WINDOWED
 		window.borderless = display_mode == 1
-		window.size = window_resolution
+		_fit_display_window(screen, _display_revision, 2)
+
+func _fit_display_window(screen: int, revision: int, remaining_frames: int) -> void:
+	# Old callbacks must not resize a newer selection or pull us out of fullscreen.
+	if revision != _display_revision or display_mode == 2: return
+	var window := get_window()
+	if window.mode != Window.MODE_WINDOWED: return
+	screen = clampi(screen, 0, maxi(DisplayServer.get_screen_count() - 1, 0))
+	window.current_screen = screen
+	var usable := DisplayServer.screen_get_usable_rect(screen)
+	if not usable.has_area(): return
+	var id := window.get_window_id()
+	var client_size := DisplayServer.window_get_size(id)
+	var outer_size := DisplayServer.window_get_size_with_decorations(id)
+	var decoration_size := (outer_size - client_size).max(Vector2i.ZERO)
+	var client_offset := DisplayServer.window_get_position(id) - DisplayServer.window_get_position_with_decorations(id)
+	# Keep a small gap around the entire native frame, not just the game viewport.
+	var padding := Vector2i(8, 8)
+	var available := (usable.size - decoration_size - padding * 2).max(Vector2i.ONE)
+	var scale := minf(1.0, minf(float(available.x) / window_resolution.x, float(available.y) / window_resolution.y))
+	window.size = Vector2i(Vector2(window_resolution) * scale).max(Vector2i.ONE)
+	outer_size = DisplayServer.window_get_size_with_decorations(id)
+	window.position = usable.position + (usable.size - outer_size) / 2 + client_offset
+	# Native mode/DPI changes may settle after this frame. These one-shot callbacks
+	# also run while the settings menu has paused gameplay, then stop repositioning.
+	if remaining_frames > 0:
+		_window_fit_callback = _fit_display_window.bind(screen, revision, remaining_frames - 1)
+		get_tree().process_frame.connect(_window_fit_callback, CONNECT_ONE_SHOT)

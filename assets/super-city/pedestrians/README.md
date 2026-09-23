@@ -1,113 +1,110 @@
-# District pedestrian graphs
+# Authored city pedestrian navigation
 
-The citywide network is installed at `SuperCity/CityPedestrianRoutes`. The original two-block pilot remains available as `res://scenes/npcs/civilian_route_pilot.tscn`, but it is no longer the active test instance in Super City.
+Updated September 17, 2026. The crowd research/recommendations are saved in
+[docs/crowd_system_review.md](../../../docs/crowd_system_review.md).
 
-## Editor workflow
+## What changed
 
-Open `res://scenes/super_city.tscn`, expand `CityPedestrianRoutes`, and select a district. Under **Route Checkboxes**, each named boolean enables one block or waterfront module. Checkboxes are sorted by row and column. **Enable all routes** and **Disable all routes** are convenience buttons for that district; **District Enabled** is a master switch that preserves the individual choices. **Show Debug** hides the district's lines without disabling its network.
+Routes now use the saved Main/SuperCity geometry rather than the obsolete
+`assets/super-city/layout.json` sidewalk inventory. Coverage includes:
 
-For editing reusable defaults, open `res://scenes/npcs/city_pedestrian_routes.tscn` directly. To make a Super City-specific override, its `CityPedestrianRoutes` instance is already marked editable. Save the scene after changing settings. `main.tscn` was not edited: its existing Super City instance inherits the new network. Do not add a second copy of the network there.
+- Current road-module sidewalks, independent sidewalk pieces, narrow alleys,
+  and actual painted crosswalk positions.
+- City Hall's updated surrounding sidewalks.
+- Curved river promenades, coastal pavement, and both concrete piers.
+- Central Park trails, entrances, and Bow Bridge.
+- Walkways on all three river bridges.
 
-```text
-SuperCity
-  CityPedestrianRoutes
-    WestVillage
-      Block_01_01
-        StartHere
-      ...
-    NorthHeights
-    Parkside
-    CivicCenter
-    FinancialQuarter
-    Eastbank
-    FoundryWard
-    Docklands
-```
+The existing district checkboxes, AStar graph, population manager, civilian
+behavior and capsule/full-character handoffs remain in use. Crossing behavior
+is unchanged: the existing fixed wait still applies. Signal coordination,
+traffic gap checks and other crossing improvements are deferred. Airport and
+mountain/highway navigation are excluded.
 
-Module nodes and `StartHere` markers are saved scene nodes. Debug lines are generated in the editor. Select a module's **StartHere** marker and press **F** to frame its location in the 3D editor. Ambient civilians now live under the separate `CivilianCrowd/ActiveCivilians` parent; see [crowd controls and tests](CROWD.md).
+The graph stores height. Capsules follow bridge grades; full civilians check
+height along the route while physics handles the slope. An upper bridge does
+not connect to a lower promenade just because their overhead views overlap.
 
-An enabled module contributes links to one shared navigation graph. Enabled neighboring modules can connect, including across district boundaries. Disabling a module removes its links; this can intentionally disconnect an area. Other modules' shared boundary points remain usable through their own enabled links. The graph creates no civilians and does not limit population to one per module.
+## Assessment and remaining geometry gaps
 
-## Root controls
+The export has **271 modules, 19,246 points and 20,038 segments**. Its largest
+component contains **18,196 points**, spanning both city banks and the park.
+Eight smaller components occupy physically separate pavement. They support
+local walking without inventing connections through missing pavement.
 
-Select `CityPedestrianRoutes`:
+- The south and City Hall bridges each have two continuous walkway routes.
+- The north bridge has a continuous southern walkway linking the riverbank
+  paths. Its northern approach has a break on the west side: the graph stops
+  around X=100 and resumes around X=133 at Z=-972. The bridge's presence does
+  not establish a connection to every adjoining street sidewalk.
+- Coastal pavement around Z=784-786 is separated from the southern street
+  sidewalk around Z=772. The intervening gap is not included as a paved route.
+- The west concrete pier starts at Z=800, separate from coastal pavement. The
+  east pier extension joins its existing paved base.
+- A small City Hall-area sidewalk strip and several park trail ends are isolated
+  by actual surface boundaries or obstacles. Candidates through garage structure
+  collision, low bridge structure and the airport access-road boundary were
+  excluded.
 
-| Setting | Effect |
-| --- | --- |
-| Network Enabled | Master switch for active links; no new ambient spawns while disabled |
-| Show Disabled Routes | Show unchecked modules as gray context lines |
-| Crossing Passing Margin | The previously tested margin beside crossing stripes |
-| Enabled Modules | Read-only count of enabled checkboxes under enabled districts |
+This pass changes navigation; it does not add sidewalk geometry or move props.
+The river promenades remain local walking components where there is no clear
+paved approach into the street network.
 
-The reusable route scene starts with one module per district enabled. Super City's existing overrides are preserved. Enable the districts/modules where you want civilians to walk; population and visibility controls are now on `CivilianCrowd`.
+## Testing in Godot
 
-Changing route checkboxes while running rebuilds topology and gradually retires civilians with old journeys. New civilians populate nearby enabled routes. Disabling `CivilianCrowd/Crowd Enabled` allows graph-only inspection without changing connectivity. The CivilianCrowd/CapsuleLOD child now provides a lightweight distant population; see [capsule controls](CAPSULE_LOD.md).
+1. Reload `super_city.tscn` after accepting external changes, then run Main.
+2. On `SuperCity/CityPedestrianRoutes`, enable **Show Debug Routes**. Each district
+   also has **Show Debug**, **District Enabled**, and route checkboxes. Cyan/purple
+   show walking/alley routes. Yellow marks crossings, including short approaches
+   where a person's footprint enters them. Population remains in `CivilianCrowd`.
+3. Walk near City Hall and park entrances. Fly between bridges and river paths,
+   then descend to watch capsules become full civilians. Watch for floating,
+   clipping or stopping on inclines.
+4. Inspect the coastal/pier gaps above. NPCs should turn back within connected
+   pavement rather than cut across empty space or unmarked roads.
 
-Local passing treats routes as preferred paths. It tries pavement first, clear supported building setbacks next, and brief road detours last, then rejoins the route. Solid obstacles remain blocking. Outside the route, shallow ground probes reject drops and the current water placeholders. `Waypoint Arrival Distance` on the routed civilian defaults to 0.2 m. This is a small local avoidance rule; fully blocked passages can still cause waiting.
+Headless validation passed **108,610 route samples** for walking-area membership,
+ground support and 0.55 m-radius / 1.8 m-high body clearance. Ground rays allow a
+2 cm lateral retry at imported triangle seams. Full civilians walked uphill and
+downhill on City Hall bridge; capsule grade-following and handoff height passed.
+Seven existing regressions passed: district controls, lane spacing, damage
+lookup, pilot movement, stuck recovery, crowd lifecycle and capsule LOD.
+These are automated checks, not a visual playthrough or an FPS benchmark.
 
-Debug legend: **cyan sidewalks**, **purple alleys**, **yellow crossings**, **gray disabled modules** when that option is enabled. Debug lines have no collision. The preview images in this directory show the entire network enabled for inspection, not the default eight-module selection.
+## Rebuilding after edits
 
-## Coverage and organization
-
-There are **260 modules, 5,261 graph points, and 6,133 segments**, forming exactly **two connected banks when all modules are enabled**. Every generated graph point has a connection. There are **no river-crossing links**, including over the current flat road placeholders. Sidewalks on those placeholders are clipped at the river boundary. The quay and pier remain pedestrian-accessible; river and bay surfaces do not.
-
-| District | Modules | Initially selected module |
-| --- | ---: | --- |
-| West Village | 36 | Block_01_01 |
-| North Heights | 56 | Block_01_04 |
-| Parkside | 27 | Block_05_05 |
-| Civic Center | 32 | Block_05_04 |
-| Financial Quarter | 32 | Block_10_06 |
-| Eastbank | 41 | Block_05_10 |
-| Foundry Ward | 19 | Block_06_14 |
-| Docklands | 17 | Block_10_14 |
-
-Block names identify approximate north-to-south row and west-to-east column in an organizational grid. District boundaries can split an organizational cell into separately named modules. Waterfront and pier modules have descriptive names. The full [inventory](INVENTORY.md) lists segment counts, historical reference endpoint IDs, and neighboring modules. Ambient journeys follow enabled connections and do not use those fixed endpoint pairs.
-
-The route network covers the authored sidewalks, alleys and promenades. The green park interior has no pedestrian routes yet, so population uses its perimeter. Ordinary building interiors, rooftops and water have no spawn routes. Civilians retain existing movement, crossing waits, passing and animation behavior, with random starts along segments and per-civilian sideways preferences.
-
-## What to test next
-
-1. Select a district and toggle one **Route Checkboxes** entry. Its colored lines should appear/disappear. Toggle **Show Disabled Routes** to see unchecked modules in gray, then turn it back off.
-2. Save, close and reopen the route scene. Verify the checkbox selections persist.
-3. Run Super City with F6. Visit a selected module's `StartHere` location. Expect one civilian walking continuously between two reachable destinations, pausing before crossings and going around people when there is safe space.
-4. Enable two or three neighboring modules in one district. Expect the graph to join at their shared boundaries. Each enabled module supplies one test civilian until the cap is reached; journeys may share segments or pass into another enabled module.
-5. Lower **Max Test Civilians** to 2 with several checkboxes enabled. The read-only count and actual population should be 2; extra enabled route lines should remain visible.
-6. Disable **Spawn Test Civilians**, enable all modules, and inspect the river. Lines must stop at the water; no route should connect the two banks. Inspect the pier, park perimeter and district boundaries for missing connections or lines crossing walls.
-7. Report any sticking, unsafe corner cutting or route that does not match current geometry using **district + module name**, plus the civilian's status label if visible.
-
-The eight default civilians moved in a short headless check; this is not a full visual traversal or crowd performance assessment. Player spawning was not tested. The user retains control of player placement and the next visual walkthrough.
-
-## Generation, validation and fallback
-
-`assets/super-city/tools/generate_pedestrian_network.gd` is an offline authoring tool. It reads the layout's sidewalk/alley rectangles and the current Super City building collision footprints. It finds shared surface portals, inserts clear orthogonal turns where diagonals would clip corners, and adds the setback crosswalk connections on ordinary road approaches. Links are sampled with a 0.56 m body-clearance margin against surface unions, buildings and excluded water.
-
-Generation writes only the pedestrian data, inventory and route component scene. It does not regenerate or repack city geometry. Existing root controls and district checkbox dictionaries in the route component scene are preserved when regenerating; new modules default off. Preserve a backup before intentionally rebuilding after layout edits, especially if you have manually edited module nodes. Overrides saved on a parent scene remain that parent scene's responsibility.
+Save the city first, then run:
 
 ```powershell
-$cityGodot = 'D:\SteamLibrary\steamapps\common\Godot Engine\godot.windows.opt.tools.64.exe'
-& $cityGodot --headless --path . --script res://assets/super-city/tools/generate_pedestrian_network.gd | Out-Host
-& $cityGodot --headless --path . --fixed-fps 60 --quit-after 500 --script res://tests/test_city_pedestrian_network.gd | Out-Host
+& 'D:\SteamLibrary\steamapps\common\Godot Engine\godot.windows.opt.tools.64.exe' --headless --path . --script res://assets/super-city/tools/bake_authored_pedestrians.gd
+& 'D:\SteamLibrary\steamapps\common\Godot Engine\godot.windows.opt.tools.64.exe' --headless --path . --fixed-fps 60 --script res://tests/test_authored_pedestrian_routes.gd --quit-after 800
 ```
 
-The graph check covers actual two-component connectivity, named checkbox read/write and serialization, and absence of graph-owned test spawning. `tests/test_civilian_crowd.gd` covers the separate population lifecycle. Earlier graph previews were rendered during authoring; ambient population and skin appearance still require visual assessment. The headless environment's existing certificate-store warning did not prevent checks.
+The offline tool uses Godot's navigation baker in bounded tiles, then exports
+into the existing AStar graph. There is no runtime baking or new NavigationAgent.
+Box-collider clearance is baked; actual physics rejects unsupported or obstructed
+candidate routes. Heights are projected back onto original pavement.
 
-Generation currently targets `super_city.tscn`, not arbitrary new geometry placed only in `main.tscn`. Local passing handles temporary obstacles, but added sidewalks or permanent layout changes require updating the source surface data and regenerating. Do not assume old graph data automatically adapts to future edits. Adding a bridge later means adding its walkable surfaces and explicit bank connections, then checking connectivity; no bridge module is active now.
+Saved checkbox choices and inherited marker paths are preserved. New modules
+are enabled in SuperCity and route markers are updated. Obsolete empty marker
+containers remain compatible with inherited scene overrides. The old
+`generate_pedestrian_network.gd` remains as legacy/base utilities; do not run
+its old-layout generation entry point for this city.
 
-For a quick population fallback, turn **Crowd Enabled** off. To use the old pilot, keep the crowd disabled and instance `res://scenes/npcs/civilian_route_pilot.tscn` at identity in the city.
+`INVENTORY.md` lists modules. Detailed reports are under ignored `artifacts/`.
+The optional offline bake cache is under `.godot/`; a normal rebuild does not
+require it. Profile the expanded graph before making any performance claims.
 
 ## Changed files
 
-- `scenes/super_city.tscn`: swaps the old pilot instance for the new district route component; other existing scene text is preserved.
-- `scenes/npcs/city_pedestrian_routes.tscn`: saved district/module hierarchy and defaults.
-- `scripts/npc-scripts/city_pedestrian_network.gd`: active shared graph and debug batches.
-- `scripts/npc-scripts/civilian_crowd.gd` and `scenes/npcs/civilian_crowd.tscn`: nearby ambient population and settings.
-- `scripts/npc-scripts/pedestrian_district.gd`: per-district named checkboxes and bulk buttons.
-- `assets/super-city/tools/generate_pedestrian_network.gd`: offline generator.
-- `assets/super-city/pedestrians/`: graph JSON, inventory, this guide and previews.
-- `tests/test_city_pedestrian_network.gd`: focused topology and checkbox checks.
-- `tests/test_civilian_crowd.gd`: nearby population lifecycle check with a movable marker.
-- `tests/test_civilian_route_pilot.gd`: continues to test the preserved original pilot in isolation.
-- `CIVILIAN_CROWD_PLAN.md` and `assets/super-city/PEDESTRIAN_PILOT.md`: current checkpoint and entrypoint notes.
+- `assets/super-city/tools/bake_authored_pedestrians.gd` and a legacy-tool notice.
+- `assets/super-city/pedestrians/network.json`, `INVENTORY.md`, and this README.
+- `scenes/npcs/city_pedestrian_routes.tscn` and navigation settings/markers in
+  `scenes/super_city.tscn`.
+- `scripts/npc-scripts/city_pedestrian_network.gd`, `pedestrian_surface_index.gd`,
+  `capsule_civilian.gd`, and `routed_civilian.gd`.
+- `tests/test_city_pedestrian_network.gd` and `test_authored_pedestrian_routes.gd`.
+- `export_presets.cfg`, explicitly including the active navigation JSON.
 
-`main.tscn`, player code, buildings and road assets are preserved. The shared routed civilian now also supports segment starts, connected ambient journeys and sideways offsets.
+The crowd review is separate. City meshes, props, road geometry, traffic behavior,
+population defaults and crossing wait rules were not changed in this pass.

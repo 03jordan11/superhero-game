@@ -24,7 +24,9 @@ var power_mode_dropdown: OptionButton
 var population_settings: Node
 var hint_settings: Node
 var controls_panel: VBoxContainer
-var _audio_save_timer: Timer
+var sensitivity_slider: HSlider
+var sensitivity_label: Label
+var _settings_save_timer: Timer
 @onready var settings: Node = get_node("/root/GameSettings")
 @onready var tabs: TabContainer = $Margin/Layout/Tabs
 @onready var status: Label = $Margin/Layout/Status
@@ -48,6 +50,7 @@ func _ready() -> void:
 	_build_graphics()
 	_build_audio()
 	_build_gameplay()
+	_build_sensitivity()
 	controls_panel = preload("res://scripts/ui-scripts/control_bindings_panel.gd").new()
 	pages.Controls.add_child(controls_panel)
 	controls_panel.status_changed.connect(func(copy: String): status.text = copy)
@@ -57,18 +60,21 @@ func _ready() -> void:
 	settings.audio_settings_changed.connect(_refresh_audio)
 	settings.gameplay_settings_changed.connect(_refresh_gameplay)
 	settings.accessibility_settings_changed.connect(_refresh_gameplay)
+	settings.look_sensitivity_changed.connect(_refresh_sensitivity)
 	_refresh_display()
 	_refresh_graphics()
 	_refresh_audio()
 	_refresh_gameplay()
-	_audio_save_timer = Timer.new()
-	_audio_save_timer.one_shot = true
-	_audio_save_timer.wait_time = 0.25
-	_audio_save_timer.process_mode = Node.PROCESS_MODE_ALWAYS
-	add_child(_audio_save_timer)
-	_audio_save_timer.timeout.connect(_save_audio)
+	_refresh_sensitivity()
+	_settings_save_timer = Timer.new()
+	_settings_save_timer.one_shot = true
+	_settings_save_timer.wait_time = 0.25
+	_settings_save_timer.process_mode = Node.PROCESS_MODE_ALWAYS
+	add_child(_settings_save_timer)
+	_settings_save_timer.timeout.connect(_save_pending_settings)
 
 func open_page() -> void:
+	_refresh_sensitivity()
 	_refresh_display()
 	_refresh_graphics()
 	_refresh_audio()
@@ -108,7 +114,7 @@ func _build_graphics() -> void:
 	resolution_dropdown = _option(page, "Resolution", [])
 	for resolution in resolutions:
 		resolution_dropdown.add_item("%d × %d" % [resolution.x, resolution.y])
-	resolution_dropdown.tooltip_text = "Window size. Fullscreen uses your display's native resolution."
+	resolution_dropdown.tooltip_text = "Preferred window size. Windowed modes are centered and scaled down if needed to fit your screen, including the title bar and taskbar. Fullscreen uses your display's native resolution."
 	display_mode_dropdown.item_selected.connect(_on_display_selected)
 	resolution_dropdown.item_selected.connect(_on_display_selected)
 	render_scale_dropdown = _option(page, "3D Render Scale", ["50%", "75%", "100%"])
@@ -148,6 +154,34 @@ func _build_audio() -> void:
 		volume_labels[bus] = amount
 		slider.value_changed.connect(_on_volume_changed.bind(bus))
 	_note(page, "Voice controls player vocal sounds and future dialogue. Music volume is ready for future music.")
+
+func _build_sensitivity() -> void:
+	var page: VBoxContainer = pages.Controls
+	var row := _row(page, "Look Sensitivity")
+	sensitivity_slider = HSlider.new()
+	sensitivity_slider.name = "LookSensitivity"
+	sensitivity_slider.min_value = settings.MIN_LOOK_SENSITIVITY
+	sensitivity_slider.max_value = settings.MAX_LOOK_SENSITIVITY
+	sensitivity_slider.step = 0.05
+	sensitivity_slider.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	sensitivity_slider.custom_minimum_size = Vector2(230, 44)
+	row.add_child(sensitivity_slider)
+	sensitivity_label = Label.new()
+	sensitivity_label.custom_minimum_size.x = 66
+	sensitivity_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	sensitivity_label.add_theme_font_size_override("font_size", 22)
+	row.add_child(sensitivity_label)
+	sensitivity_slider.value_changed.connect(_on_sensitivity_changed)
+	_note(page, "Camera speed for mouse and controller right stick. 1.0 is the default.")
+
+func _refresh_sensitivity() -> void:
+	var sensitivity: float = settings.look_sensitivity
+	sensitivity_slider.set_value_no_signal(sensitivity)
+	sensitivity_label.text = ("%.2f" % sensitivity).trim_suffix("0")
+
+func _on_sensitivity_changed(value: float) -> void:
+	settings.set_look_sensitivity(value, false)
+	_settings_save_timer.start()
 
 func _build_gameplay() -> void:
 	var page: VBoxContainer = pages.Gameplay
@@ -255,13 +289,13 @@ func _on_display_selected(_index: int) -> void:
 func _on_volume_changed(value: float, bus: StringName) -> void:
 	settings.set_audio_volume(bus, value / 100.0, false)
 	# Preview immediately, but avoid writing the config every frame while dragging.
-	_audio_save_timer.start()
+	_settings_save_timer.start()
 
-func _save_audio() -> void:
+func _save_pending_settings() -> void:
 	_report_save(settings.save_settings())
 
 func _exit_tree() -> void:
-	if is_instance_valid(_audio_save_timer) and not _audio_save_timer.is_stopped() and is_instance_valid(settings):
+	if is_instance_valid(_settings_save_timer) and not _settings_save_timer.is_stopped() and is_instance_valid(settings):
 		settings.save_settings()
 
 func _on_hud_toggled(value: bool, key: StringName) -> void:

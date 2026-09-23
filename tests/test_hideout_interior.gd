@@ -38,6 +38,7 @@ func run() -> void:
 		for tick in 3: await physics_frame
 		await process_frame
 		Input.action_release("pick_up_vehicle")
+		while root.get_node("LoadingScreen").active: await process_frame
 		var travel := get_first_node_in_group(&"hideout_travel")
 		check(travel != null, "E starts travel through player input")
 		if travel == null: quit(1); return
@@ -89,6 +90,7 @@ func run() -> void:
 		for tick in 3: await physics_frame
 		await process_frame
 		Input.action_release("pick_up_vehicle")
+		while root.get_node("LoadingScreen").active: await process_frame
 		city = current_scene
 		check(city.name == &"Main" and city.get_instance_id() != city_id, "Exit loads a fresh city")
 		var returned_clock: Node = get_first_node_in_group(&"game_clock")

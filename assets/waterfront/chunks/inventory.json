@@ -1,0 +1,3318 @@
+{
+	"cell_size_m": 500.0,
+	"chunks": [
+		{
+			"DistantProxy": {
+				"mesh": "res://assets/waterfront/chunks/Seawall_QuayWall171_0_DistantProxy.res",
+				"triangles": 24
+			},
+			"FullDetail": {
+				"mesh": "res://assets/waterfront/chunks/Seawall_QuayWall171_0_FullDetail.res",
+				"triangles": 60
+			},
+			"name": "Seawall_QuayWall171_0"
+		},
+		{
+			"DistantProxy": {
+				"mesh": "res://assets/waterfront/chunks/Seawall_QuayWall171_1_DistantProxy.res",
+				"triangles": 24
+			},
+			"FullDetail": {
+				"mesh": "res://assets/waterfront/chunks/Seawall_QuayWall171_1_FullDetail.res",
+				"triangles": 60
+			},
+			"name": "Seawall_QuayWall171_1"
+		},
+		{
+			"DistantProxy": {
+				"mesh": "res://assets/waterfront/chunks/Seawall_QuayWall171_2_DistantProxy.res",
+				"triangles": 24
+			},
+			"FullDetail": {
+				"mesh": "res://assets/waterfront/chunks/Seawall_QuayWall171_2_FullDetail.res",
+				"triangles": 60
+			},
+			"name": "Seawall_QuayWall171_2"
+		},
+		{
+			"DistantProxy": {
+				"mesh": "res://assets/waterfront/chunks/Seawall_QuayWall171_3_DistantProxy.res",
+				"triangles": 24
+			},
+			"FullDetail": {
+				"mesh": "res://assets/waterfront/chunks/Seawall_QuayWall171_3_FullDetail.res",
+				"triangles": 60
+			},
+			"name": "Seawall_QuayWall171_3"
+		},
+		{
+			"DistantProxy": {
+				"mesh": "res://assets/waterfront/chunks/Seawall_QuayWall172_0_DistantProxy.res",
+				"triangles": 24
+			},
+			"FullDetail": {
+				"mesh": "res://assets/waterfront/chunks/Seawall_QuayWall172_0_FullDetail.res",
+				"triangles": 60
+			},
+			"name": "Seawall_QuayWall172_0"
+		},
+		{
+			"DistantProxy": {
+				"mesh": "res://assets/waterfront/chunks/Seawall_QuayWall172_1_DistantProxy.res",
+				"triangles": 24
+			},
+			"FullDetail": {
+				"mesh": "res://assets/waterfront/chunks/Seawall_QuayWall172_1_FullDetail.res",
+				"triangles": 60
+			},
+			"name": "Seawall_QuayWall172_1"
+		},
+		{
+			"DistantProxy": {
+				"mesh": "res://assets/waterfront/chunks/Seawall_QuayWall173_0_DistantProxy.res",
+				"triangles": 24
+			},
+			"FullDetail": {
+				"mesh": "res://assets/waterfront/chunks/Seawall_QuayWall173_0_FullDetail.res",
+				"triangles": 60
+			},
+			"name": "Seawall_QuayWall173_0"
+		},
+		{
+			"DistantProxy": {
+				"mesh": "res://assets/waterfront/chunks/Lamps_0_-2_DistantProxy.res",
+				"triangles": 288
+			},
+			"FullDetail": {
+				"mesh": "res://assets/waterfront/chunks/Lamps_0_-2_FullDetail.res",
+				"triangles": 672
+			},
+			"name": "Lamps_0_-2"
+		},
+		{
+			"DistantProxy": {
+				"mesh": "res://assets/waterfront/chunks/Lamps_0_-1_DistantProxy.res",
+				"triangles": 360
+			},
+			"FullDetail": {
+				"mesh": "res://assets/waterfront/chunks/Lamps_0_-1_FullDetail.res",
+				"triangles": 840
+			},
+			"name": "Lamps_0_-1"
+		},
+		{
+			"DistantProxy": {
+				"mesh": "res://assets/waterfront/chunks/Lamps_0_0_DistantProxy.res",
+				"triangles": 288
+			},
+			"FullDetail": {
+				"mesh": "res://assets/waterfront/chunks/Lamps_0_0_FullDetail.res",
+				"triangles": 672
+			},
+			"name": "Lamps_0_0"
+		},
+		{
+			"DistantProxy": {
+				"mesh": "res://assets/waterfront/chunks/Lamps_0_1_DistantProxy.res",
+				"triangles": 144
+			},
+			"FullDetail": {
+				"mesh": "res://assets/waterfront/chunks/Lamps_0_1_FullDetail.res",
+				"triangles": 336
+			},
+			"name": "Lamps_0_1"
+		}
+	],
+	"far_triangles": 1248,
+	"near_triangles": 2940,
+	"source_surfaces": 105,
+	"source_triangles": 2700,
+	"sources": {
+		"HarborLamp/Housing": {
+			"geometry": "168763141",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 130.5, 5.5, -980)",
+			"visible": true
+		},
+		"HarborLamp/Lens": {
+			"geometry": "1527252092",
+			"material": "[Color(0.3, 0.22117649, 0.13411765, 0.3), 0.82, 0.0, Color(1, 0.7372549, 0.44705883, 1), 2.7, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 130.5, 5.4, -980)",
+			"visible": true
+		},
+		"HarborLamp/Post": {
+			"geometry": "4209574460",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 130.5, 2.75, -980)",
+			"visible": true
+		},
+		"HarborLamp10/Housing": {
+			"geometry": "168763141",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 257.35715, 5.5, -500)",
+			"visible": true
+		},
+		"HarborLamp10/Lens": {
+			"geometry": "1527252092",
+			"material": "[Color(0.3, 0.22117649, 0.13411765, 0.3), 0.82, 0.0, Color(1, 0.7372549, 0.44705883, 1), 2.7, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 257.35715, 5.4, -500)",
+			"visible": true
+		},
+		"HarborLamp10/Post": {
+			"geometry": "4209574460",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 257.35715, 2.75, -500)",
+			"visible": true
+		},
+		"HarborLamp11/Housing": {
+			"geometry": "168763141",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.78571, 5.5, -380)",
+			"visible": true
+		},
+		"HarborLamp11/Lens": {
+			"geometry": "1527252092",
+			"material": "[Color(0.3, 0.22117649, 0.13411765, 0.3), 0.82, 0.0, Color(1, 0.7372549, 0.44705883, 1), 2.7, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.78571, 5.4, -380)",
+			"visible": true
+		},
+		"HarborLamp11/Post": {
+			"geometry": "4209574460",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.78571, 2.75, -380)",
+			"visible": true
+		},
+		"HarborLamp12/Housing": {
+			"geometry": "168763141",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 233.78572, 5.5, -380)",
+			"visible": true
+		},
+		"HarborLamp12/Lens": {
+			"geometry": "1527252092",
+			"material": "[Color(0.3, 0.22117649, 0.13411765, 0.3), 0.82, 0.0, Color(1, 0.7372549, 0.44705883, 1), 2.7, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 233.78572, 5.4, -380)",
+			"visible": true
+		},
+		"HarborLamp12/Post": {
+			"geometry": "4209574460",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 233.78572, 2.75, -380)",
+			"visible": true
+		},
+		"HarborLamp13/Housing": {
+			"geometry": "168763141",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103.35714, 5.5, -260)",
+			"visible": true
+		},
+		"HarborLamp13/Lens": {
+			"geometry": "1527252092",
+			"material": "[Color(0.3, 0.22117649, 0.13411765, 0.3), 0.82, 0.0, Color(1, 0.7372549, 0.44705883, 1), 2.7, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103.35714, 5.4, -260)",
+			"visible": true
+		},
+		"HarborLamp13/Post": {
+			"geometry": "4209574460",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103.35714, 2.75, -260)",
+			"visible": true
+		},
+		"HarborLamp14/Housing": {
+			"geometry": "168763141",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 212.35715, 5.5, -260)",
+			"visible": true
+		},
+		"HarborLamp14/Lens": {
+			"geometry": "1527252092",
+			"material": "[Color(0.3, 0.22117649, 0.13411765, 0.3), 0.82, 0.0, Color(1, 0.7372549, 0.44705883, 1), 2.7, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 212.35715, 5.4, -260)",
+			"visible": true
+		},
+		"HarborLamp14/Post": {
+			"geometry": "4209574460",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 212.35715, 2.75, -260)",
+			"visible": true
+		},
+		"HarborLamp15/Housing": {
+			"geometry": "168763141",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94.78696, 5.5, -140)",
+			"visible": true
+		},
+		"HarborLamp15/Lens": {
+			"geometry": "1527252092",
+			"material": "[Color(0.3, 0.22117649, 0.13411765, 0.3), 0.82, 0.0, Color(1, 0.7372549, 0.44705883, 1), 2.7, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94.78696, 5.4, -140)",
+			"visible": true
+		},
+		"HarborLamp15/Post": {
+			"geometry": "4209574460",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94.78696, 2.75, -140)",
+			"visible": true
+		},
+		"HarborLamp16/Housing": {
+			"geometry": "168763141",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 203.78696, 5.5, -140)",
+			"visible": true
+		},
+		"HarborLamp16/Lens": {
+			"geometry": "1527252092",
+			"material": "[Color(0.3, 0.22117649, 0.13411765, 0.3), 0.82, 0.0, Color(1, 0.7372549, 0.44705883, 1), 2.7, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 203.78696, 5.4, -140)",
+			"visible": true
+		},
+		"HarborLamp16/Post": {
+			"geometry": "4209574460",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 203.78696, 2.75, -140)",
+			"visible": true
+		},
+		"HarborLamp17/Housing": {
+			"geometry": "168763141",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 143.83333, 5.5, -20)",
+			"visible": true
+		},
+		"HarborLamp17/Lens": {
+			"geometry": "1527252092",
+			"material": "[Color(0.3, 0.22117649, 0.13411765, 0.3), 0.82, 0.0, Color(1, 0.7372549, 0.44705883, 1), 2.7, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 143.83333, 5.4, -20)",
+			"visible": true
+		},
+		"HarborLamp17/Post": {
+			"geometry": "4209574460",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 143.83333, 2.75, -20)",
+			"visible": true
+		},
+		"HarborLamp18/Housing": {
+			"geometry": "168763141",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 252.83333, 5.5, -20)",
+			"visible": true
+		},
+		"HarborLamp18/Lens": {
+			"geometry": "1527252092",
+			"material": "[Color(0.3, 0.22117649, 0.13411765, 0.3), 0.82, 0.0, Color(1, 0.7372549, 0.44705883, 1), 2.7, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 252.83333, 5.4, -20)",
+			"visible": true
+		},
+		"HarborLamp18/Post": {
+			"geometry": "4209574460",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 252.83333, 2.75, -20)",
+			"visible": true
+		},
+		"HarborLamp19/Housing": {
+			"geometry": "168763141",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 195.63351, 5.5, 100)",
+			"visible": true
+		},
+		"HarborLamp19/Lens": {
+			"geometry": "1527252092",
+			"material": "[Color(0.3, 0.22117649, 0.13411765, 0.3), 0.82, 0.0, Color(1, 0.7372549, 0.44705883, 1), 2.7, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 195.63351, 5.4, 100)",
+			"visible": true
+		},
+		"HarborLamp19/Post": {
+			"geometry": "4209574460",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 195.63351, 2.75, 100)",
+			"visible": true
+		},
+		"HarborLamp2/Housing": {
+			"geometry": "168763141",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 239.5, 5.5, -980)",
+			"visible": true
+		},
+		"HarborLamp2/Lens": {
+			"geometry": "1527252092",
+			"material": "[Color(0.3, 0.22117649, 0.13411765, 0.3), 0.82, 0.0, Color(1, 0.7372549, 0.44705883, 1), 2.7, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 239.5, 5.4, -980)",
+			"visible": true
+		},
+		"HarborLamp2/Post": {
+			"geometry": "4209574460",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 239.5, 2.75, -980)",
+			"visible": true
+		},
+		"HarborLamp20/Housing": {
+			"geometry": "168763141",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 304.6335, 5.5, 100)",
+			"visible": true
+		},
+		"HarborLamp20/Lens": {
+			"geometry": "1527252092",
+			"material": "[Color(0.3, 0.22117649, 0.13411765, 0.3), 0.82, 0.0, Color(1, 0.7372549, 0.44705883, 1), 2.7, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 304.6335, 5.4, 100)",
+			"visible": true
+		},
+		"HarborLamp20/Post": {
+			"geometry": "4209574460",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 304.6335, 2.75, 100)",
+			"visible": true
+		},
+		"HarborLamp21/Housing": {
+			"geometry": "168763141",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 255.5, 5.5, 220)",
+			"visible": true
+		},
+		"HarborLamp21/Lens": {
+			"geometry": "1527252092",
+			"material": "[Color(0.3, 0.22117649, 0.13411765, 0.3), 0.82, 0.0, Color(1, 0.7372549, 0.44705883, 1), 2.7, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 255.5, 5.4, 220)",
+			"visible": true
+		},
+		"HarborLamp21/Post": {
+			"geometry": "4209574460",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 255.5, 2.75, 220)",
+			"visible": true
+		},
+		"HarborLamp22/Housing": {
+			"geometry": "168763141",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 364.5, 5.5, 220)",
+			"visible": true
+		},
+		"HarborLamp22/Lens": {
+			"geometry": "1527252092",
+			"material": "[Color(0.3, 0.22117649, 0.13411765, 0.3), 0.82, 0.0, Color(1, 0.7372549, 0.44705883, 1), 2.7, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 364.5, 5.4, 220)",
+			"visible": true
+		},
+		"HarborLamp22/Post": {
+			"geometry": "4209574460",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 364.5, 2.75, 220)",
+			"visible": true
+		},
+		"HarborLamp23/Housing": {
+			"geometry": "168763141",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 301.0986, 5.5, 340)",
+			"visible": true
+		},
+		"HarborLamp23/Lens": {
+			"geometry": "1527252092",
+			"material": "[Color(0.3, 0.22117649, 0.13411765, 0.3), 0.82, 0.0, Color(1, 0.7372549, 0.44705883, 1), 2.7, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 301.0986, 5.4, 340)",
+			"visible": true
+		},
+		"HarborLamp23/Post": {
+			"geometry": "4209574460",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 301.0986, 2.75, 340)",
+			"visible": true
+		},
+		"HarborLamp24/Housing": {
+			"geometry": "168763141",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 410.0986, 5.5, 340)",
+			"visible": true
+		},
+		"HarborLamp24/Lens": {
+			"geometry": "1527252092",
+			"material": "[Color(0.3, 0.22117649, 0.13411765, 0.3), 0.82, 0.0, Color(1, 0.7372549, 0.44705883, 1), 2.7, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 410.0986, 5.4, 340)",
+			"visible": true
+		},
+		"HarborLamp24/Post": {
+			"geometry": "4209574460",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 410.0986, 2.75, 340)",
+			"visible": true
+		},
+		"HarborLamp25/Housing": {
+			"geometry": "168763141",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 282.16666, 5.5, 460)",
+			"visible": true
+		},
+		"HarborLamp25/Lens": {
+			"geometry": "1527252092",
+			"material": "[Color(0.3, 0.22117649, 0.13411765, 0.3), 0.82, 0.0, Color(1, 0.7372549, 0.44705883, 1), 2.7, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 282.16666, 5.4, 460)",
+			"visible": true
+		},
+		"HarborLamp25/Post": {
+			"geometry": "4209574460",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 282.16666, 2.75, 460)",
+			"visible": true
+		},
+		"HarborLamp26/Housing": {
+			"geometry": "168763141",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 392.46268, 5.5, 460)",
+			"visible": true
+		},
+		"HarborLamp26/Lens": {
+			"geometry": "1527252092",
+			"material": "[Color(0.3, 0.22117649, 0.13411765, 0.3), 0.82, 0.0, Color(1, 0.7372549, 0.44705883, 1), 2.7, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 392.46268, 5.4, 460)",
+			"visible": true
+		},
+		"HarborLamp26/Post": {
+			"geometry": "4209574460",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 392.46268, 2.75, 460)",
+			"visible": true
+		},
+		"HarborLamp27/Housing": {
+			"geometry": "168763141",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 253.1658, 5.5, 580)",
+			"visible": true
+		},
+		"HarborLamp27/Lens": {
+			"geometry": "1527252092",
+			"material": "[Color(0.3, 0.22117649, 0.13411765, 0.3), 0.82, 0.0, Color(1, 0.7372549, 0.44705883, 1), 2.7, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 253.1658, 5.4, 580)",
+			"visible": true
+		},
+		"HarborLamp27/Post": {
+			"geometry": "4209574460",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 253.1658, 2.75, 580)",
+			"visible": true
+		},
+		"HarborLamp28/Housing": {
+			"geometry": "168763141",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 393.77643, 5.5, 580)",
+			"visible": true
+		},
+		"HarborLamp28/Lens": {
+			"geometry": "1527252092",
+			"material": "[Color(0.3, 0.22117649, 0.13411765, 0.3), 0.82, 0.0, Color(1, 0.7372549, 0.44705883, 1), 2.7, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 393.77643, 5.4, 580)",
+			"visible": true
+		},
+		"HarborLamp28/Post": {
+			"geometry": "4209574460",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 393.77643, 2.75, 580)",
+			"visible": true
+		},
+		"HarborLamp29/Housing": {
+			"geometry": "168763141",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 183.83333, 5.5, 700)",
+			"visible": true
+		},
+		"HarborLamp29/Lens": {
+			"geometry": "1527252092",
+			"material": "[Color(0.3, 0.22117649, 0.13411765, 0.3), 0.82, 0.0, Color(1, 0.7372549, 0.44705883, 1), 2.7, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 183.83333, 5.4, 700)",
+			"visible": true
+		},
+		"HarborLamp29/Post": {
+			"geometry": "4209574460",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 183.83333, 2.75, 700)",
+			"visible": true
+		},
+		"HarborLamp3/Housing": {
+			"geometry": "168763141",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 160.5, 5.5, -860)",
+			"visible": true
+		},
+		"HarborLamp3/Lens": {
+			"geometry": "1527252092",
+			"material": "[Color(0.3, 0.22117649, 0.13411765, 0.3), 0.82, 0.0, Color(1, 0.7372549, 0.44705883, 1), 2.7, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 160.5, 5.4, -860)",
+			"visible": true
+		},
+		"HarborLamp3/Post": {
+			"geometry": "4209574460",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 160.5, 2.75, -860)",
+			"visible": true
+		},
+		"HarborLamp30/Housing": {
+			"geometry": "168763141",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 434.3021, 5.5, 700)",
+			"visible": true
+		},
+		"HarborLamp30/Lens": {
+			"geometry": "1527252092",
+			"material": "[Color(0.3, 0.22117649, 0.13411765, 0.3), 0.82, 0.0, Color(1, 0.7372549, 0.44705883, 1), 2.7, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 434.3021, 5.4, 700)",
+			"visible": true
+		},
+		"HarborLamp30/Post": {
+			"geometry": "4209574460",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 434.3021, 2.75, 700)",
+			"visible": true
+		},
+		"HarborLamp4/Housing": {
+			"geometry": "168763141",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 269.5, 5.5, -860)",
+			"visible": true
+		},
+		"HarborLamp4/Lens": {
+			"geometry": "1527252092",
+			"material": "[Color(0.3, 0.22117649, 0.13411765, 0.3), 0.82, 0.0, Color(1, 0.7372549, 0.44705883, 1), 2.7, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 269.5, 5.4, -860)",
+			"visible": true
+		},
+		"HarborLamp4/Post": {
+			"geometry": "4209574460",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 269.5, 2.75, -860)",
+			"visible": true
+		},
+		"HarborLamp5/Housing": {
+			"geometry": "168763141",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 189.75616, 5.5, -740)",
+			"visible": true
+		},
+		"HarborLamp5/Lens": {
+			"geometry": "1527252092",
+			"material": "[Color(0.3, 0.22117649, 0.13411765, 0.3), 0.82, 0.0, Color(1, 0.7372549, 0.44705883, 1), 2.7, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 189.75616, 5.4, -740)",
+			"visible": true
+		},
+		"HarborLamp5/Post": {
+			"geometry": "4209574460",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 189.75616, 2.75, -740)",
+			"visible": true
+		},
+		"HarborLamp6/Housing": {
+			"geometry": "168763141",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 298.75616, 5.5, -740)",
+			"visible": true
+		},
+		"HarborLamp6/Lens": {
+			"geometry": "1527252092",
+			"material": "[Color(0.3, 0.22117649, 0.13411765, 0.3), 0.82, 0.0, Color(1, 0.7372549, 0.44705883, 1), 2.7, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 298.75616, 5.4, -740)",
+			"visible": true
+		},
+		"HarborLamp6/Post": {
+			"geometry": "4209574460",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 298.75616, 2.75, -740)",
+			"visible": true
+		},
+		"HarborLamp7/Housing": {
+			"geometry": "168763141",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 174.07143, 5.5, -620)",
+			"visible": true
+		},
+		"HarborLamp7/Lens": {
+			"geometry": "1527252092",
+			"material": "[Color(0.3, 0.22117649, 0.13411765, 0.3), 0.82, 0.0, Color(1, 0.7372549, 0.44705883, 1), 2.7, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 174.07143, 5.4, -620)",
+			"visible": true
+		},
+		"HarborLamp7/Post": {
+			"geometry": "4209574460",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 174.07143, 2.75, -620)",
+			"visible": true
+		},
+		"HarborLamp8/Housing": {
+			"geometry": "168763141",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 283.07144, 5.5, -620)",
+			"visible": true
+		},
+		"HarborLamp8/Lens": {
+			"geometry": "1527252092",
+			"material": "[Color(0.3, 0.22117649, 0.13411765, 0.3), 0.82, 0.0, Color(1, 0.7372549, 0.44705883, 1), 2.7, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 283.07144, 5.4, -620)",
+			"visible": true
+		},
+		"HarborLamp8/Post": {
+			"geometry": "4209574460",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 283.07144, 2.75, -620)",
+			"visible": true
+		},
+		"HarborLamp9/Housing": {
+			"geometry": "168763141",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 148.35715, 5.5, -500)",
+			"visible": true
+		},
+		"HarborLamp9/Lens": {
+			"geometry": "1527252092",
+			"material": "[Color(0.3, 0.22117649, 0.13411765, 0.3), 0.82, 0.0, Color(1, 0.7372549, 0.44705883, 1), 2.7, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 148.35715, 5.4, -500)",
+			"visible": true
+		},
+		"HarborLamp9/Post": {
+			"geometry": "4209574460",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 148.35715, 2.75, -500)",
+			"visible": true
+		},
+		"QuayWall": {
+			"visible": false
+		},
+		"QuayWall/Coping": {
+			"visible": false
+		},
+		"QuayWall/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall10": {
+			"visible": false
+		},
+		"QuayWall10/Coping": {
+			"visible": false
+		},
+		"QuayWall10/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall10/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall10/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall100": {
+			"visible": false
+		},
+		"QuayWall100/Coping": {
+			"visible": false
+		},
+		"QuayWall100/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall100/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall100/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall101": {
+			"visible": false
+		},
+		"QuayWall101/Coping": {
+			"visible": false
+		},
+		"QuayWall101/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall101/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall101/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall102": {
+			"visible": false
+		},
+		"QuayWall102/Coping": {
+			"visible": false
+		},
+		"QuayWall102/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall102/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall102/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall103": {
+			"visible": false
+		},
+		"QuayWall103/Coping": {
+			"visible": false
+		},
+		"QuayWall103/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall103/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall103/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall104": {
+			"visible": false
+		},
+		"QuayWall104/Coping": {
+			"visible": false
+		},
+		"QuayWall104/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall104/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall104/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall105": {
+			"visible": false
+		},
+		"QuayWall105/Coping": {
+			"visible": false
+		},
+		"QuayWall105/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall105/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall105/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall106": {
+			"visible": false
+		},
+		"QuayWall106/Coping": {
+			"visible": false
+		},
+		"QuayWall106/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall106/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall106/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall107": {
+			"visible": false
+		},
+		"QuayWall107/Coping": {
+			"visible": false
+		},
+		"QuayWall107/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall107/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall107/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall108": {
+			"visible": false
+		},
+		"QuayWall108/Coping": {
+			"visible": false
+		},
+		"QuayWall108/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall108/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall108/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall109": {
+			"visible": false
+		},
+		"QuayWall109/Coping": {
+			"visible": false
+		},
+		"QuayWall109/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall109/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall109/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall11": {
+			"visible": false
+		},
+		"QuayWall11/Coping": {
+			"visible": false
+		},
+		"QuayWall11/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall11/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall11/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall110": {
+			"visible": false
+		},
+		"QuayWall110/Coping": {
+			"visible": false
+		},
+		"QuayWall110/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall110/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall110/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall111": {
+			"visible": false
+		},
+		"QuayWall111/Coping": {
+			"visible": false
+		},
+		"QuayWall111/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall111/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall111/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall112": {
+			"visible": false
+		},
+		"QuayWall112/Coping": {
+			"visible": false
+		},
+		"QuayWall112/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall112/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall112/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall113": {
+			"visible": false
+		},
+		"QuayWall113/Coping": {
+			"visible": false
+		},
+		"QuayWall113/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall113/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall113/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall114": {
+			"visible": false
+		},
+		"QuayWall114/Coping": {
+			"visible": false
+		},
+		"QuayWall114/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall114/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall114/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall115": {
+			"visible": false
+		},
+		"QuayWall115/Coping": {
+			"visible": false
+		},
+		"QuayWall115/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall115/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall115/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall116": {
+			"visible": false
+		},
+		"QuayWall116/Coping": {
+			"visible": false
+		},
+		"QuayWall116/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall116/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall116/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall117": {
+			"visible": false
+		},
+		"QuayWall117/Coping": {
+			"visible": false
+		},
+		"QuayWall117/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall117/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall117/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall118": {
+			"visible": false
+		},
+		"QuayWall118/Coping": {
+			"visible": false
+		},
+		"QuayWall118/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall118/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall118/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall119": {
+			"visible": false
+		},
+		"QuayWall119/Coping": {
+			"visible": false
+		},
+		"QuayWall119/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall119/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall119/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall12": {
+			"visible": false
+		},
+		"QuayWall12/Coping": {
+			"visible": false
+		},
+		"QuayWall12/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall12/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall12/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall120": {
+			"visible": false
+		},
+		"QuayWall120/Coping": {
+			"visible": false
+		},
+		"QuayWall120/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall120/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall120/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall121": {
+			"visible": false
+		},
+		"QuayWall121/Coping": {
+			"visible": false
+		},
+		"QuayWall121/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall121/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall121/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall122": {
+			"visible": false
+		},
+		"QuayWall122/Coping": {
+			"visible": false
+		},
+		"QuayWall122/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall122/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall122/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall123": {
+			"visible": false
+		},
+		"QuayWall123/Coping": {
+			"visible": false
+		},
+		"QuayWall123/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall123/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall123/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall124": {
+			"visible": false
+		},
+		"QuayWall124/Coping": {
+			"visible": false
+		},
+		"QuayWall124/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall124/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall124/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall125": {
+			"visible": false
+		},
+		"QuayWall125/Coping": {
+			"visible": false
+		},
+		"QuayWall125/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall125/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall125/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall126": {
+			"visible": false
+		},
+		"QuayWall126/Coping": {
+			"visible": false
+		},
+		"QuayWall126/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall126/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall126/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall127": {
+			"visible": false
+		},
+		"QuayWall127/Coping": {
+			"visible": false
+		},
+		"QuayWall127/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall127/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall127/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall128": {
+			"visible": false
+		},
+		"QuayWall128/Coping": {
+			"visible": false
+		},
+		"QuayWall128/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall128/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall128/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall129": {
+			"visible": false
+		},
+		"QuayWall129/Coping": {
+			"visible": false
+		},
+		"QuayWall129/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall129/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall129/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall13": {
+			"visible": false
+		},
+		"QuayWall13/Coping": {
+			"visible": false
+		},
+		"QuayWall13/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall13/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall13/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall130": {
+			"visible": false
+		},
+		"QuayWall130/Coping": {
+			"visible": false
+		},
+		"QuayWall130/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall130/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall130/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall131": {
+			"visible": false
+		},
+		"QuayWall131/Coping": {
+			"visible": false
+		},
+		"QuayWall131/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall131/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall131/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall132": {
+			"visible": false
+		},
+		"QuayWall132/Coping": {
+			"visible": false
+		},
+		"QuayWall132/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall132/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall132/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall133": {
+			"visible": false
+		},
+		"QuayWall133/Coping": {
+			"visible": false
+		},
+		"QuayWall133/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall133/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall133/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall134": {
+			"visible": false
+		},
+		"QuayWall134/Coping": {
+			"visible": false
+		},
+		"QuayWall134/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall134/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall134/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall135": {
+			"visible": false
+		},
+		"QuayWall135/Coping": {
+			"visible": false
+		},
+		"QuayWall135/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall135/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall135/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall136": {
+			"visible": false
+		},
+		"QuayWall136/Coping": {
+			"visible": false
+		},
+		"QuayWall136/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall136/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall136/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall137": {
+			"visible": false
+		},
+		"QuayWall137/Coping": {
+			"visible": false
+		},
+		"QuayWall137/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall137/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall137/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall138": {
+			"visible": false
+		},
+		"QuayWall138/Coping": {
+			"visible": false
+		},
+		"QuayWall138/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall138/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall138/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall139": {
+			"visible": false
+		},
+		"QuayWall139/Coping": {
+			"visible": false
+		},
+		"QuayWall139/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall139/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall139/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall14": {
+			"visible": false
+		},
+		"QuayWall14/Coping": {
+			"visible": false
+		},
+		"QuayWall14/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall14/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall14/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall140": {
+			"visible": false
+		},
+		"QuayWall140/Coping": {
+			"visible": false
+		},
+		"QuayWall140/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall140/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall140/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall141": {
+			"visible": false
+		},
+		"QuayWall141/Coping": {
+			"visible": false
+		},
+		"QuayWall141/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall141/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall141/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall142": {
+			"visible": false
+		},
+		"QuayWall142/Coping": {
+			"visible": false
+		},
+		"QuayWall142/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall142/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall142/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall143": {
+			"visible": false
+		},
+		"QuayWall143/Coping": {
+			"visible": false
+		},
+		"QuayWall143/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall143/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall143/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall144": {
+			"visible": false
+		},
+		"QuayWall144/Coping": {
+			"visible": false
+		},
+		"QuayWall144/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall144/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall144/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall145": {
+			"visible": false
+		},
+		"QuayWall145/Coping": {
+			"visible": false
+		},
+		"QuayWall145/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall145/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall145/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall146": {
+			"visible": false
+		},
+		"QuayWall146/Coping": {
+			"visible": false
+		},
+		"QuayWall146/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall146/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall146/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall147": {
+			"visible": false
+		},
+		"QuayWall147/Coping": {
+			"visible": false
+		},
+		"QuayWall147/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall147/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall147/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall148": {
+			"visible": false
+		},
+		"QuayWall148/Coping": {
+			"visible": false
+		},
+		"QuayWall148/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall148/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall148/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall149": {
+			"visible": false
+		},
+		"QuayWall149/Coping": {
+			"visible": false
+		},
+		"QuayWall149/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall149/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall149/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall15": {
+			"visible": false
+		},
+		"QuayWall15/Coping": {
+			"visible": false
+		},
+		"QuayWall15/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall15/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall15/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall150": {
+			"visible": false
+		},
+		"QuayWall150/Coping": {
+			"visible": false
+		},
+		"QuayWall150/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall150/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall150/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall151": {
+			"visible": false
+		},
+		"QuayWall151/Coping": {
+			"visible": false
+		},
+		"QuayWall151/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall151/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall151/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall152": {
+			"visible": false
+		},
+		"QuayWall152/Coping": {
+			"visible": false
+		},
+		"QuayWall152/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall152/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall152/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall153": {
+			"visible": false
+		},
+		"QuayWall153/Coping": {
+			"visible": false
+		},
+		"QuayWall153/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall153/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall153/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall154": {
+			"visible": false
+		},
+		"QuayWall154/Coping": {
+			"visible": false
+		},
+		"QuayWall154/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall154/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall154/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall155": {
+			"visible": false
+		},
+		"QuayWall155/Coping": {
+			"visible": false
+		},
+		"QuayWall155/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall155/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall155/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall156": {
+			"visible": false
+		},
+		"QuayWall156/Coping": {
+			"visible": false
+		},
+		"QuayWall156/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall156/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall156/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall157": {
+			"visible": false
+		},
+		"QuayWall157/Coping": {
+			"visible": false
+		},
+		"QuayWall157/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall157/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall157/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall158": {
+			"visible": false
+		},
+		"QuayWall158/Coping": {
+			"visible": false
+		},
+		"QuayWall158/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall158/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall158/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall159": {
+			"visible": false
+		},
+		"QuayWall159/Coping": {
+			"visible": false
+		},
+		"QuayWall159/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall159/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall159/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall16": {
+			"visible": false
+		},
+		"QuayWall16/Coping": {
+			"visible": false
+		},
+		"QuayWall16/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall16/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall16/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall160": {
+			"visible": false
+		},
+		"QuayWall160/Coping": {
+			"visible": false
+		},
+		"QuayWall160/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall160/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall160/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall161": {
+			"visible": false
+		},
+		"QuayWall161/Coping": {
+			"visible": false
+		},
+		"QuayWall161/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall161/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall161/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall162": {
+			"visible": false
+		},
+		"QuayWall162/Coping": {
+			"visible": false
+		},
+		"QuayWall162/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall162/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall162/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall163": {
+			"visible": false
+		},
+		"QuayWall163/Coping": {
+			"visible": false
+		},
+		"QuayWall163/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall163/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall163/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall164": {
+			"visible": false
+		},
+		"QuayWall164/Coping": {
+			"visible": false
+		},
+		"QuayWall164/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall164/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall164/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall165": {
+			"visible": false
+		},
+		"QuayWall165/Coping": {
+			"visible": false
+		},
+		"QuayWall165/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall165/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall165/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall166": {
+			"visible": false
+		},
+		"QuayWall166/Coping": {
+			"visible": false
+		},
+		"QuayWall166/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall166/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall166/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall167": {
+			"visible": false
+		},
+		"QuayWall167/Coping": {
+			"visible": false
+		},
+		"QuayWall167/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall167/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall167/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall168": {
+			"visible": false
+		},
+		"QuayWall168/Coping": {
+			"visible": false
+		},
+		"QuayWall168/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall168/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall168/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall169": {
+			"visible": false
+		},
+		"QuayWall169/Coping": {
+			"visible": false
+		},
+		"QuayWall169/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall169/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall169/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall17": {
+			"visible": false
+		},
+		"QuayWall17/Coping": {
+			"visible": false
+		},
+		"QuayWall17/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall17/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall17/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall170": {
+			"visible": false
+		},
+		"QuayWall170/Coping": {
+			"visible": false
+		},
+		"QuayWall170/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall170/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall170/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall171": {
+			"geometry": "462307659",
+			"material": "[Color(0.34901962, 0.38431373, 0.4117647, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -690, -5, 800)",
+			"visible": true
+		},
+		"QuayWall171/Coping": {
+			"geometry": "2901420371",
+			"material": "[Color(0.5372549, 0.5411765, 0.5019608, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -690, 0.010000229, 800)",
+			"visible": true
+		},
+		"QuayWall171/StoneCourse": {
+			"geometry": "2221771221",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -690, -1.5999999, 800)",
+			"visible": true
+		},
+		"QuayWall171/StoneCourse2": {
+			"geometry": "2221771221",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -690, -3.2, 800)",
+			"visible": true
+		},
+		"QuayWall171/StoneCourse3": {
+			"geometry": "2221771221",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -690, -4.8, 800)",
+			"visible": true
+		},
+		"QuayWall172": {
+			"geometry": "1611588425",
+			"material": "[Color(0.34901962, 0.38431373, 0.4117647, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(0, 0, -0.70933336, 0, 1, 0, 1, 0, 0, 744, -5, 800)",
+			"visible": true
+		},
+		"QuayWall172/Coping": {
+			"geometry": "1796627247",
+			"material": "[Color(0.5372549, 0.5411765, 0.5019608, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(0, 0, -0.70933336, 0, 1, 0, 1, 0, 0, 744, 0.010000229, 800)",
+			"visible": true
+		},
+		"QuayWall172/StoneCourse": {
+			"geometry": "4017094093",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(0, 0, -0.70933336, 0, 1, 0, 1, 0, 0, 744, -1.5999999, 800)",
+			"visible": true
+		},
+		"QuayWall172/StoneCourse2": {
+			"geometry": "4017094093",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(0, 0, -0.70933336, 0, 1, 0, 1, 0, 0, 744, -3.2, 800)",
+			"visible": true
+		},
+		"QuayWall172/StoneCourse3": {
+			"geometry": "4017094093",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(0, 0, -0.70933336, 0, 1, 0, 1, 0, 0, 744, -4.8, 800)",
+			"visible": true
+		},
+		"QuayWall173": {
+			"geometry": "3790938763",
+			"material": "[Color(0.34901962, 0.38431373, 0.4117647, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1375, -5, 800)",
+			"visible": true
+		},
+		"QuayWall173/Coping": {
+			"geometry": "2623772578",
+			"material": "[Color(0.5372549, 0.5411765, 0.5019608, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1375, 0.010000229, 800)",
+			"visible": true
+		},
+		"QuayWall173/StoneCourse": {
+			"geometry": "1117083685",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1375, -1.5999999, 800)",
+			"visible": true
+		},
+		"QuayWall173/StoneCourse2": {
+			"geometry": "1117083685",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1375, -3.2, 800)",
+			"visible": true
+		},
+		"QuayWall173/StoneCourse3": {
+			"geometry": "1117083685",
+			"material": "[Color(0.16078432, 0.20784314, 0.23529412, 1), 0.82, 0.0, Color(0, 0, 0, 1), 0.0, null, 0]",
+			"transform": "Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1375, -4.8, 800)",
+			"visible": true
+		},
+		"QuayWall18": {
+			"visible": false
+		},
+		"QuayWall18/Coping": {
+			"visible": false
+		},
+		"QuayWall18/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall18/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall18/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall19": {
+			"visible": false
+		},
+		"QuayWall19/Coping": {
+			"visible": false
+		},
+		"QuayWall19/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall19/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall19/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall2": {
+			"visible": false
+		},
+		"QuayWall2/Coping": {
+			"visible": false
+		},
+		"QuayWall2/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall2/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall2/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall20": {
+			"visible": false
+		},
+		"QuayWall20/Coping": {
+			"visible": false
+		},
+		"QuayWall20/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall20/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall20/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall21": {
+			"visible": false
+		},
+		"QuayWall21/Coping": {
+			"visible": false
+		},
+		"QuayWall21/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall21/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall21/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall22": {
+			"visible": false
+		},
+		"QuayWall22/Coping": {
+			"visible": false
+		},
+		"QuayWall22/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall22/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall22/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall23": {
+			"visible": false
+		},
+		"QuayWall23/Coping": {
+			"visible": false
+		},
+		"QuayWall23/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall23/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall23/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall24": {
+			"visible": false
+		},
+		"QuayWall24/Coping": {
+			"visible": false
+		},
+		"QuayWall24/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall24/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall24/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall25": {
+			"visible": false
+		},
+		"QuayWall25/Coping": {
+			"visible": false
+		},
+		"QuayWall25/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall25/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall25/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall26": {
+			"visible": false
+		},
+		"QuayWall26/Coping": {
+			"visible": false
+		},
+		"QuayWall26/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall26/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall26/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall27": {
+			"visible": false
+		},
+		"QuayWall27/Coping": {
+			"visible": false
+		},
+		"QuayWall27/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall27/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall27/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall28": {
+			"visible": false
+		},
+		"QuayWall28/Coping": {
+			"visible": false
+		},
+		"QuayWall28/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall28/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall28/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall29": {
+			"visible": false
+		},
+		"QuayWall29/Coping": {
+			"visible": false
+		},
+		"QuayWall29/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall29/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall29/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall3": {
+			"visible": false
+		},
+		"QuayWall3/Coping": {
+			"visible": false
+		},
+		"QuayWall3/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall3/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall3/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall30": {
+			"visible": false
+		},
+		"QuayWall30/Coping": {
+			"visible": false
+		},
+		"QuayWall30/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall30/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall30/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall31": {
+			"visible": false
+		},
+		"QuayWall31/Coping": {
+			"visible": false
+		},
+		"QuayWall31/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall31/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall31/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall32": {
+			"visible": false
+		},
+		"QuayWall32/Coping": {
+			"visible": false
+		},
+		"QuayWall32/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall32/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall32/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall33": {
+			"visible": false
+		},
+		"QuayWall33/Coping": {
+			"visible": false
+		},
+		"QuayWall33/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall33/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall33/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall34": {
+			"visible": false
+		},
+		"QuayWall34/Coping": {
+			"visible": false
+		},
+		"QuayWall34/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall34/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall34/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall35": {
+			"visible": false
+		},
+		"QuayWall35/Coping": {
+			"visible": false
+		},
+		"QuayWall35/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall35/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall35/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall36": {
+			"visible": false
+		},
+		"QuayWall36/Coping": {
+			"visible": false
+		},
+		"QuayWall36/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall36/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall36/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall37": {
+			"visible": false
+		},
+		"QuayWall37/Coping": {
+			"visible": false
+		},
+		"QuayWall37/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall37/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall37/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall38": {
+			"visible": false
+		},
+		"QuayWall38/Coping": {
+			"visible": false
+		},
+		"QuayWall38/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall38/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall38/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall39": {
+			"visible": false
+		},
+		"QuayWall39/Coping": {
+			"visible": false
+		},
+		"QuayWall39/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall39/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall39/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall4": {
+			"visible": false
+		},
+		"QuayWall4/Coping": {
+			"visible": false
+		},
+		"QuayWall4/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall4/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall4/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall40": {
+			"visible": false
+		},
+		"QuayWall40/Coping": {
+			"visible": false
+		},
+		"QuayWall40/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall40/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall40/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall41": {
+			"visible": false
+		},
+		"QuayWall41/Coping": {
+			"visible": false
+		},
+		"QuayWall41/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall41/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall41/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall42": {
+			"visible": false
+		},
+		"QuayWall42/Coping": {
+			"visible": false
+		},
+		"QuayWall42/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall42/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall42/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall43": {
+			"visible": false
+		},
+		"QuayWall43/Coping": {
+			"visible": false
+		},
+		"QuayWall43/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall43/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall43/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall44": {
+			"visible": false
+		},
+		"QuayWall44/Coping": {
+			"visible": false
+		},
+		"QuayWall44/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall44/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall44/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall45": {
+			"visible": false
+		},
+		"QuayWall45/Coping": {
+			"visible": false
+		},
+		"QuayWall45/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall45/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall45/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall46": {
+			"visible": false
+		},
+		"QuayWall46/Coping": {
+			"visible": false
+		},
+		"QuayWall46/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall46/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall46/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall47": {
+			"visible": false
+		},
+		"QuayWall47/Coping": {
+			"visible": false
+		},
+		"QuayWall47/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall47/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall47/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall48": {
+			"visible": false
+		},
+		"QuayWall48/Coping": {
+			"visible": false
+		},
+		"QuayWall48/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall48/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall48/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall49": {
+			"visible": false
+		},
+		"QuayWall49/Coping": {
+			"visible": false
+		},
+		"QuayWall49/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall49/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall49/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall5": {
+			"visible": false
+		},
+		"QuayWall5/Coping": {
+			"visible": false
+		},
+		"QuayWall5/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall5/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall5/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall50": {
+			"visible": false
+		},
+		"QuayWall50/Coping": {
+			"visible": false
+		},
+		"QuayWall50/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall50/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall50/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall51": {
+			"visible": false
+		},
+		"QuayWall51/Coping": {
+			"visible": false
+		},
+		"QuayWall51/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall51/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall51/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall52": {
+			"visible": false
+		},
+		"QuayWall52/Coping": {
+			"visible": false
+		},
+		"QuayWall52/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall52/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall52/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall53": {
+			"visible": false
+		},
+		"QuayWall53/Coping": {
+			"visible": false
+		},
+		"QuayWall53/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall53/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall53/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall54": {
+			"visible": false
+		},
+		"QuayWall54/Coping": {
+			"visible": false
+		},
+		"QuayWall54/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall54/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall54/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall55": {
+			"visible": false
+		},
+		"QuayWall55/Coping": {
+			"visible": false
+		},
+		"QuayWall55/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall55/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall55/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall56": {
+			"visible": false
+		},
+		"QuayWall56/Coping": {
+			"visible": false
+		},
+		"QuayWall56/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall56/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall56/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall57": {
+			"visible": false
+		},
+		"QuayWall57/Coping": {
+			"visible": false
+		},
+		"QuayWall57/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall57/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall57/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall58": {
+			"visible": false
+		},
+		"QuayWall58/Coping": {
+			"visible": false
+		},
+		"QuayWall58/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall58/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall58/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall59": {
+			"visible": false
+		},
+		"QuayWall59/Coping": {
+			"visible": false
+		},
+		"QuayWall59/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall59/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall59/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall6": {
+			"visible": false
+		},
+		"QuayWall6/Coping": {
+			"visible": false
+		},
+		"QuayWall6/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall6/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall6/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall60": {
+			"visible": false
+		},
+		"QuayWall60/Coping": {
+			"visible": false
+		},
+		"QuayWall60/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall60/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall60/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall61": {
+			"visible": false
+		},
+		"QuayWall61/Coping": {
+			"visible": false
+		},
+		"QuayWall61/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall61/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall61/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall62": {
+			"visible": false
+		},
+		"QuayWall62/Coping": {
+			"visible": false
+		},
+		"QuayWall62/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall62/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall62/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall63": {
+			"visible": false
+		},
+		"QuayWall63/Coping": {
+			"visible": false
+		},
+		"QuayWall63/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall63/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall63/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall64": {
+			"visible": false
+		},
+		"QuayWall64/Coping": {
+			"visible": false
+		},
+		"QuayWall64/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall64/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall64/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall65": {
+			"visible": false
+		},
+		"QuayWall65/Coping": {
+			"visible": false
+		},
+		"QuayWall65/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall65/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall65/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall66": {
+			"visible": false
+		},
+		"QuayWall66/Coping": {
+			"visible": false
+		},
+		"QuayWall66/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall66/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall66/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall67": {
+			"visible": false
+		},
+		"QuayWall67/Coping": {
+			"visible": false
+		},
+		"QuayWall67/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall67/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall67/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall68": {
+			"visible": false
+		},
+		"QuayWall68/Coping": {
+			"visible": false
+		},
+		"QuayWall68/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall68/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall68/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall69": {
+			"visible": false
+		},
+		"QuayWall69/Coping": {
+			"visible": false
+		},
+		"QuayWall69/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall69/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall69/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall7": {
+			"visible": false
+		},
+		"QuayWall7/Coping": {
+			"visible": false
+		},
+		"QuayWall7/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall7/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall7/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall70": {
+			"visible": false
+		},
+		"QuayWall70/Coping": {
+			"visible": false
+		},
+		"QuayWall70/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall70/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall70/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall71": {
+			"visible": false
+		},
+		"QuayWall71/Coping": {
+			"visible": false
+		},
+		"QuayWall71/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall71/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall71/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall72": {
+			"visible": false
+		},
+		"QuayWall72/Coping": {
+			"visible": false
+		},
+		"QuayWall72/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall72/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall72/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall73": {
+			"visible": false
+		},
+		"QuayWall73/Coping": {
+			"visible": false
+		},
+		"QuayWall73/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall73/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall73/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall74": {
+			"visible": false
+		},
+		"QuayWall74/Coping": {
+			"visible": false
+		},
+		"QuayWall74/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall74/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall74/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall75": {
+			"visible": false
+		},
+		"QuayWall75/Coping": {
+			"visible": false
+		},
+		"QuayWall75/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall75/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall75/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall76": {
+			"visible": false
+		},
+		"QuayWall76/Coping": {
+			"visible": false
+		},
+		"QuayWall76/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall76/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall76/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall77": {
+			"visible": false
+		},
+		"QuayWall77/Coping": {
+			"visible": false
+		},
+		"QuayWall77/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall77/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall77/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall78": {
+			"visible": false
+		},
+		"QuayWall78/Coping": {
+			"visible": false
+		},
+		"QuayWall78/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall78/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall78/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall79": {
+			"visible": false
+		},
+		"QuayWall79/Coping": {
+			"visible": false
+		},
+		"QuayWall79/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall79/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall79/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall8": {
+			"visible": false
+		},
+		"QuayWall8/Coping": {
+			"visible": false
+		},
+		"QuayWall8/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall8/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall8/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall80": {
+			"visible": false
+		},
+		"QuayWall80/Coping": {
+			"visible": false
+		},
+		"QuayWall80/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall80/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall80/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall81": {
+			"visible": false
+		},
+		"QuayWall81/Coping": {
+			"visible": false
+		},
+		"QuayWall81/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall81/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall81/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall82": {
+			"visible": false
+		},
+		"QuayWall82/Coping": {
+			"visible": false
+		},
+		"QuayWall82/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall82/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall82/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall83": {
+			"visible": false
+		},
+		"QuayWall83/Coping": {
+			"visible": false
+		},
+		"QuayWall83/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall83/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall83/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall84": {
+			"visible": false
+		},
+		"QuayWall84/Coping": {
+			"visible": false
+		},
+		"QuayWall84/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall84/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall84/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall85": {
+			"visible": false
+		},
+		"QuayWall85/Coping": {
+			"visible": false
+		},
+		"QuayWall85/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall85/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall85/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall86": {
+			"visible": false
+		},
+		"QuayWall86/Coping": {
+			"visible": false
+		},
+		"QuayWall86/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall86/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall86/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall87": {
+			"visible": false
+		},
+		"QuayWall87/Coping": {
+			"visible": false
+		},
+		"QuayWall87/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall87/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall87/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall88": {
+			"visible": false
+		},
+		"QuayWall88/Coping": {
+			"visible": false
+		},
+		"QuayWall88/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall88/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall88/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall89": {
+			"visible": false
+		},
+		"QuayWall89/Coping": {
+			"visible": false
+		},
+		"QuayWall89/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall89/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall89/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall9": {
+			"visible": false
+		},
+		"QuayWall9/Coping": {
+			"visible": false
+		},
+		"QuayWall9/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall9/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall9/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall90": {
+			"visible": false
+		},
+		"QuayWall90/Coping": {
+			"visible": false
+		},
+		"QuayWall90/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall90/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall90/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall91": {
+			"visible": false
+		},
+		"QuayWall91/Coping": {
+			"visible": false
+		},
+		"QuayWall91/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall91/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall91/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall92": {
+			"visible": false
+		},
+		"QuayWall92/Coping": {
+			"visible": false
+		},
+		"QuayWall92/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall92/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall92/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall93": {
+			"visible": false
+		},
+		"QuayWall93/Coping": {
+			"visible": false
+		},
+		"QuayWall93/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall93/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall93/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall94": {
+			"visible": false
+		},
+		"QuayWall94/Coping": {
+			"visible": false
+		},
+		"QuayWall94/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall94/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall94/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall95": {
+			"visible": false
+		},
+		"QuayWall95/Coping": {
+			"visible": false
+		},
+		"QuayWall95/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall95/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall95/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall96": {
+			"visible": false
+		},
+		"QuayWall96/Coping": {
+			"visible": false
+		},
+		"QuayWall96/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall96/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall96/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall97": {
+			"visible": false
+		},
+		"QuayWall97/Coping": {
+			"visible": false
+		},
+		"QuayWall97/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall97/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall97/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall98": {
+			"visible": false
+		},
+		"QuayWall98/Coping": {
+			"visible": false
+		},
+		"QuayWall98/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall98/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall98/StoneCourse3": {
+			"visible": false
+		},
+		"QuayWall99": {
+			"visible": false
+		},
+		"QuayWall99/Coping": {
+			"visible": false
+		},
+		"QuayWall99/StoneCourse": {
+			"visible": false
+		},
+		"QuayWall99/StoneCourse2": {
+			"visible": false
+		},
+		"QuayWall99/StoneCourse3": {
+			"visible": false
+		},
+		"RiverFoam": {
+			"visible": false
+		},
+		"RiverbankRailings": {
+			"visible": false
+		}
+	}
+}

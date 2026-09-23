@@ -1,0 +1,46 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/bathroom_exterior_Blue.res" id="1_qp8us"]
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/bathroom_exterior_Concrete.res" id="2_b33ug"]
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/bathroom_exterior_Ivory.res" id="3_svdks"]
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/bathroom_exterior_Plaster.res" id="4_d07at"]
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/bathroom_exterior_Steel.res" id="5_pfyjv"]
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/bathroom_exterior_SteelEdge.res" id="6_7ucqw"]
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/bathroom_exterior_Teal.res" id="7_k8txt"]
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/bathroom_exterior_Wood.res" id="8_d7eb1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wj0bf"]
+size = Vector3(5.4, 3.24, 4.3)
+
+[node name="BathroomExterior" type="Node3D" unique_id=192879969]
+metadata/rendered_triangles = 416
+
+[node name="bathroom_exterior_Blue" type="MeshInstance3D" parent="." unique_id=1225552248]
+mesh = ExtResource("1_qp8us")
+
+[node name="bathroom_exterior_Concrete" type="MeshInstance3D" parent="." unique_id=132357646]
+mesh = ExtResource("2_b33ug")
+
+[node name="bathroom_exterior_Ivory" type="MeshInstance3D" parent="." unique_id=1921662025]
+mesh = ExtResource("3_svdks")
+
+[node name="bathroom_exterior_Plaster" type="MeshInstance3D" parent="." unique_id=1192384439]
+mesh = ExtResource("4_d07at")
+
+[node name="bathroom_exterior_Steel" type="MeshInstance3D" parent="." unique_id=47870018]
+mesh = ExtResource("5_pfyjv")
+
+[node name="bathroom_exterior_SteelEdge" type="MeshInstance3D" parent="." unique_id=1873877610]
+mesh = ExtResource("6_7ucqw")
+
+[node name="bathroom_exterior_Teal" type="MeshInstance3D" parent="." unique_id=1649973442]
+mesh = ExtResource("7_k8txt")
+
+[node name="bathroom_exterior_Wood" type="MeshInstance3D" parent="." unique_id=461246888]
+mesh = ExtResource("8_d7eb1")
+
+[node name="Collision" type="StaticBody3D" parent="." unique_id=238139450]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision" unique_id=1388802980]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.62, 0)
+shape = SubResource("BoxShape3D_wj0bf")

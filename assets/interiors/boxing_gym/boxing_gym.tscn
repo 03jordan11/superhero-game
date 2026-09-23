@@ -1,0 +1,365 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/hideout_door.gd" id="gym_exit"]
+[ext_resource type="Script" path="res://scripts/game_clock.gd" id="gym_clock"]
+
+[ext_resource type="PackedScene" path="res://assets/interiors/boxing_gym/props/floor.tscn" id="1_hpq0f"]
+[ext_resource type="Script" path="res://assets/interiors/boxing_gym/boxing_gym.gd" id="1_wcjnv"]
+[ext_resource type="PackedScene" path="res://assets/interiors/boxing_gym/props/walls.tscn" id="2_gi8dy"]
+[ext_resource type="PackedScene" path="res://assets/interiors/boxing_gym/props/front_wall.tscn" id="3_7xmrm"]
+[ext_resource type="PackedScene" path="res://assets/interiors/boxing_gym/props/ceiling.tscn" id="4_nvt5y"]
+[ext_resource type="PackedScene" path="res://assets/interiors/boxing_gym/props/catwalk.tscn" id="5_ypm32"]
+[ext_resource type="PackedScene" path="res://assets/interiors/boxing_gym/props/catwalk_stairs.tscn" id="6_rnfx5"]
+[ext_resource type="PackedScene" path="res://assets/interiors/boxing_gym/props/boxing_ring.tscn" id="7_odxkk"]
+[ext_resource type="PackedScene" path="res://assets/interiors/boxing_gym/props/bathroom_exterior.tscn" id="8_humuu"]
+[ext_resource type="PackedScene" path="res://assets/interiors/boxing_gym/props/ring_steps.tscn" id="8_yc16j"]
+[ext_resource type="PackedScene" path="res://assets/interiors/boxing_gym/props/heavy_bag.tscn" id="9_lvvpv"]
+[ext_resource type="PackedScene" path="res://assets/interiors/boxing_gym/props/speed_bag.tscn" id="10_n1blx"]
+[ext_resource type="PackedScene" path="res://assets/interiors/boxing_gym/props/weight_rack.tscn" id="11_cyll4"]
+[ext_resource type="PackedScene" path="res://assets/interiors/boxing_gym/props/entrance_door.tscn" id="12_wcjnv"]
+[ext_resource type="PackedScene" path="res://assets/interiors/boxing_gym/props/locker.tscn" id="13_humuu"]
+[ext_resource type="PackedScene" path="res://assets/interiors/boxing_gym/props/bench.tscn" id="14_dt5hr"]
+[ext_resource type="Script" path="res://assets/interiors/boxing_gym/ring_access.gd" id="14_qmrc5"]
+[ext_resource type="PackedScene" path="res://assets/interiors/boxing_gym/props/mat.tscn" id="15_qmrc5"]
+[ext_resource type="PackedScene" path="res://assets/interiors/boxing_gym/props/boarded_window.tscn" id="16_r1uxh"]
+[ext_resource type="PackedScene" path="res://assets/interiors/boxing_gym/props/poster.tscn" id="17_j1qot"]
+[ext_resource type="PackedScene" path="res://assets/interiors/boxing_gym/props/desk.tscn" id="18_rrx3n"]
+[ext_resource type="PackedScene" path="res://assets/interiors/boxing_gym/props/chair.tscn" id="19_bpjdj"]
+[ext_resource type="PackedScene" path="res://assets/interiors/boxing_gym/props/bottle.tscn" id="20_uoe5r"]
+[ext_resource type="PackedScene" path="res://assets/interiors/boxing_gym/props/towel.tscn" id="21_inlom"]
+[ext_resource type="PackedScene" path="res://assets/interiors/boxing_gym/props/crate.tscn" id="22_q7iu0"]
+[ext_resource type="PackedScene" path="res://assets/interiors/boxing_gym/props/duffel.tscn" id="23_7di7r"]
+[ext_resource type="PackedScene" path="res://assets/interiors/boxing_gym/props/pendant.tscn" id="24_p556x"]
+[ext_resource type="PackedScene" path="res://assets/interiors/boxing_gym/props/wall_light.tscn" id="25_y5gdu"]
+[ext_resource type="PackedScene" path="res://assets/interiors/boxing_gym/props/front_window.tscn" id="27_r1uxh"]
+[ext_resource type="PackedScene" path="res://assets/interiors/boxing_gym/props/back_door.tscn" id="28_j1qot"]
+[ext_resource type="PackedScene" path="res://assets/interiors/boxing_gym/props/exit_sign.tscn" id="29_rrx3n"]
+[ext_resource type="PackedScene" path="res://assets/interiors/boxing_gym/props/hideout_storage_rack.tscn" id="30_bpjdj"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="33_uoe5r"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_character.gd" id="34_inlom"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_stats.gd" id="35_q7iu0"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_abilities.gd" id="36_7di7r"]
+
+[sub_resource type="Environment" id="Environment_wq4fl"]
+background_mode = 1
+background_color = Color(0.055, 0.07, 0.085, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.6, 0.68, 0.76, 1)
+ambient_light_energy = 0.45
+tonemap_mode = 2
+ssao_enabled = true
+ssao_radius = 1.2
+ssao_intensity = 1.5
+glow_enabled = true
+
+[sub_resource type="Resource" id="Resource_p556x"]
+script = ExtResource("35_q7iu0")
+strength = 10
+resilience = 10
+
+[sub_resource type="Resource" id="Resource_y5gdu"]
+script = ExtResource("36_7di7r")
+
+[node name="BoxingGym" type="Node3D" unique_id=1557887333]
+script = ExtResource("1_wcjnv")
+metadata/rendered_triangles = 16940
+metadata/ring_clear_width_metres = 6.1
+metadata/playable_revision = true
+
+[node name="Architecture" type="Node3D" parent="." unique_id=2095505436]
+
+[node name="Floor" type="Node3D" parent="Architecture" unique_id=1535679952 instance=ExtResource("1_hpq0f")]
+metadata/rendered_triangles = 132
+
+[node name="Walls" type="Node3D" parent="Architecture" unique_id=17935130 instance=ExtResource("2_gi8dy")]
+metadata/rendered_triangles = 344
+
+[node name="FrontWall" type="Node3D" parent="Architecture" unique_id=1966695108 instance=ExtResource("3_7xmrm")]
+metadata/rendered_triangles = 60
+
+[node name="Ceiling" type="Node3D" parent="Architecture" unique_id=143858859 instance=ExtResource("4_nvt5y")]
+metadata/rendered_triangles = 156
+
+[node name="Catwalk" type="Node3D" parent="Architecture" unique_id=957874455 instance=ExtResource("5_ypm32")]
+metadata/rendered_triangles = 856
+
+[node name="CatwalkStairs" type="Node3D" parent="Architecture" unique_id=1638180319 instance=ExtResource("6_rnfx5")]
+metadata/rendered_triangles = 1120
+
+[node name="BathroomExterior" type="Node3D" parent="Architecture" unique_id=607686598 instance=ExtResource("8_humuu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -8.6)
+metadata/rendered_triangles = 416
+
+[node name="Training" type="Node3D" parent="." unique_id=331001251]
+
+[node name="BoxingRing" type="Node3D" parent="Training" unique_id=2034214260 instance=ExtResource("7_odxkk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+metadata/rendered_triangles = 1400
+
+[node name="RingSteps" type="Node3D" parent="Training" unique_id=42824919 instance=ExtResource("8_yc16j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2, 0, 4.7)
+metadata/rendered_triangles = 120
+
+[node name="HeavyBag1" type="Node3D" parent="Training" unique_id=2117223443 instance=ExtResource("9_lvvpv")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -11.15, 0, 2.8)
+metadata/rendered_triangles = 732
+
+[node name="HeavyBag2" type="Node3D" parent="Training" unique_id=1761125171 instance=ExtResource("9_lvvpv")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -11.15, 0, 6.3)
+metadata/rendered_triangles = 732
+
+[node name="SpeedBag" type="Node3D" parent="Training" unique_id=272468509 instance=ExtResource("10_n1blx")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 11.4, 0, 5.4)
+metadata/rendered_triangles = 636
+
+[node name="WeightRack" type="Node3D" parent="Training" unique_id=1713436439 instance=ExtResource("11_cyll4")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 10.5, 0, 0.2)
+metadata/rendered_triangles = 1272
+
+[node name="RingAccess" type="Node3D" parent="Training" unique_id=703199602]
+script = ExtResource("14_qmrc5")
+
+[node name="Prompt" type="Label3D" parent="Training/RingAccess" unique_id=401254056]
+visible = false
+pixel_size = 0.002
+billboard = 1
+
+[node name="Props" type="Node3D" parent="." unique_id=109695735]
+
+[node name="EntranceDoor" type="Node3D" parent="Props" unique_id=125166391 instance=ExtResource("12_wcjnv")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 10.94)
+metadata/rendered_triangles = 132
+
+[node name="Locker1" type="Node3D" parent="Props" unique_id=2103218073 instance=ExtResource("13_humuu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8, 0, -10.35)
+metadata/rendered_triangles = 96
+
+[node name="Locker2" type="Node3D" parent="Props" unique_id=598046387 instance=ExtResource("13_humuu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.08, 0, -10.35)
+metadata/rendered_triangles = 96
+
+[node name="Locker3" type="Node3D" parent="Props" unique_id=1014442572 instance=ExtResource("13_humuu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.36, 0, -10.35)
+metadata/rendered_triangles = 96
+
+[node name="Locker4" type="Node3D" parent="Props" unique_id=1133411742 instance=ExtResource("13_humuu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.64, 0, -10.35)
+metadata/rendered_triangles = 96
+
+[node name="Locker5" type="Node3D" parent="Props" unique_id=980305037 instance=ExtResource("13_humuu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.92, 0, -10.35)
+metadata/rendered_triangles = 96
+
+[node name="Locker6" type="Node3D" parent="Props" unique_id=700044802 instance=ExtResource("13_humuu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7, 0, -10.35)
+metadata/rendered_triangles = 96
+
+[node name="Locker7" type="Node3D" parent="Props" unique_id=1171675222 instance=ExtResource("13_humuu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.42, 0, -10.35)
+metadata/rendered_triangles = 96
+
+[node name="Locker8" type="Node3D" parent="Props" unique_id=1650034059 instance=ExtResource("13_humuu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.14, 0, -10.35)
+metadata/rendered_triangles = 96
+
+[node name="Bench1" type="Node3D" parent="Props" unique_id=968113517 instance=ExtResource("14_dt5hr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4, 0, -8.6)
+metadata/rendered_triangles = 60
+
+[node name="Bench2" type="Node3D" parent="Props" unique_id=596891194 instance=ExtResource("14_dt5hr")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5.4, 0, 1)
+metadata/rendered_triangles = 60
+
+[node name="Bench3" type="Node3D" parent="Props" unique_id=1028294273 instance=ExtResource("14_dt5hr")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5.4, 0, 1)
+metadata/rendered_triangles = 60
+
+[node name="TrainingMat1" type="Node3D" parent="Props" unique_id=1829398168 instance=ExtResource("15_qmrc5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 2.8)
+metadata/rendered_triangles = 144
+
+[node name="TrainingMat2" type="Node3D" parent="Props" unique_id=745899130 instance=ExtResource("15_qmrc5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 6.3)
+metadata/rendered_triangles = 144
+
+[node name="TrainingMat3" type="Node3D" parent="Props" unique_id=2010037848 instance=ExtResource("15_qmrc5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2, 0, 5.4)
+metadata/rendered_triangles = 144
+
+[node name="TrainingMat4" type="Node3D" parent="Props" unique_id=231981149 instance=ExtResource("15_qmrc5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.8, 0, 0)
+metadata/rendered_triangles = 144
+
+[node name="TrainingMat5" type="Node3D" parent="Props" unique_id=143433271 instance=ExtResource("15_qmrc5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.4, 0, 0)
+metadata/rendered_triangles = 144
+
+[node name="Window0_-1" type="Node3D" parent="Props" unique_id=777475223 instance=ExtResource("16_r1uxh")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -11.97, 5.2, -6)
+metadata/rendered_triangles = 360
+
+[node name="Window0_1" type="Node3D" parent="Props" unique_id=1404407899 instance=ExtResource("16_r1uxh")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 11.97, 5.2, -6)
+metadata/rendered_triangles = 360
+
+[node name="Window1_-1" type="Node3D" parent="Props" unique_id=1057810682 instance=ExtResource("16_r1uxh")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -11.97, 5.2, 0)
+metadata/rendered_triangles = 360
+
+[node name="Window1_1" type="Node3D" parent="Props" unique_id=1267218268 instance=ExtResource("16_r1uxh")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 11.97, 5.2, 0)
+metadata/rendered_triangles = 360
+
+[node name="Window2_-1" type="Node3D" parent="Props" unique_id=1422416445 instance=ExtResource("16_r1uxh")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -11.97, 5.2, 6)
+metadata/rendered_triangles = 360
+
+[node name="Window2_1" type="Node3D" parent="Props" unique_id=273864500 instance=ExtResource("16_r1uxh")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 11.97, 5.2, 6)
+metadata/rendered_triangles = 360
+
+[node name="Poster1" type="Node3D" parent="Props" unique_id=1760028406 instance=ExtResource("17_j1qot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 5.55, -10.94)
+metadata/rendered_triangles = 728
+
+[node name="Poster2" type="Node3D" parent="Props" unique_id=1466664849 instance=ExtResource("17_j1qot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.55, -10.94)
+metadata/rendered_triangles = 728
+
+[node name="Poster3" type="Node3D" parent="Props" unique_id=444009275 instance=ExtResource("17_j1qot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 5.55, -10.94)
+metadata/rendered_triangles = 728
+
+[node name="OfficeDesk" type="Node3D" parent="Props" unique_id=131348672 instance=ExtResource("18_rrx3n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.6, 3.6, -8.2)
+metadata/rendered_triangles = 60
+
+[node name="OfficeChair" type="Node3D" parent="Props" unique_id=216916365 instance=ExtResource("19_bpjdj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.6, 3.6, -9.2)
+metadata/rendered_triangles = 72
+
+[node name="OfficeBottle" type="Node3D" parent="Props" unique_id=1838010182 instance=ExtResource("20_uoe5r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.1, 4.425, -8.1)
+metadata/rendered_triangles = 88
+
+[node name="OfficePapers" type="Node3D" parent="Props" unique_id=250628179 instance=ExtResource("21_inlom")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 4.425, -8.2)
+metadata/rendered_triangles = 36
+
+[node name="StorageCrate1" type="Node3D" parent="Props" unique_id=1819199852 instance=ExtResource("22_q7iu0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -10)
+metadata/rendered_triangles = 96
+
+[node name="StorageCrate2" type="Node3D" parent="Props" unique_id=546362707 instance=ExtResource("22_q7iu0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.75, 0, -10)
+metadata/rendered_triangles = 96
+
+[node name="KitBag" type="Node3D" parent="Props" unique_id=429459130 instance=ExtResource("23_7di7r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -8)
+metadata/rendered_triangles = 336
+
+[node name="BenchTowel" type="Node3D" parent="Props" unique_id=1802557392 instance=ExtResource("21_inlom")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6, 0.54, -8.6)
+metadata/rendered_triangles = 36
+
+[node name="WaterBottle" type="Node3D" parent="Props" unique_id=62808573 instance=ExtResource("20_uoe5r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8, 0.54, -8.6)
+metadata/rendered_triangles = 88
+
+[node name="FrontWindowLeft" type="Node3D" parent="Props" unique_id=946055214 instance=ExtResource("27_r1uxh")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -6.9, 1.82, 10.94)
+metadata/rendered_triangles = 168
+
+[node name="FrontWindowRight" type="Node3D" parent="Props" unique_id=464755031 instance=ExtResource("27_r1uxh")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6.9, 1.82, 10.94)
+metadata/rendered_triangles = 168
+
+[node name="BackDoor" type="Node3D" parent="Props" unique_id=1144183843 instance=ExtResource("28_j1qot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.65, 0, -10.93)
+metadata/rendered_triangles = 96
+
+[node name="RearExitSign" type="Node3D" parent="Props" unique_id=2025552194 instance=ExtResource("29_rrx3n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.65, 2.98, -10.88)
+metadata/rendered_triangles = 152
+
+[node name="StorageShelvesLeft" type="Node3D" parent="Props" unique_id=763630409 instance=ExtResource("30_bpjdj")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -6.65, 0, -10.2)
+metadata/rendered_triangles = 144
+
+[node name="StorageShelvesRight" type="Node3D" parent="Props" unique_id=1120774900 instance=ExtResource("30_bpjdj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.35, 0, -4.5)
+metadata/rendered_triangles = 144
+
+[node name="Lighting" type="Node3D" parent="." unique_id=1938489578]
+
+[node name="Pendant1" type="Node3D" parent="Lighting" unique_id=177100061 instance=ExtResource("24_p556x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 7.6, -3)
+metadata/rendered_triangles = 172
+
+[node name="Pendant2" type="Node3D" parent="Lighting" unique_id=1924725232 instance=ExtResource("24_p556x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 7.6, -3)
+metadata/rendered_triangles = 172
+
+[node name="Pendant3" type="Node3D" parent="Lighting" unique_id=1463520468 instance=ExtResource("24_p556x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 7.6, 4)
+metadata/rendered_triangles = 172
+
+[node name="Pendant4" type="Node3D" parent="Lighting" unique_id=1438235649 instance=ExtResource("24_p556x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 7.6, 4)
+metadata/rendered_triangles = 172
+
+[node name="Pendant5" type="Node3D" parent="Lighting" unique_id=1714603423 instance=ExtResource("24_p556x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.6, 8)
+metadata/rendered_triangles = 172
+
+[node name="WallLight1" type="Node3D" parent="Lighting" unique_id=1008882184 instance=ExtResource("25_y5gdu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 5.6, -10.85)
+metadata/rendered_triangles = 60
+
+[node name="WallLight2" type="Node3D" parent="Lighting" unique_id=795072278 instance=ExtResource("25_y5gdu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 5.6, -10.85)
+metadata/rendered_triangles = 60
+
+[node name="WallLight3" type="Node3D" parent="Lighting" unique_id=220852179 instance=ExtResource("25_y5gdu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 5.6, -10.85)
+metadata/rendered_triangles = 60
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2061361827]
+environment = SubResource("Environment_wq4fl")
+
+[node name="PlayerSpawn" type="Marker3D" parent="." unique_id=665318124]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05, 9.1)
+
+[node name="Clock" type="Node" parent="."]
+script = ExtResource("gym_clock")
+
+[node name="ExitDoor" type="Node3D" parent="."]
+position = Vector3(0, 1.4, 10.85)
+rotation = Vector3(0, 3.14159265, 0)
+script = ExtResource("gym_exit")
+is_exit = true
+new_game_destination = false
+require_looking_at_door = true
+
+[node name="Prompt" type="Label3D" parent="ExitDoor"]
+position = Vector3(0, 0.8, 0.1)
+pixel_size = 0.003
+billboard = 1
+modulate = Color(0.48, 1, 0.72, 1)
+text = "EXIT"
+font_size = 36
+outline_size = 8
+
+[node name="RingSpawn" type="Marker3D" parent="." unique_id=1007089860]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2, 2.05, 3.2)
+
+[node name="OpponentSpawn" type="Marker3D" parent="." unique_id=59073321]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.05, -1)
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=1272581381 instance=ExtResource("33_uoe5r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05, 9.1)
+script = ExtResource("34_inlom")
+stats = SubResource("Resource_p556x")
+strength = 10
+resilience = 10
+abilities = SubResource("Resource_y5gdu")

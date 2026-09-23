@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/trees/backdrop/landscape.gdshader" id="1_4cyj2"]
+[ext_resource type="Texture2D" path="res://assets/trees/backdrop/landscape.res" id="2_3kjty"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_4cyj2")
+shader_parameter/landscape = ExtResource("2_3kjty")
+shader_parameter/night_amount = 0.0
+shader_parameter/night_tint = Color(0.08, 0.13, 0.17, 1)

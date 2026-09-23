@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b8ihy2lk5luc"]
+
+[ext_resource type="Script" path="res://scripts/previews/hero_mesh_comparison.gd" id="1"]
+
+[node name="HeroMeshComparison" type="Node3D" unique_id=724298575]
+script = ExtResource("1")

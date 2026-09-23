@@ -37,6 +37,7 @@ func generate() -> void:
 	make_island()
 	make_boats()
 	make_navigation()
+	preload("res://assets/super-city/tools/regional_geometry.gd").prison(scene.get_node("PrisonIsland"))
 	scene.set_meta("island_center",ISLAND)
 	scene.set_meta("boat_count",scene.get_node("Boats").get_child_count())
 	var packed := PackedScene.new()
@@ -174,9 +175,7 @@ func bank_wall(parent: Node, a: Vector2, b: Vector2) -> void:
 	for y in [-1.6,-3.2,-4.8]:
 		box(wall,"StoneCourse",Vector3(0.79,0.055,length),Vector3(0,y+5,0),mats.iron)
 	if not near_crossing((a.y+b.y)*0.5,42):
-		for i in range(1,int(length/6)):
-			box(wall,"RailingPost",Vector3(0.08,1.05,0.08),Vector3(0,5.65,-length*0.5+i*6),mats.iron)
-		box(wall,"Railing",Vector3(0.07,0.08,length),Vector3(0,6.15,0),mats.iron)
+		wall.set_meta("railing_length",length)
 
 func make_riverbanks() -> void:
 	var group := scene.get_node("Riverbanks")
@@ -207,6 +206,8 @@ func make_riverbanks() -> void:
 		for fraction in [0.2,0.8]:
 			box(group,"BridgePier",Vector3(4,10,12),Vector3(row[0]+140*fraction,-5,float(z)),mats.concrete,true)
 	surface("RiverFoam",foam,group,mats.foam)
+	var railings := preload("res://assets/waterfront/tools/riverbank_railings.gd").build(group)
+	railings.owner = scene
 
 func lamp(parent: Node, p: Vector3, height: float, cool: bool) -> void:
 	var root_node := add(Node3D.new(),parent,"HarborLamp") as Node3D
@@ -369,8 +370,6 @@ func make_island() -> void:
 	for z in [-23,23]:
 		rod(prison,"HoopPost",Vector3(0,0,z),Vector3(0,4,z),0.12,mats.iron)
 		box(prison,"Backboard",Vector3(2.3,1.3,0.15),Vector3(0,3.8,z),mats.white)
-	for x in [-22,22]:
-		for z in [-60,-45,45]: box(prison,"YardBench",Vector3(5,0.6,1),Vector3(x,0.45,z),mats.wood,true)
 	for x in [-125,125]:
 		for z in [-110,110]: guard_tower(prison,Vector3(x,0,z))
 	for x in [-123,123]:

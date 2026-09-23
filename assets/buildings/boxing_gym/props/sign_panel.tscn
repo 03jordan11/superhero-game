@@ -1,0 +1,21 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="res://assets/buildings/boxing_gym/meshes/sign_panel_Bronze.res" id="1_in6qr"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/boxing_gym/meshes/sign_panel_Sign.res" id="2_j8dns"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/boxing_gym/meshes/sign_panel_Steel.res" id="3_c0mif"]
+[ext_resource type="ArrayMesh" path="res://assets/buildings/boxing_gym/meshes/sign_panel_Trim.res" id="4_th1ed"]
+
+[node name="SignPanel" type="Node3D" unique_id=435041803]
+metadata/rendered_triangles = 92
+
+[node name="sign_panel_Bronze" type="MeshInstance3D" parent="." unique_id=695498649]
+mesh = ExtResource("1_in6qr")
+
+[node name="sign_panel_Sign" type="MeshInstance3D" parent="." unique_id=369092216]
+mesh = ExtResource("2_j8dns")
+
+[node name="sign_panel_Steel" type="MeshInstance3D" parent="." unique_id=1940836270]
+mesh = ExtResource("3_c0mif")
+
+[node name="sign_panel_Trim" type="MeshInstance3D" parent="." unique_id=1165580169]
+mesh = ExtResource("4_th1ed")

@@ -1,0 +1,26 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/crate_Ink.res" id="1_rmpl6"]
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/crate_Wood.res" id="2_lia74"]
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/crate_WoodLight.res" id="3_2x23v"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y4n4v"]
+size = Vector3(0.7, 0.56, 0.55)
+
+[node name="Crate" type="Node3D" unique_id=1819199852]
+metadata/rendered_triangles = 96
+
+[node name="crate_Ink" type="MeshInstance3D" parent="." unique_id=583558873]
+mesh = ExtResource("1_rmpl6")
+
+[node name="crate_Wood" type="MeshInstance3D" parent="." unique_id=301788866]
+mesh = ExtResource("2_lia74")
+
+[node name="crate_WoodLight" type="MeshInstance3D" parent="." unique_id=28848980]
+mesh = ExtResource("3_2x23v")
+
+[node name="Collision" type="StaticBody3D" parent="." unique_id=1898895788]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision" unique_id=1792731364]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28, 0)
+shape = SubResource("BoxShape3D_y4n4v")

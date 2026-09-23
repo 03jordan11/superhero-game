@@ -49,6 +49,7 @@ func _initialize() -> void:
 	var garden := Node3D.new()
 	add_owned(hall, garden, "GardenProps")
 	for entry: Dictionary in manifest.props:
+		if entry.kind == "bench": continue # Outdoor seating removed from the game.
 		var prop: Node3D = prop_scenes[entry.kind].instantiate()
 		prop.name = entry.name
 		prop.position = vector(entry.position)

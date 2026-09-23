@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/editor_boundary_marker.gd" id="1_marker"]
+
+[sub_resource type="StandardMaterial3D" id="Material_marker"]
+shading_mode = 0
+albedo_color = Color(0.1, 0.95, 1, 1)
+
+[sub_resource type="BoxMesh" id="Mesh_pole"]
+material = SubResource("Material_marker")
+size = Vector3(5, 300, 5)
+
+[sub_resource type="CylinderMesh" id="Mesh_base"]
+material = SubResource("Material_marker")
+top_radius = 22.0
+bottom_radius = 22.0
+height = 1.0
+radial_segments = 16
+
+[sub_resource type="SphereMesh" id="Mesh_tip"]
+material = SubResource("Material_marker")
+radius = 12.0
+height = 24.0
+radial_segments = 12
+rings = 6
+
+[node name="BoundaryPoint" type="Marker3D"]
+gizmo_extents = 30.0
+script = ExtResource("1_marker")
+
+[node name="Pole" type="MeshInstance3D" parent="."]
+position = Vector3(0, 150, 0)
+cast_shadow = 0
+mesh = SubResource("Mesh_pole")
+
+[node name="GroundMarker" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.5, 0)
+cast_shadow = 0
+mesh = SubResource("Mesh_base")
+
+[node name="Tip" type="MeshInstance3D" parent="."]
+position = Vector3(0, 300, 0)
+cast_shadow = 0
+mesh = SubResource("Mesh_tip")
+
+[node name="Label" type="Label3D" parent="."]
+position = Vector3(0, 330, 0)
+billboard = 1
+pixel_size = 0.15
+text = "TRAVEL BOUNDARY\nPLANNING ONLY"
+font_size = 48
+outline_size = 8

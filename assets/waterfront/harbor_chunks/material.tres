@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/waterfront/harbor_chunks/harbor.gdshader" id="1_xv4gm"]
+[ext_resource type="Texture2D" path="res://assets/super-city/textures/sidewalk.res" id="2_wmdau"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_xv4gm")
+shader_parameter/night_amount = 0.0
+shader_parameter/paving = ExtResource("2_wmdau")
+shader_parameter/tile_size = 4.0
+shader_parameter/warm_emission = Color(1, 0.7372549, 0.44705883, 1)
+shader_parameter/cool_emission = Color(0.63529414, 0.8235294, 0.9098039, 1)
+shader_parameter/iron_color = Color(0.16078432, 0.20784314, 0.23529412, 1)

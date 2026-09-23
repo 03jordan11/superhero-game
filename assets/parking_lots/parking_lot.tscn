@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://assets/parking_lots/parking_lot.gd" id="1"]
+[ext_resource type="Material" path="res://assets/parking_lots/parking_lot_material.tres" id="2"]
+
+[sub_resource type="PlaneMesh" id="Plane"]
+material = ExtResource("2")
+size = Vector2(30, 36)
+
+[node name="ParkingLot" type="MeshInstance3D"]
+position = Vector3(0, 0.045, 0)
+cast_shadow = 0
+mesh = SubResource("Plane")
+script = ExtResource("1")

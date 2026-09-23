@@ -1,0 +1,40 @@
+{
+  "time_of_day": 17.0,
+  "resolution": [
+    2560,
+    1440
+  ],
+  "render_scale": 100,
+  "shadow_quality": 0,
+  "bloom": false,
+  "crowd_density": 0,
+  "vehicle_density": 0,
+  "population_distance": 2,
+  "seed": 8421,
+  "warmup_seconds": 15,
+  "settle_seconds": 3,
+  "sample_seconds": 8,
+  "trials": 3,
+  "views": [
+    {
+      "name": "latest_aerial",
+      "camera_rotation": "(-0.297501, 0.962503, 0.0)",
+      "player_position": [
+        -75.410774230957,
+        306.847595214844,
+        5.00604772567749
+      ],
+      "camera_position": "(-71.48789, 309.9133, 7.737887)"
+    },
+    {
+      "name": "road_corridor",
+      "camera_rotation": "(-0.12, -1.649092, 0.0)",
+      "player_position": [
+        -1286.49536132813,
+        1.0308712720871,
+        -478.626983642578
+      ],
+      "camera_position": "(-1291.444, 3.229432, -479.0153)"
+    }
+  ]
+}

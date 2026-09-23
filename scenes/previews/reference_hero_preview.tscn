@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cboxnddsaprpn"]
+
+[ext_resource type="Script" path="res://scripts/previews/reference_hero_preview.gd" id="1"]
+
+[node name="ReferenceHeroPreview" type="Node3D" unique_id=482340575]
+script = ExtResource("1")

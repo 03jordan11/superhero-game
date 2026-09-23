@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://qwknly38sgju"]
+
+[resource]
+resource_name = "GarageYellow"
+albedo_color = Color(0.87, 0.57, 0.13, 1)
+roughness = 0.87
+texture_filter = 5

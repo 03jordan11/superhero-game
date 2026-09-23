@@ -13,8 +13,6 @@
 | Benches / bus stops | 85 benches and 24 shelters |
 | Fire hydrants | 170 |
 | Steaming road grates | 35, with 12 inexpensive animated billboards per grate |
-| Traffic lights | 18 four-way intersections, with green, amber and all-red phases |
-| All-way stops | 10 intersections |
 | Pine Pass highway | About 1.9 km north from X −740, Z −960 to a mountain tunnel at X −1100, Z −2780 |
 | Northern landscape | 4,943 batched pine/oak trees, seven faceted mountain peaks, extended background land |
 
@@ -30,18 +28,18 @@ The blimp follows a smooth ellipse at about 360 m altitude, safely above the exi
 
 Roadstar Tires and its copy are fictional and original to this prototype. `audio/roadstar_ad.wav` was synthesized locally with the installed Windows SAPI voice. The game uses the baked `audio/roadstar_ad.res`, so playback needs no speech service or network access. WAV conversion uses Godot's native [AudioStreamWAV.load_from_file](https://docs.godotengine.org/en/stable/classes/class_audiostreamwav.html#class-audiostreamwav-method-load-from-file).
 
-Neon/windows, diner lights, field floodlights and tunnel lamps follow the existing day/night controller. Blimp beacons remain visible during daylight. Game pause freezes the airship, steam and signal timing. `time pause` freezes only the sky's clock, allowing the rest of the city to keep moving.
+Neon/windows, diner lights, field floodlights and tunnel lamps follow the existing day/night controller. Blimp beacons remain visible during daylight. Game pause freezes the airship animation. `time pause` freezes only the sky's clock, allowing the rest of the city to keep moving.
 
-Select the CityLife root in the Inspector to tune blimp altitude/lap time, animation speed, advertisement volume/repeat/mute, steam density and traffic phase durations. Controls can be disabled with `Traffic Controls Enabled`. These runtime values take effect when running the scene.
+Select the CityLife root in the Inspector to tune blimp altitude/lap time, animation speed, and advertisement volume/repeat/mute. These runtime values take effect when running the scene.
 
 ## Traffic behavior
 
-Full vehicles retain their existing junction reservations and exit checks. Red and amber hold new arrivals; a car already crossing finishes. Green traffic is not blocked by an older arrival on a red approach. Distant traffic also respects signals and stop signs, and maintains spacing in controlled approach queues. The distant tier retains its existing simplified crossing simulation.
+TrafficControls has been removed: signal poles, stop signs, labels and animated signal lenses no longer spawn. The generator also omits them. TrafficManager remains active: cars retain junction pauses, queues, crossing reservations and exit checks, without traffic-light phase waits. Distant traffic remains active.
 
 ## Files and regeneration
 
 - `scenes/city_life.tscn`: baked scenery and resource references.
-- `scripts/city_life.gd`: airship, spatial ad, lights, steam and signal phases.
+- `scripts/city_life.gd`: airship, spatial ad and scenery lighting.
 - `scripts/traffic/traffic_manager.gd`, `traffic_box_lod.gd`: vehicle integration.
 - `scenes/super_city.tscn`: scene instance and four sandlot building overrides.
 - `assets/city-life/meshes`, `audio`, `steam.gdshader`, `fence.gdshader`: native assets.
@@ -63,6 +61,6 @@ $cityGodot = 'D:\SteamLibrary\steamapps\common\Godot Engine\godot.windows.opt.to
 
 ## Validation and playtest
 
-Godot 4.7.2 checks passed for road/building clearance, both highway carriageways, the tunnel entrance, player-sized capsules walking into all five diners, blimp loop/roof clearance/beacons/audio playback/muting, night lighting and pausing. Signal tests passed for amber/all-red phases, conflicting greens, physical-car red waits, green queue fairness, distant-car spacing and stop-sign pauses. Existing intersection, box-LOD and far-LOD regression suites also passed. Day/night GPU captures were inspected and corrected. This is scripted validation, not a manual gameplay playthrough.
+Godot 4.7.2 checks passed for road/building clearance, both highway carriageways, the tunnel entrance, player-sized capsules walking into all five diners, blimp loop/roof clearance/beacons/audio playback/muting, night lighting and pausing. The traffic-controls test now checks removal and continued physical/distant vehicle crossings. Existing intersection, box-LOD and far-LOD regression suites also passed. Day/night GPU captures were inspected and corrected. This is scripted validation, not a manual gameplay playthrough.
 
-In Godot, run Main and use the developer console's `time night`. Look up for the flashing blimp, fly closer to hear its ad, enter a lit diner, and watch a signal through a full cycle. Visit the West Village sandlot and follow the northern road from (−740, −960) to Pine Pass. Check that the street additions feel comfortably spaced while sprinting, and that the blimp ad volume feels appropriate. The standalone SuperCity preview supports right-mouse look, WASD, Q/E for altitude and Shift for speed.
+In Godot, run Main and use the developer console's `time night`. Look up for the flashing blimp, fly closer to hear its ad, enter a lit diner. Confirm that signal poles and stop signs are absent while moving cars continue through junctions. Visit the West Village sandlot and follow the northern road from (−740, −960) to Pine Pass. Check that the street additions feel comfortably spaced while sprinting, and that the blimp ad volume feels appropriate. The standalone SuperCity preview supports right-mouse look, WASD, Q/E for altitude and Shift for speed.

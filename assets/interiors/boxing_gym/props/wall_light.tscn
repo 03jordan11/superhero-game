@@ -1,0 +1,20 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/wall_light_Lamp.res" id="1_4lx5b"]
+[ext_resource type="ArrayMesh" path="res://assets/interiors/boxing_gym/meshes/wall_light_Steel.res" id="2_c8i0i"]
+
+[node name="WallLight" type="Node3D" unique_id=1008882184]
+metadata/rendered_triangles = 60
+
+[node name="wall_light_Lamp" type="MeshInstance3D" parent="." unique_id=642854173]
+mesh = ExtResource("1_4lx5b")
+
+[node name="wall_light_Steel" type="MeshInstance3D" parent="." unique_id=99737258]
+mesh = ExtResource("2_c8i0i")
+
+[node name="Light" type="OmniLight3D" parent="." unique_id=1871190893]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.35)
+light_color = Color(1, 0.83, 0.63, 1)
+light_energy = 1.5
+omni_range = 6.0
+omni_attenuation = 0.7

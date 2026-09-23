@@ -1,8 +1,7 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://ccsfy2fn7a517"]
 
-[ext_resource type="Script" path="res://assets/generated-buildings/commercial/commercial_skyscraper_01.gd" id="1_oxy26"]
-[ext_resource type="ArrayMesh" path="res://assets/generated-buildings/commercial/meshes/commercial_skyscraper_15.res" id="2_s21pb"]
-[ext_resource type="PackedScene" path="res://assets/props/rooftop_hvac/rooftop_hvac.tscn" id="3_go7li"]
+[ext_resource type="Script" uid="uid://xri1dxtywjs6" path="res://assets/generated-buildings/commercial/commercial_skyscraper_01.gd" id="1_oxy26"]
+[ext_resource type="ArrayMesh" uid="uid://bgy7rpgtl1sfy" path="res://assets/generated-buildings/commercial/meshes/commercial_skyscraper_15.res" id="2_s21pb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l1bks"]
 size = Vector3(32, 8, 24.04)
@@ -30,7 +29,3 @@ shape = SubResource("BoxShape3D_lk427")
 [node name="TierCollision2" type="CollisionShape3D" parent="." unique_id=154785996]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 92, 0)
 shape = SubResource("BoxShape3D_denpn")
-
-[node name="RooftopHVAC" type="StaticBody3D" parent="." unique_id=661342222 instance=ExtResource("3_go7li")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 96, 0)
-metadata/source = "hospital / Roof equipment / unit at (-13, 129, -18)"

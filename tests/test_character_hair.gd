@@ -40,7 +40,9 @@ func run() -> void:
 	check(choices.size() == 12, "Random selection covers all three styles and four colors")
 	for style in 3:
 		for color in 4:
-			var npc = load("res://scenes/npcs/civilian.tscn").instantiate()
+			# Legacy accessories still work on their original body; current civilians
+			# use the integrated Meshy hair, checked in test_civilian_meshy.gd.
+			var npc = load("res://tests/fixtures/civilian_legacy_benchmark.tscn").instantiate()
 			npc.hair_style_index = style
 			npc.hair_color_index = color
 			world.add_child(npc)
@@ -62,8 +64,8 @@ func run() -> void:
 	world.add_child(player)
 	player.set_physics_process(false)
 	var player_hair: CharacterHair = player.get_node("CharacterHair")
-	check(player_hair.attachment.get_child_count() == 2, "Player has both Simple Parted and beard")
-	check(player_hair.color_index == 2, "Player starts with matching brown hair and beard")
+	check(not player_hair.enabled and player_hair.attachment == null, "Meshy player uses integrated hair without accessory shells")
+	check(player.superhero_character.find_children("*", "MeshInstance3D", true, false).size() == 1, "Player body, fro and beard share one skinned mesh")
 	world.free()
 	print("CHARACTER_HAIR_TESTS: %s" % ("PASS" if failures == 0 else "FAIL"))
 	quit(0 if failures == 0 else 1)

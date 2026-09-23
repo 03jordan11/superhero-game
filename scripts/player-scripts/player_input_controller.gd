@@ -35,6 +35,8 @@ func update_controller_look(delta: float) -> void:
 func apply_look(radians: Vector2) -> void:
 	if player.get_node("PlayerPowerController").is_selector_open(): return
 	if player.target_lock.has_target(): return
+	# Both mouse motion and controller look pass through here.
+	radians *= settings.look_sensitivity
 	if not player.is_knocked_out and not player.is_dead:
 		player.rotate_y(-radians.x)
 		if player.state_machine.active_state is PlayerGroundedState and not player.combat_controller.is_action_locked() and not player.is_charging_flight:

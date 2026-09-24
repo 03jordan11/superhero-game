@@ -25,6 +25,7 @@ enum State {
 @export var obstacle_collision_mask: int = 1
 
 var current_state: State = State.WANDER
+@export_enum("Random:-1", "Heavyset man:0", "Young man:1", "Athletic woman:2", "Woman in sweater:3") var model_variant_index: int = -1
 @export_range(-1, 2, 1) var hair_style_index := -1
 @export_range(-1, 3, 1) var hair_color_index := -1
 

@@ -112,6 +112,27 @@ func add_triangle(a: Vector3,b: Vector3,c: Vector3,kind: String,source: String) 
 	var rect := Rect2(Vector2(a.x,a.z),Vector2.ZERO).expand(Vector2(b.x,b.z)).expand(Vector2(c.x,c.z))
 	if rect.end.y < -978 or rect.position.y > 1207: return
 	var pieces: Array = [PackedVector3Array([a,b,c])]
+	if kind == "sidewalk" and not source.contains("RiverBridge/") and not source.begins_with("CityHallBridge/"):
+		# Keep only pavement within one sidewalk width of current street asphalt.
+		# Disjoint clipping prevents overlapping road envelopes duplicating faces.
+		var remaining := pieces
+		pieces = []
+		var nearby := {}
+		for key in spatial_keys(rect.grow(4.25)):
+			for id in mask_cells.get(key,[]): nearby[id] = true
+		for id in nearby:
+			var mask: Dictionary = road_masks[id]
+			if absf((a.y+b.y+c.y)/3.0-mask.height)>0.15: continue
+			var envelope: Rect2 = mask.rect.grow(4.25)
+			if not rect.intersects(envelope): continue
+			var next := []
+			for polygon: PackedVector3Array in remaining:
+				var inside := polygon
+				for plane in [[0,envelope.position.x,true],[0,envelope.end.x,false],[2,envelope.position.y,true],[2,envelope.end.y,false]]:
+					inside = cut_polygon(inside,plane[0],plane[1],plane[2])
+				if inside.size()>=3: pieces.append(inside)
+				next.append_array(subtract_polygon_rect(polygon,envelope))
+			remaining = next
 	if kind != "crossing":
 		var candidates := {}
 		for key in spatial_keys(rect):
@@ -184,13 +205,12 @@ func collect_floors() -> void:
 	add_road_mask(Rect2(-10,-79,20,158),relative(city.get_node("NorthRiverBridge")))
 	for node in city.find_children("*","StaticBody3D",true,false):
 		if not node.has_method("sidewalk_rects") or not shown(node): continue
+		if node.width_m < 12: continue
 		var path := str(city.get_path_to(node))
 		if not path.begins_with("Roads/") and not path.begins_with("SouthRiverBridge/"): continue
 		var tr := relative(node)
 		if tr.origin.z > 780: continue
 		for rect: Rect2 in node.sidewalk_rects(): add_rect(rect,tr,"sidewalk",path)
-		if node.width_m < 12:
-			for rect: Rect2 in node.road_rects(): add_rect(rect,tr,"alley",path)
 		var w: float = node.width_m
 		if node.piece_type == 1:
 			var h: float = node.cross_width_m
@@ -209,9 +229,7 @@ func collect_floors() -> void:
 	for node: MeshInstance3D in city.find_children("*","MeshInstance3D",true,false):
 		var path := str(city.get_path_to(node))
 		var selected := path.begins_with("Sidewalks/") and node.get_parent().has_meta("sidewalk_module")
-		selected = selected or path == "RiverFrontage/Quay" or path in ["SouthRiverBridge/Walkways","CityHallBridge/Walkways","NorthRiverBridge/Walkways"]
-		selected = selected or path.begins_with("Waterfront/Harbor/ConcretePier") or path.begins_with("Landmarks/CentralPark/Trails/")
-		selected = selected or path.begins_with("Landmarks/CentralPark/Landmarks/BowBridge/Deck/")
+		selected = selected or path in ["SouthRiverBridge/Walkways","CityHallBridge/Walkways","NorthRiverBridge/Walkways"]
 		if not selected or not shown(node) or node.mesh == null: continue
 		var tr := relative(node)
 		var faces := node.mesh.get_faces()
@@ -429,7 +447,7 @@ func finish_inventory() -> void:
 	FileAccess.open(DEST+"network.json",FileAccess.WRITE).store_string(JSON.stringify(data)+"\n")
 	FileAccess.open("res://artifacts/pedestrian_bake_audit.json",FileAccess.WRITE).store_string(JSON.stringify({"components":sizes,"rejected_links":rejected_links,"physics_probes":checked,"sources":source_counts},"\t"))
 	var report := "# Authored pedestrian route inventory\n\n%d route modules, %d points, %d segments. Component sizes: %s.\n\n" % [modules.size(),points.size(),edges.size(),str(sizes)]
-	report += "Built from the saved Main/SuperCity pavement: native road sidewalks and painted crossing positions, independent sidewalk modules, City Hall surrounds, both concrete piers, river quays, park trails/Bow Bridge, and all three river bridge walkways. Airport and mountain/highway routes are excluded.\n\n"
+	report += "Built from current saved road-adjacent sidewalks, painted crossings and three river bridge walkways. Independent pavement is clipped within 4.25 m of current streets. Piers, river promenades, park trails, alley asphalt, airport and mountain/highway routes are excluded.\n\n"
 	report += "Offline Godot navigation baking reserves static box-collider clearance; %d support/head-clearance probes checked candidate routes against actual scene physics. %d obstructed candidates were omitted. Exported routes use the existing AStar crowd system. No runtime navigation bake or NavigationAgents were added.\n\n" % [checked,rejected_links.size()]
 	report += "Disconnected pavement remains a separate walking component when no physically supported, unobstructed paved connection exists. These are not joined across grass, roads without a painted crossing, or empty space. See README.md for current coverage and remaining geometry gaps.\n\n| Module | Segments |\n| --- | ---: |\n"
 	var keys := modules.keys(); keys.sort()

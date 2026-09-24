@@ -31,6 +31,10 @@ func wait_for_loading() -> void:
 
 func run() -> void:
 	create_timer(90).timeout.connect(func(): push_error("Main menu load test timed out"); quit(1))
+	var settings := root.get_node("GameSettings")
+	var original_settings_path: String = settings._settings_file
+	settings._settings_file = OS.get_environment("TEMP").path_join("minimap_travel_%d.cfg" % OS.get_process_id())
+	settings.set_hud_preference(&"show_minimap", true, false)
 	var saves := root.get_node("SaveManager")
 	var original_path: String = saves._save_path
 	test_path = OS.get_environment("TEMP").path_join("main_menu_load_%d.json" % OS.get_process_id())
@@ -79,6 +83,8 @@ func run() -> void:
 	if current_scene.name != &"GasStationInterior":
 		saves.delete_save(); saves._save_path = original_path; quit(1); return
 	var player: PlayerCharacter = current_scene.get_node("Player")
+	var minimap = player.get_node("GameplayHUD/Minimap")
+	check(not minimap.visible and not is_instance_valid(minimap.city), "Hideout hides outdoor minimap after original city is freed")
 	var spawn: Node3D = current_scene.get_node("PlayerSpawn")
 	check(player.global_position.distance_to(spawn.global_position) < 0.3, "Player starts at the interior spawn regardless of outdoor save location")
 	check(player.stats.money == 4321 and player.stats.strength == 7 and player.stats.attribute_points == 3, "Saved player stats restored")
@@ -105,6 +111,19 @@ func run() -> void:
 	check(current_scene.name == &"Main", "Exit returns to city")
 	check(player.get_instance_id() == identity and player.stats.money == 4321, "Exit retains the loaded player and progress")
 	check(player.global_position.distance_to(expected_return) < 0.5, "Exit places hero safely outside the gas station")
+	check(minimap.visible and minimap.city == current_scene.get_node("SuperCity"), "Retained HUD reconnects minimap to reloaded city on exit")
+	var map_source: Rect2 = minimap.source_rect()
+	check(map_source.intersects(Rect2(Vector2.ZERO, minimap.MAP.get_size())), "Returned player has map texture beneath marker")
+	var returned_pause := current_scene.get_node("PauseMenu")
+	returned_pause.pause_game()
+	returned_pause._on_settings_pressed()
+	var minimap_toggle: CheckBox = returned_pause.get_node("Center/SettingsMenu").hud_toggles.show_minimap
+	for cycle in 2:
+		minimap_toggle.button_pressed = false
+		check(not minimap.visible, "Gameplay checkbox hides minimap after travel")
+		minimap_toggle.button_pressed = true
+		check(minimap.visible and is_instance_valid(minimap.city), "Gameplay checkbox restores populated minimap after travel")
+	returned_pause.resume_game()
 	current_scene.free()
 	travel.free()
 	# Play stays a fresh start even when a save exists.
@@ -118,5 +137,7 @@ func run() -> void:
 	get_first_node_in_group(&"hideout_travel").free()
 	saves.delete_save()
 	saves._save_path = original_path
+	DirAccess.remove_absolute(settings._settings_file)
+	settings._settings_file = original_settings_path
 	print("MAIN_MENU_LOAD: save detection, failure recovery, hideout spawn, progress, exit and new game; %d failures" % failures)
 	quit(1 if failures else 0)

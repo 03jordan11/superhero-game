@@ -8,9 +8,7 @@ static var has_built_cached_animation_library: bool = false
 
 
 func _ready() -> void:
-	# UAL tracks address the skeleton as Armature/Skeleton3D. Resolve those paths
-	# from the imported model root, which is the AnimationPlayer's parent.
-	animation_player.root_node = NodePath("..")
+	# The scene's root_node resolves tracks from the selected imported model.
 
 	var civilian_animation_library := _get_cached_animation_library()
 	if civilian_animation_library == null:

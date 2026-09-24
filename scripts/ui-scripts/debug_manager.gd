@@ -7,7 +7,7 @@ signal enemy_debug_visuals_changed
 	set(value):
 		show_enemy_names = value
 		enemy_debug_visuals_changed.emit()
-@export var show_enemy_tints: bool = true:
+@export var show_enemy_tints: bool = false:
 	set(value):
 		show_enemy_tints = value
 		enemy_debug_visuals_changed.emit()

@@ -24,6 +24,13 @@ func run() -> void:
 	world.free()
 	# Inspect nearby pools against actual layout, without unrelated city simulation.
 	world=Node3D.new(); root.add_child(world)
+	var saved: Node = load("res://scenes/main.tscn").instantiate()
+	for label in ["Roads", "Sidewalks"]:
+		var branch: Node = saved.get_node("SuperCity/" + label)
+		branch.get_parent().remove_child(branch)
+		branch.owner = null
+		world.add_child(branch)
+	saved.free()
 	var camera:=Camera3D.new(); camera.position=Vector3(-1380,3,318); world.add_child(camera); camera.make_current()
 	var lighting: Node3D=load("res://scripts/city_night_lights.gd").new(); world.add_child(lighting)
 	lighting._set_night(1)

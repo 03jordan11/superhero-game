@@ -86,7 +86,7 @@ func run() -> void:
 	var before: Dictionary = {}
 	var offsets: Dictionary = {}
 	var shifted := 0
-	var shared_material: Material
+	var shared_materials: Dictionary = {}
 	for walker in crowd.get_node("ActiveCivilians").get_children():
 		before[walker] = walker.global_position
 		offsets[snappedf(walker.lane_offset,0.1)] = true
@@ -99,15 +99,19 @@ func run() -> void:
 			return
 		var meshes: Array[Node] = walker.find_children("*", "MeshInstance3D", true, false)
 		if meshes.size() != 1:
-			fail("Meshy crowd should have one integrated body/hair mesh")
+			fail("Each civilian should have one integrated body/hair mesh")
 			return
 		var material: Material = meshes[0].get_active_material(0)
-		if shared_material == null: shared_material = material
-		elif material != shared_material:
-			fail("Meshy civilians must share their original textured material")
+		var variant: int = walker.model_variant_index
+		if variant < 0 or variant > 3:
+			fail("Crowd did not select one of the four civilian models")
+			return
+		if not shared_materials.has(variant): shared_materials[variant] = material
+		elif material != shared_materials[variant]:
+			fail("Civilians of the same model must share their original textured material")
 			return
 	if offsets.size() < 2 or shifted < 2 or not crowd._skin_materials.is_empty():
-		fail("Expected varied lane offsets and unchanged Meshy texture without legacy skin tints")
+		fail("Expected varied lane offsets and original civilian textures without legacy skin tints")
 		return
 	for frame in range(180): await physics_frame
 	var moved := 0

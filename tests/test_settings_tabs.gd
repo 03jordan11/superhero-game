@@ -49,6 +49,8 @@ func run() -> void:
 	other.hud_toggles.always_show_health.button_pressed = false
 	other.hud_toggles.always_show_experience.button_pressed = false
 	other.hud_toggles.always_show_stamina.button_pressed = false
+	other.hud_toggles.show_minimap.button_pressed = false
+	check(not settings.show_minimap and not panel.hud_toggles.show_minimap.button_pressed, "Minimap toggle synchronizes both settings menus")
 	check(not panel.hud_toggles.always_show_health.button_pressed, "HUD choices synchronize")
 	other.hint_settings.toggle.button_pressed = false
 	check(not panel.hint_settings.toggle.button_pressed, "Control hints synchronize")

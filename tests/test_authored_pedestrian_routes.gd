@@ -16,6 +16,20 @@ func run() -> void:
 	await physics_frame
 	await physics_frame
 	var graph = city.get_node("CityPedestrianRoutes")
+	for source: String in graph.inventory.source_counts:
+		assert(source.begins_with("Roads/") or source.begins_with("Sidewalks/") or source.begins_with("SouthRiverBridge/") or source in ["CityHallBridge/Walkways","NorthRiverBridge/Walkways"], "Non-street pedestrian source: " + source)
+	for row: Dictionary in graph.inventory.floor_triangles:
+		assert(row.kind != "alley", "Pedestrians must not spawn on alley asphalt")
+	# Independently validate that independent paving stays beside current streets.
+	var street_layout: Dictionary = preload("res://scripts/current_street_layout.gd").collect(city)
+	for row: Dictionary in graph.inventory.floor_triangles:
+		if not str(row.source).begins_with("Sidewalks/"): continue
+		var center := Vector2((row.v[0]+row.v[3]+row.v[6])/3.0,(row.v[2]+row.v[5]+row.v[8])/3.0)
+		var adjacent := false
+		for road: Dictionary in street_layout.roads:
+			var r: Array = road.rect
+			if Rect2(r[0],r[1],r[2],r[3]).grow(4.251).has_point(center): adjacent = true; break
+		assert(adjacent, "Detached sidewalk retained in pedestrian network")
 	assert(graph.enabled_module_ids.size()==graph.inventory.modules.size(),"Saved city has disabled/unregistered routes")
 	var space := city.get_world_3d().direct_space_state
 	var shape := CapsuleShape3D.new()

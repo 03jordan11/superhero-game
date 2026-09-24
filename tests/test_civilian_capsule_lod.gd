@@ -69,6 +69,10 @@ func run() -> void:
 	if not same_state(state,JOURNEY.capture(full)) or count != crowd._active.get_child_count():
 		fail("Promotion changed identity, route progress, crossing wait, pose or population count")
 		return
+	var models = preload("res://scripts/npc-scripts/civilian_model.gd").MODELS
+	if full.get_node("Superhero_Female_FullBody/Visual").scene_file_path != models[state.model_variant_index].resource_path:
+		fail("Promotion instantiated a different civilian model than the capsule's saved choice")
+		return
 	for frame in range(3): await physics_frame
 	state = JOURNEY.capture(full)
 	var reduced = lod.demote(full)

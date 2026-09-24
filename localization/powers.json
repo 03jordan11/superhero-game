@@ -102,6 +102,8 @@
 	"gameplay.tab.attributes": "Attributes",
 	"gameplay.tab.journal": "Journal",
 	"gameplay.tab.map": "Map",
+	"gameplay.map.help": "You are here  ·  North ↑  ·  Scroll to zoom  ·  Drag to pan  ·  Double-click to reset",
+	"gameplay.map.outside": "You are outside the mapped area  ·  Scroll to zoom  ·  Double-click to reset",
 	"gameplay.attribute.strength": "Strength",
 	"gameplay.attribute.speed": "Speed",
 	"gameplay.attribute.resilience": "Resilience",

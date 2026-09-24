@@ -28,6 +28,12 @@ var _experience_recent: Timer
 var _last_health := -1.0
 var _last_max_health := -1.0
 var _clock: Node
+@onready var minimap: Control = $Minimap
+
+func _enter_tree() -> void:
+	# Hideout travel keeps this HUD/player, but replaces the city. _ready does
+	# not run again when the existing player re-enters a different scene.
+	_refresh_minimap.call_deferred()
 
 func _ready() -> void:
 	_apply_palette()
@@ -49,6 +55,10 @@ func _ready() -> void:
 		player.ready.connect(_bind_player, CONNECT_ONE_SHOT)
 
 func _bind_player() -> void:
+	minimap.player = player
+	minimap.city = player.get_parent().get_node_or_null("SuperCity")
+	settings.gameplay_settings_changed.connect(_refresh_minimap)
+	_refresh_minimap()
 	player.damage_receiver.health_changed.connect(_on_health_changed)
 	player.stats.experience_changed.connect(_on_experience_changed)
 	player.stats.level_changed.connect(_on_level_changed)
@@ -60,6 +70,18 @@ func _bind_player() -> void:
 	player.abilities.ability_changed.connect(_on_ability_changed)
 	player.get_node("PlayerPowerController").active_power_changed.connect(_on_active_power_changed)
 	_refresh()
+
+func _refresh_minimap() -> void:
+	if not is_instance_valid(minimap) or not is_instance_valid(player) or not is_instance_valid(settings): return
+	if not player.is_inside_tree(): return
+	# Resolve against the player's current scene, never the freed outdoor city.
+	minimap.player = player
+	minimap.city = player.get_parent().get_node_or_null("SuperCity")
+	minimap.visible = settings.show_minimap and is_instance_valid(minimap.city)
+	minimap.queue_redraw()
+	# Keep the existing control hints above the map; restore them when disabled.
+	$Hints.offset_top = -552.0 if minimap.visible else -216.0
+	$Hints.offset_bottom = -368.0 if minimap.visible else -32.0
 
 func _on_active_power_changed(_power: StringName) -> void:
 	refresh_key_hints()

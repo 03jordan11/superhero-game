@@ -2,6 +2,7 @@ class_name RescueEncounter
 extends BaseEncounter
 
 const PATIENT_SCENE = preload("res://scenes/npcs/rescue_patient.tscn")
+const CIVILIAN_MODELS = preload("res://scripts/npc-scripts/civilian_model.gd").MODELS
 @export var timer_duration := 120.0
 @export var hard_landing_penalty := 5.0
 @export var random_location_min_radius := 60.0
@@ -57,6 +58,8 @@ func _prepare_encounter() -> bool:
 func _activate_encounter() -> void:
 	remaining_time = timer_duration
 	patient = PATIENT_SCENE.instantiate() as RescuePatient
+	# Choose once per mission, before the model enters the tree.
+	patient.model_variant_index = random_number_generator.randi_range(0, CIVILIAN_MODELS.size() - 1)
 	patient.encounter = self
 	add_child(patient)
 	reward_player.landing_impact_controller.hard_landing_effect_spawned.connect(_on_hard_landing)

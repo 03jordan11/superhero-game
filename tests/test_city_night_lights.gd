@@ -25,7 +25,7 @@ func run() -> void:
 	var lights = city.get_node("NightLights")
 	await process_frame
 	check(lights.fixtures.size() > 300, "Lamp posts cover multiple city districts")
-	var layout: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://assets/super-city/layout.json"))
+	var layout: Dictionary = preload("res://scripts/current_street_layout.gd").collect(city)
 	for fixture in lights.fixtures:
 		var point := Vector2(fixture.transform.origin.x, fixture.transform.origin.z)
 		var supported := false
@@ -34,9 +34,14 @@ func run() -> void:
 				supported = true
 				break
 		check(supported, "Every lamp base is on a sidewalk")
+		var adjacent := false
 		for road in layout.roads:
 			var r: Array = road.rect
 			check(not Rect2(r[0], r[1], r[2], r[3]).has_point(point), "Lamp base does not block a road")
+			if Rect2(r[0],r[1],r[2],r[3]).grow(4.25).has_point(point): adjacent = true
+		check(adjacent, "Every lamp is beside current asphalt")
+		for r in layout.blockers:
+			check(not Rect2(r[0],r[1],r[2],r[3]).has_point(point), "Lamp base clears current buildings and solid props")
 	cycle.set_time(0.0)
 	check(is_equal_approx(cycle.night_lighting, 1.0), "Midnight powers the city's night lights")
 	lights._select_lights()

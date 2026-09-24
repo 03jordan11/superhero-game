@@ -5,6 +5,7 @@ const PALETTE = preload("res://assets/ui/default_palette.tres")
 const TAB_IDS := ["powers", "gear", "attributes", "journal", "map"]
 var tabs: TabContainer
 var powers_page: Control
+var map_page: Control
 var attribute_labels: Dictionary = {}
 var attribute_notes: Dictionary = {}
 var attribute_buttons: Dictionary = {}
@@ -68,6 +69,12 @@ func _ready() -> void:
 		page.name = id.to_pascal_case()
 		tabs.add_child(page)
 		if id == "attributes": _build_attributes(page)
+		if id == "map":
+			map_page = preload("res://scripts/ui-scripts/region_map.gd").new()
+			map_page.player = player
+			map_page.city = get_parent().get_node_or_null("SuperCity")
+			page.add_child(map_page)
+			map_page.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	_refresh_copy()
 	if player != null:
 		player.stats.stat_changed.connect(_on_stat_changed)
@@ -105,6 +112,7 @@ func open_menu(selected_tab: int = -1) -> void:
 	get_tree().paused = true
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	show()
+	map_page.reset_view()
 	_refresh_copy()
 	powers_page.refresh_page()
 	tabs.get_tab_bar().grab_focus()

@@ -1,19 +1,24 @@
 [gd_scene format=3]
 
-[ext_resource type="PackedScene" path="res://scenes/npcs/melee_thug.tscn" id="1_melee"]
+[ext_resource type="PackedScene" path="res://scenes/npcs/npc_base.tscn" id="1_npc_base"]
 [ext_resource type="Script" path="res://scripts/npc-scripts/super_hostile.gd" id="2_super"]
 
-[sub_resource type="CapsuleShape3D" id="Capsule_super"]
-radius = 0.75
-height = 2.6315918
+[ext_resource type="PackedScene" path="res://assets/characters/Hostiles/prepared/thug_white_male_brute_rigged.glb" id="3_model"]
+[ext_resource type="Script" path="res://scripts/npc-scripts/hostile_animation_controller.gd" id="4_animation_controller"]
 
-[node name="SuperThug" instance=ExtResource("1_melee")]
+[sub_resource type="CapsuleShape3D" id="Capsule_super"]
+radius = 0.65
+height = 2.3
+
+[node name="SuperThug" instance=ExtResource("1_npc_base")]
 script = ExtResource("2_super")
 enemy_type = &"super_thug"
 display_name = "Super Thug"
 nameplate_text = "SUPER"
 nameplate_kind = 3
-nameplate_height = 4.275
+nameplate_height = 3.35
+faction = &"mafia"
+animation_controller_path = NodePath("HostileAnimationController")
 max_health = 500.0
 knockback_resistant = true
 can_grab = false
@@ -29,18 +34,33 @@ punch_animation_speed = 0.5
 punch_animation_timeout = 4.0
 combo_recovery_time = 0.8
 sight_origin_height = 2.1
-obstacle_probe_radius = 0.75
-obstacle_probe_height = 1.35
+obstacle_probe_radius = 0.65
+obstacle_probe_height = 1.15
 
 [node name="CollisionShape3D" parent="." index="0"]
-position = Vector3(0, 1.3157959, 0)
+position = Vector3(0, 1.15, 0)
 shape = SubResource("Capsule_super")
 
 [node name="HealthLabel" parent="." index="1"]
-position = Vector3(0, 3.6, 0)
+position = Vector3(0, 2.9, 0)
 
-[node name="Superhero_Male_FullBody" parent="." index="2"]
-transform = Transform3D(-1.5, 0, 0, 0, 1.5, 0, 0, 0, -1.5, 0, 0, 0)
+[node name="Superhero_Male_FullBody" parent="." instance=ExtResource("3_model")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0)
 
-[node name="AlertIndicator" parent="." index="4"]
-position = Vector3(0, 5.475, 0)
+[node name="CharacterAnimationPlayer" type="AnimationPlayer" parent="Superhero_Male_FullBody"]
+
+[node name="HostileAnimationController" type="Node" parent="."]
+script = ExtResource("4_animation_controller")
+
+[node name="AlertIndicator" type="Label3D" parent="."]
+position = Vector3(0, 4.15, 0)
+visible = false
+billboard = 1
+modulate = Color(1, 0.75, 0.1, 1)
+text = "!"
+font_size = 128
+outline_size = 20
+
+[node name="AlertIndicatorTimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true

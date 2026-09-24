@@ -1,6 +1,7 @@
 extends Node3D
 ## Static sidewalk fixtures are batched; only a bounded pool casts nearby light.
-## Layout comes from the same manifest as traffic, never from guessed street grids.
+## Lamp layout follows current road modules; the legacy manifest is frontage-only.
+const STREETS = preload("res://scripts/current_street_layout.gd")
 
 @export_file("*.json") var layout_path := "res://assets/super-city/layout.json"
 @export_range(30.0, 150.0, 5.0) var spacing := 72.0
@@ -32,7 +33,7 @@ func _ready() -> void:
 	if not layout is Dictionary:
 		push_error("CityNightLights: could not read city layout")
 		return
-	fixtures = build_fixture_layout(layout, spacing)
+	fixtures = build_fixture_layout(STREETS.collect(get_parent()), spacing)
 	frontages = build_frontage_layout(layout)
 	_build_geometry()
 	for index in max_active_lights:
@@ -107,7 +108,29 @@ static func build_fixture_layout(layout: Dictionary, interval: float) -> Array[D
 			var heading:=atan2(toward.x,toward.y)
 			var style:=0 if point.x < -560 else (1 if point.x > 520 else 2)
 			result.append({"transform":Transform3D(Basis(Vector3.UP,heading),Vector3(point.x,.065,point.y)),"style":style,"intersection":true})
-	return result
+	# Apply the same road/obstacle/spacing checks to mid-block and corner fixtures.
+	var accepted: Array[Dictionary] = []
+	for fixture in result:
+		var p: Vector3 = fixture.transform.origin
+		var point := Vector2(p.x,p.z)
+		var blocked := false
+		for road in layout.get("roads",[]):
+			var r: Array = road.rect
+			if Rect2(r[0],r[1],r[2],r[3]).grow(0.3).has_point(point): blocked = true; break
+		if blocked: continue
+		for r in layout.get("blockers",[]):
+			if Rect2(r[0],r[1],r[2],r[3]).has_point(point): blocked = true; break
+		if blocked: continue
+		for other in accepted:
+			if other.transform.origin.distance_squared_to(p)<144: blocked = true; break
+		if blocked: continue
+		if layout.has("sidewalk_heights"):
+			for i in sidewalks.size():
+				if sidewalks[i].has_point(point):
+					fixture.transform.origin.y = layout.sidewalk_heights[i]
+					break
+		accepted.append(fixture)
+	return accepted
 
 static func build_frontage_layout(layout: Dictionary) -> Array[Dictionary]:
 	var result: Array[Dictionary]=[]

@@ -16,15 +16,29 @@ func run() -> void:
 	var enemies: Array[HostileBase] = []
 	var original_overlay := StandardMaterial3D.new()
 	original_overlay.albedo_color = Color.WHITE
+	var models := {"pistol": "skinny", "rifle": "skinny", "melee": "beard", "super": "brute"}
 	for kind in ["pistol", "rifle", "melee", "super"]:
 		var enemy := load("res://scenes/npcs/%s_thug.tscn" % kind).instantiate() as HostileBase
+		var model: Node3D = enemy.get_node("Superhero_Male_FullBody")
+		check(model.scene_file_path == "res://assets/characters/Hostiles/prepared/thug_white_male_%s_rigged.glb" % models[kind], "Encounter type uses its approved hostile mesh: " + kind)
+		check(model.find_children("*", "Skeleton3D", true, false).size() == 1, "Replacement model has one skeleton")
 		var mesh := enemy.find_children("*", "MeshInstance3D", true, false)[0] as MeshInstance3D
 		mesh.material_overlay = original_overlay
 		world.add_child(enemy)
 		enemy.set_physics_process(false)
 		enemies.append(enemy)
-		check(enemy.nameplate.visible and mesh.material_overlay == enemy._debug_tint, "Debug names and tint start enabled")
+		var animation: AnimationPlayer = model.get_node("CharacterAnimationPlayer")
+		for clip in ["Idle", "Sprint", "Pistol_Shoot" if kind in ["pistol", "rifle"] else "Punch_01"]:
+			check(animation.has_animation(clip), "Gameplay animation is available: " + clip)
+			animation.play(clip)
+			animation.advance(0.15)
+		if kind == "super":
+			var bounds: AABB = mesh.global_transform * mesh.get_aabb()
+			check(absf(bounds.size.y - 2.3) < 0.005, "Encounter brute retains its approved 2.3 m height")
+			check(enemy.max_health == 500 and enemy.faction == &"mafia" and not enemy.can_grab, "Super combat identity survives the model replacement")
+		check(enemy.nameplate.visible and mesh.material_overlay == original_overlay, "Enemy textures start without the debug tint")
 		check(enemy._debug_tint.albedo_color.is_equal_approx(Color(enemy.nameplate.modulate, 0.75)), "Tint matches each enemy's type color at 75 percent opacity")
+	debug.show_enemy_tints = true
 	debug.show_enemy_names = false
 	for enemy in enemies:
 		check(not enemy.nameplate.visible and enemy._debug_meshes[0].material_overlay == enemy._debug_tint, "Names toggle independently of tint")

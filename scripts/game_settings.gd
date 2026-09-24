@@ -25,6 +25,7 @@ var crowd_density: int = Quality.HIGH
 var vehicle_density: int = Quality.HIGH
 var population_view_distance: int = Quality.HIGH
 var show_control_hints := true
+var show_minimap := true
 var always_show_health := true
 var always_show_stamina := true
 var always_show_experience := true
@@ -79,7 +80,7 @@ func save_settings(path := "") -> Error:
 	config.set_value("population", "vehicle_density", vehicle_density)
 	config.set_value("population", "view_distance", population_view_distance)
 	config.set_value("hud", "show_control_hints", show_control_hints)
-	for key in [&"always_show_health", &"always_show_stamina", &"always_show_experience"]:
+	for key in [&"always_show_health", &"always_show_stamina", &"always_show_experience", &"show_minimap"]:
 		config.set_value("hud", key, get(key))
 	config.set_value("accessibility", "toggle_sprint", toggle_sprint)
 	config.set_value("accessibility", "toggle_power_activation", toggle_power_activation)
@@ -107,7 +108,7 @@ func load_settings(path := "") -> void:
 		_read_quality(config, "view_distance"), false)
 	var saved_hints: Variant = config.get_value("hud", "show_control_hints", true)
 	set_show_control_hints(saved_hints if saved_hints is bool else true, false)
-	for key in [&"always_show_health", &"always_show_stamina", &"always_show_experience"]:
+	for key in [&"always_show_health", &"always_show_stamina", &"always_show_experience", &"show_minimap"]:
 		set_hud_preference(key, _read_bool(config, "hud", key, true), false)
 	set_accessibility(_read_bool(config, "accessibility", "toggle_sprint", false),
 		_read_bool(config, "accessibility", "toggle_power_activation", false), false)
@@ -208,7 +209,7 @@ func _read_bool(config: ConfigFile, section: String, key: String, fallback: bool
 	return value if value is bool else fallback
 
 func set_hud_preference(key: StringName, enabled: bool, persist := true) -> Error:
-	if key not in [&"always_show_health", &"always_show_stamina", &"always_show_experience"]:
+	if key not in [&"always_show_health", &"always_show_stamina", &"always_show_experience", &"show_minimap"]:
 		return ERR_INVALID_PARAMETER
 	if get(key) != enabled:
 		set(key, enabled)

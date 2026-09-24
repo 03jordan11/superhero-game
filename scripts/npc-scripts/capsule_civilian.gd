@@ -13,6 +13,7 @@ var crossing_wait_seconds := 1.2
 var waypoint_arrival_distance := 0.2
 var completed_destinations := 0
 var skin_tone_index := -1
+var model_variant_index := -1
 var hair_style_index := -1
 var hair_color_index := -1
 var _path := PackedInt64Array()

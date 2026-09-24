@@ -3,6 +3,7 @@ extends Node
 const CROWD_PERF = preload("res://scripts/ui-scripts/civilian_crowd_performance_monitor.gd")
 ## Settings and representation handoff only. The parent owns one population.
 const CAPSULE := preload("res://scripts/npc-scripts/capsule_civilian.gd")
+const CIVILIAN_MODEL := preload("res://scripts/npc-scripts/civilian_model.gd")
 const JOURNEY := preload("res://scripts/npc-scripts/pedestrian_journey.gd")
 const DAMAGE_CELL_SIZE := 8.0
 
@@ -80,6 +81,7 @@ func create_capsule(tone: int) -> Node3D:
 	walker.damage_position_changed.connect(_update_damage_cell.bind(walker))
 	walker.tree_exiting.connect(_remove_damage_cell.bind(walker))
 	walker.skin_tone_index = tone
+	CIVILIAN_MODEL.choose_for(walker)
 	CharacterHair.choose_for(walker)
 	_mesh.radius = capsule_radius
 	_mesh.height = maxf(capsule_height,capsule_radius*2.0)
@@ -175,6 +177,8 @@ func _profiled_promote(walker: Node3D) -> Node3D:
 	full._path = state._path
 	full.show_route_status = _crowd.show_civilian_status
 	full.skin_tone_index = state.skin_tone_index
+	# Set before entering the tree, when the selected rig is instantiated.
+	full.model_variant_index = state.model_variant_index
 	full.hair_style_index = state.hair_style_index
 	full.hair_color_index = state.hair_color_index
 	if full.skin_tone_index >= 0: _crowd._apply_skin(full,full.skin_tone_index)

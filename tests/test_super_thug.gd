@@ -62,8 +62,8 @@ func run() -> void:
 	var second := spawn(world, target, "super", 5) as SuperHostile
 	check(heavy.max_health == 500 and heavy.get_current_health() == 500 and heavy.punch_damage == 40 and heavy.experience_gain == 350, "Super stats match requested balance")
 	check(heavy.faction == &"mafia" and heavy.nameplate.text == "SUPER" and heavy.nameplate.modulate == Color("ef9a42"), "Super has Mafia identity and orange label")
-	check(heavy.get_node("Superhero_Male_FullBody").scale.is_equal_approx(Vector3.ONE * 1.5), "Super model is 1.5 times normal size")
-	check(is_equal_approx(heavy.get_node("CollisionShape3D").shape.height, a.get_node("CollisionShape3D").shape.height * 1.5), "Super capsule matches model size")
+	check(heavy.get_node("Superhero_Male_FullBody").basis.get_scale().abs().is_equal_approx(Vector3.ONE), "Brute keeps its authored 2.3 m size without an extra multiplier")
+	check(is_equal_approx(heavy.get_node("CollisionShape3D").shape.height, 2.3), "Super capsule matches the 2.3 m brute")
 	check(a.approach_speed == 8.5 and a.surround_speed == 3.5 and heavy.approach_speed < a.approach_speed, "Melee movement reduced and super is slower still")
 	check(reserve(a) and reserve(b), "Two normal melee thugs can take the first turns")
 	check(not reserve(c) and not reserve(heavy) and not reserve(later) and not reserve(second), "Supers join the same waiting queue")

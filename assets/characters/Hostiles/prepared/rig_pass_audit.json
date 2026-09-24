@@ -1,0 +1,23 @@
+[
+  {
+    "model": "beard",
+    "source_sha256": "872be2eb6c8ecc546e78e4678fc77160b1045fa5a2b482525a5fe3060a5ba0bc",
+    "bones": 65,
+    "max_influences": 4,
+    "geometry_and_uvs_unchanged": true
+  },
+  {
+    "model": "skinny",
+    "source_sha256": "b7b6fd374a8381ba556dc710d9846d07c826ec0fa34f15b711571e9b726c874d",
+    "bones": 65,
+    "max_influences": 4,
+    "geometry_and_uvs_unchanged": true
+  },
+  {
+    "model": "brute",
+    "source_sha256": "912d2750c6feed0b046306a17b76074d7ef49ee458e7be3bdcb003159cfc711d",
+    "bones": 65,
+    "max_influences": 4,
+    "geometry_and_uvs_unchanged": true
+  }
+]

@@ -1,0 +1,23 @@
+[
+  {
+    "model": "thug_white_male_beard",
+    "height_m": 1.8,
+    "triangles": 2436,
+    "body_vertices_and_uvs_preserved": true,
+    "hands_closed": true
+  },
+  {
+    "model": "thug_white_male_brute",
+    "height_m": 2.3,
+    "triangles": 2404,
+    "body_vertices_and_uvs_preserved": true,
+    "hands_closed": true
+  },
+  {
+    "model": "thug_white_male_skinny",
+    "height_m": 1.8,
+    "triangles": 2351,
+    "body_vertices_and_uvs_preserved": true,
+    "hands_closed": true
+  }
+]

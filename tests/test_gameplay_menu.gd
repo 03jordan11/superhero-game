@@ -40,7 +40,9 @@ func run() -> void:
 	check(menu.tabs.get_tab_count() == 5, "All five groups exist")
 	for i in range(5):
 		check(menu.tabs.get_tab_title(i) == ["Powers", "Gear", "Attributes", "Journal", "Map"][i], "Requested tab order")
-	for i in [1, 3, 4]: check(menu.tabs.get_tab_control(i).get_child_count() == 0, "Future page stays blank")
+	for i in [1, 3]: check(menu.tabs.get_tab_control(i).get_child_count() == 0, "Future page stays blank")
+	check(menu.tabs.get_tab_control(4).get_child_count() == 1, "Map tab contains regional map")
+	check(menu.map_page.player == player and menu.map_page.city == main.get_node("SuperCity"), "Map uses live player and saved city coordinate space")
 	check(menu.powers_page.progression == progression, "Page shares the player's authoritative progression")
 	check(not menu.powers_page.back_button.is_visible_in_tree(), "Embedded Powers uses outer menu close")
 	check(pause.pause_actions.get_child_count() == 7, "Pause actions no longer include Powers")

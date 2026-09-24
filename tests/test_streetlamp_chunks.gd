@@ -8,6 +8,13 @@ func check(ok: bool, message: String) -> void:
 func run() -> void:
 	create_timer(60).timeout.connect(func(): push_error("Streetlamp test timeout"); quit(1))
 	var world := Node3D.new()
+	var saved: Node = load("res://scenes/main.tscn").instantiate()
+	for label in ["Roads", "Sidewalks"]:
+		var branch: Node = saved.get_node("SuperCity/" + label)
+		branch.get_parent().remove_child(branch)
+		branch.owner = null
+		world.add_child(branch)
+	saved.free()
 	root.add_child(world)
 	var camera := Camera3D.new()
 	world.add_child(camera)

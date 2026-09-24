@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" path="res://scenes/npcs/npc_base.tscn" id="1_npc_base"]
 [ext_resource type="Script" path="res://scripts/npc-scripts/melee_hostile.gd" id="2_hostile"]
-[ext_resource type="PackedScene" uid="uid://djuiolvewh3lx" path="res://assets/characters/Superhero-male/Superhero_Male_FullBody.gltf" id="3_model"]
+[ext_resource type="PackedScene" path="res://assets/characters/Hostiles/prepared/thug_white_male_beard_rigged.glb" id="3_model"]
 [ext_resource type="Script" uid="uid://cflffjqxc6bpy" path="res://scripts/npc-scripts/hostile_animation_controller.gd" id="4_animation_controller"]
 
 [node name="MeleeThug" instance=ExtResource("1_npc_base")]

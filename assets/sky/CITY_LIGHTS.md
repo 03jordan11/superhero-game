@@ -21,9 +21,15 @@ including while the console pauses the game.
 
 ## Placement and tuning
 
-`SuperCity/NightLights` builds 1,138 decorative posts from the existing sidewalk
-and road manifest. Poles sit 1.1 m outside the carriageway, face the road, and are
-omitted where no sidewalk supports them. Shared mesh batches keep the fixtures
+`SuperCity/NightLights` reads the placed, visible road modules and sidewalks
+through `scripts/current_street_layout.gd`, including saved Main overrides.
+The checked city produces 1,157 decorative posts. Contiguous straight road pieces
+are merged for spacing; junctions retain corner fixtures. Poles sit 1.1 m outside
+the carriageway, face the road, and are omitted where no sidewalk supports them,
+another road crosses the base, a building/solid prop blocks them, or another post
+is too close. Base height follows the current sidewalk. The old layout.json is
+used only for existing building-frontage lights, not streetlamp placements.
+Shared mesh batches keep the fixtures
 inexpensive. They are visual props without collisions or destruction behavior.
 The placement is deterministic and built when the scene runs, not baked into the
 city generator or shown by an editor tool script.

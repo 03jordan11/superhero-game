@@ -26338,112 +26338,112 @@ enabled_routes = {
 }
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_01_01" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1455.6669, 0.03, -972.50006)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1472.16687011719, 0.02999999932945, -971.666748046875)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_01_02" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1176.1666, 0.03, -972.50006)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1211.0, 0.02999999932945, -972.333435058594)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_01_03" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1071.3334, 0.03, -972.50006)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1042.83337402344, 0.02999999932945, -972.333435058594)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_01_04" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -958.00006, 0.03, -971.66675)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -958.000061035156, 0.02999999932945, -971.666748046875)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_02_01" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1471.5001, 0.03, -832.66675)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1448.50012207031, 0.02999999932945, -832.500061035156)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_02_02" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1190.5, 0.03, -810.33344)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1287.50012207031, 0.02999999932945, -832.666748046875)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_02_03" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1112.1666, 0.03, -825.16675)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1112.16662597656, 0.02999999932945, -825.166748046875)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_02_04" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -908.66675, 0.03, -809.66675)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -908.666748046875, 0.02999999932945, -809.666748046875)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_03_01" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1369.3335, 0.03, -676.00006)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1471.50012207031, 0.02999999932945, -676.666748046875)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_03_02" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1189.3334, 0.03, -676.00006)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1272.16662597656, 0.02999999932945, -674.333435058594)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_03_03" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1112.1666, 0.03, -669.66675)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1112.16662597656, 0.02999999932945, -669.666748046875)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_03_04" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -931.50006, 0.03, -676.50006)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -931.500061035156, 0.02999999932945, -676.666748046875)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_04_01" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1369.1669, 0.03, -505.66666)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1471.50012207031, 0.02999999932945, -506.0)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_04_02" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1288.0001, 0.03, -527.8333)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1288.00012207031, 0.02999999932945, -527.833312988281)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_04_03" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1112.3334, 0.03, -525.6667)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1112.5, 0.02999999932945, -505.666656494141)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_04_04" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -932.33344, 0.03, -505.83334)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -932.333435058594, 0.02999999932945, -505.833343505859)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_05_01" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1471.5001, 0.03, -359.33337)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1471.50012207031, 0.02999999932945, -359.333374023438)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_05_02" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1287.5001, 0.03, -359.16672)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1287.50012207031, 0.02999999932945, -359.333374023438)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_05_03" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1112.1666, 0.03, -354.16672)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1111.5, 0.02999999932945, -359.333374023438)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_05_04" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -931.50006, 0.03, -359.33337)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -931.500061035156, 0.02999999932945, -359.333374023438)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_06_01" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1379.5001, 0.03, -168.83336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1471.50012207031, 0.02999999932945, -192.000015258789)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_06_02" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1287.8335, 0.03, -187.66669)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1287.83349609375, 0.02999999932945, -187.666687011719)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_06_03" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1088.1666, 0.03, -185.33336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1088.16662597656, 0.02999999932945, -185.333358764648)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_06_04" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -931.50006, 0.03, -191.83336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -931.500061035156, 0.02999999932945, -192.000015258789)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_07_01" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1378.1669, 0.03, -12.833335)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1471.50012207031, 0.02999999932945, -36.6666679382324)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_07_02" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1288.5001, 0.03, -37.833336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1287.50012207031, 0.02999999932945, -36.6666679382324)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_07_03" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1088.1666, 0.03, -30.000002)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1088.16662597656, 0.02999999932945, -30.0000019073486)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_07_04" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -931.50006, 0.03, -36.500004)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -931.500061035156, 0.02999999932945, -36.5000038146973)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_08_01" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1448.1669, 0.03, 130.66667)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1448.16687011719, 0.02999999932945, 130.66667175293)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_08_02" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1287.3335, 0.03, 146.33333)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1287.50012207031, 0.02999999932945, 124.0)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_08_03" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1111.5, 0.03, 124)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1111.5, 0.02999999932945, 124.0)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_08_04" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -908.66675, 0.03, 146.33333)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -908.666748046875, 0.02999999932945, 146.33332824707)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_09_01" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1383.8335, 0.03, 303.16666)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1471.50012207031, 0.02999999932945, 280.666656494141)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_09_02" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1271.8334, 0.03, 284.66666)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1287.50012207031, 0.02999999932945, 280.666656494141)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_09_03" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1087.5, 0.03, 279.83334)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1111.5, 0.02999999932945, 280.833343505859)
 
 [node name="StartHere" parent="CityPedestrianRoutes/WestVillage/Block_09_04" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -931.50006, 0.03, 280.83334)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -931.500061035156, 0.02999999932945, 280.666656494141)
 
 [node name="NorthHeights" parent="CityPedestrianRoutes" index="1"]
 enabled_routes = {
@@ -26506,172 +26506,172 @@ enabled_routes = {
 }
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_01_04" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -853.33344, 0.03, -972.33344)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -853.333435058594, 0.02999999932945, -972.333435058594)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_01_05" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -761.00006, 0.03, -971.66675)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -761.000061035156, 0.02999999932945, -971.666748046875)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_01_06" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -523.1667, 0.03, -971.66675)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -523.166687011719, 0.02999999932945, -971.666748046875)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_01_07" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -372.33337, 0.03, -971.66675)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -372.333374023438, 0.02999999932945, -971.666748046875)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_01_08" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.5, 0.03, -971.66675)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.5, 0.02999999932945, -971.666748046875)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_01_09" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.50000006, 0.03, -971.66675)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.50000005960464, 0.02999999932945, -971.666748046875)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_01_10" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 133.33334, 0.03, -972.33344)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 133.333343505859, 0.02999999932945, -972.333435058594)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_01_11" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 466.00003, 0.03, -971.66675)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 466.000030517578, 0.02999999932945, -971.666748046875)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_01_12" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 510.5, 0.03, -971.66675)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 510.5, 0.02999999932945, -971.666748046875)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_01_13" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 796.66675, 0.03, -972.50006)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 675.166687011719, 0.02999999932945, -972.333435058594)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_01_14" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 843.16675, 0.03, -972.50006)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 938.333435058594, 0.02999999932945, -972.333435058594)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_01_15" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1031.3334, 0.03, -948.50006)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1031.16662597656, 0.02999999932945, -971.666748046875)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_01_16" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1242.5, 0.03, -971.66675)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1242.5, 0.02999999932945, -971.666748046875)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_01_17" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1432.1669, 0.03, -971.66675)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1432.16687011719, 0.02999999932945, -971.666748046875)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_02_04" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -856.50006, 0.03, -807.66675)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -856.500061035156, 0.02999999932945, -807.666748046875)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_02_05" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -650.66675, 0.03, -831.83344)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -755.500061035156, 0.02999999932945, -832.666748046875)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_02_06" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -571.5, 0.03, -832.66675)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -571.5, 0.02999999932945, -832.666748046875)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_02_07" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -392.50003, 0.03, -833.83344)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -391.500030517578, 0.02999999932945, -832.666748046875)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_02_08" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -211.83336, 0.03, -822.33344)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -211.833358764648, 0.02999999932945, -822.333435058594)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_02_09" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 0.03, -844.50006)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.5, 0.02999999932945, -832.666748046875)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_02_10" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 189.33336, 0.03, -730.50006)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_02_11" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 305.33334, 0.03, -730.50006)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 482.333374023438, 0.02999999932945, -807.666748046875)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_02_12" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 511.16666, 0.03, -809.33344)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 506.666717529297, 0.02999999932945, -802.166748046875)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_02_13" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 715.33344, 0.03, -809.66675)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 684.500061035156, 0.02999999932945, -832.666748046875)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_02_14" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 969.33344, 0.03, -831.83344)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 868.500061035156, 0.02999999932945, -832.666748046875)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_02_15" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1031.1666, 0.03, -792.33344)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1031.33337402344, 0.02999999932945, -807.500061035156)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_02_16" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1232.5, 0.03, -832.66675)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1232.5, 0.02999999932945, -832.666748046875)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_02_17" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1408.5001, 0.03, -832.50006)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1408.50012207031, 0.02999999932945, -832.500061035156)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_03_04" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -829.33344, 0.03, -676.00006)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -803.500061035156, 0.02999999932945, -628.333312988281)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_03_05" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -755.50006, 0.03, -676.50006)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -755.500061035156, 0.02999999932945, -676.666748046875)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_03_06" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -547.6667, 0.03, -531)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -571.5, 0.02999999932945, -676.666748046875)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_03_07" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -289.33334, 0.03, -676.00006)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -391.500030517578, 0.02999999932945, -676.666748046875)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_03_08" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -109.33334, 0.03, -676.00006)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -211.500015258789, 0.02999999932945, -676.666748046875)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_03_09" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.5, 0.03, -676.66675)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.5, 0.02999999932945, -676.666748046875)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_03_10" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 148.83333, 0.03, -526.6667)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_03_11" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 430.66672, 0.03, -676.00006)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 457.833374023438, 0.02999999932945, -651.666748046875)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_03_12" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 511.16666, 0.03, -653.33344)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 511.166656494141, 0.02999999932945, -653.333435058594)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_03_13" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 716.33344, 0.03, -531)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 684.500061035156, 0.02999999932945, -676.666748046875)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_03_14" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 892.33344, 0.03, -531)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 868.500061035156, 0.02999999932945, -676.666748046875)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_03_15" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1031.1666, 0.03, -628.3333)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1031.16662597656, 0.02999999932945, -628.333312988281)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_03_16" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1247.5, 0.03, -676.50006)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1232.5, 0.02999999932945, -676.666748046875)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_03_17" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1408.5001, 0.03, -676.50006)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1408.50012207031, 0.02999999932945, -676.666748046875)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_04_04" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -829.16675, 0.03, -505.66666)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -803.500061035156, 0.02999999932945, -491.666717529297)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_04_05" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -756.50006, 0.03, -505.66666)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -756.500061035156, 0.02999999932945, -505.666656494141)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_04_06" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -547.5, 0.03, -505.66666)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -572.5, 0.02999999932945, -505.666656494141)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_04_07" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -367.66672, 0.03, -517.3333)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -392.500030517578, 0.02999999932945, -505.666656494141)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_04_08" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -212.50002, 0.03, -505.66666)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -212.500015258789, 0.02999999932945, -505.666656494141)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_04_09" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.5, 0.03, -505.66666)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.5, 0.02999999932945, -505.666656494141)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_04_10" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 148.83333, 0.03, -526.6667)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_04_11" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 328.50003, 0.03, -506)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 328.500030517578, 0.02999999932945, -506.0)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_04_12" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 508.33337, 0.03, -506.16666)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 508.333374023438, 0.02999999932945, -506.166656494141)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_04_13" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 716.50006, 0.03, -505.66666)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 683.500061035156, 0.02999999932945, -505.666656494141)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_04_14" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 892.50006, 0.03, -505.66666)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 867.500061035156, 0.02999999932945, -505.666656494141)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_04_15" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1031.1666, 0.03, -468.33337)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1031.33337402344, 0.02999999932945, -491.500030517578)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_04_16" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1330.8335, 0.03, -505.66666)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1248.5, 0.02999999932945, -505.666656494141)
 
 [node name="StartHere" parent="CityPedestrianRoutes/NorthHeights/Block_04_17" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1407.5001, 0.03, -505.66666)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1407.50012207031, 0.02999999932945, -505.666656494141)
 
 [node name="Parkside" parent="CityPedestrianRoutes" index="2"]
 enabled_routes = {
@@ -26714,91 +26714,91 @@ enabled_routes = {
 }
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_04_05" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -755.66675, 0.03, -423.33337)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -756.333435058594, 0.02999999932945, -380.666717529297)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_04_06" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -548.6667, 0.03, -382.83337)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -572.333312988281, 0.02999999932945, -380.666717529297)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_04_07" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -411.83337, 0.03, -428.50003)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_04_08" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -110.83334, 0.03, -380.33337)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -212.666687011719, 0.02999999932945, -380.666717529297)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_04_09" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.333332, 0.03, -380.66672)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.3333320617676, 0.02999999932945, -380.666717529297)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_04_10" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.166664, 0.03, -406.83337)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_05_05" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -755.50006, 0.03, -359.16672)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -755.500061035156, 0.02999999932945, -359.333374023438)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_05_06" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -548.3333, 0.03, -349.16672)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -571.5, 0.02999999932945, -359.333374023438)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_05_07" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -405.00003, 0.03, -342.50003)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -398.166717529297, 0.02999999932945, -337.333374023438)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_05_08" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -109.33334, 0.03, -358.66672)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -211.666687011719, 0.02999999932945, -359.333374023438)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_05_09" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.5, 0.03, -359.33337)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.5, 0.02999999932945, -359.333374023438)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_06_05" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -755.50006, 0.03, -191.83336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -755.500061035156, 0.02999999932945, -192.000015258789)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_06_06" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -571.5, 0.03, -192.00002)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -571.5, 0.02999999932945, -192.000015258789)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_06_09" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.5, 0.03, -192.00002)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.5, 0.02999999932945, -192.000015258789)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_06_10" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128.66667, 0.03, -43.666668)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_07_05" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -672.50006, 0.03, -11.666668)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -755.500061035156, 0.02999999932945, -36.5000038146973)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_07_06" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -573.3333, 0.03, -3.5000002)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -571.5, 0.02999999932945, -36.6666679382324)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_07_09" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.5, 0.03, -36.666668)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.5, 0.02999999932945, -36.6666679382324)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_07_10" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128.66667, 0.03, -43.666668)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_08_05" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -650.66675, 0.03, 124.833336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -755.500061035156, 0.02999999932945, 124.0)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_08_06" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -571.5, 0.03, 124)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -571.5, 0.02999999932945, 124.0)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_08_09" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0.03, 124)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.5, 0.02999999932945, 124.166664123535)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_08_10" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 228.16669, 0.03, 168.66667)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 148.66667175293, 0.02999999932945, 173.666687011719)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_09_05" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -756.16675, 0.03, 285.83334)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -755.500061035156, 0.02999999932945, 280.666656494141)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_09_06" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -571.5, 0.03, 280.66666)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -571.5, 0.02999999932945, 280.666656494141)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_09_07" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -292, 0.03, 303)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -393.500030517578, 0.02999999932945, 304.333343505859)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_09_08" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -243.66667, 0.03, 304.33334)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.6666679382324, 0.02999999932945, 303.666656494141)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_09_09" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.5, 0.03, 280.83334)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.5, 0.02999999932945, 280.833343505859)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_09_10" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 298.5, 0.03, 322)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 148.5, 0.02999999932945, 280.666656494141)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_06_08" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.66668, 0.8818463, -48.666668)
@@ -26819,7 +26819,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -136.66667, 0.2028244, 167.33
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -289, 1.6267952, 263.16666)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_05_10" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 135.66667, 8.179999, -336.33337)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 135.66667175293, 8.17999935150146, -336.333374023438)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Parkside/Block_09_11" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 300.33334, 0.03, 313.66666)
@@ -26862,100 +26862,100 @@ enabled_routes = {
 }
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_05_04" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -856.50006, 0.03, -335.66672)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -856.500061035156, 0.02999999932945, -335.666717529297)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_06_04" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -829.33344, 0.03, -191.33336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -803.500061035156, 0.02999999932945, -152.33332824707)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_07_04" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -829.33344, 0.03, -36.000004)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -803.500061035156, 0.02999999932945, -11.6666679382324)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_08_04" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -856.50006, 0.03, 148.33333)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -856.500061035156, 0.02999999932945, 148.33332824707)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_09_01" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1370.8335, 0.03, 423.66672)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1472.33349609375, 0.02999999932945, 423.333374023438)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_09_02" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1287.6669, 0.03, 380.66672)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1287.66687011719, 0.02999999932945, 380.666717529297)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_09_03" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1111.6666, 0.03, 380.66672)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1111.66662597656, 0.02999999932945, 380.666717529297)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_09_04" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -829.33344, 0.03, 281.33334)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -803.500061035156, 0.02999999932945, 335.666717529297)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_09_05" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -757.33344, 0.03, 325.1667)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -722.666748046875, 0.02999999932945, 325.166656494141)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_09_06" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -546.3333, 0.03, 335.50003)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -571.333312988281, 0.02999999932945, 337.666717529297)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_09_07" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -393.66672, 0.03, 335.50003)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -393.666717529297, 0.02999999932945, 335.500030517578)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_09_08" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -212.83336, 0.03, 334.83337)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -212.833358764648, 0.02999999932945, 334.833374023438)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_09_09" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.333332, 0.03, 337.66672)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.3333320617676, 0.02999999932945, 337.666717529297)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_09_10" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 299.16666, 0.03, 335.33337)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 148.66667175293, 0.02999999932945, 337.666717529297)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_10_01" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1369.3335, 0.03, 445.33337)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1471.50012207031, 0.02999999932945, 444.666717529297)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_10_02" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1287.5001, 0.03, 444.83337)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1287.50012207031, 0.02999999932945, 444.833374023438)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_10_03" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1111.5, 0.03, 444.83337)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1111.5, 0.02999999932945, 444.833374023438)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_10_04" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -931.50006, 0.03, 444.83337)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -931.500061035156, 0.02999999932945, 444.833374023438)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_10_05" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -723.83344, 0.03, 449.83337)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -755.500061035156, 0.02999999932945, 444.833374023438)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_10_06" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -571.5, 0.03, 444.83337)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -571.5, 0.02999999932945, 444.666717529297)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_11_01" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1472.5001, 0.03, 599.8333)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1471.50012207031, 0.02999999932945, 603.666687011719)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_11_02" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1287.5001, 0.03, 603.6667)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1287.50012207031, 0.02999999932945, 603.666687011719)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_11_03" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1111.5, 0.03, 603.6667)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1111.5, 0.02999999932945, 603.666687011719)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_11_04" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -931.50006, 0.03, 603.6667)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -931.500061035156, 0.02999999932945, 603.666687011719)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_11_05" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -724.66675, 0.03, 622.3333)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -755.500061035156, 0.02999999932945, 603.666687011719)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_11_06" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -571.5, 0.03, 603.6667)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -571.5, 0.02999999932945, 603.666687011719)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_12_01" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1471.5001, 0.03, 763.16675)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1446.66687011719, 0.02999999932945, 763.833435058594)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_12_02" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1289.3335, 0.03, 763.83344)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1289.33349609375, 0.02999999932945, 763.833435058594)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_12_03" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1086.6666, 0.03, 763.83344)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1086.66662597656, 0.02999999932945, 763.833435058594)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_12_04" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -933.33344, 0.03, 763.83344)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -906.666748046875, 0.02999999932945, 763.833435058594)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_12_05" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -757.33344, 0.03, 763.83344)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -757.333435058594, 0.02999999932945, 763.833435058594)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Block_12_06" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -546.6667, 0.03, 763.83344)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -546.666687011719, 0.02999999932945, 763.833435058594)
 
 [node name="StartHere" parent="CityPedestrianRoutes/CivicCenter/Waterfront" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1459.6669, 0.03, 786.33344)
@@ -27001,97 +27001,97 @@ enabled_routes = {
 }
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_09_07" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -368.16672, 0.03, 429.50003)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -391.666717529297, 0.02999999932945, 423.333374023438)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_09_08" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -188.50002, 0.03, 444.83337)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -212.500015258789, 0.02999999932945, 423.333374023438)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_09_09" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.5, 0.03, 374.33337)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.3333320617676, 0.02999999932945, 423.333374023438)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_09_10" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 282.83334, 0.03, 445.00003)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 147.66667175293, 0.02999999932945, 423.333374023438)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_09_11" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 403.16672, 0.03, 421.00003)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_09_12" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 508.33337, 0.03, 375.83337)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 508.333374023438, 0.02999999932945, 375.833374023438)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_09_13" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 683.66675, 0.03, 423.33337)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 683.666748046875, 0.02999999932945, 423.333374023438)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_10_06" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -438.00003, 0.03, 467.66672)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -442.166717529297, 0.02999999932945, 491.666717529297)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_10_07" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -368.16672, 0.03, 445.16672)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -368.666717529297, 0.02999999932945, 466.333374023438)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_10_08" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -188.50002, 0.03, 444.83337)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -211.500015258789, 0.02999999932945, 444.666717529297)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_10_09" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.5, 0.03, 443.83337)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.5, 0.02999999932945, 444.666717529297)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_10_10" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 270.5, 0.03, 498.66666)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 148.5, 0.02999999932945, 444.666717529297)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_10_11" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 392.00003, 0.03, 503.66666)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_10_12" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 511, 0.03, 493.83337)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 511.0, 0.02999999932945, 493.833374023438)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_10_13" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 715.50006, 0.03, 493.33337)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 684.500061035156, 0.02999999932945, 444.666717529297)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_11_06" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -433.66672, 0.03, 655.66675)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -442.166717529297, 0.02999999932945, 624.333312988281)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_11_07" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -391.50003, 0.03, 603.6667)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -391.500030517578, 0.02999999932945, 603.666687011719)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_11_08" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -211.50002, 0.03, 603.6667)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -211.500015258789, 0.02999999932945, 603.666687011719)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_11_09" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.5, 0.03, 603.6667)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.5, 0.02999999932945, 603.666687011719)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_11_10" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 148.5, 0.03, 603.6667)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 148.5, 0.02999999932945, 603.666687011719)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_11_11" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 463.16672, 0.03, 749.33344)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 439.151702880859, 10.7451009750366, 748.333435058594)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_11_12" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 511.16666, 0.03, 746.66675)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 511.166656494141, 0.02999999932945, 746.666748046875)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_11_13" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 684.50006, 0.03, 603.6667)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 684.500061035156, 0.02999999932945, 603.666687011719)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_12_06" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -432.00003, 0.03, 771.66675)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -432.000030517578, 0.02999999932945, 771.666748046875)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_12_07" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -393.33337, 0.03, 763.83344)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -366.666717529297, 0.02999999932945, 763.833435058594)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_12_08" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -213.33336, 0.03, 763.83344)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -213.333358764648, 0.02999999932945, 763.833435058594)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_12_09" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.666667, 0.03, 763.83344)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.66666698455811, 0.02999999932945, 763.833435058594)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_12_10" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 144.83333, 0.03, 763.66675)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 211.166687011719, 15.1799993515015, 771.666748046875)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_12_11" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 477.50003, 0.03, 775.83344)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 297.166656494141, 15.1799993515015, 772.333435058594)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_12_12" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 510.33334, 0.03, 771.50006)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 510.333343505859, 0.02999999932945, 771.500061035156)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Block_12_13" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 682.66675, 0.03, 763.83344)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 717.333435058594, 0.02999999932945, 763.833435058594)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FinancialQuarter/Waterfront" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.666668, 0.03, 783.66675)
@@ -27148,121 +27148,121 @@ enabled_routes = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 240.16669, 0.03, -406.83337)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_04_11" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 429.16672, 0.03, -380.33337)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 327.666717529297, 0.02999999932945, -380.666717529297)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_04_12" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 508.33337, 0.03, -380.83337)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 508.333374023438, 0.02999999932945, -359.333374023438)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_04_13" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 684.33344, 0.03, -423.33337)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 684.333435058594, 0.02999999932945, -423.333374023438)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_04_14" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 969.33344, 0.03, -423.16672)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 868.333435058594, 0.02999999932945, -423.333374023438)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_04_15" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1149.1666, 0.03, -380.33337)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1047.66662597656, 0.02999999932945, -380.666717529297)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_04_16" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1247.3334, 0.03, -382.83337)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1232.33337402344, 0.02999999932945, -423.333374023438)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_04_17" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1407.6669, 0.03, -380.66672)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1407.66687011719, 0.02999999932945, -380.666717529297)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_05_10" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 206.33336, 0.03, -196.33336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 296.880676269531, 2.13390517234802, -303.666656494141)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_05_11" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 430.66672, 0.03, -358.66672)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 482.333374023438, 0.02999999932945, -335.666717529297)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_05_12" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 511.16666, 0.03, -337.33337)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 508.333374023438, 0.02999999932945, -214.166687011719)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_05_13" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 684.50006, 0.03, -359.16672)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 684.500061035156, 0.02999999932945, -359.166717529297)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_05_14" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 969.33344, 0.03, -358.50003)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 868.500061035156, 0.02999999932945, -359.166717529297)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_05_15" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1031.5, 0.03, -336.33337)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1031.5, 0.02999999932945, -336.333374023438)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_05_16" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1247.6666, 0.03, -349.16672)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1232.5, 0.02999999932945, -359.166717529297)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_05_17" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1408.5001, 0.03, -359.33337)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1408.50012207031, 0.02999999932945, -359.333374023438)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_06_10" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200.50002, 0.03, -168.50002)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_06_11" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 329.00003, 0.03, -203.33336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 457.833374023438, 0.02999999932945, -167.666687011719)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_06_12" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 511.16666, 0.03, -169.33336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 511.166656494141, 0.02999999932945, -169.333358764648)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_06_13" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 684.50006, 0.03, -191.83336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 684.500061035156, 0.02999999932945, -192.000015258789)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_06_14" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 969.33344, 0.03, -191.16669)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 868.500061035156, 0.02999999932945, -192.000015258789)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_07_10" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 244.66667, 0.03, -43.666668)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_07_11" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 328.50003, 0.03, -36.666668)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 328.500030517578, 0.02999999932945, -36.6666679382324)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_07_12" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 511.16666, 0.03, -13.333335)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 511.166656494141, 0.02999999932945, -13.3333349227905)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_07_13" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 684.50006, 0.03, -36.500004)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 684.500061035156, 0.02999999932945, -36.6666679382324)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_07_14" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 892.16675, 0.03, -31.166666)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 868.500061035156, 0.02999999932945, -36.5000038146973)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_08_11" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 394.16672, 0.03, 268.66666)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_08_12" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 508.33337, 0.03, 121.166664)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 508.333374023438, 0.02999999932945, 121.166664123535)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_08_13" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 684.50006, 0.03, 124)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 684.500061035156, 0.02999999932945, 124.0)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_08_14" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 969.33344, 0.03, 124.833336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 868.500061035156, 0.02999999932945, 124.0)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_09_11" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 415.50003, 0.03, 332.16672)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_09_12" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 507.66672, 0.03, 350.00003)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 507.666717529297, 0.02999999932945, 350.000030517578)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_09_13" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 684.50006, 0.03, 280.83334)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 684.500061035156, 0.02999999932945, 280.666656494141)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_09_14" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 969.33344, 0.03, 281.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 868.500061035156, 0.02999999932945, 280.666656494141)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_10_13" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 790.66675, 0.03, 445.33337)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 817.833435058594, 0.02999999932945, 468.333374023438)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_10_14" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 868.50006, 0.03, 444.66672)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 868.500061035156, 0.02999999932945, 444.833374023438)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_11_13" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 767.50006, 0.03, 624.3333)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 767.500061035156, 0.02999999932945, 624.333312988281)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_11_14" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 868.50006, 0.03, 603.6667)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 868.500061035156, 0.02999999932945, 603.666687011719)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_12_13" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 759.50006, 0.03, 771.66675)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 759.500061035156, 0.02999999932945, 771.666748046875)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Block_12_14" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 866.66675, 0.03, 763.83344)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 866.666748046875, 0.02999999932945, 763.833435058594)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Eastbank/Pier" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 784.00006, 0.03, 786.33344)
@@ -27291,61 +27291,61 @@ enabled_routes = {
 }
 
 [node name="StartHere" parent="CityPedestrianRoutes/FoundryWard/Block_05_15" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1047.6666, 0.03, -214.00002)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1047.66662597656, 0.02999999932945, -214.000015258789)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FoundryWard/Block_05_16" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1231.6666, 0.03, -214.16669)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1231.66662597656, 0.02999999932945, -214.000015258789)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FoundryWard/Block_05_17" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1407.6669, 0.03, -214.00002)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1407.66687011719, 0.02999999932945, -214.000015258789)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FoundryWard/Block_06_14" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1002.3333, 0.03, -152.33333)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1002.33331298828, 0.02999999932945, -152.33332824707)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FoundryWard/Block_06_15" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1031.1666, 0.03, -152.33333)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1031.16662597656, 0.02999999932945, -152.33332824707)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FoundryWard/Block_06_16" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1232.5, 0.03, -191.83336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1232.5, 0.02999999932945, -192.000015258789)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FoundryWard/Block_06_17" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1408.5001, 0.03, -192.00002)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1408.50012207031, 0.02999999932945, -192.000015258789)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FoundryWard/Block_07_14" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1002.3333, 0.03, -11.666668)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1002.33331298828, 0.02999999932945, -11.6666679382324)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FoundryWard/Block_07_15" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1031.1666, 0.03, -11.666668)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1031.16662597656, 0.02999999932945, -11.6666679382324)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FoundryWard/Block_07_16" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1232.5, 0.03, -36.500004)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1232.5, 0.02999999932945, -36.6666679382324)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FoundryWard/Block_07_17" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1408.5001, 0.03, -36.666668)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1408.50012207031, 0.02999999932945, -36.6666679382324)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FoundryWard/Block_08_14" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 985, 0.03, 172.50002)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 990.666687011719, 0.02999999932945, 148.33332824707)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FoundryWard/Block_08_15" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1031.1666, 0.03, 171.66669)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1031.5, 0.02999999932945, 147.66667175293)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FoundryWard/Block_08_16" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1232.5, 0.03, 124.166664)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1232.5, 0.02999999932945, 124.0)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FoundryWard/Block_08_17" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1408.5001, 0.03, 124.166664)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1408.50012207031, 0.02999999932945, 124.166664123535)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FoundryWard/Block_09_14" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1006.8333, 0.03, 303.66666)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1002.33331298828, 0.02999999932945, 335.666717529297)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FoundryWard/Block_09_15" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1031.5, 0.03, 303.66666)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1031.5, 0.02999999932945, 336.333374023438)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FoundryWard/Block_09_16" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1232.5, 0.03, 280.83334)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1232.5, 0.02999999932945, 280.666656494141)
 
 [node name="StartHere" parent="CityPedestrianRoutes/FoundryWard/Block_09_17" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1408.5001, 0.03, 280.66666)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1408.50012207031, 0.02999999932945, 280.666656494141)
 
 [node name="Docklands" parent="CityPedestrianRoutes" index="7"]
 enabled_routes = {
@@ -27369,55 +27369,55 @@ enabled_routes = {
 }
 
 [node name="StartHere" parent="CityPedestrianRoutes/Docklands/Block_09_14" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 891.50006, 0.03, 428.66672)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 892.333435058594, 0.02999999932945, 423.333374023438)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Docklands/Block_09_15" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1149.1666, 0.03, 423.66672)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1047.66662597656, 0.02999999932945, 423.333374023438)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Docklands/Block_09_16" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1247.5, 0.03, 428.66672)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1231.66662597656, 0.02999999932945, 423.333374023438)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Docklands/Block_09_17" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1407.6669, 0.03, 423.33337)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1407.66687011719, 0.02999999932945, 423.333374023438)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Docklands/Block_10_14" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 892.16675, 0.03, 449.83337)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 891.500061035156, 0.02999999932945, 444.666717529297)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Docklands/Block_10_15" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1031.1666, 0.03, 491.66672)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1031.5, 0.02999999932945, 467.666717529297)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Docklands/Block_10_16" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1248.1666, 0.03, 449.83337)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1232.5, 0.02999999932945, 444.666717529297)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Docklands/Block_10_17" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1408.5001, 0.03, 444.66672)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1408.50012207031, 0.02999999932945, 444.666717529297)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Docklands/Block_11_14" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 892.50006, 0.03, 604)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 891.500061035156, 0.02999999932945, 603.833312988281)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Docklands/Block_11_15" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1031.5, 0.03, 623.6667)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1031.5, 0.02999999932945, 623.666687011719)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Docklands/Block_11_16" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1232.5, 0.03, 603.6667)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1232.5, 0.02999999932945, 603.666687011719)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Docklands/Block_11_17" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1408.5001, 0.03, 603.6667)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1408.50012207031, 0.02999999932945, 603.666687011719)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Docklands/Block_12_14" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 893.33344, 0.03, 763.83344)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 893.333435058594, 0.02999999932945, 763.833435058594)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Docklands/Block_12_15" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1031.1666, 0.03, 771.66675)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1031.16662597656, 0.02999999932945, 771.666748046875)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Docklands/Block_12_16" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1230.6666, 0.03, 763.83344)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1249.33337402344, 0.02999999932945, 763.833435058594)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Docklands/Block_12_17" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1431.5001, 0.03, 763.16675)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1406.66687011719, 0.02999999932945, 763.833435058594)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Docklands/Pier" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1015.3333, 0.029999971, 1004.3333)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1065.33337402344, 0.02999999932945, 911.833435058594)
 
 [node name="StartHere" parent="CityPedestrianRoutes/Docklands/Waterfront" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1046, 0.03, 785)

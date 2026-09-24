@@ -36,8 +36,12 @@ func run() -> void:
 	var hospital := load("res://assets/buildings/hospital/hospital.tscn").instantiate() as Node3D
 	hospital.position.x = 500
 	hospital.rotation.y = PI / 2.0
+	# The city now owns the drop-off node; the building asset is geometry only.
+	var zone := HospitalRescueZone.new()
+	zone.name = "RescueDropOff"
+	zone.position = Vector3(0, 0.03, 36)
+	hospital.add_child(zone)
 	world.add_child(hospital)
-	var zone := hospital.get_node("RescueDropOff") as HospitalRescueZone
 	var player := load("res://scenes/player.tscn").instantiate() as PlayerCharacter
 	player.position.y = 0.1
 	world.add_child(player)
@@ -53,9 +57,17 @@ func run() -> void:
 	rescue.random_number_generator.seed = 42
 	rescue.debug_waypoint = true
 	check(rescue.start_encounter(player), "Rescue spawns on random clear ground with a hospital")
+	if rescue.patient == null:
+		world.free()
+		quit(1)
+		return
 	rescue.set_physics_process(false)
 	rescue.cleanup_delay = 0
 	var patient := rescue.patient
+	var selected_model := patient.model_variant_index
+	check(selected_model >= 0 and selected_model < rescue.CIVILIAN_MODELS.size(), "Rescue chooses from the four civilian rigs")
+	var patient_visual := patient.get_node("Superhero_Female_FullBody/Visual") as Node3D
+	check(patient_visual.scene_file_path == rescue.CIVILIAN_MODELS[selected_model].resource_path, "Rescue spawns the selected civilian model")
 	patient.set_physics_process(false)
 	settle(patient)
 	check(patient.is_on_floor() and not patient.is_dead and not patient.animation_controller.animation_player.is_playing(), "Protected living patient rests on ground in paused death pose")
@@ -96,6 +108,7 @@ func run() -> void:
 	player._profiled_physics_process(STEP)
 	input.snapshot.vehicle_interact_just_pressed = false
 	check(not player.is_carrying() and patient.get_parent() == rescue, "E sets down without grabbing anything else on the same press")
+	check(patient.model_variant_index == selected_model and patient.get_node("Superhero_Female_FullBody/Visual") == patient_visual, "Pickup and drop preserve the civilian's identity and rig")
 	patient.set_physics_process(false)
 	settle(patient)
 	check(rescue.get_waypoint_position() == patient.global_position and rescue.get_waypoint_priority() == 0, "Waypoint returns to dropped civilian")

@@ -21,6 +21,42 @@ func run() -> void:
 	var player: PlayerCharacter = main.get_node("Player")
 	player.set_physics_process(false)
 	var hud = player.get_node("GameplayHUD")
+	settings.set_hud_preference(&"show_minimap", true, false)
+	var minimap = hud.minimap
+	check(minimap.visible and minimap.city == main.get_node("SuperCity"), "Minimap binds to saved city and is enabled")
+	check(minimap.mouse_filter == Control.MOUSE_FILTER_IGNORE, "Minimap must not capture gameplay input")
+	var old_position := player.global_position
+	player.global_position = minimap.city.to_global(Vector3(300, 15, 2400))
+	var source: Rect2 = minimap.source_rect()
+	check(source.get_center().is_equal_approx(Vector2(3975, 4425)), "Prison island is centered at the same texture coordinates as the full map")
+	player.global_position.y += 500
+	check(minimap.source_rect().get_center().is_equal_approx(source.get_center()), "Altitude cannot shift minimap geography")
+	player.global_position = old_position
+	check(minimap.radius_for_motion(0, false) < minimap.radius_for_motion(50, false), "Speed widens map coverage")
+	check(is_equal_approx(minimap.radius_for_motion(1000, false), minimap.fast_radius), "Speed zoom is bounded")
+	check(minimap.radius_for_motion(0, true) > minimap.radius_for_motion(0, false), "Hovering flight retains extra range")
+	var old_velocity := player.velocity
+	player.velocity = Vector3(100, 0, 0)
+	minimap.current_radius = minimap.walking_radius
+	minimap._process(0.1)
+	check(minimap.current_radius > minimap.walking_radius and minimap.current_radius < minimap.fast_radius, "Zoom eases rather than snapping")
+	player.velocity = Vector3.ZERO
+	var radius_before: float = minimap.current_radius
+	minimap._process(0.1)
+	check(minimap.current_radius < radius_before, "Slowing down smoothly zooms back in")
+	player.velocity = old_velocity
+	var old_yaw := player.ground_facing_yaw
+	player.ground_facing_yaw = 0
+	check(is_zero_approx(minimap.heading_angle()), "North-facing hero points up")
+	player.ground_facing_yaw = -PI / 2
+	check(is_equal_approx(minimap.heading_angle(), PI / 2), "East-facing hero points right")
+	player.ground_facing_yaw = old_yaw
+	settings.set_hud_preference(&"show_minimap", false)
+	check(not minimap.visible and hud.get_node("Hints").offset_bottom == -32, "Disabling minimap restores hints")
+	settings.set_hud_preference(&"show_minimap", true, false)
+	settings.load_settings()
+	check(not minimap.visible, "Minimap setting survives save/reload")
+	settings.set_hud_preference(&"show_minimap", true, false)
 	check(hud.visible and not player.has_node("ChargeUI"), "Gameplay HUD remains visible without obsolete diagnostics")
 	check(hud.health_label.text == "1000 / 1000" and hud.health_bar.value == 1000, "Initial health must match the initialized player")
 	check(hud.level_label.text == "Lv 1" and hud.experience_label.text == "0 / 100 XP", "Initial progression should be visible without recent XP")

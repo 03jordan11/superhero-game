@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://effects/electrified.gd" id="1"]
+[ext_resource type="Shader" path="res://effects/electrified.gdshader" id="2"]
+
+[sub_resource type="ShaderMaterial" id="ElectricMaterial"]
+shader = ExtResource("2")
+
+[sub_resource type="QuadMesh" id="ArcSheet"]
+material = SubResource("ElectricMaterial")
+size = Vector2(1.8, 2.15)
+
+[node name="ElectrifiedEffect" type="Node3D"]
+visible = false
+script = ExtResource("1")
+
+[node name="Arcs" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.0, 0)
+cast_shadow = 0
+mesh = SubResource("ArcSheet")
+
+[node name="ArcsCross" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.0, 0)
+rotation = Vector3(0, 1.5707963, 0)
+cast_shadow = 0
+mesh = SubResource("ArcSheet")
+
+[node name="ArcsDiagonal" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.0, 0)
+rotation = Vector3(0, 0.7853982, 0)
+cast_shadow = 0
+mesh = SubResource("ArcSheet")
+
+[node name="Light" type="OmniLight3D" parent="."]
+position = Vector3(0, 1.0, 0)
+light_color = Color(0.16, 0.45, 1, 1)
+light_energy = 0.8
+omni_range = 2.2

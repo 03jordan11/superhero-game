@@ -33,6 +33,8 @@ func _show_death_screen() -> void:
 	get_tree().paused = true
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	status.text = "Return to your hideout with full health and stamina."
+	if scene != null and scene.is_in_group(&"combat_arena"):
+		status.text = "Reset the Combat Arena with full health and stamina."
 	respawn_button.disabled = false
 	show()
 	respawn_button.grab_focus()
@@ -45,6 +47,12 @@ func _respawn() -> void:
 	if respawning or not player.is_dead: return
 	respawning = true
 	respawn_button.disabled = true
+	var scene := get_tree().current_scene
+	if scene != null and scene.is_in_group(&"combat_arena"):
+		scene.reset_arena()
+		respawning = false
+		_dismiss()
+		return
 	var travel := get_tree().get_first_node_in_group(&"hideout_travel")
 	if travel == null:
 		travel = TRAVEL.new()

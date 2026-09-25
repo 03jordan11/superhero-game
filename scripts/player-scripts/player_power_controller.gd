@@ -31,6 +31,7 @@ const REQUIREMENTS := {
 	PlayerAbilities.FLIGHT_SURGE: ["flight", 3],
 	PlayerAbilities.LASER_EYES: ["laser_eyes", 0],
 	PlayerAbilities.FIRE: ["fire", 0],
+	PlayerAbilities.ICE: ["ice", 1],
 	PlayerAbilities.ELECTRICITY: ["electricity", 0],
 	PlayerAbilities.CHARGED_FIREBALL: ["fire", 1],
 	PlayerAbilities.DRAGON_BREATH: ["fire", 2],
@@ -48,6 +49,8 @@ func _ready() -> void:
 	sync_abilities()
 
 func sync_abilities() -> void:
+	# "mind" is the preserved save ID for the renamed Preservation power.
+	player.get_node("PlayerDamageReceiver").regeneration_enabled = progression.level("mind") >= 0
 	player.charged_jump_output_multiplier = 2.0 if progression.level("super_leap") >= 1 else 1.0
 	player.get_node("PlayerStamina").running_drain_multiplier = 0.5 if progression.level("super_speed") >= 1 else 1.0
 	player.stats.set_power_bonuses(

@@ -59,6 +59,22 @@ func run() -> void:
 	commands.execute("add pp 12")
 	check(player.stats.level == 3 and player.stats.attribute_points == 5 and progression.tokens == 12, "Grants apply XP levels, attribute balance and power points")
 	check(not saves.has_save(), "Console edits never save implicitly")
+	var cooldowns := root.get_node("Weather")
+	cooldowns.thunderstorm_cooldown_remaining = 300.0
+	cooldowns.lightning_strike_cooldown_remaining = 60.0
+	cooldowns.external_combustion_cooldown_remaining = 300.0
+	cooldowns.frost_wall_cooldown_remaining = 300.0
+	player.laser_eyes.heat = 55.0
+	commands.execute("reset cooldowns extra")
+	check(cooldowns.external_combustion_cooldown_remaining == 300.0, "Malformed cooldown reset has no effect")
+	menu.command_input.text = "reset c"
+	key(KEY_TAB)
+	check(menu.command_input.text == "reset cooldowns", "Cooldown reset has tab completion")
+	menu._submit(menu.command_input.text)
+	check(cooldowns.thunderstorm_cooldown_remaining == 0.0 and cooldowns.lightning_strike_cooldown_remaining == 0.0 and cooldowns.external_combustion_cooldown_remaining == 0.0, "Console resets all power cooldowns while paused")
+	check(cooldowns.frost_wall_cooldown_remaining == 0.0, "Console also resets Frost Wall cooldown")
+	check(player.laser_eyes.heat == 55.0 and progression.tokens == 12 and player.stats.level == 3, "Cooldown reset preserves heat and progression")
+	check(commands.execute("help reset").contains("reset cooldowns") and menu.output.text.contains("Power cooldowns reset"), "Help and feedback describe cooldown reset")
 	for invalid in ["set speed 0", "set speed -1", "set speed 1.5", "set speed 999999999999999999999999", "set speed nan", "set speed 2 extra", "set money 3", "add attr -10", "add pp 1;reset", "power flight 3", "spawn gang", "audio horn", "camera", "reset now"]:
 		commands.execute(invalid)
 	check(player.stats.speed == 1 and player.stats.attribute_points == 5 and progression.tokens == 12, "Invalid or removed commands cannot mutate player state")

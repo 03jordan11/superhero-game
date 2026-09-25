@@ -14,7 +14,7 @@ var _prompt: Label
 
 func _ready() -> void:
 	add_theme_constant_override("separation", 12)
-	_note("Select a binding, then press a key, mouse button, Xbox button, or trigger. Used bindings swap actions. Sticks are fixed.")
+	_note("Select a binding, then press a key, mouse button, Xbox button, or trigger. Used bindings swap actions. Dodge Roll and Descend may share a control. Sticks are fixed.")
 	var grid := GridContainer.new()
 	grid.columns = 3
 	grid.size_flags_horizontal = Control.SIZE_EXPAND_FILL

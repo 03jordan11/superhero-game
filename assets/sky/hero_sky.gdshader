@@ -15,6 +15,14 @@ uniform float horizon_light_pollution : hint_range(0.0, 1.0) = 0.12;
 uniform float cloud_coverage : hint_range(0.0, 1.0) = 0.32;
 uniform vec2 cloud_offset = vec2(0.0);
 uniform float moon_size : hint_range(0.002, 0.05) = 0.015;
+uniform float storm_amount : hint_range(0.0, 1.0) = 0.0;
+uniform float lightning_flash = 0.0;
+uniform vec3 lightning_direction = vec3(0.0, 0.0, -1.0);
+uniform float lightning_seed = 0.0;
+
+float bolt_noise(float n) {
+	return fract(sin(n * 127.1 + lightning_seed) * 43758.5453);
+}
 
 void sky() {
 	vec3 d = normalize(EYEDIR);
@@ -62,19 +70,43 @@ void sky() {
 		col = mix(col, vec3(0.62, 0.72, 0.92) * (0.5 + lunar_detail * 0.9) * (0.5 + lunar_shading * 0.7), moon_disc * moon_visible);
 		col += vec3(0.045, 0.075, 0.14) * pow(max(moon_dot, 0.0), 180.0) * moon_visible;
 	}
-	if (d.y > 0.0 && cloud_coverage > 0.001) {
+	float coverage = mix(cloud_coverage, 0.98, storm_amount);
+	if (d.y > 0.0 && coverage > 0.001) {
 		// Two inexpensive, wind-driven layers on a curved sky plane.
 		vec2 p = d.xz / (altitude + 0.18);
 		float base = texture(cloud_noise, p * 0.22 + cloud_offset).r;
 		float wisps = texture(cloud_noise, p * vec2(0.38, 0.12) - cloud_offset * 0.6 + vec2(0.37)).r;
-		float threshold = mix(0.86, 0.28, cloud_coverage);
+		float threshold = mix(0.86, 0.28, coverage);
 		float density = smoothstep(threshold, threshold + 0.18, base * 0.8 + wisps * 0.2);
-		float thin = smoothstep(0.59, 0.78, wisps) * cloud_coverage * 0.35;
+		float thin = smoothstep(0.59, 0.78, wisps) * coverage * 0.35;
 		float opacity = (density * 0.87 + thin) * smoothstep(0.0, 0.09, altitude);
 		vec3 cloud_color = mix(vec3(0.018, 0.027, 0.052), vec3(0.72, 0.8, 0.91), daylight);
 		cloud_color *= mix(0.66, 1.25, base);
 		cloud_color += twilight * mix(vec3(0.17, 0.035, 0.08), vec3(1.7, 0.48, 0.12), facing_sun);
+		// Broad dark cloud banks retain layered detail under full overcast.
+		float banks = texture(cloud_noise, p * 0.11 + cloud_offset * 0.45).r;
+		vec3 storm_cloud = mix(vec3(0.022, 0.027, 0.038), vec3(0.24, 0.26, 0.29), daylight);
+		storm_cloud *= 0.42 + banks * 1.05 + base * 0.35;
+		cloud_color = mix(cloud_color, storm_cloud, storm_amount);
+		opacity = mix(opacity, 0.94 + density * 0.06, storm_amount);
 		col = mix(col, cloud_color, clamp(opacity, 0.0, 1.0));
+	}
+	col = mix(col, mix(vec3(0.017, 0.023, 0.034), vec3(0.22, 0.25, 0.29), daylight), storm_amount * exp(-abs(d.y) * 16.0) * 0.75);
+	if (lightning_flash > 0.001 && storm_amount > 0.001) {
+		float forward = dot(d, lightning_direction);
+		col += vec3(0.26, 0.31, 0.43) * lightning_flash * storm_amount * pow(max(forward, 0.0), 5.0);
+		if (!AT_CUBEMAP_PASS && forward > 0.4 && d.y > 0.015 && d.y < 0.31) {
+			vec3 right = cross(lightning_direction, vec3(0.0, 1.0, 0.0));
+			float x = dot(d, right) / forward;
+			float y = (d.y - 0.015) / 0.295;
+			float cell = y * 16.0;
+			float path = mix(bolt_noise(floor(cell)), bolt_noise(floor(cell) + 1.0), fract(cell)) * 0.055;
+			float line = abs(x - path);
+			float branch = abs(x - path - (y - 0.5) * 0.18);
+			if (y > 0.2 && y < 0.62) line = min(line, branch);
+			float bolt = exp(-line * 1200.0) * 8.0 + exp(-line * 150.0) * 0.65;
+			col += vec3(0.65, 0.8, 1.0) * bolt * lightning_flash * storm_amount;
+		}
 	}
 	// Ground hemisphere blends into haze, including when flying above the city.
 	col = mix(mix(vec3(0.008, 0.014, 0.027), vec3(0.16, 0.21, 0.28), daylight), col, smoothstep(-0.14, 0.015, d.y));

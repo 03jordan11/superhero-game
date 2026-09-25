@@ -1,10 +1,11 @@
 extends RefCounted
 ## Explicit game commands only; no shell, eval, or arbitrary property execution.
 const COPY = preload("res://scripts/ui-scripts/powers_text.gd")
-const COMMANDS := ["help", "set", "add", "reset", "spawn", "debug", "save", "load", "status", "clear", "time"]
+const COMMANDS := ["help", "set", "add", "reset", "spawn", "debug", "save", "load", "status", "clear", "time", "weather"]
+const WEATHER_HELP := "weather [thunderstorm | clear | lightning] - manual weather; weather alone shows conditions. Storms continue until cleared."
 const TIME_HELP := "time [0-24 | dawn | day | sunset | night | pause | resume | speed 0-60] - preview the sky; time alone shows the clock."
 const ATTRIBUTES := ["strength", "speed", "resilience"]
-const COMPLETIONS := ["help", "set strength ", "set speed ", "set resilience ", "add xp ", "add attr ", "add pp ", "reset", "spawn civilian", "spawn pistol_thug ", "spawn rifle_thug ", "spawn melee_thug ", "spawn super_thug ", "spawn hostile", "spawn gang_activity", "spawn rescue", "spawn helicopter_chase", "spawn ship_docking", "spawn pirates", "debug landing on", "debug landing off", "debug hud on", "debug hud off", "debug enemy_names on", "debug enemy_names off", "debug enemy_tints on", "debug enemy_tints off", "save", "load", "status", "clear", "time night", "time sunset", "time dawn", "time day", "time pause", "time resume", "time speed "]
+const COMPLETIONS := ["help", "set strength ", "set speed ", "set resilience ", "add xp ", "add attr ", "add pp ", "reset", "reset cooldowns", "spawn civilian", "spawn pistol_thug ", "spawn rifle_thug ", "spawn melee_thug ", "spawn super_thug ", "spawn hostile", "spawn gang_activity", "spawn rescue", "spawn helicopter_chase", "spawn ship_docking", "spawn pirates", "debug landing on", "debug landing off", "debug hud on", "debug hud off", "debug enemy_names on", "debug enemy_names off", "debug enemy_tints on", "debug enemy_tints off", "save", "load", "status", "clear", "time night", "time sunset", "time dawn", "time day", "time pause", "time resume", "time speed ", "weather thunderstorm", "weather clear", "weather lightning"]
 const CIVILIAN_SCENE = preload("res://scenes/npcs/civilian.tscn")
 const PISTOL_THUG_SCENE = preload("res://scenes/npcs/pistol_thug.tscn")
 const RIFLE_THUG_SCENE = preload("res://scenes/npcs/rifle_thug.tscn")
@@ -42,9 +43,16 @@ func execute(line: String) -> String:
 	if command == "help":
 		if words.size() == 1: return help_text()
 		if words.size() == 2 and words[1] == "time": return TIME_HELP
+		if words.size() == 2 and words[1] == "weather": return WEATHER_HELP
 		if words.size() == 2 and words[1] in COMMANDS: return COPY.text("console.help." + words[1])
 		return COPY.text("console.help.help")
 	if command == "time": return _time_command(words)
+	if command == "weather": return _weather_command(words)
+	if command == "reset" and words.size() == 2 and words[1] == "cooldowns":
+		var cooldowns := player.get_node("/root/Weather")
+		for field in ["thunderstorm_cooldown_remaining", "lightning_strike_cooldown_remaining", "external_combustion_cooldown_remaining", "frost_wall_cooldown_remaining"]:
+			cooldowns.set(field, 0.0)
+		return COPY.text("console.reset_cooldowns")
 	if command == "set" or command == "add": return _change_value(command, words)
 	if command == "spawn":
 		if words.size() >= 2 and ENCOUNTER_SCENES.has(words[1]):
@@ -79,8 +87,19 @@ func execute(line: String) -> String:
 
 func help_text() -> String:
 	var lines: PackedStringArray = []
-	for command in COMMANDS: lines.append(TIME_HELP if command == "time" else COPY.text("console.help." + command))
+	for command in COMMANDS:
+		if command == "weather": lines.append(WEATHER_HELP)
+		else: lines.append(TIME_HELP if command == "time" else COPY.text("console.help." + command))
 	return "\n".join(lines)
+
+func _weather_command(words: PackedStringArray) -> String:
+	var weather := player.get_node("/root/Weather")
+	if words.size() == 1: return weather.status_text()
+	if words.size() != 2: return WEATHER_HELP
+	if words[1] == "lightning":
+		return "Lightning queued; thunder follows after the distance delay. Resume play to see it." if weather.trigger_lightning() else "Start a thunderstorm first."
+	if not weather.set_weather(StringName(words[1])): return WEATHER_HELP
+	return weather.status_text()
 
 func _time_command(words: PackedStringArray) -> String:
 	var cycle := player.get_tree().get_first_node_in_group(&"day_night_cycle")

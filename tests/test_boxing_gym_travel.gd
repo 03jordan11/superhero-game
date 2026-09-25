@@ -30,6 +30,12 @@ func run() -> void:
 	var city := load("res://scenes/main.tscn").instantiate() as Node3D
 	root.add_child(city)
 	current_scene = city
+	var weather := root.get_node("Weather")
+	weather.set_weather(&"thunderstorm")
+	weather.thunderstorm_cooldown_remaining = 300.0
+	weather.lightning_strike_cooldown_remaining = 60.0
+	weather.external_combustion_cooldown_remaining = 300.0
+	weather.storm_amount = 1.0
 	var player := city.get_node("Player") as PlayerCharacter
 	var identity := player.get_instance_id()
 	var money := player.stats.money
@@ -80,6 +86,11 @@ func run() -> void:
 		check(current_scene.name == &"BoxingGym","E loads gym interior")
 		if current_scene.name != &"BoxingGym": quit(1); return
 		check(not is_instance_valid(city),"City unloaded on entry")
+		for tick in 2: await physics_frame
+		check(weather.is_thunderstorm() and current_scene.is_in_group(&"weather_indoors"), "Storm persists into tagged interior")
+		check(weather.thunderstorm_cooldown_remaining > 0.0 and weather.thunderstorm_cooldown_remaining < 300.0, "Summon cooldown continues across interior entry")
+		check(weather.lightning_strike_cooldown_remaining > 0.0 and weather.lightning_strike_cooldown_remaining < 60.0, "Lightning cooldown continues across interior entry")
+		check(weather.sheltered and not weather._rain.visible and weather._rain_audio.playing, "Gym has audible indoor weather without rain particles")
 		check(get_nodes_in_group(&"player").size() == 1,"No duplicate player")
 		check(current_scene.get_node("Player").get_instance_id() == identity,"Original player retained")
 		check(player.stats.money == money,"Progress retained")
@@ -101,6 +112,11 @@ func run() -> void:
 		check(current_scene.name == &"Main","E exits to city")
 		if current_scene.name != &"Main": quit(1); return
 		city = current_scene
+		for tick in 2: await physics_frame
+		check(weather.is_thunderstorm() and weather.storm_amount == 1.0, "Same storm returns after real city reload")
+		check(weather.thunderstorm_cooldown_remaining > 0.0, "Summon cooldown survives real city reload")
+		check(weather.lightning_strike_cooldown_remaining > 0.0, "Lightning cooldown survives real city reload")
+		check(weather.external_combustion_cooldown_remaining > 0.0 and weather.external_combustion_cooldown_remaining < 300.0, "Combustion cooldown survives real city reload")
 		check(not is_instance_valid(room),"Gym unloaded on exit")
 		check(player.get_instance_id() == identity and get_nodes_in_group(&"player").size()==1,"Single same player returned")
 		check(player.global_position.distance_to(expected_return.origin)<.5,"Return follows placed building transform")
@@ -109,4 +125,5 @@ func run() -> void:
 		check(is_equal_approx(get_first_node_in_group(&"game_clock").time_of_day,20.5),"Indoor time follows player back outside")
 		while Time.get_ticks_msec() < travel._cooldown_until + 50: await process_frame
 	print("GYM_TRAVEL_TEST cycles=2 failures=",failures)
+	weather.set_weather(&"clear")
 	quit(1 if failures else 0)

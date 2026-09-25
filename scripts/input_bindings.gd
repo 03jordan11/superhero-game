@@ -16,16 +16,17 @@ const ACTIONS := {
 	"toggle_flight": ["Toggle Flight", KEY_F, JOY_BUTTON_Y],
 	"attack": ["Attack / Air Slam / Active Power", -MOUSE_BUTTON_LEFT, JOY_BUTTON_X],
 	"flight_descend": ["Descend", KEY_CTRL, JOY_BUTTON_B],
+	"dodge_roll": ["Dodge Roll", KEY_CTRL, JOY_BUTTON_B],
 	"pick_up_vehicle": ["Pick Up / Charge Throw / Drop", KEY_E, JOY_BUTTON_RIGHT_SHOULDER],
 	"pause": ["Pause", KEY_ESCAPE, JOY_BUTTON_START],
 	"toggle_debug": ["Developer Console", KEY_QUOTELEFT, JOY_BUTTON_BACK],
 	"gameplay_menu": ["controls.gameplay_menu", KEY_P, JOY_BUTTON_RIGHT_STICK],
 	"aim_power": ["Aim / Zoom", -MOUSE_BUTTON_RIGHT, -1],
-	"secondary_power": ["Dragon Breath (Hold While Aiming)", KEY_Q, -1],
+	"secondary_power": ["Power Special", KEY_Q, -1],
 	"power_selector": ["Power Selector (Hold)", KEY_ALT, JOY_BUTTON_LEFT_SHOULDER],
 	"lock_target": ["Lock On / Next Enemy (Hold to Release)", KEY_TAB, JOY_BUTTON_DPAD_LEFT],
 }
-const BINDING_VERSION := 3
+const BINDING_VERSION := 4
 const PREVIOUS_KEYBOARD_DEFAULTS := {"pick_up_vehicle": KEY_R, "secondary_power": KEY_E}
 const STICKS := {
 	"move_left": [JOY_AXIS_LEFT_X, -1.0], "move_right": [JOY_AXIS_LEFT_X, 1.0],
@@ -79,7 +80,7 @@ func load_config(config: ConfigFile) -> void:
 	for device in bindings:
 		var candidate := defaults(device)
 		var valid := true
-		var used: Array = []
+		var used: Dictionary = {}
 		var migrated_actions: Array[String] = []
 		if device == "keyboard" and int(config.get_value("bindings", "version", 0)) < 2:
 			for action in PREVIOUS_KEYBOARD_DEFAULTS:
@@ -90,24 +91,36 @@ func load_config(config: ConfigFile) -> void:
 				var old_code: int=KEY_CAPSLOCK if action=="lock_target" else KEY_TAB
 				if config.get_value("bindings_keyboard",action,{})=={"kind":"key","code":old_code}:
 					migrated_actions.append(action)
+		if device == "controller" and int(config.get_value("bindings", "version", 0)) < 4:
+			if config.get_value("bindings_controller", "dodge_roll", {}) == {"kind": "button", "code": JOY_BUTTON_DPAD_RIGHT}:
+				migrated_actions.append("dodge_roll")
 		# Read saved assignments first; a new action must not reset older custom bindings.
 		for action in candidate:
 			if action in migrated_actions: continue
 			if not config.has_section_key("bindings_" + device, action): continue
 			var value: Variant = config.get_value("bindings_" + device, action, candidate[action])
-			if not _valid_binding(value, device) or value in used:
+			if not _valid_binding(value, device) or _binding_conflicts(action, value, used):
 				valid = false
 				break
 			candidate[action] = value
-			used.append(value)
+			used[action] = value
 		if valid:
 			for action in candidate:
 				if config.has_section_key("bindings_" + device, action) and action not in migrated_actions: continue
-				if candidate[action] in used:
-					candidate[action] = _unused_binding(device, used)
-				used.append(candidate[action])
+				if _binding_conflicts(action, candidate[action], used):
+					candidate[action] = _unused_binding(device, used.values())
+				used[action] = candidate[action]
 		bindings[device] = candidate if valid else defaults(device)
 	_apply()
+
+func _can_share(first: String, second: String) -> bool:
+	# Mutually exclusive ground/flight actions may share an input.
+	return first in ["dodge_roll", "flight_descend"] and second in ["dodge_roll", "flight_descend"]
+
+func _binding_conflicts(action: String, value: Dictionary, assigned: Dictionary) -> bool:
+	for other in assigned:
+		if other != action and assigned[other] == value and not _can_share(action, other): return true
+	return false
 
 func _unused_binding(device: String, used: Array) -> Dictionary:
 	var codes: Array = XBOX_NAMES.keys() if device == "controller" else [KEY_I, KEY_M, KEY_P, KEY_O, KEY_U, KEY_J, KEY_K, KEY_L]
@@ -135,14 +148,20 @@ func rebind(action: String, device: String, event: InputEvent) -> String:
 	if not bindings.has(device) or not bindings[device].has(action): return "This control is fixed."
 	var value := describe_event(event)
 	if not _valid_binding(value, device): return "Choose a key, mouse button, Xbox button, or trigger."
-	var swapped := ""
+	var displaced: Array[String] = []
 	for other in bindings[device]:
-		if other != action and bindings[device][other] == value:
-			bindings[device][other] = bindings[device][action].duplicate()
-			swapped = " Swapped with %s." % action_label(other)
-			break
+		if other != action and bindings[device][other] == value and not _can_share(action, other):
+			displaced.append(other)
+	var previous: Dictionary = bindings[device][action].duplicate()
+	if not displaced.is_empty():
+		# Swap whole shared groups so moving another action onto Ctrl cannot leave
+		# an accidental third action sharing with descend/dodge.
+		for other in bindings[device]:
+			if bindings[device][other] == previous: bindings[device][other] = value.duplicate()
+		for other in displaced: bindings[device][other] = previous.duplicate()
 	bindings[device][action] = value
 	_apply()
+	var swapped := " Swapped with %s." % ", ".join(displaced.map(func(id): return action_label(id))) if not displaced.is_empty() else ""
 	return "%s: %s.%s" % [action_label(action), event_label(make_event(value)), swapped]
 
 func _apply() -> void:

@@ -22,6 +22,7 @@ const PLAYER_KNOCKDOWN_ANIMATION_SOURCES := {
 
 const PLAYER_STATE_ANIMATION_SOURCES := {
 	"Idle": "Idle",
+	"Dodge_Roll": "Roll",
 	"Ship_Effort": "Push",
 	"Run": "Jog_Fwd",
 	"Sprint": "Sprint",
@@ -87,6 +88,7 @@ func update_animation(
 	if is_knocked_down:
 		is_knocked_down = false
 	var player:=get_parent() as PlayerCharacter
+	if player != null and player.is_dodging: return
 	if player!=null and player.hostile_grab!=null and player.hostile_grab.owns_animation(): return
 
 	if is_hit_reacting:
@@ -134,6 +136,7 @@ func update_animation(
 
 
 func play_hit_reaction() -> bool:
+	if get_parent() is PlayerCharacter and get_parent().is_dodging: return false
 	if animation_player == null:
 		return false
 
@@ -148,6 +151,7 @@ func play_hit_reaction() -> bool:
 
 
 func play_knockdown() -> bool:
+	if get_parent() is PlayerCharacter and get_parent().is_dodging: return false
 	if animation_player == null or not animation_player.has_animation("Knocked_Down"):
 		return false
 
@@ -225,6 +229,7 @@ func _setup_animation_library() -> void:
 		clip.loop_mode = Animation.LOOP_LINEAR
 		animation_library.add_animation(name, clip)
 	animation_library.get_animation("Ship_Effort").loop_mode = Animation.LOOP_LINEAR
+	animation_library.get_animation("Dodge_Roll").loop_mode = Animation.LOOP_NONE
 	animation_player.add_animation_library("", animation_library)
 	animation_player.add_animation_library("AuthoredCombo", AUTHORED_COMBO_LIBRARY)
 	animation_player.play("Idle")

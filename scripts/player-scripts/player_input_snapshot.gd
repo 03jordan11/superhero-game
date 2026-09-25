@@ -12,6 +12,7 @@ var jump_pressed: bool
 var jump_just_pressed: bool
 var jump_just_released: bool
 var descend_pressed: bool
+var dodge_just_pressed: bool
 var toggle_flight_just_pressed: bool
 var flight_pressed: bool
 var flight_just_released: bool
@@ -20,6 +21,8 @@ var activate_power_pressed: bool
 var activate_power_just_pressed: bool
 var activate_power_just_released: bool
 var secondary_power_pressed: bool
+var secondary_power_just_pressed: bool
+var secondary_power_just_released: bool
 var vehicle_interact_pressed: bool
 var vehicle_interact_just_pressed: bool
 var vehicle_interact_just_released: bool
@@ -87,6 +90,9 @@ static func capture() -> PlayerInputSnapshot:
 	snapshot.activate_power_just_pressed = Input.is_action_just_pressed("attack")
 	snapshot.activate_power_just_released = Input.is_action_just_released("attack")
 	snapshot.secondary_power_pressed = Input.is_action_pressed("secondary_power")
+	snapshot.secondary_power_just_pressed = Input.is_action_just_pressed("secondary_power")
+	snapshot.secondary_power_just_released = Input.is_action_just_released("secondary_power")
+	snapshot.dodge_just_pressed = Input.is_action_just_pressed("dodge_roll")
 	snapshot.lock_target_pressed = Input.is_action_pressed("lock_target")
 	snapshot.lock_target_just_pressed = Input.is_action_just_pressed("lock_target")
 	snapshot.lock_target_just_released = Input.is_action_just_released("lock_target")

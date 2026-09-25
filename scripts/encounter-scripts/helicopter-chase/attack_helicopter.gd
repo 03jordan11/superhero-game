@@ -26,6 +26,7 @@ var _original_transforms: Array[Transform3D]=[]
 var _safe_destination:=Vector3.ZERO
 var _navigation_clock:=0.0
 var _blocked_climb_time:=0.0
+var _hull_center := Vector3.ZERO
 
 func _ready() -> void:
 	name="AttackHelicopter"
@@ -46,6 +47,8 @@ func _ready() -> void:
 	for source in model.get_node("ParkedCollision").get_children():
 		var shape:=CollisionShape3D.new(); shape.shape=source.shape; shape.transform=source.transform
 		add_child(shape); _solids.append(shape); _original_transforms.append(source.transform)
+	if not _solids.is_empty():
+		_hull_center = _solids[0].shape.get_debug_mesh().get_aabb().get_center()
 	gun=GUN.new(); gun.name="SweepingGun"; gun.position=Vector3(0,1.25,-3.55)
 	gun.shooter=self; gun.target=target; model.add_child(gun)
 	health_label=Label3D.new(); health_label.position=Vector3(0,5.5,0)
@@ -56,7 +59,13 @@ func _ready() -> void:
 
 func apply_damage(info) -> bool:
 	if is_dead: return false
+	# Powers can damage aircraft, but NPC status and knockback do not apply.
 	return health_component.apply_damage(info)
+
+func get_damage_center() -> Vector3:
+	# Imported convex hull vertices are offset from the aircraft node origin.
+	return _solids[0].global_transform * _hull_center if not _solids.is_empty() else global_position
+
 func get_current_health() -> float: return health_component.current_health
 func get_max_health() -> float: return health_component.max_health
 func _health_changed(current: float, _maximum: float) -> void:

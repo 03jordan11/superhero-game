@@ -1,5 +1,7 @@
 # Keyboard, mouse, and Xbox controls
 
+For the current player-facing controls, skill requirements, and implemented-versus-planned abilities, see [CURRENT_CONTROLS.md](CURRENT_CONTROLS.md). The sections below also include historical implementation notes.
+
 Open **Settings → Controls** from the main menu or pause menu. Each gameplay action has one keyboard/mouse binding and one Xbox binding. Select a binding, then press its replacement. Assigning an occupied input swaps the two actions within that device's column. Changes apply immediately and save to `user://settings.cfg`; each column has its own reset button.
 
 ## Default scheme
@@ -13,16 +15,24 @@ Open **Settings → Controls** from the main menu or pause menu. Each gameplay a
 | Toggle flight | F | Y |
 | Punch / charged punch / airborne ground slam | Left mouse | X |
 | Descend in flight | Ctrl | B |
+| Dodge Roll | Left Ctrl | B |
 | Aim / camera-facing strafe | Hold RMB | Hold LT |
-| Secondary power / Dragon Breath while aiming | Hold Q | Hold RT |
+| Power Special (activatable ability of the elemental power selected in the Alt menu) | Q | RT |
 | Power selector | Hold Alt | Hold LB |
 | Pick up / charge throw / drop vehicle | E | RB |
 | Pick up / safely set down injured civilian | E | RB |
 | Pause | Escape | Menu |
-| Gameplay menu | Tab | R3 (right-stick click) |
+| Gameplay menu | P | R3 (right-stick click) |
+| Lock on / next enemy (hold to release) | Tab | D-pad Left |
 | Developer menu | Backtick | View |
 
 Jump and vehicle interaction keep their existing hold/release behavior. Sprint defaults to Hold; **Gameplay → Boost / Sprint → Toggle** also applies to L3 or its replacement. Flight and wall-running still require their existing unlocks.
+
+**Dodge Roll:** press Left Ctrl / B while moving on the ground. It follows movement rather than facing, costs 10% of maximum stamina, and blocks damage and disabling effects during the roll. It does nothing while stationary or without enough stamina. Walls still block movement. Ctrl / B remain Descend in flight. The existing UAL1 Roll animation is used; default duration/distance are 0.6 seconds / 6 metres, exposed on `PlayerStateMachine/DodgeRollState`.
+
+**Electricity upgrade 2: Thunderstorm.** Select Electricity with Alt, then press Power Special (Q / RT) without aiming. A brief spell gesture summons weather with a five-minute cooldown beginning at release. Works on the ground and in flight; no indoor restriction yet. Damage interrupts casting. An existing storm blocks activation, and holding Q does not recast. The storm has no combat effect and lasts until `weather clear` in the developer console. See [weather behavior](docs/weather.md).
+
+**Electricity upgrade 3: Lightning Strike.** During a thunderstorm, while grounded with Electricity selected, hold Q / RT to aim a white 9m ground circle within 50m, then release. Tap under 0.25 seconds to pulse around yourself instead. Both use a 4.5m radius and deal 25 impact damage plus normal Electrified (40 more). The 60-second cooldown starts at impact, with full Heat but no explosion. Holding runs game time and all audio at 50% until impact; tune `Player/PlayerLightningStrike.aiming_time_scale` in the Inspector. Incoming damage cannot flinch/knock down the caster, but can kill them. Active cooldowns appear as plain text below the Heat/charge indicators. See [tuning and tests](docs/electricity.md#lightning-strike).
 
 **Strength upgrade 1: Charged Punch.** While grounded and empty-handed, hold Attack for 0.25 seconds to begin charging, then release to punch. Full power takes 1 second total hold. Quick clicks perform normal punches on release once this upgrade is unlocked. The 10-metre, 60-degree cone deals up to 100 damage nearby, falling to 30 at its edge; shorter holds are weaker. Susceptible enemies are knocked down, supers resist knockdown, and walls block the hit. Airborne Attack still uses the existing ground slam; Attack while holding an enemy still slams them. See [tuning and animation source](docs/charged-punch.md).
 
@@ -32,7 +42,7 @@ Buttons, bumpers, stick clicks, D-pad directions, LT, and RT can be assigned. Co
 
 During capture, Escape cancels, or leave the controller untouched for 15 seconds to cancel. Escape is reserved for cancellation in this screen; Reset Keyboard / Mouse restores the default Escape pause binding. Release an already-held trigger before assigning it. Capture also cancels when settings close, the application loses focus, or a controller disconnects. Binding/capture input is consumed before menu actions; player input is blocked during capture.
 
-The gameplay menu opens with Tab / R3 and has Powers, Gear, Attributes, Journal, and Map tabs; see [GAMEPLAY_MENU.md](GAMEPLAY_MENU.md). Its action is rebindable. When added to an older settings file, occupied default inputs receive an unused alternative without resetting existing custom bindings.
+The gameplay menu opens with P / R3 and has Powers, Gear, Attributes, Journal, and Map tabs; see [GAMEPLAY_MENU.md](GAMEPLAY_MENU.md). Its action is rebindable. When added to an older settings file, occupied default inputs receive an unused alternative without resetting existing custom bindings.
 
 Menu controls stay fixed: D-pad navigation, A selects, B goes back, and LB/RB switch settings tabs. Keyboard Tab/arrows/Enter and Escape remain available. Gameplay pause has its own input action, so B can descend during gameplay and go back during menus. Bindings work across controller reconnection/device IDs. All connected gamepads share the Xbox control scheme; this is a single-player input setup.
 
@@ -64,7 +74,7 @@ The HUD's existing jump/flight/sprint hints switch between keyboard and Xbox lab
 
 `scripts/input_bindings.gd` owns the action catalog, defaults, fixed sticks, Xbox labels, capture, conflict swaps, and ConfigFile serialization. `GameSettings.input_bindings` is its shared instance, created before the player/menu scenes. It registers gameplay actions in Godot's InputMap at startup; the catalog is the runtime source of truth, including for the older actions already present in `project.godot`.
 
-To add an action, add its ID, display name, default physical key (negative mouse-button index for a mouse binding), and default Xbox button to `ACTIONS`. Use unique defaults. The Controls UI, reset, and persistence pick it up automatically. Then consume the named action in the relevant gameplay system or input snapshot. Use `is_action_press(event, action)` for event-driven button actions that may be rebound to a trigger; it prevents continuous axis samples from repeating a press. Polling actions can continue using Godot's `Input` API. Camera/stick mappings live separately in `STICKS`.
+To add an action, add its ID, display name, default physical key (negative mouse-button index for a mouse binding), and default Xbox button to `ACTIONS`. Use unique defaults, except for the explicit ground-only Dodge Roll / flight-only Descend sharing pair. The Controls UI, reset, and persistence pick it up automatically. Then consume the named action in the relevant gameplay system or input snapshot. Use `is_action_press(event, action)` for event-driven button actions that may be rebound to a trigger; it prevents continuous axis samples from repeating a press. Polling actions can continue using Godot's `Input` API. Camera/stick mappings live separately in `STICKS`.
 
 Preferences add `bindings_keyboard` and `bindings_controller` sections to the existing settings file. Missing sections use defaults. Invalid entries or duplicate bindings restore that device's default set; gameplay save data and power progress are unaffected. Save failures appear in the settings status message, and the chosen bindings remain active for the session.
 
@@ -90,3 +100,7 @@ The Controls tab, scrolling, focus navigation, and capture overlay were rendered
 - Updated `tests/test_settings_tabs.gd` and `SETTINGS_MENU.md`; added this guide.
 
 The developer console pauses gameplay while open. Backtick/View opens it; Escape/B or the console binding closes it. Type `help` for commands, use Tab for completion and Up/Down for history. See [DEVELOPER_CONSOLE.md](DEVELOPER_CONSOLE.md).
+
+Fire tier 3: hold/release Q without Aim for External Combustion (controller: RT without LT). Charge from current Heat to 100% at 50%/second; release at 10% or above for a 1–8m, 10–70 damage blast. Full Heat while using other Fire attacks triggers it passively when ready. Both share a 300s cooldown; normal overheat applies during cooldown. Aim + Q remains Dragon Breath. See `docs/fire.md`.
+
+Frost tier 1: select Frost with Alt, then hold RMB + LMB (controller LT + X) for Frost Breath. Uses the same 12m cone / 3m end radius as Dragon Breath and builds 15 Heat/sec. It slows movement and attacks, freezing regular enemies after 3s and supers after 5s. Frozen damage is 10/sec for 5s; continued breath refreshes duration. Three melee hits or a grab break the ice. Tier 2 adds Frost Wall: hold RMB + Q (LT + RT), then release Q to cast within 50m, grounded or flying. Adds 20 Heat and a 300s cooldown. See `docs/frost.md` and `docs/frost_wall.md`.

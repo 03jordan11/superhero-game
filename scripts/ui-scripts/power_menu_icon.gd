@@ -44,7 +44,10 @@ func _draw() -> void:
 			draw_arc(Vector2(48, 44), 12, 0, TAU, 32, ink, 3, true)
 			stroke([Vector2(56, 52), Vector2(87, 82)], 5)
 			stroke([Vector2(45, 59), Vector2(65, 87)], 2)
-		"telekinesis", "mind":
+		"mind":
+			stroke([Vector2(50, 10), Vector2(82, 23), Vector2(78, 59), Vector2(66, 77), Vector2(50, 90), Vector2(34, 77), Vector2(22, 59), Vector2(18, 23), Vector2(50, 10)])
+			stroke([Vector2(28, 49), Vector2(39, 49), Vector2(45, 35), Vector2(54, 65), Vector2(62, 49), Vector2(72, 49)], 3)
+		"telekinesis":
 			var points := PackedVector2Array()
 			for i in 90:
 				var angle := i * 0.14

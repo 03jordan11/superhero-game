@@ -62,6 +62,8 @@ Be careful when modifying `.tscn` files manually.
 
 Do not remove or restructure existing nodes unless required by the task.
 
+When adding or changing custom shaders, update `docs/shaders.md` with their purpose, resource path, and loading/preparation status. Loading a shader resource alone does not guarantee every GPU pipeline is prepared.
+
 When adding nodes programmatically to `.tscn` files, verify node paths used by existing GDScript still resolve correctly.
 
 ## Testing

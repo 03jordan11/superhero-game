@@ -23,6 +23,9 @@ func begin_new_game(seed_override: int = -1) -> void:
 
 
 func save_game() -> bool:
+	# Training progression is temporary, including automatic power-menu saves.
+	if get_tree().current_scene != null and get_tree().current_scene.is_in_group(&"combat_arena"):
+		return false
 	var player := _get_player()
 	if player == null:
 		push_warning("SaveManager could not save because no PlayerCharacter was found.")

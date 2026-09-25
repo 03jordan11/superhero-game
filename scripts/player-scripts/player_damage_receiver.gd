@@ -11,6 +11,12 @@ signal hit_slowdown_requested(speed_multiplier: float)
 signal flight_knockdown_requested
 signal damage_received(damage_info)
 
+@export_category("Preservation")
+@export_range(0.0, 60.0, 0.1, "suffix:s") var regeneration_delay := 5.0
+@export_range(0.0, 100.0, 0.1, "suffix:HP/s") var regeneration_rate := 1.0
+var regeneration_enabled := false
+var regeneration_cooldown := 0.0
+
 var health_component
 var status_effects: PlayerStatusEffects
 var combat_controller: PlayerCombatController
@@ -29,6 +35,21 @@ func setup(
 	health_component = HEALTH_COMPONENT_SCRIPT.new(initial_max_health)
 	health_component.health_changed.connect(_on_health_changed)
 	health_component.depleted.connect(_on_health_depleted)
+	regeneration_cooldown = regeneration_delay
+
+
+func _physics_process(delta: float) -> void:
+	update_regeneration(delta)
+
+
+func update_regeneration(delta: float) -> void:
+	if health_component == null or delta <= 0.0: return
+	var waiting_time := regeneration_cooldown
+	regeneration_cooldown = maxf(0.0, regeneration_cooldown - delta)
+	if not regeneration_enabled: return
+	# Only heal for the part of this tick after the delay expires.
+	var healing_time := maxf(0.0, delta - waiting_time)
+	health_component.heal(healing_time * regeneration_rate)
 
 
 func apply_damage(
@@ -37,10 +58,21 @@ func apply_damage(
 	flight_knockdown_chance: float,
 	is_knocked_out: bool
 ) -> bool:
+	# Protect the entire evade, counter opportunity, and counter recovery before
+	# health, damage signals, hit reactions, or slowdown can interrupt the action.
+	if get_parent() is PlayerCharacter and get_parent().anticipation.active():
+		return false
+	if get_parent() is PlayerCharacter and get_parent().is_dodging:
+		return false
 	if health_component == null or not health_component.apply_damage(damage_info):
 		return false
+	regeneration_cooldown = regeneration_delay
 	damage_received.emit(damage_info)
 	if health_component.is_depleted():
+		return true
+	# Protected elemental casts have reaction armor. Damage, death,
+	# regeneration delay and Reactive Shock have already been resolved normally.
+	if get_parent() is PlayerCharacter and (get_parent().lightning_strike.casting or get_parent().external_combustion.casting or get_parent().frost_wall.casting):
 		return true
 	# Taking damage still costs health and plays impact audio. A committed melee
 	# attack has armor against bullet flinches/slowdown so it can reach its target.

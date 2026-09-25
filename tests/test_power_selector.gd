@@ -46,7 +46,7 @@ func run() -> void:
 	wheel.choose_direction(Vector2.RIGHT * 200)
 	root.push_input(key(false))
 	check(not wheel.visible and powers.active_power == &"ice", "Release equips the highlighted power")
-	check(player.get_node("GameplayHUD/ActivePower").text.contains("Ice"), "HUD reflects equipped power")
+	check(player.get_node("GameplayHUD/ActivePower").text.contains("Frost"), "HUD reflects equipped power")
 	var fire := PlayerInputSnapshot.new()
 	fire.aim_power_pressed = true
 	fire.activate_power_pressed = true

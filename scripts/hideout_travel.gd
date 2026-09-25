@@ -102,6 +102,7 @@ func _enter(door: Node3D, from_percent: float = 0) -> bool:
 		push_error("Hideout interior needs a PlayerSpawn marker.")
 		_busy = false
 		return false
+	room.add_to_group(&"weather_indoors")
 	await loading.checkpoint(95, "Entering the building…")
 	var city := get_tree().current_scene
 	for entrance in get_tree().get_nodes_in_group(&"hideout_doors"):

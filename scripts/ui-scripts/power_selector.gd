@@ -135,7 +135,7 @@ func _draw() -> void:
 			draw_arc(Vector2.ZERO, 96.0, start + 0.2, end - 0.2, 32, COLORS[i], 4.0, true)
 		var position_on_ring := Vector2.UP.rotated(i * PI / 2.0) * 165.0
 		_text(COPY.text("selector." + String(IDS[i])), position_on_ring + Vector2(0, 32), 19, Color("e8f2fa"))
-		var status := "selector.future" if not powers.progression.is_implemented(String(IDS[i]), 0) else ("selector.ready" if player.abilities.is_unlocked(IDS[i]) else "selector.locked")
+		var status := "selector.future" if not powers.progression.is_implemented(String(IDS[i]), 0) and not (IDS[i] == PlayerAbilities.ICE and player.abilities.is_unlocked(IDS[i])) else ("selector.ready" if player.abilities.is_unlocked(IDS[i]) else "selector.locked")
 		_text(COPY.text(status), position_on_ring + Vector2(0, 52), 12, Color("a1b5c5"))
 	draw_circle(Vector2.ZERO, 77.0, Color("0b1928"))
 	draw_arc(Vector2.ZERO, 77.0, 0.0, TAU, 64, Color("41647a"), 1.0, true)

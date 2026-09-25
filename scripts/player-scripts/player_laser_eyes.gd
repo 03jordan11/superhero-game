@@ -67,12 +67,22 @@ func _process(_delta: float) -> void:
 	for i in 2: _draw_beam(_beams[i], eyes[i], _beam_target)
 
 func _ability_changed(id: StringName, unlocked: bool) -> void:
-	if id in [PlayerAbilities.LASER_EYES, PlayerAbilities.FIRE, PlayerAbilities.ELECTRICITY, PlayerAbilities.CHARGED_FIREBALL, PlayerAbilities.DRAGON_BREATH] and not unlocked: cancel_input()
+	if id in [PlayerAbilities.LASER_EYES, PlayerAbilities.ICE, PlayerAbilities.FIRE, PlayerAbilities.ELECTRICITY, PlayerAbilities.CHARGED_FIREBALL, PlayerAbilities.DRAGON_BREATH] and not unlocked: cancel_input()
 
 func cancel_input() -> void:
 	_require_release = true
+	var wall := get_node_or_null("../PlayerFrostWall")
+	if wall != null: wall.cancel()
+	var thunderstorm := get_node_or_null("../PlayerThunderstorm")
+	if thunderstorm != null: thunderstorm.cancel()
+	var lightning := get_node_or_null("../PlayerLightningStrike")
+	if lightning != null: lightning.cancel()
+	var combustion := get_node_or_null("../PlayerExternalCombustion")
+	if combustion != null: combustion.cancel()
 	var fire := get_node_or_null("../PlayerFire")
 	if fire != null: fire.cancel()
+	var frost := get_node_or_null("../PlayerFrost")
+	if frost != null: frost.cancel()
 	var electricity := get_node_or_null("../PlayerElectricity")
 	if electricity != null: electricity.cancel()
 	_set_aim(false)
@@ -89,7 +99,7 @@ func update_power(delta: float, input: PlayerInputSnapshot) -> void:
 	blocked = blocked or player.get_node("PlayerPowerController").is_selector_open()
 	if not input.activate_power_pressed and not input.secondary_power_pressed and not blocked: _require_release = false
 	var selected: StringName = player.get_node("PlayerPowerController").active_power
-	var available: bool = selected in [PlayerAbilities.LASER_EYES, PlayerAbilities.FIRE, PlayerAbilities.ELECTRICITY] and player.abilities.is_unlocked(selected) and not (
+	var available: bool = selected in [PlayerAbilities.LASER_EYES, PlayerAbilities.ICE, PlayerAbilities.FIRE, PlayerAbilities.ELECTRICITY] and player.abilities.is_unlocked(selected) and not (
 		blocked or player.is_dead or player.is_knocked_out or player.is_ground_slamming
 		or player.is_charging_flight or player.is_charging_jump or player.combat_controller.is_action_locked())
 	available=available and not player.hostile_grab.owns_animation()
@@ -102,9 +112,12 @@ func update_power(delta: float, input: PlayerInputSnapshot) -> void:
 	var electric_heat := electricity.update_attack(delta, input,
 		selected == PlayerAbilities.ELECTRICITY and aiming and not overheated and not _require_release,
 		100.0 - heat)
-	var other_power_active := fire_heat > 0.0 or fire.charging or fire.breathing or electricity.firing
+	var frost: PlayerFrost = player.get_node("PlayerFrost")
+	var frost_heat := frost.update_attack(delta, input,
+		selected == PlayerAbilities.ICE and aiming and not overheated and not _require_release, 100.0 - heat)
+	var other_power_active := fire_heat > 0.0 or fire.charging or fire.breathing or electricity.firing or frost.firing
 	if other_power_active:
-		heat = minf(100.0, heat + fire_heat + electric_heat)
+		heat = minf(100.0, heat + fire_heat + electric_heat + frost_heat)
 		_cooldown = cooling_delay
 		if heat >= 99.9999: _overheat()
 	if selected == PlayerAbilities.LASER_EYES and aiming and input.activate_power_pressed and not overheated and not _require_release:
@@ -180,7 +193,17 @@ func _raycast(from: Vector3, to: Vector3) -> Dictionary:
 			end = hit.position
 	return result
 
+func fill_heat_without_explosion() -> void:
+	# Lightning Strike spends the full Heat bar without the normal overload blast.
+	heat = 100.0
+	overheated = true
+	_require_release = true
+	_cooldown = cooling_delay
+	_hide_beams()
+	heat_changed.emit(heat, overheated)
+
 func _overheat() -> void:
+	if player.external_combustion.try_passive(): return
 	heat = 100.0
 	overheated = true
 	cancel_input()

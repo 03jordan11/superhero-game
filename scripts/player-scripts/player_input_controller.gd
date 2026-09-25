@@ -25,7 +25,12 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _process(delta: float) -> void:
 	if DebugManager.developer_menu_open or settings.input_bindings.is_capturing or not get_window().has_focus(): return
-	update_controller_look(delta)
+	# Aiming slow motion affects the world, not right-stick camera responsiveness.
+	var lightning := player.get_node_or_null("PlayerLightningStrike")
+	var wall := player.get_node_or_null("PlayerFrostWall")
+	var slowed_aim: bool = (lightning != null and lightning.casting) or (wall != null and wall.casting)
+	var look_delta := delta / maxf(Engine.time_scale, 0.001) if slowed_aim else delta
+	update_controller_look(look_delta)
 
 func update_controller_look(delta: float) -> void:
 	if player.get_node("PlayerPowerController").is_selector_open(): return

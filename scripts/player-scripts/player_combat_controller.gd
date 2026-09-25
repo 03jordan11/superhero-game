@@ -287,6 +287,7 @@ func _apply_charge_cone(body: CharacterBody3D) -> void:
 		# Other enemies don't shield a whole crowd from the cone, but walls do.
 		if not _clear_to_body(body, enemy, excluded): continue
 		var damage = DAMAGE_INFO_SCRIPT.new(charge_damage_at_distance(distance, released_charge), origin, forward, &"knockback", body)
+		damage.damage_type = &"melee"
 		# Respect NPC knockback_resistant, including supers; never force knockdown.
 		enemy.apply_damage(damage)
 
@@ -427,6 +428,7 @@ func _try_hit_target(body: CharacterBody3D, strength: int) -> bool:
 			hit_reaction,
 			body
 		)
+		damage_info.damage_type = &"melee"
 		collider.call("apply_damage", damage_info)
 		return true
 
@@ -434,5 +436,6 @@ func _try_hit_target(body: CharacterBody3D, strength: int) -> bool:
 	for lod in body.get_tree().get_nodes_in_group(&"civilian_capsule_lod"):
 		var uppercut := combo_punch_index == UPPERCUT_PUNCH_INDEX
 		var info = DAMAGE_INFO_SCRIPT.new(regular_hit_damage_multiplier*strength*(2.0 if uppercut else 1.0),impact_origin,forward,&"knockback" if uppercut else &"chest",body)
+		info.damage_type = &"melee"
 		if lod.apply_melee_damage(impact_origin,punch_hit_radius,info): return true
 	return false

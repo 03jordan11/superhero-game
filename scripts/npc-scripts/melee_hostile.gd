@@ -34,6 +34,7 @@ var punch_resolved: bool = false
 var recovery_remaining: float = 0.0
 var approach_remaining: float = 0.0
 var _coordinator: Node
+var opening_windup_remaining := 0.0
 
 func _ready() -> void:
 	super()
@@ -55,6 +56,7 @@ func _on_damage_received(damage_info) -> void:
 	_reset_combat_actions()
 
 func _reset_combat_actions() -> void:
+	opening_windup_remaining = 0.0
 	_release_slot()
 	melee_state = MeleeState.SURROUND
 	combo_length = 0
@@ -175,16 +177,29 @@ func _start_punch() -> void:
 	velocity.z = 0.0
 	punch_elapsed = 0.0
 	punch_resolved = false
-	animation_controller.play_melee_punch(punches_started, punch_animation_speed)
+	opening_windup_remaining = 0.0
+	if punches_started == 0 and combat_target is PlayerCharacter and combat_target.anticipation.enabled():
+		opening_windup_remaining = maxf(0.0, combat_target.anticipation.warning_window - punch_hit_delay)
+	if opening_windup_remaining > 0.0:
+		animation_controller.set_is_idle()
+	else:
+		animation_controller.play_melee_punch(punches_started, punch_animation_speed)
 	punches_started += 1
 
 func _update_attack(delta: float) -> void:
 	velocity.x = 0.0
 	velocity.z = 0.0
+	if opening_windup_remaining > 0.0:
+		opening_windup_remaining = maxf(0.0, opening_windup_remaining - delta)
+		if opening_windup_remaining > 0.0: return
+		animation_controller.play_melee_punch(punches_started - 1, punch_animation_speed)
+		return
 	punch_elapsed += delta
 	if not punch_resolved and punch_elapsed >= punch_hit_delay:
 		punch_resolved = true
 		_try_punch_hit()
+		# Reactive Shock can interrupt us synchronously inside the player's hit.
+		if electrified.active or is_dead: return
 	if animation_controller.is_melee_punch_playing() and punch_elapsed < punch_animation_timeout:
 		return
 	if punches_started < combo_length and _in_punch_range() and _can_see_target(combat_target):
@@ -203,6 +218,14 @@ func _try_punch_hit() -> bool:
 		return false
 	if not combat_target.has_method("apply_damage"):
 		return false
+	if punches_started == 1 and combat_target is PlayerCharacter and combat_target.anticipation.evade_hit(self):
+		return false
 	var damage = DAMAGE.new(punch_damage, global_position + Vector3.UP, forward, &"chest", self)
 	damage.damage_type = &"melee"
 	return combat_target.apply_damage(damage)
+
+func counter_warning_remaining(hero: PlayerCharacter) -> float:
+	if is_dead or is_hit_reacting or is_grabbed or is_thrown or combat_target != hero: return -1.0
+	if melee_state != MeleeState.ATTACK or punches_started != 1 or punch_resolved or not has_attack_slot: return -1.0
+	if not _in_punch_range() or not _can_see_target(hero): return -1.0
+	return opening_windup_remaining + maxf(0.0, punch_hit_delay - punch_elapsed)

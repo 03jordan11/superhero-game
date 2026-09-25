@@ -106,10 +106,13 @@ func _process(delta: float) -> void:
 	var elapsed := _update_elapsed
 	_update_elapsed = 0.0
 	if not Engine.is_editor_hint():
+		# Weather keeps drifting when only the solar clock is stopped; tree pause
+		# still freezes the complete simulation.
+		var weather := get_node_or_null("/root/Weather")
+		var wind: float = 1.0 + (weather.storm_amount * 0.8 if weather != null else 0.0)
+		_cloud_offset += Vector2(0.0013, 0.00045) * elapsed * cloud_speed * wind
+		_cloud_offset = Vector2(fposmod(_cloud_offset.x, 10.0), fposmod(_cloud_offset.y, 10.0))
 		if cycle_running:
-			# Cloud wind follows pause, but is independent of accelerated solar time.
-			_cloud_offset += Vector2(0.0013, 0.00045) * elapsed * cloud_speed
-			_cloud_offset = Vector2(fposmod(_cloud_offset.x, 10.0), fposmod(_cloud_offset.y, 10.0))
 			_advance_clock(elapsed)
 			return
 	# Editor changes preview instantly, and a stopped clock can still be tuned.
@@ -169,3 +172,19 @@ func _update_environment() -> void:
 	_material.set_shader_parameter("moon_size", deg_to_rad(moon_radius_degrees))
 	_material.set_shader_parameter("cloud_coverage", cloud_coverage)
 	_material.set_shader_parameter("cloud_offset", _cloud_offset)
+	# Apply weather after the solar baseline so neither system overwrites the other.
+	var weather := get_node_or_null("/root/Weather") if not Engine.is_editor_hint() else null
+	var storm: float = weather.storm_amount if weather != null else 0.0
+	var lightning: float = weather.flash if weather != null else 0.0
+	_material.set_shader_parameter("storm_amount", storm)
+	_material.set_shader_parameter("lightning_flash", lightning)
+	if weather != null:
+		_material.set_shader_parameter("lightning_direction", weather.lightning_direction)
+		_material.set_shader_parameter("lightning_seed", weather.lightning_seed)
+	_sun.light_energy *= lerpf(1.0, 0.22, storm)
+	_moon.light_energy *= lerpf(1.0, 0.3, storm)
+	_environment.ambient_light_energy *= lerpf(1.0, 0.6, storm)
+	_environment.ambient_light_energy += lightning * storm * 0.25
+	_environment.ambient_light_color = _environment.ambient_light_color.lerp(Color(0.48, 0.55, 0.65), storm * 0.7)
+	_environment.fog_density = lerpf(_environment.fog_density, 0.0012, storm)
+	_environment.fog_light_color = _environment.fog_light_color.lerp(Color(0.22, 0.26, 0.32), storm)

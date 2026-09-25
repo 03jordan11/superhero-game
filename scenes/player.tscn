@@ -1,8 +1,15 @@
 [gd_scene format=3 uid="uid://ci1surt3ll4n5"]
 
+[ext_resource type="Script" path="res://scripts/player-scripts/player_anticipation.gd" id="anticipation"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_thunderstorm.gd" id="thunderstorm"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_lightning_strike.gd" id="lightning_strike"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_external_combustion.gd" id="combustion"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_frost_wall.gd" id="frost_wall"]
+
 [ext_resource type="Script" path="res://scripts/player-scripts/player_rescue_carrier.gd" id="rescue_carrier"]
 [ext_resource type="Script" path="res://scripts/player-scripts/player_ship_interaction.gd" id="ship_interaction"]
 [ext_resource type="Script" path="res://scripts/player-scripts/player_target_lock.gd" id="target_lock"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_dodge_roll_state.gd" id="dodge_roll"]
 [ext_resource type="Script" path="res://scripts/ui-scripts/rescue_timer_hud.gd" id="rescue_timer"]
 
 [ext_resource type="Script" uid="uid://ckmvx8w0ymkt6" path="res://scripts/player-scripts/player_character.gd" id="1_player"]
@@ -36,6 +43,7 @@
 [ext_resource type="Script" path="res://scripts/player-scripts/player_laser_eyes.gd" id="30_laser_eyes"]
 [ext_resource type="Script" path="res://scripts/ui-scripts/power_selector.gd" id="31_power_selector"]
 [ext_resource type="Script" path="res://scripts/player-scripts/player_fire.gd" id="32_fire"]
+[ext_resource type="Script" path="res://scripts/player-scripts/player_frost.gd" id="frost"]
 [ext_resource type="Script" path="res://scripts/character_hair.gd" id="33_hair"]
 [ext_resource type="Script" path="res://scripts/player-scripts/player_hostile_grab.gd" id="hostile_grab"]
 
@@ -90,6 +98,9 @@ script = ExtResource("8_state_machine")
 
 [node name="GroundedState" type="Node" parent="PlayerStateMachine" unique_id=585032173]
 script = ExtResource("9_grounded_state")
+
+[node name="DodgeRollState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("dodge_roll")
 
 [node name="JumpChargingState" type="Node" parent="PlayerStateMachine" unique_id=512900076]
 script = ExtResource("10_jump_charging_state")
@@ -206,6 +217,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("31_power_selector")
 
+[node name="PlayerFrost" type="Node3D" parent="."]
+script = ExtResource("frost")
+
 [node name="PlayerFire" type="Node3D" parent="."]
 script = ExtResource("32_fire")
 
@@ -217,6 +231,18 @@ female_npc = false
 
 [node name="PlayerElectricity" type="Node3D" parent="."]
 script = ExtResource("34_electricity")
+
+[node name="PlayerThunderstorm" type="Node3D" parent="."]
+script = ExtResource("thunderstorm")
+
+[node name="PlayerExternalCombustion" type="Node3D" parent="."]
+script = ExtResource("combustion")
+
+[node name="PlayerLightningStrike" type="Node3D" parent="."]
+script = ExtResource("lightning_strike")
+
+[node name="PlayerFrostWall" type="Node3D" parent="."]
+script = ExtResource("frost_wall")
 
 [node name="PlayerRescueCarrier" type="Node" parent="."]
 script = ExtResource("rescue_carrier")
@@ -234,3 +260,6 @@ script = ExtResource("hostile_grab")
 script = ExtResource("rescue_timer")
 
 [node name="DeathScreen" parent="." instance=ExtResource("death_screen")]
+
+[node name="PlayerAnticipation" type="Node" parent="."]
+script = ExtResource("anticipation")

@@ -11,6 +11,8 @@ var hit_slowdown_remaining: float = 0.0
 
 
 func apply_hit_slowdown() -> float:
+	if get_parent() is PlayerCharacter and get_parent().is_dodging:
+		return 1.0
 	hit_slowdown_remaining = maxf(hit_slowdown_duration, 0.0)
 	return get_movement_speed_multiplier()
 

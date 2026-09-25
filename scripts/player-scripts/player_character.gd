@@ -2,6 +2,11 @@ class_name PlayerCharacter
 extends CharacterBody3D
 
 const PLAYER_PERF = preload("res://scripts/ui-scripts/player_performance_monitor.gd")
+@onready var anticipation: Node = $PlayerAnticipation
+@onready var thunderstorm: Node = $PlayerThunderstorm
+@onready var lightning_strike: Node = $PlayerLightningStrike
+@onready var external_combustion: Node = $PlayerExternalCombustion
+@onready var frost_wall: Node = $PlayerFrostWall
 
 signal jump_charge_changed(current_charge: float, max_charge: float)
 signal ground_speed_changed(current_speed: float, walk_speed: float, run_speed: float)
@@ -96,6 +101,7 @@ var is_ground_slamming: bool = false
 var ground_slam_target: Vector3
 var ground_slam_impact_pending: bool = false
 var is_knocked_out: bool = false
+var is_dodging: bool = false
 var is_dead: bool = false
 var is_wall_running: bool = false
 var wall_run_normal: Vector3
@@ -184,6 +190,7 @@ func _profiled_apply_damage(damage_info) -> bool:
 
 
 func _on_damage_hit_slowdown_requested(speed_multiplier: float) -> void:
+	if is_dodging: return
 	velocity.x *= speed_multiplier
 	velocity.z *= speed_multiplier
 	if is_flying:
@@ -192,6 +199,7 @@ func _on_damage_hit_slowdown_requested(speed_multiplier: float) -> void:
 
 
 func _on_damage_flight_knockdown_requested() -> void:
+	if is_dodging: return
 	if not state_machine.transition_to(&"KnockedDownState", {"cause": &"damage"}):
 		push_error("Player could not enter KnockedDownState from damage.")
 
@@ -218,6 +226,7 @@ func _on_damage_death_requested(_damage_info) -> void:
 
 
 func _die() -> void:
+	anticipation.cancel()
 	if is_dead:
 		return
 	if not state_machine.transition_to(&"DeadState"):
@@ -232,6 +241,7 @@ func _get_flight_hit_knockdown_chance() -> float:
 
 
 func revive_for_respawn() -> void:
+	anticipation.cancel()
 	# Explicit restart of the terminal life state; ordinary healing cannot revive.
 	drop_everything()
 	ship_interaction.release()
@@ -244,6 +254,7 @@ func revive_for_respawn() -> void:
 	flying_state.is_boosting = false
 	laser_eyes.cancel_input()
 	laser_eyes.heat = 0.0
+	is_dodging = false
 	laser_eyes.overheated = false
 	laser_eyes.heat_changed.emit(0.0, false)
 	for field in ["is_dead", "is_knocked_out", "is_flying", "is_ground_slamming", "is_wall_running", "wall_run_has_left_ground", "has_knockout_landed", "is_charging_jump", "is_jump_active", "air_jump_used", "ground_slam_impact_pending"]:
@@ -296,7 +307,10 @@ func _profiled_input(event: InputEvent) -> void:
 		combat_controller.cancel_charge_input()
 	if event is InputEventMouseMotion:
 		input_controller.apply_look(event.screen_relative * mouse_sensitivity)
+	if thunderstorm.casting or lightning_strike.casting or external_combustion.casting or frost_wall.casting: return
+	if anticipation.handle_event(event): return
 	if ship_interaction.is_attached(): return
+	if is_dodging: return
 	if event.is_action_released("attack"):
 		combat_controller.release_attack()
 
@@ -331,8 +345,23 @@ func _profiled_physics_process(delta: float) -> void:
 	stamina.begin_tick(input_snapshot.sprint_pressed)
 
 	status_effects.update(delta)
+	if frost_wall.tick(delta, input_snapshot): return
+	if external_combustion.tick(delta, input_snapshot): return
+	if lightning_strike.tick(delta, input_snapshot): return
+	if thunderstorm.tick(delta, input_snapshot): return
+	if anticipation.tick(delta): return
+	if input_snapshot.dodge_just_pressed:
+		state_machine.transition_to(&"DodgeRollState")
+	if is_dodging:
+		# The roll owns movement until it finishes; no simultaneous pickup,
+		# jump, attack, boost or flight toggle can interrupt it.
+		input_snapshot = PlayerInputSnapshot.new()
 	target_lock.update_lock(delta, input_snapshot)
 	if input_snapshot.vehicle_interact_just_pressed:
+		for station in get_tree().get_nodes_in_group(&"combat_arena_stations"):
+			if station.try_interact(self):
+				stamina.finish_tick(delta, Vector3.ZERO, is_on_floor())
+				return
 		for ring_access in get_tree().get_nodes_in_group(&"boxing_ring_access"):
 			if ring_access.try_interact(self):
 				stamina.finish_tick(delta, Vector3.ZERO, is_on_floor())
@@ -387,7 +416,7 @@ func _profiled_physics_process(delta: float) -> void:
 	var position_before_move := global_position
 	var was_grounded := is_on_floor()
 	var incoming_velocity := velocity
-	var bounding_excluded := is_flying or is_ground_slamming or ground_slam_impact_pending or is_wall_running or is_dead or is_knocked_out
+	var bounding_excluded := is_flying or is_ground_slamming or ground_slam_impact_pending or is_wall_running or is_dead or is_knocked_out or is_dodging
 	move_and_slide()
 	if is_on_floor():
 		air_jump_used = false
@@ -428,6 +457,7 @@ func drop_everything() -> void:
 
 
 func _update_movement_facing(delta: float, input: PlayerInputSnapshot) -> void:
+	if is_dodging: return
 	var active_state := state_machine.active_state
 	if target_lock.has_target() and active_state is PlayerNormalMovementState:
 		ground_facing_yaw=global_rotation.y

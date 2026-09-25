@@ -53,9 +53,9 @@ func run() -> void:
 	await process_frame
 	check(page.back_button.text == "Retour" and page.title_label.text == "Glace", "Changing locale must refresh the open page")
 	check(page.category_label.text == "ÉLÉMENTAIRE", "Category should use the chosen language")
-	check(page.category_counts.Elemental.text == "3 pouvoirs ; 1 acquis", "Named fields should allow translated word order")
+	check(page.category_counts.Elemental.text == "4 pouvoirs ; 1 acquis", "Named fields should allow translated word order")
 	check(page.action_button.text == "Amélioration 3", "Formatted actions should refresh with the locale")
-	check(page.description_label.text.begins_with("Encase your fists"), "Missing translations must fall back to English")
+	check(page.description_label.text.begins_with("Control cold"), "Missing translations must fall back to English")
 	TranslationServer.set_locale("de")
 	await process_frame
 	check(page.back_button.text == "Back", "Unsupported languages must fall back to English")

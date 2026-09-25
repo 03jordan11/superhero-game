@@ -45,6 +45,14 @@ func is_depleted() -> bool:
 	return current_health <= 0.0
 
 
+func heal(amount: float) -> bool:
+	if is_depleted() or amount <= 0.0 or current_health >= max_health:
+		return false
+	current_health = minf(current_health + amount, max_health)
+	health_changed.emit(current_health, max_health)
+	return true
+
+
 func restore_full_health() -> void:
 	if is_depleted(): return
 	current_health = max_health

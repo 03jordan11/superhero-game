@@ -20,6 +20,7 @@ var health_component
 
 var is_hit_reacting: bool = false
 var knockback_velocity: Vector3 = Vector3.ZERO
+var action_speed := 1.0
 var chest_hit_stun_remaining: float = 0.0
 var is_waiting_for_chest_hit_stun: bool = false
 var knockback_stun_remaining: float = 0.0
@@ -49,11 +50,15 @@ func _physics_process(delta: float) -> void:
 		return
 
 	if is_hit_reacting:
-		_process_hit_reaction(delta)
+		_process_hit_reaction(delta * action_speed)
+		velocity.x *= action_speed
+		velocity.z *= action_speed
 		move_and_slide()
 		return
 
-	_process_behavior(delta)
+	_process_behavior(delta * action_speed)
+	velocity.x *= action_speed
+	velocity.z *= action_speed
 	move_and_slide()
 
 

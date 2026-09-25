@@ -2,6 +2,8 @@ extends CanvasLayer
 const PALETTE = preload("res://assets/ui/default_palette.tres")
 
 const PLAYER_PERF = preload("res://scripts/ui-scripts/player_performance_monitor.gd")
+const ARENA_SESSION = preload("res://scripts/combat_arena_session.gd")
+var arena_button: Button
 @onready var resume_button: Button = $Center/Menu/ResumeButton
 @onready var save_status_label: Label = $Center/Menu/SaveStatusLabel
 @onready var pause_actions: VBoxContainer = $Center/Menu
@@ -9,6 +11,17 @@ const PLAYER_PERF = preload("res://scripts/ui-scripts/player_performance_monitor
 
 
 func _ready() -> void:
+	if OS.is_debug_build():
+		arena_button = Button.new()
+		arena_button.name = "CombatArenaButton"
+		arena_button.text = "Return from Combat Arena" if get_parent().is_in_group(&"combat_arena") else "Combat Arena"
+		arena_button.custom_minimum_size = Vector2(300, 64)
+		arena_button.add_theme_font_size_override("font_size", 28)
+		pause_actions.add_child(arena_button)
+		pause_actions.move_child(arena_button, pause_actions.get_node("SaveButton").get_index())
+		arena_button.pressed.connect(_on_combat_arena_pressed)
+	if get_parent().is_in_group(&"combat_arena"):
+		pause_actions.get_node("SaveButton").hide()
 	PALETTE.apply_menu_colors($Center)
 	$Dimmer.color = Color(PALETTE.background, 0.65)
 	visible = false
@@ -44,6 +57,9 @@ func pause_game() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	_show_pause_actions()
 	save_status_label.text = ""
+	if arena_button != null:
+		arena_button.disabled = player == null or player.is_carrying() or player.ship_interaction.is_attached()
+		arena_button.tooltip_text = "Release anything you are carrying and leave the ship before entering." if arena_button.disabled else ""
 	resume_button.grab_focus()
 
 
@@ -67,6 +83,20 @@ func _on_save_pressed() -> void:
 		save_status_label.text = "Saved to user://savegame.json"
 	else:
 		save_status_label.text = "Save failed. Check the Output panel."
+
+
+func _on_combat_arena_pressed() -> void:
+	if not OS.is_debug_build(): return
+	var session := get_tree().get_first_node_in_group(&"combat_arena_session")
+	if session == null:
+		session = ARENA_SESSION.new()
+		get_tree().root.add_child(session)
+	if session.busy: return
+	resume_game()
+	if get_parent().is_in_group(&"combat_arena"):
+		session.leave.call_deferred()
+	else:
+		session.enter.call_deferred()
 
 
 func _on_back_pressed() -> void:

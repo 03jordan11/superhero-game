@@ -47,6 +47,7 @@ func _test_input_capture() -> void:
 	Input.action_press("aim_power")
 	Input.action_press("secondary_power")
 	Input.action_press("flight_descend")
+	Input.action_press("dodge_roll")
 	Input.action_press("pick_up_vehicle")
 	Input.action_press("lock_target")
 
@@ -61,11 +62,13 @@ func _test_input_capture() -> void:
 	assert(pressed_snapshot.jump_pressed)
 	assert(pressed_snapshot.jump_just_pressed)
 	assert(pressed_snapshot.descend_pressed)
+	assert(pressed_snapshot.dodge_just_pressed)
 	assert(pressed_snapshot.toggle_flight_just_pressed)
 	assert(pressed_snapshot.flight_pressed)
 	assert(pressed_snapshot.activate_power_pressed and pressed_snapshot.aim_power_pressed)
 	assert(pressed_snapshot.activate_power_just_pressed)
 	assert(pressed_snapshot.secondary_power_pressed)
+	assert(pressed_snapshot.secondary_power_just_pressed)
 	assert(pressed_snapshot.vehicle_interact_pressed)
 	assert(pressed_snapshot.vehicle_interact_just_pressed)
 
@@ -78,6 +81,7 @@ func _test_input_capture() -> void:
 	Input.action_release("aim_power")
 	Input.action_release("secondary_power")
 	Input.action_release("flight_descend")
+	Input.action_release("dodge_roll")
 	Input.action_release("pick_up_vehicle")
 	Input.action_release("lock_target")
 
@@ -94,5 +98,6 @@ func _test_input_capture() -> void:
 	assert(released_snapshot.flight_just_released)
 	assert(not released_snapshot.activate_power_pressed and not released_snapshot.aim_power_pressed)
 	assert(released_snapshot.activate_power_just_released and not released_snapshot.secondary_power_pressed)
+	assert(released_snapshot.secondary_power_just_released)
 	assert(not released_snapshot.vehicle_interact_pressed)
 	assert(released_snapshot.vehicle_interact_just_released)

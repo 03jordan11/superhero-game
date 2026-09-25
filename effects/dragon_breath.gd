@@ -121,6 +121,16 @@ func deal_damage(amount: float, source: PlayerCharacter) -> void:
 		crowd.apply_breath_damage(self, amount, source)
 
 func damage_target(body: Node3D, center: Vector3, amount: float, source: PlayerCharacter) -> bool:
+	var aircraft_hit: Dictionary = {}
+	if body.is_in_group(&"attack_helicopter"):
+		center = body.get_damage_center()
+		var hull_ray := PhysicsRayQueryParameters3D.create(global_position, center)
+		hull_ray.exclude = [source.get_rid()]
+		hull_ray.hit_from_inside = true
+		aircraft_hit = get_world_3d().direct_space_state.intersect_ray(hull_ray)
+		if aircraft_hit.is_empty() or aircraft_hit.collider != body: return false
+		# The stream stops at the hull surface, not at the deeper hull center.
+		center = aircraft_hit.position
 	var offset := center - global_position
 	var depth := offset.dot(direction)
 	# Small padding includes capsule edges without expanding the cone behind us.
@@ -129,7 +139,7 @@ func damage_target(body: Node3D, center: Vector3, amount: float, source: PlayerC
 	var query := PhysicsRayQueryParameters3D.create(global_position, center)
 	query.exclude = [source.get_rid()]
 	query.hit_from_inside = true
-	var obstruction := get_world_3d().direct_space_state.intersect_ray(query)
+	var obstruction := aircraft_hit if not aircraft_hit.is_empty() else get_world_3d().direct_space_state.intersect_ray(query)
 	if not obstruction.is_empty() and obstruction.collider != body: return false
 	var info = DAMAGE.new(amount, global_position, direction, &"none", source)
 	info.damage_type = &"fire"

@@ -2,7 +2,7 @@ class_name HostileBase
 extends "res://scripts/npc-scripts/npc_base.gd"
 ## Shared walking enemy lifecycle. Weapon behavior belongs in subclasses.
 
-enum State { GUARD, PATROL, COMBAT, SEARCH, KNOCKED_DOWN, DEAD }
+enum State { GUARD, PATROL, COMBAT, SEARCH, KNOCKED_DOWN, DEAD, ELECTRIFIED, FROZEN }
 enum NameplateKind { PISTOL, RIFLE, MELEE, SUPER, SNIPER }
 
 # Reserve colors now without adding the unimplemented enemy types.
@@ -11,6 +11,10 @@ const NAMEPLATE_COLORS := [
 	Color("ef9a42"), Color("639df5"),
 ]
 const NAMEPLATE_FONT = preload("res://resources/ui/enemy_nameplate_bold.tres")
+const ELECTRIFIED = preload("res://scripts/npc-scripts/hostile_electrified.gd")
+var electrified := ELECTRIFIED.new()
+const FROST = preload("res://scripts/npc-scripts/hostile_frost.gd")
+var frost := FROST.new()
 
 @export_category("Identity and Allegiance")
 @export var enemy_type: StringName = &"hostile"
@@ -89,6 +93,11 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if is_grabbed or is_thrown: return
+	frost.update(delta)
+	if frost.frozen: return
+	if electrified.active:
+		electrified.update(delta)
+		return
 	if is_dead:
 		_settle_corpse(delta)
 		return
@@ -100,6 +109,19 @@ func _physics_process(delta: float) -> void:
 	var elapsed := Time.get_ticks_usec() - started
 	debug_physics_usec += elapsed
 	debug_physics_peak_usec = maxi(debug_physics_peak_usec, elapsed)
+
+
+func apply_damage(damage_info) -> bool:
+	if frost.frozen and damage_info != null and damage_info.amount > 0.0:
+		if damage_info.source is PlayerCharacter and damage_info.damage_type == &"melee": frost.melee_hit()
+		if frost.frozen: return health_component.apply_damage(damage_info)
+	if electrified.active and damage_info != null and damage_info.amount > 0.0:
+		if damage_info.source is PlayerCharacter:
+			electrified.cancel()
+		else:
+			# Other damage may kill the victim but cannot replace the frozen pose.
+			return health_component.apply_damage(damage_info)
+	return super(damage_info)
 
 
 func _process_behavior(delta: float) -> void:
@@ -147,6 +169,8 @@ func _settle_corpse(delta: float) -> void:
 
 
 func _on_died() -> void:
+	frost.cancel()
+	electrified.cancel()
 	current_state = State.DEAD
 	_reset_combat_actions()
 	# The death animation remains active without an obstructing capsule.
@@ -219,7 +243,7 @@ func _handle_guard() -> void:
 
 
 func receive_alert(target: Node3D) -> void:
-	if is_dead or not _can_target(target):
+	if is_dead or electrified.active or not _can_target(target):
 		return
 
 	var is_entering_combat := current_state != State.COMBAT

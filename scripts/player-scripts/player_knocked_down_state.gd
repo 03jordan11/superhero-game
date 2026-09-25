@@ -3,6 +3,9 @@ extends PlayerState
 
 ## Owns knockdown entry, rebound movement, landing stun, recovery, and exit.
 
+func can_enter(_previous_state: PlayerState, _context: Dictionary = {}) -> bool:
+	return not player.is_dodging
+
 
 func enter(_previous_state: PlayerState, context: Dictionary = {}) -> void:
 	player.is_flying = false

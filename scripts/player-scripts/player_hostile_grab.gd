@@ -71,6 +71,8 @@ func try_grab() -> bool:
 	if player.is_carrying() or owns_animation() or player.is_dead or player.is_knocked_out or player.is_ground_slamming or player.is_wall_running or player.is_charging_jump or player.is_charging_flight or player.combat_controller.is_action_locked(): return false
 	var person:=_candidate()
 	if person==null: return false
+	person.frost.cancel()
+	person.electrified.cancel()
 	held=person
 	_model=held.get_node("Superhero_Male_FullBody")
 	_skeleton=_model.find_child("GeneralSkeleton",true,false)

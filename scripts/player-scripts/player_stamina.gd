@@ -53,6 +53,16 @@ func restore_full() -> void:
 	begin_tick()
 	changed.emit(current, maximum, exhausted)
 
+
+func spend_fraction(fraction: float) -> bool:
+	var cost := maximum * clampf(fraction, 0.0, 1.0)
+	if current < cost: return false
+	current = maxf(0.0, current - cost)
+	_recovery_delay = regeneration_delay
+	_refresh_exhaustion()
+	changed.emit(current, maximum, exhausted)
+	return true
+
 func begin_tick(sprint_requested: bool = false) -> void:
 	_boost_requested = false
 	_flight_boost = false
@@ -67,6 +77,9 @@ func request_boost(is_flight: bool) -> bool:
 
 func finish_tick(delta: float, displacement: Vector3, grounded: bool) -> void:
 	if player.is_dead or delta <= 0.0: return
+	if player.is_dodging or player.anticipation.active():
+		_recovery_delay = regeneration_delay
+		return
 	# Ordinary airborne movement freezes both the bar and recovery delay.
 	# Flight keeps its existing boost drain and unboosted regeneration.
 	if not grounded and not player.is_flying: return

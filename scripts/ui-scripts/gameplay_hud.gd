@@ -2,6 +2,12 @@ extends CanvasLayer
 ## Event-driven HUD with optional contextual health and progression visibility.
 const PALETTE = preload("res://assets/ui/default_palette.tres")
 const COPY = preload("res://scripts/ui-scripts/powers_text.gd")
+const COOLDOWNS := [
+	["ExternalCombustion", "external_combustion_cooldown_remaining", "power.fire.upgrade.3.name"],
+	["Thunderstorm", "thunderstorm_cooldown_remaining", "power.electricity.upgrade.2.name"],
+	["LightningStrike", "lightning_strike_cooldown_remaining", "power.electricity.upgrade.3.name"],
+	["FrostWall", "frost_wall_cooldown_remaining", "power.ice.wall.name"],
+]
 
 @onready var health_bar: ProgressBar = $Health/Values/Bar
 @onready var health_label: Label = $Health/Values/Amount
@@ -38,6 +44,7 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	_apply_palette()
 	_refresh_clock()
+	_refresh_cooldowns()
 	_build_hints()
 	settings = get_node("/root/GameSettings")
 	settings.input_bindings.changed.connect(refresh_key_hints)
@@ -87,6 +94,7 @@ func _on_active_power_changed(_power: StringName) -> void:
 	refresh_key_hints()
 
 func _refresh() -> void:
+	_refresh_cooldowns()
 	_on_health_changed(player.get_current_health(), player.get_max_health())
 	_on_stamina_changed(player.stamina.current, player.stamina.maximum, player.stamina.exhausted)
 	_refresh_progression()
@@ -102,7 +110,7 @@ func _on_ability_changed(_id: StringName, _unlocked: bool) -> void:
 	_on_heat_changed(player.laser_eyes.heat, player.laser_eyes.overheated)
 
 func _on_heat_changed(percent: float, overheated: bool) -> void:
-	$Heat.visible = player.abilities.is_unlocked(PlayerAbilities.LASER_EYES) or player.abilities.is_unlocked(PlayerAbilities.FIRE) or player.abilities.is_unlocked(PlayerAbilities.ELECTRICITY) or percent > 0.0
+	$Heat.visible = player.abilities.is_unlocked(PlayerAbilities.LASER_EYES) or player.abilities.is_unlocked(PlayerAbilities.ICE) or player.abilities.is_unlocked(PlayerAbilities.FIRE) or player.abilities.is_unlocked(PlayerAbilities.ELECTRICITY) or percent > 0.0
 	heat_bar.value = percent
 	heat_label.text = COPY.text("hud.heat.overheated" if overheated else "hud.heat", {"percent": roundi(percent)})
 	var fill := heat_bar.get_theme_stylebox("fill") as StyleBoxFlat
@@ -213,6 +221,7 @@ func _refresh_hint_visibility() -> void:
 	if settings.show_control_hints: refresh_key_hints()
 
 func _process(delta: float) -> void:
+	_refresh_cooldowns()
 	# InputMap has no binding-changed signal. This also picks up runtime rebinds
 	# and keyboard layout changes, without rebuilding controls every frame.
 	hints_elapsed += delta
@@ -220,6 +229,20 @@ func _process(delta: float) -> void:
 		hints_elapsed = 0.0
 		_refresh_clock()
 		if settings.show_control_hints: refresh_key_hints()
+
+func _refresh_cooldowns() -> void:
+	var weather := get_node("/root/Weather")
+	var any_active := false
+	for entry in COOLDOWNS:
+		var label: Label = $Cooldowns.get_node(entry[0])
+		var seconds := ceili(maxf(0.0, float(weather.get(entry[1]))))
+		label.visible = seconds > 0
+		if seconds <= 0: continue
+		any_active = true
+		var key := "hud.cooldown.one" if seconds == 1 else "hud.cooldown"
+		var copy := COPY.text(key, {"ability": COPY.text(entry[2]), "seconds": seconds})
+		if label.text != copy: label.text = copy
+	$Cooldowns.visible = any_active
 
 func _refresh_clock() -> void:
 	if not is_instance_valid(_clock) or not _clock.is_inside_tree():
@@ -236,22 +259,44 @@ func refresh_key_hints() -> void:
 	if is_instance_valid(player):
 		var id: StringName = player.get_node("PlayerPowerController").active_power
 		$ActivePower.text = COPY.text("selector.hud", {"key": binding_text("power_selector"), "power": COPY.text("selector." + String(id))})
-		if not player.get_node("PlayerPowerController").progression.is_implemented(String(id), 0):
+		if not player.get_node("PlayerPowerController").progression.is_implemented(String(id), 0) and not (id == PlayerAbilities.ICE and player.abilities.is_unlocked(id)):
 			$ActivePower.text += "  ·  " + COPY.text("selector.future")
 		elif not player.abilities.is_unlocked(id):
 			$ActivePower.text += "  ·  " + COPY.text("selector.locked")
 	for action in hint_keys:
 		hint_labels[action].text = COPY.text(HINTS[action])
 		if action in ["aim_power", "attack"]:
-			hint_keys[action].get_parent().visible = is_instance_valid(player) and player.get_node("PlayerPowerController").active_power in [PlayerAbilities.LASER_EYES, PlayerAbilities.FIRE, PlayerAbilities.ELECTRICITY] and player.abilities.is_unlocked(player.get_node("PlayerPowerController").active_power)
+			hint_keys[action].get_parent().visible = is_instance_valid(player) and player.get_node("PlayerPowerController").active_power in [PlayerAbilities.LASER_EYES, PlayerAbilities.ICE, PlayerAbilities.FIRE, PlayerAbilities.ELECTRICITY] and player.abilities.is_unlocked(player.get_node("PlayerPowerController").active_power)
 		if action == "attack":
 			hint_labels[action].text = COPY.text("hud.hint.active_power")
+			if is_instance_valid(player) and player.get_node("PlayerPowerController").active_power == PlayerAbilities.ICE:
+				hint_labels[action].text = COPY.text("hud.hint.frost_breath")
 			if is_instance_valid(player) and player.get_node("PlayerPowerController").active_power == PlayerAbilities.ELECTRICITY:
 				hint_labels[action].text = COPY.text("hud.hint.electric_shock")
 			if is_instance_valid(player) and player.get_node("PlayerPowerController").active_power == PlayerAbilities.FIRE and player.abilities.is_unlocked(PlayerAbilities.CHARGED_FIREBALL):
 				hint_labels[action].text = COPY.text("hud.hint.fire_charge")
 		if action == "secondary_power":
 			hint_keys[action].get_parent().visible = is_instance_valid(player) and player.get_node("PlayerPowerController").active_power == PlayerAbilities.FIRE and player.abilities.is_unlocked(PlayerAbilities.DRAGON_BREATH)
+			if is_instance_valid(player) and player.get_node("PlayerPowerController").active_power == PlayerAbilities.ICE and player.frost_wall.unlocked():
+				hint_keys[action].get_parent().visible = true
+				hint_labels[action].text = COPY.text("hud.hint.frost_wall")
+			if is_instance_valid(player) and player.get_node("PlayerPowerController").active_power == PlayerAbilities.FIRE and player.external_combustion.unlocked():
+				hint_labels[action].text = COPY.text("hud.hint.external_combustion")
+			if is_instance_valid(player) and player.get_node("PlayerPowerController").active_power == PlayerAbilities.ELECTRICITY and player.thunderstorm.unlocked():
+				hint_keys[action].get_parent().visible = true
+				var weather := get_node("/root/Weather")
+				var remaining := ceili(float(weather.thunderstorm_cooldown_remaining))
+				var text_key := "hud.hint.thunderstorm"
+				if player.thunderstorm.casting: text_key = "hud.hint.thunderstorm.casting"
+				elif weather.is_thunderstorm(): text_key = "hud.hint.thunderstorm.active"
+				elif remaining > 0: text_key = "hud.hint.thunderstorm.cooldown"
+				hint_labels[action].text = COPY.text(text_key, {"time": "%d:%02d" % [remaining / 60, remaining % 60]})
+				if weather.is_thunderstorm() and player.lightning_strike.unlocked():
+					# Contextual input help only; a cooldown monitor is deferred.
+					var strike_hint := "hud.hint.lightning_strike"
+					if player.lightning_strike.casting: strike_hint = "hud.hint.lightning_strike.casting"
+					elif player.is_flying or not player.is_on_floor(): strike_hint = "hud.hint.lightning_strike.grounded"
+					hint_labels[action].text = COPY.text(strike_hint)
 		if action == "toggle_flight" and is_instance_valid(player) and player.abilities.is_unlocked(PlayerAbilities.FLIGHT_SURGE):
 			hint_labels[action].text = COPY.text("hud.hint.flight_surge")
 		var binding := binding_text(action)
@@ -283,7 +328,7 @@ func binding_text(action: String) -> String:
 	return COPY.text("hud.hint.unbound")
 
 func _apply_palette() -> void:
-	for label in [health_label, level_label, experience_label, stamina_label, flight_charge_label, heat_label, $FireCharge/Amount, $Clock]:
+	for label in [health_label, level_label, experience_label, stamina_label, flight_charge_label, heat_label, $FireCharge/Amount, $Clock, $Cooldowns/Thunderstorm, $Cooldowns/LightningStrike]:
 		label.add_theme_color_override("font_color", PALETTE.text_primary)
 		label.add_theme_color_override("font_shadow_color", PALETTE.shadow)
 		label.add_theme_constant_override("shadow_offset_x", 1)
